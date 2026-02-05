@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Forms Simulator - Dutch A2</title>
+    <link rel="stylesheet" href="css/forms-sim.css">
+    <link rel="stylesheet" href="css/vocabulary.css">
+    <link rel="stylesheet" href="css/sentence-structure.css">
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside id="form-sidebar">
+        <h3>📋 Form Tasks</h3>
+        <div class="form-list" id="form-list"></div>
+    </aside>
+
+    <!-- Main Area -->
+    <div class="main-area">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="top-left">
+                <button class="btn-home" onclick="location.href='writing.html'">← Writing</button>
+                <button class="btn-home" onclick="toggleSidebar()">☰ List</button>
+                <button class="btn-home" onclick="location.href='index.html'">🏠 Home</button>
+                <span class="progress-text" id="progress-text">Form 1 of 8</span>
+            </div>
+            <div class="top-right">
+                <button class="btn-toggle-lang" id="toggle-lang-btn" onclick="toggleLanguage()">
+                    🇬🇧 Show English
+                </button>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <div class="form-container">
+                <div class="form-header" id="form-header">LOADING...</div>
+
+                <h1 class="form-title" id="form-title">Loading...</h1>
+
+                <div class="form-prompt" id="form-prompt">
+                    Loading instructions...
+                </div>
+
+                <div class="form-prompt-en" id="form-prompt-en" style="display: none;">
+                    Loading English translation...
+                </div>
+
+                <div class="form-fields" id="form-fields">
+                    <!-- Fields will be dynamically generated -->
+                </div>
+
+                <div class="field-counter">
+                    <span id="filled-count">0</span> / <span id="total-count">0</span> fields filled
+                    <span class="char-info" id="char-info"
+                        style="margin-left: 20px; color: #666; font-style: italic;"></span>
+                </div>
+
+                <div class="completion-message" id="completion-message">
+                    ✅ All fields completed!
+                </div>
+
+                <div class="button-group">
+                    <button class="btn-secondary" onclick="clearForm()">🗑️ Clear All</button>
+                    <button class="btn-success" onclick="checkForm()">✓ Check Form</button>
+                </div>
+
+                <div class="button-group" style="margin-top: 15px;">
+                    <button class="btn-secondary" onclick="previousForm()">← Previous</button>
+                    <button class="btn-primary" onclick="nextForm()">Next →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/common.js"></script>
+    <script src="js/questions-forms.js"></script>
+    <script src="js/forms-sim.js"></script>
+    <script src="js/vocabulary.js"></script>
+    <script src="js/vocabulary-ui.js"></script>
+</body>
+
+</html>
