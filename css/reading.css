@@ -1,0 +1,354 @@
+:root {
+    --primary: #0052cc;
+    --secondary: #f0f2f5;
+    --text: #333;
+    --success: #2e7d32;
+    --error: #d92626;
+    --highlight: #e3f2fd;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+    background-color: var(--secondary);
+}
+
+/* Sidebar */
+#reading-sidebar {
+    width: 250px;
+    background: white;
+    border-right: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s;
+    z-index: 10;
+}
+
+#reading-sidebar.collapsed {
+    width: 0;
+    overflow: hidden;
+    border: none;
+}
+
+#reading-sidebar h3 {
+    padding: 20px;
+    margin: 0;
+    color: var(--primary);
+    border-bottom: 1px solid #eee;
+}
+
+.reading-list {
+    overflow-y: auto;
+    flex: 1;
+}
+
+.reading-item {
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.reading-item:hover {
+    background: #f8f9fa;
+}
+
+.reading-item.active {
+    background: var(--highlight);
+    border-left: 4px solid var(--primary);
+    font-weight: bold;
+}
+
+/* Main Area */
+.main-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.top-bar {
+    height: 60px;
+    background: white;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.top-left,
+.top-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.top-center h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--text);
+}
+
+.btn-home,
+.btn-toggle-sidebar {
+    background: #e0e0e0;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn-home:hover,
+.btn-toggle-sidebar:hover {
+    background: #d0d0d0;
+}
+
+/* Exam Selector Dropdown */
+.exam-selector {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+    transition: all 0.3s;
+    min-width: 180px;
+}
+
+.exam-selector:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.exam-selector:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+.exam-selector option {
+    background: white;
+    color: #333;
+    padding: 10px;
+}
+
+.timer {
+    font-family: monospace;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--primary);
+    background: #f0f7ff;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+/* Bookmark and Filter Buttons */
+.btn-bookmark {
+    background: white;
+    border: 2px solid #ffd700;
+    color: #ffa500;
+    font-size: 1.5rem;
+    padding: 5px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-bookmark:hover {
+    background: #fff9e6;
+    transform: scale(1.1);
+}
+
+.btn-filter {
+    background: white;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.btn-filter:hover {
+    background: #e3f2fd;
+}
+
+/* Split View */
+.split-container {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* Text Panel */
+.text-panel {
+    flex: 1;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Questions Panel */
+.questions-panel {
+    flex: 1;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.panel-header {
+    padding: 15px 20px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.panel-header h4 {
+    margin: 0;
+    color: #555;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.font-controls button {
+    background: white;
+    border: 1px solid #ccc;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.font-controls button:hover {
+    background: #eee;
+}
+
+.text-content {
+    padding: 30px;
+    overflow-y: auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #222;
+}
+
+.questions-content {
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+/* Question Items */
+.question-item {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.question-text {
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 1.05rem;
+}
+
+.options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.option {
+    padding: 10px 15px;
+    border: 2px solid #eee;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+.option:hover {
+    background: #f9f9f9;
+    border-color: #ddd;
+}
+
+.option.selected {
+    border-color: var(--primary);
+    background: #e3f2fd;
+    font-weight: 500;
+}
+
+.option.correct {
+    border-color: var(--success);
+    background: #e8f5e9;
+    color: var(--success);
+}
+
+.option.wrong {
+    border-color: var(--error);
+    background: #ffebee;
+    color: var(--error);
+}
+
+.option-radio {
+    margin-right: 12px;
+}
+
+/* Actions */
+.actions-area {
+    padding: 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    background: #fff;
+}
+
+.btn-submit {
+    background: var(--success);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-next {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: none;
+    /* Hidden until check */
+}
+
+.result-message {
+    padding: 10px 20px;
+    text-align: center;
+    font-weight: bold;
+    min-height: 20px;
+}
