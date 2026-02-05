@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Grammar Lab - Dutch A2</title>
+    <link rel="stylesheet" href="css/grammar-lab.css">
+    <link rel="stylesheet" href="css/vocabulary.css">
+    <link rel="stylesheet" href="css/sentence-structure.css">
+</head>
+
+<body>
+
+    <aside id="nav-sidebar">
+        <div class="jump-links">
+            <button class="jump-btn btn-e" onclick="jumpTo(0)">🟢 Start Easy</button>
+            <button class="jump-btn btn-m" onclick="jumpTo(30)">🟠 Start Medium</button>
+            <button class="jump-btn btn-h" onclick="jumpTo(60)">🔴 Start Hard</button>
+        </div>
+        <div class="scroll-area">
+            <div class="nav-grid" id="nav-grid"></div>
+        </div>
+    </aside>
+
+    <main class="workspace">
+        <div class="top-bar">
+            <div class="top-left">
+                <button class="btn-sec" onclick="location.href='writing.html'">← Writing</button>
+                <button class="btn-sec" onclick="toggleSidebar()">☰ List</button>
+                <button class="btn-sec" onclick="location.href='index.html'">🏠 Home</button>
+                <div id="diff-label" class="difficulty-badge easy">Easy</div>
+                <div id="header-progress" style="font-weight: bold; color: #555;">1 of 100</div>
+            </div>
+            <div class="top-right">
+                <button class="btn-rule-toggle" onclick="toggleRule()">View Rule</button>
+                <button class="btn-sec" onclick="toggleMode()">Mode: <span id="mode-text">Blocks</span></button>
+            </div>
+        </div>
+
+        <div class="app-content">
+            <div class="app-container">
+                <div class="translation" id="translation">Loading...</div>
+
+                <div id="block-area">
+                    <div class="drop-zone" id="answer-zone" onclick="returnToBank(event)"></div>
+                    <div class="word-bank" id="word-bank"></div>
+                </div>
+                <input type="text" id="writing-input" placeholder="Typ de Nederlandse zin hier...">
+
+                <div id="rule-box">
+                    <span class="rule-title">Grammar Logic</span>
+                    <div id="rule-text"></div>
+                    <div class="rule-formula" id="rule-formula"></div>
+                    <div class="rule-example" id="rule-example"></div>
+                </div>
+
+                <div id="feedback" style="text-align:center; font-weight:bold; height:24px; margin-bottom:15px;"></div>
+
+                <div style="display:flex; flex-direction:column; gap:12px;">
+                    <button class="btn-main" onclick="checkAnswer()">Check Answer</button>
+                    <div style="display:flex; gap:10px;">
+                        <button class="btn-sec" style="flex:1" onclick="prev()">Previous</button>
+                        <button class="btn-sec" style="flex:1" onclick="next()">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+
+    <script src="js/questions-set-1.js"></script>
+
+    <script>
+
+        let currentIdx = 0;
+        let results = new Array(100).fill(null);
+        let writingMode = false;
+        let discoveredVerbs = new Set();
+
+        function toggleSidebar() { document.getElementById('nav-sidebar').classList.toggle('collapsed'); }
+        function initNav() {
+            const grid = document.getElementById('nav-grid'); grid.innerHTML = "";
+            for (let i = 0; i < 100; i++) {
+                const item = document.createElement('div');
+                item.className = 'nav-item'; item.innerText = i + 1;
+                item.id = `nav-${i}`; item.onclick = () => jumpTo(i);
+                grid.appendChild(item);
+            }
+        }
+        function jumpTo(idx) { currentIdx = idx; loadQuestion(); }
+
+        function loadQuestion() {
+            const q = questions[currentIdx] || questions[0];
+            document.getElementById('header-progress').innerText = `${currentIdx + 1} of 100`;
+            document.getElementById('translation').innerText = `🇬🇧 ${q.eng}`;
+
+            // Populate Enhanced Rule Box
+            document.getElementById('rule-text').innerText = q.logic || "Standard word order applies.";
+            document.getElementById('rule-formula').innerText = q.formula || "Subject + Verb + Rest";
+            document.getElementById('rule-example').innerText = q.example ? `Example: ${q.example}` : "";
+            document.getElementById('rule-box').style.display = 'none';
+
+            document.getElementById('feedback').innerText = "";
+            document.getElementById('writing-input').value = "";
+            const label = document.getElementById('diff-label');
+            label.innerText = q.diff; label.className = `difficulty-badge ${q.diff}`;
+
+            const bank = document.getElementById('word-bank');
+            const zone = document.getElementById('answer-zone');
+            bank.innerHTML = ""; zone.innerHTML = "";
+            [...q.words].sort(() => Math.random() - 0.5).forEach(w => {
+                let div = document.createElement('div');
+                div.className = 'word'; div.innerText = w;
+                div.onclick = () => zone.appendChild(div);
+                bank.appendChild(div);
+            });
+            updateNavStyles();
+        }
+
+        function toggleMode() {
+            writingMode = !writingMode;
+            document.getElementById('mode-text').innerText = writingMode ? "Writing" : "Blocks";
+            document.getElementById('block-area').style.display = writingMode ? "none" : "block";
+            document.getElementById('writing-input').style.display = writingMode ? "block" : "none";
+        }
+
+        function checkAnswer() {
+            const q = questions[currentIdx];
+            let userStr = writingMode ? document.getElementById('writing-input').value :
+                Array.from(document.getElementById('answer-zone').children).map(c => c.innerText).join(" ");
+            const isCorrect = userStr.toLowerCase().replace(/[.,?]/g, "").trim() === q.dut.toLowerCase().replace(/[.,?]/g, "").trim();
+            const fb = document.getElementById('feedback');
+            if (isCorrect) {
+                fb.innerText = "✅ Correct! Goed gedaan!"; fb.style.color = "green";
+                results[currentIdx] = true; if (q.verb) addVerb(q.verb);
+            } else {
+                fb.innerText = "❌ Incorrect. Try again!"; fb.style.color = "red";
+                results[currentIdx] = false;
+            }
+            updateNavStyles();
+        }
+
+        function addVerb(v) {
+            if (!discoveredVerbs.has(v[0])) {
+                discoveredVerbs.add(v[0]);
+                document.getElementById('verb-list').innerHTML += `<tr><td>${v[0]}</td><td>${v[1]}</td><td>${v[2]}</td></tr>`;
+            }
+        }
+
+        function returnToBank(e) { if (e.target.className === 'word') document.getElementById('word-bank').appendChild(e.target); }
+        function toggleRule() { const b = document.getElementById('rule-box'); b.style.display = b.style.display === 'none' ? 'block' : 'none'; }
+        function next() { currentIdx = (currentIdx + 1) % 100; loadQuestion(); }
+        function prev() { currentIdx = (currentIdx - 1 + 100) % 100; loadQuestion(); }
+        function updateNavStyles() {
+            for (let i = 0; i < 100; i++) {
+                const item = document.getElementById(`nav-${i}`);
+                if (!item) continue;
+                item.classList.remove('active', 'is-correct', 'is-wrong');
+                if (i === currentIdx) item.classList.add('active');
+                if (results[i] === true) item.classList.add('is-correct');
+                if (results[i] === false) item.classList.add('is-wrong');
+            }
+        }
+        initNav(); loadQuestion();
+    </script>
+
+    <!-- Sentence Structure Modal -->
+    <div id="sentence-modal" class="modal">
+        <div id="sentence-modal-content">
+            <div class="sentence-modal-header">
+                <h2>📐 Sentence Structure</h2>
+                <button class="sentence-close" onclick="closeSentenceStructure()">&times;</button>
+            </div>
+            <div id="sentence-content"></div>
+        </div>
+    </div>
+
+    <!-- Floating Sentence Structure Button -->
+    <button class="btn-sentence-structure" onclick="openSentenceStructure()" title="Sentence Structure (Ctrl+S)">
+        📐
+    </button>
+
+    <script src="js/common.js"></script>
+    <script src="js/vocabulary.js"></script>
+    <script src="js/vocabulary-ui.js"></script>
+    <script src="js/sentence-structure.js"></script>
+    <script src="js/sentence-structure-ui.js"></script>
+</body>
+
+</html>
