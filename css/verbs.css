@@ -1,0 +1,351 @@
+/* Verbs Reference System Styles */
+
+/* Floating Verbs Button */
+.btn-verbs {
+    position: fixed;
+    bottom: 170px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #7b1fa2, #9c27b0);
+    color: white;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(123, 31, 162, 0.4);
+    z-index: 9998;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-verbs:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(123, 31, 162, 0.5);
+}
+
+.btn-verbs:active {
+    transform: translateY(-1px);
+}
+
+/* Verbs Modal */
+.verbs-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+}
+
+.verbs-modal.active {
+    display: flex;
+}
+
+.verbs-modal-content {
+    background: white;
+    width: 90%;
+    max-width: 900px;
+    max-height: 85vh;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Modal Header */
+.verbs-modal-header {
+    background: linear-gradient(135deg, #7b1fa2, #9c27b0);
+    color: white;
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.verbs-modal-header h2 {
+    margin: 0;
+    font-size: 1.6rem;
+}
+
+.verbs-close {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.verbs-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+/* Modal Content */
+.verbs-content {
+    padding: 0;
+    overflow-y: auto;
+    flex: 1;
+}
+
+/* Verb Tabs */
+.verbs-tabs {
+    display: flex;
+    gap: 0;
+    background: #f5f5f5;
+    border-bottom: 2px solid #7b1fa2;
+}
+
+.verb-tab {
+    flex: 1;
+    padding: 15px 20px;
+    background: #f5f5f5;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #666;
+    transition: 0.3s;
+    border-bottom: 3px solid transparent;
+}
+
+.verb-tab:hover {
+    background: #ececec;
+    color: #7b1fa2;
+}
+
+.verb-tab.active {
+    background: white;
+    color: #7b1fa2;
+    border-bottom: 3px solid #7b1fa2;
+    font-weight: 600;
+}
+
+/* Search Box */
+.verbs-search {
+    padding: 20px 25px;
+    background: white;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.verbs-search input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.verbs-search input:focus {
+    outline: none;
+    border-color: #7b1fa2;
+    box-shadow: 0 0 0 3px rgba(123, 31, 162, 0.1);
+}
+
+/* Level Info */
+.verbs-info {
+    padding: 15px 25px;
+    background: #f9f3fc;
+    border-left: 4px solid #7b1fa2;
+    margin: 20px 25px 0 25px;
+    border-radius: 4px;
+}
+
+.verbs-info p {
+    margin: 0;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Verbs Table Container */
+#verbs-table-container {
+    padding: 20px 25px 30px 25px;
+}
+
+/* Verbs Table */
+.verbs-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.verbs-table thead {
+    background: linear-gradient(135deg, #7b1fa2, #9c27b0);
+    color: white;
+}
+
+.verbs-table th {
+    padding: 15px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.verbs-table tbody tr {
+    border-bottom: 1px solid #f0f0f0;
+    transition: 0.2s;
+}
+
+.verbs-table tbody tr:hover {
+    background: #f9f3fc;
+}
+
+.verbs-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.verbs-table td {
+    padding: 12px;
+    vertical-align: top;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Verb Columns */
+.verb-infinitive {
+    color: #7b1fa2;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.verb-imperfectum {
+    color: #d32f2f;
+    font-family: 'Courier New', monospace;
+}
+
+.verb-perfectum {
+    color: #1976d2;
+    font-family: 'Courier New', monospace;
+}
+
+.auxiliary-hint {
+    display: block;
+    font-size: 0.8rem;
+    color: #888;
+    font-style: italic;
+    margin-top: 3px;
+}
+
+.verb-english {
+    color: #555;
+    font-style: italic;
+}
+
+.verb-example {
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.example-present {
+    margin-bottom: 5px;
+    color: #2e7d32;
+}
+
+.example-past {
+    color: #d84315;
+    font-style: italic;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .btn-verbs {
+        bottom: 160px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+
+    .verbs-modal-content {
+        width: 95%;
+        max-height: 90vh;
+    }
+
+    .verbs-modal-header {
+        padding: 15px 20px;
+    }
+
+    .verbs-modal-header h2 {
+        font-size: 1.3rem;
+    }
+
+    .verbs-content {
+        padding: 20px;
+    }
+
+    .verbs-tabs {
+        flex-direction: column;
+    }
+
+    .verb-tab {
+        border-bottom: 1px solid #ddd;
+    }
+
+    .verb-tab.active {
+        border-bottom: 1px solid #7b1fa2;
+        border-left: 4px solid #7b1fa2;
+    }
+
+    .verbs-table {
+        font-size: 0.85rem;
+    }
+
+    .verbs-table th,
+    .verbs-table td {
+        padding: 10px 8px;
+    }
+
+    .verbs-table th {
+        font-size: 0.85rem;
+    }
+
+    /* Stack table on very small screens */
+    @media (max-width: 600px) {
+        .verbs-table thead {
+            display: none;
+        }
+
+        .verbs-table tbody tr {
+            display: block;
+            margin-bottom: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 10px;
+        }
+
+        .verbs-table td {
+            display: block;
+            text-align: left;
+            padding: 8px 0;
+            border: none;
+        }
+
+        .verbs-table td::before {
+            content: attr(data-label);
+            font-weight: 600;
+            display: inline-block;
+            width: 120px;
+            color: #7b1fa2;
+        }
+    }
+}

@@ -5,20 +5,25 @@
     <meta charset="UTF-8">
     <title>Writing Practice - Dutch A2</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navigation.css">
     <link rel="stylesheet" href="css/vocabulary.css">
     <link rel="stylesheet" href="css/sentence-structure.css">
+    <link rel="stylesheet" href="css/verbs.css">
 </head>
 
 <body>
-    <div class="container">
-        <div class="header-hero">
-            <h1 style="color:var(--accent); font-size: 2.5rem; margin:0;">✍️ Writing Practice</h1>
-            <p style="color: #666; margin-top: 10px;">Master all aspects of the Dutch A2 writing exam</p>
-            <a href="index.html"
-                style="display: inline-block; margin-top: 15px; color: var(--primary); text-decoration: none; font-weight: 600;">←
-                Back to Home</a>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <div class="nav-container">
+            <a href="index.html" class="nav-home">
+                <span class="nav-home-icon">🏠</span>
+                <span>Home</span>
+            </a>
+            <div class="nav-page-title">✍️ Writing Practice</div>
         </div>
+    </nav>
 
+    <div class="container">
         <div class="grid">
             <a href="exam-sim.html" class="card">
                 <div style="font-size:3.5rem; margin-bottom: 15px;">📧</div>
@@ -43,6 +48,14 @@
                     verb library.</p>
                 <span class="btn-primary" style="margin-top: 20px;">Open Lab</span>
             </a>
+
+            <a href="grammar-practice.html" class="card">
+                <div style="font-size:3.5rem; margin-bottom: 15px;">📚</div>
+                <h2 style="color: var(--primary); margin: 0 0 10px 0;">Grammar Practice</h2>
+                <p style="color: #666;">100+ sentence completion exercises: simple sentences, modal verbs, conjunctions,
+                    and more.</p>
+                <span class="btn-secondary" style="margin-top: 20px;">Start Practice</span>
+            </a>
         </div>
     </div>
 
@@ -62,11 +75,35 @@
         📐
     </button>
 
+    <!-- Floating Verbs Button -->
+    <button class="btn-verbs" onclick="openVerbs()" title="Verbs Reference (Ctrl+V)">
+        🔤
+    </button>
+
+    <!-- Verbs Modal -->
+    <div id="verbs-modal" class="verbs-modal">
+        <div class="verbs-modal-content">
+            <div class="verbs-modal-header">
+                <h2>🔤 Verbs Reference</h2>
+                <button class="verbs-close" onclick="closeVerbs()">&times;</button>
+            </div>
+            <div class="verbs-content">
+                <div class="verbs-placeholder">
+                    <h3>Verbs Reference Coming Soon!</h3>
+                    <p>This section will contain comprehensive verb conjugations and examples.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="js/common.js"></script>
     <script src="js/vocabulary.js"></script>
     <script src="js/vocabulary-ui.js"></script>
     <script src="js/sentence-structure.js"></script>
     <script src="js/sentence-structure-ui.js"></script>
+    <script src="js/verbs-data.js"></script>
+    <script src="js/verbs.js"></script>
+    <script src="js/verbs-ui.js"></script>
 </body>
 
 </html>

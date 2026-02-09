@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preposition Quiz - Dutch A2</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/breadcrumb.css">
+    <link rel="stylesheet" href="css/quiz.css">
+</head>
+
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <div class="nav-container">
+            <a href="index.html" class="nav-home">
+                <span class="nav-home-icon">🏠</span>
+                <span>Home</span>
+            </a>
+            <div class="nav-page-title">📝 Preposition Quiz</div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb-nav">
+        <a href="grammar.html">
+            <span class="breadcrumb-arrow">←</span>
+            Back to Grammar Hub
+        </a>
+    </div>
+
+    <!-- Quiz Container -->
+    <div class="quiz-container">
+        <!-- Quiz Header -->
+        <div class="quiz-header">
+            <h1>🔗 Preposition Practice Quiz</h1>
+            <p>Fill in the correct preposition to complete each sentence</p>
+        </div>
+
+        <!-- Level Selector -->
+        <div class="level-selector">
+            <button class="level-btn active" data-level="a1">A1 Level</button>
+            <button class="level-btn" data-level="a2">A2 Level</button>
+            <button class="level-btn" data-level="b1">B1 Level</button>
+        </div>
+
+        <!-- Quiz Content -->
+        <div id="quiz-content">
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-info">
+                    <span class="progress-text" id="progress-text">Question 1 of 10</span>
+                    <span class="score-display" id="score-display">Score: 0/10</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="question-card">
+                <div class="question-number" id="question-number">Question 1</div>
+                <div class="sentence-display" id="sentence-display">
+                    <!-- Sentence with input will be inserted here -->
+                </div>
+                <div class="english-translation" id="english-translation">
+                    <!-- English translation will be inserted here -->
+                </div>
+
+                <!-- Hint Display -->
+                <div class="hint-display" id="hint-display">
+                    <!-- Hint will be shown here -->
+                </div>
+
+                <!-- Feedback Message -->
+                <div class="feedback-message" id="feedback-message">
+                    <!-- Feedback will be shown here -->
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="quiz-actions">
+                <button class="quiz-btn btn-hint" onclick="showHint()">
+                    💡 Show Hint
+                </button>
+                <button class="quiz-btn btn-check" id="btn-check" onclick="checkAnswer()">
+                    ✓ Check Answer
+                </button>
+                <button class="quiz-btn btn-next btn-disabled" id="btn-next" onclick="nextQuestion()">
+                    → Next Question
+                </button>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div class="results-screen" id="results-screen">
+            <h2>🎯 Quiz Complete!</h2>
+            <div class="results-score" id="final-score">0/10</div>
+            <div class="results-message" id="results-message"></div>
+            <div class="results-details">
+                <p><strong>Percentage:</strong> <span id="percentage">0%</span></p>
+            </div>
+            <div class="quiz-actions">
+                <button class="quiz-btn btn-restart" onclick="restartQuiz()">
+                    🔄 Try Again
+                </button>
+                <button class="quiz-btn btn-check" onclick="location.href='grammar.html'">
+                    ← Back to Grammar Hub
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/preposition-quiz-data.js"></script>
+    <script src="js/preposition-quiz.js"></script>
+</body>
+
+</html>

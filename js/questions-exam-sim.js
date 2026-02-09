@@ -114,10 +114,73 @@ var examTasks = [
         ],
         modelAnswer: "Beste buren,\n\nBedankt voor jullie hulp gisteren! Het was heel aardig van jullie.\n\nKomen jullie morgen koffie drinken?\n\nGroetjes,\n[Naam]"
     },
-
-    // LONG MESSAGES (80-90 words) - Opdracht 19-20
     {
         id: 7,
+        title: "Opdracht 18: Boek terugvragen",
+        type: "short email",
+        wordTarget: "40-50 words",
+        contextNL: "Je hebt het studieboek 'Toets gesproken Nederlands' uitgeleend aan je medecursiste Jenny. Zij heeft het boek al 2 weken. Je moet leren voor het inburgeringsexamen en je wilt het boek morgen terug.",
+        contextEN: "You lent your study book 'Toets gesproken Nederlands' to your classmate Jenny. She has had the book for 2 weeks. You need to study for the integration exam and want the book back tomorrow.",
+        tasksNL: [
+            "Vertel waarom je schrijft.",
+            "Vertel dat je het boek morgen terug wilt.",
+            "Geef je telefoonnummer om een afspraak te maken."
+        ],
+        tasksEN: [
+            "Tell why you are writing.",
+            "Say you want the book back tomorrow.",
+            "Give your phone number to make an appointment."
+        ],
+        modelAnswer: "Beste Jenny,\n\nIk schrijf je omdat ik mijn boek 'Toets gesproken Nederlands' terug wil. Je hebt het boek nu twee weken.\n\nIk moet leren voor mijn inburgeringsexamen. Kan ik het boek morgen terugkrijgen?\n\nMijn telefoonnummer is [nummer]. Bel me!\n\nGroetjes,\n[Naam]"
+    },
+    {
+        id: 8,
+        title: "Opdracht 19: Vrienden uitnodigen",
+        type: "short email",
+        wordTarget: "40-50 words",
+        contextNL: "Je bent verhuisd. Je nodigt je vrienden uit voor een etentje bij jou thuis.",
+        contextEN: "You have moved. You invite your friends for dinner at your new home.",
+        tasksNL: [
+            "Nodig je vrienden uit voor een etentje bij jou thuis.",
+            "Vertel waarom je een etentje geeft.",
+            "Schrijf de datum van het etentje op.",
+            "Geef de tijd vanaf wanneer je vrienden welkom zijn.",
+            "Geef ook je nieuwe adres en telefoonnummer."
+        ],
+        tasksEN: [
+            "Invite your friends for dinner at your home.",
+            "Tell why you are having a dinner.",
+            "Write the date of the dinner.",
+            "Give the time when your friends are welcome.",
+            "Also give your new address and phone number."
+        ],
+        modelAnswer: "Beste vrienden,\n\nIk ben verhuisd! Ik wil jullie uitnodigen voor een etentje bij mij thuis.\n\nHet etentje is op zaterdag 15 maart. Jullie zijn welkom vanaf 18:00 uur.\n\nMijn nieuwe adres is [adres]. Mijn telefoonnummer is [nummer].\n\nTot zaterdag!\n\nGroetjes,\n[Naam]"
+    },
+    {
+        id: 9,
+        title: "Opdracht 20: Klacht cursus",
+        type: "short email",
+        wordTarget: "40-50 words",
+        contextNL: "Je volgt een cursus Nederlands voor gevorderden aan de Volksuniversiteit. Je bent niet helemaal tevreden over de cursus. De groep is heel groot. Je hebt ook andere klachten.",
+        contextEN: "You are taking an advanced Dutch course at the Volksuniversiteit. You are not completely satisfied with the course. The group is very large. You also have other complaints.",
+        tasksNL: [
+            "Schrijf welke cursus je doet.",
+            "Vertel waarom je schrijft.",
+            "Schrijf 3 klachten op.",
+            "Geef je naam, achternaam en telefoonnummer."
+        ],
+        tasksEN: [
+            "Write which course you are taking.",
+            "Tell why you are writing.",
+            "Write 3 complaints.",
+            "Give your name, surname and phone number."
+        ],
+        modelAnswer: "Geachte mevrouw Overbeek,\n\nIk volg de cursus Nederlands voor gevorderden. Ik schrijf omdat ik niet tevreden ben.\n\nMijn klachten zijn:\n- De groep is te groot\n- De docent spreekt te snel\n- Er is te weinig tijd voor vragen\n\nMijn naam is [Voornaam Achternaam]. Mijn telefoonnummer is [nummer].\n\nMet vriendelijke groet,\n[Naam]"
+    },
+
+    // LONG MESSAGES (80-90 words) - Opdracht 10-15
+    {
+        id: 10,
         title: "Opdracht 7: Klacht winkel",
         type: "long email",
         wordTarget: "80-90 words",
@@ -140,7 +203,7 @@ var examTasks = [
         modelAnswer: "Beste winkel,\n\nVorige week dinsdag heb ik een jas gekocht in uw winkel. De jas kostte 89 euro. Toen ik thuiskwam, zag ik dat er een gat in de mouw zit.\n\nIk ben niet tevreden met de jas. Ik wil de jas terugbrengen en mijn geld terug. Ik heb de bon nog.\n\nWanneer kan ik naar de winkel komen? Ik kan op woensdag of donderdag.\n\nMet vriendelijke groet,\n[Naam]"
     },
     {
-        id: 8,
+        id: 11,
         title: "Opdracht 8: Sportschool abonnement",
         type: "long email",
         wordTarget: "80-90 words",
@@ -165,7 +228,7 @@ var examTasks = [
         modelAnswer: "Beste FitLife,\n\nIk heb uw advertentie gezien. Ik ben geïnteresseerd in een abonnement bij uw sportschool.\n\nIk wil graag meer informatie. Wat kost een abonnement per maand? Wat zijn de openingstijden?\n\nIk kan op maandag, woensdag en vrijdag 's avonds komen. Ik wil graag zwemmen en fitnessen. Heeft u een zwembad?\n\nIk hoor graag van u.\n\nMet vriendelijke groet,\n[Naam]"
     },
     {
-        id: 7,
+        id: 12,
         title: "Opdracht 19b: Verloren voorwerp",
         type: "long email",
         wordTarget: "80-90 words",
@@ -190,7 +253,7 @@ var examTasks = [
         modelAnswer: "Beste busmaatschappij,\n\nGisteren ben ik mijn portemonnee verloren in de bus. Het was lijn 12, om ongeveer twee uur 's middags.\n\nDe portemonnee is zwart en klein. Er zitten mijn identiteitskaart, mijn bankpas en vijftig euro in.\n\nIk heb de portemonnee dringend nodig. Heeft iemand hem gevonden?\n\nMijn telefoonnummer is [Nummer]. Mijn e-mailadres is [Email].\n\nMet vriendelijke groet,\n[Naam]"
     },
     {
-        id: 8,
+        id: 13,
         title: "Opdracht 20b: Cursus inschrijving",
         type: "long email",
         wordTarget: "80-90 words",
@@ -215,7 +278,7 @@ var examTasks = [
         modelAnswer: "Beste Talencentrum,\n\nIk wil me graag inschrijven voor een Nederlandse cursus. Mijn niveau is A2.\n\nIk wil graag 's avonds les. Ik kan op dinsdag en donderdag. Ik wil in september beginnen.\n\nWat kost de cursus? Zijn de boeken bij de prijs inbegrepen?\n\nIk wacht op uw antwoord.\n\nMet vriendelijke groet,\n[Naam]"
     },
     {
-        id: 9,
+        id: 14,
         title: "Opdracht 19c: Huisarts afzeggen",
         type: "long email",
         wordTarget: "80-90 words",
@@ -240,7 +303,7 @@ var examTasks = [
         modelAnswer: "Beste dokter Van Dijk,\n\nIk heb morgen (dinsdag) om tien uur een afspraak bij u. Helaas moet ik deze afspraak afzeggen omdat ik moet werken.\n\nKan ik een nieuwe afspraak maken? Ik kan volgende week woensdag of vrijdag 's middags.\n\nSorry voor het ongemak.\n\nMet vriendelijke groet,\n[Naam]"
     },
     {
-        id: 10,
+        id: 15,
         title: "Opdracht 20c: Verjaardag uitnodiging",
         type: "long email",
         wordTarget: "80-90 words",
@@ -265,9 +328,9 @@ var examTasks = [
         modelAnswer: "Beste Maria,\n\nVolgende week zaterdag (15 maart) ben ik jarig! Ik geef een feestje en ik wil je graag uitnodigen.\n\nHet feest begint om zeven uur 's avonds. Mijn adres is [Adres]. We gaan eten en daarna is er taart.\n\nJe mag je man ook meenemen als je wilt.\n\nTot zaterdag!\n\nGroetjes,\n[Naam]"
     },
 
-    // NEW TASKS - More Variety
+    // ADDITIONAL PRACTICE TASKS
     {
-        id: 13,
+        id: 16,
         title: "Opdracht 13: Klacht over product",
         type: "short email",
         wordTarget: "40-50 words",
@@ -286,7 +349,7 @@ var examTasks = [
         modelAnswer: "Geachte heer/mevrouw,\n\nIk heb vorige week dinsdag een lamp bij u gekocht. Helaas werkt de lamp niet. Ik heb alles geprobeerd, maar hij gaat niet aan.\n\nIk wil graag mijn geld terug. Ik heb de bon nog.\n\nMet vriendelijke groet,\n[Naam]"
     },
     {
-        id: 14,
+        id: 17,
         title: "Opdracht 14: Bedankje voor hulp",
         type: "short email",
         wordTarget: "40-50 words",
@@ -305,7 +368,7 @@ var examTasks = [
         modelAnswer: "Beste Peter,\n\nBedankt voor je hulp met de verhuizing! Je hebt me echt geholpen met de zware dozen en de kast.\n\nKom je morgen koffie drinken? Dan kan ik je bedanken.\n\nGroeten,\n[Naam]"
     },
     {
-        id: 15,
+        id: 18,
         title: "Opdracht 15: Sportles annuleren",
         type: "short email",
         wordTarget: "40-50 words",
@@ -324,7 +387,7 @@ var examTasks = [
         modelAnswer: "Beste Yoga Studio,\n\nIk kan morgen helaas niet komen naar de yogales. Ik ben ziek en heb koorts.\n\nKan ik volgende week donderdag komen? Laat het me weten.\n\nMet vriendelijke groet,\n[Naam]"
     },
     {
-        id: 16,
+        id: 19,
         title: "Opdracht 16: Informatie over cursus",
         type: "short email",
         wordTarget: "40-50 words",
@@ -343,7 +406,7 @@ var examTasks = [
         modelAnswer: "Geachte heer/mevrouw,\n\nIk ben geïnteresseerd in de Nederlandse cursus. Ik heb uw advertentie gezien.\n\nWat kost de cursus? En wanneer begint hij? Ik kan op maandag en woensdag.\n\nMet vriendelijke groet,\n[Naam]"
     },
     {
-        id: 17,
+        id: 20,
         title: "Opdracht 17: Uitnodiging voor barbecue",
         type: "long email",
         wordTarget: "80-90 words",
@@ -368,7 +431,7 @@ var examTasks = [
         modelAnswer: "Beste collega's,\n\nIk organiseer een barbecue in mijn tuin! Het is op zaterdag 20 juni om 15:00 uur. Mijn adres is [Adres].\n\nWe gaan lekker eten, drinken en muziek luisteren. Er is vlees, vis en ook vegetarisch eten. Jullie hoeven niets mee te nemen.\n\nKunnen jullie komen? Laat het me voor 15 juni weten. Jullie mogen je partner ook meenemen!\n\nTot dan!\n\nGroeten,\n[Naam]"
     },
     {
-        id: 18,
+        id: 21,
         title: "Opdracht 18: Advies vragen over vakantie",
         type: "long email",
         wordTarget: "80-90 words",
@@ -391,7 +454,7 @@ var examTasks = [
         modelAnswer: "Hoi Marco,\n\nIk ga volgende maand naar Spanje! Ik weet dat jij daar vorig jaar hebt gewoond. Kun je me helpen?\n\nWelke plaatsen moet ik zeker bezoeken? En ken je goede restaurants in Barcelona? Ik hou van vis en tapas.\n\nHoe is het weer in augustus? Is het erg warm? Wat moet ik meenemen?\n\nBedankt voor je hulp!\n\nGroetjes,\n[Naam]"
     },
     {
-        id: 19,
+        id: 22,
         title: "Opdracht 19: Sollicitatie bijbaan",
         type: "long email",
         wordTarget: "80-90 words",
@@ -414,7 +477,7 @@ var examTasks = [
         modelAnswer: "Geachte heer/mevrouw,\n\nIk schrijf deze brief omdat ik geïnteresseerd ben in de bijbaan bij uw supermarkt. Ik heb de advertentie gezien.\n\nIk ben 22 jaar oud en ik studeer aan de universiteit. Ik zoek een bijbaan omdat ik graag werk en mensen wil helpen. Ik ben vriendelijk en ik werk hard.\n\nIk kan werken op zaterdag en zondag, en ook 's avonds.\n\nKan ik langskomen voor een gesprek?\n\nMet vriendelijke groet,\n[Naam]"
     },
     {
-        id: 20,
+        id: 23,
         title: "Opdracht 20: Verhuizing melden",
         type: "long email",
         wordTarget: "80-90 words",

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Prepositions - Dutch A2</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/breadcrumb.css">
+    <link rel="stylesheet" href="css/prepositions.css">
+</head>
+
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <div class="nav-container">
+            <a href="index.html" class="nav-home">
+                <span class="nav-home-icon">🏠</span>
+                <span>Home</span>
+            </a>
+            <div class="nav-page-title">🔗 Prepositions</div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb-nav">
+        <a href="grammar.html">
+            <span class="breadcrumb-arrow">←</span>
+            Back to Grammar Hub
+        </a>
+    </div>
+
+    <div class="container" style="max-width: 100%; padding: 0;">
+        <!-- Prepositions Content -->
+        <div class="prep-content" style="padding: 0;">
+            <div class="prep-tabs">
+                <button class="prep-tab active" onclick="showPrepLevel('a1')">A1 Level (15 prepositions)</button>
+                <button class="prep-tab" onclick="showPrepLevel('a2')">A2 Level (10 prepositions)</button>
+                <button class="prep-tab" onclick="showPrepLevel('b1')">B1 Level (10 fixed expressions)</button>
+            </div>
+            <div id="prep-container"></div>
+        </div>
+    </div>
+
+    <script src="js/prepositions-data.js"></script>
+    <script src="js/prepositions-ui.js"></script>
+    <script>
+        // Load A1 level by default on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            showPrepLevel('a1');
+        });
+    </script>
+</body>
+
+</html>

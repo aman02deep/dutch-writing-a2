@@ -1,0 +1,217 @@
+/* Prepositions Reference Styles */
+
+/* Preposition Tabs */
+.prep-tabs {
+    display: flex;
+    gap: 0;
+    background: #f5f5f5;
+    border-bottom: 2px solid #d84315;
+}
+
+.prep-tab {
+    flex: 1;
+    padding: 15px 20px;
+    background: #f5f5f5;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #666;
+    transition: 0.3s;
+    border-bottom: 3px solid transparent;
+}
+
+.prep-tab:hover {
+    background: #ececec;
+    color: #d84315;
+}
+
+.prep-tab.active {
+    background: white;
+    color: #d84315;
+    border-bottom: 3px solid #d84315;
+    font-weight: 600;
+}
+
+/* Search Box */
+.prep-search {
+    padding: 20px 25px;
+    background: white;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.prep-search input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.prep-search input:focus {
+    outline: none;
+    border-color: #d84315;
+    box-shadow: 0 0 0 3px rgba(216, 67, 21, 0.1);
+}
+
+/* Level Info */
+.prep-info {
+    padding: 15px 25px;
+    background: #fff3e0;
+    border-left: 4px solid #d84315;
+    margin: 20px 25px 0 25px;
+    border-radius: 4px;
+}
+
+.prep-info p {
+    margin: 0;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Prepositions Grid */
+.prep-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+    padding: 25px;
+}
+
+/* Preposition Card */
+.prep-card {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px;
+    transition: 0.3s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.prep-card:hover {
+    box-shadow: 0 4px 16px rgba(216, 67, 21, 0.15);
+    border-color: #d84315;
+    transform: translateY(-2px);
+}
+
+/* Card Header */
+.prep-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #f5f5f5;
+}
+
+.prep-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.prep-icon {
+    font-size: 1.5rem;
+}
+
+.prep-word {
+    font-size: 1.4rem;
+    color: #d84315;
+    font-weight: 600;
+}
+
+.prep-category {
+    background: #fff3e0;
+    color: #d84315;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* English Translation */
+.prep-english {
+    color: #555;
+    font-style: italic;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+/* Usage Description */
+.prep-usage {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 6px;
+    border-left: 3px solid #ff9800;
+}
+
+/* Examples */
+.prep-examples {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.prep-example {
+    padding: 10px;
+    background: #f5f5f5;
+    border-radius: 6px;
+    border-left: 3px solid #4caf50;
+}
+
+.example-nl {
+    color: #2e7d32;
+    font-weight: 500;
+    margin-bottom: 4px;
+    font-size: 0.95rem;
+}
+
+.example-en {
+    color: #666;
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .prep-tabs {
+        flex-direction: column;
+    }
+
+    .prep-tab {
+        border-bottom: 1px solid #ddd;
+    }
+
+    .prep-tab.active {
+        border-bottom: 1px solid #d84315;
+        border-left: 4px solid #d84315;
+    }
+
+    .prep-grid {
+        grid-template-columns: 1fr;
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .prep-card {
+        padding: 15px;
+    }
+
+    .prep-word {
+        font-size: 1.2rem;
+    }
+
+    .prep-header {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .prep-category {
+        align-self: flex-start;
+    }
+}

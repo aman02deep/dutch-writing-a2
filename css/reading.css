@@ -12,8 +12,17 @@ body {
     margin: 0;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     overflow: hidden;
     background-color: var(--secondary);
+}
+
+/* Main Area - contains sidebar and content */
+.main-area {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    overflow: hidden;
 }
 
 /* Sidebar */
@@ -62,8 +71,8 @@ body {
     font-weight: bold;
 }
 
-/* Main Area */
-.main-area {
+/* Content Wrapper - inside main-area */
+.content-wrapper {
     flex: 1;
     display: flex;
     flex-direction: column;

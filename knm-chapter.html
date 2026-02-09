@@ -5,16 +5,36 @@
     <meta charset="UTF-8">
     <title>KNM Chapter - Dutch A2</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/breadcrumb.css">
     <link rel="stylesheet" href="css/knm.css">
 </head>
 
 <body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <div class="nav-container">
+            <a href="index.html" class="nav-home">
+                <span class="nav-home-icon">🏠</span>
+                <span>Home</span>
+            </a>
+            <div class="nav-page-title" id="nav-title">🏛️ KNM Practice</div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb-nav">
+        <a href="knm.html">
+            <span class="breadcrumb-arrow">←</span>
+            Back to KNM Hub
+        </a>
+    </div>
+
     <div class="container" style="max-width: 100%; padding: 0;">
         <!-- Top Bar -->
         <div class="top-bar"
             style="background: white; padding: 15px 30px; border-bottom: 2px solid #e0e0e0; display: flex; justify-content: space-between; align-items: center;">
             <div style="display: flex; align-items: center; gap: 15px;">
-                <button class="btn-home" onclick="location.href='knm.html'">← Back to KNM</button>
                 <h2 id="chapter-title" style="margin: 0; color: var(--primary);">Loading...</h2>
             </div>
             <div style="display: flex; align-items: center; gap: 15px;">

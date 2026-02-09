@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/vocabulary.css">
     <link rel="stylesheet" href="css/sentence-structure.css">
+    <link rel="stylesheet" href="css/verbs.css">
 </head>
 
 <body>
@@ -16,8 +17,9 @@
             <p style="color: #666; margin-top: 10px;">Complete Preparation Suite for the Inburgering Exam</p>
         </div>
 
+
         <div class="grid main-grid"
-            style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1400px; margin: 0 auto;">
+            style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1400px; margin: 0 auto;">
             <a href="writing.html" class="card main-card" style="padding: 25px;">
                 <div style="font-size:2.5rem; margin-bottom: 10px;">✍️</div>
                 <h2 style="color: var(--primary); margin: 0 0 8px 0; font-size: 1.3rem;">Writing Practice</h2>
@@ -26,9 +28,9 @@
                 </p>
                 <ul
                     style="color: #666; text-align: left; margin: 0 0 12px 0; padding-left: 18px; font-size: 0.85rem; line-height: 1.6;">
-                    <li>12 Writing Tasks</li>
+                    <li>23 Writing Tasks</li>
                     <li>8 Official Forms</li>
-                    <li>100 Grammar Questions</li>
+                    <li>100+ Grammar Questions</li>
                 </ul>
                 <span class="btn-primary" style="margin-top: auto; font-size: 0.85rem;">Start Practice →</span>
             </a>
@@ -41,7 +43,7 @@
                 </p>
                 <ul
                     style="color: #666; text-align: left; margin: 0 0 12px 0; padding-left: 18px; font-size: 0.85rem; line-height: 1.6;">
-                    <li>5 Official Exams (50 texts)</li>
+                    <li>10 Official Exams (100 texts)</li>
                     <li>Bookmark Feature</li>
                     <li>Timer & Tracking</li>
                 </ul>
@@ -62,6 +64,21 @@
                 </ul>
                 <span class="btn-primary" style="margin-top: auto; font-size: 0.85rem;">Start Practice →</span>
             </a>
+
+            <a href="grammar.html" class="card main-card" style="padding: 25px;">
+                <div style="font-size:2.5rem; margin-bottom: 10px;">📚</div>
+                <h2 style="color: var(--primary); margin: 0 0 8px 0; font-size: 1.3rem;">Grammar Hub</h2>
+                <p style="color: #666; font-size: 0.85rem; line-height: 1.4; margin-bottom: 12px;">
+                    Complete grammar reference and learning resources.
+                </p>
+                <ul
+                    style="color: #666; text-align: left; margin: 0 0 12px 0; padding-left: 18px; font-size: 0.85rem; line-height: 1.6;">
+                    <li>67 Verb Conjugations</li>
+                    <li>Sentence Structure</li>
+                    <li>40+ Prepositions</li>
+                </ul>
+                <span class="btn-secondary" style="margin-top: auto; font-size: 0.85rem;">Explore Grammar →</span>
+            </a>
         </div>
     </div>
 
@@ -81,11 +98,35 @@
         📐
     </button>
 
+    <!-- Floating Verbs Button -->
+    <button class="btn-verbs" onclick="openVerbs()" title="Verbs Reference (Ctrl+V)">
+        🔤
+    </button>
+
+    <!-- Verbs Modal -->
+    <div id="verbs-modal" class="verbs-modal">
+        <div class="verbs-modal-content">
+            <div class="verbs-modal-header">
+                <h2>🔤 Verbs Reference</h2>
+                <button class="verbs-close" onclick="closeVerbs()">&times;</button>
+            </div>
+            <div class="verbs-content">
+                <div class="verbs-placeholder">
+                    <h3>Verbs Reference Coming Soon!</h3>
+                    <p>This section will contain comprehensive verb conjugations and examples.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="js/common.js"></script>
     <script src="js/vocabulary.js"></script>
     <script src="js/vocabulary-ui.js"></script>
     <script src="js/sentence-structure.js"></script>
     <script src="js/sentence-structure-ui.js"></script>
+    <script src="js/verbs-data.js"></script>
+    <script src="js/verbs.js"></script>
+    <script src="js/verbs-ui.js"></script>
 </body>
 
 </html>

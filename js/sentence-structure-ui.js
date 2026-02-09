@@ -57,6 +57,11 @@ function renderSentenceStructure() {
     container.innerHTML = html;
 }
 
+// Load sentence structure for standalone page
+function loadSentenceStructure() {
+    renderSentenceStructure();
+}
+
 // Close modal when clicking outside
 window.addEventListener('click', (e) => {
     const modal = document.getElementById('sentence-modal');

@@ -5,67 +5,89 @@
     <meta charset="UTF-8">
     <title>Grammar Lab - Dutch A2</title>
     <link rel="stylesheet" href="css/grammar-lab.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/breadcrumb.css">
     <link rel="stylesheet" href="css/vocabulary.css">
     <link rel="stylesheet" href="css/sentence-structure.css">
 </head>
 
 <body>
-
-    <aside id="nav-sidebar">
-        <div class="jump-links">
-            <button class="jump-btn btn-e" onclick="jumpTo(0)">🟢 Start Easy</button>
-            <button class="jump-btn btn-m" onclick="jumpTo(30)">🟠 Start Medium</button>
-            <button class="jump-btn btn-h" onclick="jumpTo(60)">🔴 Start Hard</button>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <div class="nav-container">
+            <a href="index.html" class="nav-home">
+                <span class="nav-home-icon">🏠</span>
+                <span>Home</span>
+            </a>
+            <div class="nav-page-title">🧪 Grammar Lab</div>
         </div>
-        <div class="scroll-area">
-            <div class="nav-grid" id="nav-grid"></div>
-        </div>
-    </aside>
+    </nav>
 
-    <main class="workspace">
-        <div class="top-bar">
-            <div class="top-left">
-                <button class="btn-sec" onclick="location.href='writing.html'">← Writing</button>
-                <button class="btn-sec" onclick="toggleSidebar()">☰ List</button>
-                <button class="btn-sec" onclick="location.href='index.html'">🏠 Home</button>
-                <div id="diff-label" class="difficulty-badge easy">Easy</div>
-                <div id="header-progress" style="font-weight: bold; color: #555;">1 of 100</div>
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb-nav">
+        <a href="writing.html">
+            <span class="breadcrumb-arrow">←</span>
+            Back to Writing Practice
+        </a>
+    </div>
+
+    <!-- Main Container with Sidebar and Content -->
+    <div class="main-area">
+        <aside id="nav-sidebar">
+            <div class="jump-links">
+                <button class="jump-btn btn-e" onclick="jumpTo(0)">🟢 Start Easy</button>
+                <button class="jump-btn btn-m" onclick="jumpTo(30)">🟠 Start Medium</button>
+                <button class="jump-btn btn-h" onclick="jumpTo(60)">🔴 Start Hard</button>
             </div>
-            <div class="top-right">
-                <button class="btn-rule-toggle" onclick="toggleRule()">View Rule</button>
-                <button class="btn-sec" onclick="toggleMode()">Mode: <span id="mode-text">Blocks</span></button>
+            <div class="scroll-area">
+                <div class="nav-grid" id="nav-grid"></div>
             </div>
-        </div>
+        </aside>
 
-        <div class="app-content">
-            <div class="app-container">
-                <div class="translation" id="translation">Loading...</div>
-
-                <div id="block-area">
-                    <div class="drop-zone" id="answer-zone" onclick="returnToBank(event)"></div>
-                    <div class="word-bank" id="word-bank"></div>
+        <!-- Content Wrapper -->
+        <main class="workspace content-wrapper">
+            <div class="top-bar">
+                <div class="top-left">
+                    <button class="btn-sec" onclick="toggleSidebar()">☰ List</button>
+                    <div id="diff-label" class="difficulty-badge easy">Easy</div>
+                    <div id="header-progress" style="font-weight: bold; color: #555;">1 of 100</div>
                 </div>
-                <input type="text" id="writing-input" placeholder="Typ de Nederlandse zin hier...">
-
-                <div id="rule-box">
-                    <span class="rule-title">Grammar Logic</span>
-                    <div id="rule-text"></div>
-                    <div class="rule-formula" id="rule-formula"></div>
-                    <div class="rule-example" id="rule-example"></div>
+                <div class="top-right">
+                    <button class="btn-rule-toggle" onclick="toggleRule()">View Rule</button>
+                    <button class="btn-sec" onclick="toggleMode()">Mode: <span id="mode-text">Blocks</span></button>
                 </div>
+            </div>
 
-                <div id="feedback" style="text-align:center; font-weight:bold; height:24px; margin-bottom:15px;"></div>
+            <div class="app-content">
+                <div class="app-container">
+                    <div class="translation" id="translation">Loading...</div>
 
-                <div style="display:flex; flex-direction:column; gap:12px;">
-                    <button class="btn-main" onclick="checkAnswer()">Check Answer</button>
-                    <div style="display:flex; gap:10px;">
-                        <button class="btn-sec" style="flex:1" onclick="prev()">Previous</button>
-                        <button class="btn-sec" style="flex:1" onclick="next()">Next</button>
+                    <div id="block-area">
+                        <div class="drop-zone" id="answer-zone" onclick="returnToBank(event)"></div>
+                        <div class="word-bank" id="word-bank"></div>
+                    </div>
+                    <input type="text" id="writing-input" placeholder="Typ de Nederlandse zin hier...">
+
+                    <div id="rule-box">
+                        <span class="rule-title">Grammar Logic</span>
+                        <div id="rule-text"></div>
+                        <div class="rule-formula" id="rule-formula"></div>
+                        <div class="rule-example" id="rule-example"></div>
+                    </div>
+
+                    <div id="feedback" style="text-align:center; font-weight:bold; height:24px; margin-bottom:15px;">
+                    </div>
+
+                    <div style="display:flex; flex-direction:column; gap:12px;">
+                        <button class="btn-main" onclick="checkAnswer()">Check Answer</button>
+                        <div style="display:flex; gap:10px;">
+                            <button class="btn-sec" style="flex:1" onclick="prev()">Previous</button>
+                            <button class="btn-sec" style="flex:1" onclick="next()">Next</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        </div>
+    </div>
     </main>
 
     <script src="js/questions-set-1.js"></script>

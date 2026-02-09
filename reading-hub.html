@@ -5,19 +5,23 @@
     <meta charset="UTF-8">
     <title>Reading Practice - Dutch A2</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navigation.css">
     <link rel="stylesheet" href="css/knm.css">
 </head>
 
 <body>
-    <div class="container">
-        <div class="header-hero">
-            <h1 style="color:var(--accent); font-size: 2.5rem; margin:0;">📖 Reading Practice</h1>
-            <p style="color: #666; margin-top: 10px;">Official DUO A2 Reading Comprehension Exams</p>
-            <a href="index.html"
-                style="display: inline-block; margin-top: 15px; color: var(--primary); text-decoration: none; font-weight: 600;">←
-                Back to Home</a>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <div class="nav-container">
+            <a href="index.html" class="nav-home">
+                <span class="nav-home-icon">🏠</span>
+                <span>Home</span>
+            </a>
+            <div class="nav-page-title">📖 Reading Practice</div>
         </div>
+    </nav>
 
+    <div class="container">
         <div class="grid"
             style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1400px; margin: 0 auto;">
             <a href="reading.html?exam=exam1" class="card knm-card" style="padding: 25px;">
