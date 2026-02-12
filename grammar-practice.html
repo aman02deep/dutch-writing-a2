@@ -3,10 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grammar Practice - Dutch A2</title>
     <link rel="stylesheet" href="css/grammar-practice.css">
     <link rel="stylesheet" href="css/navigation.css">
     <link rel="stylesheet" href="css/breadcrumb.css">
+    <link rel="stylesheet" href="css/grammar-practice-desktop-collapsed.css">
 </head>
 
 <body>
@@ -29,6 +31,14 @@
         </a>
     </div>
 
+    <!-- Mobile Exercise Selector (collapsible below breadcrumb) -->
+    <div class="mobile-exercise-selector" id="mobile-selector" style="display: none;">
+        <label for="exercise-select-mobile">Select Exercise:</label>
+        <select id="exercise-select-mobile" onchange="loadExerciseFromDropdown(this.value)">
+            <!-- Populated by JavaScript -->
+        </select>
+    </div>
+
     <!-- Main Container with Sidebar and Content -->
     <div class="main-area">
         <!-- Sidebar -->
@@ -41,7 +51,7 @@
         </aside>
 
         <!-- Content Wrapper -->
-        <div class="main-area content-wrapper">
+        <div class="content-wrapper">
             <!-- Top Bar -->
             <div class="top-bar">
                 <div class="top-left">
@@ -84,8 +94,31 @@
         </div> <!-- Close content-wrapper -->
     </div> <!-- Close main-area -->
 
+    <!-- Mobile sidebar backdrop -->
+    <div id="sidebar-backdrop" onclick="toggleSidebar()"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1999;">
+    </div>
+
     <script src="js/questions-grammar.js"></script>
     <script src="js/grammar-practice.js"></script>
+    <script src="js/grammar-practice-mobile.js"></script>
+    <script>
+        // Toggle sidebar function for mobile
+        function toggleSidebar() {
+            const sidebar = document.getElementById('exercise-sidebar');
+            const backdrop = document.getElementById('sidebar-backdrop');
+
+            if (sidebar.classList.contains('collapsed')) {
+                // Close sidebar
+                sidebar.classList.remove('collapsed');
+                backdrop.style.display = 'none';
+            } else {
+                // Open sidebar
+                sidebar.classList.add('collapsed');
+                backdrop.style.display = 'block';
+            }
+        }
+    </script>
 </body>
 
 </html>

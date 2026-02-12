@@ -162,3 +162,68 @@
 .btn-sentence-structure:active {
     transform: translateY(-1px);
 }
+
+/* ========================================
+   RESPONSIVE DESIGN - MEDIA QUERIES
+   ======================================== */
+
+/* Mobile Breakpoint (< 768px) */
+@media (max-width: 767px) {
+
+    /* Hide floating button on mobile to prevent content overlap */
+    .btn-sentence-structure {
+        display: none;
+    }
+
+    #sentence-modal-content {
+        width: 100%;
+        max-width: 100vw;
+    }
+
+    .sentence-modal-header {
+        padding: 15px 20px;
+    }
+
+    .sentence-modal-header h2 {
+        font-size: 1.3rem;
+    }
+
+    #sentence-content {
+        padding: 15px;
+    }
+
+    .category-title {
+        font-size: 1.1rem;
+    }
+
+    .structure-rule {
+        padding: 12px;
+    }
+
+    .rule-name {
+        font-size: 1rem;
+    }
+
+    .pattern-box {
+        font-size: 0.9rem;
+    }
+}
+
+/* Extra small mobile (< 375px) */
+@media (max-width: 374px) {
+    .btn-sentence-structure {
+        bottom: 80px;
+        right: 15px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.4rem;
+    }
+
+    .sentence-modal-header h2 {
+        font-size: 1.1rem;
+    }
+
+    #sentence-content {
+        padding: 12px;
+    }
+}

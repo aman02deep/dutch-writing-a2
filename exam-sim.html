@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exam Simulator - Dutch A2</title>
     <link rel="stylesheet" href="css/exam-sim.css">
     <link rel="stylesheet" href="css/navigation.css">
@@ -184,8 +185,29 @@
     <script src="js/sentence-structure-ui.js"></script>
     <script src="js/writing-tips.js?v=2"></script>
     <script src="js/sample-answers.js?v=3"></script>
+
+    <!-- Mobile sidebar backdrop -->
+    <div id="sidebar-backdrop" onclick="toggleSidebar()"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1999;">
+    </div>
+
     <script src="js/questions-exam-sim.js"></script>
     <script src="js/exam-sim.js"></script>
+    <script>
+        // Toggle sidebar function for mobile
+        function toggleSidebar() {
+            const sidebar = document.getElementById('task-sidebar');
+            const backdrop = document.getElementById('sidebar-backdrop');
+
+            if (sidebar.classList.contains('collapsed')) {
+                sidebar.classList.remove('collapsed');
+                backdrop.style.display = 'none';
+            } else {
+                sidebar.classList.add('collapsed');
+                backdrop.style.display = 'block';
+            }
+        }
+    </script>
     <script src="js/verbs-data.js"></script>
     <script src="js/verbs.js"></script>
     <script src="js/verbs-ui.js"></script>

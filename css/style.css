@@ -563,3 +563,462 @@ textarea {
     color: var(--success);
     font-weight: bold;
 }
+
+/* ========================================
+   RESPONSIVE DESIGN - MEDIA QUERIES
+   ======================================== */
+
+/* Main Grid Responsive Behavior */
+.main-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.reading-grid,
+.knm-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Tablet Breakpoint (768px - 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        max-width: 900px;
+        padding: 30px 15px;
+    }
+
+    .main-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .reading-grid,
+    .knm-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 15px;
+    }
+
+    .header-hero h1 {
+        font-size: 2rem;
+    }
+
+    .card {
+        padding: 25px;
+    }
+
+    /* Sidebar adjustments */
+    #nav-sidebar {
+        width: 180px;
+    }
+
+    .vocab-sidebar {
+        width: 250px;
+    }
+
+    .app-container {
+        padding: 30px;
+        max-width: 700px;
+    }
+
+    .translation {
+        font-size: 1.4rem;
+    }
+}
+
+/* Mobile Breakpoint (< 768px) */
+@media (max-width: 767px) {
+    /* Container and layout */
+    .container {
+        padding: 20px 15px;
+    }
+
+    /* Header */
+    .header-hero {
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+    }
+
+    .header-hero h1 {
+        font-size: 1.8rem !important;
+    }
+
+    .header-hero p {
+        font-size: 0.9rem;
+    }
+
+    /* Grid layouts - single column on mobile */
+    .grid,
+    .main-grid,
+    .reading-grid,
+    .knm-grid {
+        grid-template-columns: 1fr !important;
+        gap: 15px;
+    }
+
+    /* Cards */
+    .card,
+    .main-card {
+        padding: 20px !important;
+    }
+
+    .main-card h2 {
+        font-size: 1.5rem;
+    }
+
+    .main-card ul {
+        font-size: 0.9rem;
+    }
+
+    /* Buttons - make them more touch-friendly */
+    button,
+    .btn-primary,
+    .btn-secondary {
+        min-height: 44px;
+        padding: 12px 16px;
+        font-size: 0.95rem;
+    }
+
+    .btn-main {
+        padding: 14px;
+        font-size: 1rem;
+    }
+
+    /* Grammar Lab Layout */
+    body.grammar-lab-layout {
+        flex-direction: column;
+    }
+
+    #nav-sidebar {
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+        transition: max-height 0.3s ease;
+    }
+
+    #nav-sidebar:not(.collapsed) {
+        max-height: 400px;
+        overflow-y: auto;
+    }
+
+    .nav-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 4px;
+    }
+
+    .nav-item {
+        padding: 8px 0;
+        font-size: 0.75rem;
+    }
+
+    /* Workspace and content */
+    .workspace {
+        width: 100%;
+    }
+
+    .app-content {
+        padding: 15px;
+        flex-direction: column;
+    }
+
+    .app-container {
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    .translation {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+    }
+
+    /* Top bar */
+    .top-bar {
+        padding: 10px 15px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .top-left,
+    .top-right {
+        gap: 8px;
+    }
+
+    .top-right {
+        flex-wrap: wrap;
+    }
+
+    /* Word bank and drop zone */
+    .word-bank {
+        gap: 8px;
+    }
+
+    .word {
+        padding: 10px 14px;
+        font-size: 0.9rem;
+    }
+
+    .drop-zone {
+        min-height: 60px;
+        padding: 10px;
+        gap: 8px;
+    }
+
+    /* Vocab sidebar - stack below on mobile */
+    .vocab-sidebar {
+        width: 100%;
+        max-height: none;
+        margin-top: 20px;
+        order: 2;
+    }
+
+    /* Simulator containers */
+    .sim-container,
+    .form-container {
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    textarea {
+        min-height: 150px;
+        font-size: 0.95rem;
+    }
+
+    /* Form fields */
+    .field input {
+        font-size: 1rem;
+    }
+
+    /* Difficulty pills */
+    .btn-pill {
+        font-size: 0.8rem;
+        padding: 8px;
+    }
+
+    .difficulty-badge {
+        font-size: 0.7rem;
+        padding: 3px 10px;
+    }
+
+    /* Jump buttons */
+    .jump-btn {
+        font-size: 0.7rem;
+        padding: 6px;
+    }
+
+    /* Rule box */
+    #rule-box {
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+
+    .rule-formula {
+        font-size: 0.9rem;
+    }
+
+    /* Hide text labels on small buttons, keep icons */
+    .btn-sec,
+    .btn-rule-toggle {
+        font-size: 0.8rem;
+        padding: 8px 12px;
+    }
+}
+
+/* Extra small mobile (< 375px) */
+@media (max-width: 374px) {
+    .container {
+        padding: 15px 10px;
+    }
+
+    .header-hero h1 {
+        font-size: 1.5rem !important;
+    }
+
+    .card,
+    .main-card {
+        padding: 15px !important;
+    }
+
+    .app-container {
+        padding: 15px;
+    }
+
+    .translation {
+        font-size: 1.1rem;
+    }
+
+    .word {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+
+    .nav-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.audio-section-container {
+    margin-top: 40px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+}
+
+@media (max-width: 767px) {
+    .audio-section-container {
+        padding: 0 15px;
+    }
+    
+    .audio-section-container .card {
+        padding: 20px !important;
+    }
+    
+    .audio-section-container .card > div {
+        flex-direction: column !important;
+        text-align: center;
+    }
+    
+    .audio-section-container .card ul {
+        flex-direction: column !important;
+        gap: 8px !important;
+        align-items: center;
+    }
+    
+    .audio-section-container .card button {
+        width: 100%;
+        padding: 12px 20px !important;
+    }
+}
+
+/* ========================================
+   AUDIO SECTION - MOBILE FRIENDLY
+   ======================================== */
+
+.audio-section-container {
+    margin-top: 40px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+}
+
+.audio-section-title {
+    color: var(--primary);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.audio-card {
+    padding: 30px;
+    display: block;
+    background: linear-gradient(135deg, #fff5e6 0%, #ffe6cc 100%);
+    border-left: 5px solid var(--accent);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: transform 0.2s;
+}
+
+.audio-card:hover {
+    transform: translateY(-2px);
+}
+
+.audio-card-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.audio-icon {
+    font-size: 4rem;
+}
+
+.audio-text {
+    flex: 1;
+}
+
+.audio-title {
+    color: var(--primary);
+    margin: 0 0 8px 0;
+    font-size: 1.5rem;
+}
+
+.audio-description {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.audio-features {
+    color: #666;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.9rem;
+}
+
+.audio-btn {
+    font-size: 1rem;
+    padding: 15px 30px;
+    background: var(--primary);
+    color: white;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+
+/* Mobile Responsive */
+@media (max-width: 767px) {
+    .audio-section-container {
+        padding: 0 15px;
+        margin-top: 30px;
+    }
+    
+    .audio-card {
+        padding: 20px;
+    }
+    
+    .audio-card-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .audio-icon {
+        font-size: 3rem;
+    }
+    
+    .audio-title {
+        font-size: 1.3rem;
+    }
+    
+    .audio-description {
+        font-size: 0.9rem;
+    }
+    
+    .audio-features {
+        flex-direction: column;
+        gap: 8px;
+        align-items: center;
+        font-size: 0.85rem;
+    }
+    
+    .audio-btn {
+        width: 100%;
+        padding: 12px 20px;
+        display: block;
+        text-align: center;
+    }
+}

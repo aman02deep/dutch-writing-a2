@@ -96,9 +96,29 @@
         </div>
 
         <!-- Scripts -->
+        <!-- Mobile sidebar backdrop -->
+        <div id="sidebar-backdrop" onclick="toggleSidebar()"
+            style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1999;">
+        </div>
+
         <script src="js/common.js"></script>
         <script src="js/questions-reading.js"></script>
         <script src="js/reading.js"></script>
+        <script>
+            // Toggle sidebar function for mobile
+            function toggleSidebar() {
+                const sidebar = document.getElementById('reading-sidebar');
+                const backdrop = document.getElementById('sidebar-backdrop');
+
+                if (sidebar.classList.contains('collapsed')) {
+                    sidebar.classList.remove('collapsed');
+                    backdrop.style.display = 'none';
+                } else {
+                    sidebar.classList.add('collapsed');
+                    backdrop.style.display = 'block';
+                }
+            }
+        </script>
         <script src="js/vocabulary.js"></script>
         <script src="js/vocabulary-ui.js"></script>
 </body>

@@ -34,16 +34,19 @@ body {
     transition: width 0.3s ease;
 }
 
-#task-sidebar.collapsed {
-    width: 0;
-    overflow: hidden;
-    border: none;
-}
+/* Desktop only - collapsed means minimized */
+@media (min-width: 768px) {
+    #task-sidebar.collapsed {
+        width: 0;
+        overflow: hidden;
+        border: none;
+    }
 
-#task-sidebar.collapsed h3,
-#task-sidebar.collapsed .jump-links,
-#task-sidebar.collapsed .task-list {
-    display: none;
+    #task-sidebar.collapsed h3,
+    #task-sidebar.collapsed .jump-links,
+    #task-sidebar.collapsed .task-list {
+        display: none;
+    }
 }
 
 #task-sidebar h3 {
@@ -500,4 +503,147 @@ button {
 .notes-text {
     color: #555;
     line-height: 1.8;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN - MEDIA QUERIES
+   ======================================== */
+
+/* Tablet Breakpoint (768px - 1024px) */
+@media (max-width: 1024px) {
+    #task-sidebar {
+        width: 200px;
+    }
+
+    .task-container {
+        padding: 30px;
+    }
+
+    .content-area {
+        padding: 20px;
+    }
+}
+
+/* Mobile Breakpoint (< 768px) */
+@media (max-width: 767px) {
+    .main-area {
+        flex-direction: column;
+    }
+
+    /* Sidebar as slide-in drawer from left */
+    #task-sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 280px;
+        height: 100vh;
+        max-height: none;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 2000;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+        border-right: 1px solid #ddd;
+        border-bottom: none;
+    }
+
+    #task-sidebar.collapsed {
+        transform: translateX(0);
+    }
+
+    .jump-links {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .jump-btn {
+        flex: 1;
+        min-width: 120px;
+    }
+
+    .task-list {
+        max-height: none;
+        overflow-y: auto;
+    }
+
+    /* Content takes full width */
+    .content-wrapper {
+        width: 100%;
+    }
+
+    .top-bar {
+        flex-wrap: wrap;
+        padding: 10px 15px;
+        gap: 10px;
+    }
+
+    .top-left,
+    .top-right {
+        gap: 8px;
+    }
+
+    .content-area {
+        padding: 15px;
+    }
+
+    .task-container {
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    .task-title {
+        font-size: 1.4rem;
+    }
+
+    #writing-area {
+        min-height: 200px;
+        padding: 15px;
+        font-size: 0.95rem;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .button-group button {
+        width: 100%;
+    }
+
+    .btn-home {
+        font-size: 0.85rem;
+        padding: 8px 12px;
+    }
+
+    .sample-modal-content {
+        width: 95%;
+        max-height: 90vh;
+    }
+
+    .modal-body {
+        padding: 15px;
+    }
+}
+
+/* Extra small mobile (< 375px) */
+@media (max-width: 374px) {
+    .content-area {
+        padding: 10px;
+    }
+
+    .task-container {
+        padding: 15px;
+    }
+
+    .task-title {
+        font-size: 1.2rem;
+    }
+
+    #writing-area {
+        padding: 12px;
+    }
+}
+/* Hide backdrop on desktop - only show on mobile */
+@media (min-width: 768px) {
+    #sidebar-backdrop {
+        display: none !important;
+    }
 }

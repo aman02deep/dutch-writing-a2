@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grammar Lab - Dutch A2</title>
     <link rel="stylesheet" href="css/grammar-lab.css">
     <link rel="stylesheet" href="css/navigation.css">
@@ -51,6 +52,13 @@
                     <button class="btn-sec" onclick="toggleSidebar()">☰ List</button>
                     <div id="diff-label" class="difficulty-badge easy">Easy</div>
                     <div id="header-progress" style="font-weight: bold; color: #555;">1 of 100</div>
+                </div>
+                <!-- Mobile Exercise Selector (hidden on desktop) -->
+                <div class="mobile-exercise-selector">
+                    <label for="mobile-exercise-select">Ex:</label>
+                    <select id="mobile-exercise-select" onchange="jumpTo(parseInt(this.value))">
+                        <!-- Options 1-100 will be populated by JavaScript -->
+                    </select>
                 </div>
                 <div class="top-right">
                     <button class="btn-rule-toggle" onclick="toggleRule()">View Rule</button>

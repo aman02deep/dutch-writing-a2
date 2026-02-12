@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Test - Dutch App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .test-item {
+            margin: 20px 0;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .test-item h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .status {
+            font-weight: bold;
+        }
+
+        .pass {
+            color: green;
+        }
+
+        .fail {
+            color: red;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Mobile Fixes Test Page</h1>
+    <p>This page tests if your CSS/JS files are loading correctly.</p>
+
+    <div class="test-item">
+        <h3>Test 1: Clear Browser Cache</h3>
+        <p>Press <strong>Ctrl+Shift+R</strong> (Windows) or <strong>Cmd+Shift+R</strong> (Mac) to hard refresh</p>
+        <p>Or clear your browser cache completely in settings</p>
+    </div>
+
+    <div class="test-item">
+        <h3>Test 2: Test Pages</h3>
+        <p>After clearing cache, test these pages:</p>
+        <ul>
+            <li><a href="forms-sim.html?v=2" target="_blank">Forms (with cache-bust)</a></li>
+            <li><a href="exam-sim.html?v=2" target="_blank">Exam (with cache-bust)</a></li>
+            <li><a href="reading.html?v=2" target="_blank">Reading (with cache-bust)</a></li>
+            <li><a href="grammar-lab.html?v=2" target="_blank">Grammar Lab (with cache-bust)</a></li>
+            <li><a href="grammar-practice.html?v=2" target="_blank">Grammar Practice (with cache-bust)</a></li>
+        </ul>
+    </div>
+
+    <div class="test-item">
+        <h3>Test 3: Check Console</h3>
+        <p>Open Grammar Lab and check F12 console for these messages:</p>
+        <code>"Mobile dropdown element: ..."</code><br>
+        <code>"Populated dropdown with 100 options"</code>
+    </div>
+
+    <div class="test-item">
+        <h3>Expected Behavior</h3>
+        <p><strong>All Pages:</strong></p>
+        <ul>
+            <li>Sidebar should be HIDDEN when page loads</li>
+            <li>Click ☰ button → sidebar slides in from left</li>
+            <li>Click ☰ again → sidebar slides out</li>
+        </ul>
+        <p><strong>Grammar Lab:</strong></p>
+        <ul>
+            <li>Number grid hidden on mobile</li>
+            <li>Dropdown visible (top-right, labeled "Ex:")</li>
+            <li>Dropdown contains "Exercise 1" through "Exercise 100"</li>
+        </ul>
+    </div>
+
+    <div class="test-item">
+        <h3>Still Not Working?</h3>
+        <p>If after clearing cache it still doesn't work, the issue is in the code logic.</p>
+        <button onclick="alert('Current time: ' + new Date().toLocaleString())">Test JS Working</button>
+    </div>
+</body>
+
+</html>

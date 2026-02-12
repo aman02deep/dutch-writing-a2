@@ -1,0 +1,14 @@
+/* Desktop collapsed state - minimize sidebar on desktop */
+@media (min-width: 768px) {
+    #exercise-sidebar.collapsed {
+        width: 0;
+        overflow: hidden;
+        border: none;
+    }
+
+    #exercise-sidebar.collapsed h3,
+    #exercise-sidebar.collapsed .progress-summary,
+    #exercise-sidebar.collapsed .exercise-list {
+        display: none;
+    }
+}

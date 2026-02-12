@@ -11,6 +11,22 @@ function initNav() {
         item.id = `nav-${i}`; item.onclick = () => jumpTo(i);
         grid.appendChild(item);
     }
+
+    // Populate mobile dropdown
+    const mobileSelect = document.getElementById('mobile-exercise-select');
+    console.log('Mobile dropdown element:', mobileSelect);
+    if (mobileSelect) {
+        mobileSelect.innerHTML = ''; // Clear any existing options
+        for (let i = 0; i < 100; i++) {
+            const option = document.createElement('option');
+            option.value = i;
+            option.textContent = `Exercise ${i + 1}`;
+            mobileSelect.appendChild(option);
+        }
+        console.log('Populated dropdown with', mobileSelect.options.length, 'options');
+    } else {
+        console.error('Mobile dropdown element not found!');
+    }
 }
 
 function loadQuestion() {
@@ -34,6 +50,13 @@ function loadQuestion() {
         div.onclick = () => zone.appendChild(div);
         bank.appendChild(div);
     });
+
+    // Update mobile dropdown
+    const mobileSelect = document.getElementById('mobile-exercise-select');
+    if (mobileSelect) {
+        mobileSelect.value = currentIdx;
+    }
+
     updateNav();
 }
 
