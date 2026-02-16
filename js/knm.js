@@ -225,3 +225,4 @@ function startTimer() {
 }
 
 window.onload = init;
+ 

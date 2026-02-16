@@ -351,3 +351,4 @@ window.addEventListener('keydown', function (event) {
 
 // Initialize on page load (safer event listener)
 window.addEventListener('load', init);
+ 

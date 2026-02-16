@@ -391,3 +391,4 @@ function getExamProgress(examId) {
 }
 
 window.onload = init;
+ 

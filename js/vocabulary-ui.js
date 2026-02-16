@@ -120,3 +120,4 @@ if (document.readyState === 'loading') {
 } else {
     initVocabulary();
 }
+ 

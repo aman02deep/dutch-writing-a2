@@ -77,3 +77,4 @@ document.addEventListener('keydown', (e) => {
         openSentenceStructure();
     }
 });
+ 

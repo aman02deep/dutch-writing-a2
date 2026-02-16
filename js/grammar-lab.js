@@ -106,3 +106,4 @@ function next() { currentIdx = (currentIdx + 1) % 100; loadQuestion(); }
 function prev() { currentIdx = (currentIdx - 1 + 100) % 100; loadQuestion(); }
 
 window.onload = () => { initNav(); loadQuestion(); };
+ 

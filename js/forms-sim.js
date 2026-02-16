@@ -214,3 +214,4 @@ function toggleLanguage() {
 
 // Initialize on page load
 window.onload = init;
+ 

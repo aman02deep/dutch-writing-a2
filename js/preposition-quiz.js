@@ -192,3 +192,4 @@ function showResults() {
 function restartQuiz() {
     startQuiz();
 }
+ 
