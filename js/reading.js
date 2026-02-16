@@ -283,11 +283,6 @@ function nextText() {
     }
 }
 
-function toggleSidebar() {
-    const sidebar = document.getElementById('reading-sidebar');
-    if (sidebar) sidebar.classList.toggle('collapsed');
-}
-
 let currentFontSize = 1;
 function adjustFontSize(change) {
     currentFontSize += (change * 0.1);

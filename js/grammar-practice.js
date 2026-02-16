@@ -129,10 +129,10 @@ function renderExercises(exercise, exerciseIndex) {
             >
             <div class="example-section">
                 <button class="btn-show-example" onclick="toggleExample(${itemIndex})">
-                    ðŸ‘ï¸ Show Example
+                    &#128065; Show Example
                 </button>
                 <div class="example-answer" id="example-${itemIndex}">
-                    <div class="example-nl">âœ“ ${item.example}</div>
+                    <div class="example-nl">&#10003; ${item.example}</div>
                     <div class="example-en">${item.exampleEN}</div>
                 </div>
             </div>
@@ -167,9 +167,9 @@ function toggleExample(itemIndex) {
 
     const btn = event.target;
     if (example.classList.contains('visible')) {
-        btn.textContent = 'ðŸ™ˆ Hide Example';
+        btn.innerHTML = '&#128584; Hide Example';
     } else {
-        btn.textContent = 'ðŸ‘ï¸ Show Example';
+        btn.innerHTML = '&#128065; Show Example';
     }
 }
 
@@ -230,11 +230,11 @@ function toggleLanguage() {
 
     if (showEnglish) {
         instructionEN.style.display = 'block';
-        toggleBtn.innerHTML = 'ðŸ‡³ðŸ‡± Hide English';
+        toggleBtn.innerHTML = '&#127475;&#127473; Hide English';
         toggleBtn.style.background = '#2e7d32';
     } else {
         instructionEN.style.display = 'none';
-        toggleBtn.innerHTML = 'ðŸ‡¬ðŸ‡§ Show English';
+        toggleBtn.innerHTML = '&#127468;&#127463; Show English';
         toggleBtn.style.background = '#0052cc';
     }
 }

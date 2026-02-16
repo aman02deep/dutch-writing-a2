@@ -105,18 +105,39 @@
         <script src="js/questions-reading.js"></script>
         <script src="js/reading.js"></script>
         <script>
-            // Toggle sidebar function for mobile
+            // Toggle sidebar function
             function toggleSidebar() {
                 const sidebar = document.getElementById('reading-sidebar');
                 const backdrop = document.getElementById('sidebar-backdrop');
 
-                if (sidebar.classList.contains('collapsed')) {
+                // On mobile: .open class makes sidebar visible
+                // On desktop: .collapsed class makes sidebar minimized
+                if (window.innerWidth <= 767) {
+                    // Mobile behavior
+                    if (sidebar.classList.contains('open')) {
+                        // Currently visible, so hide it
+                        sidebar.classList.remove('open');
+                        backdrop.style.display = 'none';
+                    } else {
+                        // Currently hidden, so show it
+                        sidebar.classList.add('open');
+                        backdrop.style.display = 'block';
+                    }
+                } else {
+                    // Desktop behavior
+                    sidebar.classList.toggle('collapsed');
+                }
+            }
+
+            // Ensure sidebar starts hidden on mobile
+            if (window.innerWidth <= 767) {
+                document.addEventListener('DOMContentLoaded', function () {
+                    const sidebar = document.getElementById('reading-sidebar');
+                    const backdrop = document.getElementById('sidebar-backdrop');
+                    // Remove collapsed class if present to ensure sidebar starts hidden
                     sidebar.classList.remove('collapsed');
                     backdrop.style.display = 'none';
-                } else {
-                    sidebar.classList.add('collapsed');
-                    backdrop.style.display = 'block';
-                }
+                });
             }
         </script>
         <script src="js/vocabulary.js"></script>
