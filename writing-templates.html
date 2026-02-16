@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writing Templates - Dutch A2</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/writing-templates.css">
+    <link rel="stylesheet" href="css/vocabulary.css">
+    <link rel="stylesheet" href="css/sentence-structure.css">
+    <link rel="stylesheet" href="css/verbs.css">
+</head>
+
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <div class="nav-container">
+            <a href="index.html" class="nav-home">
+                <span class="nav-home-icon">🏠</span>
+                <span>Home</span>
+            </a>
+            <div class="nav-page-title">📝 Writing Templates</div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <!-- Breadcrumb -->
+        <div style="margin-bottom: 20px;">
+            <a href="writing.html" style="text-decoration: none; color: #666;">← Back to Writing Practice</a>
+        </div>
+
+        <div class="controls">
+            <label style="font-weight: bold;">Template:
+                <select id="templateSelect">
+                    <option value="formalEmail">Formal Email</option>
+                    <option value="informalMessage">Informal Message</option>
+                    <option value="problemRequest">Problem + Request</option>
+                    <option value="complaintEmail">Complaint Email</option>
+                    <option value="confirmationEmail">Confirmation Email</option>
+                    <option value="thankYouMessage">Thank You Message</option>
+                </select>
+            </label>
+            <button class="btn-secondary" id="toggleTemplate">Show/Hide Template</button>
+            <button class="btn-secondary" id="toggleDutch">Show/Hide Dutch</button>
+            <button class="btn-secondary" id="toggleEnglish">Show/Hide English</button>
+        </div>
+
+        <div class="main-container">
+            <!-- Sidebar pagination numbers -->
+            <div class="samples-list" id="samplesList">
+                <h3>Samples</h3>
+                <div id="paginationNumbers"></div>
+            </div>
+
+            <!-- Three column content -->
+            <div class="sample-content">
+                <div class="row">
+                    <div class="column" id="templateCol"></div>
+                    <div class="column" id="dutchCol"></div>
+                    <div class="column" id="englishCol"></div>
+                </div>
+
+                <div class="navigation" style="display: flex; justify-content: space-between;">
+                    <button id="prevBtn" class="btn-secondary">← Previous</button>
+                    <button id="nextBtn" class="btn-primary">Next →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sentence Structure Modal -->
+    <div id="sentence-modal" class="modal">
+        <div id="sentence-modal-content">
+            <div class="sentence-modal-header">
+                <h2>📐 Sentence Structure</h2>
+                <button class="sentence-close" onclick="closeSentenceStructure()">&times;</button>
+            </div>
+            <div id="sentence-content"></div>
+        </div>
+    </div>
+
+    <!-- Floating Sentence Structure Button -->
+    <button class="btn-sentence-structure" onclick="openSentenceStructure()" title="Sentence Structure (Ctrl+S)">
+        📐
+    </button>
+
+    <!-- Floating Verbs Button -->
+    <button class="btn-verbs" onclick="openVerbs()" title="Verbs Reference (Ctrl+V)">
+        🔤
+    </button>
+
+    <!-- Verbs Modal -->
+    <div id="verbs-modal" class="verbs-modal">
+        <div class="verbs-modal-content">
+            <div class="verbs-modal-header">
+                <h2>🔤 Verbs Reference</h2>
+                <button class="verbs-close" onclick="closeVerbs()">&times;</button>
+            </div>
+            <div class="verbs-content">
+                <div class="verbs-placeholder">
+                    <h3>Verbs Reference Coming Soon!</h3>
+                    <p>This section will contain comprehensive verb conjugations and examples.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/common.js"></script>
+    <script src="js/vocabulary.js"></script>
+    <script src="js/vocabulary-ui.js"></script>
+    <script src="js/sentence-structure.js"></script>
+    <script src="js/sentence-structure-ui.js"></script>
+    <script src="js/verbs-data.js"></script>
+    <script src="js/verbs.js"></script>
+    <script src="js/verbs-ui.js"></script>
+    
+    <!-- Writing Templates Logic -->
+    <script src="js/writing-templates-data.js"></script>
+    <script src="js/writing-samples-data.js"></script>
+    <script src="js/writing-templates.js"></script>
+</body>
+
+</html>
