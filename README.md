@@ -169,12 +169,19 @@ const readingExams = [
 
 ---
 
+### 4. 🤖 AI Integration (New!)
+The app uses **Pollinations.ai** for "Check Answer" functionality.
+-   **Zero Configuration**: Works out of the box.
+-   **Privacy**: Sends text to public cloud.
+-   **Implementation**: `js/ai-service.js` handles the API calls.
+
+---
+
 ## 🚀 Future Roadmap
 
 1.  **Audio Upgrade**: Replace TTS with native audio.
-2.  **Writing Analysis**: Integrate local LLM/Regex.
-3.  **Export Data**: JSON export for backup.
-4.  **PWA Support**: Offline capability.
+2.  **Export Data**: JSON export for backup.
+3.  **PWA Support**: Offline capability.
 
 ---
 *Created for the Dutch A2 Learning App Project.*

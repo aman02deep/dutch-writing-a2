@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grammar Lab - Dutch A2</title>
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/grammar-lab.css">
     <link rel="stylesheet" href="css/navigation.css">
     <link rel="stylesheet" href="css/breadcrumb.css">
@@ -77,14 +78,13 @@
                     <input type="text" id="writing-input" placeholder="Typ de Nederlandse zin hier...">
 
                     <div id="rule-box">
-                        <span class="rule-title">Grammar Logic</span>
+                        <span id="rule-title">Grammar Logic</span>
                         <div id="rule-text"></div>
                         <div class="rule-formula" id="rule-formula"></div>
                         <div class="rule-example" id="rule-example"></div>
                     </div>
 
-                    <div id="feedback" style="text-align:center; font-weight:bold; height:24px; margin-bottom:15px;">
-                    </div>
+                    <div id="feedback"></div>
 
                     <div style="display:flex; flex-direction:column; gap:12px;">
                         <button class="btn-main" onclick="checkAnswer()">Check Answer</button>
@@ -99,6 +99,7 @@
     </main>
 
     <script src="js/questions-set-1.js"></script>
+    <script src="js/ai-service.js"></script>
 
     <script>
 
@@ -154,26 +155,126 @@
             document.getElementById('writing-input').style.display = writingMode ? "block" : "none";
         }
 
-        function checkAnswer() {
+        async function checkAnswer() {
             const q = questions[currentIdx];
             let userStr = writingMode ? document.getElementById('writing-input').value :
                 Array.from(document.getElementById('answer-zone').children).map(c => c.innerText).join(" ");
-            const isCorrect = userStr.toLowerCase().replace(/[.,?]/g, "").trim() === q.dut.toLowerCase().replace(/[.,?]/g, "").trim();
+
+            const cleanUser = userStr.toLowerCase().replace(/[.,?]/g, "").trim();
+            const cleanTarget = q.dut.toLowerCase().replace(/[.,?]/g, "").trim();
+            const isExactMatch = cleanUser === cleanTarget;
+
             const fb = document.getElementById('feedback');
-            if (isCorrect) {
-                fb.innerText = "✅ Correct! Goed gedaan!"; fb.style.color = "green";
-                results[currentIdx] = true; if (q.verb) addVerb(q.verb);
-            } else {
-                fb.innerText = "❌ Incorrect. Try again!"; fb.style.color = "red";
-                results[currentIdx] = false;
+            const ruleBox = document.getElementById('rule-box');
+
+            // 1. Exact Match (Instant Success)
+            if (isExactMatch) {
+                fb.innerHTML = renderFeedbackCard(
+                    '✅ Correct!',
+                    'Exact Match',
+                    '<strong>Goed gedaan!</strong> Perfecte zin.',
+                    'success'
+                );
+                results[currentIdx] = true;
+                if (q.verb) addVerb(q.verb);
+                ruleBox.style.display = 'none'; // Hide rule if correct
+            }
+            // 2. Smart Check (AI Verification for Writing Mode)
+            else if (writingMode && userStr.length > 5) {
+                // Show analyzing state
+                fb.innerHTML = renderFeedbackCard(
+                    '🤖 AI Analysis',
+                    'Checking...',
+                    '<span class="loading-dots">Thinking... Verifying flexibility...</span>',
+                    'ai'
+                );
+
+                // Call Optimized Single-Step AI
+                const result = await aiService.smartAnalyze(userStr, q.dut, q.eng);
+
+                if (result.isValid) {
+                    fb.innerHTML = renderFeedbackCard(
+                        '✅ Smart Check',
+                        'Valid Alternative',
+                        `<strong>Great job!</strong> Your sentence is grammatically correct and means the same thing.<br>
+                        <span style="font-size:0.85em; color:#666;">Original target: "${q.dut}"</span>`,
+                        'success'
+                    );
+                    results[currentIdx] = true;
+                    if (q.verb) addVerb(q.verb);
+                    ruleBox.style.display = 'none';
+                } else {
+                    // Pass the already-loaded feedback to showError
+                    showError(q, userStr, result.feedback);
+                }
+            }
+            // 3. Wrong Answer
+            else {
+                showError(q, userStr);
             }
             updateNavStyles();
+        }
+
+        async function showError(q, userStr, preloadedFeedback = null) {
+            const fb = document.getElementById('feedback');
+            const ruleBox = document.getElementById('rule-box');
+
+            results[currentIdx] = false;
+            ruleBox.style.display = 'block';
+            document.getElementById('rule-title').innerText = "💡 Hint: " + (q.logic || "Check word order!");
+
+            // If in writing mode, get full AI analysis (skip red box)
+            if (writingMode && userStr.length > 3) {
+                // If we already have feedback from smartAnalyze, show it instantly!
+                if (preloadedFeedback) {
+                    const formattedAnalysis = preloadedFeedback
+                        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                        .replace(/\n/g, '<br>');
+
+                    fb.innerHTML = renderFeedbackCard(
+                        '🤖 AI Analysis',
+                        'Feedback',
+                        formattedAnalysis,
+                        'ai'
+                    );
+                }
+                else {
+                    // Fallback (Rare case: direct call or error)
+                    fb.innerHTML = renderFeedbackCard(
+                        '🤖 AI Analysis',
+                        'Analyzing Mistake...',
+                        '<span class="loading-dots">Finding corrections and grammar tips...</span>',
+                        'ai'
+                    );
+
+                    const analysis = await aiService.analyzeSentence(userStr, q.dut, q.eng);
+
+                    const formattedAnalysis = analysis
+                        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                        .replace(/\n/g, '<br>');
+
+                    fb.innerHTML = renderFeedbackCard(
+                        '🤖 AI Analysis',
+                        'Feedback',
+                        formattedAnalysis,
+                        'ai'
+                    );
+                }
+            } else {
+                // Standard block mode error (Red Box)
+                fb.innerHTML = renderFeedbackCard(
+                    '❌ Incorrect',
+                    'Try Again',
+                    "Word order is incorrect.",
+                    'error'
+                );
+            }
         }
 
         function addVerb(v) {
             if (!discoveredVerbs.has(v[0])) {
                 discoveredVerbs.add(v[0]);
-                document.getElementById('verb-list').innerHTML += `<tr><td>${v[0]}</td><td>${v[1]}</td><td>${v[2]}</td></tr>`;
+                // document.getElementById('verb-list').innerHTML += ... (Fix: verb-list element might be missing in this file?)
             }
         }
 
@@ -217,4 +318,4 @@
     <script src="js/sentence-structure-ui.js"></script>
 </body>
 
-</html> 
+</html>

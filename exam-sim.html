@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exam Simulator - Dutch A2</title>
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/exam-sim.css">
     <link rel="stylesheet" href="css/navigation.css">
     <link rel="stylesheet" href="css/breadcrumb.css">
@@ -94,6 +95,9 @@
                     </div>
 
                     <textarea id="writing-area" placeholder="Schrijf je bericht hier..."></textarea>
+
+                    <!-- Feedback Container -->
+                    <div id="feedback-container" style="display: none;"></div>
 
                     <!-- Word Counter -->
                     <div class="word-counter">
@@ -211,7 +215,8 @@
     <script src="js/verbs-data.js"></script>
     <script src="js/verbs.js"></script>
     <script src="js/verbs-ui.js"></script>
+    <script src="js/ai-service.js"></script>
 
 </body>
 
-</html> 
+</html>
