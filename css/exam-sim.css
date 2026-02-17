@@ -641,9 +641,17 @@ button {
         padding: 12px;
     }
 }
+
 /* Hide backdrop on desktop - only show on mobile */
 @media (min-width: 768px) {
     #sidebar-backdrop {
         display: none !important;
     }
 }
+
+/* Feedback Container Styles - Specific layout tweaks only */
+#feedback-container {
+    margin: 20px 0;
+}
+
+/* Shared .feedback-box styles moved to style.css */

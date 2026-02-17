@@ -349,6 +349,53 @@ window.addEventListener('keydown', function (event) {
     }
 });
 
+// Check Answer with AI
+async function checkAnswer() {
+    const text = document.getElementById('writing-area').value;
+    const task = examTasks[currentTaskIndex];
+    const feedbackContainer = document.getElementById('feedback-container');
+
+    if (!text.trim()) {
+        alert("Please write something first!");
+        return;
+    }
+
+    feedbackContainer.style.display = 'block';
+    feedbackContainer.innerHTML = `
+        <div class="feedback-box">
+            <div class="feedback-header" style="background: #673ab7;">
+                <h4>🤖 AI Analysis</h4>
+                <span class="feedback-score">Checking...</span>
+            </div>
+            <div class="feedback-list">
+                <div class="feedback-item">Asking Gemini to check your work... <span class="loading-dots">⏳</span></div>
+            </div>
+        </div>
+    `;
+
+    // Scroll to feedback
+    feedbackContainer.scrollIntoView({ behavior: 'smooth' });
+
+    // Call AI
+    const feedback = await aiService.checkText(text, task.contextEN);
+
+    // Format Feedback (Markdown to HTML)
+    const formattedFeedback = feedback
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
+        .replace(/\n/g, '<br>'); // Newlines
+
+    // Use shared UI helper
+    feedbackContainer.innerHTML = renderFeedbackCard(
+        '🤖 AI Analysis',
+        'Complete',
+        formattedFeedback,
+        'ai'
+    );
+}
+
 // Initialize on page load (safer event listener)
-window.addEventListener('load', init);
- 
+window.addEventListener('load', () => {
+    init();
+    // No specific init needed for generic AI service
+});
+

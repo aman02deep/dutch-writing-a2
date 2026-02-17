@@ -1056,6 +1056,7 @@ textarea {
         text-align: center;
     }
 }
+
 /* --- COMPONENT CLASSES (Refactored from inline styles) --- */
 .hero-title {
     color: var(--accent);
@@ -1069,7 +1070,8 @@ textarea {
 }
 
 .main-card {
-    padding: 25px; /* Moved from inline */
+    padding: 25px;
+    /* Moved from inline */
 }
 
 .card-title {
@@ -1112,13 +1114,117 @@ textarea {
 }
 
 /* More Utility Classes */
-.relative { position: relative; }
-.flex { display: flex; }
-.gap-sm { gap: 10px; }
-.flex-1 { flex: 1; }
-.text-center { text-align: center; }
-.no-decoration { text-decoration: none; }
-.inline-block { display: inline-block; }
-.w-full { width: 100%; }
-.p-0 { padding: 0 !important; }
- 
+.relative {
+    position: relative;
+}
+
+.flex {
+    display: flex;
+}
+
+.gap-sm {
+    gap: 10px;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.no-decoration {
+    text-decoration: none;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.p-0 {
+    padding: 0 !important;
+}
+
+/* --- VISUAL FEEDBACK (Shared) --- */
+.feedback-box {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+    margin-top: 15px;
+    animation: slideDown 0.3s ease-out;
+}
+
+.feedback-header {
+    background: #f5f5f5;
+    padding: 12px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+
+.feedback-header h4 {
+    margin: 0;
+    color: #333;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.feedback-score {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    color: white;
+    font-weight: 500;
+}
+
+.feedback-list {
+    padding: 15px;
+}
+
+.feedback-item {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+.loading-dots {
+    display: inline-block;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.4;
+    }
+}

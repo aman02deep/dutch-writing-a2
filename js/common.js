@@ -148,14 +148,36 @@ const storage = {
 // Add CSS for notifications
 const style = document.createElement('style');
 style.textContent = `
-    @keyframes slideInRight {
-        from { transform: translateX(100%); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
-    }
-    
     @keyframes slideOutRight {
         from { transform: translateX(0); opacity: 1; }
         to { transform: translateX(100%); opacity: 0; }
     }
 `;
 document.head.appendChild(style);
+
+/**
+ * Generates a consistent HTML structure for AI feedback cards.
+ */
+function renderFeedbackCard(title, scoreText, contentHTML, type = 'ai') {
+    let bg = '#673ab7'; // AI Purple (Default)
+    if (type === 'success') bg = '#2e7d32'; // Green
+    if (type === 'error') bg = '#d32f2f'; // Red
+
+    return `
+        <div class="feedback-box">
+            <div class="feedback-header" style="background: ${bg}; padding: 12px 15px; display: flex; justify-content: space-between; align-items: center;">
+                <h4 style="color:white; margin:0; font-size:1rem; display:flex; align-items:center;">
+                    ${title}
+                </h4>
+                <span class="feedback-score" style="background:rgba(255,255,255,0.2); padding:3px 8px; border-radius:12px; font-size:0.8rem;">
+                    ${scoreText}
+                </span>
+            </div>
+            <div class="feedback-list" style="padding:15px;">
+                <div class="feedback-item" style="text-align: left; line-height: 1.6; font-size: 0.95rem; color: #333;">
+                    ${contentHTML}
+                </div>
+            </div>
+        </div>
+    `;
+}
