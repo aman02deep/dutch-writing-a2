@@ -144,34 +144,51 @@ Please analyze the student's answer.
      */
     async smartAnalyze(studentText, originalDutch, englishSource) {
         try {
+            // Compressed prompt to avoid 502 (URL Length) errors
             const prompt = `
-            Act as a Dutch tutor.
-            Target: "${originalDutch}"
-            Student: "${studentText}"
-            Context: "${englishSource}"
+Dutch Tutor Mode.
+Target: "${originalDutch}"
+Student: "${studentText}"
+Context: "${englishSource}"
 
-            Task:
-            1. Determine if Student's answer is grammatically correct and means the same as Target (even if wording differs).
-            2. IF YES: Return ONLY the string "VALID".
-            3. IF NO: Return a helpful analysis with:
-               - Corrected sentence
-               - Grammar mistakes (bullet points)
-               - Encouraging comment
-            
-            Format: Plain text.
+Checks:
+1. Leftover Placeholders -> FAIL.
+2. English words -> FAIL.
+3. Grammar Errors -> FAIL.
+
+Critical Rule:
+- If it is correct Dutch grammar, it is VALID (PASS).
+- IGNORE content differences (e.g. "water" vs "coffee", or adding negation).
+- Target is ONLY for reference.
+
+Feedback Rules:
+- FAIL (Grammar/English): Explain the error.
+- PASS (Creative): GENERATE a unique, enthusiastic comment analyzing the specific changes (e.g. "Great use of negation!"). Do not use a fixed template.
+- PASS (Exact Match): Praise the structure and suggest an advanced variation.
+
+Reply JSON ONLY: {"isValid":boolean,"feedback":"HTML string with <b> tags"}
             `.trim();
 
             const response = await this.fetchAI(prompt);
 
-            if (response.includes("VALID")) {
-                return { isValid: true, feedback: "" };
-            } else {
-                return { isValid: false, feedback: response };
+            // Clean response in case AI adds markdown
+            const cleanResponse = response.replace(/```json/g, '').replace(/```/g, '').trim();
+
+            try {
+                return JSON.parse(cleanResponse);
+            } catch (parseError) {
+                console.error("AI JSON Parse Error", parseError);
+                // Fallback if AI fails to return JSON
+                const isLikelyValid = response.toLowerCase().includes("true");
+                return {
+                    isValid: isLikelyValid,
+                    feedback: response
+                };
             }
 
         } catch (e) {
             console.error('Smart Analyze Failed:', e);
-            return { isValid: false, feedback: "Error analyzing sentence." };
+            return { isValid: false, feedback: "Error analyzing sentence. Please try again." };
         }
     }
 };

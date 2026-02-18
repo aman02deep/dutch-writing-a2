@@ -120,21 +120,33 @@ function renderExercises(exercise, exerciseIndex) {
 
         row.innerHTML = `
             <div class="exercise-prompt">${item.prompt}</div>
-            <input 
-                type="text" 
-                class="exercise-input ${savedAnswer ? 'filled' : ''}" 
-                id="input-${itemIndex}"
-                value="${savedAnswer}"
-                placeholder="Type je antwoord hier..."
-            >
-            <div class="example-section">
-                <button class="btn-show-example" onclick="toggleExample(${itemIndex})">
-                    &#128065; Show Example
+            <div class="input-group">
+                <input 
+                    type="text" 
+                    class="exercise-input ${savedAnswer ? 'filled' : ''}" 
+                    id="input-${itemIndex}"
+                    value="${savedAnswer}"
+                    placeholder="Type je antwoord hier..."
+                >
+            </div>
+            
+            <!-- Action Buttons Area -->
+            <div class="action-buttons" style="display: flex; gap: 10px; margin-top: 8px;">
+                <button class="btn-check-ai" onclick="checkGrammarAnswer(${exerciseIndex}, ${itemIndex})">
+                    🤖 Check
                 </button>
-                <div class="example-answer" id="example-${itemIndex}">
-                    <div class="example-nl">&#10003; ${item.example}</div>
-                    <div class="example-en">${item.exampleEN}</div>
-                </div>
+                <button class="btn-show-example" onclick="toggleExample(${itemIndex})">
+                    &#128065; Example
+                </button>
+            </div>
+
+            <!-- AI Feedback Container -->
+            <div class="ai-feedback" id="feedback-${itemIndex}" style="display: none; margin-top: 10px; padding: 10px; border-radius: 6px; background: #f0f7ff; border-left: 3px solid #0052cc;"></div>
+
+            <!-- Example Container -->
+            <div class="example-answer" id="example-${itemIndex}">
+                <div class="example-nl">&#10003; ${item.example}</div>
+                <div class="example-en">${item.exampleEN}</div>
             </div>
         `;
 
@@ -153,11 +165,58 @@ function renderExercises(exercise, exerciseIndex) {
                 this.classList.remove('filled');
             }
 
+            // Hide previous feedback if edited
+            document.getElementById(`feedback-${itemIndex}`).style.display = 'none';
+
             // Check if exercise is completed
             checkExerciseCompletion(exerciseIndex);
             renderSidebar();
         });
     });
+}
+
+// 🤖 AI Check Function
+async function checkGrammarAnswer(exerciseIndex, itemIndex) {
+    const exercise = grammarExercises[exerciseIndex];
+    const item = exercise.exercises[itemIndex];
+    const inputId = `input-${itemIndex}`;
+    const feedbackId = `feedback-${itemIndex}`;
+
+    const userText = document.getElementById(inputId).value.trim();
+    const feedbackEl = document.getElementById(feedbackId);
+
+    if (userText.length < 2) {
+        feedbackEl.style.display = 'block';
+        feedbackEl.innerHTML = '<span style="color: #d9534f;">Please write an answer first.</span>';
+        return;
+    }
+
+    // Show Loading
+    feedbackEl.style.display = 'block';
+    feedbackEl.innerHTML = '<span>🤖 Checking...</span>';
+
+    // AI Check
+    const context = `Grammar Exercise: "${item.prompt}". Target Structure: "${item.example}".`;
+    const result = await aiService.smartAnalyze(userText, item.example, context);
+
+    // Render result
+    if (result.isValid) {
+        feedbackEl.style.background = '#e8f5e9';
+        feedbackEl.style.borderLeftColor = '#2e7d32';
+        feedbackEl.innerHTML = `
+            <div style="color: #2e7d32; font-weight: bold;">✅ Correct!</div>
+            <div style="color: #555; font-size: 0.9em; margin-top: 4px;">${result.feedback || "Perfect grammar usage."}</div>
+        `;
+    } else {
+        feedbackEl.style.background = '#fff3e0';
+        feedbackEl.style.borderLeftColor = '#ff9800';
+        // Clean up markdown slightly for display
+        const formattedFeedback = result.feedback.replace(/\n/g, '<br>');
+        feedbackEl.innerHTML = `
+            <div style="color: #e65100; font-weight: bold;">⚠️ Needs Improvement</div>
+            <div style="color: #333; font-size: 0.9em; margin-top: 4px;">${formattedFeedback}</div>
+        `;
+    }
 }
 
 // Toggle example visibility
