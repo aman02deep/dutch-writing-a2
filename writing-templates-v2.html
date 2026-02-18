@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Templates 2.0 - Dutch A2</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/writing-templates-v2.css">
+</head>
+
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <div class="nav-container">
+            <a href="index.html" class="nav-home">
+                <span class="nav-home-icon">🏠</span>
+                <span>Home</span>
+            </a>
+            <div class="nav-page-title">🚀 Templates 2.0</div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb-nav">
+        <a href="writing.html">
+            <span class="breadcrumb-arrow">←</span>
+            Back to Writing Practice
+        </a>
+    </div>
+
+    <!-- Main Container (Full Width like exam-sim) -->
+    <div class="main-container-v2">
+        <!-- Sidebar -->
+        <div class="template-sidebar">
+            <div class="sidebar-header">
+                <span>📋</span> Select Template
+            </div>
+            <div class="template-list" id="templateList">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content-area-v2">
+            <!-- Tabs (with integrated toggle) -->
+            <div class="tabs-header">
+                <button class="btn-toggle-sidebar" onclick="toggleSidebar()" title="Toggle Templates">
+                    ☰
+                </button>
+                <div class="tabs-divider"></div>
+                <button class="tab-btn active" data-tab="template">📐 Structure</button>
+                <button class="tab-btn" data-tab="examples">📝 Examples</button>
+                <button class="tab-btn" data-tab="practice">✨ Practice</button>
+            </div>
+
+            <!-- Tab 1: Template Structure -->
+            <div id="templateTab" class="tab-content active">
+                <div style="position: relative;">
+                    <button class="copy-btn" onclick="copyTemplate()">📋 Copy</button>
+                    <div id="templateStructure" class="template-structure"></div>
+                </div>
+                <div style="margin-top: 20px; color: #666; font-size: 0.9rem;">
+                    <p>💡 <strong>Tip:</strong> Use "Copy" to paste this structure into the Practice tab or your own
+                        documents.</p>
+                </div>
+            </div>
+
+            <!-- Tab 2: Examples -->
+            <div id="examplesTab" class="tab-content">
+                <div id="examplesContainer">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- Tab 3: Practice Mode -->
+            <div id="practiceTab" class="tab-content">
+                <div class="practice-container two-column-grid">
+
+                    <!-- Left Column: Input -->
+                    <div class="practice-left-col">
+                        <div class="practice-header"
+                            style="display: flex; justify-content: space-between; align-items: center; gap: 15px; margin-bottom: 15px;">
+                            <div class="practice-instruction"
+                                style="font-size: 0.85rem; padding: 8px 12px; margin: 0; flex-grow: 1;">
+                                <span>✍️</span>
+                                <span>Write your own version using the template structure.</span>
+                            </div>
+                            <button class="btn-main" onclick="checkPractice()"
+                                style="padding: 8px 16px; font-size: 0.9rem; white-space: nowrap;">🤖 Check My
+                                Draft</button>
+                        </div>
+
+                        <textarea id="practiceInput" class="practice-input"
+                            placeholder="Start typing here... (e.g. Geachte meneer/mevrouw, ...)"></textarea>
+                    </div>
+
+                    <!-- Right Column: Feedback -->
+                    <div class="practice-right-col">
+                        <div class="feedback-header">
+                            <span>🤖</span> AI Feedback
+                        </div>
+                        <div id="feedbackContainer" class="feedback-area">
+                            <div class="feedback-placeholder">
+                                <p>Ready to check your writing!</p>
+                                <p class="sub-text">Click <strong>"Check My Draft"</strong> and I'll analyze your:</p>
+                                <ul>
+                                    <li>Structure & Greeting</li>
+                                    <li>Grammar & Spelling</li>
+                                    <li>Tone & Politeness</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sidebar backdrop -->
+    <div id="sidebar-backdrop" onclick="toggleSidebar()"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1999;">
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/common.js"></script>
+    <script src="js/ai-service.js"></script>
+    <script src="js/writing-templates-data.js"></script>
+    <script src="js/writing-samples-data.js"></script>
+    <script src="js/writing-templates-v2.js"></script>
+</body>
+
+</html>
