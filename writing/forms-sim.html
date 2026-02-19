@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms Simulator - Dutch A2</title>
+    <link rel="stylesheet" href="../css/writing/forms-sim.css">
+    <link rel="stylesheet" href="../css/common/navigation.css">
+    <link rel="stylesheet" href="../css/common/breadcrumb.css">
+    <link rel="stylesheet" href="../css/vocabulary/vocabulary.css">
+    <link rel="stylesheet" href="../css/grammar/sentence-structure.css">
+    <link rel="stylesheet" href="../css/grammar/verbs.css">
+</head>
+
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-home">
+                <span class="nav-home-icon">🏠</span>
+                <span>Home</span>
+            </a>
+            <div class="nav-page-title">📋 Form Filling</div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb-nav">
+        <a href="writing.html">
+            <span class="breadcrumb-arrow">←</span>
+            Back to Writing Practice
+        </a>
+    </div>
+
+    <!-- Main Container with Sidebar and Content -->
+    <div class="main-area">
+        <!-- Sidebar -->
+        <aside id="form-sidebar">
+            <h3>📋 Form Tasks</h3>
+            <div class="form-list" id="form-list"></div>
+        </aside>
+
+        <!-- Content Area -->
+        <div class="content-wrapper">
+            <!-- Top Bar -->
+            <div class="top-bar">
+                <div class="top-left">
+                    <button class="btn-home" onclick="toggleSidebar()">☰ Forms</button>
+                    <span class="progress-text" id="progress-text">Form 1 of 8</span>
+                </div>
+                <div class="top-right">
+                    <button class="btn-toggle-lang" id="toggle-lang-btn" onclick="toggleLanguage()">
+                        🇬🇧 Show English
+                    </button>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <div class="form-container">
+                    <div class="form-header" id="form-header">LOADING...</div>
+
+                    <h1 class="form-title" id="form-title">Loading...</h1>
+
+                    <div class="form-prompt" id="form-prompt">
+                        Loading instructions...
+                    </div>
+
+                    <div class="form-prompt-en" id="form-prompt-en" style="display: none;">
+                        Loading English translation...
+                    </div>
+
+                    <div class="form-fields" id="form-fields">
+                        <!-- Fields will be dynamically generated -->
+                    </div>
+
+                    <div class="field-counter">
+                        <span id="filled-count">0</span> / <span id="total-count">0</span> fields filled
+                        <span class="char-info" id="char-info"
+                            style="margin-left: 20px; color: #666; font-style: italic;"></span>
+                    </div>
+
+                    <div class="completion-message" id="completion-message">
+                        ✅ All fields completed!
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn-secondary" onclick="clearForm()">🗑️ Clear All</button>
+                        <button class="btn-success" onclick="checkForm()">✓ Check Form</button>
+                    </div>
+
+                    <div class="button-group" style="margin-top: 15px;">
+                        <button class="btn-secondary" onclick="previousForm()">← Previous</button>
+                        <button class="btn-primary" onclick="nextForm()">Next →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Verbs Button -->
+        <button class="btn-verbs" onclick="openVerbs()" title="Verbs Reference (Ctrl+V)">
+            🔤
+        </button>
+
+        <!-- Verbs Modal -->
+        <div id="verbs-modal" class="verbs-modal">
+            <div class="verbs-modal-content">
+                <div class="verbs-modal-header">
+                    <h2>🔤 Verbs Reference</h2>
+                    <button class="verbs-close" onclick="closeVerbs()">&times;</button>
+                </div>
+                <div class="verbs-content">
+                    <div class="verbs-placeholder">
+                        <h3>Verbs Reference Coming Soon!</h3>
+                        <p>This section will contain comprehensive verb conjugations and examples.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- Close content-wrapper -->
+    </div> <!-- Close main-area -->
+
+    <script src="../js/common/common.js"></script>
+
+    <!-- Mobile sidebar backdrop -->
+    <div id="sidebar-backdrop" onclick="toggleSidebar()"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1999;">
+    </div>
+
+    <script src="../js/writing/questions-forms.js"></script>
+    <script src="../js/writing/forms-sim.js"></script>
+    <script>
+        // Toggle sidebar function for mobile
+        function toggleSidebar() {
+            const sidebar = document.getElementById('form-sidebar');
+            const backdrop = document.getElementById('sidebar-backdrop');
+
+            if (sidebar.classList.contains('collapsed')) {
+                sidebar.classList.remove('collapsed');
+                backdrop.style.display = 'none';
+            } else {
+                sidebar.classList.add('collapsed');
+                backdrop.style.display = 'block';
+            }
+        }
+
+        // On mobile, start with sidebar hidden
+        if (window.innerWidth <= 767) {
+            document.addEventListener('DOMContentLoaded', function () {
+                const sidebar = document.getElementById('form-sidebar');
+                // Don't add collapsed class - sidebar should be hidden by default via CSS
+            });
+        }
+    </script>
+    <script src="../js/vocabulary/vocabulary.js"></script>
+    <script src="../js/vocabulary/vocabulary-ui.js"></script>
+    <script src="../js/grammar/verbs-data.js"></script>
+    <script src="../js/grammar/verbs.js"></script>
+    <script src="../js/grammar/verbs-ui.js"></script>
+</body>
+
+</html>

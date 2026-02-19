@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Simulator - Dutch A2</title>
+    <link rel="stylesheet" href="../css/common/style.css">
+    <link rel="stylesheet" href="../css/writing/exam-sim.css">
+    <link rel="stylesheet" href="../css/common/navigation.css">
+    <link rel="stylesheet" href="../css/common/breadcrumb.css">
+    <link rel="stylesheet" href="../css/vocabulary/vocabulary.css">
+    <link rel="stylesheet" href="../css/grammar/sentence-structure.css">
+    <link rel="stylesheet" href="../css/grammar/verbs.css">
+</head>
+
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-home">
+                <span class="nav-home-icon">🏠</span>
+                <span>Home</span>
+            </a>
+            <div class="nav-page-title">📝 Writing Tasks</div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb-nav">
+        <a href="writing.html">
+            <span class="breadcrumb-arrow">←</span>
+            Back to Writing Practice
+        </a>
+    </div>
+
+    <!-- Main Container with Sidebar and Content -->
+    <div class="main-area">
+        <!-- Sidebar -->
+        <aside id="task-sidebar">
+            <h3>📧 Writing Tasks</h3>
+            <div class="jump-links">
+                <button class="jump-btn btn-short" onclick="jumpTo(0)">📝 Short Messages (40-50)</button>
+                <button class="jump-btn btn-long" onclick="jumpTo(6)">📄 Long Messages (80-90)</button>
+            </div>
+            <div class="task-list" id="task-list"></div>
+        </aside>
+
+        <!-- Content Area -->
+        <div class="content-wrapper">
+            <!-- Top Bar -->
+
+            <div class="top-bar">
+                <div class="top-left">
+                    <button class="btn-home" onclick="toggleSidebar()">☰ Tasks</button>
+                    <span class="progress-text" id="progress-text">Task 1 of 12</span>
+                </div>
+                <div class="top-right">
+                    <button class="btn-toggle-lang" id="toggle-lang-btn" onclick="toggleLanguage()">
+                        🇬🇧 Show English
+                    </button>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <div class="task-container">
+                    <h1 class="task-title" id="task-title">Loading...</h1>
+                    <span class="task-type" id="task-type">EMAIL</span>
+                    <span class="task-type" id="word-target" style="background: #fff3e0; color: #f57f17;">40-50
+                        words</span>
+
+                    <div class="task-context" id="task-context-nl">
+                        Loading context...
+                    </div>
+                    <div class="task-context-en" id="task-context-en" style="display: none;">
+                        Loading English translation...
+                    </div>
+
+                    <div class="task-instructions">
+                        <h4>📝 Wat je moet schrijven:</h4>
+                        <ul id="task-instructions-list-nl"></ul>
+                        <div class="task-instructions-en" id="task-instructions-en" style="display: none;">
+                            <h4 style="color: #666; font-size: 0.9rem;">English translation:</h4>
+                            <ul id="task-instructions-list-en"></ul>
+                        </div>
+                    </div>
+
+                    <!-- Writing Tips Panel -->
+                    <div class="writing-tips-toggle">
+                        <button class="btn-tips" onclick="toggleWritingTips()">💡 Writing Tips</button>
+                    </div>
+                    <div class="writing-tips-panel" id="writing-tips-panel" style="display: none;">
+                        <div class="tips-content" id="tips-content"></div>
+                    </div>
+
+                    <textarea id="writing-area" placeholder="Schrijf je bericht hier..."></textarea>
+
+                    <!-- Feedback Container -->
+                    <div id="feedback-container" style="display: none;"></div>
+
+                    <!-- Word Counter -->
+                    <div class="word-counter">
+                        <span class="word-count" id="word-count">0 words</span>
+                        <span class="word-target-display" id="word-target-display">Target: 40-50 words</span>
+                    </div>
+
+                    <div class="char-counter">
+                        <span id="char-count">0</span> characters | <span id="word-count">0</span> words
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn-secondary" onclick="showSampleAnswer()">📄 Show Example</button>
+                        <button class="btn-primary" onclick="checkAnswer()">Check Answer</button>
+                        <button class="btn-secondary" onclick="clearAnswer()">🗑️ Clear</button>
+                    </div>
+
+                    <div id="model-answer">
+                        <h4>✅ Model Answer:</h4>
+                        <pre id="model-answer-text"></pre>
+                    </div>
+
+                    <div class="button-group" style="margin-top: 30px;">
+                        <button class="btn-secondary" onclick="previousTask()">← Previous</button>
+                        <button class="btn-primary" onclick="nextTask()">Next →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sample Answer Modal -->
+        <div id="sample-modal" class="modal">
+            <div class="sample-modal-content">
+                <div class="modal-header">
+                    <h3>✅ Model Answer</h3>
+                    <button class="close-btn" onclick="closeSampleAnswer()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div id="sample-answer-nl" class="sample-answer-nl"></div>
+                    <div id="sample-answer-en" class="sample-answer-en"></div>
+                    <div id="sample-notes" class="sample-notes"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sentence Structure Modal -->
+        <div id="sentence-modal" class="modal">
+            <div id="sentence-modal-content">
+                <div class="sentence-modal-header">
+                    <h2>📐 Sentence Structure Cheat Sheet</h2>
+                    <button class="sentence-close" onclick="closeSentenceStructure()">&times;</button>
+                </div>
+                <div id="sentence-content"></div>
+            </div>
+        </div>
+
+        <!-- Floating Sentence Structure Button -->
+        <button class="btn-sentence-structure" onclick="openSentenceStructure()" title="Sentence Structure (Ctrl+S)">
+            📐
+        </button>
+
+        <!-- Floating Verbs Button -->
+        <button class="btn-verbs" onclick="openVerbs()" title="Verbs Reference (Ctrl+V)">
+            🔤
+        </button>
+
+        <!-- Verbs Modal -->
+        <div id="verbs-modal" class="verbs-modal">
+            <div class="verbs-modal-content">
+                <div class="verbs-modal-header">
+                    <h2>🔤 Verbs Reference</h2>
+                    <button class="verbs-close" onclick="closeVerbs()">&times;</button>
+                </div>
+                <div class="verbs-content">
+                    <div class="verbs-placeholder">
+                        <h3>Verbs Reference Coming Soon!</h3>
+                        <p>This section will contain comprehensive verb conjugations and examples.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- Close content-wrapper -->
+    </div> <!-- Close main-area -->
+
+    <script src="../js/common/common.js"></script>
+    <script src="../js/vocabulary/vocabulary.js"></script>
+    <script src="../js/vocabulary/vocabulary-ui.js"></script>
+    <script src="../js/grammar/sentence-structure.js"></script>
+    <script src="../js/grammar/sentence-structure-ui.js"></script>
+    <script src="../js/writing/writing-tips.js?v=2"></script>
+    <script src="../js/writing/sample-answers.js?v=3"></script>
+
+    <!-- Mobile sidebar backdrop -->
+    <div id="sidebar-backdrop" onclick="toggleSidebar()"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1999;">
+    </div>
+
+    <script src="../js/writing/questions-exam-sim.js"></script>
+    <script src="../js/writing/exam-sim.js"></script>
+    <script>
+        // Toggle sidebar function for mobile
+        function toggleSidebar() {
+            const sidebar = document.getElementById('task-sidebar');
+            const backdrop = document.getElementById('sidebar-backdrop');
+
+            if (sidebar.classList.contains('collapsed')) {
+                sidebar.classList.remove('collapsed');
+                backdrop.style.display = 'none';
+            } else {
+                sidebar.classList.add('collapsed');
+                backdrop.style.display = 'block';
+            }
+        }
+    </script>
+    <script src="../js/grammar/verbs-data.js"></script>
+    <script src="../js/grammar/verbs.js"></script>
+    <script src="../js/grammar/verbs-ui.js"></script>
+    <script src="../js/common/ai-service.js"></script>
+
+</body>
+
+</html>

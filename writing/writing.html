@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writing Practice - Dutch A2</title>
+    <link rel="stylesheet" href="../css/common/style.css">
+    <link rel="stylesheet" href="../css/common/navigation.css">
+    <link rel="stylesheet" href="../css/vocabulary/vocabulary.css">
+    <link rel="stylesheet" href="../css/grammar/sentence-structure.css">
+    <link rel="stylesheet" href="../css/grammar/verbs.css">
+</head>
+
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-home">
+                <span class="nav-home-icon">🏠</span>
+                <span>Home</span>
+            </a>
+            <div class="nav-page-title">✍️ Writing Practice</div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="grid">
+            <a href="exam-sim.html" class="card">
+                <div class="card-icon">📧</div>
+                <h2 class="card-title">Writing Tasks</h2>
+                <p class="card-text">12 exam tasks: short messages (40-50 words) & long messages (80-90 words) with
+                    Dutch/English toggle.</p>
+                <span class="btn-secondary mt-md">Start Writing</span>
+            </a>
+
+            <a href="forms-sim.html" class="card">
+                <div class="card-icon">📝</div>
+                <h2 class="card-title">Form Filling</h2>
+                <p class="card-text">8 official Dutch forms: subscriptions, registrations, and applications with
+                    bilingual support.</p>
+                <span class="btn-secondary mt-md">Open Forms</span>
+            </a>
+
+            <a href="../grammar/grammar-lab.html" class="card">
+                <div class="card-icon">✍️</div>
+                <h2 class="card-title">Grammar Lab</h2>
+                <p class="card-text">100 interactive grammar questions with drag-and-drop blocks and comprehensive
+                    verb library.</p>
+                <span class="btn-primary mt-md">Open Lab</span>
+            </a>
+
+            <a href="../grammar/grammar-practice.html" class="card">
+                <div class="card-icon">📚</div>
+                <h2 class="card-title">Grammar Practice</h2>
+                <p class="card-text">100+ sentence completion exercises: simple sentences, modal verbs, conjunctions,
+                    and more.</p>
+                <span class="btn-secondary mt-md">Start Practice</span>
+            </a>
+
+            <!-- Promoted V2 to Standard -->
+            <a href="writing-templates-v2.html" class="card">
+                <div class="card-icon">📋</div>
+                <h2 class="card-title">Writing Templates</h2>
+                <p class="card-text">Interactive templates for emails and messages with AI practice mode & smart
+                    feedback.</p>
+                <span class="btn-primary mt-md">View Templates</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Sentence Structure Modal -->
+    <div id="sentence-modal" class="modal">
+        <div id="sentence-modal-content">
+            <div class="sentence-modal-header">
+                <h2>📐 Sentence Structure</h2>
+                <button class="sentence-close" onclick="closeSentenceStructure()">&times;</button>
+            </div>
+            <div id="sentence-content"></div>
+        </div>
+    </div>
+
+    <!-- Floating Sentence Structure Button -->
+    <button class="btn-sentence-structure" onclick="openSentenceStructure()" title="Sentence Structure (Ctrl+S)">
+        📐
+    </button>
+
+    <!-- Floating Verbs Button -->
+    <button class="btn-verbs" onclick="openVerbs()" title="Verbs Reference (Ctrl+V)">
+        🔤
+    </button>
+
+    <!-- Verbs Modal -->
+    <div id="verbs-modal" class="verbs-modal">
+        <div class="verbs-modal-content">
+            <div class="verbs-modal-header">
+                <h2>🔤 Verbs Reference</h2>
+                <button class="verbs-close" onclick="closeVerbs()">&times;</button>
+            </div>
+            <div class="verbs-content">
+                <div class="verbs-placeholder">
+                    <h3>Verbs Reference Coming Soon!</h3>
+                    <p>This section will contain comprehensive verb conjugations and examples.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/common/common.js"></script>
+    <script src="../js/vocabulary/vocabulary.js"></script>
+    <script src="../js/vocabulary/vocabulary-ui.js"></script>
+    <script src="../js/grammar/sentence-structure.js"></script>
+    <script src="../js/grammar/sentence-structure-ui.js"></script>
+    <script src="../js/grammar/verbs-data.js"></script>
+    <script src="../js/grammar/verbs.js"></script>
+    <script src="../js/grammar/verbs-ui.js"></script>
+</body>
+
+</html>

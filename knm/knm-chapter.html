@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KNM Chapter - Dutch A2</title>
+    <link rel="stylesheet" href="../css/common/style.css">
+    <link rel="stylesheet" href="../css/common/navigation.css">
+    <link rel="stylesheet" href="../css/common/breadcrumb.css">
+    <link rel="stylesheet" href="../css/knm/knm.css">
+</head>
+
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-home">
+                <span class="nav-home-icon">🏠</span>
+                <span>Home</span>
+            </a>
+            <div class="nav-page-title" id="nav-title">🏛️ KNM Practice</div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb-nav">
+        <a href="knm.html">
+            <span class="breadcrumb-arrow">←</span>
+            Back to KNM Hub
+        </a>
+    </div>
+
+    <div class="container" style="max-width: 100%; padding: 0;">
+        <!-- Top Bar -->
+        <div class="top-bar"
+            style="background: white; padding: 15px 30px; border-bottom: 2px solid #e0e0e0; display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <h2 id="chapter-title" style="margin: 0; color: var(--primary);">Loading...</h2>
+            </div>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <div class="score-badge" id="score-badge"
+                    style="background: #e3f2fd; padding: 8px 16px; border-radius: 20px; font-weight: 600; color: var(--primary);">
+                    Score: <span id="score-display">0/0</span>
+                </div>
+                <div class="timer" id="timer"
+                    style="font-family: monospace; font-size: 1.1rem; font-weight: bold; color: var(--primary); background: #f0f7ff; padding: 8px 12px; border-radius: 4px;">
+                    ⏱️ 00:00</div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="chapter-container">
+            <!-- Content Area -->
+            <div class="chapter-main">
+                <!-- Tab Navigation -->
+                <div class="tab-container">
+                    <button class="tab-btn active" data-tab="study" onclick="switchTab('study')">📚 Study</button>
+                    <button class="tab-btn" data-tab="practice" onclick="switchTab('practice')">✍️ Practice</button>
+                </div>
+
+                <!-- Study Tab -->
+                <div id="study-tab" class="tab-content active">
+                    <div id="study-content">
+                        <p style="color: #666; font-style: italic;">Loading study materials...</p>
+                    </div>
+                </div>
+
+                <!-- Practice Tab -->
+                <div id="practice-tab" class="tab-content">
+                    <div id="practice-content">
+                        <div id="questions-container">
+                            <!-- Questions will be rendered here -->
+                        </div>
+
+                        <div class="knm-actions">
+                            <button class="btn-knm btn-check-answers" onclick="checkAnswers()">Check Answers</button>
+                            <button class="btn-knm btn-next-chapter" onclick="nextChapter()">Next Chapter →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/knm/knm-questions.js"></script>
+    <script src="../js/knm/knm.js"></script>
+</body>
+
+</html>
