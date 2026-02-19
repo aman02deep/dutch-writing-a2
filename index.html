@@ -5,147 +5,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dutch A2 Practice Hub</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/vocabulary.css">
-    <link rel="stylesheet" href="css/sentence-structure.css">
-    <link rel="stylesheet" href="css/verbs.css">
+    <link rel="stylesheet" href="css/common/style.css">
+    <link rel="stylesheet" href="css/common/navigation.css">
 </head>
 
 <body>
+
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <div class="nav-container">
+            <a href="index.html" class="nav-home">
+                <span class="nav-home-icon">🏠</span>
+                <span>Home</span>
+            </a>
+            <div class="nav-page-title">Dutch A2 Exam Prep</div>
+        </div>
+    </nav>
+
     <div class="container">
-        <div class="header-hero">
-            <h1 class="hero-title">🇳🇱 Dutch A2 Practice Hub</h1>
-            <p class="hero-subtitle">Complete Preparation Suite for the Inburgering Exam</p>
-        </div>
+        <header class="main-header">
+            <h1>Dutch A2 Exam Preparation</h1>
+            <p>Master Writing, Grammar, Reading, Vocabulary & KNM</p>
+        </header>
 
-
-        <div class="grid main-grid">
-            <a href="writing.html" class="card main-card">
-                <div style="font-size:2.5rem; margin-bottom: 10px;">✍️</div>
-                <h2 class="card-title">Writing Practice</h2>
-                <p class="card-text">
-                    Email tasks, form filling, and grammar exercises.
-                </p>
-                <ul class="card-list">
-                    <li>23 Writing Tasks</li>
-                    <li>8 Official Forms</li>
-                    <li>100+ Grammar Questions</li>
-                </ul>
-                <span class="btn-primary mt-auto text-sm">Start Practice →</span>
+        <div class="grid dashboard-grid">
+            <!-- Writing Section -->
+            <a href="writing/writing.html" class="card dashboard-card">
+                <div class="card-icon">✍️</div>
+                <h2>Schrijven (Writing)</h2>
+                <p>Practice writing emails, forms, and short texts.</p>
             </a>
 
-            <a href="reading-hub.html" class="card main-card">
-                <div style="font-size:2.5rem; margin-bottom: 10px;">📖</div>
-                <h2 class="card-title">Reading Practice</h2>
-                <p class="card-text">
-                    Authentic texts with comprehension exercises.
-                </p>
-                <ul class="card-list">
-                    <li>10 Official Exams (100 texts)</li>
-                    <li>Bookmark Feature</li>
-                    <li>Timer & Tracking</li>
-                </ul>
-                <span class="btn-secondary mt-auto text-sm">Start Practice →</span>
+            <!-- Grammar Section -->
+            <a href="grammar/grammar.html" class="card dashboard-card">
+                <div class="card-icon">📚</div>
+                <h2>Grammatica (Grammar)</h2>
+                <p>Master Dutch grammar rules, verbs, and sentence structure.</p>
             </a>
 
-            <a href="knm.html" class="card main-card">
-                <div style="font-size:2.5rem; margin-bottom: 10px;">🏛️</div>
-                <h2 class="card-title">KNM Practice</h2>
-                <p class="card-text">
-                    Knowledge of Dutch Society with practice questions.
-                </p>
-                <ul class="card-list">
-                    <li>8 Essential Topics</li>
-                    <li>Practice Questions</li>
-                    <li>Progress Tracking</li>
-                </ul>
-                <span class="btn-primary mt-auto text-sm">Start Practice →</span>
+            <!-- Reading Section -->
+            <a href="reading/reading-hub.html" class="card dashboard-card">
+                <div class="card-icon">📖</div>
+                <h2>Lezen (Reading)</h2>
+                <p>Improve reading comprehension with texts and questions.</p>
             </a>
 
-            <a href="grammar.html" class="card main-card">
-                <div style="font-size:2.5rem; margin-bottom: 10px;">📚</div>
-                <h2 class="card-title">Grammar Hub</h2>
-                <p class="card-text">
-                    Complete grammar reference and learning resources.
-                </p>
-                <ul class="card-list">
-                    <li>67 Verb Conjugations</li>
-                    <li>Sentence Structure</li>
-                    <li>40+ Prepositions</li>
-                </ul>
-                <span class="btn-secondary mt-auto text-sm">Explore Grammar →</span>
+            <!-- KNM Section -->
+            <a href="knm/knm.html" class="card dashboard-card">
+                <div class="card-icon">🇳🇱</div>
+                <h2>KNM (Society)</h2>
+                <p>Learn about Dutch society, history, and culture.</p>
             </a>
-        </div>
 
-        <!-- New Progressive Dutch Builder Section -->
-        <div class="audio-section-container">
-            <h2 class="audio-section-title">🎧 Audio Learning</h2>
-            <a href="progressive-dutch.html" class="audio-card">
-                <div class="audio-card-content">
-                    <div class="audio-icon">🎧</div>
-                    <div class="audio-text">
-                        <h2 class="audio-title">Progressive Dutch Builder</h2>
-                        <p class="audio-description">
-                            Build sentences step-by-step using proven methodology. No memorization required!
-                        </p>
-                        <ul class="audio-features">
-                            <li>✓ 10 Progressive Lessons</li>
-                            <li>✓ 100+ Audio Exercises</li>
-                            <li>✓ Text-to-Speech Practice</li>
-                            <li>✓ Progress Tracking</li>
-                        </ul>
-                    </div>
-                    <span class="audio-btn">Start Learning →</span>
-                </div>
+            <!-- Vocabulary Section -->
+            <a href="vocabulary/vocabulary.html" class="card dashboard-card">
+                <div class="card-icon">🗣️</div>
+                <h2>Woordenschat (Vocabulary)</h2>
+                <p>Build your vocabulary with progressive lessons.</p>
             </a>
         </div>
     </div>
 
-    <!-- Sentence Structure Modal -->
-    <div id="sentence-modal" class="modal">
-        <div id="sentence-modal-content">
-            <div class="sentence-modal-header">
-                <h2>📐 Sentence Structure</h2>
-                <button class="sentence-close" onclick="closeSentenceStructure()">&times;</button>
-            </div>
-            <div id="sentence-content"></div>
-        </div>
-    </div>
-
-    <!-- Floating Sentence Structure Button -->
-    <button class="btn-sentence-structure" onclick="openSentenceStructure()" title="Sentence Structure (Ctrl+S)">
-        📐
-    </button>
-
-    <!-- Floating Verbs Button -->
-    <button class="btn-verbs" onclick="openVerbs()" title="Verbs Reference (Ctrl+V)">
-        🔤
-    </button>
-
-    <!-- Verbs Modal -->
-    <div id="verbs-modal" class="verbs-modal">
-        <div class="verbs-modal-content">
-            <div class="verbs-modal-header">
-                <h2>🔤 Verbs Reference</h2>
-                <button class="verbs-close" onclick="closeVerbs()">&times;</button>
-            </div>
-            <div class="verbs-content">
-                <div class="verbs-placeholder">
-                    <h3>Verbs Reference Coming Soon!</h3>
-                    <p>This section will contain comprehensive verb conjugations and examples.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="js/common.js"></script>
-    <script src="js/vocabulary.js"></script>
-    <script src="js/vocabulary-ui.js"></script>
-    <script src="js/sentence-structure.js"></script>
-    <script src="js/sentence-structure-ui.js"></script>
-    <script src="js/verbs-data.js"></script>
-    <script src="js/verbs.js"></script>
-    <script src="js/verbs-ui.js"></script>
+    <script src="js/common/common.js"></script>
 </body>
 
-</html> 
+</html>

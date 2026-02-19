@@ -1,0 +1,884 @@
+/* Vocabulary System Styles */
+
+/* Floating Vocabulary Button */
+.vocab-float-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #0052cc 0%, #0066ff 100%);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.8rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 82, 204, 0.4);
+    z-index: 1000;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vocab-float-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 82, 204, 0.6);
+}
+
+/* Vocabulary Modal */
+.vocab-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 2000;
+    justify-content: flex-end;
+}
+
+.vocab-modal.active {
+    display: flex;
+}
+
+.vocab-modal-content {
+    background: white;
+    width: 500px;
+    max-width: 90vw;
+    height: 100vh;
+    overflow: hidden;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+.vocab-modal-header {
+    padding: 20px 25px;
+    background: linear-gradient(135deg, #0052cc 0%, #0066ff 100%);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.vocab-modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.vocab-close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: 0.2s;
+}
+
+.vocab-close-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.vocab-search {
+    padding: 15px 25px;
+    border-bottom: 1px solid #eee;
+}
+
+.vocab-search input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.vocab-search input:focus {
+    outline: none;
+    border-color: #0052cc;
+}
+
+.vocab-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 25px;
+}
+
+.vocab-item {
+    padding: 15px;
+    margin-bottom: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #0052cc;
+}
+
+.vocab-item.hidden {
+    display: none;
+}
+
+.vocab-dutch {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #0052cc;
+    margin-bottom: 5px;
+}
+
+.vocab-english {
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.vocab-example {
+    font-style: italic;
+    color: #888;
+    font-size: 0.9rem;
+    padding-top: 8px;
+    border-top: 1px solid #ddd;
+}
+
+/* Inline Vocabulary Tooltips */
+.vocab-word {
+    position: relative;
+    cursor: help;
+    border-bottom: 2px dotted #0052cc;
+    color: #0052cc;
+    font-weight: 600;
+}
+
+.vocab-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1a1a1a;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    z-index: 100;
+    margin-bottom: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.vocab-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #1a1a1a;
+}
+
+.vocab-word:hover .vocab-tooltip {
+    opacity: 1;
+}
+
+.vocab-tooltip-en {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.vocab-tooltip-ex {
+    display: block;
+    font-size: 0.75rem;
+    opacity: 0.8;
+    font-style: italic;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN - MEDIA QUERIES
+   ======================================== */
+
+/* Mobile Breakpoint (< 768px) */
+@media (max-width: 767px) {
+
+    /* Hide floating button on mobile to prevent content overlap */
+    .vocab-float-btn {
+        display: none;
+    }
+
+    .vocab-modal-content {
+        width: 100%;
+        max-width: 100vw;
+    }
+
+    .vocab-modal-header {
+        padding: 15px 20px;
+    }
+
+    .vocab-modal-header h2 {
+        font-size: 1.3rem;
+    }
+
+    .vocab-search {
+        padding: 12px 20px;
+    }
+
+    .vocab-list {
+        padding: 15px 20px;
+    }
+
+    .vocab-item {
+        padding: 12px;
+    }
+
+    .vocab-dutch {
+        font-size: 1rem;
+    }
+}
+
+/* Extra small mobile (< 375px) */
+@media (max-width: 374px) {
+    .vocab-float-btn {
+        bottom: 15px;
+        right: 15px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.4rem;
+    }
+
+    .vocab-modal-header h2 {
+        font-size: 1.1rem;
+    }
+
+    .vocab-list {
+        padding: 12px 15px;
+    }
+}
+
+/* Progressive Dutch Builder Styles */
+
+/* Intro Section */
+.intro-section {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.intro-section h2 {
+    color: var(--primary);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.method-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.method-card {
+    text-align: center;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+
+.method-card:hover {
+    transform: translateY(-5px);
+}
+
+.method-icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.method-card h3 {
+    color: var(--primary);
+    font-size: 1.1rem;
+    margin: 10px 0;
+}
+
+.method-card p {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* Progress Overview */
+.progress-overview {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.progress-overview h2 {
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 30px;
+    background: #e9ecef;
+    border-radius: 15px;
+    overflow: hidden;
+    margin: 15px 0;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--primary));
+    transition: width 0.5s ease;
+    border-radius: 15px;
+}
+
+#progress-text {
+    color: #666;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+/* Lessons Grid */
+.lessons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.lesson-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--accent);
+}
+
+.lesson-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.lesson-card.completed {
+    border-left-color: #28a745;
+    background: #f8fff9;
+}
+
+.lesson-number {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.lesson-card.completed .lesson-number {
+    background: #28a745;
+}
+
+.lesson-card h3 {
+    color: var(--primary);
+    margin: 10px 0;
+    font-size: 1.3rem;
+}
+
+.lesson-card p {
+    color: #666;
+    line-height: 1.5;
+    margin: 10px 0;
+}
+
+.lesson-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.completed-badge {
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* Lesson Page */
+.lesson-header {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.back-button {
+    display: inline-block;
+    color: var(--primary);
+    text-decoration: none;
+    margin-bottom: 15px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.back-button:hover {
+    color: var(--accent);
+}
+
+.lesson-header h1 {
+    color: var(--primary);
+    margin: 10px 0;
+}
+
+.lesson-header p {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.exercise-counter {
+    display: inline-flex;
+    align-items: center;
+    background: var(--accent);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Exercise Area */
+.exercise-area {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.exercise-card {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.prompt-section {
+    margin-bottom: 30px;
+}
+
+.prompt-section label {
+    display: block;
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.english-prompt {
+    font-size: 2rem;
+    color: var(--primary);
+    font-weight: 600;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.think-section {
+    text-align: center;
+    padding: 30px 0;
+}
+
+.instruction {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.btn-large {
+    font-size: 1.2rem;
+    padding: 15px 40px;
+}
+
+/* Answer Section - Original (below exercise) */
+.answer-section {
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 2px solid #e9ecef;
+}
+
+.answer-section.hidden {
+    display: none;
+}
+
+/* Answer Section - Side Panel (two-column layout) */
+.answer-section-side {
+    height: 100%;
+}
+
+.answer-section-side.hidden {
+    display: none;
+}
+
+.answer-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    border-left: 4px solid var(--accent);
+}
+
+.dutch-answer-box {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.dutch-answer-box label {
+    display: block;
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.dutch-answer {
+    font-size: 2rem;
+    color: var(--accent);
+    font-weight: 700;
+    padding: 20px;
+    background: linear-gradient(135deg, #fff5e6 0%, #ffe6cc 100%);
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.btn-audio {
+    display: block;
+    margin: 0 auto;
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-audio:hover {
+    background: var(--accent);
+    transform: scale(1.05);
+}
+
+.explanation-box {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+.explanation-box label {
+    display: block;
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.explanation {
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.navigation-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.navigation-buttons button {
+    flex: 1;
+    max-width: 200px;
+}
+
+.navigation-buttons-bottom {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.navigation-buttons-bottom button {
+    flex: 1;
+}
+
+/* Lesson Complete */
+.lesson-complete {
+    max-width: 600px;
+    margin: 50px auto;
+}
+
+.lesson-complete.hidden {
+    display: none;
+}
+
+.complete-card {
+    background: white;
+    padding: 50px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.complete-icon {
+    font-size: 5rem;
+    margin-bottom: 20px;
+}
+
+.complete-card h2 {
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+.complete-card p {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.complete-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.complete-buttons button {
+    flex: 1;
+    max-width: 200px;
+}
+
+/* Back Link */
+.back-link {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .method-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .lessons-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .exercise-card {
+        padding: 25px;
+    }
+
+    .english-prompt {
+        font-size: 1.5rem;
+    }
+
+    .dutch-answer {
+        font-size: 1.8rem;
+    }
+
+    .navigation-buttons {
+        flex-direction: column;
+    }
+
+    .navigation-buttons button {
+        max-width: 100%;
+    }
+
+    .complete-buttons {
+        flex-direction: column;
+    }
+
+    .complete-buttons button {
+        max-width: 100%;
+    }
+
+    /* Two-column layout becomes single column on mobile */
+    .exercise-area-two-column {
+        grid-template-columns: 1fr;
+    }
+
+    .exercise-column-right {
+        min-height: auto;
+    }
+}
+
+/* Compact Lesson Header */
+.lesson-header-compact {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.lesson-header-compact h1 {
+    color: var(--primary);
+    margin: 0 0 8px 0;
+    font-size: 1.8rem;
+}
+
+.lesson-header-compact p {
+    color: #666;
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* Exercise Area - Two Column Layout */
+.exercise-area-two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.exercise-column-left,
+.exercise-column-right {
+    min-height: 400px;
+}
+
+.exercise-card-compact {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Compact Intro Section */
+.intro-section-compact {
+    background: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.intro-section-compact h3 {
+    color: var(--primary);
+    margin: 0 0 12px 0;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.method-grid-compact {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.method-item {
+    text-align: center;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Compact Progress Overview */
+.progress-overview-compact {
+    background: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.progress-bar-container-compact {
+    width: 100%;
+    height: 15px;
+    background: #e9ecef;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+/* Exercise Navigation Bar */
+.exercise-nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px;
+    flex-wrap: nowrap;
+}
+
+.btn-nav-small {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-nav-small:hover {
+    background: var(--accent);
+}
+
+.btn-nav-small:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Compact Prompt Section */
+.prompt-section-compact {
+    margin-bottom: 20px;
+}
+
+.prompt-section-compact label {
+    display: block;
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}

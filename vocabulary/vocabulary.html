@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progressive Dutch Builder</title>
+    <link rel="stylesheet" href="../css/common/style.css">
+    <link rel="stylesheet" href="../css/common/navigation.css">
+    <link rel="stylesheet" href="../css/vocabulary/vocabulary.css">
+</head>
+
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-home">
+                <span class="nav-home-icon">🏠</span>
+                <span>Home</span>
+            </a>
+            <div class="nav-page-title">🎧 Progressive Dutch Builder</div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="intro-section-compact">
+            <h3>How It Works</h3>
+            <div class="method-grid-compact">
+                <div class="method-item">🧱 Build Progressively</div>
+                <div class="method-item">🎯 No Memorization</div>
+                <div class="method-item">🔊 Audio Practice</div>
+                <div class="method-item">⏸️ Pause & Respond</div>
+            </div>
+        </div>
+
+        <div class="progress-overview-compact">
+            <div class="progress-bar-container-compact">
+                <div class="progress-bar" id="overall-progress"></div>
+            </div>
+            <p id="progress-text">0 of 10 lessons completed</p>
+        </div>
+
+        <div id="lessons-container" class="lessons-grid">
+            <!-- Lessons will be dynamically inserted here -->
+        </div>
+
+        <div class="back-link">
+            <a href="../index.html" class="btn-secondary">← Back to Dashboard</a>
+        </div>
+    </div>
+
+    <script src="../js/vocabulary/vocabulary.js"></script>
+    <script src="../js/vocabulary/vocabulary-ui.js"></script>
+    <script src="../js/vocabulary/progressive-dutch.js"></script>
+    <script>
+        // Update progress bar
+        const completedCount = completedLessons.length;
+        const totalLessons = lessons.length;
+        const progressPercent = (completedCount / totalLessons) * 100;
+
+        document.getElementById('overall-progress').style.width = progressPercent + '%';
+        document.getElementById('progress-text').textContent =
+            `${completedCount} of ${totalLessons} lessons completed`;
+    </script>
+</body>
+
+</html>

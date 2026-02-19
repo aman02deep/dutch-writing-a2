@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KNM Practice - Dutch A2</title>
+    <link rel="stylesheet" href="../css/common/style.css">
+    <link rel="stylesheet" href="../css/common/navigation.css">
+    <link rel="stylesheet" href="../css/knm/knm.css">
+    <link rel="stylesheet" href="../css/vocabulary/vocabulary.css">
+    <link rel="stylesheet" href="../css/grammar/sentence-structure.css">
+</head>
+
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-home">
+                <span class="nav-home-icon">🏠</span>
+                <span>Home</span>
+            </a>
+            <div class="nav-page-title">🏛️ KNM Practice</div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="grid knm-grid">
+            <a href="knm-chapter.html?chapter=1" class="card knm-card">
+                <div class="knm-icon">🏠</div>
+                <h2 class="knm-title">1. Wonen</h2>
+                <p class="knm-text">Housing & renting</p>
+                <div class="progress-indicator">
+                    <div class="progress-bar" id="progress-1"></div>
+                </div>
+                <span class="chapter-status" id="status-1">Not Started</span>
+            </a>
+
+            <a href="knm-chapter.html?chapter=2" class="card knm-card">
+                <div class="knm-icon">💼</div>
+                <h2 class="knm-title">2. Werk en Inkomen</h2>
+                <p class="knm-text">Work & income</p>
+                <div class="progress-indicator">
+                    <div class="progress-bar" id="progress-2"></div>
+                </div>
+                <span class="chapter-status" id="status-2">Not Started</span>
+            </a>
+
+            <a href="knm-chapter.html?chapter=3" class="card knm-card">
+                <div class="knm-icon">🤝</div>
+                <h2 class="knm-title">3. Waarden</h2>
+                <p class="knm-text">Dutch values & norms
+                </p>
+                <div class="progress-indicator">
+                    <div class="progress-bar" id="progress-3"></div>
+                </div>
+                <span class="chapter-status" id="status-3">Not Started</span>
+            </a>
+
+            <a href="knm-chapter.html?chapter=4" class="card knm-card">
+                <div class="knm-icon">🎓</div>
+                <h2 class="knm-title">4. Onderwijs</h2>
+                <p class="knm-text">Education system</p>
+                <div class="progress-indicator">
+                    <div class="progress-bar" id="progress-4"></div>
+                </div>
+                <span class="chapter-status" id="status-4">Not Started</span>
+            </a>
+
+            <a href="knm-chapter.html?chapter=5" class="card knm-card">
+                <div class="knm-icon">🏥</div>
+                <h2 class="knm-title">5. Gezondheid</h2>
+                <p class="knm-text">Healthcare system</p>
+                <div class="progress-indicator">
+                    <div class="progress-bar" id="progress-5"></div>
+                </div>
+                <span class="chapter-status" id="status-5">Not Started</span>
+            </a>
+
+            <a href="knm-chapter.html?chapter=6" class="card knm-card">
+                <div class="knm-icon">🏢</div>
+                <h2 class="knm-title">6. Instanties</h2>
+                <p class="knm-text">Government services
+                </p>
+                <div class="progress-indicator">
+                    <div class="progress-bar" id="progress-6"></div>
+                </div>
+                <span class="chapter-status" id="status-6">Not Started</span>
+            </a>
+
+            <a href="knm-chapter.html?chapter=7" class="card knm-card">
+                <div class="knm-icon">🗳️</div>
+                <h2 class="knm-title">7. Politiek</h2>
+                <p class="knm-text">Political system</p>
+                <div class="progress-indicator">
+                    <div class="progress-bar" id="progress-7"></div>
+                </div>
+                <span class="chapter-status" id="status-7">Not Started</span>
+            </a>
+
+            <a href="knm-chapter.html?chapter=8" class="card knm-card">
+                <div class="knm-icon">⚖️</div>
+                <h2 class="knm-title">8. Rechtsstaat</h2>
+                <p class="knm-text">Rule of law</p>
+                <div class="progress-indicator">
+                    <div class="progress-bar" id="progress-8"></div>
+                </div>
+                <span class="chapter-status" id="status-8">Not Started</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Sentence Structure Modal -->
+    <div id="sentence-modal" class="modal">
+        <div id="sentence-modal-content">
+            <div class="sentence-modal-header">
+                <h2>📐 Sentence Structure</h2>
+                <button class="sentence-close" onclick="closeSentenceStructure()">&times;</button>
+            </div>
+            <div id="sentence-content"></div>
+        </div>
+    </div>
+
+    <!-- Floating Sentence Structure Button -->
+    <button class="btn-sentence-structure" onclick="openSentenceStructure()" title="Sentence Structure (Ctrl+S)">
+        📐
+    </button>
+
+    <script src="../js/common/common.js"></script>
+    <script src="../js/vocabulary/vocabulary.js"></script>
+    <script src="../js/vocabulary/vocabulary-ui.js"></script>
+    <script src="../js/grammar/sentence-structure.js"></script>
+    <script src="../js/grammar/sentence-structure-ui.js"></script>
+    <script src="../js/knm/knm-hub.js"></script>
+</body>
+
+</html>
