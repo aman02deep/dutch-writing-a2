@@ -65,5 +65,28 @@ const verbQuizData = {
         { sentence: "Zij ___ de beslissing nemen.", answer: "zal", infinitive: "zullen", english: "She will make the decision", hint: "future tense auxiliary" },
         { sentence: "Ik ___ het niet geloven.", answer: "kan", infinitive: "kunnen", english: "I cannot believe it", hint: "modal verb 'can'" },
         { sentence: "Hij ___ de verantwoordelijkheid dragen.", answer: "moet", infinitive: "moeten", english: "He must bear the responsibility", hint: "modal verb 'must'" }
+    ],
+    a2_perfectum: [
+        // Tests auxiliary verb choice (hebben vs zijn) and past participle — critical for A2 writing exam
+        { sentence: "Ik ___ een e-mail geschreven.", answer: "heb", infinitive: "schrijven", english: "I have written an email", hint: "auxiliary: hebben (past participle: geschreven)" },
+        { sentence: "Zij ___ naar huis gegaan.", answer: "is", infinitive: "gaan", english: "She has gone home", hint: "auxiliary: zijn (movement verb)" },
+        { sentence: "Wij ___ Nederlands geleerd.", answer: "hebben", infinitive: "leren", english: "We have learned Dutch", hint: "auxiliary: hebben (past participle: geleerd)" },
+        { sentence: "Hij ___ gisteren gekomen.", answer: "is", infinitive: "komen", english: "He came yesterday", hint: "auxiliary: zijn (movement verb)" },
+        { sentence: "Ik ___ de brief gelezen.", answer: "heb", infinitive: "lezen", english: "I have read the letter", hint: "auxiliary: hebben (past participle: gelezen)" },
+        { sentence: "Zij ___ in Amsterdam gewoond.", answer: "heeft", infinitive: "wonen", english: "She has lived in Amsterdam", hint: "auxiliary: hebben (past participle: gewoond)" },
+        { sentence: "Wij ___ een cadeau gekocht.", answer: "hebben", infinitive: "kopen", english: "We have bought a gift", hint: "auxiliary: hebben (past participle: gekocht)" },
+        { sentence: "Hij ___ naar Parijs gereisd.", answer: "is", infinitive: "reizen", english: "He has traveled to Paris", hint: "auxiliary: zijn (movement verb)" },
+        { sentence: "Ik ___ de hele dag gewerkt.", answer: "heb", infinitive: "werken", english: "I have worked all day", hint: "auxiliary: hebben (past participle: gewerkt)" },
+        { sentence: "Zij ___ vroeg opgestaan.", answer: "is", infinitive: "opstaan", english: "She got up early", hint: "auxiliary: zijn (change of state)" },
+        { sentence: "Wij ___ een film gezien.", answer: "hebben", infinitive: "zien", english: "We have seen a movie", hint: "auxiliary: hebben (past participle: gezien)" },
+        { sentence: "Hij ___ ziek geworden.", answer: "is", infinitive: "worden", english: "He has become sick", hint: "auxiliary: zijn (change of state)" },
+        { sentence: "Ik ___ mijn sleutels verloren.", answer: "heb", infinitive: "verliezen", english: "I have lost my keys", hint: "auxiliary: hebben (past participle: verloren)" },
+        { sentence: "Zij ___ met de bus gereden.", answer: "is", infinitive: "rijden", english: "She has driven by bus", hint: "auxiliary: zijn (movement verb)" },
+        { sentence: "Wij ___ het probleem begrepen.", answer: "hebben", infinitive: "begrijpen", english: "We have understood the problem", hint: "auxiliary: hebben (past participle: begrepen)" },
+        { sentence: "Hij ___ een klacht gestuurd.", answer: "heeft", infinitive: "sturen", english: "He has sent a complaint", hint: "auxiliary: hebben (past participle: gestuurd)" },
+        { sentence: "Ik ___ naar de winkel gefietst.", answer: "ben", infinitive: "fietsen", english: "I have cycled to the store", hint: "auxiliary: zijn (movement verb)" },
+        { sentence: "Zij ___ de afspraak vergeten.", answer: "heeft", infinitive: "vergeten", english: "She has forgotten the appointment", hint: "auxiliary: hebben (past participle: vergeten)" },
+        { sentence: "Wij ___ de garage gehuurd.", answer: "hebben", infinitive: "huren", english: "We have rented the garage", hint: "auxiliary: hebben (past participle: gehuurd)" },
+        { sentence: "Hij ___ te laat aangekomen.", answer: "is", infinitive: "aankomen", english: "He has arrived too late", hint: "auxiliary: zijn (movement verb)" }
     ]
 };
