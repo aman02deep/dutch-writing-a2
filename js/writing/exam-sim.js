@@ -368,7 +368,7 @@ async function checkAnswer() {
                 <span class="feedback-score">Checking...</span>
             </div>
             <div class="feedback-list">
-                <div class="feedback-item">Asking Gemini to check your work... <span class="loading-dots">⏳</span></div>
+                <div class="feedback-item">Asking ${aiService.getProviderName()} to check your work... <span class="loading-dots">⏳</span></div>
             </div>
         </div>
     `;

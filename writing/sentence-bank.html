@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentence Bank - Dutch A2</title>
+    <link rel="stylesheet" href="../css/common/style.css">
+    <link rel="stylesheet" href="../css/common/navigation.css">
+    <link rel="stylesheet" href="../css/common/settings.css">
+    <link rel="stylesheet" href="../css/writing/sentence-bank.css">
+</head>
+
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-home">
+                <span class="nav-home-icon">🏠</span>
+                <span>Home</span>
+            </a>
+            <div class="nav-page-title"><a href="writing.html" class="nav-parent-link">Writing Practice</a> <span class="nav-separator">|</span> 📖 Sentence Bank</div>
+        </div>
+    </nav>
+
+    <div class="container" style="max-width: 1100px;">
+        <!-- Header with controls -->
+        <div class="sb-header">
+            <h1>📖 Sentence Bank — A2 Exam Phrases</h1>
+            <div class="sb-header-controls">
+                <select id="sb-category-filter" class="sb-category-select">
+                    <option value="all">All Categories</option>
+                </select>
+
+                <div class="sb-col-toggle-wrap">
+                    <button class="sb-col-toggle-btn" onclick="toggleColumnDropdown()" title="Show/hide columns">
+                        ⚙️ Columns
+                    </button>
+                    <div class="sb-col-dropdown" id="sb-col-dropdown"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="sb-table-wrap">
+            <table class="sb-table">
+                <thead>
+                    <tr id="sb-thead-row"></tr>
+                </thead>
+                <tbody id="sb-tbody"></tbody>
+            </table>
+        </div>
+
+        <!-- Stats -->
+        <div class="sb-stats" id="sb-stats"></div>
+    </div>
+
+    <script src="../js/common/ai-service.js"></script>
+    <script src="../js/writing/sentence-bank-data.js"></script>
+    <script src="../js/writing/sentence-bank.js"></script>
+    <script src="../js/common/settings.js"></script>
+</body>
+
+</html>

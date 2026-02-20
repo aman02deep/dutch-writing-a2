@@ -19,17 +19,9 @@
                 <span class="nav-home-icon">🏠</span>
                 <span>Home</span>
             </a>
-            <div class="nav-page-title">📝 Verb Quiz</div>
+            <div class="nav-page-title"><a href="grammar.html" class="nav-parent-link">Grammar Hub</a> <span class="nav-separator">|</span> 📝 Verb Quiz</div>
         </div>
     </nav>
-
-    <!-- Breadcrumb Navigation -->
-    <div class="breadcrumb-nav">
-        <a href="grammar.html">
-            <span class="breadcrumb-arrow">←</span>
-            Back to Grammar Hub
-        </a>
-    </div>
 
     <!-- Quiz Container -->
     <div class="quiz-container">
@@ -41,9 +33,10 @@
 
         <!-- Level Selector -->
         <div class="level-selector">
-            <button class="level-btn active" data-level="a1">A1 Level</button>
-            <button class="level-btn" data-level="a2">A2 Level</button>
-            <button class="level-btn" data-level="b1">B1 Level</button>
+            <button class="level-btn active" data-level="a1">A1 Present</button>
+            <button class="level-btn" data-level="a2">A2 Past</button>
+            <button class="level-btn" data-level="a2_perfectum">A2 Perfectum</button>
+            <button class="level-btn" data-level="b1">B1 Modals</button>
         </div>
 
         <!-- Quiz Content -->
@@ -113,7 +106,9 @@
         </div>
     </div>
 
+    <script src="../js/common/ai-service.js"></script>
     <script src="../js/grammar/verb-quiz-data.js"></script>
+    <script src="../js/grammar/quiz-engine.js"></script>
     <script src="../js/grammar/verb-quiz.js"></script>
 </body>
 

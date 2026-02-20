@@ -1,28 +1,85 @@
-/* Breadcrumb Navigation - Below Top Nav */
+/* Breadcrumb — integrated into nav-page-title as parent link */
 
-.breadcrumb-nav {
-    background: #f9f9f9;
-    border-bottom: 1px solid #e0e0e0;
-    padding: 10px 20px;
-}
-
-.breadcrumb-nav a {
-    color: var(--primary);
+/* Parent hub link inside nav title */
+.nav-parent-link {
+    color: var(--primary) !important;
     text-decoration: none;
-    font-size: 0.9rem;
     font-weight: 500;
     transition: 0.2s;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
 }
 
-.breadcrumb-nav a:hover {
-    color: var(--accent);
+.nav-parent-link:hover {
+    color: var(--accent) !important;
     text-decoration: underline;
 }
 
-.breadcrumb-arrow {
-    font-size: 0.8rem;
-    margin-right: 3px;
+/* Pipe separator between parent and page title */
+.nav-separator {
+    color: #ccc;
+    margin: 0 8px;
+    font-weight: 300;
+}
+
+/* "📖 Study First" link on quiz pages — shown after page title */
+.breadcrumb-ref-link {
+    color: #e65100 !important;
+    font-weight: 600 !important;
+    font-size: 0.85rem;
+    padding: 3px 10px;
+    border-radius: 6px;
+    background: #fff3e0;
+    text-decoration: none;
+    margin-left: 12px;
+    white-space: nowrap;
+}
+
+.breadcrumb-ref-link:hover {
+    background: #ffe0b2 !important;
+    text-decoration: none !important;
+}
+
+/* Floating "📝 Test Yourself" button on reference pages */
+.floating-quiz-link {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: linear-gradient(135deg, #0052cc, #0066ff);
+    color: white !important;
+    padding: 14px 24px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none !important;
+    box-shadow: 0 4px 16px rgba(0, 82, 204, 0.35);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.floating-quiz-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 24px rgba(0, 82, 204, 0.45);
+    color: white !important;
+    text-decoration: none !important;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .nav-separator {
+        margin: 0 4px;
+    }
+
+    .breadcrumb-ref-link {
+        display: none;
+        /* hide on small screens to save space */
+    }
+
+    .floating-quiz-link {
+        bottom: 16px;
+        right: 16px;
+        padding: 10px 18px;
+        font-size: 0.9rem;
+    }
 }

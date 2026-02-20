@@ -1,188 +1,147 @@
-# 🇳🇱 Dutch A2 Practice App - Developer Guide
+# 🇳🇱 Dutch A2 Practice App
 
-## 📌 Overview
-This is a comprehensive, local-first web application designed for Dutch A2 learners preparing for the Inburgering exam. It covers all 5 exam components:
-1.  **Writing (Schrijven)**
-2.  **Reading (Lezen)**
-3.  **Listening (Luisteren / Audio)**
-4.  **KNM (Kennis van de Nederlandse Maatschappij)**
-5.  **Grammar (Grammatica)**
+A comprehensive, local-first web application for Dutch A2 learners preparing for the **Inburgering exam**. Covers all five exam components: Writing, Reading, Grammar, KNM, and Vocabulary.
 
-The app is built with **Vanilla HTML, CSS, and JavaScript** with no build steps or external dependencies, making it extremely easy to modify and run.
+Built with **vanilla HTML, CSS, and JavaScript** — no build step or dependencies required.
 
 ---
 
 ## 📂 Project Structure
 
 ```
-c:/Learning/Dutch/app/
-├── index.html              # Main dashboard
-├── css/                    # Modular CSS files
-│   ├── style.css           # Global variables & base styles
-│   ├── navigation.css      # Header & nav components
-│   └── [module].css        # Specific module styles (reading.css, verbs.css)
-├── js/                     # Component logic & Data
-│   ├── [module].js         # UI Controllers (reading.js, verbs.js)
-│   └── questions-[mod].js  # Data files (questions-reading.js)
-└── [module].html           # Module entry points
+dutch-writing-a2/
+├── index.html                    # Main dashboard
+│
+├── writing/                      # Writing hub & tools
+│   ├── writing.html              # Writing hub
+│   ├── exam-sim.html             # Exam simulator (email writing)
+│   ├── forms-sim.html            # Dutch form filling simulator
+│   └── writing-templates-v2.html # Interactive writing templates
+│
+├── grammar/                      # Grammar hub & tools
+│   ├── grammar.html              # Grammar hub
+│   ├── grammar-lab.html          # AI grammar lab (sentence correction)
+│   ├── grammar-practice.html     # AI-assisted grammar exercises
+│   ├── grammar-verbs.html        # Dutch verb reference
+│   ├── grammar-prepositions.html # Dutch prepositions reference
+│   ├── grammar-sentences.html    # Sentence formation guide
+│   ├── verb-quiz.html            # Verb conjugation quiz
+│   └── preposition-quiz.html     # Preposition quiz
+│
+├── reading/                      # Reading hub & texts
+│   ├── reading-hub.html          # Reading hub / exam picker
+│   └── reading.html              # Reading exam page (split view)
+│
+├── knm/                          # Kennis van de Nederlandse Maatschappij
+│   ├── knm.html                  # KNM chapter overview
+│   └── knm-chapter.html          # Chapter question page
+│
+├── vocabulary/                   # Vocabulary section
+│   ├── vocabulary.html           # Lesson selector
+│   └── vocabulary-lesson.html    # Individual lesson page
+│
+├── css/                          # Modular CSS
+│   ├── common/style.css          # Global variables & base styles
+│   ├── common/navigation.css     # Shared nav/header styles
+│   └── [module]/[module].css     # Per-section styles
+│
+├── js/                           # All JavaScript
+│   ├── common/ai-service.js      # Pollinations.ai API wrapper (shared)
+│   ├── common/common.js          # Shared utilities
+│   ├── grammar/                  # Grammar scripts & data
+│   ├── writing/                  # Writing scripts
+│   ├── knm/                      # KNM data & logic
+│   └── vocabulary/               # Vocabulary scripts & lesson data
+│
+├── assets/
+│   └── audio/lesson-{n}/ex-{n}.mp3  # Pre-generated Dutch TTS audio
+│
+└── scripts/                      # Python utility scripts
+    └── generate_audio.py         # Generates audio for vocabulary exercises
 ```
 
 ---
 
-## 🛠️ Technology Stack
+## ✨ Features
 
--   **HTML5**: Semantic markup.
--   **CSS3**:
-    -   **Variables**: Defined in `style.css` for easy theming.
-    -   **Flexbox/Grid**: Used for all layouts.
-    -   **Mobile-First**: All pages are fully responsive.
--   **JavaScript (ES6+)**:
-    -   **Modular Design**: Functions are split into logic (`.js`) and data (`questions-*.js`).
-    -   **State Management**: `localStorage` is used to save all user progress.
+### ✍️ Writing
+| Tool | Description |
+|---|---|
+| **Exam Simulator** | Practice writing emails with AI feedback |
+| **Forms Simulator** | Fill in Dutch administrative forms |
+| **Writing Templates V2** | Study templates with AI-powered practice mode |
 
----
+### 📚 Grammar
+| Tool | Description |
+|---|---|
+| **Grammar Lab** | Sentence puzzles with AI checking |
+| **Grammar Practice** | Fill-in-the-blank exercises with AI "Check" button |
+| **Verb Reference** | 67 Dutch verbs with full conjugation tables |
+| **Verb Quiz** | Static fill-in-the-blank conjugation quiz |
+| **AI Verb Quiz (V2)** | Same quiz with AI-powered hints & error explanations |
+| **Prepositions** | 40+ Dutch prepositions with examples |
+| **Preposition Quiz** | Fill-in-the-blank preposition quiz |
 
-## 🎨 Design System
+### 📖 Reading
+- Split-view layout: text on the left, questions on the right
+- Multiple reading exams with scored progress tracking
+- Sidebar toggleable on mobile
 
-The app follows a consistent design language defined in `css/style.css`.
+### 🏛️ KNM
+- 8 chapters covering Dutch society, culture, history, and government
+- ~20 questions per chapter (~160 total)
+- Visual progress bars, 2-column question layout
 
-### 1. Color Palette
-Defined as CSS variables in `:root`.
-
-| Variable | Color | Hex | Usage |
-| :--- | :--- | :--- | :--- |
-| `--primary` | 🔵 Blue | `#0052cc` | Main Brand, Primary Buttons, Links |
-| `--accent` | 🔴 Red | `#d92626` | Call to Actions, "Danger" operations |
-| `--success` | � Green | `#2e7d32` | Correct answers, Success states |
-| `--warning` | 🟠 Orange | `#f57f17` | Progress bars, Partial states |
-| `--bg-gray` | 🌫️ Gray | `#f0f2f5` | Page Background |
-| `--text-color` | ⚫ Black | `#333333` | Main Text |
-
-### 2. Typography
--   **Font Family**: `'Segoe UI', system-ui, sans-serif`
--   **Scale**:
-    -   `h1`: Dashboard Hero
-    -   `h2`: Section Headers, Card Titles
-    -   `p`: Body text (optimized for readability)
-
-### 3. UI Components
-
-#### Buttons
--   `.btn-primary`: Solid Brand Blue background. Used for main actions.
--   `.btn-secondary`: White background with Border. Used for secondary actions (Cancel, Back).
--   `.btn-danger`: White background with Red Border. Used for destructive actions (Reset).
-
-#### Cards
--   `.card`: White background, rounded corners (`8px`), soft shadow (`box-shadow: 0 4px 6px`).
--   Used for: Dashboard tiles, Exam selectors, KNM chapters.
-
-#### Navigation (`css/navigation.css`)
--   `.nav-header`: Sticky top bar with shadow.
--   `.nav-home`: "Home" pill with icon and hover effect.
--   `.nav-page-title`: Centered page title.
-
-### 4. Layout Utilities
--   `.container`: Centers content with `max-width: 1400px`.
--   `.grid`: CSS Grid layout with `auto-fill` responsible for responsive card grids.
-    -   *Desktop*: 3-4 columns
-    -   *Tablet*: 2 columns
-    -   *Mobile*: 1 column
-
-### 5. Mobile Patterns
--   **Breakpoints**: `< 768px` is treated as Mobile.
--   **Sidebar Behavior**:
-    -   **Desktop**: Sidebars (Reading, Forms) are fixed/visible on the left.
-    -   **Mobile**: Sidebars are hidden off-canvas. Triggered via Hamburger Menu (`≡`).
--   **Backdrop**: `#sidebar-backdrop` overlays content when sidebar is open on mobile.
+### 🗣️ Vocabulary (Progressive Dutch Builder)
+- 10 progressive lessons with 10 exercises each
+- Audio auto-plays when the answer is revealed (pre-generated MP3, falls back to TTS)
+- No memorization method inspired by Michel Thomas
 
 ---
 
-## 🧩 Core Modules
+## 🤖 AI Integration
 
-### 1. ✍️ Writing (`writing.html`)
--   **Exam Simulation**: Tasks (Emails) with validation.
--   **Forms**: Simulates Dutch forms.
--   **Grammar Lab**: Interactive puzzles.
+All AI features use **[Pollinations.ai](https://pollinations.ai)** — **no API key required**.
 
-### 2. 📖 Reading (`reading.html`)
--   **Split View**: Text (Left) vs Questions (Right).
--   **State**: Tracks progress & bookmarks in `localStorage`.
-
-### 3. 🏛️ KNM (`knm.html`)
--   **Chapters**: 8 Topics.
--   **Tracking**: Visual progress bars per chapter.
+| Feature | File | Method |
+|---|---|---|
+| Writing feedback | `ai-service.js` | `checkText()` |
+| Grammar sentence check | `ai-service.js` | `checkSentence()` |
+| Smart grammar validation + feedback | `ai-service.js` | `smartAnalyze()` |
+| AI verb hints (V2 Quiz) | `ai-service.js` | `getVerbHint()` |
+| AI verb error explanation (V2 Quiz) | `ai-service.js` | `explainVerbError()` |
 
 ---
 
-## � Data & State Management
+## 💾 Data & State
 
-**All progress is saved locally using `localStorage` keys:**
--   `reading-progress`: Stores scores per exam `{score: 15, total: 25}`.
--   `reading-bookmarks`: Array of IDs `['text-1-1']`.
--   `knm-progress`: Completion status.
--   `verb-quiz-scores`: High scores.
+All progress is saved in **`localStorage`**:
 
----
-
-## 👨‍💻 Developer Reference (AI Context)
-
-This section is designed to help AI agents understand the codebase without reading every file.
-
-### 1. Data Schemas
-#### Reading Exam Data (`js/questions-reading.js`)
-```javascript
-const readingExams = [
-    {
-        id: "exam1", // Unique Exam ID
-        title: "Oefentoets 1",
-        texts: [
-            {
-                id: "e1-t1", // Unique Text ID
-                title: "Tekst 1: Title",
-                context: "Context paragraph...",
-                text: "Main text content...",
-                questions: [
-                    {
-                        id: "q1",
-                        question: "Question text?",
-                        options: ["Opt A", "Opt B", "Opt C"],
-                        correct: 1 // Index of correct option (0-based)
-                    }
-                ]
-            }
-        ]
-    }
-];
-```
-
-### 2. Key State Objects (`js/reading.js`)
-- `currentExamId`: String (e.g., `'exam1'`)
-- `currentTextIndex`: Integer (0-based)
-- `userAnswers`: Object `{ qIndex: optIndex }` (e.g., `{ 0: 1, 1: 0 }`)
-- `examScores`: Object `{ textIndex: { score: 2, total: 3 } }`
-
-### 3. Critical Functions
-- **`init()`**: Entry point. Checks URL params (`?exam=exam1`).
-- **`loadText(index)`**: Renders text & questions. Resets `userAnswers`.
-- **`checkAnswers()`**: Validates input, updates `examScores`, saves to `localStorage`.
-- **`toggleSidebar()`**: Handles mobile/desktop sidebar visibility (`.open` class).
+| Key | Contents |
+|---|---|
+| `reading-progress` | Score per reading exam |
+| `reading-bookmarks` | Bookmarked text IDs |
+| `knm-progress` | Chapter completion status |
+| `completedLessons` | Completed vocabulary lesson IDs |
+| `verb-quiz-scores` | High scores per level |
 
 ---
 
-### 4. 🤖 AI Integration (New!)
-The app uses **Pollinations.ai** for "Check Answer" functionality.
--   **Zero Configuration**: Works out of the box.
--   **Privacy**: Sends text to public cloud.
--   **Implementation**: `js/ai-service.js` handles the API calls.
+## 🛠️ Tech Stack
+
+- **HTML5 + CSS3 + Vanilla JS (ES6+)**
+- **CSS Variables** for consistent theming (`css/common/style.css`)
+- **No frameworks, no build step** — open `index.html` directly in a browser
+- **Python** (optional) — used for the `scripts/generate_audio.py` utility to pre-generate audio files via Pollinations.ai TTS
 
 ---
 
-## 🚀 Future Roadmap
+## 🚀 Running Locally
 
-1.  **Audio Upgrade**: Replace TTS with native audio.
-2.  **Export Data**: JSON export for backup.
-3.  **PWA Support**: Offline capability.
+Simply open `index.html` in your browser. No server needed for most features.
+
+> **Note:** Audio playback from local `assets/audio/` files may require a local HTTP server (e.g. VS Code Live Server) — browsers may block local file audio due to CORS policy. TTS fallback via Web Speech API will work without a server.
 
 ---
-*Created for the Dutch A2 Learning App Project.*
- 
+
+*Dutch A2 Exam Preparation App — Last updated February 2026.*
