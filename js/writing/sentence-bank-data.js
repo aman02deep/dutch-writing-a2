@@ -17,7 +17,11 @@ const categoryTips = {
     "Thanking": "Thank-you notes to neighbors, friends, or formal replies to helpful services.",
     "Closing (Formal)": "Every formal email needs a proper closing — 'Met vriendelijke groet' is essential.",
     "Closing (Informal)": "Casual sign-offs for messages to friends and family.",
-    "Connectors": "Glue words (daarom, helaas, ook, omdat) to link sentences and hit the word count."
+    "Connectors": "Glue words (daarom, helaas, ook, omdat) to link sentences and hit the word count.",
+    "Time & Date": "Slot these into almost any sentence — complaints need 'al X weken lang', requests need 'zo snel mogelijk', availability needs day/time fragments.",
+    "Reason Clause": "'Omdat' clauses are the most reusable fragments — one clause plugs into apologies, complaints, cancellations, and explanations.",
+    "Verb Ending": "These are the second half of 'Ik wil graag...' and 'Is het mogelijk om...' — keep these handy to complete any request or question.",
+    "Degree Words": "Single words that change the tone of any sentence — 'helaas' makes it an apology, 'heel graag' makes it enthusiastic, 'misschien' softens a request."
 };
 
 const sentenceBankData = [
@@ -127,5 +131,47 @@ const sentenceBankData = [
     { id: 79, cat: "Connectors", nl: "Omdat ik ziek ben, kan ik niet komen.", en: "Because I am sick, I cannot come." },
     { id: 80, cat: "Connectors", nl: "Ik hoop dat u mij kunt helpen.", en: "I hope you can help me." },
     { id: 81, cat: "Connectors", nl: "Verder wil ik u laten weten dat...", en: "Furthermore, I want to let you know that..." },
-    { id: 82, cat: "Connectors", nl: "Ten slotte wil ik zeggen dat...", en: "Finally, I would like to say that..." }
+    { id: 82, cat: "Connectors", nl: "Ten slotte wil ik zeggen dat...", en: "Finally, I would like to say that..." },
+
+    // ─── 14. TIME & DATE FRAGMENTS ────────────────────────────────────
+    { id: 83, cat: "Time & Date", nl: "zo snel mogelijk", en: "as soon as possible" },
+    { id: 84, cat: "Time & Date", nl: "volgende week", en: "next week" },
+    { id: 85, cat: "Time & Date", nl: "op maandag of dinsdag", en: "on Monday or Tuesday" },
+    { id: 86, cat: "Time & Date", nl: "om 10 uur 's ochtends", en: "at 10 o'clock in the morning" },
+    { id: 87, cat: "Time & Date", nl: "in de ochtend / 's middags / 's avonds", en: "in the morning / afternoon / evening" },
+    { id: 88, cat: "Time & Date", nl: "vanaf [datum]", en: "from [date] onwards" },
+    { id: 89, cat: "Time & Date", nl: "voor [datum]", en: "before [date]" },
+    { id: 90, cat: "Time & Date", nl: "al [X] weken lang", en: "for [X] weeks already" },
+
+    // ─── 15. REASON CLAUSES ───────────────────────────────────────────
+    { id: 91, cat: "Reason Clause", nl: "omdat ik ziek ben", en: "because I am sick" },
+    { id: 92, cat: "Reason Clause", nl: "omdat ik moet werken", en: "because I have to work" },
+    { id: 93, cat: "Reason Clause", nl: "omdat ik geen tijd heb", en: "because I don't have time" },
+    { id: 94, cat: "Reason Clause", nl: "omdat ik het niet wist", en: "because I didn't know" },
+    { id: 95, cat: "Reason Clause", nl: "want ik heb een afspraak", en: "because I have an appointment" },
+    { id: 96, cat: "Reason Clause", nl: "omdat mijn kind ziek is", en: "because my child is sick" },
+    { id: 97, cat: "Reason Clause", nl: "omdat het product kapot is", en: "because the product is broken" },
+    { id: 98, cat: "Reason Clause", nl: "omdat ik een nieuwe baan heb", en: "because I have a new job" },
+
+    // ─── 16. VERB ENDINGS ─────────────────────────────────────────────
+    { id: 99, cat: "Verb Ending", nl: "een afspraak maken", en: "make an appointment" },
+    { id: 100, cat: "Verb Ending", nl: "meer informatie ontvangen", en: "receive more information" },
+    { id: 101, cat: "Verb Ending", nl: "het probleem oplossen", en: "solve the problem" },
+    { id: 102, cat: "Verb Ending", nl: "mij terugbellen", en: "call me back" },
+    { id: 103, cat: "Verb Ending", nl: "een formulier invullen", en: "fill in a form" },
+    { id: 104, cat: "Verb Ending", nl: "mijn geld terugkrijgen", en: "get my money back" },
+    { id: 105, cat: "Verb Ending", nl: "inschrijven voor de cursus", en: "register for the course" },
+    { id: 106, cat: "Verb Ending", nl: "een nieuwe datum afspreken", en: "agree on a new date" },
+    { id: 107, cat: "Verb Ending", nl: "het product terugsturen", en: "send the product back" },
+    { id: 108, cat: "Verb Ending", nl: "langs komen", en: "come by / drop in" },
+
+    // ─── 17. DEGREE & SOFTENING WORDS ────────────────────────────────
+    { id: 109, cat: "Degree Words", nl: "heel graag", en: "very much / really like to" },
+    { id: 110, cat: "Degree Words", nl: "misschien", en: "maybe / perhaps" },
+    { id: 111, cat: "Degree Words", nl: "helaas", en: "unfortunately" },
+    { id: 112, cat: "Degree Words", nl: "graag", en: "gladly / I'd like to" },
+    { id: 113, cat: "Degree Words", nl: "zeker", en: "certainly / definitely" },
+    { id: 114, cat: "Degree Words", nl: "misschien kunt u...", en: "perhaps you could..." },
+    { id: 115, cat: "Degree Words", nl: "nog even", en: "just quickly / for a moment" },
+    { id: 116, cat: "Degree Words", nl: "ook nog", en: "also / as well" }
 ];
