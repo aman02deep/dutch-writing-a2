@@ -37,6 +37,14 @@ The `ai-roleplay.js` module provides a slide-out conversational UI for contextua
    ```
 3. The `AIRoleplay` class automatically detects this config and injects the orange `🗣️` FAB into the unified container.
 
+**Minimize vs Close:**
+The chat header contains two buttons:
+- **Minimize (`_`)** — Calls `toggleChat()`. Slides the panel off-screen. Preserves `this.messages` (full conversation history), so reopening the chat continues where it left off.
+- **Close (`✕`)** — Calls `closeAndClearChat()`. Slides the panel off-screen AND clears `this.messages` + empties the `#roleplay-body` DOM. The next open will fire a fresh system prompt and start a new session.
+
+**Keyboard shortcut guards:**
+The Verbs (`Ctrl+V`) and Sentence Structure (`Ctrl+S`) shortcuts are guarded to not fire when the focused element is an `<input>`, `<textarea>`, or `<select>`. This prevents accidental overlay opens while typing in the AI Chat.
+
 ## 3. Settings UI & Dynamic Injection
 The API Key configuration modal (`settings.js`) is also dynamically injected into the navigation bar (`.nav-container`).
 - Adding `<script src="../js/common/settings.js"></script>` automatically injects the **AI** settings gear icon into the nav bar.
@@ -55,7 +63,13 @@ If your new script relies on shared logic:
 - Ensure `ai-service.js` is included if you plan to make API requests to Pollinations.ai or OpenRouter.
 
 ## 6. AI Integration & API Methods
-All AI features use **[Pollinations.ai](https://pollinations.ai)** — **no API key required**.
+AI features support three providers. The active provider is selected from the **Settings gear** in the top nav. Pollinations is always the fallback.
+
+| Provider | API Key required | Key stored as |
+|---|---|---|
+| **Pollinations.ai** | No | *(none — fallback)* |
+| **Groq** | Yes | `ai-api-key-groq` |
+| **OpenRouter** | Yes | `ai-api-key-openrouter` |
 
 | Feature | File | Method |
 |---|---|---|
@@ -75,6 +89,10 @@ All progress is saved in the browser's **`localStorage`**:
 | `knm-progress` | Chapter completion status |
 | `completedLessons` | Completed vocabulary lesson IDs |
 | `verb-quiz-scores` | High scores per level |
+| `ai-provider` | Selected AI provider (`pollinations` / `groq` / `openrouter`) |
+| `ai-api-key-groq` | Groq API key (provider-specific) |
+| `ai-api-key-openrouter` | OpenRouter API key (provider-specific) |
+| `ai-roleplay-enabled` | `true`/`false` — whether AI Chat FAB is shown |
 
 ## 8. Python Audio Generation Utilities
 Two scripts pre-generate Dutch TTS audio as `.mp3` files into `assets/audio/`.
