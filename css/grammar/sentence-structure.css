@@ -134,34 +134,7 @@
 }
 
 /* Floating Button */
-.btn-sentence-structure {
-    position: fixed;
-    bottom: 100px;
-    right: 30px;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary), #0066ff);
-    color: white;
-    border: none;
-    font-size: 1.8rem;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 82, 204, 0.4);
-    z-index: 9999;
-    transition: 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.btn-sentence-structure:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 16px rgba(0, 82, 204, 0.5);
-}
-
-.btn-sentence-structure:active {
-    transform: translateY(-1px);
-}
+/* Floating Button (Now uses global .fab-item classes from style.css) */
 
 /* ========================================
    RESPONSIVE DESIGN - MEDIA QUERIES
@@ -211,14 +184,6 @@
 
 /* Extra small mobile (< 375px) */
 @media (max-width: 374px) {
-    .btn-sentence-structure {
-        bottom: 80px;
-        right: 15px;
-        width: 50px;
-        height: 50px;
-        font-size: 1.4rem;
-    }
-
     .sentence-modal-header h2 {
         font-size: 1.1rem;
     }

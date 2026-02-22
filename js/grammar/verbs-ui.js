@@ -106,13 +106,34 @@ function filterVerbs() {
     });
 }
 
+// Auto-inject the Verbs FAB button into the unified fab-container
+function createVerbsButton() {
+    // Only inject if this page has a verbs-modal
+    if (!document.getElementById('verbs-modal')) return;
+    // Don't inject if already present
+    if (document.querySelector('.fab-verbs')) return;
+
+    const fabContainer = getOrCreateFabContainer();
+    const btn = document.createElement('button');
+    btn.className = 'fab-item fab-purple fab-verbs';
+    btn.title = 'Verbs Reference (Ctrl+V)';
+    btn.innerHTML = '🔤';
+    btn.onclick = openVerbs;
+    fabContainer.appendChild(btn);
+}
+
 // Load verbs content when modal opens
 document.addEventListener('DOMContentLoaded', function () {
+    // Inject FAB button
+    createVerbsButton();
+
     // Override the openVerbs function to load content
     const originalOpenVerbs = window.openVerbs;
-    window.openVerbs = function () {
-        originalOpenVerbs();
-        loadVerbsContent();
-    };
+    if (typeof originalOpenVerbs === 'function') {
+        window.openVerbs = function () {
+            originalOpenVerbs();
+            loadVerbsContent();
+        };
+    }
 });
 

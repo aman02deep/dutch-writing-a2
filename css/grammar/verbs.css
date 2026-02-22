@@ -1,34 +1,6 @@
 /* Verbs Reference System Styles */
 
-/* Floating Verbs Button */
-.btn-verbs {
-    position: fixed;
-    bottom: 170px;
-    right: 30px;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #7b1fa2, #9c27b0);
-    color: white;
-    border: none;
-    font-size: 1.8rem;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(123, 31, 162, 0.4);
-    z-index: 9998;
-    transition: 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.btn-verbs:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 16px rgba(123, 31, 162, 0.5);
-}
-
-.btn-verbs:active {
-    transform: translateY(-1px);
-}
+/* .btn-verbs is now managed by the unified .fab-container system in style.css */
 
 /* Verbs Modal */
 .verbs-modal {
@@ -268,11 +240,6 @@
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
-
-    /* Hide floating button on mobile to prevent content overlap */
-    .btn-verbs {
-        display: none;
-    }
 
     .verbs-modal-content {
         width: 95%;

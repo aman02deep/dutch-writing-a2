@@ -1228,3 +1228,87 @@ textarea {
         opacity: 0.4;
     }
 }
+
+/* --- UNIFIED FLOATING ACTION BUTTONS (FABS) --- */
+.fab-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 15px;
+    z-index: 9999;
+}
+
+.fab-item {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    color: white;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-decoration: none;
+}
+
+.fab-item:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.fab-item:active {
+    transform: translateY(-2px) scale(0.95);
+}
+
+/* Specific Fab Colors */
+.fab-blue {
+    background: linear-gradient(135deg, var(--primary), #0066ff);
+}
+
+.fab-orange {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.fab-purple {
+    background: linear-gradient(135deg, #7b1fa2, #9c27b0);
+}
+
+/* Expanded Fab Shape (For Text + Icon) */
+.fab-item.fab-expanded {
+    width: auto;
+    border-radius: 40px;
+    padding: 0 24px;
+    gap: 8px;
+}
+
+.fab-text {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Mobile FAB Scaling */
+@media (max-width: 600px) {
+    .fab-container {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .fab-item {
+        width: 50px;
+        height: 50px;
+        font-size: 1.4rem;
+    }
+
+    .fab-item.fab-expanded {
+        padding: 0 20px;
+    }
+
+    .fab-text {
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,209 @@
+/* Roleplay Chat UI Styles */
+
+/* Sidebar Container */
+.roleplay-sidebar {
+    position: fixed;
+    top: 20px;
+    bottom: 20px;
+    right: -420px;
+    width: 360px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    z-index: 10001;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.roleplay-sidebar.open {
+    right: 20px;
+}
+
+.roleplay-sidebar.open {
+    right: 0;
+}
+
+.roleplay-header {
+    background: linear-gradient(135deg, #1e293b, #334155);
+    color: white;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #f59e0b;
+}
+
+.roleplay-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.roleplay-close {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.roleplay-close:hover {
+    opacity: 1;
+}
+
+.roleplay-body {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: #f8fafc;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.roleplay-message {
+    max-width: 85%;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+.roleplay-message.system {
+    background: #fffbeb;
+    color: #92400e;
+    border: 1px solid #fde68a;
+    font-size: 0.85rem;
+    align-self: center;
+    text-align: center;
+    width: 100%;
+    max-width: 100%;
+}
+
+.roleplay-message.assistant {
+    background: white;
+    color: #1e293b;
+    border: 1px solid #e2e8f0;
+    border-bottom-left-radius: 4px;
+    align-self: flex-start;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+}
+
+.roleplay-message.user {
+    background: #0052cc;
+    color: white;
+    border-bottom-right-radius: 4px;
+    align-self: flex-end;
+    box-shadow: 0 2px 5px rgba(0, 82, 204, 0.2);
+}
+
+.roleplay-input-area {
+    padding: 15px;
+    background: white;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+.roleplay-input-area textarea {
+    flex: 1;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 0 !important;
+    font-family: inherit;
+    font-size: 0.95rem;
+    min-height: 60px !important;
+    height: 60px !important;
+    max-height: 100px !important;
+    overflow-y: auto;
+    resize: none;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.roleplay-input-area textarea:focus {
+    border-color: #0052cc;
+}
+
+.roleplay-input-area button {
+    background: #0052cc;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.2s;
+}
+
+.roleplay-input-area button:hover {
+    background: #0041a8;
+}
+
+/* Typing Indicator Animation */
+.typing-indicator span {
+    display: inline-block;
+    animation: typing 1.4s infinite forwards;
+    width: 6px;
+    height: 6px;
+    background-color: #94a3b8;
+    border-radius: 50%;
+    margin: 0 2px;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing {
+
+    0%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: translateY(-4px);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 600px) {
+    .roleplay-sidebar {
+        width: 100%;
+        top: 0;
+        bottom: 0;
+        right: -100%;
+        border-radius: 0;
+        transition: right 0.3s ease-out;
+    }
+
+    .roleplay-sidebar.open {
+        right: 0;
+    }
+
+    .roleplay-fab-text {
+        display: none;
+    }
+
+    .roleplay-fab {
+        padding: 14px;
+        bottom: 20px;
+        right: 20px;
+    }
+}

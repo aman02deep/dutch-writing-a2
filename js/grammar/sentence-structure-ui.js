@@ -62,6 +62,22 @@ function loadSentenceStructure() {
     renderSentenceStructure();
 }
 
+// Auto-inject the Sentence Structure FAB button into the unified fab-container
+function createSentenceStructureButton() {
+    // Only inject if this page has the sentence-modal (avoids injecting on inline pages)
+    if (!document.getElementById('sentence-modal')) return;
+    // Don't inject if already present (e.g. grammar-lab which hardcoded it)
+    if (document.querySelector('.fab-sentence-structure')) return;
+
+    const fabContainer = getOrCreateFabContainer();
+    const btn = document.createElement('button');
+    btn.className = 'fab-item fab-blue fab-sentence-structure';
+    btn.title = 'Sentence Structure (Ctrl+S)';
+    btn.innerHTML = '📐';
+    btn.onclick = openSentenceStructure;
+    fabContainer.appendChild(btn);
+}
+
 // Close modal when clicking outside
 window.addEventListener('click', (e) => {
     const modal = document.getElementById('sentence-modal');
@@ -77,4 +93,11 @@ document.addEventListener('keydown', (e) => {
         openSentenceStructure();
     }
 });
- 
+
+// Initialise on load
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', createSentenceStructureButton);
+} else {
+    createSentenceStructureButton();
+}
+

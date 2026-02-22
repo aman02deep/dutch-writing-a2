@@ -181,3 +181,18 @@ function renderFeedbackCard(title, scoreText, contentHTML, type = 'ai') {
         </div>
     `;
 }
+
+/**
+ * Ensures a single Floating Action Button container exists on the page.
+ * Returns the container element.
+ */
+function getOrCreateFabContainer() {
+    let container = document.getElementById('fab-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'fab-container';
+        container.className = 'fab-container';
+        document.body.appendChild(container);
+    }
+    return container;
+}

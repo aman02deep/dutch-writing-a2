@@ -66,116 +66,16 @@ dutch-writing-a2/
 
 ---
 
-## 🔊 Audio Generation
+## 🛠️ Technical Reference & Developer Guide
 
-Two scripts pre-generate Dutch TTS audio as `.mp3` files into `assets/audio/`.
+If you are extending the application, modifying shared components, running the Python data generation scripts, or contributing as an AI Assistant, please read the **[`AI_REFERENCE.md`](./AI_REFERENCE.md)** file first.
 
-### Scripts
-
-| Script | Source data | Output |
-|---|---|---|
-| `generate_audio.py` | `js/vocabulary/progressive-dutch.js` | `assets/audio/lesson-{n}/ex-{n}.mp3` |
-| `generate_sentence_bank_audio.py` | `js/writing/sentence-bank-data.js` | `assets/audio/sentence-bank/{id}.mp3` |
-| `generate_elevenlabs_sentence_bank.py` | `js/writing/sentence-bank-data.js` | `assets/audio/sentence-bank/{id}.mp3` (High Quality) |
-
-### How to run
-
-```bash
-# From the project root
-
-# Option 1: Basic Audio (Google TTS)
-pip install gtts
-python scripts/generate_sentence_bank_audio.py
-
-# Option 2: High Quality Audio (ElevenLabs)
-# Edit scripts/generate_elevenlabs_sentence_bank.py to add your API_KEY first
-python scripts/generate_elevenlabs_sentence_bank.py
-```
-
-Basic scripts (`generate_audio` and `generate_sentence_bank_audio`) **skip files that already exist and are > 2 KB**, so they are safe to re-run to fill in gaps. The ElevenLabs script overwrites files to upgrade them.
-
-### ⚠️ Known Issues & Solutions
-
-**Problem 1 — Pollinations `openai-audio` model: 429 rate limits + 404 errors**
-- The original `generate_audio.py` used `https://text.pollinations.ai/?model=openai-audio`.
-- The free anonymous tier allows **only 1 queued request per IP** → persistent `429` errors.
-- After several retries the API also returns `404: Model not found: openai-audio` (endpoint is being deprecated for authenticated users, intermittently broken for anon users too).
-- **Fix:** `generate_sentence_bank_audio.py` was rewritten to use **`gTTS`** (Google Text-to-Speech via `pip install gtts`) which is reliable, fast, and supports Dutch (`lang="nl"`).
-
-**Problem 2 — Windows console `UnicodeEncodeError` on `✓` / `✗` characters**
-- Python prints through Windows `cp1252` codec which doesn't support those characters.
-- **Fix:** Use plain ASCII (`OK:` / `FAILED:`) in print statements, or add `sys.stdout.reconfigure(line_buffering=True)` at the top of the script.
-
-**Problem 3 — Exponential backoff growing too large**
-- Uncapped `delay *= 2` causes waits of 80s, 160s, etc. per entry, making the script appear frozen.
-- **Fix:** Cap the delay: `delay = min(delay * 2, 15)`.
-
-> **Recommendation:** Always prefer `gTTS` for new audio generation scripts. Pollinations is used for AI text features (chat/feedback) but should not be used for TTS.
-
----
-
-## ✨ Features
-
-### ✍️ Writing
-| Tool | Description |
-|---|---|
-| **Exam Simulator** | Practice writing emails with AI feedback |
-| **Forms Simulator** | Fill in Dutch administrative forms |
-| **Writing Templates V2** | Study templates with AI-powered practice mode |
-
-### 📚 Grammar
-| Tool | Description |
-|---|---|
-| **Grammar Lab** | Sentence puzzles with AI checking |
-| **Grammar Practice** | Fill-in-the-blank exercises with AI "Check" button |
-| **Verb Reference** | 67 Dutch verbs with full conjugation tables |
-| **Verb Quiz** | Static fill-in-the-blank conjugation quiz |
-| **AI Verb Quiz (V2)** | Same quiz with AI-powered hints & error explanations |
-| **Prepositions** | 40+ Dutch prepositions with examples |
-| **Preposition Quiz** | Fill-in-the-blank preposition quiz |
-
-### 📖 Reading
-- Split-view layout: text on the left, questions on the right
-- Multiple reading exams with scored progress tracking
-- Sidebar toggleable on mobile
-
-### 🏛️ KNM
-- 8 chapters covering Dutch society, culture, history, and government
-- ~20 questions per chapter (~160 total)
-- Visual progress bars, 2-column question layout
-
-### 🗣️ Vocabulary (Progressive Dutch Builder)
-- 10 progressive lessons with 10 exercises each
-- Audio auto-plays when the answer is revealed (pre-generated MP3, falls back to TTS)
-- No memorization method inspired by Michel Thomas
-
----
-
-## 🤖 AI Integration
-
-All AI features use **[Pollinations.ai](https://pollinations.ai)** — **no API key required**.
-
-| Feature | File | Method |
-|---|---|---|
-| Writing feedback | `ai-service.js` | `checkText()` |
-| Grammar sentence check | `ai-service.js` | `checkSentence()` |
-| Smart grammar validation + feedback | `ai-service.js` | `smartAnalyze()` |
-| AI verb hints (V2 Quiz) | `ai-service.js` | `getVerbHint()` |
-| AI verb error explanation (V2 Quiz) | `ai-service.js` | `explainVerbError()` |
-
----
-
-## 💾 Data & State
-
-All progress is saved in **`localStorage`**:
-
-| Key | Contents |
-|---|---|
-| `reading-progress` | Score per reading exam |
-| `reading-bookmarks` | Bookmarked text IDs |
-| `knm-progress` | Chapter completion status |
-| `completedLessons` | Completed vocabulary lesson IDs |
-| `verb-quiz-scores` | High scores per level |
+The `AI_REFERENCE.md` covers:
+- The Unified Floating Action Button (FAB) system architecture.
+- AI Chat UI configuration and injection.
+- The `localStorage` schema and data state mapping.
+- Specific JS methods for AI integration (Pollinations.ai).
+- How to run the Python `assets/audio` generation scripts and bypass rate limits.
 
 ---
 
@@ -191,8 +91,6 @@ All progress is saved in **`localStorage`**:
 ## 🚀 Running Locally
 
 Simply open `index.html` in your browser. No server needed for most features.
-
-> **Note:** Audio playback from local `assets/audio/` files may require a local HTTP server (e.g. VS Code Live Server) — browsers may block local file audio due to CORS policy. TTS fallback via Web Speech API will work without a server.
 
 ---
 
