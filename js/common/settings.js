@@ -147,7 +147,6 @@ function handleBackdropClick(event) {
 // ── Load & Save ──────────────────────────────────────────────────────────────
 function loadSettingsIntoModal() {
     let savedProvider = localStorage.getItem('ai-provider') || 'pollinations';
-    const savedKey = localStorage.getItem('ai-api-key') || '';
     const roleplayEnabled = localStorage.getItem('ai-roleplay-enabled') !== 'false'; // Default true
 
     // If the saved provider no longer exists (e.g. was removed), reset to default
@@ -160,8 +159,7 @@ function loadSettingsIntoModal() {
     const radio = document.querySelector(`input[name="ai-provider"][value="${savedProvider}"]`);
     if (radio) radio.checked = true;
 
-    // Show key field if applicable
-    document.getElementById('api-key-input').value = savedKey;
+    // Show key field if applicable and populate with specific key
     onProviderChange(savedProvider);
 
     // Set Roleplay toggle
@@ -178,9 +176,10 @@ function saveSettings() {
     localStorage.setItem('ai-roleplay-enabled', roleplayToggle && roleplayToggle.checked ? 'true' : 'false');
 
     if (apiKey) {
-        localStorage.setItem('ai-api-key', apiKey);
+        localStorage.setItem(`ai-api-key-${selectedProvider}`, apiKey);
+        localStorage.setItem('ai-api-key', apiKey); // Legacy fallback
     } else {
-        localStorage.removeItem('ai-api-key');
+        localStorage.removeItem(`ai-api-key-${selectedProvider}`);
     }
 
     updateSettingsIndicator();
@@ -192,6 +191,8 @@ function saveSettings() {
 }
 
 function clearSettings() {
+    const selectedProvider = document.querySelector('input[name="ai-provider"]:checked')?.value || 'pollinations';
+    localStorage.removeItem(`ai-api-key-${selectedProvider}`);
     localStorage.removeItem('ai-api-key');
     localStorage.setItem('ai-provider', 'pollinations');
     document.getElementById('api-key-input').value = '';
@@ -215,6 +216,10 @@ function onProviderChange(providerKey) {
     document.querySelectorAll('.provider-option').forEach(el => {
         el.classList.toggle('selected', el.dataset.provider === providerKey);
     });
+
+    // Load specific key for this provider into the input field
+    const specificKey = localStorage.getItem(`ai-api-key-${providerKey}`) || localStorage.getItem('ai-api-key') || '';
+    document.getElementById('api-key-input').value = specificKey;
 
     const balanceSection = document.getElementById('balance-section');
 
@@ -244,7 +249,7 @@ function onProviderChange(providerKey) {
 
 async function checkOpenRouterBalance() {
     const apiKey = document.getElementById('api-key-input').value.trim()
-        || localStorage.getItem('ai-api-key') || '';
+        || localStorage.getItem('ai-api-key-openrouter') || localStorage.getItem('ai-api-key') || '';
     const resultEl = document.getElementById('balance-result');
     const btn = document.getElementById('balance-btn');
 
@@ -310,7 +315,7 @@ function updateSettingsIndicator() {
     const btn = document.querySelector('.btn-settings');
     if (!btn) return;
     const provider = localStorage.getItem('ai-provider') || 'pollinations';
-    const hasKey = !!localStorage.getItem('ai-api-key');
+    const hasKey = !!(localStorage.getItem(`ai-api-key-${provider}`) || localStorage.getItem('ai-api-key'));
     const label = btn.querySelector('.btn-settings-label');
     if (label) {
         if (hasKey && provider !== 'pollinations') {

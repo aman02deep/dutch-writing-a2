@@ -89,6 +89,9 @@ window.addEventListener('click', (e) => {
 // Keyboard shortcut: Ctrl/Cmd + S for Sentence Structure
 document.addEventListener('keydown', (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+        // Ignore if user is typing in an input or textarea
+        if (['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName)) return;
+
         e.preventDefault();
         openSentenceStructure();
     }
