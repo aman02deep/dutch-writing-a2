@@ -101,12 +101,12 @@ function injectSettingsModal() {
                     </div>
                 </div>
 
-                <!-- Experimental Features -->
+                <!-- AI Features -->
                 <div class="settings-section" style="margin-top: 20px;">
-                    <label class="settings-label">Experimental Features</label>
+                    <label class="settings-label">AI Features</label>
                     <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; padding: 12px; background: #fff5e6; border-left: 4px solid #f59e0b; border-radius: 8px;">
                         <input type="checkbox" id="ai-roleplay-toggle" style="width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer;">
-                        <label for="ai-roleplay-toggle" style="font-weight: 500; color: #333; cursor: pointer; user-select: none;">Enable Contextual AI Roleplay (Beta)</label>
+                        <label for="ai-roleplay-toggle" style="font-weight: 500; color: #333; cursor: pointer; user-select: none;">Enable Contextual AI Roleplay</label>
                     </div>
                 </div>
 
@@ -148,7 +148,7 @@ function handleBackdropClick(event) {
 function loadSettingsIntoModal() {
     let savedProvider = localStorage.getItem('ai-provider') || 'pollinations';
     const savedKey = localStorage.getItem('ai-api-key') || '';
-    const roleplayEnabled = localStorage.getItem('ai-roleplay-enabled') === 'true';
+    const roleplayEnabled = localStorage.getItem('ai-roleplay-enabled') !== 'false'; // Default true
 
     // If the saved provider no longer exists (e.g. was removed), reset to default
     if (!PROVIDERS[savedProvider]) {

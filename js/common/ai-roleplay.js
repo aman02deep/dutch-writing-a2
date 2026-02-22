@@ -5,7 +5,7 @@
 
 class AIRoleplay {
     constructor() {
-        this.isEnabled = localStorage.getItem('ai-roleplay-enabled') === 'true';
+        this.isEnabled = localStorage.getItem('ai-roleplay-enabled') !== 'false'; // Default true
         this.isOpen = false;
         // The conversation history sent to the API
         this.messages = [];
@@ -20,7 +20,7 @@ class AIRoleplay {
 
         // Listen for global settings changes
         window.addEventListener('ai-settings-changed', () => {
-            this.isEnabled = localStorage.getItem('ai-roleplay-enabled') === 'true';
+            this.isEnabled = localStorage.getItem('ai-roleplay-enabled') !== 'false'; // Default true
             this.destroy(); // Clean up existing UI if any
             if (this.isEnabled) {
                 this.init();
