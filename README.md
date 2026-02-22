@@ -46,7 +46,9 @@ dutch-writing-a2/
 │   └── [module]/[module].css     # Per-section styles
 │
 ├── js/                           # All JavaScript
-│   ├── common/ai-service.js      # Pollinations.ai API wrapper (shared)
+│   ├── common/ai-service.js      # AI provider wrapper (Groq, OpenRouter, Pollinations fallback)
+│   ├── common/ai-roleplay.js     # AI Chat UI (slide-out sidebar, Minimize/Close session control)
+│   ├── common/settings.js        # AI Settings gear — provider & per-provider API key management
 │   ├── common/common.js          # Shared utilities
 │   ├── grammar/                  # Grammar scripts & data
 │   ├── writing/                  # Writing scripts
@@ -95,3 +97,16 @@ Simply open `index.html` in your browser. No server needed for most features.
 ---
 
 *Dutch A2 Exam Preparation App — Last updated February 2026.*
+
+---
+
+## 🔄 Recent Changes
+
+| Area | Change |
+|---|---|
+| AI Chat | Added **Minimize** (`_`) button — hides chat, preserves history |
+| AI Chat | **Close** (`✕`) now ends session and clears history entirely |
+| AI Settings | API keys are now stored **per provider** (e.g. `ai-api-key-groq`) |
+| Shortcuts | `Ctrl+V` / `Ctrl+S` guards added — don't fire inside text inputs |
+| `vocabulary-lesson.html` | Removed broken `buttons.css` / `toast.css` link tags (files don't exist) |
+| `exam-sim.html` | Added missing `vocabulary.js` dependency for the vocabulary FAB |
