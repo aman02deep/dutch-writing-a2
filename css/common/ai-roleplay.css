@@ -41,7 +41,15 @@
     font-weight: 600;
 }
 
-.roleplay-close {
+.roleplay-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+}
+
+.roleplay-close,
+.roleplay-minimize {
     background: transparent;
     border: none;
     color: white;
@@ -50,8 +58,16 @@
     opacity: 0.8;
 }
 
-.roleplay-close:hover {
+.roleplay-close:hover,
+.roleplay-minimize:hover {
     opacity: 1;
+}
+
+.roleplay-minimize {
+    font-size: 1.4rem;
+    line-height: 0.5;
+    /* visually centers the underscore with the middle of the X */
+    transform: translateY(-10px);
 }
 
 .roleplay-body {

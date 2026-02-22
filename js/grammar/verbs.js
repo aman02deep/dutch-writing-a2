@@ -29,6 +29,9 @@ document.addEventListener('click', function (event) {
 // Keyboard shortcut: Ctrl+V to open verbs
 document.addEventListener('keydown', function (event) {
     if (event.ctrlKey && event.key === 'v') {
+        // Ignore if user is typing in an input or textarea (like the AI chat)
+        if (['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target.tagName)) return;
+
         event.preventDefault();
         openVerbs();
     }

@@ -18,7 +18,7 @@ var aiService = {
     // ── Chat Array Support (Memory) ──────────────────────────────────────────
     async fetchAIChat(messages) {
         const provider = localStorage.getItem('ai-provider') || 'pollinations';
-        const apiKey = localStorage.getItem('ai-api-key');
+        const apiKey = localStorage.getItem(`ai-api-key-${provider}`) || localStorage.getItem('ai-api-key');
 
         try {
             if (provider === 'groq' && apiKey) {
@@ -38,7 +38,7 @@ var aiService = {
     // ── Provide-aware prompt fetch (Legacy/Simple) ──────────────────────────
     async fetchAI(prompt) {
         const provider = localStorage.getItem('ai-provider') || 'pollinations';
-        const apiKey = localStorage.getItem('ai-api-key');
+        const apiKey = localStorage.getItem(`ai-api-key-${provider}`) || localStorage.getItem('ai-api-key');
 
         try {
             if (provider === 'groq' && apiKey) {

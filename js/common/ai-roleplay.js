@@ -75,7 +75,10 @@ class AIRoleplay {
         sidebar.innerHTML = `
             <div class="roleplay-header">
                 <h3>🗣️ AI Roleplay</h3>
-                <button class="roleplay-close" id="roleplay-close">✕</button>
+                <div class="roleplay-actions">
+                    <button class="roleplay-minimize" id="roleplay-minimize" title="Minimize">_</button>
+                    <button class="roleplay-close" id="roleplay-close" title="End Chat">✕</button>
+                </div>
             </div>
             <div class="roleplay-body" id="roleplay-body">
             </div>
@@ -88,7 +91,8 @@ class AIRoleplay {
     }
 
     setupListeners() {
-        document.getElementById('roleplay-close').addEventListener('click', () => this.toggleChat());
+        document.getElementById('roleplay-minimize').addEventListener('click', () => this.toggleChat());
+        document.getElementById('roleplay-close').addEventListener('click', () => this.closeAndClearChat());
 
         const input = document.getElementById('roleplay-input');
         const sendBtn = document.getElementById('roleplay-send');
@@ -128,6 +132,18 @@ class AIRoleplay {
         } else {
             sidebar.classList.remove('open');
         }
+    }
+
+    closeAndClearChat() {
+        // Hide the chat
+        const sidebar = document.getElementById('roleplay-sidebar');
+        if (sidebar) sidebar.classList.remove('open');
+        this.isOpen = false;
+
+        // Clear the history array and DOM completely
+        this.messages = [];
+        const body = document.getElementById('roleplay-body');
+        if (body) body.innerHTML = '';
     }
 
     appendMessage(role, content) {
