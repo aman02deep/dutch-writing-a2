@@ -2,10 +2,11 @@
  * Sentence Bank — interactive table with practice & AI check.
  */
 
-const SB_COLUMNS = ['index', 'nl', 'en', 'practice', 'check'];
+const SB_COLUMNS = ['index', 'nl', 'audio', 'en', 'practice', 'check'];
 const SB_COL_LABELS = {
     index: '#',
     nl: 'Dutch',
+    audio: '🔊',
     en: 'English',
     practice: 'Practice',
     check: 'AI Check'
@@ -179,6 +180,18 @@ function renderTable() {
         // Dutch
         addCell(tr, 'nl', sentence.nl);
 
+        // Audio
+        const audioTd = document.createElement('td');
+        audioTd.className = 'sb-col-audio';
+        audioTd.style.display = sbVisibleCols.includes('audio') ? '' : 'none';
+        const audioBtn = document.createElement('button');
+        audioBtn.className = 'sb-audio-btn';
+        audioBtn.title = 'Play pronunciation';
+        audioBtn.innerHTML = '🔊';
+        audioBtn.addEventListener('click', () => playSentenceAudio(sentence.id, audioBtn));
+        audioTd.appendChild(audioBtn);
+        tr.appendChild(audioTd);
+
         // English
         addCell(tr, 'en', sentence.en);
 
@@ -297,6 +310,37 @@ Reply in English. Be encouraging.`;
         btn.disabled = false;
         btn.innerHTML = '🔍';
     }
+}
+
+// ── Audio Playback ────────────────────────────────────────────────────────────
+let _currentAudio = null;
+
+function playSentenceAudio(id, btn) {
+    // Stop any currently playing audio
+    if (_currentAudio) {
+        _currentAudio.pause();
+        _currentAudio.currentTime = 0;
+        document.querySelectorAll('.sb-audio-btn.playing').forEach(b => b.classList.remove('playing'));
+    }
+
+    const src = `../assets/audio/sentence-bank/${id}.mp3`;
+    _currentAudio = new Audio(src);
+
+    _currentAudio.addEventListener('canplaythrough', () => {
+        btn.classList.add('playing');
+        _currentAudio.play();
+    });
+
+    _currentAudio.addEventListener('ended', () => {
+        btn.classList.remove('playing');
+    });
+
+    _currentAudio.addEventListener('error', () => {
+        btn.title = 'Audio not available yet';
+        btn.classList.add('sb-audio-unavailable');
+    });
+
+    _currentAudio.load();
 }
 
 // ── Stats ────────────────────────────────────────────────────────────────────
