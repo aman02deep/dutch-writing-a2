@@ -317,32 +317,102 @@
         font-size: 0.85rem;
     }
 
-    /* Stack table on very small screens */
+    /* Stack table on very small screens (Card Layout) */
     @media (max-width: 600px) {
+        .verbs-table {
+            background: transparent;
+            box-shadow: none;
+        }
+
         .verbs-table thead {
             display: none;
         }
 
         .verbs-table tbody tr {
-            display: block;
-            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 10px;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .verbs-table tbody tr:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
         }
 
         .verbs-table td {
-            display: block;
-            text-align: left;
-            padding: 8px 0;
+            display: flex;
+            padding: 0;
             border: none;
+            align-items: center;
+            /* Vertically align text and label */
+            font-size: 1rem;
+            width: 100%;
         }
 
+        /* The ::before pseudo-element acts as the label on mobile */
         .verbs-table td::before {
             content: attr(data-label);
             font-weight: 600;
+            color: #666;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            width: 110px;
+            flex-shrink: 0;
+        }
+
+        /* Specific styles for card elements */
+        .verb-infinitive {
+            font-size: 1.4rem;
+            color: #7b1fa2;
+            padding-bottom: 12px !important;
+            margin-bottom: 4px;
+            border-bottom: 2px solid #f0f0f0;
+            justify-content: flex-start;
+            /* Keep title aligned left */
+        }
+
+        .verb-infinitive::before {
+            display: none;
+            /* Hide label for the main title */
+        }
+
+        .verb-imperfectum,
+        .verb-perfectum,
+        .verb-english {
+            margin-bottom: 4px;
+        }
+
+        .auxiliary-hint {
             display: inline-block;
-            width: 120px;
+            margin-left: 8px;
+            font-size: 0.85rem;
+        }
+
+        .verb-example {
+            flex-direction: column;
+            align-items: flex-start !important;
+            gap: 8px;
+            background: #f8f9ff;
+            padding: 16px !important;
+            border-radius: 8px;
+            margin-top: 12px;
+            border-left: 3px solid #7b1fa2;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .verb-example::before {
+            display: block;
+            margin-bottom: 4px;
+            width: auto;
             color: #7b1fa2;
         }
     }

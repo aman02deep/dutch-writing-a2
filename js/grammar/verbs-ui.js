@@ -57,14 +57,14 @@ function showVerbLevel(level) {
     verbs.forEach(verb => {
         tableHTML += `
             <tr class="verb-row" data-verb="${verb.infinitive}" data-english="${verb.english}">
-                <td class="verb-infinitive"><strong>${verb.infinitive}</strong></td>
-                <td class="verb-imperfectum">${verb.imperfectum}</td>
-                <td class="verb-perfectum">
+                <td class="verb-infinitive" data-label="Infinitive"><strong>${verb.infinitive}</strong></td>
+                <td class="verb-imperfectum" data-label="Imperfectum">${verb.imperfectum}</td>
+                <td class="verb-perfectum" data-label="Perfectum">
                     ${verb.perfectum}
                     <span class="auxiliary-hint">(${verb.auxiliary})</span>
                 </td>
-                <td class="verb-english">${verb.english}</td>
-                <td class="verb-example">
+                <td class="verb-english" data-label="English">${verb.english}</td>
+                <td class="verb-example" data-label="Example">
                     <div class="example-present">${verb.example}</div>
                     ${verb.examplePast ? `<div class="example-past">${verb.examplePast}</div>` : ''}
                 </td>
@@ -115,4 +115,4 @@ document.addEventListener('DOMContentLoaded', function () {
         loadVerbsContent();
     };
 });
- 
+

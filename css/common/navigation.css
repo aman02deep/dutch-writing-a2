@@ -87,14 +87,15 @@
     }
 
     .nav-container {
-        grid-template-columns: auto 1fr;
-        gap: 12px;
-        padding: 0 15px;
+        grid-template-columns: auto 1fr auto;
+        /* 3 cols: Home | Title | Settings */
+        gap: 10px;
+        padding: 0 12px;
     }
 
     .nav-home {
         font-size: 0.9rem;
-        padding: 6px 12px;
+        padding: 6px 10px;
     }
 
     .nav-home-icon {
