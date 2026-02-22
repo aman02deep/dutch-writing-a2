@@ -56,9 +56,12 @@ dutch-writing-a2/
 ├── assets/
 │   └── audio/lesson-{n}/ex-{n}.mp3  # Pre-generated Dutch TTS audio
 │
-└── scripts/                      # Python utility scripts
-    ├── generate_audio.py             # Generates audio for vocabulary exercises (lessons)
-    └── generate_sentence_bank_audio.py  # Generates audio for sentence bank (116 phrases)
+├── scripts/                      # Python utility scripts
+│   ├── generate_audio.py             # Generates audio for vocabulary exercises (lessons)
+│   ├── generate_sentence_bank_audio.py  # Generates audio for sentence bank
+│   ├── generate_elevenlabs_sentence_bank.py # High-quality ElevenLabs TTS replacement
+│   ├── add_settings_css.py           # Auto-injects settings CSS link
+│   └── add_seo_tags.py               # Auto-injects SEO & copyright meta tags
 ```
 
 ---
