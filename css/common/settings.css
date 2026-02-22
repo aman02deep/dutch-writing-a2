@@ -419,3 +419,14 @@
         text-align: center;
     }
 }
+
+/* Extra small mobile (iPhone SE) */
+@media (max-width: 374px) {
+    .btn-settings-label {
+        display: none;
+    }
+
+    .btn-settings {
+        padding: 6px;
+    }
+}

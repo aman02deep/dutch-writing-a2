@@ -64,6 +64,26 @@ function loadTask(index) {
 
     document.getElementById('progress-text').textContent = `Task ${index + 1} of ${examTasks.length}`;
 
+    // Configure Contextual AI Roleplay for this writing task
+    window.roleplayConfig = {
+        buttonText: "Discuss this task",
+        scenarioDesc: `Exam Task: ${task.title}`,
+        systemPrompt: `You are a helpful Dutch exam tutor helping a student prepare for the Inburgeringsexamen A2 Writing exam.
+The student is currently practicing this specific writing task:
+Context: ${task.contextEN}
+Instructions: ${task.tasksEN.join(', ')}
+
+Engage the student in a short conversation in Dutch (CEFR level A2) about this topic to help them brainstorm ideas before they write their official answer. 
+Ask one short question at a time. Keep your responses short (1-2 sentences max).
+If the student makes a language mistake, gently correct them in English in parentheses at the end of your Dutch reply.`
+    };
+
+    // Re-initialize AI Roleplay if already loaded
+    if (window.aiRoleplay && typeof window.aiRoleplay.init === 'function') {
+        window.aiRoleplay.destroy(); // Clean up old chat & FAB
+        window.aiRoleplay.init();    // Inject new context
+    }
+
     // Update instructions list (Dutch)
     const instructionsListNL = document.getElementById('task-instructions-list-nl');
     instructionsListNL.innerHTML = '';

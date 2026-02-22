@@ -4,12 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="copyright" content="© 2026 Dutch A2 Practice App. All rights reserved.">
+    <meta name="description"
+        content="Interactive Dutch A2 practice exercises for the Inburgeringsexamen. Master grammar, vocabulary, KNM, and writing with AI-powered feedback.">
+    <meta name="keywords"
+        content="Dutch A2, Inburgeringsexamen, NT2, learn Dutch, Dutch grammar, Dutch vocabulary, KNM practice">
+    <meta property="og:title" content="Grammar Lab - Dutch A2">
+    <meta property="og:description"
+        content="Interactive Dutch A2 practice exercises for the Inburgeringsexamen. Master grammar, vocabulary, KNM, and writing with AI-powered feedback.">
+    <meta property="og:type" content="website">
     <title>Grammar Lab - Dutch A2</title>
     <link rel="stylesheet" href="../css/common/style.css">
     <link rel="stylesheet" href="../css/grammar/grammar-lab.css">
     <link rel="stylesheet" href="../css/common/navigation.css">
     <link rel="stylesheet" href="../css/common/settings.css">
     <link rel="stylesheet" href="../css/common/breadcrumb.css">
+    <link rel="stylesheet" href="../css/common/ai-roleplay.css">
     <link rel="stylesheet" href="../css/vocabulary/vocabulary.css">
     <link rel="stylesheet" href="../css/grammar/sentence-structure.css">
 </head>
@@ -22,7 +32,9 @@
                 <span class="nav-home-icon">🏠</span>
                 <span>Home</span>
             </a>
-            <div class="nav-page-title"><a href="../writing/writing.html" class="nav-parent-link">Writing Practice</a> <span class="nav-separator">|</span> 🧪 Grammar Lab</div>
+            <div class="nav-page-title"><a href="../writing/writing.html" class="nav-parent-link">Writing Practice</a>
+                <span class="nav-separator">|</span> 🧪 Grammar Lab
+            </div>
         </div>
     </nav>
 
@@ -93,6 +105,17 @@
 
     <script src="../js/grammar/questions-set-1.js"></script>
     <script src="../js/common/ai-service.js"></script>
+
+    <script>
+        // AI Tutor Configuration
+        window.roleplayConfig = {
+            systemPrompt: "You are a helpful Dutch grammar tutor. The student is practicing various Dutch sentences and word order. Answer their questions clearly in Dutch or English, explain grammar rules simply, and provide examples when asked.",
+            scenarioDesc: "Ask me any questions about Dutch grammar, word order, or specific sentences!",
+            buttonText: "Grammar Chat"
+        };
+    </script>
+
+    <script src="../js/common/ai-roleplay.js"></script>
 
     <script>
 
@@ -299,16 +322,15 @@
         </div>
     </div>
 
-    <!-- Floating Sentence Structure Button -->
-    <button class="btn-sentence-structure" onclick="openSentenceStructure()" title="Sentence Structure (Ctrl+S)">
-        📐
-    </button>
+    <!-- Floating Action Button Container (auto-populated by JS) -->
+    <div id="fab-container" class="fab-container"></div>
 
     <script src="../js/common/common.js"></script>
-    <script src="../js/vocabulary/vocabulary.js"></script>
-    <script src="../js/vocabulary/vocabulary-ui.js"></script>
     <script src="../js/grammar/sentence-structure.js"></script>
     <script src="../js/grammar/sentence-structure-ui.js"></script>
+    <script src="../js/vocabulary/vocabulary.js"></script>
+    <script src="../js/vocabulary/vocabulary-ui.js"></script>
+    <script src="../js/common/ai-roleplay.js"></script>
     <script src="../js/common/settings.js"></script>
 </body>
 

@@ -101,6 +101,15 @@ function injectSettingsModal() {
                     </div>
                 </div>
 
+                <!-- Experimental Features -->
+                <div class="settings-section" style="margin-top: 20px;">
+                    <label class="settings-label">Experimental Features</label>
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; padding: 12px; background: #fff5e6; border-left: 4px solid #f59e0b; border-radius: 8px;">
+                        <input type="checkbox" id="ai-roleplay-toggle" style="width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer;">
+                        <label for="ai-roleplay-toggle" style="font-weight: 500; color: #333; cursor: pointer; user-select: none;">Enable Contextual AI Roleplay (Beta)</label>
+                    </div>
+                </div>
+
                 <!-- Privacy Notice -->
                 <div class="settings-privacy">
                     🔒 <strong>Your privacy is protected.</strong> API keys are stored only in <em>this browser</em> using localStorage. They are never sent to our servers, logged, or shared with anyone.
@@ -139,6 +148,7 @@ function handleBackdropClick(event) {
 function loadSettingsIntoModal() {
     let savedProvider = localStorage.getItem('ai-provider') || 'pollinations';
     const savedKey = localStorage.getItem('ai-api-key') || '';
+    const roleplayEnabled = localStorage.getItem('ai-roleplay-enabled') === 'true';
 
     // If the saved provider no longer exists (e.g. was removed), reset to default
     if (!PROVIDERS[savedProvider]) {
@@ -153,13 +163,19 @@ function loadSettingsIntoModal() {
     // Show key field if applicable
     document.getElementById('api-key-input').value = savedKey;
     onProviderChange(savedProvider);
+
+    // Set Roleplay toggle
+    const roleplayToggle = document.getElementById('ai-roleplay-toggle');
+    if (roleplayToggle) roleplayToggle.checked = roleplayEnabled;
 }
 
 function saveSettings() {
     const selectedProvider = document.querySelector('input[name="ai-provider"]:checked')?.value || 'pollinations';
     const apiKey = document.getElementById('api-key-input').value.trim();
+    const roleplayToggle = document.getElementById('ai-roleplay-toggle');
 
     localStorage.setItem('ai-provider', selectedProvider);
+    localStorage.setItem('ai-roleplay-enabled', roleplayToggle && roleplayToggle.checked ? 'true' : 'false');
 
     if (apiKey) {
         localStorage.setItem('ai-api-key', apiKey);
@@ -170,6 +186,9 @@ function saveSettings() {
     updateSettingsIndicator();
     closeSettings();
     showToast(selectedProvider === 'pollinations' ? '✅ Using Pollinations.ai (default)' : `✅ ${PROVIDERS[selectedProvider].name} key saved!`);
+
+    // Broadcast event so UI can update dynamically without refresh
+    window.dispatchEvent(new CustomEvent('ai-settings-changed'));
 }
 
 function clearSettings() {
@@ -181,6 +200,9 @@ function clearSettings() {
     onProviderChange('pollinations');
     updateSettingsIndicator();
     showToast('🗑 API key cleared. Using Pollinations.ai.');
+
+    // Broadcast event so UI can update dynamically without refresh
+    window.dispatchEvent(new CustomEvent('ai-settings-changed'));
 }
 
 // ── UI Helpers ───────────────────────────────────────────────────────────────

@@ -217,6 +217,23 @@ function initializeLesson(lessonId) {
     document.getElementById('lesson-description').textContent = lesson.description;
     document.getElementById('exercise-counter').textContent = `Exercise 1 of ${lesson.exercises.length}`;
 
+    // Configure Contextual AI Roleplay for this specific lesson
+    window.roleplayConfig = {
+        buttonText: "Practice this lesson",
+        scenarioDesc: `Practice using: ${lesson.title} (${lesson.description})`,
+        systemPrompt: `You are a helpful and encouraging Dutch language tutor. 
+The student is currently learning: ${lesson.title} (${lesson.description}).
+Start a simple, engaging conversation in Dutch (CEFR level A2 maximum) that forces the student to practice this specific concept.
+Keep your responses short (1-2 sentences max). 
+If the student makes a grammar or vocabulary mistake, provide a quick, friendly correction in English in parentheses at the end of your Dutch reply.`
+    };
+
+    // If the AIRoleplay module is loaded, re-initialize it to pick up the new config
+    if (window.aiRoleplay && typeof window.aiRoleplay.init === 'function') {
+        window.aiRoleplay.destroy();
+        window.aiRoleplay.init();
+    }
+
     displayExercise();
 }
 

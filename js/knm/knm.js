@@ -25,6 +25,22 @@ function loadChapter() {
     // Update title
     document.getElementById('chapter-title').textContent = chapter.title;
 
+    // Configure Contextual AI Roleplay for this KNM chapter
+    window.roleplayConfig = {
+        buttonText: "Discuss this topic",
+        scenarioDesc: `Discussing: ${chapter.title}`,
+        systemPrompt: `You are a helpful and encouraging Dutch local helping a newcomer understand Dutch culture and society (KNM).
+The student is currently learning about: ${chapter.title}.
+Engage the student in a short, practical conversation in Dutch (CEFR level A2 maximum) about this specific topic. Ask simple questions to test their cultural knowledge.
+Keep your responses short (1-2 sentences max). 
+If the student makes a language mistake or misunderstands a cultural concept, gently correct them in English in parentheses at the end of your Dutch reply.`
+    };
+
+    // Re-initialize AI Roleplay if already loaded
+    if (window.aiRoleplay && typeof window.aiRoleplay.init === 'function') {
+        window.aiRoleplay.init();
+    }
+
     // Load study content
     loadStudyContent(chapter);
 
@@ -225,4 +241,4 @@ function startTimer() {
 }
 
 window.onload = init;
- 
+

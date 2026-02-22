@@ -4,15 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="copyright" content="© 2026 Dutch A2 Practice App. All rights reserved.">
+    <meta name="description"
+        content="Interactive Dutch A2 practice exercises for the Inburgeringsexamen. Master grammar, vocabulary, KNM, and writing with AI-powered feedback.">
+    <meta name="keywords"
+        content="Dutch A2, Inburgeringsexamen, NT2, learn Dutch, Dutch grammar, Dutch vocabulary, KNM practice">
+    <meta property="og:title" content="Exam Simulator - Dutch A2">
+    <meta property="og:description"
+        content="Interactive Dutch A2 practice exercises for the Inburgeringsexamen. Master grammar, vocabulary, KNM, and writing with AI-powered feedback.">
+    <meta property="og:type" content="website">
     <title>Exam Simulator - Dutch A2</title>
     <link rel="stylesheet" href="../css/common/style.css">
     <link rel="stylesheet" href="../css/writing/exam-sim.css">
     <link rel="stylesheet" href="../css/common/navigation.css">
     <link rel="stylesheet" href="../css/common/settings.css">
     <link rel="stylesheet" href="../css/common/breadcrumb.css">
-    <link rel="stylesheet" href="../css/vocabulary/vocabulary.css">
     <link rel="stylesheet" href="../css/grammar/sentence-structure.css">
     <link rel="stylesheet" href="../css/grammar/verbs.css">
+    <link rel="stylesheet" href="../css/vocabulary/vocabulary.css">
+    <link rel="stylesheet" href="../css/common/ai-roleplay.css">
 </head>
 
 <body>
@@ -23,7 +33,8 @@
                 <span class="nav-home-icon">🏠</span>
                 <span>Home</span>
             </a>
-            <div class="nav-page-title"><a href="writing.html" class="nav-parent-link">Writing Practice</a> <span class="nav-separator">|</span> 📝 Writing Tasks</div>
+            <div class="nav-page-title"><a href="writing.html" class="nav-parent-link">Writing Practice</a> <span
+                    class="nav-separator">|</span> 📝 Writing Tasks</div>
         </div>
     </nav>
 
@@ -147,15 +158,6 @@
             </div>
         </div>
 
-        <!-- Floating Sentence Structure Button -->
-        <button class="btn-sentence-structure" onclick="openSentenceStructure()" title="Sentence Structure (Ctrl+S)">
-            📐
-        </button>
-
-        <!-- Floating Verbs Button -->
-        <button class="btn-verbs" onclick="openVerbs()" title="Verbs Reference (Ctrl+V)">
-            🔤
-        </button>
 
         <!-- Verbs Modal -->
         <div id="verbs-modal" class="verbs-modal">
@@ -164,22 +166,18 @@
                     <h2>🔤 Verbs Reference</h2>
                     <button class="verbs-close" onclick="closeVerbs()">&times;</button>
                 </div>
-                <div class="verbs-content">
-                    <div class="verbs-placeholder">
-                        <h3>Verbs Reference Coming Soon!</h3>
-                        <p>This section will contain comprehensive verb conjugations and examples.</p>
-                    </div>
-                </div>
+                <div class="verbs-content"></div>
             </div>
         </div>
     </div> <!-- Close content-wrapper -->
     </div> <!-- Close main-area -->
 
     <script src="../js/common/common.js"></script>
-    <script src="../js/vocabulary/vocabulary.js"></script>
-    <script src="../js/vocabulary/vocabulary-ui.js"></script>
     <script src="../js/grammar/sentence-structure.js"></script>
     <script src="../js/grammar/sentence-structure-ui.js"></script>
+    <script src="../js/grammar/verbs-data.js"></script>
+    <script src="../js/grammar/verbs.js"></script>
+    <script src="../js/grammar/verbs-ui.js"></script>
     <script src="../js/writing/writing-tips.js?v=2"></script>
     <script src="../js/writing/sample-answers.js?v=3"></script>
 
@@ -205,11 +203,9 @@
             }
         }
     </script>
-    <script src="../js/grammar/verbs-data.js"></script>
-    <script src="../js/grammar/verbs.js"></script>
-    <script src="../js/grammar/verbs-ui.js"></script>
+    <script src="../js/vocabulary/vocabulary-ui.js"></script>
     <script src="../js/common/ai-service.js"></script>
-
+    <script src="../js/common/ai-roleplay.js"></script>
     <script src="../js/common/settings.js"></script>
 </body>
 

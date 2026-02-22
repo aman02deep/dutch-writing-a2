@@ -3,7 +3,7 @@
  * Supports: Pollinations.ai (free, no key), Groq, OpenRouter.
  * API keys are stored in localStorage - private to the user's browser only.
  */
-const aiService = {
+var aiService = {
     isAvailable: true,
 
     // Returns the display name of the currently active AI provider
@@ -15,7 +15,27 @@ const aiService = {
         };
         return map[localStorage.getItem('ai-provider')] || 'Pollinations.ai';
     },
-    // ── Provider-aware fetch ─────────────────────────────────────────────────
+    // ── Chat Array Support (Memory) ──────────────────────────────────────────
+    async fetchAIChat(messages) {
+        const provider = localStorage.getItem('ai-provider') || 'pollinations';
+        const apiKey = localStorage.getItem('ai-api-key');
+
+        try {
+            if (provider === 'groq' && apiKey) {
+                return await this.fetchOpenAICompatChat(messages, apiKey, 'groq');
+            } else if (provider === 'openrouter' && apiKey) {
+                return await this.fetchOpenAICompatChat(messages, apiKey, 'openrouter');
+            } else {
+                // Pollinations fallback
+                return await this.fetchPollinations(messages);
+            }
+        } catch (e) {
+            console.warn(`[aiService] Provider "${provider}" chat failed, falling back to Pollinations.ai`, e);
+            return await this.fetchPollinations(messages);
+        }
+    },
+
+    // ── Provide-aware prompt fetch (Legacy/Simple) ──────────────────────────
     async fetchAI(prompt) {
         const provider = localStorage.getItem('ai-provider') || 'pollinations';
         const apiKey = localStorage.getItem('ai-api-key');
@@ -35,12 +55,20 @@ const aiService = {
     },
 
     // ── Pollinations.ai (default, no key) ───────────────────────────────────
-    async fetchPollinations(prompt) {
-        const encodedPrompt = encodeURIComponent(prompt);
-        const url = `https://text.pollinations.ai/${encodedPrompt}?t=${Date.now()}`;
+    async fetchPollinations(promptOrMessages) {
+        const url = `https://text.pollinations.ai/`;
+
+        const messages = Array.isArray(promptOrMessages)
+            ? promptOrMessages
+            : [{ role: 'user', content: promptOrMessages }];
 
         const makeRequest = async () => {
-            const response = await fetch(url);
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ messages })
+            });
+
             if (response.status === 429) throw new Error('429');
             if (!response.ok) throw new Error(`Pollinations error: ${response.status}`);
             return response.text();
@@ -50,7 +78,7 @@ const aiService = {
     },
 
     // ── Groq / OpenRouter (OpenAI-compatible) ────────────────────────────────
-    async fetchOpenAICompat(prompt, apiKey, provider) {
+    async fetchOpenAICompatChat(messages, apiKey, provider) {
         const config = {
             groq: {
                 url: 'https://api.groq.com/openai/v1/chat/completions',
@@ -58,12 +86,8 @@ const aiService = {
             },
             openrouter: {
                 url: 'https://openrouter.ai/api/v1/chat/completions',
-                // Multiple free models — tries next if upstream is rate-limited
                 models: [
-                    'meta-llama/llama-3.3-70b-instruct:free',
-                    'google/gemma-3-12b-it:free',
-                    'mistralai/mistral-7b-instruct:free',
-                    'meta-llama/llama-3.1-8b-instruct:free'
+                    'openrouter/auto'
                 ]
             }
         };
@@ -81,7 +105,7 @@ const aiService = {
                 headers,
                 body: JSON.stringify({
                     model,
-                    messages: [{ role: 'user', content: prompt }],
+                    messages: messages, // Send full memory array
                     temperature: 0.7,
                     max_tokens: 1024
                 })
@@ -89,35 +113,38 @@ const aiService = {
 
             if (response.status === 429 || response.status === 503 ||
                 response.status === 404 || response.status >= 500) {
-                console.warn(`[aiService] ${provider} model ${model} unavailable (${response.status}), trying next...`);
+                console.warn(`[aiService] ${provider} model ${model} unavailable(${response.status}), trying next...`);
                 continue;
             }
 
             if (!response.ok) {
                 const err = await response.json().catch(() => ({}));
-                // Also retry on upstream provider errors (OpenRouter-specific)
                 if (err?.error?.code === 429) {
-                    console.warn(`[aiService] ${provider} upstream rate-limit on ${model}, trying next...`);
+                    console.warn(`[aiService] ${provider} upstream rate - limit on ${model}, trying next...`);
                     continue;
                 }
-                throw new Error(`${provider} error: ${response.status} — ${err?.error?.message || ''}`);
+                throw new Error(`${provider} error: ${response.status} — ${err?.error?.message || ''} `);
             }
 
             const data = await response.json();
             return data.choices?.[0]?.message?.content || '';
         }
 
-        // All models exhausted — throw to trigger Pollinations fallback
-        throw new Error(`${provider}: all models rate-limited. Falling back to Pollinations.`);
+        throw new Error(`${provider}: all models rate - limited.Falling back to Pollinations.`);
     },
 
-    // ── Retry helper ─────────────────────────────────────────────────────────
+    async fetchOpenAICompat(prompt, apiKey, provider) {
+        // Use the new array method under the hood for clean logic
+        return this.fetchOpenAICompatChat([{ role: 'user', content: prompt }], apiKey, provider);
+    },
+
+    // ── Utilities ───────────────────────────────────────────────────────────
     async retry(fn, retries = 3, delay = 1000) {
         try {
             return await fn();
         } catch (err) {
             if (err.message === '429' && retries > 0) {
-                console.warn(`[aiService] Rate limited. Retrying in ${delay}ms...`);
+                console.warn(`[aiService] Rate limited.Retrying in ${delay}ms...`);
                 await new Promise(resolve => setTimeout(resolve, delay));
                 return this.retry(fn, retries - 1, delay * 2);
             }
@@ -138,7 +165,7 @@ Please analyze the student's answer.
 1. Correct any grammar mistakes.
 2. Give a short, encouraging comment in English.
 3. If the text is perfect, just say "Perfect job!".
-4. Keep it concise (max 3-4 bullet points).
+4. Keep it concise(max 3 - 4 bullet points).
             `.trim();
             return await this.fetchAI(prompt);
         } catch (e) {
@@ -169,7 +196,7 @@ Answer ONLY "YES" or "NO".
     async analyzeSentence(studentText, originalDutch, englishSource) {
         try {
             const prompt = `
-Act as a helpful Dutch tutor. The student made a mistake in translating this sentence.
+Act as a helpful Dutch tutor.The student made a mistake in translating this sentence.
 English Source: "${englishSource}"
 Correct Dutch: "${originalDutch}"
 Student Wrote: "${studentText}"
@@ -179,7 +206,7 @@ Please provide:
 2. Bullet points explaining the grammar mistakes.
 3. A short encouraging comment.
 
-Keep it concise and helpful. Use markdown for bolding key words.
+Keep it concise and helpful.Use markdown for bolding key words.
             `.trim();
             return await this.fetchAI(prompt);
         } catch (e) {
@@ -192,7 +219,7 @@ Keep it concise and helpful. Use markdown for bolding key words.
         try {
             const prompt = `
 Dutch Tutor Mode.
-Target: "${originalDutch}"
+    Target: "${originalDutch}"
 Student: "${studentText}"
 Context: "${englishSource}"
 
@@ -202,20 +229,20 @@ Checks:
 3. Grammar Errors -> FAIL.
 
 Critical Rule:
-- If it is correct Dutch grammar, it is VALID (PASS).
-- IGNORE content differences (e.g. "water" vs "coffee", or adding negation).
+- If it is correct Dutch grammar, it is VALID(PASS).
+- IGNORE content differences(e.g. "water" vs "coffee", or adding negation).
 - Target is ONLY for reference.
 
 Feedback Rules:
-- FAIL (Grammar/English): Explain the error.
-- PASS (Creative): GENERATE a unique, enthusiastic comment analyzing the specific changes. Do not use a fixed template.
-- PASS (Exact Match): Praise the structure and suggest an advanced variation.
+    - FAIL(Grammar / English): Explain the error.
+- PASS(Creative): GENERATE a unique, enthusiastic comment analyzing the specific changes.Do not use a fixed template.
+- PASS(Exact Match): Praise the structure and suggest an advanced variation.
 
-Reply JSON ONLY: {"isValid":boolean,"feedback":"HTML string with <b> tags"}
-            `.trim();
+Reply JSON ONLY: { "isValid": boolean, "feedback": "HTML string with <b> tags" }
+`.trim();
 
             const response = await this.fetchAI(prompt);
-            const cleanResponse = response.replace(/```json/g, '').replace(/```/g, '').trim();
+            const cleanResponse = response.replace(/```json /g, '').replace(/```/g, '').trim();
 
             try {
                 return JSON.parse(cleanResponse);

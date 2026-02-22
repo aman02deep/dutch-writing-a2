@@ -57,14 +57,14 @@ function showVerbLevel(level) {
     verbs.forEach(verb => {
         tableHTML += `
             <tr class="verb-row" data-verb="${verb.infinitive}" data-english="${verb.english}">
-                <td class="verb-infinitive"><strong>${verb.infinitive}</strong></td>
-                <td class="verb-imperfectum">${verb.imperfectum}</td>
-                <td class="verb-perfectum">
+                <td class="verb-infinitive" data-label="Infinitive"><strong>${verb.infinitive}</strong></td>
+                <td class="verb-imperfectum" data-label="Imperfectum">${verb.imperfectum}</td>
+                <td class="verb-perfectum" data-label="Perfectum">
                     ${verb.perfectum}
                     <span class="auxiliary-hint">(${verb.auxiliary})</span>
                 </td>
-                <td class="verb-english">${verb.english}</td>
-                <td class="verb-example">
+                <td class="verb-english" data-label="English">${verb.english}</td>
+                <td class="verb-example" data-label="Example">
                     <div class="example-present">${verb.example}</div>
                     ${verb.examplePast ? `<div class="example-past">${verb.examplePast}</div>` : ''}
                 </td>
@@ -106,13 +106,34 @@ function filterVerbs() {
     });
 }
 
+// Auto-inject the Verbs FAB button into the unified fab-container
+function createVerbsButton() {
+    // Only inject if this page has a verbs-modal
+    if (!document.getElementById('verbs-modal')) return;
+    // Don't inject if already present
+    if (document.querySelector('.fab-verbs')) return;
+
+    const fabContainer = getOrCreateFabContainer();
+    const btn = document.createElement('button');
+    btn.className = 'fab-item fab-purple fab-verbs';
+    btn.title = 'Verbs Reference (Ctrl+V)';
+    btn.innerHTML = '🔤';
+    btn.onclick = openVerbs;
+    fabContainer.appendChild(btn);
+}
+
 // Load verbs content when modal opens
 document.addEventListener('DOMContentLoaded', function () {
+    // Inject FAB button
+    createVerbsButton();
+
     // Override the openVerbs function to load content
     const originalOpenVerbs = window.openVerbs;
-    window.openVerbs = function () {
-        originalOpenVerbs();
-        loadVerbsContent();
-    };
+    if (typeof originalOpenVerbs === 'function') {
+        window.openVerbs = function () {
+            originalOpenVerbs();
+            loadVerbsContent();
+        };
+    }
 });
- 
+

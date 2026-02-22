@@ -9,12 +9,14 @@ function initVocabulary() {
 
 // Create floating vocabulary button
 function createVocabButton() {
+    const fabContainer = getOrCreateFabContainer();
+
     const btn = document.createElement('button');
-    btn.className = 'vocab-float-btn';
+    btn.className = 'fab-item fab-blue vocab-float-btn';
     btn.innerHTML = '📚';
     btn.title = 'Open Vocabulary Dictionary';
     btn.onclick = toggleVocabModal;
-    document.body.appendChild(btn);
+    fabContainer.appendChild(btn);
 }
 
 // Create vocabulary modal
@@ -120,4 +122,4 @@ if (document.readyState === 'loading') {
 } else {
     initVocabulary();
 }
- 
+
