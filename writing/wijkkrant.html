@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="copyright" content="© 2026 Dutch A2 Practice App. All rights reserved.">
+    <meta name="description"
+        content="Wijkkrant writing practice for the Dutch A2 Inburgeringsexamen. Practice the neighbourhood newspaper task with format rules, model answers, and format checking.">
+    <meta name="keywords"
+        content="Dutch A2, wijkkrant, Inburgeringsexamen, NT2, learn Dutch, neighbourhood newspaper, buurtblad">
+    <meta property="og:title" content="Wijkkrant Writing Practice - Dutch A2">
+    <meta property="og:type" content="website">
+    <title>Wijkkrant — Dutch A2</title>
+
+    <link rel="stylesheet" href="../css/common/style.css">
+    <link rel="stylesheet" href="../css/common/navigation.css">
+    <link rel="stylesheet" href="../css/common/settings.css">
+    <link rel="stylesheet" href="../css/common/breadcrumb.css">
+    <link rel="stylesheet" href="../css/common/ai-roleplay.css">
+    <link rel="stylesheet" href="../css/writing/wijkkrant.css">
+    <link rel="stylesheet" href="../css/grammar/sentence-structure.css">
+    <link rel="stylesheet" href="../css/grammar/verbs.css">
+    <link rel="stylesheet" href="../css/vocabulary/vocabulary.css">
+
+    <script>
+        window.roleplayConfig = {
+            systemPrompt: `Je bent een Nederlandse taalcoach die helpt bij de wijkkrant-schrijftaak voor het inburgeringsexamen A2.
+De wijkkrant heeft strikte formaatregels:
+- Begin altijd met: "Hallo allemaal,"
+- Gebruik nooit "Beste..." want de wijkkrant is voor de hele buurt.
+- Gebruik de templatezin: "Mijn naam is [naam] en ik schrijf deze week over [onderwerp]."
+- Eindig altijd met: "Fijne dag allemaal!"
+- Doellengte: 80–90 woorden.
+- Onderwerpen: eten, vakantie, familie, huishoudelijk apparaat.
+Help de leerling met feedback op hun tekst, suggesties voor verbetering, en leg grammaticafouten uit in eenvoudig Engels of Nederlands.`,
+            scenarioDesc: "Vraag me alles over de wijkkrant of laat me je tekst nakijken.",
+            buttonText: "Wijkkrant Chat"
+        };
+    </script>
+</head>
+
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-home">
+                <span class="nav-home-icon">🏠</span>
+                <span>Home</span>
+            </a>
+            <div class="nav-page-title"><a href="writing.html" class="nav-parent-link">Writing Practice</a> <span
+                    class="nav-separator">|</span> 📰 Wijkkrant</div>
+        </div>
+    </nav>
+
+    <!-- Main Layout -->
+    <div class="main-area">
+
+        <!-- Sidebar -->
+        <aside id="task-sidebar">
+            <h3>📰 Wijkkrant Tasks</h3>
+
+            <!-- What is a wijkkrant? info box -->
+            <div
+                style="background: rgba(74,144,226,0.08); border: 1px solid rgba(74,144,226,0.2); border-radius: 8px; padding: 0.7rem 0.8rem; margin-bottom: 0.75rem; font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">
+                📌 <strong style="color:var(--text)">Wijkkrant = Buurtblad</strong><br>
+                Een tekst voor de hele buurt. <strong>Geen "Beste..."!</strong> Gebruik altijd:<br>
+                <em>"Hallo allemaal,"</em> en sluit af met<br>
+                <em>"Fijne dag allemaal!"</em>
+            </div>
+
+            <div class="task-list" id="task-list"></div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="content-wrapper">
+
+            <!-- Top Bar -->
+            <div class="top-bar">
+                <div class="top-left">
+                    <button class="btn-home" onclick="toggleSidebar()">☰ Tasks</button>
+                    <span class="progress-text" id="progress-text">Task 1 of 4</span>
+                </div>
+                <div class="top-right">
+                    <button class="btn-toggle-lang" id="toggle-lang-btn" onclick="toggleLanguage()">
+                        🇬🇧 Show English
+                    </button>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <div class="task-container">
+
+                    <!-- Task Header -->
+                    <div class="task-header">
+                        <span class="task-icon-big" id="task-icon">🍽️</span>
+                        <h1 class="task-title" id="task-title">Loading...</h1>
+                    </div>
+                    <span class="task-topic-badge" id="task-topic">Topic</span>
+
+                    <!-- Wijkkrant Format Rules -->
+                    <div class="wijkkrant-rules">
+                        <h4>📋 Wijkkrant Format Rules</h4>
+                        <ul id="format-rules-list"></ul>
+                    </div>
+
+                    <!-- Context -->
+                    <div class="task-context" id="task-context-nl">Loading...</div>
+                    <div class="task-context-en" id="task-context-en" style="display: none;"></div>
+
+                    <!-- Instructions -->
+                    <div class="task-instructions">
+                        <h4>📝 Wat je moet schrijven:</h4>
+                        <ul id="task-instructions-list-nl"></ul>
+                        <div class="task-instructions-en" id="task-instructions-en" style="display: none;">
+                            <h4 style="color: #666; font-size: 0.9rem;">English translation:</h4>
+                            <ul id="task-instructions-list-en"></ul>
+                        </div>
+                    </div>
+
+                    <!-- Textarea -->
+                    <textarea id="writing-area"
+                        placeholder="Begin hier te schrijven...&#10;&#10;Hallo allemaal,&#10;&#10;Mijn naam is ... en ik schrijf deze week over ..."
+                        oninput="updateWordCount()"></textarea>
+
+                    <!-- Feedback -->
+                    <div id="feedback-container" style="display: none;"></div>
+
+                    <div id="model-answer" style="display: none;"></div>
+
+                    <!-- Word Counter -->
+                    <div class="word-counter">
+                        <span class="word-count" id="word-count">0 words</span>
+                        <span>Target: 80–90 words</span>
+                    </div>
+                    <div class="char-counter"
+                        style="text-align: right; color: #888; font-size: 0.85rem; margin-bottom: 15px;">
+                        <span id="char-count">0</span> characters
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="button-group">
+                        <button class="btn-primary" onclick="checkFormat()">🔍 Check Format + AI</button>
+                        <button class="btn-secondary" onclick="showSampleAnswer()">📄 Show Example</button>
+                        <button class="btn-secondary" onclick="clearAnswer()">🗑️ Clear</button>
+                    </div>
+
+                    <!-- Navigation -->
+                    <div class="nav-buttons">
+                        <button class="btn-secondary" onclick="previousTask()">← Previous</button>
+                        <button class="btn-primary" onclick="nextTask()">Next →</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Sample Answer Modal -->
+        <div id="sample-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>✅ Model Answer</h3>
+                    <button class="close-btn" onclick="closeSampleAnswer()">&times;</button>
+                </div>
+                <div id="sample-answer-nl"></div>
+            </div>
+        </div>
+
+    </div><!-- close main-area -->
+
+    <!-- Mobile sidebar backdrop -->
+    <div id="sidebar-backdrop" onclick="toggleSidebar()"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1999;">
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/common/common.js"></script>
+    <script src="../js/grammar/sentence-structure.js"></script>
+    <script src="../js/grammar/sentence-structure-ui.js"></script>
+    <script src="../js/grammar/verbs-data.js"></script>
+    <script src="../js/grammar/verbs.js"></script>
+    <script src="../js/grammar/verbs-ui.js"></script>
+    <script src="../js/vocabulary/vocabulary.js"></script>
+    <script src="../js/vocabulary/vocabulary-ui.js"></script>
+    <script src="../js/common/ai-service.js"></script>
+    <script src="../js/common/ai-roleplay.js"></script>
+    <script src="../js/common/settings.js"></script>
+    <script src="../js/writing/wijkkrant-data.js"></script>
+    <script src="../js/writing/wijkkrant.js"></script>
+
+</body>
+
+</html>

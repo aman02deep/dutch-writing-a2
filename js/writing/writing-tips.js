@@ -40,6 +40,10 @@ const writingTips = {
             content: "Use 'u' for formal, 'je/jij' for informal. Match greeting style!"
         },
         {
+            title: "⚠️ want vs omdat — word order!",
+            content: "Both mean 'because' but word order is DIFFERENT:\n• 'omdat' → verb goes to the END: 'Ik kan niet komen omdat ik ZIEk BEN.'\n• 'want' → verb stays in NORMAL position: 'Ik kan niet komen, want ik BEN ziek.'\nThis is a common exam scoring point — use both correctly!"
+        },
+        {
             title: "Common Mistakes",
             content: "Don't forget: greeting, all questions answered, proper closing, signature"
         },

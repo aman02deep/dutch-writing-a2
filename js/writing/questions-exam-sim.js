@@ -59,7 +59,7 @@ var examTasks = [
     },
     {
         id: 4,
-        title: "Opdracht 16b: School uitnodiging",
+        title: "Opdracht 4: School uitnodiging",
         type: "short email",
         wordTarget: "40-50 words",
         contextNL: "De school van je dochter heeft volgende week een ouderavond. Je kunt niet komen omdat je moet werken. Schrijf naar de leraar.",
@@ -78,7 +78,7 @@ var examTasks = [
     },
     {
         id: 5,
-        title: "Opdracht 17b: Ziek melden werk",
+        title: "Opdracht 5: Ziek melden werk",
         type: "short email",
         wordTarget: "40-50 words",
         contextNL: "Je bent vandaag ziek en kunt niet naar je werk komen. Schrijf naar je baas.",
@@ -97,7 +97,7 @@ var examTasks = [
     },
     {
         id: 6,
-        title: "Opdracht 18b: Bedankje buren",
+        title: "Opdracht 6: Bedankje buren",
         type: "short note",
         wordTarget: "40-50 words",
         contextNL: "Je buren hebben je gisteren geholpen met meubels verhuizen. Schrijf een bedankje.",
@@ -116,7 +116,7 @@ var examTasks = [
     },
     {
         id: 7,
-        title: "Opdracht 18: Boek terugvragen",
+        title: "Opdracht 7: Boek terugvragen",
         type: "short email",
         wordTarget: "40-50 words",
         contextNL: "Je hebt het studieboek 'Toets gesproken Nederlands' uitgeleend aan je medecursiste Jenny. Zij heeft het boek al 2 weken. Je moet leren voor het inburgeringsexamen en je wilt het boek morgen terug.",
@@ -135,7 +135,7 @@ var examTasks = [
     },
     {
         id: 8,
-        title: "Opdracht 19: Vrienden uitnodigen",
+        title: "Opdracht 8: Vrienden uitnodigen",
         type: "short email",
         wordTarget: "40-50 words",
         contextNL: "Je bent verhuisd. Je nodigt je vrienden uit voor een etentje bij jou thuis.",
@@ -158,7 +158,7 @@ var examTasks = [
     },
     {
         id: 9,
-        title: "Opdracht 20: Klacht cursus",
+        title: "Opdracht 9: Klacht cursus",
         type: "short email",
         wordTarget: "40-50 words",
         contextNL: "Je volgt een cursus Nederlands voor gevorderden aan de Volksuniversiteit. Je bent niet helemaal tevreden over de cursus. De groep is heel groot. Je hebt ook andere klachten.",
@@ -181,7 +181,7 @@ var examTasks = [
     // LONG MESSAGES (80-90 words) - Opdracht 10-15
     {
         id: 10,
-        title: "Opdracht 7: Klacht winkel",
+        title: "Opdracht 10: Klacht winkel",
         type: "long email",
         wordTarget: "80-90 words",
         contextNL: "Je hebt vorige week een jas gekocht in een winkel voor €89. Toen je thuiskwam, zag je een gat in de mouw. Je wilt de jas terugbrengen en je geld terug. Je hebt nog de bon.",
@@ -204,7 +204,7 @@ var examTasks = [
     },
     {
         id: 11,
-        title: "Opdracht 8: Sportschool abonnement",
+        title: "Opdracht 11: Sportschool abonnement",
         type: "long email",
         wordTarget: "80-90 words",
         contextNL: "Je hebt een advertentie gezien voor een sportschool 'FitLife'. Je wilt meer informatie voordat je lid wordt. Je bent geïnteresseerd in zwemmen en fitnessen. Je kunt op maandag, woensdag en vrijdag 's avonds komen.",
@@ -229,7 +229,7 @@ var examTasks = [
     },
     {
         id: 12,
-        title: "Opdracht 19b: Verloren voorwerp",
+        title: "Opdracht 12: Verloren voorwerp",
         type: "long email",
         wordTarget: "80-90 words",
         contextNL: "Gisteren ben je je portemonnee verloren in bus lijn 12 rond 14:00 uur. De portemonnee is zwart en klein. Er zitten je identiteitskaart, bankpas en €50 in. Je hebt het dringend nodig. Schrijf naar de busmaatschappij.",
@@ -254,7 +254,7 @@ var examTasks = [
     },
     {
         id: 13,
-        title: "Opdracht 20b: Cursus inschrijving",
+        title: "Opdracht 13: Cursus inschrijving",
         type: "long email",
         wordTarget: "80-90 words",
         contextNL: "Je wilt je inschrijven voor een Nederlandse cursus bij 'Talencentrum'. Je niveau is A2. Je wilt graag 's avonds les op dinsdag en donderdag. Je wilt in september beginnen. Je wilt weten wat de prijs is en of de boeken inbegrepen zijn.",
@@ -279,7 +279,7 @@ var examTasks = [
     },
     {
         id: 14,
-        title: "Opdracht 19c: Huisarts afzeggen",
+        title: "Opdracht 14: Huisarts afzeggen",
         type: "long email",
         wordTarget: "80-90 words",
         contextNL: "Je hebt morgen (dinsdag) om 10:00 uur een afspraak bij dokter Van Dijk. Je moet afzeggen omdat je moet werken. Je wilt een nieuwe afspraak volgende week, bij voorkeur woensdag of vrijdag 's middags.",
@@ -304,7 +304,7 @@ var examTasks = [
     },
     {
         id: 15,
-        title: "Opdracht 20c: Verjaardag uitnodiging",
+        title: "Opdracht 15: Verjaardag uitnodiging",
         type: "long email",
         wordTarget: "80-90 words",
         contextNL: "Volgende week zaterdag (15 maart) ben je jarig. Je wilt je vriendin Maria uitnodigen voor je feestje. Het feest begint om 19:00 uur bij jou thuis. Je gaat eten en er is taart. Ze mag haar man meenemen als ze wil.",
@@ -331,7 +331,7 @@ var examTasks = [
     // ADDITIONAL PRACTICE TASKS
     {
         id: 16,
-        title: "Opdracht 13: Klacht over product",
+        title: "Opdracht 16: Klacht over product",
         type: "short email",
         wordTarget: "40-50 words",
         contextNL: "Je hebt vorige week een lamp gekocht bij Ikea, maar hij werkt niet. Je wilt je geld terug.",
@@ -350,7 +350,7 @@ var examTasks = [
     },
     {
         id: 17,
-        title: "Opdracht 14: Bedankje voor hulp",
+        title: "Opdracht 17: Bedankje voor hulp",
         type: "short email",
         wordTarget: "40-50 words",
         contextNL: "Je buurman heeft je geholpen met je verhuizing. Je wilt hem bedanken.",
@@ -369,7 +369,7 @@ var examTasks = [
     },
     {
         id: 18,
-        title: "Opdracht 15: Sportles annuleren",
+        title: "Opdracht 18: Sportles annuleren",
         type: "short email",
         wordTarget: "40-50 words",
         contextNL: "Je hebt je aangemeld voor yogales op donderdag, maar je kunt niet komen omdat je ziek bent.",
@@ -388,7 +388,7 @@ var examTasks = [
     },
     {
         id: 19,
-        title: "Opdracht 16: Informatie over cursus",
+        title: "Opdracht 19: Informatie over cursus",
         type: "short email",
         wordTarget: "40-50 words",
         contextNL: "Je wilt een Nederlandse cursus volgen. Je hebt een advertentie gezien van een taalschool.",
@@ -407,7 +407,7 @@ var examTasks = [
     },
     {
         id: 20,
-        title: "Opdracht 17: Uitnodiging voor barbecue",
+        title: "Opdracht 20: Uitnodiging voor barbecue",
         type: "long email",
         wordTarget: "80-90 words",
         contextNL: "Je organiseert een barbecue in je tuin volgende maand. Je wilt je collega's uitnodigen.",
@@ -432,7 +432,7 @@ var examTasks = [
     },
     {
         id: 21,
-        title: "Opdracht 18: Advies vragen over vakantie",
+        title: "Opdracht 21: Advies vragen over vakantie",
         type: "long email",
         wordTarget: "80-90 words",
         contextNL: "Je vriend heeft vorig jaar in Spanje gewoond. Je gaat daar op vakantie en wilt advies.",
@@ -455,7 +455,7 @@ var examTasks = [
     },
     {
         id: 22,
-        title: "Opdracht 19: Sollicitatie bijbaan",
+        title: "Opdracht 22: Sollicitatie bijbaan",
         type: "long email",
         wordTarget: "80-90 words",
         contextNL: "Je zoekt een bijbaan in een supermarkt. Je hebt een advertentie gezien.",
@@ -478,7 +478,7 @@ var examTasks = [
     },
     {
         id: 23,
-        title: "Opdracht 20: Verhuizing melden",
+        title: "Opdracht 23: Verhuizing melden",
         type: "long email",
         wordTarget: "80-90 words",
         contextNL: "Je gaat verhuizen naar een nieuw huis. Je wilt je vrienden uitnodigen om te helpen.",
@@ -500,6 +500,173 @@ var examTasks = [
             "Give your new address."
         ],
         modelAnswer: "Hoi allemaal,\n\nIk ga verhuizen! Op zaterdag 10 mei verhuis ik naar mijn nieuwe huis. Kunnen jullie me helpen?\n\nWe beginnen om 9:00 uur 's ochtends. Jullie moeten dozen dragen en meubels tillen. Het is niet zwaar werk, maar ik heb hulp nodig.\n\nIk koop pizza en drinken voor iedereen! Mijn nieuwe adres is [Nieuw Adres].\n\nLaat me weten of je kunt komen!\n\nGroeten,\n[Naam]"
+    },
+
+    // ── MISSING PDF EXERCISES ─────────────────────────────────────────────
+    {
+        id: 24,
+        title: "Opdracht 24: Gemeente afspraak afzeggen",
+        type: "short email",
+        wordTarget: "40-50 words",
+        contextNL: "Je hebt morgen een afspraak bij de gemeente. Je kunt niet komen omdat je ziek bent. Schrijf een e-mail naar de gemeente.",
+        contextEN: "You have an appointment at the municipality tomorrow. You cannot come because you are sick. Write an email to the municipality.",
+        tasksNL: [
+            "Zeg dat je een afspraak hebt bij de gemeente.",
+            "Zeg dat je niet kunt komen en waarom.",
+            "Vraag om een nieuwe afspraak."
+        ],
+        tasksEN: [
+            "Say you have an appointment at the municipality.",
+            "Say you cannot come and why.",
+            "Ask for a new appointment."
+        ],
+        modelAnswer: "Geachte heer/mevrouw,\n\nIk heb morgen een afspraak bij de gemeente. Helaas kan ik niet komen, want ik ben ziek.\n\nKan ik een nieuwe afspraak maken? Ik kan volgende week.\n\nMet vriendelijke groet,\n[Naam]"
+    },
+    {
+        id: 25,
+        title: "Opdracht 25: Werkbroek kapot (aan baas)",
+        type: "short email",
+        wordTarget: "40-50 words",
+        contextNL: "Je werkt in een restaurant. Je werkbroek is kapot. Je mag geen eigen kleding dragen op het werk. Schrijf een e-mail naar je baas.",
+        contextEN: "You work in a restaurant. Your work trousers are broken. You are not allowed to wear your own clothes at work. Write an email to your boss.",
+        tasksNL: [
+            "Zeg wat het probleem is met je werkbroek.",
+            "Zeg dat je geen eigen kleding mag dragen.",
+            "Vraag je baas om een nieuwe werkbroek."
+        ],
+        tasksEN: [
+            "Say what the problem is with your work trousers.",
+            "Say you are not allowed to wear your own clothes.",
+            "Ask your boss for new work trousers."
+        ],
+        modelAnswer: "Beste [naam baas],\n\nMijn werkbroek is kapot. Er zit een groot gat in. Ik weet dat ik geen eigen kleding mag dragen op het werk.\n\nKan ik een nieuwe werkbroek krijgen?\n\nMet vriendelijke groet,\n[Naam]"
+    },
+    {
+        id: 26,
+        title: "Opdracht 26: Tas vergeten (aan vriend)",
+        type: "short email",
+        wordTarget: "40-50 words",
+        images: ["../assets/images/ex13_laptop.png", "../assets/images/ex13_glasses.png", "../assets/images/ex13_book.png"],
+        contextNL: "Je bent gisteren bij je vriendin Anna op bezoek geweest. Thuis zie je dat je je tas hebt vergeten. In de tas zitten je sleutels en je portemonnee.",
+        contextEN: "You visited your friend Anna yesterday. At home you see you forgot your bag. In the bag are your keys and your wallet.",
+        tasksNL: [
+            "Zeg dat je je tas hebt vergeten.",
+            "Vertel wat er in de tas zit.",
+            "Vraag wanneer je de tas kunt ophalen."
+        ],
+        tasksEN: [
+            "Say you forgot your bag.",
+            "Tell what is in the bag.",
+            "Ask when you can pick it up."
+        ],
+        modelAnswer: "Hoi Anna,\n\nIk denk dat ik mijn tas bij jou heb vergeten! In de tas zitten mijn sleutels en mijn portemonnee. Ik heb ze nodig.\n\nWanneer kan ik de tas ophalen? Kun je me bellen?\n\nGroetjes,\n[Naam]"
+    },
+    {
+        id: 27,
+        title: "Opdracht 27: Andere cursus aanvragen",
+        type: "long email",
+        wordTarget: "80-90 words",
+        contextNL: "Je volgt nu een computercursus bij een opleidingscentrum. De cursus is te moeilijk voor jou. Je wilt een andere cursus doen — 'Computer voor beginners'. Schrijf een e-mail naar het opleidingscentrum.",
+        contextEN: "You are currently taking a computer course at a training centre. The course is too difficult for you. You want to do a different course — 'Computers for beginners'. Write an email to the training centre.",
+        tasksNL: [
+            "Zeg welke cursus je nu doet.",
+            "Leg uit waarom je wilt stoppen.",
+            "Zeg welke andere cursus je wilt doen.",
+            "Vraag of dit mogelijk is.",
+            "Vraag wat de prijs is van de nieuwe cursus."
+        ],
+        tasksEN: [
+            "Say which course you are doing now.",
+            "Explain why you want to stop.",
+            "Say which other course you want to do.",
+            "Ask if this is possible.",
+            "Ask what the price of the new course is."
+        ],
+        modelAnswer: "Geachte heer/mevrouw,\n\nIk volg nu de cursus 'Computergebruik gevorderd' bij uw opleidingscentrum. Helaas is de cursus te moeilijk voor mij. Ik begrijp veel dingen niet.\n\nIk wil graag stoppen met deze cursus. Kunt u mij veranderen naar de cursus 'Computer voor beginners'? Is dit mogelijk?\n\nWat kost de nieuwe cursus? Ik wacht op uw antwoord.\n\nMet vriendelijke groet,\n[Naam]"
+    },
+    {
+        id: 28,
+        title: "Opdracht 28: Ziekenhuis — lift vragen (aan vriend)",
+        type: "long email",
+        wordTarget: "80-90 words",
+        contextNL: "Je moet volgende week donderdag naar het ziekenhuis voor een operatie. Je hebt geen auto. Je vriendin Sara heeft een auto. Schrijf een e-mail aan Sara en vraag of ze je kan brengen.",
+        contextEN: "You have to go to hospital next Thursday for an operation. You don't have a car. Your friend Sara has a car. Write an email to Sara asking if she can take you.",
+        tasksNL: [
+            "Vertel dat je volgende week naar het ziekenhuis moet.",
+            "Zeg wanneer en waarom (operatie).",
+            "Zeg dat je geen auto hebt.",
+            "Vraag of ze je kan brengen.",
+            "Zeg hoe laat je klaar bent en vraag of ze je ook kan ophalen."
+        ],
+        tasksEN: [
+            "Tell that you have to go to hospital next week.",
+            "Say when and why (operation).",
+            "Say you don't have a car.",
+            "Ask if she can take you.",
+            "Say what time you'll be done and ask if she can also pick you up."
+        ],
+        modelAnswer: "Hoi Sara,\n\nIk moet volgende week donderdag naar het ziekenhuis. Ik heb een operatie. De afspraak is om 10:00 uur.\n\nIk heb geen auto. Kun je me naar het ziekenhuis brengen? Wil je met me meegaan?\n\nIk denk dat ik om 13:00 uur klaar ben. Kun je me dan ook ophalen?\n\nBedankt alvast!\n\nGroetjes,\n[Naam]"
+    },
+    {
+        id: 29,
+        title: "Opdracht 29: Verzorgingstehuis sollicitatie",
+        type: "long email",
+        wordTarget: "80-90 words",
+        images: ["../assets/images/ex7_walking_elderly.png", "../assets/images/ex7_cooking.png", "../assets/images/ex7_wheelchair.png", "../assets/images/ex7_cleaning.png"],
+        contextNL: "Je gaat solliciteren bij een verzorgingstehuis. Je schrijft een e-mail aan mevrouw Jansen.",
+        contextEN: "You are applying for a job at a care home. You are writing an email to Mrs. Jansen.",
+        tasksNL: [
+            "Schrijf waarom u de e-mail stuurt.",
+            "Schrijf welke twee dingen u kunt doen. Kijk naar de plaatjes.",
+            "Schrijf wanneer u kunt beginnen."
+        ],
+        tasksEN: [
+            "Write why you are sending the email.",
+            "Write which two things you can do. Look at the pictures.",
+            "Write when you can start."
+        ],
+        modelAnswer: "Beste mevrouw Jansen,\n\nIk schrijf deze e-mail omdat ik graag wil solliciteren op de vacature bij uw verzorgingstehuis. Ik werk heel graag met oudere mensen.\n\nIk heb ervaring en kan verschillende dingen doen. Ik kan bijvoorbeeld koken voor de bewoners. Ook kan ik wandelen met de mensen, bijvoorbeeld met een rolstoel of rollator.\n\nIk ben beschikbaar en kan volgende week woensdag al beginnen.\n\nMet vriendelijke groet,\n[Naam]"
+    },
+    {
+        id: 30,
+        title: "Opdracht 30: Werknemers lunch",
+        type: "short email",
+        wordTarget: "40-50 words",
+        images: ["../assets/images/ex14_laptop.png", "../assets/images/ex14_notepad.png"],
+        contextNL: "U schrijft een e-mail aan de werknemers van uw bedrijf om ze uit te nodigen voor een lunch.",
+        contextEN: "You are writing an email to the employees of your company to invite them for a lunch.",
+        tasksNL: [
+            "Schrijf dat u ze uitnodigt voor een lunch.",
+            "Schrijf op welke dag en hoe laat de lunch is.",
+            "Schrijf waar de lunch is.",
+            "Schrijf wat de werknemers mee moeten nemen. Gebruik de foto's."
+        ],
+        tasksEN: [
+            "Write that you are inviting them for lunch.",
+            "Write on which day and at what time the lunch is.",
+            "Write where the lunch is.",
+            "Write what the employees should bring. Use the photos."
+        ],
+        modelAnswer: "Beste collega's,\n\nIk wil jullie graag uitnodigen voor een lunch. De lunch is volgende week vrijdag om 12:30 uur.\n\nWe lunchen in de grote vergaderzaal. Vergeet niet om je laptop en een notitieboekje mee te nemen, want we gaan ook even overleggen.\n\nTot vrijdag!\n\nMet vriendelijke groet,\n[Naam]"
+    },
+    {
+        id: 31,
+        title: "Opdracht 31: Winkel sollicitatie",
+        type: "short email",
+        wordTarget: "40-50 words",
+        images: ["../assets/images/ex15_clothing_rack.png", "../assets/images/ex15_folding.png", "../assets/images/ex15_sorting.png"],
+        contextNL: "U wilt in een winkel werken. U stuurt een e-mail naar de eigenaresse, mevrouw van Beek.",
+        contextEN: "You want to work in a shop. You send an email to the owner, Mrs. van Beek.",
+        tasksNL: [
+            "Schrijf waarom u de e-mail stuurt.",
+            "Schrijf wat u kunt doen. Kijk naar de plaatjes. Noem twee dingen.",
+            "Schrijf wanneer u kunt beginnen."
+        ],
+        tasksEN: [
+            "Write why you are sending the email.",
+            "Write what you can do. Look at the pictures. Name two things.",
+            "Write when you can start."
+        ],
+        modelAnswer: "Beste mevrouw van Beek,\n\nIk stuur deze e-mail omdat ik graag in uw kledingwinkel wil werken. Ik ben op zoek naar een leuke baan.\n\nIk kan u helpen in de winkel. Ik kan heel goed kleding vouwen en alles netjes opruimen. Ook kan ik kleding sorteren.\n\nIk ben direct beschikbaar en kan morgen beginnen.\n\nMet vriendelijke groet,\n[Naam]"
     }
 ];
-
