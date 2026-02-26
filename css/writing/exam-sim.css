@@ -211,7 +211,8 @@ body {
 
 .task-container {
     width: 100%;
-    max-width: 800px;
+    max-width: 950px;
+    height: fit-content;
     background: white;
     padding: 40px;
     border-radius: 12px;
@@ -265,6 +266,27 @@ body {
 .task-instructions li {
     margin-bottom: 8px;
     color: #333;
+}
+
+.task-images-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.task-context-image {
+    max-width: 200px;
+    max-height: 150px;
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background: white;
 }
 
 #writing-area {

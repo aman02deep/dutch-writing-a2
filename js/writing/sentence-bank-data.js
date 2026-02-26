@@ -19,9 +19,10 @@ const categoryTips = {
     "Closing (Informal)": "Casual sign-offs for messages to friends and family.",
     "Connectors": "Glue words (daarom, helaas, ook, omdat) to link sentences and hit the word count.",
     "Time & Date": "Slot these into almost any sentence — complaints need 'al X weken lang', requests need 'zo snel mogelijk', availability needs day/time fragments.",
-    "Reason Clause": "'Omdat' clauses are the most reusable fragments — one clause plugs into apologies, complaints, cancellations, and explanations.",
+    "Reason Clause": "⚠️ KEY GRAMMAR: 'omdat' sends the verb to the END — 'Ik kan niet komen omdat ik ziek BEN'. 'want' keeps normal order — 'Ik kan niet komen, want ik BEN ziek'. Both mean 'because' but word order differs — scored on the exam!",
     "Verb Ending": "These are the second half of 'Ik wil graag...' and 'Is het mogelijk om...' — keep these handy to complete any request or question.",
-    "Degree Words": "Single words that change the tone of any sentence — 'helaas' makes it an apology, 'heel graag' makes it enthusiastic, 'misschien' softens a request."
+    "Degree Words": "Single words that change the tone of any sentence — 'helaas' makes it an apology, 'heel graag' makes it enthusiastic, 'misschien' softens a request.",
+    "Wijkkrant": "The wijkkrant (neighbourhood newspaper) is its own exam task type! Rules: NO 'Beste...' greeting — start with 'Hallo allemaal,' Use the template opener. End with 'Fijne dag allemaal!' Topics: food, holiday, family, or a household appliance."
 };
 
 const sentenceBankData = [
@@ -173,5 +174,32 @@ const sentenceBankData = [
     { id: 113, cat: "Degree Words", nl: "zeker", en: "certainly / definitely" },
     { id: 114, cat: "Degree Words", nl: "misschien kunt u...", en: "perhaps you could..." },
     { id: 115, cat: "Degree Words", nl: "nog even", en: "just quickly / for a moment" },
-    { id: 116, cat: "Degree Words", nl: "ook nog", en: "also / as well" }
+    { id: 116, cat: "Degree Words", nl: "ook nog", en: "also / as well" },
+
+    // ─── 18. MISSING PDF PHRASES ──────────────────────────────────────
+    { id: 117, cat: "Reason for Writing", nl: "Ik stuur u deze e-mail, want ik heb een vraag.", en: "I am sending you this email, because (want) I have a question." },
+    { id: 118, cat: "Reason for Writing", nl: "Ik stuur je deze e-mail, want ik heb een probleem.", en: "I am sending you this email, because (want) I have a problem." },
+    { id: 119, cat: "Asking Questions", nl: "Zullen we een afspraak maken?", en: "Shall we make an appointment?" },
+    { id: 120, cat: "Asking Questions", nl: "Wanneer zullen we afspreken?", en: "When shall we meet up?" },
+    { id: 121, cat: "Asking Questions", nl: "Wil je met me meegaan?", en: "Do you want to come with me?" },
+    { id: 122, cat: "Asking Questions", nl: "Kun je me ophalen?", en: "Can you pick me up?" },
+    { id: 123, cat: "Apologising", nl: "Het spijt me dat ik niet kan komen.", en: "I am sorry that I cannot come." },
+    { id: 124, cat: "Apologising", nl: "Ik voel me niet goed.", en: "I am not feeling well." },
+    { id: 125, cat: "Apologising", nl: "Mijn auto is kapot.", en: "My car is broken." },
+    { id: 126, cat: "Inviting", nl: "Hierbij nodig ik jullie uit voor...", en: "Hereby I invite you all to..." },
+    { id: 127, cat: "Closing (Informal)", nl: "Fijne dag!", en: "Have a nice day!" },
+    { id: 128, cat: "Closing (Formal)", nl: "Fijne dag verder!", en: "Have a good rest of your day!" },
+
+    // ─── 19. WIJKKRANT PHRASES ────────────────────────────────────────
+    { id: 129, cat: "Wijkkrant", nl: "Hallo allemaal,", en: "Hello everyone," },
+    { id: 130, cat: "Wijkkrant", nl: "Mijn naam is [naam] en ik schrijf deze week over [onderwerp].", en: "My name is [name] and this week I am writing about [topic]." },
+    { id: 131, cat: "Wijkkrant", nl: "Ik wil jullie vertellen over...", en: "I want to tell you all about..." },
+    { id: 132, cat: "Wijkkrant", nl: "In mijn cultuur eten we vaak...", en: "In my culture we often eat..." },
+    { id: 133, cat: "Wijkkrant", nl: "Vorig jaar ben ik op vakantie geweest naar...", en: "Last year I went on holiday to..." },
+    { id: 134, cat: "Wijkkrant", nl: "Mijn familie is heel belangrijk voor mij.", en: "My family is very important to me." },
+    { id: 135, cat: "Wijkkrant", nl: "In mijn huis heb ik een [apparaat] gekocht.", en: "In my house I bought a [appliance]." },
+    { id: 136, cat: "Wijkkrant", nl: "Ik gebruik het elke dag.", en: "I use it every day." },
+    { id: 137, cat: "Wijkkrant", nl: "Ik hoop dat jullie dit interessant vinden.", en: "I hope you all find this interesting." },
+    { id: 138, cat: "Wijkkrant", nl: "Fijne dag allemaal!", en: "Have a nice day everyone!" }
 ];
+

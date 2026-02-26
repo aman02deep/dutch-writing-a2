@@ -257,5 +257,161 @@ Groeten,
 [Uw naam]`,
         en: "Hi everyone, I'm moving! On Saturday May 10th I'm moving to my new house. Can you help me? We start at 9:00 AM. You have to carry boxes and lift furniture. It's not heavy work, but I need help. I'll buy pizza and drinks for everyone! My new address is [New Address]. Let me know if you can come! Greetings, [Your name]",
         notes: "✓ Enthusiastic opening | ✓ Clear date/time | ✓ Explain tasks | ✓ Mention reward (pizza) | ✓ 86 words"
+    },
+    21: {
+        nl: `Hoi Marco,
+
+Ik ga volgende maand naar Spanje! Ik weet dat jij daar vorig jaar hebt gewoond. Kun je me helpen?
+
+Welke plaatsen moet ik zeker bezoeken? En ken je goede restaurants in Barcelona? Ik hou van vis en tapas.
+
+Hoe is het weer in augustus? Is het erg warm? Wat moet ik meenemen?
+
+Bedankt voor je hulp!
+
+Groetjes,
+[Uw naam]`,
+        en: "Hi Marco, I am going to Spain next month! I know you lived there last year. Can you help me? Which places should I definitely visit? And do you know any good restaurants in Barcelona? I love fish and tapas. How is the weather in August? Is it very hot? What should I bring? Thanks for your help! Greetings, [Your name]",
+        notes: "✓ Informal greeting | ✓ Contextual introduction | ✓ Specific questions | ✓ Express appreciation | ✓ 60 words"
+    },
+    22: {
+        nl: `Geachte heer/mevrouw,
+
+Ik schrijf deze brief omdat ik geïnteresseerd ben in de bijbaan bij uw supermarkt. Ik heb de advertentie gezien.
+
+Ik ben 22 jaar oud en ik studeer aan de universiteit. Ik zoek een bijbaan omdat ik graag werk en mensen wil helpen. Ik ben vriendelijk en ik werk hard.
+
+Ik kan werken op zaterdag en zondag, en ook 's avonds.
+
+Kan ik langskomen voor een gesprek?
+
+Met vriendelijke groet,
+[Uw naam]`,
+        en: "Dear Sir/Madam, I am writing this letter because I am interested in the part-time job at your supermarket. I saw the advertisement. I am 22 years old and I study at the university. I am looking for a part-time job because I like to work and help people. I am friendly and hard-working. I can work on Saturday and Sunday, and also in the evenings. Can I come by for an interview? Kind regards, [Your name]",
+        notes: "✓ Formal greeting | ✓ State motivation | ✓ Personal attributes | ✓ Availability | ✓ Request interview | ✓ 74 words"
+    },
+    23: {
+        nl: `Hoi allemaal,
+
+Ik ga verhuizen! Op zaterdag 10 mei verhuis ik naar mijn nieuwe huis. Kunnen jullie me helpen?
+
+We beginnen om 9:00 uur 's ochtends. Jullie moeten dozen dragen en meubels tillen. Het is niet zwaar werk, maar ik heb hulp nodig.
+
+Ik koop pizza en drinken voor iedereen! Mijn nieuwe adres is [Nieuw Adres].
+
+Laat me weten of je kunt komen!
+
+Groeten,
+[Uw naam]`,
+        en: "Hi everyone, I'm moving! On Saturday May 10th I'm moving to my new house. Can you help me? We start at 9:00 AM. You have to carry boxes and lift furniture. It's not heavy work, but I need help. I'll buy pizza and drinks for everyone! My new address is [New Address]. Let me know if you can come! Greetings, [Your name]",
+        notes: "✓ Enthusiastic opening | ✓ Clear date/time | ✓ Explain tasks | ✓ Mention reward (pizza) | ✓ 65 words"
+    },
+    24: {
+        nl: `Geachte heer/mevrouw,
+
+Ik heb morgen een afspraak bij de gemeente. Helaas kan ik niet komen, want ik ben ziek.
+
+Kan ik een nieuwe afspraak maken? Ik kan volgende week.
+
+Met vriendelijke groet,
+[Uw naam]`,
+        en: "Dear Sir/Madam, I have an appointment at the municipality tomorrow. Unfortunately I cannot come, because I am sick. Can I make a new appointment? I can come next week. Kind regards, [Your name]",
+        notes: "✓ Formal greeting | ✓ Direct explanation | ✓ Ask for new appointment | ✓ 32 words"
+    },
+    25: {
+        nl: `Beste baas,
+
+Mijn werkbroek is kapot. Er zit een groot gat in. Ik weet dat ik geen eigen kleding mag dragen op het werk.
+
+Kan ik een nieuwe werkbroek krijgen?
+
+Met vriendelijke groet,
+[Uw naam]`,
+        en: "Dear boss, My work trousers are broken. There is a big hole in them. I know I am not allowed to wear my own clothes at work. Can I get a new pair of work trousers? Kind regards, [Your name]",
+        notes: "✓ Appropriate greeting | ✓ Explain problem | ✓ Show understanding of rules | ✓ Clear request | ✓ 33 words"
+    },
+    26: {
+        nl: `Hoi Anna,
+
+Ik denk dat ik mijn tas bij jou heb vergeten! In de tas zitten mijn sleutels en mijn portemonnee. Ik heb ze nodig.
+
+Wanneer kan ik de tas ophalen? Kun je me bellen?
+
+Groetjes,
+[Uw naam]`,
+        en: "Hi Anna, I think I forgot my bag at your place! My keys and wallet are in the bag. I need them. When can I pick up the bag? Can you call me? Greetings, [Your name]",
+        notes: "✓ Informal greeting | ✓ Identify missing items | ✓ Urgent but friendly tone | ✓ Ask to pick up | ✓ 36 words"
+    },
+    27: {
+        nl: `Geachte heer/mevrouw,
+
+Ik volg nu de cursus 'Computergebruik gevorderd' bij uw opleidingscentrum. Helaas is de cursus te moeilijk voor mij. Ik begrijp veel dingen niet.
+
+Ik wil graag stoppen met deze cursus. Kunt u mij veranderen naar de cursus 'Computer voor beginners'? Is dit mogelijk?
+
+Wat kost de nieuwe cursus? Ik wacht op uw antwoord.
+
+Met vriendelijke groet,
+[Uw naam]`,
+        en: "Dear Sir/Madam, I am currently taking the 'Advanced Computer Use' course at your training centre. Unfortunately, the course is too difficult for me. I don't understand many things. I would like to stop this course. Can you change me to the 'Computers for beginners' course? Is this possible? What does the new course cost? I await your reply. Kind regards, [Your name]",
+        notes: "✓ Formal greeting | ✓ Explain problem honestly | ✓ Propose solution | ✓ Ask about price | ✓ 56 words"
+    },
+    28: {
+        nl: `Hoi Sara,
+
+Ik moet volgende week donderdag naar het ziekenhuis. Ik heb een operatie. De afspraak is om 10:00 uur.
+
+Ik heb geen auto. Kun je me naar het ziekenhuis brengen? Wil je met me meegaan?
+
+Ik denk dat ik om 13:00 uur klaar ben. Kun je me dan ook ophalen?
+
+Bedankt alvast!
+
+Groetjes,
+[Uw naam]`,
+        en: "Hi Sara, I have to go to the hospital next Thursday. I am having an operation. The appointment is at 10:00. I don't have a car. Can you take me to the hospital? Do you want to go with me? I think I'll be done at 13:00. Can you pick me up then too? Thanks in advance! Greetings, [Your name]",
+        notes: "✓ Friendly greeting | ✓ Give exact date/time | ✓ Make request | ✓ Ask about return trip | ✓ 53 words"
+    },
+    29: {
+        nl: `Beste mevrouw Jansen,
+
+Ik schrijf deze e-mail omdat ik graag wil solliciteren op de vacature bij uw verzorgingstehuis. Ik werk heel graag met oudere mensen.
+
+Ik heb ervaring en kan verschillende dingen doen. Ik kan bijvoorbeeld koken voor de bewoners. Ook kan ik wandelen met de mensen, bijvoorbeeld met een rolstoel of rollator.
+
+Ik ben beschikbaar en kan volgende week woensdag al beginnen.
+
+Met vriendelijke groet,
+[Uw naam]`,
+        en: "Dear Mrs. Jansen, I am writing this email because I would love to apply for the vacancy at your care home. I really enjoy working with elderly people. I have experience and can do various things. For example, I can cook for the residents. I can also walk with the people, for example with a wheelchair or walker. I am available and can start next Wednesday. Kind regards, [Your name]",
+        notes: "✓ Professional greeting | ✓ Use image context (cooking, walking) | ✓ Show motivation | ✓ State availability | ✓ 65 words"
+    },
+    30: {
+        nl: `Beste collega's,
+
+Ik wil jullie graag uitnodigen voor een lunch. De lunch is volgende week vrijdag om 12:30 uur.
+
+We lunchen in de grote vergaderzaal. Vergeet niet om je laptop en een notitieboekje mee te nemen, want we gaan ook even overleggen.
+
+Tot vrijdag!
+
+Met vriendelijke groet,
+[Uw naam]`,
+        en: "Dear colleagues, I would like to invite you for a lunch. The lunch is next Friday at 12:30. We will have lunch in the large meeting room. Don't forget to bring your laptop and a notebook, because we will also have a brief meeting. See you Friday! Kind regards, [Your name]",
+        notes: "✓ Professional but friendly greeting | ✓ Clear date/time/location | ✓ Use image context (laptop, notebook) | ✓ 46 words"
+    },
+    31: {
+        nl: `Beste mevrouw van Beek,
+
+Ik stuur deze e-mail omdat ik graag in uw kledingwinkel wil werken. Ik ben op zoek naar een leuke baan.
+
+Ik kan u helpen in de winkel. Ik kan heel goed kleding vouwen en alles netjes opruimen. Ook kan ik kleding sorteren.
+
+Ik ben direct beschikbaar en kan morgen beginnen.
+
+Met vriendelijke groet,
+[Uw naam]`,
+        en: "Dear Mrs. van Beek, I am sending this email because I would like to work in your clothing store. I am looking for a nice job. I can help you in the store. I am very good at folding clothes and tidying everything up. I can also sort clothes. I am immediately available and can start tomorrow. Kind regards, [Your name]",
+        notes: "✓ Formal greeting | ✓ State motivation | ✓ Use image context (folding, sorting) | ✓ State availability | ✓ 56 words"
     }
 };

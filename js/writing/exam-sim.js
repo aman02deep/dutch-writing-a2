@@ -102,6 +102,24 @@ If the student makes a language mistake, gently correct them in English in paren
         instructionsListEN.appendChild(li);
     });
 
+    // Update contextual images
+    const imagesContainer = document.getElementById('task-images-container');
+    if (imagesContainer) {
+        imagesContainer.innerHTML = '';
+        if (task.images && task.images.length > 0) {
+            task.images.forEach(imgSrc => {
+                const img = document.createElement('img');
+                img.src = imgSrc;
+                img.className = 'task-context-image';
+                img.alt = 'Contextual image for task';
+                imagesContainer.appendChild(img);
+            });
+            imagesContainer.style.display = 'flex';
+        } else {
+            imagesContainer.style.display = 'none';
+        }
+    }
+
     // Update model answer
     document.getElementById('model-answer-text').textContent = task.modelAnswer;
     document.getElementById('model-answer').style.display = 'none';
