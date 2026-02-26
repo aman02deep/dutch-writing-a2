@@ -2,8 +2,6 @@
 
 let currentChapter = 1;
 let userAnswers = {};
-let timerInterval;
-let seconds = 0;
 
 function init() {
     // Get chapter from URL
@@ -11,7 +9,6 @@ function init() {
     currentChapter = parseInt(params.get('chapter')) || 1;
 
     loadChapter();
-    startTimer();
 }
 
 function loadChapter() {
@@ -22,8 +19,8 @@ function loadChapter() {
         return;
     }
 
-    // Update title
-    document.getElementById('chapter-title').textContent = chapter.title;
+    // Update title in navigation
+    document.getElementById('nav-title').innerHTML = `<a href="knm.html" class="nav-parent-link">KNM Hub</a> <span class="nav-separator">|</span> 🏛️ KNM Practice <span class="nav-separator">|</span> ${chapter.title}`;
 
     // Configure Contextual AI Roleplay for this KNM chapter
     window.roleplayConfig = {
@@ -54,27 +51,39 @@ If the student makes a language mistake or misunderstands a cultural concept, ge
 function loadStudyContent(chapter) {
     const studyContent = document.getElementById('study-content');
 
+    // 1. Check if there is an interactive video lesson for this chapter
+    let interactiveHtml = '';
+    if (typeof interactiveLessons !== 'undefined' && interactiveLessons[currentChapter]) {
+        interactiveHtml = `<div id="knm-interactive-player-container"></div>`;
+    }
+
+    // 2. Load static study HTML
+    let staticHtml = '';
     if (!chapter.studyMaterial || chapter.studyMaterial.length === 0) {
-        studyContent.innerHTML = `
+        staticHtml = `
             <div style="padding: 40px; text-align: center; color: #666;">
                 <h3>Study materials coming soon!</h3>
                 <p>In the meantime, try the practice questions in the Practice tab.</p>
             </div>
         `;
-        return;
+    } else {
+        chapter.studyMaterial.forEach(section => {
+            staticHtml += `
+                <div class="study-section">
+                    <h3>${section.title}</h3>
+                    ${section.content}
+                </div>
+            `;
+        });
     }
 
-    let html = '';
-    chapter.studyMaterial.forEach(section => {
-        html += `
-            <div class="study-section">
-                <h3>${section.title}</h3>
-                ${section.content}
-            </div>
-        `;
-    });
+    // Combine and render
+    studyContent.innerHTML = interactiveHtml + staticHtml;
 
-    studyContent.innerHTML = html;
+    // 3. Initialize the Interactive Player class if container exists
+    if (interactiveHtml) {
+        new KNMPlayer('knm-interactive-player-container', interactiveLessons[currentChapter]);
+    }
 }
 
 function loadPracticeQuestions(chapter) {
@@ -228,16 +237,6 @@ function nextChapter() {
         alert('You have completed all chapters! 🎉');
         window.location.href = 'knm.html';
     }
-}
-
-function startTimer() {
-    if (timerInterval) clearInterval(timerInterval);
-    timerInterval = setInterval(() => {
-        seconds++;
-        const mins = Math.floor(seconds / 60).toString().padStart(2, '0');
-        const secs = (seconds % 60).toString().padStart(2, '0');
-        document.getElementById('timer').textContent = `⏱️ ${mins}:${secs}`;
-    }, 1000);
 }
 
 window.onload = init;

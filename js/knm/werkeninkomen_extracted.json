@@ -1,0 +1,464 @@
+[
+    {
+        "id": "wi1",
+        "nl": "In deze les vertel ik jullie over snel en efficiënt werk zoeken.",
+        "en": "In this lesson I will tell you about finding work quickly and efficiently.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi1.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi2",
+        "nl": "In een vacature staat: de functie (de positie), de functie-eisen, de werktijden, en soms het salaris.",
+        "en": "A job vacancy includes: the position, the job requirements, working hours, and sometimes the salary.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi2.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi3",
+        "nl": "Waar kun je vacatures vinden? Bij het UWV WERKbedrijf via www.werk.nl.",
+        "en": "Where can you find vacancies? At the UWV WERKbedrijf via www.werk.nl.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi3.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi4",
+        "nl": "Je kunt ook vacatures vinden via www.nationalevacaturebank.nl of bij een uitzendbureau.",
+        "en": "You can also find vacancies via www.nationalevacaturebank.nl or at a recruitment agency (uitzendbureau).",
+        "audio": "../assets/audio/knm/werkeninkomen/wi4.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi5",
+        "nl": "Als je solliciteert op een baan, moet je meestal je cv en een sollicitatiebrief opsturen — of een online sollicitatieformulier invullen.",
+        "en": "When you apply for a job, you usually need to send your CV and a cover letter — or fill in an online application form.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi5.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi6",
+        "nl": "Een uitzendbureau heeft veel vacatures, meestal voor tijdelijk werk. Je krijgt dan een contract voor bepaalde tijd.",
+        "en": "A recruitment agency has many vacancies, usually for temporary work. You then get a fixed-term contract.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi6.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi7",
+        "nl": "Bij vast werk krijg je een contract voor onbepaalde tijd. Bij een uitzendbureau is het werk meestal voor bepaalde tijd.",
+        "en": "With permanent work you get an open-ended contract. Work through a recruitment agency is usually for a limited period.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi7.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi8",
+        "nl": "Je kunt jezelf inschrijven bij een uitzendbureau. Als zij werk hebben, nemen ze contact met jou op. Je kunt ook zelf direct solliciteren.",
+        "en": "You can register with a recruitment agency. When they have work, they will contact you. You can also apply directly yourself.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi8.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi9",
+        "nl": "Uitzendbureaus richten zich vaak op een specifieke branche, zoals de horeca (hotel, restaurant, café), administratie of de gezondheidszorg.",
+        "en": "Recruitment agencies often focus on a specific sector, such as hospitality (hotel, restaurant, café), administration or healthcare.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi9.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi10",
+        "nl": "Voor de meeste banen in Nederland heb je een diploma nodig. Heb je een diploma uit je eigen land? Laat het waarderen bij het IDW.",
+        "en": "For most jobs in the Netherlands you need a qualification. Do you have a qualification from your own country? Have it assessed at the IDW.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi10.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi11",
+        "nl": "Het IDW kan jou vertellen wat jouw buitenlandse diploma waard is op de Nederlandse arbeidsmarkt.",
+        "en": "The IDW can tell you what your foreign qualification is worth on the Dutch job market.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi11.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi12",
+        "nl": "Soms heb je een nieuw diploma nodig. Je kunt je inschrijven voor een opleiding in Nederland. Voor financiering kun je een lening aanvragen bij DUO.",
+        "en": "Sometimes you need a new qualification. You can enrol in a course in the Netherlands. For funding you can apply for a loan at DUO.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi12.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi13",
+        "nl": "Je kunt een beroepsopleiding volgen, bijvoorbeeld bij het ROC. Zo kun je bijvoorbeeld verpleegster worden als je in de zorg wil werken.",
+        "en": "You can follow a vocational training, for example at the ROC. For example, you can become a nurse if you want to work in healthcare.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi13.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi14",
+        "nl": "Re-integratiebedrijven helpen mensen die langere tijd geen werk hebben om nieuw werk te vinden.",
+        "en": "Re-integration companies help people who have been out of work for a longer period to find new work.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi14.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi15",
+        "nl": "Bijscholing: nieuwe dingen leren om een bepaalde baan te kunnen krijgen. Nascholing: specialiseren voor een bepaalde baan.",
+        "en": "Further training (bijscholing): learning new things to qualify for a certain job. Continuing education (nascholing): specialising for a specific role.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi15.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi16",
+        "nl": "Sommige mensen doen bij- of nascholing naast hun baan — bijvoorbeeld 's avonds of deeltijds.",
+        "en": "Some people do further or continuing education alongside their job — for example in the evenings or part-time.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi16.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi17",
+        "nl": "Werkervaring is een belangrijk aspect bij het vinden van werk. Relevante werkervaring kan een grote plus zijn.",
+        "en": "Work experience is an important aspect when finding a job. Relevant work experience can be a big advantage.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi17.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi18",
+        "nl": "Het EVC kan een officieel certificaat maken met erkenning van jouw werkervaring en vaardigheden uit het buitenland.",
+        "en": "The EVC can create an official certificate recognising your work experience and skills from abroad.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi18.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi19",
+        "nl": "Je kunt ook vrijwilligerswerk doen om meer werkervaring op te bouwen. Vrijwilligerswerk is werken zonder salaris, maar het kan waardevol zijn.",
+        "en": "You can also do volunteer work to build up more experience. Volunteer work means working without pay, but it can be very valuable.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi19.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi20",
+        "nl": "Beschikbaarheid is ook belangrijk. Kun je fulltime werken of alleen parttime? Bedrijven willen dit weten.",
+        "en": "Availability is also important. Can you work full-time or only part-time? Companies need to know this.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi20.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi21",
+        "nl": "Bij sommige banen is een bepaald niveau Nederlands vereist, zoals minimaal A2, B1 of B2.",
+        "en": "Some jobs require a certain level of Dutch, such as a minimum of A2, B1 or B2.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi21.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi22",
+        "nl": "Vind je het sollicitatieproces moeilijk? Dan kun je een cursus solliciteren volgen via het UWV (gratis) of bij een particulier bedrijf (betaald).",
+        "en": "Do you find the application process difficult? You can follow an application skills course through the UWV (free) or at a private company (paid).",
+        "audio": "../assets/audio/knm/werkeninkomen/wi22.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi23",
+        "nl": "De WW-uitkering is voor mensen die werkloos zijn geworden. Je moet je binnen één week inschrijven bij het UWV WERKbedrijf.",
+        "en": "The unemployment benefit (WW-uitkering) is for people who have become unemployed. You must register with the UWV WERKbedrijf within one week.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi23.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi24",
+        "nl": "Voorwaarden voor WW: je bent werkloos én je hebt meer dan een half jaar gewerkt voordat je werkloos werd.",
+        "en": "Conditions for WW: you are unemployed AND you worked for more than half a year before becoming unemployed.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi24.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi25",
+        "nl": "Met een WW-uitkering heb je een sollicitatieplicht: je moet actief solliciteren en dit bewijzen aan het UWV.",
+        "en": "With a WW benefit you have an obligation to apply for jobs: you must actively apply and prove this to the UWV.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi25.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi26",
+        "nl": "Andere uitkeringen: WIA (als je langdurig ziek bent en niet kunt werken), AOW (voor mensen van 67 jaar en ouder), en bijstand (als je te weinig inkomen hebt om van te leven).",
+        "en": "Other benefits: WIA (if you are long-term sick and cannot work), AOW (for people aged 67 and over), and social assistance/bijstand (if you have too little income to live on).",
+        "audio": "../assets/audio/knm/werkeninkomen/wi26.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi27",
+        "nl": "Deze les gaat over werken bij een bedrijf of organisatie.",
+        "en": "This lesson is about working at a company or organisation.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi27.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi28",
+        "nl": "Kwaliteiten van een goede werknemer: zelfstandig kunnen werken, goed samenwerken met collega's, initiatief tonen, en betrouwbaar zijn.",
+        "en": "Qualities of a good employee: being able to work independently, working well with colleagues, showing initiative, and being reliable.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi28.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi29",
+        "nl": "In het arbeidscontract staat: jouw salaris, startdatum, aantal werkuren per week, aantal vakantiedagen, en of er een proeftijd is.",
+        "en": "The employment contract states: your salary, start date, working hours per week, number of holiday days, and whether there is a probationary period (proeftijd).",
+        "audio": "../assets/audio/knm/werkeninkomen/wi29.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi30",
+        "nl": "Proeftijd: een periode om te kijken of het werk en het bedrijf bij jou passen. Zowel de werknemer als de werkgever kan tijdens de proeftijd het contract beëindigen.",
+        "en": "Probationary period: a period to see whether the work and the company suit you. Both the employee and the employer can end the contract during the probationary period.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi30.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi31",
+        "nl": "Soorten arbeidscontracten: vast contract (voor onbepaalde tijd), tijdelijk contract (voor bepaalde tijd), of een contract via een uitzendbureau.",
+        "en": "Types of employment contracts: permanent contract (open-ended), temporary contract (fixed-term), or a contract through a recruitment agency.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi31.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi32",
+        "nl": "Regels en plichten in het arbeidscontract: op tijd beginnen en niet te vroeg naar huis gaan, regels voor veiligheid en gezondheid volgen.",
+        "en": "Rules and obligations in the employment contract: start on time and not go home too early, follow health and safety rules.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi32.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi33",
+        "nl": "Bij ziekte moet je je afmelden bij je werkgever. Als je langere tijd ziek bent, meld je je bij de bedrijfsarts (ook wel: arbo-arts).",
+        "en": "If you are sick, you must report your absence to your employer. If you are sick for a longer period, you report to the company doctor (bedrijfsarts / arbo-arts).",
+        "audio": "../assets/audio/knm/werkeninkomen/wi33.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi34",
+        "nl": "De arbo-arts onderzoekt je en maakt samen met jou een re-integratieplan. De Arbowet regelt dat werknemers veilig en gezond kunnen werken.",
+        "en": "The company doctor examines you and creates a re-integration plan together with you. The Working Conditions Act (Arbowet) ensures employees can work safely and healthily.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi34.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi35",
+        "nl": "De ondernemingsraad (OR) is een groep werknemers die invloed heeft op plannen van de werkgever die de werknemers raken, zoals werktijden.",
+        "en": "The works council (OR — ondernemingsraad) is a group of employees that has influence over employer plans that affect employees, such as working hours.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi35.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi36",
+        "nl": "In bedrijven met meer dan 50 werknemers is een ondernemingsraad verplicht.",
+        "en": "In companies with more than 50 employees, a works council is mandatory.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi36.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi37",
+        "nl": "De medezeggenschapsraad (MR) doet vergelijkbare dingen als de OR, maar is meestal bij kleinere bedrijven met minder dan 50 werknemers.",
+        "en": "The participation council (MR — medezeggenschapsraad) does similar things to the OR, but is usually found in smaller companies with fewer than 50 employees.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi37.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi38",
+        "nl": "De personeelsvereniging organiseert sociale evenementen voor werknemers en helpt collega's elkaar beter te leren kennen.",
+        "en": "The staff association (personeelsvereniging) organises social events for employees and helps colleagues get to know each other better.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi38.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi39",
+        "nl": "In Nederland werken mensen bijna altijd samen met collega's. Goede samenwerking geeft betere resultaten.",
+        "en": "In the Netherlands people almost always work together with colleagues. Good teamwork produces better results.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi39.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi40",
+        "nl": "Een goede collega: werkt zelfstandig, helpt anderen, communiceert open en direct, is sociaal in de pauze, en staat open voor kritiek.",
+        "en": "A good colleague: works independently, helps others, communicates openly and directly, is social during breaks, and is open to feedback.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi40.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi41",
+        "nl": "Over je salaris betaal je belasting. De overheid gebruikt dit geld voor scholen, wegen, de politie en andere publieke voorzieningen.",
+        "en": "You pay tax on your salary. The government uses this money for schools, roads, the police and other public services.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi41.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi42",
+        "nl": "In Nederland betalen mensen met een hoger salaris meer belasting dan mensen met een lager salaris. Dit noemen we de lastenverdeling.",
+        "en": "In the Netherlands, people with a higher salary pay more tax than people with a lower salary. This is called the tax distribution (lastenverdeling).",
+        "audio": "../assets/audio/knm/werkeninkomen/wi42.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi43",
+        "nl": "Je betaalt ook premies over je salaris — voor de AOW-verzekering (pensioen), de WW-verzekering (werkloosheid) en andere verzekeringen.",
+        "en": "You also pay premiums on your salary — for the AOW insurance (pension), WW insurance (unemployment) and other insurances.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi43.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi44",
+        "nl": "Bruto salaris = salaris + belasting + premies. Netto salaris = het bedrag dat je op je bankrekening ontvangt.",
+        "en": "Gross salary (bruto) = salary + tax + premiums. Net salary (netto) = the amount you receive in your bank account.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi44.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi45",
+        "nl": "Op je loonstrookje zie je elke maand hoeveel naar belasting en premies gaat. Op je jaaropgave staat je salaris van het hele jaar.",
+        "en": "On your pay slip (loonstrookje) you can see each month how much goes to tax and premiums. Your annual statement (jaaropgave) shows your salary for the whole year.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi45.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi46",
+        "nl": "De cao (collectieve arbeidsovereenkomst) bevat de regels en afspraken voor alle werknemers en werkgevers in dezelfde sector.",
+        "en": "The collective labour agreement (cao) contains the rules and agreements for all employees and employers in the same sector.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi46.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi47",
+        "nl": "Rechten uit de cao: recht op minimumloon, recht op salaris bij ziekte, recht op vakantie en vakantiegeld.",
+        "en": "Rights from the cao: right to minimum wage, right to salary during illness, right to holidays and holiday pay.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi47.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi48",
+        "nl": "Plichten uit de cao: je ziekmelding doen en het aantal uren werken dat in je contract staat.",
+        "en": "Obligations from the cao: reporting sick leave and working the number of hours stated in your contract.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi48.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi49",
+        "nl": "Een vakbond is een groep werknemers die hetzelfde beroep uitoefenen. Elk beroep heeft zijn eigen vakbond.",
+        "en": "A trade union (vakbond) is a group of workers who do the same job. Every profession has its own trade union.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi49.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi50",
+        "nl": "De vakbond helpt werknemers bij problemen op het werk en onderhandelt met werkgevers over de cao, salarissen, werktijden en werkomstandigheden.",
+        "en": "The trade union helps employees with problems at work and negotiates with employers about the cao, salaries, working hours and working conditions.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi50.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi51",
+        "nl": "Deze les gaat over discriminatie op het werk.",
+        "en": "This lesson is about discrimination at work.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi51.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi52",
+        "nl": "Discriminatie door werkgevers en werknemers is in Nederland wettelijk verboden.",
+        "en": "Discrimination by employers and employees is legally prohibited in the Netherlands.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi52.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi53",
+        "nl": "Je hebt het recht om iets tegen discriminatie te doen. Praat er eerst over met je collega of je baas.",
+        "en": "You have the right to act against discrimination. First talk about it with your colleague or your manager.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi53.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi54",
+        "nl": "Misschien maakte de collega een grapje zonder te beseffen dat jij het vervelend vindt. Probeer het eerst direct op te lossen.",
+        "en": "Perhaps the colleague made a joke without realising you find it unpleasant. Try to resolve it directly first.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi54.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi55",
+        "nl": "Als praten niet helpt, kun je de discriminatie melden bij een antidiscriminatiebureau.",
+        "en": "If talking does not help, you can report the discrimination to an anti-discrimination bureau (antidiscriminatiebureau).",
+        "audio": "../assets/audio/knm/werkeninkomen/wi55.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi56",
+        "nl": "Als het antidiscriminatiebureau je niet kan helpen, kun je aangifte doen bij de politie.",
+        "en": "If the anti-discrimination bureau cannot help you, you can file a report with the police.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi56.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi57",
+        "nl": "Voor meer informatie over discriminatie op het werk: ga naar www.discriminatie.nl.",
+        "en": "For more information about discrimination at work: go to www.discriminatie.nl.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi57.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi58",
+        "nl": "Deze les gaat over het starten van je eigen bedrijf.",
+        "en": "This lesson is about starting your own business.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi58.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi59",
+        "nl": "De Kamer van Koophandel (KVK) is een organisatie voor bedrijven. Alle bedrijven in Nederland moeten zich registreren bij de KVK.",
+        "en": "The Chamber of Commerce (Kamer van Koophandel / KVK) is an organisation for businesses. All companies in the Netherlands must register with the KVK.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi59.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi60",
+        "nl": "Na registratie krijg je een officieel KVK-nummer.",
+        "en": "After registration you receive an official KVK number.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi60.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi61",
+        "nl": "De KVK geeft ook informatie aan ondernemers: over belasting, het opstellen van een ondernemingsplan, en over cursussen.",
+        "en": "The KVK also provides information to entrepreneurs: about tax, writing a business plan, and about courses.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi61.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi62",
+        "nl": "Voor meer informatie over de Kamer van Koophandel: ga naar www.kvk.nl.",
+        "en": "For more information about the Chamber of Commerce: go to www.kvk.nl.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi62.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi63",
+        "nl": "Het kan handig zijn om bepaalde diploma's en cursussen te hebben als je een eigen bedrijf start.",
+        "en": "It can be useful to have certain qualifications and courses when starting your own business.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi63.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi64",
+        "nl": "Onderzoek welke vaardigheden en kennis jij nodig hebt voor jouw bedrijf. Schrijf je in voor een cursus die jou daarbij helpt.",
+        "en": "Research what skills and knowledge you need for your business. Enrol in a course that will help you with this.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi64.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi65",
+        "nl": "Meestal heb je geld nodig om een eigen bedrijf te starten. Als je een lening wil bij de bank, wil de bank jouw ondernemingsplan zien.",
+        "en": "You usually need money to start your own business. If you want a loan from the bank, the bank will want to see your business plan (ondernemingsplan).",
+        "audio": "../assets/audio/knm/werkeninkomen/wi65.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    },
+    {
+        "id": "wi66",
+        "nl": "In het ondernemingsplan staat wat je gaat doen en hoe je het gaat doen. De bank bekijkt dit voordat ze beslissen of ze je een lening geven.",
+        "en": "The business plan states what you are going to do and how you are going to do it. The bank reviews this before deciding whether to give you a loan.",
+        "audio": "../assets/audio/knm/werkeninkomen/wi66.mp3",
+        "image": "../assets/images/knm/wi_werk.png"
+    }
+]

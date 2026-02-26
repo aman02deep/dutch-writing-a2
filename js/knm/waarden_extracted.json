@@ -1,0 +1,541 @@
+[
+    {
+        "id": "wn1",
+        "nl": "Deze les gaat over interactie tussen mensen in Nederland.",
+        "en": "This lesson is about interaction between people in the Netherlands.",
+        "audio": "../assets/audio/knm/waarden/wn1.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn2",
+        "nl": "Een heel normale begroeting is een hand geven. Dit doe je als je je voorstelt aan iemand — tussen mannen, tussen vrouwen, en tussen een man en een vrouw.",
+        "en": "A very normal greeting is shaking hands. You do this when introducing yourself — between men, between women, and between a man and a woman.",
+        "audio": "../assets/audio/knm/waarden/wn2.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn3",
+        "nl": "Op iemands verjaardag of als iemand geslaagd is, is het normaal om een hand te geven en 'gefeliciteerd' te zeggen.",
+        "en": "On someone's birthday or when someone has graduated, it is normal to shake hands and say 'congratulations' (gefeliciteerd).",
+        "audio": "../assets/audio/knm/waarden/wn3.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn4",
+        "nl": "Als iemand is overleden, geeft men vaak ook een hand en zegt men 'gecondoleerd'.",
+        "en": "When someone has passed away, people often shake hands and say 'my condolences' (gecondoleerd).",
+        "audio": "../assets/audio/knm/waarden/wn4.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn5",
+        "nl": "Drie zoenen is een informele begroeting tussen een man en een vrouw, of tussen twee vrouwen. Tussen mannen gebeurt dit meestal niet.",
+        "en": "Three kisses is an informal greeting between a man and a woman, or between two women. Between men this usually does not happen.",
+        "audio": "../assets/audio/knm/waarden/wn5.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn6",
+        "nl": "In Nederland zeggen we 'u' tegen oudere mensen en soms tegen de baas. Maar de meeste Nederlanders zeggen 'je' of 'jij' tegen elkaar, ook als ze elkaar niet kennen.",
+        "en": "In the Netherlands we say 'u' (formal 'you') to older people and sometimes to the boss. But most Dutch people say 'je' or 'jij' (informal 'you') to each other, even if they don't know each other.",
+        "audio": "../assets/audio/knm/waarden/wn6.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn7",
+        "nl": "Bij op bezoek gaan: mensen maken meestal een afspraak van tevoren. De meeste Nederlanders komen op tijd — maximaal 10 tot 15 minuten te laat is acceptabel.",
+        "en": "When visiting someone: people usually make an appointment in advance. Most Dutch people arrive on time — arriving up to 10 to 15 minutes late is acceptable.",
+        "audio": "../assets/audio/knm/waarden/wn7.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn8",
+        "nl": "Als je bij iemand gaat eten, spreek je dit van tevoren af. Het is in Nederland niet gebruikelijk om impulsief te blijven eten.",
+        "en": "If you are going to eat at someone's place, you arrange this in advance. It is not common in the Netherlands to spontaneously stay for dinner.",
+        "audio": "../assets/audio/knm/waarden/wn8.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn9",
+        "nl": "Cadeautjes geven: als iemand een feest geeft of als je op bezoek gaat, is het normaal om bloemen, een fles wijn of iets lekkers mee te nemen.",
+        "en": "Giving gifts: when someone throws a party or when you visit someone, it is normal to bring flowers, a bottle of wine or something nice to eat.",
+        "audio": "../assets/audio/knm/waarden/wn9.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn10",
+        "nl": "Voor een verjaardag geef je een cadeautje. Het is geen goed idee om een cadeautje te geven aan een ambtenaar in functie — die mag officieel geen cadeaus accepteren.",
+        "en": "For a birthday you give a gift. It is not a good idea to give a gift to a civil servant on duty — they are officially not allowed to accept gifts.",
+        "audio": "../assets/audio/knm/waarden/wn10.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn11",
+        "nl": "Wanneer stuur je een kaartje? Als iemand ziek is (beterschap wensen), voor iemands verjaardag, of als iemand is overleden (om sterkte te wensen aan de familie).",
+        "en": "When do you send a card? When someone is sick (to wish them a speedy recovery), for someone's birthday, or when someone has passed away (to express sympathy to the family).",
+        "audio": "../assets/audio/knm/waarden/wn11.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn12",
+        "nl": "In de rij wachten: Nederlanders vinden het vervelend als je voordringt. Wacht gewoon op je beurt — in de supermarkt, bij de kassa, of bij het gemeentehuis.",
+        "en": "Queuing: Dutch people dislike queue-jumping. Simply wait your turn — in the supermarket, at the checkout, or at the municipality.",
+        "audio": "../assets/audio/knm/waarden/wn12.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn13",
+        "nl": "Bij het gemeentehuis trek je een nummertje. Je wacht totdat jouw nummer op het scherm verschijnt of je naam wordt omgeroepen.",
+        "en": "At the municipality you take a number ticket. You wait until your number appears on the screen or your name is called.",
+        "audio": "../assets/audio/knm/waarden/wn13.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn14",
+        "nl": "In de wachtkamer (bij de dokter of tandarts): bel liever buiten. Zorg dat het rustig en stil is voor de andere mensen.",
+        "en": "In the waiting room (at the doctor or dentist): it is better to make phone calls outside. Keep it calm and quiet out of respect for others.",
+        "audio": "../assets/audio/knm/waarden/wn14.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn15",
+        "nl": "In het openbaar vervoer: je hebt altijd een vervoersbewijs en een ID nodig. Val andere mensen niet lastig. In een stiltecoupé mag je niet praten.",
+        "en": "In public transport: you always need a valid ticket and ID. Do not bother other people. In a quiet compartment (stiltecoupé) you are not allowed to talk.",
+        "audio": "../assets/audio/knm/waarden/wn15.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn16",
+        "nl": "Sta je plaats af aan een oudere of gehandicapte persoon als die geen zitplaats heeft.",
+        "en": "Give up your seat to an elderly or disabled person if they have no place to sit.",
+        "audio": "../assets/audio/knm/waarden/wn16.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn17",
+        "nl": "Nederlandse directheid: Nederlanders vinden het normaal om open hun mening te geven. Ze vinden het ook goed als jij jouw mening geeft, en ze vragen er ook naar.",
+        "en": "Dutch directness: Dutch people find it normal to share their opinion openly. They also appreciate you sharing your opinion, and they will ask for it.",
+        "audio": "../assets/audio/knm/waarden/wn17.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn18",
+        "nl": "Voorbeeld van directheid: als de buren harde muziek spelen, ga je direct naar ze toe en vraag je vriendelijk of ze het zachter willen zetten. Helpt dit niet, dan kun je de politie bellen.",
+        "en": "Example of directness: if the neighbours play loud music, you go to them directly and politely ask them to turn it down. If this does not work, you can call the police.",
+        "audio": "../assets/audio/knm/waarden/wn18.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn19",
+        "nl": "Bij een probleem met een collega: probeer het direct met die persoon op te lossen. Als dat niet werkt, kun je met je manager of een andere collega praten.",
+        "en": "With a problem at work: try to resolve it directly with that person. If that does not work, you can talk to your manager or another colleague.",
+        "audio": "../assets/audio/knm/waarden/wn19.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn20",
+        "nl": "Formele afspraken (bij de dokter, gemeente of UWV): maak van tevoren een afspraak, kom op tijd, en zeg af als je niet kunt komen.",
+        "en": "Formal appointments (at the doctor, municipality or UWV): make an appointment in advance, arrive on time, and cancel if you cannot come.",
+        "audio": "../assets/audio/knm/waarden/wn20.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn21",
+        "nl": "Informele afspraken (met een vriend of kennis): spreek ook van tevoren af. 10 tot 15 minuten te laat is acceptabel, maar meer dan dat is niet normaal.",
+        "en": "Informal appointments (with a friend or acquaintance): also arrange in advance. 10 to 15 minutes late is acceptable, but more than that is not normal.",
+        "audio": "../assets/audio/knm/waarden/wn21.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn22",
+        "nl": "Samenwonen in Nederland: mensen zijn getrouwd en wonen samen, of ze wonen samen met een samenlevingscontract (niet getrouwd, maar officieel samenwonend).",
+        "en": "Living together in the Netherlands: people are married and live together, or they live together with a cohabitation contract (not married, but officially cohabiting).",
+        "audio": "../assets/audio/knm/waarden/wn22.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn23",
+        "nl": "Ongeveer 57% van alle mensen in Nederland woont in een gezin — twee volwassenen met één of meer kinderen. Er zijn ook eenoudergezinnen.",
+        "en": "About 57% of all people in the Netherlands live in a family — two adults with one or more children. There are also single-parent families.",
+        "audio": "../assets/audio/knm/waarden/wn23.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn24",
+        "nl": "Homo's en lesbiennes worden in Nederland geaccepteerd. Ze mogen samenwonen en sinds 2001 ook met elkaar trouwen.",
+        "en": "Gay men and lesbians are accepted in the Netherlands. They may live together and since 2001 they may also marry each other.",
+        "audio": "../assets/audio/knm/waarden/wn24.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn25",
+        "nl": "Nederlanders vinden het belangrijk om zelf een partner te kiezen. Mensen zijn vrij om te kiezen wie ze als partner willen.",
+        "en": "Dutch people find it important to choose their own partner. People are free to choose who they want as a partner.",
+        "audio": "../assets/audio/knm/waarden/wn25.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn26",
+        "nl": "Deze les gaat over Nederlandse waarden en normen.",
+        "en": "This lesson is about Dutch values and norms.",
+        "audio": "../assets/audio/knm/waarden/wn26.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn27",
+        "nl": "Waarden zijn dingen die we in een groep belangrijk vinden. Normen zijn de regels die voortkomen uit die waarden.",
+        "en": "Values are things we consider important in a group. Norms are the rules that arise from those values.",
+        "audio": "../assets/audio/knm/waarden/wn27.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn28",
+        "nl": "Voorbeelden van waarden: vrijheid van meningsuiting (iedereen mag zeggen wat hij of zij wil) en vrijheid van godsdienst (iedereen mag geloven in welke religie hij of zij wil).",
+        "en": "Examples of values: freedom of expression (everyone may say what they want) and freedom of religion (everyone may believe in any religion they choose).",
+        "audio": "../assets/audio/knm/waarden/wn28.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn29",
+        "nl": "Voorbeelden van normen: discrimineren is verboden, geweld is verboden.",
+        "en": "Examples of norms: discrimination is prohibited, violence is prohibited.",
+        "audio": "../assets/audio/knm/waarden/wn29.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn30",
+        "nl": "In de Grondwet staat: discrimineren is verboden en alle mensen zijn gelijk en hebben dezelfde rechten.",
+        "en": "The Dutch Constitution states: discrimination is prohibited and all people are equal and have the same rights.",
+        "audio": "../assets/audio/knm/waarden/wn30.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn31",
+        "nl": "Gelijkheid tussen mannen en vrouwen: ze kunnen dezelfde beroepen uitoefenen en krijgen dezelfde kansen op school en bij sollicitaties.",
+        "en": "Equality between men and women: they can practise the same professions and receive the same opportunities at school and in job applications.",
+        "audio": "../assets/audio/knm/waarden/wn31.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn32",
+        "nl": "De meeste vrouwen blijven werken na de geboorte van een kind. Mannen en vrouwen doen het huishouden samen.",
+        "en": "Most women continue to work after the birth of a child. Men and women do the housework together.",
+        "audio": "../assets/audio/knm/waarden/wn32.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn33",
+        "nl": "Homoseksualiteit: twee mannen of twee vrouwen mogen een relatie hebben, in het openbaar samen zijn, en sinds 2001 met elkaar trouwen.",
+        "en": "Homosexuality: two men or two women may have a relationship, be together in public, and since 2001 they may marry each other.",
+        "audio": "../assets/audio/knm/waarden/wn33.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn34",
+        "nl": "Respect voor mensen met andere ideeën of gewoontes: mensen met een andere religie worden geaccepteerd. Iedereen mag zelf kiezen welke kleding hij of zij draagt.",
+        "en": "Respect for people with different ideas or customs: people with a different religion are accepted. Everyone may choose what clothing they wear.",
+        "audio": "../assets/audio/knm/waarden/wn34.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn35",
+        "nl": "Mensen mogen lichamelijk contact hebben in het openbaar, zoals hand in hand lopen of zoenen. Dit geldt ook voor homoseksuelen.",
+        "en": "People may have physical contact in public, such as holding hands or kissing. This also applies to same-sex couples.",
+        "audio": "../assets/audio/knm/waarden/wn35.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn36",
+        "nl": "Alle vormen van geweld zijn in Nederland verboden: huiselijk geweld, eerwraak, vrouwenbesnijdenis en verkrachting.",
+        "en": "All forms of violence are prohibited in the Netherlands: domestic violence, honour-related violence, female genital mutilation and rape.",
+        "audio": "../assets/audio/knm/waarden/wn36.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn37",
+        "nl": "Geweld is strafbaar. Je kunt een boete krijgen of in de gevangenis worden gezet.",
+        "en": "Violence is a criminal offence. You can receive a fine or be sent to prison.",
+        "audio": "../assets/audio/knm/waarden/wn37.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn38",
+        "nl": "Geweld melden: bij Slachtofferhulp Nederland of bij de politie.",
+        "en": "Reporting violence: at Slachtofferhulp Nederland (Victim Support Netherlands) or at the police.",
+        "audio": "../assets/audio/knm/waarden/wn38.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn39",
+        "nl": "In Nederland is het verboden om wapens te dragen.",
+        "en": "In the Netherlands it is forbidden to carry weapons.",
+        "audio": "../assets/audio/knm/waarden/wn39.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn40",
+        "nl": "Deze les gaat over een sociaal netwerk opbouwen in Nederland.",
+        "en": "This lesson is about building a social network in the Netherlands.",
+        "audio": "../assets/audio/knm/waarden/wn40.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn41",
+        "nl": "Veel mensen in Nederland vinden het belangrijk om een sociaal netwerk te hebben — mensen uit de buurt leren kennen en nieuwe vrienden of connecties maken.",
+        "en": "Many people in the Netherlands find it important to have a social network — getting to know people from the neighbourhood and making new friends or connections.",
+        "audio": "../assets/audio/knm/waarden/wn41.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn42",
+        "nl": "Je kunt lid worden van een vereniging, zoals een sportvereniging (voetbal) of een culturele vereniging (zangvereniging).",
+        "en": "You can become a member of an association, such as a sports club (football) or a cultural association (choir).",
+        "audio": "../assets/audio/knm/waarden/wn42.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn43",
+        "nl": "Leden helpen de vereniging ook, bijvoorbeeld door een middag achter de bar te staan of te helpen met het nieuwe clubhuis. Dit wordt normaal gevonden in Nederland.",
+        "en": "Members also help the association, for example by working behind the bar one afternoon or helping with the new clubhouse. This is considered normal in the Netherlands.",
+        "audio": "../assets/audio/knm/waarden/wn43.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn44",
+        "nl": "Als jouw kinderen lid worden van een vereniging, leer jij ook nieuwe mensen kennen. Een vereniging kan dus goed zijn voor je sociale netwerk.",
+        "en": "When your children become members of an association, you also get to know new people. An association can therefore be good for your social network.",
+        "audio": "../assets/audio/knm/waarden/wn44.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn45",
+        "nl": "Buurthuizen zijn op veel plaatsen in Nederland te vinden. Je kunt er koffie drinken met buurtgenoten, Nederlands oefenen, of meedoen aan activiteiten zoals buurtfeesten, spelletjesavonden of taalcursussen.",
+        "en": "Community centres (buurthuizen) can be found in many places in the Netherlands. You can drink coffee with neighbours, practise Dutch, or join activities such as neighbourhood parties, games evenings or language courses.",
+        "audio": "../assets/audio/knm/waarden/wn45.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn46",
+        "nl": "Als je problemen hebt met de buren, praat er dan direct over. Dit is de normale manier in Nederland.",
+        "en": "If you have problems with the neighbours, talk about it directly. This is the normal approach in the Netherlands.",
+        "audio": "../assets/audio/knm/waarden/wn46.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn47",
+        "nl": "Als direct praten niet helpt, kun je de politie bellen — zeker als je het probleem al meerdere keren hebt geprobeerd op te lossen.",
+        "en": "If talking directly does not help, you can call the police — especially if you have already tried to resolve the problem several times.",
+        "audio": "../assets/audio/knm/waarden/wn47.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn48",
+        "nl": "Ga je zelf overlast veroorzaken, zoals een feest geven of verhuizen? Vertel dit dan van tevoren aan de buren.",
+        "en": "Are you going to cause some disruption yourself, like having a party or moving house? Then let your neighbours know in advance.",
+        "audio": "../assets/audio/knm/waarden/wn48.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn49",
+        "nl": "Je kunt de buren ook uitnodigen voor je feest. Het is een goed moment om hen beter te leren kennen.",
+        "en": "You can also invite the neighbours to your party. It is a good opportunity to get to know them better.",
+        "audio": "../assets/audio/knm/waarden/wn49.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn50",
+        "nl": "Deze les gaat over feest- en familiedagen in Nederland.",
+        "en": "This lesson is about holidays and family days in the Netherlands.",
+        "audio": "../assets/audio/knm/waarden/wn50.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn51",
+        "nl": "Kerst is op 24 en 25 december. Het is een christelijke feestdag waarop we de geboorte van Jezus Christus vieren. Scholen hebben twee weken kerstvakantie.",
+        "en": "Christmas is on 24 and 25 December. It is a Christian holiday on which we celebrate the birth of Jesus Christ. Schools have two weeks of Christmas holiday.",
+        "audio": "../assets/audio/knm/waarden/wn51.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn52",
+        "nl": "Mensen vieren Kerst met vrienden en familie en geven elkaar cadeautjes. Veel niet-gelovige mensen vieren dit feest ook.",
+        "en": "People celebrate Christmas with friends and family and give each other gifts. Many non-religious people also celebrate this holiday.",
+        "audio": "../assets/audio/knm/waarden/wn52.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn53",
+        "nl": "Pasen is op een zondag en maandag in maart of april. We vieren de wederopstanding van Jezus Christus. De maandag is een vrije dag.",
+        "en": "Easter is on a Sunday and Monday in March or April. We celebrate the resurrection of Jesus Christ. The Monday is a public holiday.",
+        "audio": "../assets/audio/knm/waarden/wn53.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn54",
+        "nl": "Sinterklaas is op 5 december. Het is een christelijke feestdag, maar geen officiële vrije dag. Sinterklaas wordt door veel mensen gevierd, ook niet-gelovigen.",
+        "en": "Sinterklaas is on 5 December. It is a Christian holiday, but not an official public holiday. Sinterklaas is celebrated by many people, including non-religious ones.",
+        "audio": "../assets/audio/knm/waarden/wn54.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn55",
+        "nl": "Kinderen geloven dat Sinterklaas elk jaar met de boot uit Spanje naar Nederland komt.",
+        "en": "Children believe that Sinterklaas arrives in the Netherlands by boat from Spain every year.",
+        "audio": "../assets/audio/knm/waarden/wn55.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn56",
+        "nl": "Traditie voor kinderen: schoentje zetten. Kinderen zetten hun schoen 's avonds neer. De volgende ochtend zit er snoep of een cadeautje in.",
+        "en": "Tradition for children: putting out a shoe (schoentje zetten). Children put their shoe out in the evening. The next morning there is sweets or a small gift inside.",
+        "audio": "../assets/audio/knm/waarden/wn56.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn57",
+        "nl": "Volwassenen geven ook cadeautjes aan elkaar met Sinterklaas.",
+        "en": "Adults also give each other gifts at Sinterklaas.",
+        "audio": "../assets/audio/knm/waarden/wn57.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn58",
+        "nl": "Koningsdag is op 27 april. We vieren de verjaardag van koning Willem-Alexander. Het is een vrije dag met feesten, muziek, spelletjes en veel oranje versiering.",
+        "en": "King's Day (Koningsdag) is on 27 April. We celebrate the birthday of King Willem-Alexander. It is a public holiday with parties, music, games and lots of orange decorations.",
+        "audio": "../assets/audio/knm/waarden/wn58.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn59",
+        "nl": "Op Koningsdag is er ook een vrijmarkt: mensen verkopen hun oude spullen op straat, zonder vergunning.",
+        "en": "On King's Day there is also a flea market (vrijmarkt): people sell their old belongings on the street, without a licence.",
+        "audio": "../assets/audio/knm/waarden/wn59.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn60",
+        "nl": "Bevrijdingsdag is op 5 mei. We vieren de bevrijding in 1945, na de Tweede Wereldoorlog. Eens in de vijf jaar is het een officiële vrije dag.",
+        "en": "Liberation Day (Bevrijdingsdag) is on 5 May. We celebrate the liberation in 1945, after the Second World War. Once every five years it is an official public holiday.",
+        "audio": "../assets/audio/knm/waarden/wn60.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn61",
+        "nl": "4 mei is Dodenherdenking: we herdenken de slachtoffers van de Tweede Wereldoorlog.",
+        "en": "4 May is Remembrance Day (Dodenherdenking): we commemorate the victims of the Second World War.",
+        "audio": "../assets/audio/knm/waarden/wn61.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn62",
+        "nl": "Pinksteren en Hemelvaart zijn christelijke feestdagen, meestal in mei. De meeste mensen hebben op deze dagen vrij.",
+        "en": "Whitsun (Pinksteren) and Ascension Day (Hemelvaart) are Christian holidays, usually in May. Most people have these days off.",
+        "audio": "../assets/audio/knm/waarden/wn62.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn63",
+        "nl": "Oud en Nieuw is op 31 december en 1 januari. We vieren het nieuwe jaar. Tradities: oliebollen eten en vuurwerk afsteken.",
+        "en": "New Year's Eve and New Year's Day are on 31 December and 1 January. We celebrate the new year. Traditions: eating oliebollen (Dutch doughnuts) and setting off fireworks.",
+        "audio": "../assets/audio/knm/waarden/wn63.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn64",
+        "nl": "Nederland respecteert de feestdagen van andere culturen en nationaliteiten. Iedereen mag zijn feestdagen vieren, zoals de Ramadan of Diwali.",
+        "en": "The Netherlands respects the holidays of other cultures and nationalities. Everyone may celebrate their own holidays, such as Ramadan or Diwali.",
+        "audio": "../assets/audio/knm/waarden/wn64.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn65",
+        "nl": "Verjaardag: veel Nederlanders vieren hun verjaardag en nodigen vrienden en familie uit. De jarige heeft thuis vaak een taart.",
+        "en": "Birthday: many Dutch people celebrate their birthday and invite friends and family. The birthday person often has a cake at home.",
+        "audio": "../assets/audio/knm/waarden/wn65.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn66",
+        "nl": "Trakteren: de jarige brengt ook een taart of iets lekkers naar het werk. Kinderen trakteren op school — ze brengen snoep of iets lekkers mee voor de klas.",
+        "en": "Treating others (trakteren): the birthday person also brings a cake or treat to work. Children treat their classmates at school — they bring sweets or a treat for the whole class.",
+        "audio": "../assets/audio/knm/waarden/wn66.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn67",
+        "nl": "Kinderen vieren hun verjaardag ook thuis of gaan naar het zwembad, de dierentuin of iets anders leuks.",
+        "en": "Children also celebrate their birthday at home or go to the swimming pool, zoo or do something else fun.",
+        "audio": "../assets/audio/knm/waarden/wn67.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn68",
+        "nl": "Als iemand jarig is, zeg je 'gefeliciteerd' of 'gefeliciteerd met je verjaardag'. Je kunt de jarige ook een kaartje sturen.",
+        "en": "When someone has a birthday, you say 'gefeliciteerd' (congratulations) or 'gefeliciteerd met je verjaardag'. You can also send the birthday person a card.",
+        "audio": "../assets/audio/knm/waarden/wn68.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn69",
+        "nl": "Geboorte: ouders sturen een kaartje naar vrienden en familie met de naam van de baby en de geboortedatum.",
+        "en": "Birth: parents send a card to friends and family with the baby's name and date of birth.",
+        "audio": "../assets/audio/knm/waarden/wn69.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn70",
+        "nl": "Kraamvisite: vrienden en familie komen een paar dagen na de geboorte op bezoek om de baby te zien en de ouders te feliciteren. Ze brengen vaak een cadeautje mee.",
+        "en": "Kraamvisite (birth visit): friends and family visit a few days after the birth to see the baby and congratulate the parents. They often bring a gift.",
+        "audio": "../assets/audio/knm/waarden/wn70.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn71",
+        "nl": "Bij de kraamvisite krijgen de gasten beschuit met muisjes. Een Nederlandse traditie: roze muisjes voor een meisje, blauwe muisjes voor een jongen.",
+        "en": "At the kraamvisite guests receive rusks with aniseed sprinkles (beschuit met muisjes). A Dutch tradition: pink sprinkles for a girl, blue sprinkles for a boy.",
+        "audio": "../assets/audio/knm/waarden/wn71.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn72",
+        "nl": "Bruiloft: mensen trouwen formeel in het gemeentehuis. Daarna trouwen sommige mensen ook ceremonieel in de kerk.",
+        "en": "Wedding (bruiloft): people marry formally at the municipality. Afterwards, some people also have a ceremonial wedding in church.",
+        "audio": "../assets/audio/knm/waarden/wn72.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn73",
+        "nl": "Na de bruiloft kunnen gasten het stel feliciteren tijdens de receptie. Na de bruiloft gaat het stel vaak op huwelijksreis.",
+        "en": "After the wedding, guests can congratulate the couple during the reception. After the wedding, the couple often goes on honeymoon (huwelijksreis).",
+        "audio": "../assets/audio/knm/waarden/wn73.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn74",
+        "nl": "Geslaagd: als een kind zijn middelbare school heeft afgerond, is een Nederlandse traditie om de schooltas aan de vlaggenstok te hangen.",
+        "en": "Graduation: when a child has completed secondary school, a Dutch tradition is to hang the school bag on the flagpole.",
+        "audio": "../assets/audio/knm/waarden/wn74.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn75",
+        "nl": "Vaak geven ze dan ook een feest waar alle vrienden worden uitgenodigd.",
+        "en": "They often also throw a party to which all friends are invited.",
+        "audio": "../assets/audio/knm/waarden/wn75.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn76",
+        "nl": "Begrafenis of crematie: de nabestaanden sturen een kaart met informatie over de uitvaart. Je kunt ook een kaartje sturen om te condoleren en sterkte te wensen.",
+        "en": "Funeral or cremation: the next of kin send a card with information about the service. You can also send a card to express your condolences and offer your support.",
+        "audio": "../assets/audio/knm/waarden/wn76.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "wn77",
+        "nl": "Bij de uitvaart dragen mensen donkere kleding. Na de begrafenis of crematie kun je de nabestaanden condoleren met de woorden: 'gecondoleerd'.",
+        "en": "At the funeral people wear dark clothing. After the burial or cremation you can offer your condolences to the next of kin with the words: 'gecondoleerd'.",
+        "audio": "../assets/audio/knm/waarden/wn77.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    }
+]
