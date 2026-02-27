@@ -36,32 +36,20 @@
     </nav>
 
     <div class="container" style="max-width: 100%; padding: 0;">
-        <!-- Top Bar -->
-        <div class="top-bar"
-            style="background: white; padding: 15px 30px; border-bottom: 2px solid #e0e0e0; display: flex; justify-content: space-between; align-items: center;">
-            <div style="display: flex; align-items: center; gap: 15px;">
-                <h2 id="chapter-title" style="margin: 0; color: var(--primary);">Loading...</h2>
-            </div>
-            <div style="display: flex; align-items: center; gap: 15px;">
-                <div class="score-badge" id="score-badge"
-                    style="background: #e3f2fd; padding: 8px 16px; border-radius: 20px; font-weight: 600; color: var(--primary);">
-                    Score: <span id="score-display">0/0</span>
-                </div>
-                <div class="timer" id="timer"
-                    style="font-family: monospace; font-size: 1.1rem; font-weight: bold; color: var(--primary); background: #f0f7ff; padding: 8px 12px; border-radius: 4px;">
-                    ⏱️ 00:00</div>
-            </div>
-        </div>
-
         <!-- Main Content -->
         <div class="chapter-container">
+            <!-- Sidebar for Navigation -->
+            <div class="chapter-sidebar">
+                <div class="tab-container">
+                    <button class="tab-btn active" data-tab="study" onclick="switchTab('study')">📚 Study
+                        Lesson</button>
+                    <button class="tab-btn" data-tab="practice" onclick="switchTab('practice')">✍️ Practice
+                        Questions</button>
+                </div>
+            </div>
+
             <!-- Content Area -->
             <div class="chapter-main">
-                <!-- Tab Navigation -->
-                <div class="tab-container">
-                    <button class="tab-btn active" data-tab="study" onclick="switchTab('study')">📚 Study</button>
-                    <button class="tab-btn" data-tab="practice" onclick="switchTab('practice')">✍️ Practice</button>
-                </div>
 
                 <!-- Study Tab -->
                 <div id="study-tab" class="tab-content active">
@@ -73,6 +61,15 @@
                 <!-- Practice Tab -->
                 <div id="practice-tab" class="tab-content">
                     <div id="practice-content">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                            <h3 style="margin: 0; color: var(--primary);">Practice Questions</h3>
+                            <div class="score-badge" id="score-badge"
+                                style="background: #e3f2fd; padding: 8px 16px; border-radius: 20px; font-weight: 600; color: var(--primary);">
+                                Score: <span id="score-display">0/0</span>
+                            </div>
+                        </div>
+
                         <div id="questions-container">
                             <!-- Questions will be rendered here -->
                         </div>
@@ -88,6 +85,8 @@
     </div>
 
     <script src="../js/common/common.js"></script>
+    <script src="../js/knm/knm-lesson-data.js"></script>
+    <script src="../js/knm/knm-player.js"></script>
     <script src="../js/knm/knm-questions.js"></script>
     <script src="../js/knm/knm.js"></script>
     <script src="../js/common/settings.js"></script>

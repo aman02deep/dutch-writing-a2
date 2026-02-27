@@ -1,0 +1,387 @@
+[
+    {
+        "id": "gz1",
+        "nl": "Deze les gaat over de huisarts en de tandarts.",
+        "en": "This lesson is about the GP and the dentist.",
+        "audio": "../assets/audio/knm/gezondheid/gz1.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz2",
+        "nl": "Met een gezonde levensstijl hoef je minder vaak naar de huisarts: gezond eten en drinken, regelmatig bewegen, niet roken, en niet te veel alcohol drinken.",
+        "en": "With a healthy lifestyle you need to visit the GP less often: eat and drink healthily, exercise regularly, don't smoke, and don't drink too much alcohol.",
+        "audio": "../assets/audio/knm/gezondheid/gz2.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz3",
+        "nl": "Ben je ziek of voel je je niet goed en gaat het niet vanzelf weg? Ga dan naar de huisarts.",
+        "en": "Are you sick or do you not feel well and it doesn't go away by itself? Then go to the GP.",
+        "audio": "../assets/audio/knm/gezondheid/gz3.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz4",
+        "nl": "Iedereen in Nederland mag zelf een huisarts kiezen. Het is handig om er één te vinden dicht bij je huis. Niet tevreden? Praat er eerst over, of kies een andere huisarts.",
+        "en": "Everyone in the Netherlands may choose their own GP. It is convenient to find one near your home. Not satisfied? Talk about it first, or choose a different GP.",
+        "audio": "../assets/audio/knm/gezondheid/gz4.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz5",
+        "nl": "Als er plaats is bij de huisarts volgt er een kennismakingsgesprek om elkaar te leren kennen.",
+        "en": "If there is a place at the GP practice, there will be an introductory consultation to get to know each other.",
+        "audio": "../assets/audio/knm/gezondheid/gz5.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz6",
+        "nl": "Mensen gaan naar de huisarts bij klachten zoals hoofdpijn, keelpijn of koorts. Je moet eerst bellen voor een afspraak en op tijd komen.",
+        "en": "People go to the GP for complaints such as headaches, a sore throat or fever. You must call first to make an appointment and arrive on time.",
+        "audio": "../assets/audio/knm/gezondheid/gz6.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz7",
+        "nl": "De huisarts kan zeggen dat de klacht vanzelf weggaat, advies geven, of een recept uitschrijven. Als de huisarts je niet kan helpen, verwijst hij je door naar een specialist.",
+        "en": "The GP can say the complaint will go away by itself, give advice, or write a prescription. If the GP cannot help you, they will refer you to a specialist.",
+        "audio": "../assets/audio/knm/gezondheid/gz7.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz8",
+        "nl": "Nederlandse huisartsen zijn voorzichtig met medicijnen — ze vinden het belangrijk dat het lichaam zichzelf herstelt.",
+        "en": "Dutch GPs are careful with medication — they find it important that the body heals itself.",
+        "audio": "../assets/audio/knm/gezondheid/gz8.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz9",
+        "nl": "Voor korte vragen kun je bellen tijdens het telefonisch spreekuur. Als je te oud of te ziek bent om te komen, kan de huisarts op huisbezoek komen.",
+        "en": "For short questions you can call during telephone consultation hours. If you are too old or too sick to come in, the GP can do a home visit.",
+        "audio": "../assets/audio/knm/gezondheid/gz9.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz10",
+        "nl": "Het tolkencentrum kan helpen als je niet goed Nederlands spreekt tijdens een gesprek met de huisarts of een andere officiële instantie.",
+        "en": "The interpreter centre (tolkencentrum) can help if you do not speak Dutch well during a conversation with the GP or another official organisation.",
+        "audio": "../assets/audio/knm/gezondheid/gz10.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz11",
+        "nl": "De huisarts heeft beroepsgeheim — hij mag niet over jouw gezondheid praten met buitenstaanders.",
+        "en": "The GP has professional confidentiality (beroepsgeheim) — they may not discuss your health with outsiders.",
+        "audio": "../assets/audio/knm/gezondheid/gz11.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz12",
+        "nl": "Voor medicijnen op recept ga je naar de apotheek. Sommige medicijnen (zoals paracetamol of hoestdrank) kun je zonder recept kopen bij de apotheek, drogist of supermarkt.",
+        "en": "For prescription medication you go to the pharmacy (apotheek). Some medications (such as paracetamol or cough syrup) can be bought without a prescription at the pharmacy, drugstore or supermarket.",
+        "audio": "../assets/audio/knm/gezondheid/gz12.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz13",
+        "nl": "De drogist geeft geen medicijnen op recept — dat kan alleen de apotheek. De zorgverzekering betaalt de meeste medicijnen, maar soms betaal je een eigen bijdrage.",
+        "en": "The drugstore (drogist) does not dispense prescription medication — only the pharmacy does. Health insurance covers most medications, but sometimes you pay a personal contribution (eigen bijdrage).",
+        "audio": "../assets/audio/knm/gezondheid/gz13.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz14",
+        "nl": "De tandarts: mensen met klachten maken een afspraak, maar ook mensen zonder klachten gaan twee keer per jaar voor controle.",
+        "en": "The dentist: people with complaints make an appointment, but people without complaints also go twice a year for a check-up.",
+        "audio": "../assets/audio/knm/gezondheid/gz14.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz15",
+        "nl": "Je kiest zelf je tandarts, net zoals de huisarts. Soms is er een wachtlijst. Voor de tandarts heb je meestal een aparte tandartsverzekering nodig — dit valt niet onder de basisverzekering.",
+        "en": "You choose your own dentist, just like the GP. Sometimes there is a waiting list. For the dentist you usually need a separate dental insurance — this is not covered by the basic health insurance.",
+        "audio": "../assets/audio/knm/gezondheid/gz15.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz16",
+        "nl": "Kinderen onder 18 jaar zijn gratis verzekerd voor de tandarts.",
+        "en": "Children under 18 are insured for the dentist free of charge.",
+        "audio": "../assets/audio/knm/gezondheid/gz16.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz17",
+        "nl": "Afspraken bij huisarts of tandarts: kom op tijd. Kun je niet komen? Bel dan minstens 24 uur van tevoren af. Vergeet je de afspraak, dan moet je gewoon betalen.",
+        "en": "Appointments at the GP or dentist: arrive on time. Can't make it? Call at least 24 hours in advance to cancel. If you forget the appointment, you still have to pay.",
+        "audio": "../assets/audio/knm/gezondheid/gz17.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz18",
+        "nl": "Deze les gaat over het ziekenhuis en de specialist.",
+        "en": "This lesson is about the hospital and the specialist.",
+        "audio": "../assets/audio/knm/gezondheid/gz18.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz19",
+        "nl": "Bij een medisch probleem ga je eerst naar de huisarts. Als de huisarts je niet kan helpen, verwijst hij je door naar een specialist — bijv. een cardioloog of gynaecoloog.",
+        "en": "For a medical problem you first go to the GP. If the GP cannot help you, they refer you to a specialist — e.g. a cardiologist or gynaecologist.",
+        "audio": "../assets/audio/knm/gezondheid/gz19.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz20",
+        "nl": "De huisarts geeft je een verwijsbrief mee. Vergeet die niet mee te nemen naar het ziekenhuis!",
+        "en": "The GP gives you a referral letter (verwijsbrief). Don't forget to bring it to the hospital!",
+        "audio": "../assets/audio/knm/gezondheid/gz20.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz21",
+        "nl": "In het ziekenhuis ga je naar de polikliniek — een gespecialiseerde afdeling, bijv. voor cardiologie, urologie of longziekten.",
+        "en": "At the hospital you go to the outpatient clinic (polikliniek) — a specialised department, e.g. for cardiology, urology or lung diseases.",
+        "audio": "../assets/audio/knm/gezondheid/gz21.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz22",
+        "nl": "Bij binnenkomst moet je bij de balie een patiëntenpas laten maken. Neem mee: verwijsbrief, verzekeringsbewijs en een identiteitsbewijs (ID, paspoort of rijbewijs).",
+        "en": "On arrival you must have a patient card (patiëntenpas) made at the reception desk. Bring: referral letter, insurance card and an identity document (ID, passport or driving licence).",
+        "audio": "../assets/audio/knm/gezondheid/gz22.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz23",
+        "nl": "Meld je bij de balie van de polikliniek en wacht in de wachtkamer totdat je geroepen wordt.",
+        "en": "Report to the outpatient clinic reception desk and wait in the waiting room until you are called.",
+        "audio": "../assets/audio/knm/gezondheid/gz23.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz24",
+        "nl": "De specialist kan medicijnen geven of een operatie uitvoeren. Bij een operatie blijf je één of meer dagen in het ziekenhuis — dit heet een opname.",
+        "en": "The specialist can prescribe medication or perform an operation. For an operation you stay in hospital for one or more days — this is called an admission (opname).",
+        "audio": "../assets/audio/knm/gezondheid/gz24.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz25",
+        "nl": "Bij psychische of mentale klachten ga je ook eerst naar de huisarts. Die kan je doorverwijzen naar maatschappelijk werk, een psycholoog of psychiater (GGZ).",
+        "en": "For mental or psychological complaints you also first go to the GP. They can refer you to social work, a psychologist or psychiatrist (GGZ — mental health services).",
+        "audio": "../assets/audio/knm/gezondheid/gz25.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz26",
+        "nl": "Voor problemen op seksueel gebied kun je naar de huisarts gaan, of direct een afspraak maken bij de GGD (Gemeentelijke Gezondheidsdienst).",
+        "en": "For sexual health problems you can go to the GP, or make an appointment directly at the GGD (Municipal Health Service).",
+        "audio": "../assets/audio/knm/gezondheid/gz26.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz27",
+        "nl": "Een soa is een seksueel overdraagbare aandoening (geslachtsziekte). Je kunt hiervoor direct bij de GGD terecht — zonder verwijsbrief van de huisarts.",
+        "en": "An STI (soa = seksueel overdraagbare aandoening) is a sexually transmitted infection. You can go to the GGD directly for this — without a GP referral.",
+        "audio": "../assets/audio/knm/gezondheid/gz27.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz28",
+        "nl": "Avond, nacht of weekend: bel het normale nummer van je huisarts of tandarts. Je hoort een antwoordapparaat met een telefoonnummer voor spoedhulp buiten kantooruren.",
+        "en": "Evening, night or weekend: call the normal number of your GP or dentist. You will hear an answering machine with a phone number for emergency help outside office hours.",
+        "audio": "../assets/audio/knm/gezondheid/gz28.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz29",
+        "nl": "Soms geeft het antwoordapparaat het nummer van de huisartsenpost. Zorg dat je je verzekeringsbewijs bij de hand hebt.",
+        "en": "Sometimes the answering machine gives the number of the GP out-of-hours service (huisartsenpost). Make sure you have your insurance card to hand.",
+        "audio": "../assets/audio/knm/gezondheid/gz29.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz30",
+        "nl": "Levensbedreigende situatie? Bel 112. Dit is het alarmnummer voor politie, brandweer en ambulance bij heel urgente situaties.",
+        "en": "Life-threatening situation? Call 112. This is the emergency number for police, fire brigade and ambulance in very urgent situations.",
+        "audio": "../assets/audio/knm/gezondheid/gz30.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz31",
+        "nl": "Minder urgent maar toch ernstig (bijv. gebroken arm, bloedende wond)? Ga naar de spoedeisende hulp (SEH / Eerste Hulp) — zonder afspraak. Wie het meeste hulp nodig heeft wordt als eerste geholpen.",
+        "en": "Less urgent but still serious (e.g. broken arm, bleeding wound)? Go to the emergency department (spoedeisende hulp / SEH) — without an appointment. Those who need the most help are treated first.",
+        "audio": "../assets/audio/knm/gezondheid/gz31.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz32",
+        "nl": "Deze les gaat over zwangerschap en bevalling.",
+        "en": "This lesson is about pregnancy and childbirth.",
+        "audio": "../assets/audio/knm/gezondheid/gz32.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz33",
+        "nl": "Als een vrouw zwanger is, gaat ze naar de verloskundige. De verloskundige doet controles, geeft advies en helpt bij de bevalling.",
+        "en": "When a woman is pregnant, she goes to the midwife (verloskundige). The midwife does check-ups, gives advice and helps during childbirth.",
+        "audio": "../assets/audio/knm/gezondheid/gz33.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz34",
+        "nl": "Bij problemen tijdens de zwangerschap ga je naar de gynaecoloog — en bevallen doe je dan in het ziekenhuis.",
+        "en": "If there are problems during the pregnancy you go to the gynaecologist — and you then give birth in the hospital.",
+        "audio": "../assets/audio/knm/gezondheid/gz34.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz35",
+        "nl": "Een kraamhulp komt na de geboorte een week lang helpen in huis. Je moet zelf een kraamhulp regelen via een bureau voor kraamhulp.",
+        "en": "A maternity nurse (kraamhulp) comes to help at home for a week after the birth. You must arrange this yourself through a maternity care agency.",
+        "audio": "../assets/audio/knm/gezondheid/gz35.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz36",
+        "nl": "Soms betaalt de verzekering dingen die je voor de bevalling nodig hebt. Soms kun je deze ook lenen bij de thuiszorg.",
+        "en": "Sometimes insurance covers things you need for the birth. Sometimes you can also borrow these from home care services (thuiszorg).",
+        "audio": "../assets/audio/knm/gezondheid/gz36.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz37",
+        "nl": "Na de geboorte word je uitgenodigd voor het consultatiebureau (voor kinderen van 0 tot 4 jaar). Ze controleren lengte, gewicht, longen, reflexen, ogen, gehoor en ontwikkeling.",
+        "en": "After the birth you are invited to the child health clinic (consultatiebureau) — for children aged 0 to 4 years. They check length, weight, lungs, reflexes, eyes, hearing and development.",
+        "audio": "../assets/audio/knm/gezondheid/gz37.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz38",
+        "nl": "De gezondheid en ontwikkeling van de baby worden bijgehouden in het groeiboekje.",
+        "en": "The baby's health and development are recorded in the growth booklet (groeiboekje).",
+        "audio": "../assets/audio/knm/gezondheid/gz38.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz39",
+        "nl": "Het consultatiebureau geeft ook adviezen over slapen, spelen en voeding als het kind ouder wordt — en geeft vaccinaties.",
+        "en": "The child health clinic also gives advice on sleeping, playing and nutrition as the child grows — and administers vaccinations.",
+        "audio": "../assets/audio/knm/gezondheid/gz39.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz40",
+        "nl": "Deze les gaat over hulp voor ouderen en gehandicapten.",
+        "en": "This lesson is about support for elderly people and people with disabilities.",
+        "audio": "../assets/audio/knm/gezondheid/gz40.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz41",
+        "nl": "In Nederland blijven ouderen zo lang mogelijk thuis wonen. Bij moeilijkheden ga je eerst naar de huisarts — die helpt de meest geschikte zorg te vinden.",
+        "en": "In the Netherlands, elderly people stay at home for as long as possible. When things get difficult, you first go to the GP — they help find the most suitable care.",
+        "audio": "../assets/audio/knm/gezondheid/gz41.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz42",
+        "nl": "Thuiszorg: iemand helpt ouderen met boodschappen, reparaties of andere dingen die ze niet meer zelf kunnen. Dit kan mantelzorg zijn (door familie of vrienden) of particuliere thuiszorg.",
+        "en": "Home care (thuiszorg): someone helps elderly people with shopping, repairs or other things they can no longer do themselves. This can be informal care (mantelzorg) by family or friends, or private home care.",
+        "audio": "../assets/audio/knm/gezondheid/gz42.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz43",
+        "nl": "Kan een oudere echt niet meer voor zichzelf zorgen? Dan gaan ze naar een verzorgingshuis of verpleeghuis (dit is hetzelfde).",
+        "en": "When an elderly person truly can no longer care for themselves, they go to a care home or nursing home (verzorgingshuis / verpleeghuis — these are the same).",
+        "audio": "../assets/audio/knm/gezondheid/gz43.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz44",
+        "nl": "Gehandicapten en chronisch zieken wonen in Nederland zoveel mogelijk zelfstandig. Er zijn organisaties die zorgen voor een aangepaste woning.",
+        "en": "People with disabilities and chronically ill people live as independently as possible in the Netherlands. There are organisations that arrange adapted housing.",
+        "audio": "../assets/audio/knm/gezondheid/gz44.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz45",
+        "nl": "Kan een gehandicapte niet meer goed voor zichzelf zorgen? Dan kan hij of zij hulp krijgen van de thuiszorg — bijv. hulp bij het huishouden of boodschappen.",
+        "en": "When a person with a disability can no longer care for themselves well, they can receive help from home care services — e.g. help with housekeeping or shopping.",
+        "audio": "../assets/audio/knm/gezondheid/gz45.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz46",
+        "nl": "Deze les gaat over zorgkosten en zorgverzekering.",
+        "en": "This lesson is about healthcare costs and health insurance.",
+        "audio": "../assets/audio/knm/gezondheid/gz46.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz47",
+        "nl": "Iedereen die in Nederland woont moet minimaal een basisverzekering hebben. Je kiest zelf je zorgverzekering (bijv. Achmea, Zilveren Kruis of Menzis).",
+        "en": "Everyone who lives in the Netherlands must have at least a basic health insurance (basisverzekering). You choose your own insurer (e.g. Achmea, Zilveren Kruis or Menzis).",
+        "audio": "../assets/audio/knm/gezondheid/gz47.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz48",
+        "nl": "Mensen boven 18 jaar betalen maandelijks een premie. Kinderen onder 18 jaar hoeven geen premie te betalen.",
+        "en": "People over 18 pay a monthly premium. Children under 18 do not need to pay a premium.",
+        "audio": "../assets/audio/knm/gezondheid/gz48.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz49",
+        "nl": "De basisverzekering dekt: de huisarts, ziekenhuiskosten en de meeste medicijnen.",
+        "en": "The basic insurance covers: the GP, hospital costs and most medications.",
+        "audio": "../assets/audio/knm/gezondheid/gz49.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz50",
+        "nl": "Een aanvullende verzekering is niet verplicht, maar dekt specifieke zorg zoals fysiotherapie of een bril. Je betaalt hier extra premie voor.",
+        "en": "Supplementary insurance (aanvullende verzekering) is not compulsory, but covers specific care such as physiotherapy or glasses. You pay an extra premium for this.",
+        "audio": "../assets/audio/knm/gezondheid/gz50.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz51",
+        "nl": "Een tandartsverzekering zit niet in de basisverzekering — je betaalt er extra voor. Het is niet verplicht.",
+        "en": "Dental insurance is not included in the basic insurance — you pay extra for it. It is not compulsory.",
+        "audio": "../assets/audio/knm/gezondheid/gz51.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz52",
+        "nl": "Eigen risico: je betaalt de eerste €385 aan zorgkosten zelf. Daarna betaalt de zorgverzekering. Met een hoger eigen risico betaal je een lagere maandpremie.",
+        "en": "Excess (eigen risico): you pay the first €385 of healthcare costs yourself. After that the insurer pays. With a higher excess you pay a lower monthly premium.",
+        "audio": "../assets/audio/knm/gezondheid/gz52.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz53",
+        "nl": "Soms is er ook een eigen bijdrage — een deel van de kosten dat je zelf betaalt voor bepaalde medicijnen.",
+        "en": "Sometimes there is also a personal contribution (eigen bijdrage) — a portion of the costs you pay yourself for certain medications.",
+        "audio": "../assets/audio/knm/gezondheid/gz53.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz54",
+        "nl": "De meeste kosten betaalt de zorgverzekering direct aan de huisarts, het ziekenhuis of de apotheek. Soms betaal je zelf en vraag je het terug via een formulier teruggave (declareren).",
+        "en": "Most costs are paid directly by the insurer to the GP, hospital or pharmacy. Sometimes you pay yourself and reclaim it via a reimbursement form (declareren).",
+        "audio": "../assets/audio/knm/gezondheid/gz54.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gz55",
+        "nl": "Zorgtoeslag: mensen met een laag inkomen kunnen een deel van de premie terugkrijgen van de Belastingdienst. Hoe minder je verdient, hoe meer zorgtoeslag je kunt krijgen. Aanvragen via www.belastingdienst.nl.",
+        "en": "Healthcare allowance (zorgtoeslag): people with a low income can get part of their premium back from the Tax Authority. The less you earn, the more zorgtoeslag you can receive. Apply via www.belastingdienst.nl.",
+        "audio": "../assets/audio/knm/gezondheid/gz55.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    }
+]

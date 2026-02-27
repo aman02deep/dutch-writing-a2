@@ -1,0 +1,450 @@
+[
+    {
+        "id": "w1",
+        "nl": "In deze les vertel ik jullie hoe je in Nederland een huis regelt.",
+        "en": "In this lesson I will tell you how to arrange housing in the Netherlands.",
+        "audio": "../assets/audio/knm/wonen/w1.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w2",
+        "nl": "Ik ga beginnen met de sociale huurwoning — een huis huren in de sociale huursector.",
+        "en": "I will start with social housing — renting a home in the social rental sector.",
+        "audio": "../assets/audio/knm/wonen/w2.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w3",
+        "nl": "Huren in de sociale huursector is voor mensen met een laag inkomen. De prijs is dan ook laag.",
+        "en": "Renting in the social sector is for people with a low income. The price is therefore also low.",
+        "audio": "../assets/audio/knm/wonen/w3.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w4",
+        "nl": "Als je een sociale huurwoning zoekt, moet je je eerst inschrijven bij een woningbouwvereniging (ook wel: woningcorporatie).",
+        "en": "If you are looking for a social rental home, you must first register with a housing association (also called: woningcorporatie).",
+        "audio": "../assets/audio/knm/wonen/w4.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w5",
+        "nl": "Of jij een huis kunt krijgen in de sociale huursector is afhankelijk van een paar factoren.",
+        "en": "Whether you can get a home in the social sector depends on a few factors.",
+        "audio": "../assets/audio/knm/wonen/w5.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w6",
+        "nl": "Ten eerste: je inkomen mag niet te hoog zijn. Bij een te hoog salaris kun je niet huren in de sociale sector.",
+        "en": "First: your income must not be too high. If your salary is too high, you cannot rent in the social sector.",
+        "audio": "../assets/audio/knm/wonen/w6.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w7",
+        "nl": "Ten tweede: met hoeveel personen ga je wonen? Dit kan een belangrijke factor zijn voor de woning die je krijgt.",
+        "en": "Second: how many people will you live with? This can be an important factor for the home you receive.",
+        "audio": "../assets/audio/knm/wonen/w7.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w8",
+        "nl": "Ten derde: soms speelt leeftijd een rol. Sommige woningen zijn speciaal voor ouderen, bijvoorbeeld boven de 70 of 80 jaar.",
+        "en": "Third: sometimes age plays a role. Some homes are specifically for elderly people, for example over 70 or 80 years old.",
+        "audio": "../assets/audio/knm/wonen/w8.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w9",
+        "nl": "Er zijn wachttijden. De persoon die het langst op de wachtlijst staat, krijgt de volgende beschikbare woning.",
+        "en": "There are waiting times. The person who has been on the waiting list the longest gets the next available home.",
+        "audio": "../assets/audio/knm/wonen/w9.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w10",
+        "nl": "Je kunt een sociale huurwoning sneller krijgen met een urgentieverklaring. Die vraag je aan bij de gemeente.",
+        "en": "You can get a social rental home faster with an urgency declaration. You apply for this at the municipality.",
+        "audio": "../assets/audio/knm/wonen/w10.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w11",
+        "nl": "Speciale situaties voor een urgentieverklaring zijn bijvoorbeeld: scheiding met kinderen, of ernstige gezondheidsproblemen.",
+        "en": "Special situations for an urgency declaration include: divorce with children, or serious health problems.",
+        "audio": "../assets/audio/knm/wonen/w11.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w12",
+        "nl": "Als er een woning voor je beschikbaar is, ontvang je een brief van de woningcorporatie. Reageer hier snel op!",
+        "en": "When a home is available for you, you receive a letter from the housing association. Respond to it quickly!",
+        "audio": "../assets/audio/knm/wonen/w12.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w13",
+        "nl": "Huren in de vrije huursector is duurder. Je salaris moet hoog genoeg zijn om de huur te kunnen betalen.",
+        "en": "Renting in the private sector is more expensive. Your salary must be high enough to afford the rent.",
+        "audio": "../assets/audio/knm/wonen/w13.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w14",
+        "nl": "Je huurt in de vrije sector van een woningbouwvereniging of van een huisbaas. Je kunt woningen zoeken via advertenties of een makelaar.",
+        "en": "In the private sector you rent from a housing association or a landlord. You can find homes through advertisements or a real estate agent.",
+        "audio": "../assets/audio/knm/wonen/w14.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w15",
+        "nl": "Als je een huurwoning hebt gevonden, krijg je een huurcontract. Hierin staan jouw rechten en plichten als huurder.",
+        "en": "When you find a rental home, you get a rental contract. This states your rights and obligations as a tenant.",
+        "audio": "../assets/audio/knm/wonen/w15.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w16",
+        "nl": "In het huurcontract staat: de huurprijs per maand, de servicekosten, de opzegtermijn (vaak 1 maand), en wie betaalt voor welke reparaties.",
+        "en": "The rental contract includes: the monthly rent, service costs, notice period (usually 1 month), and who pays for which repairs.",
+        "audio": "../assets/audio/knm/wonen/w16.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w17",
+        "nl": "De verhuurder betaalt normaal voor groot onderhoud, zoals lekkage of een kapotte verwarming.",
+        "en": "The landlord normally pays for major maintenance, such as leaks or a broken heating system.",
+        "audio": "../assets/audio/knm/wonen/w17.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w18",
+        "nl": "De huurder betaalt normaal voor klein onderhoud, zoals een kapotte lamp vervangen of een kapotte wasmachine.",
+        "en": "The tenant normally pays for minor maintenance, such as replacing a broken light bulb or a broken washing machine.",
+        "audio": "../assets/audio/knm/wonen/w18.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w19",
+        "nl": "Is de huur te hoog voor jou en heb je een laag inkomen? Dan kun je misschien huurtoeslag aanvragen bij de Belastingdienst via www.toeslagen.nl.",
+        "en": "Is the rent too high for you and do you have a low income? Then you may be able to apply for rent allowance from the Tax Authority via www.toeslagen.nl.",
+        "audio": "../assets/audio/knm/wonen/w19.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w20",
+        "nl": "Ben je geïnteresseerd in het kopen van een woning? Neem contact op met een makelaar.",
+        "en": "Are you interested in buying a home? Contact a real estate agent.",
+        "audio": "../assets/audio/knm/wonen/w20.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w21",
+        "nl": "De meeste mensen lenen geld bij de bank om een huis te kopen. Deze lening heet een hypotheek.",
+        "en": "Most people borrow money from a bank to buy a house. This loan is called a mortgage (hypotheek).",
+        "audio": "../assets/audio/knm/wonen/w21.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w22",
+        "nl": "Met een hoog inkomen kun je meer hypotheek krijgen. Met een laag inkomen minder — of soms helemaal geen hypotheek.",
+        "en": "With a high income you can get a larger mortgage. With a low income less — or sometimes no mortgage at all.",
+        "audio": "../assets/audio/knm/wonen/w22.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w23",
+        "nl": "De bank wil meestal dat je een vast inkomen hebt. Je betaalt elke maand een deel van de hypotheek terug, plus rente.",
+        "en": "The bank usually wants you to have a steady income. You pay back part of the mortgage each month, plus interest.",
+        "audio": "../assets/audio/knm/wonen/w23.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w24",
+        "nl": "De rente verschilt per bank. Let goed op welke bank je kiest. Je mag de rente aftrekken van je inkomen bij de belastingaangifte (renteaftrek).",
+        "en": "Interest rates differ per bank. Pay close attention to which bank you choose. You may deduct the interest from your income in your tax return (mortgage interest deduction).",
+        "audio": "../assets/audio/knm/wonen/w24.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w25",
+        "nl": "Bij de koop van een huis is de notaris een belangrijke persoon. Bij de notaris teken je het contract voor het huis en de hypotheek.",
+        "en": "When buying a home, the notary is an important person. At the notary you sign the contract for the house and the mortgage.",
+        "audio": "../assets/audio/knm/wonen/w25.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w26",
+        "nl": "Belangrijke verzekeringen: de aansprakelijkheidsverzekering (als jij of je kind iets van iemand anders kapot maakt).",
+        "en": "Important insurances: liability insurance (if you or your child damages something belonging to someone else).",
+        "audio": "../assets/audio/knm/wonen/w26.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w27",
+        "nl": "De inboedelverzekering: als er schade is in je huis of iets wordt gestolen.",
+        "en": "Contents insurance: if there is damage in your home or something is stolen.",
+        "audio": "../assets/audio/knm/wonen/w27.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w28",
+        "nl": "De woonhuisverzekering (alleen voor koophuizen): als er schade is aan de buitenkant van je huis door brand, storm of water.",
+        "en": "Building insurance (only for owner-occupied homes): if there is damage to the outside of your home due to fire, storm or water.",
+        "audio": "../assets/audio/knm/wonen/w28.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w29",
+        "nl": "In deze les vertel ik jullie over energie en communicatie in huis.",
+        "en": "In this lesson I will tell you about energy and communication at home.",
+        "audio": "../assets/audio/knm/wonen/w29.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w30",
+        "nl": "Iedereen gebruikt energie in huis. Voorbeelden zijn gas en elektriciteit.",
+        "en": "Everyone uses energy at home. Examples are gas and electricity.",
+        "audio": "../assets/audio/knm/wonen/w30.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w31",
+        "nl": "Energie in je huis regel je meestal zelf, direct via het energiebedrijf. De woningbouwvereniging of huisbaas doet dit normaal niet voor jou.",
+        "en": "You usually arrange energy at home yourself, directly through the energy company. The housing association or landlord normally does not do this for you.",
+        "audio": "../assets/audio/knm/wonen/w31.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w32",
+        "nl": "Je kunt zelf het energiebedrijf kiezen, bijvoorbeeld Nuon of Eneco. Prijzen kun je vergelijken online.",
+        "en": "You can choose the energy company yourself, for example Nuon or Eneco. You can compare prices online.",
+        "audio": "../assets/audio/knm/wonen/w32.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w33",
+        "nl": "Neem direct contact op met het energiebedrijf. Wacht niet tot de huisbaas het voor jou doet.",
+        "en": "Contact the energy company directly. Do not wait for the landlord to do it for you.",
+        "audio": "../assets/audio/knm/wonen/w33.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w34",
+        "nl": "Ieder jaar moet je aan het energiebedrijf vertellen hoeveel energie je hebt gebruikt. Dit kun je lezen op de meterstand.",
+        "en": "Every year you must tell the energy company how much energy you have used. You can read this on the meter reading.",
+        "audio": "../assets/audio/knm/wonen/w34.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w35",
+        "nl": "Op je energierekening zie je hoeveel je moet betalen. Elke maand betaal je een vast bedrag: het termijnbedrag.",
+        "en": "On your energy bill you can see how much you need to pay. Every month you pay a fixed amount: the monthly instalment.",
+        "audio": "../assets/audio/knm/wonen/w35.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w36",
+        "nl": "Op de jaarrekening zie je hoeveel energie je het hele jaar hebt gebruikt. Heb je te veel gebruikt? Dan betaal je extra. Heb je weinig gebruikt? Dan krijg je geld terug.",
+        "en": "On the annual bill you can see how much energy you used the whole year. Did you use too much? Then you pay extra. Did you use little? Then you get money back.",
+        "audio": "../assets/audio/knm/wonen/w36.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w37",
+        "nl": "Betaal je energierekening op tijd! Eerst krijg je een waarschuwing, maar daarna kan het energiebedrijf de energie afsluiten.",
+        "en": "Pay your energy bill on time! First you get a warning, but after that the energy company can disconnect your energy.",
+        "audio": "../assets/audio/knm/wonen/w37.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w38",
+        "nl": "Voordelen van zuinig zijn met energie: het is beter voor het milieu én het is goedkoper voor jou.",
+        "en": "Benefits of being economical with energy: it is better for the environment and it is cheaper for you.",
+        "audio": "../assets/audio/knm/wonen/w38.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w39",
+        "nl": "Zet de verwarming uit als je niet thuis bent. Doe ook de lampen uit.",
+        "en": "Turn off the heating when you are not home. Also turn off the lights.",
+        "audio": "../assets/audio/knm/wonen/w39.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w40",
+        "nl": "Koop A-label apparaten. Gebruik apparaten die veel energie verbruiken (wasmachine, droger, vaatwasser) niet vaker dan nodig.",
+        "en": "Buy A-label appliances. Do not use appliances that consume a lot of energy (washing machine, dryer, dishwasher) more often than necessary.",
+        "audio": "../assets/audio/knm/wonen/w40.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w41",
+        "nl": "In Nederland worden duurzame energievormen steeds populairder, zoals windenergie en zonne-energie.",
+        "en": "In the Netherlands, sustainable energy forms are becoming increasingly popular, such as wind energy and solar energy.",
+        "audio": "../assets/audio/knm/wonen/w41.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w42",
+        "nl": "Televisie: veel mensen in Nederland hebben tv via kabel of internet. Zo kun je kijken naar commerciële kanalen zoals RTL, Veronica en SBS.",
+        "en": "Television: many people in the Netherlands have TV via cable or internet. This allows you to watch commercial channels such as RTL, Veronica and SBS.",
+        "audio": "../assets/audio/knm/wonen/w42.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w43",
+        "nl": "De Nederlandse Publieke Omroep (NPO 1, 2 en 3) kun je kijken zonder kabel of internet. De overheid betaalt hiervoor.",
+        "en": "The Dutch Public Broadcasting (NPO 1, 2 and 3) can be watched without cable or internet. The government pays for this.",
+        "audio": "../assets/audio/knm/wonen/w43.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w44",
+        "nl": "Voor tv via kabel of internet heb je een abonnement nodig. Je kunt ook één abonnement nemen voor tv, internet en telefoon samen.",
+        "en": "For TV via cable or internet you need a subscription. You can also take one subscription for TV, internet and telephone together.",
+        "audio": "../assets/audio/knm/wonen/w44.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w45",
+        "nl": "Voor een telefoonverbinding neem je contact op met een provider zoals Ziggo, Tele2 of KPN.",
+        "en": "For a telephone connection you contact a provider such as Ziggo, Tele2 or KPN.",
+        "audio": "../assets/audio/knm/wonen/w45.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w46",
+        "nl": "Bij een mobiele telefoon kies je: beltegoed (prepaid) of een abonnement. Vergelijk opties op de website van de provider.",
+        "en": "With a mobile phone you choose: call credit (prepaid) or a subscription. Compare options on the provider's website.",
+        "audio": "../assets/audio/knm/wonen/w46.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w47",
+        "nl": "Probleem met gas of elektriciteit? Kijk eerst of je het zelf kunt oplossen, bijvoorbeeld door de hoofdkraan dicht te draaien.",
+        "en": "Problem with gas or electricity? First check if you can solve it yourself, for example by closing the main valve.",
+        "audio": "../assets/audio/knm/wonen/w47.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w48",
+        "nl": "Vraag dan je buren of zij hetzelfde probleem hebben. Misschien heeft de hele buurt geen stroom.",
+        "en": "Then ask your neighbours if they have the same problem. Perhaps the whole neighbourhood has no electricity.",
+        "audio": "../assets/audio/knm/wonen/w48.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w49",
+        "nl": "Lukt het niet? Neem contact op met het energiebedrijf, het waterbedrijf of het gasbedrijf. Zeker als het probleem gevaarlijk is!",
+        "en": "Not working? Contact the energy company, water company or gas company. Especially if the problem is dangerous!",
+        "audio": "../assets/audio/knm/wonen/w49.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w50",
+        "nl": "In deze les vertel ik jullie over onderhoud en woonomgeving.",
+        "en": "In this lesson I will tell you about maintenance and living environment.",
+        "audio": "../assets/audio/knm/wonen/w50.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w51",
+        "nl": "In Nederland vinden mensen het belangrijk dat je netjes met afval omgaat en afval goed sorteert.",
+        "en": "In the Netherlands, people think it is important that you handle waste neatly and sort waste properly.",
+        "audio": "../assets/audio/knm/wonen/w51.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w52",
+        "nl": "Glas gaat in de glasbak. Papier gaat in de papierbak. Groente, fruit en tuinafval (GFT) gaan in de GFT-container.",
+        "en": "Glass goes in the glass bin. Paper goes in the paper bin. Vegetable, fruit and garden waste (GFT) go in the GFT container.",
+        "audio": "../assets/audio/knm/wonen/w52.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w53",
+        "nl": "Plastic gaat in de plastic bak. Chemisch afval (zoals verf) breng je naar het Klein Chemisch Afval (KCA).",
+        "en": "Plastic goes in the plastic bin. Chemical waste (such as paint) you bring to the Small Chemical Waste depot (KCA).",
+        "audio": "../assets/audio/knm/wonen/w53.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w54",
+        "nl": "De gemeente haalt het huisafval op vaste dagen op. Zet jouw afval op de correcte dag op straat — anders kun je een boete krijgen!",
+        "en": "The municipality collects household waste on fixed days. Put your waste on the street on the correct day — otherwise you can get a fine!",
+        "audio": "../assets/audio/knm/wonen/w54.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w55",
+        "nl": "Iedereen in Nederland betaalt belasting voor het ophalen van afval en het schoonhouden van de straat.",
+        "en": "Everyone in the Netherlands pays taxes for waste collection and keeping the streets clean.",
+        "audio": "../assets/audio/knm/wonen/w55.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w56",
+        "nl": "Heb je een laag inkomen? Dan kun je misschien ontheffing (vrijstelling) krijgen van deze belasting. Vraag dit aan bij de gemeente.",
+        "en": "Do you have a low income? Then you may be able to get an exemption from this tax. Ask about this at the municipality.",
+        "audio": "../assets/audio/knm/wonen/w56.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w57",
+        "nl": "Voor het gebruik van je woning moet je ook milieu- en verontreinigingsheffing betalen.",
+        "en": "For the use of your home you also have to pay environmental and pollution levies.",
+        "audio": "../assets/audio/knm/wonen/w57.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w58",
+        "nl": "In Nederland vinden mensen het belangrijk dat hun huis en tuin er verzorgd en netjes uitzien.",
+        "en": "In the Netherlands, people find it important that their house and garden look well-kept and tidy.",
+        "audio": "../assets/audio/knm/wonen/w58.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w59",
+        "nl": "Zorg dat het gras gemaaid is en er geen afval in de tuin ligt. Een representatief huis is ook fijn voor de buurt.",
+        "en": "Make sure the grass is mowed and there is no waste in the garden. A well-kept house is also pleasant for the neighbourhood.",
+        "audio": "../assets/audio/knm/wonen/w59.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w60",
+        "nl": "Zet je afval altijd op de juiste dag van de week op straat. Anders betaal je een boete aan de gemeente.",
+        "en": "Always put your waste on the street on the right day of the week. Otherwise you pay a fine to the municipality.",
+        "audio": "../assets/audio/knm/wonen/w60.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w61",
+        "nl": "Soms heb je problemen met de buren. Nederland is een klein land en huizen staan dicht bij elkaar.",
+        "en": "Sometimes you have problems with neighbours. The Netherlands is a small country and houses are close together.",
+        "audio": "../assets/audio/knm/wonen/w61.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w62",
+        "nl": "Voorbeelden van problemen: te harde muziek van de buren, of de buurman parkeert op jouw parkeerplaats.",
+        "en": "Examples of problems: too loud music from the neighbours, or the neighbour parks in your parking space.",
+        "audio": "../assets/audio/knm/wonen/w62.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w63",
+        "nl": "Probeer het probleem direct met de buren op te lossen door met elkaar te praten. Dit is in Nederland de gebruikelijke aanpak.",
+        "en": "Try to solve the problem directly with the neighbours by talking to each other. This is the usual approach in the Netherlands.",
+        "audio": "../assets/audio/knm/wonen/w63.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    },
+    {
+        "id": "w64",
+        "nl": "Als dit niet werkt, kun je als laatste optie de politie vragen om te helpen.",
+        "en": "If this does not work, you can ask the police for help as a last resort.",
+        "audio": "../assets/audio/knm/wonen/w64.mp3",
+        "image": "../assets/images/knm/wonen_huis.png"
+    }
+]

@@ -125,3 +125,33 @@ python scripts/generate_elevenlabs_sentence_bank.py
 - **Fix:** Use plain ASCII (`OK:` / `FAILED:`) in print statements.
 
 **Recommendation:** Always prefer `gTTS` or ElevenLabs for new audio generation scripts. Pollinations is currently only reliable for AI text features (chat/feedback), not bulk TTS.
+
+## 9. KNM Interactive Video Generation Pipeline
+To generate a new chapter (e.g. Chapter 2: Werk en Inkomen) for the KNM section, follow these exact steps to recreate the interactive video experience:
+
+**Step 1: Procure the Script (DOCX or PDF)**
+1. If a bilingual Document (`KNM_Wonen_Scripts.docx`) is provided, use Python to parse the document tables directly into JSON arrays.
+2. If only a PDF definition list is provided, use Python (`PyPDF2`) to extract the raw text.
+
+**Step 2: Format the A2 Script**
+1. Ensure the material is condensed into clear, A2-level Dutch sentences.
+2. Verify each sentence is translated into English.
+3. Each slide needs an array format: `id`, `nl`, `en`.
+
+**Step 3: Generate Audio (ElevenLabs or Edge TTS)**
+1. Create a Python script populated with the JSON slide data (or use Edge TTS CLI).
+2. Prioritize ElevenLabs (Voice: **Alice** `Xb7hH8MSUJpSbSDYk0k2`) for high-quality audio.
+3. If ElevenLabs Free Tier quota is exhausted or IP blocked, **immediately fallback to Edge TTS** (`edge-tts` python package).
+4. Use the Edge TTS voice: `nl-NL-FennaNeural` (high-quality, free, neural Dutch female voice).
+5. Save generated `.mp3` files to `assets/audio/knm/{chapter-name}/`.
+
+**Step 4: Generate Custom Thematic Images**
+1. Use the agent's internal `generate_image` tool.
+2. The core prompt style must be: `"A simple, stylized vector illustration of [subject]. The style should be modern, clean, colorful, and flat-design, exactly like a high-quality language learning app illustration. No text."`
+3. Generate 3-5 images representing the core themes of the chapter (e.g. Bank, Contract, Utilities).
+4. Save them to `assets/images/knm/`.
+
+**Step 5: Wire the Data Structure**
+1. Go to `js/knm/knm-lesson-data.js`.
+2. Map the generated images, mp3 audio paths, and bilingual text into the `interactiveLessons` slide array object for the corresponding chapter ID.
+3. The player (`knm-player.js`) will automatically map and render this data.
