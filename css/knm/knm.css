@@ -83,7 +83,7 @@
 }
 
 .chapter-sidebar {
-    width: 220px;
+    width: fit-content;
     background: white;
     border-radius: 8px;
     padding: 20px;
@@ -479,6 +479,225 @@
 .main-play:hover {
     background: #003d99;
 }
+
+/* =====================================================
+   Desktop Split-Panel: 60% Video + 40% Transcript
+   ===================================================== */
+@media (min-width: 769px) {
+    .knm-player-wrapper {
+        display: flex;
+        height: calc(100vh - 120px);
+        border-radius: 12px;
+        overflow: hidden;
+        border: 2px solid var(--border-color);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        margin-bottom: 20px;
+    }
+
+    /* Video side — 70% */
+    .knm-player-wrapper .knm-player {
+        flex: 1 1 auto;
+        min-width: 0;
+        border: none;
+        box-shadow: none;
+        border-radius: 0;
+        height: 100%;
+        margin-bottom: 0;
+        border-right: 2px solid var(--border-color);
+        transition: flex 0.3s ease;
+    }
+
+    /* Transcript side — 30% */
+    .knm-transcript-panel {
+        flex: 0 0 30%;
+        display: flex;
+        flex-direction: column;
+        background: #fafbff;
+        overflow: hidden;
+        transition: flex 0.3s ease, min-width 0.3s ease;
+    }
+
+    /* Collapsed transcript */
+    .knm-transcript-panel.transcript-collapsed {
+        flex: 0 0 auto;
+        min-width: 0;
+        width: 0;
+        overflow: hidden;
+        border: none;
+    }
+
+    /* Fullscreen: show both panes side by side */
+    .knm-player-wrapper.fullscreen {
+        border-radius: 0;
+        height: 100vh;
+        width: 100vw;
+    }
+}
+
+/* Transcript panel — shared styles (visible on desktop, hidden on mobile) */
+.knm-transcript-panel {
+    display: none;
+    /* hidden on mobile by default */
+}
+
+@media (min-width: 769px) {
+    .knm-transcript-panel {
+        display: flex;
+    }
+
+    .knm-transcript-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 14px;
+        background: var(--bg-light);
+        border-bottom: 1px solid var(--border-color);
+        font-weight: 700;
+        font-size: 0.9rem;
+        color: var(--primary);
+        flex-shrink: 0;
+        gap: 8px;
+    }
+
+    .knm-transcript-toggle {
+        flex-shrink: 0;
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        padding: 3px 9px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        cursor: pointer;
+        line-height: 1.6;
+        transition: background 0.2s;
+    }
+
+    .knm-transcript-toggle:hover {
+        background: #003d99;
+    }
+
+    /* Toggle button when panel is collapsed — sits on video side border */
+    .knm-transcript-open-btn {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        z-index: 10;
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 6px 0 0 6px;
+        padding: 10px 6px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        cursor: pointer;
+        writing-mode: vertical-rl;
+        line-height: 1;
+        transition: background 0.2s;
+    }
+
+    .knm-transcript-open-btn:hover {
+        background: #003d99;
+    }
+
+    .knm-transcript-count {
+        font-weight: 400;
+        font-size: 0.8rem;
+        color: #888;
+        background: var(--border-color);
+        padding: 2px 8px;
+        border-radius: 10px;
+    }
+
+    .knm-transcript-list {
+        flex: 1;
+        overflow-y: auto;
+        padding: 8px 0;
+        scroll-behavior: smooth;
+    }
+
+    .knm-transcript-list::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    .knm-transcript-list::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .knm-transcript-list::-webkit-scrollbar-thumb {
+        background: #d0d8e8;
+        border-radius: 3px;
+    }
+
+    .knm-transcript-item {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        padding: 10px 16px;
+        cursor: pointer;
+        transition: background 0.15s ease, border-left-color 0.15s ease;
+        border-left: 3px solid transparent;
+        border-bottom: 1px solid #f0f2f7;
+    }
+
+    .knm-transcript-item:hover {
+        background: var(--highlight-blue, #e8f0ff);
+        border-left-color: #a0b8ee;
+    }
+
+    .knm-transcript-item.active {
+        background: linear-gradient(90deg, #e8f0ff 0%, #f0f5ff 100%);
+        border-left-color: var(--primary);
+    }
+
+    .knm-transcript-num {
+        flex-shrink: 0;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: #e0e8f5;
+        color: #555;
+        font-size: 0.7rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 2px;
+        transition: background 0.15s, color 0.15s;
+    }
+
+    .knm-transcript-item.active .knm-transcript-num {
+        background: var(--primary);
+        color: white;
+    }
+
+    .knm-transcript-text {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .knm-transcript-nl {
+        font-size: 0.88rem;
+        line-height: 1.5;
+        color: #222;
+        font-weight: 500;
+    }
+
+    .knm-transcript-item.active .knm-transcript-nl {
+        color: var(--primary);
+        font-weight: 600;
+    }
+
+    .knm-transcript-en {
+        font-size: 0.78rem;
+        color: #888;
+        font-style: italic;
+        margin-top: 3px;
+        line-height: 1.4;
+    }
+}
+
 /* Responsive Layouts */
 @media (max-width: 768px) {
     .chapter-container {
@@ -515,7 +734,7 @@
         border-left-color: transparent;
         border-bottom-color: var(--primary);
     }
-    
+
     .chapter-main {
         box-shadow: none;
         padding: 15px;
@@ -523,10 +742,11 @@
     }
 
     .knm-player {
-        height: 60vh; /* Better vertical filling on mobile */
+        height: 60vh;
+        /* Better vertical filling on mobile */
         min-height: 400px;
     }
-    
+
     .knm-player.fullscreen {
         height: 100vh !important;
         width: 100vw !important;
