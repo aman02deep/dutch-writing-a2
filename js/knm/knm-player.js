@@ -16,44 +16,70 @@ class KNMPlayer {
     }
 
     initUI() {
-        const html = `
-            <div class="knm-player">
-                <div class="knm-player-header">
-                    <div style="display: flex; gap: 10px; align-items: center;">
-                        <button class="btn-toggle-lang" id="player-fullscreen-toggle" title="Toggle Fullscreen">
-                            ⛶
-                        </button>
-                        <h3>🎬 Interactive Lesson: ${this.lesson.title}</h3>
-                    </div>
-                    <div class="knm-player-controls-top">
-                        <button class="btn-toggle-lang" id="player-lang-toggle">
-                            🇬🇧 Show English
-                        </button>
-                    </div>
+        // Build transcript items HTML
+        const transcriptItems = this.lesson.slides.map((slide, i) => `
+            <div class="knm-transcript-item" data-index="${i}" title="Jump to slide ${i + 1}">
+                <span class="knm-transcript-num">${i + 1}</span>
+                <div class="knm-transcript-text">
+                    <div class="knm-transcript-nl">${slide.nl}</div>
+                    <div class="knm-transcript-en" style="display:none;">${slide.en}</div>
                 </div>
-                
-                <div class="knm-player-screen" id="player-screen">
-                    <img id="player-image" src="${this.lesson.slides[0].image}" alt="Lesson visual" />
-                    <div class="knm-player-subtitles">
-                        <div class="sub-nl" id="sub-nl">${this.lesson.slides[0].nl}</div>
-                        <div class="sub-en" id="sub-en" style="display: none;">${this.lesson.slides[0].en}</div>
+            </div>
+        `).join('');
+
+        const html = `
+            <div class="knm-player-wrapper">
+                <div class="knm-player">
+                    <div class="knm-player-header">
+                        <div style="display: flex; gap: 10px; align-items: center;">
+                            <button class="btn-toggle-lang" id="player-fullscreen-toggle" title="Toggle Fullscreen">
+                                ⛶
+                            </button>
+                            <h3>🎬 Interactive Lesson: ${this.lesson.title}</h3>
+                        </div>
+                        <div class="knm-player-controls-top">
+                            <button class="btn-toggle-lang" id="player-lang-toggle">
+                                🇬🇧 Show English
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="knm-player-screen" id="player-screen">
+                        <img id="player-image" src="${this.lesson.slides[0].image}" alt="Lesson visual" />
+                        <div class="knm-player-subtitles">
+                            <div class="sub-nl" id="sub-nl">${this.lesson.slides[0].nl}</div>
+                            <div class="sub-en" id="sub-en" style="display: none;">${this.lesson.slides[0].en}</div>
+                        </div>
+                    </div>
+
+                    <div class="knm-player-progress">
+                        <div class="progress-track" id="progress-track">
+                            <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span id="slide-current">1</span> / ${this.lesson.slides.length}
+                        </div>
+                    </div>
+                    
+                    <div class="knm-player-controls">
+                        <button class="player-btn" id="btn-speed" title="Playback Speed" style="min-width: 60px;">1x</button>
+                        <button class="player-btn" id="btn-prev" disabled>⏮️ Prev</button>
+                        <button class="player-btn main-play" id="btn-play">▶️ Play Lesson</button>
+                        <button class="player-btn" id="btn-next">Next ⏭️</button>
                     </div>
                 </div>
 
-                <div class="knm-player-progress">
-                    <div class="progress-track" id="progress-track">
-                        <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+                <div class="knm-transcript-panel" id="knm-transcript-panel">
+                    <div class="knm-transcript-header">
+                        <span>📋 Transcript</span>
+                        <div style="display:flex;gap:6px;align-items:center;">
+                            <span class="knm-transcript-count">${this.lesson.slides.length} slides</span>
+                            <button class="knm-transcript-toggle" id="transcript-collapse-btn" title="Minimize transcript">Hide</button>
+                        </div>
                     </div>
-                    <div class="progress-text">
-                        <span id="slide-current">1</span> / ${this.lesson.slides.length}
+                    <div class="knm-transcript-list" id="knm-transcript-list">
+                        ${transcriptItems}
                     </div>
-                </div>
-                
-                <div class="knm-player-controls">
-                    <button class="player-btn" id="btn-speed" title="Playback Speed" style="min-width: 60px;">1x</button>
-                    <button class="player-btn" id="btn-prev" disabled>⏮️ Prev</button>
-                    <button class="player-btn main-play" id="btn-play">▶️ Play Lesson</button>
-                    <button class="player-btn" id="btn-next">Next ⏭️</button>
                 </div>
             </div>
         `;
@@ -72,6 +98,44 @@ class KNMPlayer {
         this.langToggle = document.getElementById('player-lang-toggle');
         this.fsToggle = document.getElementById('player-fullscreen-toggle');
         this.speedBtn = document.getElementById('btn-speed');
+        this.transcriptList = document.getElementById('knm-transcript-list');
+        this.transcriptPanel = document.getElementById('knm-transcript-panel');
+        this.collapseBtn = document.getElementById('transcript-collapse-btn');
+
+        // Inject the floating re-open button on the video player edge
+        this.openBtn = document.createElement('button');
+        this.openBtn.className = 'knm-transcript-open-btn';
+        this.openBtn.id = 'transcript-open-btn';
+        this.openBtn.title = 'Show transcript';
+        this.openBtn.textContent = 'Transcript';
+        this.openBtn.style.display = 'none';
+        const playerEl = this.container.querySelector('.knm-player');
+        playerEl.style.position = 'relative';
+        playerEl.appendChild(this.openBtn);
+
+        // Bind transcript item clicks
+        this.transcriptList.querySelectorAll('.knm-transcript-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const idx = parseInt(item.dataset.index, 10);
+                this.goToSlide(idx);
+            });
+        });
+
+        // Highlight first item
+        this.syncTranscriptHighlight();
+    }
+
+    toggleTranscript() {
+        const collapsed = this.transcriptPanel.classList.toggle('transcript-collapsed');
+        if (collapsed) {
+            this.collapseBtn.textContent = '';
+            this.openBtn.style.display = 'block';
+        } else {
+            this.collapseBtn.textContent = 'Hide';
+            this.openBtn.style.display = 'none';
+            // Re-highlight current after opening
+            this.syncTranscriptHighlight();
+        }
     }
 
     bindEvents() {
@@ -83,9 +147,16 @@ class KNMPlayer {
             this.showEnglish = !this.showEnglish;
             this.enEl.style.display = this.showEnglish ? 'block' : 'none';
             this.langToggle.innerHTML = this.showEnglish ? '🇳🇱 Hide English' : '🇬🇧 Show English';
+            // Sync English lines in transcript
+            this.transcriptList.querySelectorAll('.knm-transcript-en').forEach(el => {
+                el.style.display = this.showEnglish ? 'block' : 'none';
+            });
         });
 
         this.fsToggle.addEventListener('click', () => this.toggleFullScreen());
+
+        if (this.collapseBtn) this.collapseBtn.addEventListener('click', () => this.toggleTranscript());
+        if (this.openBtn) this.openBtn.addEventListener('click', () => this.toggleTranscript());
 
         this.speedBtn.addEventListener('click', () => {
             this.currentSpeedIdx = (this.currentSpeedIdx + 1) % this.playbackRates.length;
@@ -132,6 +203,30 @@ class KNMPlayer {
 
         this.prevBtn.disabled = this.currentSlide === 0;
         this.nextBtn.disabled = this.currentSlide === this.lesson.slides.length - 1;
+
+        // Sync transcript highlight
+        this.syncTranscriptHighlight();
+    }
+
+    syncTranscriptHighlight() {
+        if (!this.transcriptList) return;
+        const items = this.transcriptList.querySelectorAll('.knm-transcript-item');
+        items.forEach((item, i) => {
+            if (i === this.currentSlide) {
+                item.classList.add('active');
+                item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } else {
+                item.classList.remove('active');
+            }
+        });
+    }
+
+    goToSlide(index) {
+        if (index < 0 || index >= this.lesson.slides.length) return;
+        this.currentSlide = index;
+        this.audioElement.pause();
+        this.updateUI();
+        if (this.isPlaying) this.playAudio();
     }
 
     async playAudio() {
@@ -189,16 +284,16 @@ class KNMPlayer {
     }
 
     toggleFullScreen() {
-        const playerDiv = this.container.querySelector('.knm-player');
+        const wrapperDiv = this.container.querySelector('.knm-player-wrapper');
         if (!document.fullscreenElement) {
-            if (playerDiv.requestFullscreen) {
-                playerDiv.requestFullscreen();
-            } else if (playerDiv.webkitRequestFullscreen) { /* Safari */
-                playerDiv.webkitRequestFullscreen();
-            } else if (playerDiv.msRequestFullscreen) { /* IE11 */
-                playerDiv.msRequestFullscreen();
+            if (wrapperDiv.requestFullscreen) {
+                wrapperDiv.requestFullscreen();
+            } else if (wrapperDiv.webkitRequestFullscreen) { /* Safari */
+                wrapperDiv.webkitRequestFullscreen();
+            } else if (wrapperDiv.msRequestFullscreen) { /* IE11 */
+                wrapperDiv.msRequestFullscreen();
             }
-            playerDiv.classList.add('fullscreen');
+            wrapperDiv.classList.add('fullscreen');
         } else {
             if (document.exitFullscreen) {
                 document.exitFullscreen();
@@ -207,7 +302,7 @@ class KNMPlayer {
             } else if (document.msExitFullscreen) { /* IE11 */
                 document.msExitFullscreen();
             }
-            playerDiv.classList.remove('fullscreen');
+            wrapperDiv.classList.remove('fullscreen');
         }
     }
 }
