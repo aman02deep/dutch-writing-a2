@@ -384,3 +384,120 @@
         }
     }
 }
+
+/* =============================================
+   Section Switcher Tabs (Regular / Separable)
+   ============================================= */
+
+.verbs-section-tabs {
+    display: flex;
+    background: linear-gradient(135deg, #3d0066, #5b0098);
+    gap: 0;
+}
+
+.verb-section-tab {
+    flex: 1;
+    padding: 14px 20px;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    transition: background 0.25s, color 0.25s, border-bottom 0.25s;
+    border-bottom: 3px solid transparent;
+}
+
+.verb-section-tab:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.verb-section-tab.active {
+    color: white;
+    border-bottom: 3px solid #ce93d8;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* =============================================
+   Separable Verb Prefix Badge + Stem
+   ============================================= */
+
+.sep-verb-infinitive {
+    white-space: nowrap;
+}
+
+.sep-prefix-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #00796b, #00897b);
+    color: white;
+    font-weight: 700;
+    font-size: 0.88rem;
+    padding: 3px 7px;
+    border-radius: 4px 0 0 4px;
+    font-family: 'Courier New', monospace;
+    vertical-align: middle;
+    line-height: 1.5;
+}
+
+.sep-stem-text {
+    display: inline-block;
+    background: #e0f2f1;
+    color: #00695c;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 3px 7px;
+    border-radius: 0 4px 4px 0;
+    border: 1px solid #b2dfdb;
+    border-left: none;
+    font-family: 'Courier New', monospace;
+    vertical-align: middle;
+    line-height: 1.5;
+}
+
+/* Separable info box variant */
+.sep-info {
+    border-left-color: #00897b !important;
+    background: #f0fdf9 !important;
+}
+
+.sep-rule-hint {
+    margin-top: 6px !important;
+    font-size: 0.88rem !important;
+    color: #555 !important;
+}
+
+/* Separable table header uses teal gradient */
+.sep-table thead {
+    background: linear-gradient(135deg, #00695c, #00897b) !important;
+}
+
+/* =============================================
+   Mobile: section tabs + badge adjustments
+   ============================================= */
+@media (max-width: 600px) {
+    .verbs-section-tabs {
+        flex-direction: column;
+    }
+
+    .verb-section-tab {
+        padding: 12px 16px;
+        border-bottom: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .verb-section-tab.active {
+        border-bottom: 1px solid rgba(255,255,255,0.15);
+        border-left: 4px solid #ce93d8;
+    }
+
+    .sep-prefix-badge {
+        font-size: 1rem;
+        padding: 4px 8px;
+    }
+
+    .sep-stem-text {
+        font-size: 1.1rem;
+        padding: 4px 8px;
+    }
+}

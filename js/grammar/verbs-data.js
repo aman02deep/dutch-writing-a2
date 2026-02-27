@@ -617,3 +617,353 @@ var dutchVerbs = {
         }
     ]
 };
+
+// ============================================================
+// SEPARABLE VERBS (Scheidbare Werkwoorden) - A1, A2, B1
+// prefix: the separable prefix
+// stem: the verb part (infinitive minus prefix)
+// ============================================================
+var separableVerbs = {
+
+    // A1 SEPARABLE VERBS - Basic everyday separable verbs
+    a1: [
+        {
+            prefix: "op",
+            stem: "staan",
+            infinitive: "opstaan",
+            imperfectum: "stond op / stonden op",
+            perfectum: "ben/is/zijn opgestaan",
+            auxiliary: "zijn",
+            english: "to get up / stand up",
+            example: "Ik sta elke ochtend om 7 uur op. (I get up at 7 every morning.)",
+            examplePast: "Hij stond te laat op. (He got up too late.)"
+        },
+        {
+            prefix: "op",
+            stem: "bellen",
+            infinitive: "opbellen",
+            imperfectum: "belde op / belden op",
+            perfectum: "heb/heeft/hebben opgebeld",
+            auxiliary: "hebben",
+            english: "to call (by phone)",
+            example: "Ik bel je straks op. (I will call you later.)",
+            examplePast: "Zij belde haar moeder op. (She called her mother.)"
+        },
+        {
+            prefix: "aan",
+            stem: "komen",
+            infinitive: "aankomen",
+            imperfectum: "kwam aan / kwamen aan",
+            perfectum: "ben/is/zijn aangekomen",
+            auxiliary: "zijn",
+            english: "to arrive",
+            example: "De trein komt om 10 uur aan. (The train arrives at 10.)",
+            examplePast: "Wij kwamen laat aan. (We arrived late.)"
+        },
+        {
+            prefix: "uit",
+            stem: "gaan",
+            infinitive: "uitgaan",
+            imperfectum: "ging uit / gingen uit",
+            perfectum: "ben/is/zijn uitgegaan",
+            auxiliary: "zijn",
+            english: "to go out",
+            example: "Wij gaan vanavond uit. (We are going out tonight.)",
+            examplePast: "Zij gingen gisteren uit. (They went out yesterday.)"
+        },
+        {
+            prefix: "mee",
+            stem: "nemen",
+            infinitive: "meenemen",
+            imperfectum: "nam mee / namen mee",
+            perfectum: "heb/heeft/hebben meegenomen",
+            auxiliary: "hebben",
+            english: "to take along / bring",
+            example: "Ik neem mijn tas mee. (I take my bag along.)",
+            examplePast: "Hij nam zijn broer mee. (He took his brother along.)"
+        },
+        {
+            prefix: "thuis",
+            stem: "komen",
+            infinitive: "thuiskomen",
+            imperfectum: "kwam thuis / kwamen thuis",
+            perfectum: "ben/is/zijn thuisgekomen",
+            auxiliary: "zijn",
+            english: "to come home",
+            example: "Ik kom om 6 uur thuis. (I come home at 6.)",
+            examplePast: "Zij kwam laat thuis. (She came home late.)"
+        },
+        {
+            prefix: "op",
+            stem: "schrijven",
+            infinitive: "opschrijven",
+            imperfectum: "schreef op / schreven op",
+            perfectum: "heb/heeft/hebben opgeschreven",
+            auxiliary: "hebben",
+            english: "to write down",
+            example: "Schrijf het adres op. (Write down the address.)",
+            examplePast: "Ik schreef alles op. (I wrote everything down.)"
+        },
+        {
+            prefix: "aan",
+            stem: "kijken",
+            infinitive: "aankijken",
+            imperfectum: "keek aan / keken aan",
+            perfectum: "heb/heeft/hebben aangekeken",
+            auxiliary: "hebben",
+            english: "to look at (someone)",
+            example: "Zij kijkt me aan. (She looks at me.)",
+            examplePast: "Hij keek mij aan. (He looked at me.)"
+        },
+        {
+            prefix: "mee",
+            stem: "doen",
+            infinitive: "meedoen",
+            imperfectum: "deed mee / deden mee",
+            perfectum: "heb/heeft/hebben meegedaan",
+            auxiliary: "hebben",
+            english: "to join in / participate",
+            example: "Doe je mee? (Are you joining in?)",
+            examplePast: "Iedereen deed mee. (Everyone joined in.)"
+        },
+        {
+            prefix: "op",
+            stem: "eten",
+            infinitive: "opeten",
+            imperfectum: "at op / aten op",
+            perfectum: "heb/heeft/hebben opgegeten",
+            auxiliary: "hebben",
+            english: "to eat up / finish eating",
+            example: "Eet je bord op! (Eat up your plate!)",
+            examplePast: "Het kind at alles op. (The child ate everything up.)"
+        }
+    ],
+
+    // A2 SEPARABLE VERBS - Expanding everyday separable verbs
+    a2: [
+        {
+            prefix: "af",
+            stem: "maken",
+            infinitive: "afmaken",
+            imperfectum: "maakte af / maakten af",
+            perfectum: "heb/heeft/hebben afgemaakt",
+            auxiliary: "hebben",
+            english: "to finish / complete",
+            example: "Ik maak mijn huiswerk af. (I finish my homework.)",
+            examplePast: "Zij maakte het project af. (She finished the project.)"
+        },
+        {
+            prefix: "terug",
+            stem: "komen",
+            infinitive: "terugkomen",
+            imperfectum: "kwam terug / kwamen terug",
+            perfectum: "ben/is/zijn teruggekomen",
+            auxiliary: "zijn",
+            english: "to come back / return",
+            example: "Hij komt morgen terug. (He comes back tomorrow.)",
+            examplePast: "Wij kwamen laat terug. (We came back late.)"
+        },
+        {
+            prefix: "in",
+            stem: "schrijven",
+            infinitive: "inschrijven",
+            imperfectum: "schreef in / schreven in",
+            perfectum: "heb/heeft/hebben ingeschreven",
+            auxiliary: "hebben",
+            english: "to register / sign up",
+            example: "Ik schrijf me in voor de cursus. (I sign up for the course.)",
+            examplePast: "Zij schreef zich in bij de gemeente. (She registered at the municipality.)"
+        },
+        {
+            prefix: "aan",
+            stem: "trekken",
+            infinitive: "aantrekken",
+            imperfectum: "trok aan / trokken aan",
+            perfectum: "heb/heeft/hebben aangetrokken",
+            auxiliary: "hebben",
+            english: "to put on (clothes)",
+            example: "Ik trek mijn jas aan. (I put on my jacket.)",
+            examplePast: "Hij trok zijn schoenen aan. (He put on his shoes.)"
+        },
+        {
+            prefix: "uit",
+            stem: "zoeken",
+            infinitive: "uitzoeken",
+            imperfectum: "zocht uit / zochten uit",
+            perfectum: "heb/heeft/hebben uitgezocht",
+            auxiliary: "hebben",
+            english: "to figure out / look into",
+            example: "Ik zoek het voor je uit. (I will look into it for you.)",
+            examplePast: "Zij zocht de route uit. (She figured out the route.)"
+        },
+        {
+            prefix: "op",
+            stem: "ruimen",
+            infinitive: "opruimen",
+            imperfectum: "ruimde op / ruimden op",
+            perfectum: "heb/heeft/hebben opgeruimd",
+            auxiliary: "hebben",
+            english: "to tidy up / clear away",
+            example: "Ik ruim mijn kamer op. (I tidy up my room.)",
+            examplePast: "Hij ruimde de keuken op. (He tidied up the kitchen.)"
+        },
+        {
+            prefix: "af",
+            stem: "halen",
+            infinitive: "afhalen",
+            imperfectum: "haalde af / haalden af",
+            perfectum: "heb/heeft/hebben afgehaald",
+            auxiliary: "hebben",
+            english: "to pick up (a person/thing)",
+            example: "Ik haal je van het station af. (I pick you up from the station.)",
+            examplePast: "Zij haalde haar collega af. (She picked up her colleague.)"
+        },
+        {
+            prefix: "door",
+            stem: "gaan",
+            infinitive: "doorgaan",
+            imperfectum: "ging door / gingen door",
+            perfectum: "ben/is/zijn doorgegaan",
+            auxiliary: "zijn",
+            english: "to continue / go ahead",
+            example: "De vergadering gaat door. (The meeting goes ahead.)",
+            examplePast: "Het feest ging door. (The party went on.)"
+        },
+        {
+            prefix: "uit",
+            stem: "zetten",
+            infinitive: "uitzetten",
+            imperfectum: "zette uit / zetten uit",
+            perfectum: "heb/heeft/hebben uitgezet",
+            auxiliary: "hebben",
+            english: "to turn off / switch off",
+            example: "Ik zet de televisie uit. (I turn off the television.)",
+            examplePast: "Hij zette het licht uit. (He switched off the light.)"
+        },
+        {
+            prefix: "aan",
+            stem: "zetten",
+            infinitive: "aanzetten",
+            imperfectum: "zette aan / zetten aan",
+            perfectum: "heb/heeft/hebben aangezet",
+            auxiliary: "hebben",
+            english: "to turn on / switch on",
+            example: "Ik zet de radio aan. (I turn on the radio.)",
+            examplePast: "Zij zette de verwarming aan. (She turned on the heating.)"
+        }
+    ],
+
+    // B1 SEPARABLE VERBS - More complex separable verbs
+    b1: [
+        {
+            prefix: "samen",
+            stem: "werken",
+            infinitive: "samenwerken",
+            imperfectum: "werkte samen / werkten samen",
+            perfectum: "heb/heeft/hebben samengewerkt",
+            auxiliary: "hebben",
+            english: "to work together / collaborate",
+            example: "Wij werken goed samen. (We work well together.)",
+            examplePast: "Zij werkten samen aan het project. (They collaborated on the project.)"
+        },
+        {
+            prefix: "toe",
+            stem: "voegen",
+            infinitive: "toevoegen",
+            imperfectum: "voegde toe / voegden toe",
+            perfectum: "heb/heeft/hebben toegevoegd",
+            auxiliary: "hebben",
+            english: "to add",
+            example: "Ik voeg suiker toe. (I add sugar.)",
+            examplePast: "Hij voegde een opmerking toe. (He added a comment.)"
+        },
+        {
+            prefix: "op",
+            stem: "geven",
+            infinitive: "opgeven",
+            imperfectum: "gaf op / gaven op",
+            perfectum: "heb/heeft/hebben opgegeven",
+            auxiliary: "hebben",
+            english: "to give up / hand in",
+            example: "Ik geef niet op! (I do not give up!)",
+            examplePast: "Hij gaf zijn opdracht op. (He handed in his assignment.)"
+        },
+        {
+            prefix: "in",
+            stem: "vullen",
+            infinitive: "invullen",
+            imperfectum: "vulde in / vulden in",
+            perfectum: "heb/heeft/hebben ingevuld",
+            auxiliary: "hebben",
+            english: "to fill in / complete (a form)",
+            example: "Ik vul het formulier in. (I fill in the form.)",
+            examplePast: "Zij vulde haar gegevens in. (She filled in her details.)"
+        },
+        {
+            prefix: "aan",
+            stem: "passen",
+            infinitive: "aanpassen",
+            imperfectum: "paste aan / pasten aan",
+            perfectum: "heb/heeft/hebben aangepast",
+            auxiliary: "hebben",
+            english: "to adjust / adapt",
+            example: "Ik pas het plan aan. (I adjust the plan.)",
+            examplePast: "Hij paste zijn stijl aan. (He adapted his style.)"
+        },
+        {
+            prefix: "op",
+            stem: "vallen",
+            infinitive: "opvallen",
+            imperfectum: "viel op / vielen op",
+            perfectum: "is/zijn opgevallen",
+            auxiliary: "zijn",
+            english: "to stand out / be noticeable",
+            example: "Dat valt op! (That stands out!)",
+            examplePast: "Het probleem viel gelijk op. (The problem was immediately noticeable.)"
+        },
+        {
+            prefix: "terug",
+            stem: "geven",
+            infinitive: "teruggeven",
+            imperfectum: "gaf terug / gaven terug",
+            perfectum: "heb/heeft/hebben teruggegeven",
+            auxiliary: "hebben",
+            english: "to give back / return",
+            example: "Ik geef je het boek terug. (I give back your book.)",
+            examplePast: "Zij gaf het geld terug. (She gave back the money.)"
+        },
+        {
+            prefix: "door",
+            stem: "sturen",
+            infinitive: "doorsturen",
+            imperfectum: "stuurde door / stuurden door",
+            perfectum: "heb/heeft/hebben doorgestuurd",
+            auxiliary: "hebben",
+            english: "to forward (email/message)",
+            example: "Ik stuur de e-mail door. (I forward the email.)",
+            examplePast: "Hij stuurde de informatie door. (He forwarded the information.)"
+        },
+        {
+            prefix: "af",
+            stem: "spreken",
+            infinitive: "afspreken",
+            imperfectum: "sprak af / spraken af",
+            perfectum: "heb/heeft/hebben afgesproken",
+            auxiliary: "hebben",
+            english: "to arrange / make an appointment",
+            example: "Wij spreken morgen af. (We arrange to meet tomorrow.)",
+            examplePast: "Zij spraken om 10 uur af. (They arranged to meet at 10.)"
+        },
+        {
+            prefix: "bij",
+            stem: "dragen",
+            infinitive: "bijdragen",
+            imperfectum: "droeg bij / droegen bij",
+            perfectum: "heb/heeft/hebben bijgedragen",
+            auxiliary: "hebben",
+            english: "to contribute",
+            example: "Ik draag bij aan het project. (I contribute to the project.)",
+            examplePast: "Hij droeg veel bij. (He contributed a lot.)"
+        }
+    ]
+};
