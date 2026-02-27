@@ -1,0 +1,282 @@
+[
+    {
+        "id": "oo1",
+        "nl": "In deze les vertel ik over zorgen voor jonge kinderen.",
+        "en": "In this lesson I will talk about caring for young children.",
+        "audio": "../assets/audio/knm/onderwijs/oo1.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo2",
+        "nl": "Ben je zwanger? Dan kun je de huisarts bellen, maar je kunt ook direct contact opnemen met de verloskundige.",
+        "en": "Are you pregnant? You can call your GP, but you can also contact the midwife (verloskundige) directly.",
+        "audio": "../assets/audio/knm/onderwijs/oo2.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo3",
+        "nl": "De verloskundige helpt met controles tijdens de zwangerschap, geeft adviezen, en helpt bij de bevalling.",
+        "en": "The midwife helps with check-ups during pregnancy, gives advice, and assists during childbirth.",
+        "audio": "../assets/audio/knm/onderwijs/oo3.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo4",
+        "nl": "Zijn er problemen tijdens de zwangerschap? Dan ga je naar de gynaecoloog in het ziekenhuis.",
+        "en": "Are there problems during the pregnancy? Then you go to the gynaecologist at the hospital.",
+        "audio": "../assets/audio/knm/onderwijs/oo4.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo5",
+        "nl": "Na de geboorte ga je naar het consultatiebureau. Het consultatiebureau is voor kinderen van 0 tot 4 jaar.",
+        "en": "After the birth you go to the child health clinic (consultatiebureau). This is for children aged 0 to 4 years.",
+        "audio": "../assets/audio/knm/onderwijs/oo5.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo6",
+        "nl": "Het consultatiebureau controleert de gezondheid van het kind, meet en weegt het, en volgt de ontwikkeling. Het geeft ook adviezen en vaccinaties.",
+        "en": "The child health clinic checks the child's health, measures and weighs them, and monitors their development. It also gives advice and vaccinations.",
+        "audio": "../assets/audio/knm/onderwijs/oo6.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo7",
+        "nl": "Kinderopvang: als ouders geen tijd hebben, zijn er verschillende opties — een kinderdagverblijf, een oppas, of gastouderopvang.",
+        "en": "Childcare: if parents have no time, there are various options — a day nursery (kinderdagverblijf), a babysitter (oppas), or foster care (gastouderopvang).",
+        "audio": "../assets/audio/knm/onderwijs/oo7.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo8",
+        "nl": "Het kinderdagverblijf is voor kinderen van 0 tot 4 jaar. Het is open van ochtend tot avond. Kinderen kunnen er eten, spelen en slapen.",
+        "en": "The day nursery is for children aged 0 to 4 years. It is open from morning to evening. Children can eat, play and sleep there.",
+        "audio": "../assets/audio/knm/onderwijs/oo8.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo9",
+        "nl": "Een oppas kan een familielid, buurman/-vrouw of een betaalde kracht zijn.",
+        "en": "A babysitter can be a family member, neighbour or a paid professional.",
+        "audio": "../assets/audio/knm/onderwijs/oo9.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo10",
+        "nl": "Gastouderopvang is voor kinderen van 0 tot 12 jaar. De kinderen gaan naar het huis van de gastouder of de gastouder komt thuis. De opvangtijden zijn heel flexibel.",
+        "en": "Foster childcare (gastouderopvang) is for children aged 0 to 12 years. Children go to the carer's home or the carer comes to the child's home. The care hours are very flexible.",
+        "audio": "../assets/audio/knm/onderwijs/oo10.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo11",
+        "nl": "Deze les gaat over het Nederlandse schoolsysteem.",
+        "en": "This lesson is about the Dutch school system.",
+        "audio": "../assets/audio/knm/onderwijs/oo11.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo12",
+        "nl": "De peuterspeelzaal is voor kinderen van 2 tot 4 jaar. Kinderen gaan 2 tot 3 dagdelen per week. Ze leren spelen en Nederlands spreken.",
+        "en": "The toddler playgroup (peuterspeelzaal) is for children aged 2 to 4 years. Children attend 2 to 3 half-days per week. They learn to play and speak Dutch.",
+        "audio": "../assets/audio/knm/onderwijs/oo12.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo13",
+        "nl": "De voorschool is niet verplicht. Het is vooral voor kinderen die achterlopen in hun ontwikkeling, of voor kinderen die thuis geen Nederlands spreken.",
+        "en": "Pre-school (voorschool) is not compulsory. It is mainly for children who are behind in their development, or for children who do not speak Dutch at home.",
+        "audio": "../assets/audio/knm/onderwijs/oo13.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo14",
+        "nl": "Kinderen van 4 tot 12 jaar gaan naar de basisschool. In groep 1 en 2 leren ze spelen, spreken, zingen en tekenen.",
+        "en": "Children aged 4 to 12 go to primary school (basisschool). In groups 1 and 2 they learn to play, speak, sing and draw.",
+        "audio": "../assets/audio/knm/onderwijs/oo14.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo15",
+        "nl": "In groep 3 leren kinderen ook lezen, schrijven en rekenen. In groep 4 tot 8 komen ook aardrijkskunde, geschiedenis en muziek erbij.",
+        "en": "In group 3 children also learn to read, write and do arithmetic. In groups 4 to 8, geography, history and music are added.",
+        "audio": "../assets/audio/knm/onderwijs/oo15.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo16",
+        "nl": "Aan het einde van groep 8 maken kinderen de Cito-toets. Daarna krijgen ze advies over welk niveau middelbare school het beste bij hen past.",
+        "en": "At the end of group 8, children take the Cito test. Afterwards they receive advice about which level of secondary school suits them best.",
+        "audio": "../assets/audio/knm/onderwijs/oo16.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo17",
+        "nl": "Buitenschoolse opvang (BSO): basisschoolkinderen kunnen na school naar de BSO om te spelen of huiswerk te maken. Dit is handig als beide ouders werken.",
+        "en": "After-school care (buitenschoolse opvang / BSO): primary school children can go to the BSO after school to play or do homework. This is useful when both parents work.",
+        "audio": "../assets/audio/knm/onderwijs/oo17.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo18",
+        "nl": "Na de basisschool gaan kinderen naar de middelbare school. Er zijn drie niveaus.",
+        "en": "After primary school, children go to secondary school. There are three levels.",
+        "audio": "../assets/audio/knm/onderwijs/oo18.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo19",
+        "nl": "VWO (6 jaar): het hoogste niveau, voor kinderen die heel goed kunnen leren. Na het VWO kunnen ze naar de universiteit.",
+        "en": "VWO (6 years): the highest level, for children who learn very well. After VWO they can go to university.",
+        "audio": "../assets/audio/knm/onderwijs/oo19.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo20",
+        "nl": "HAVO (5 jaar): voor kinderen die goed kunnen leren. Na de HAVO kunnen ze naar het HBO.",
+        "en": "HAVO (5 years): for children who learn well. After HAVO they can go to university of applied sciences (HBO).",
+        "audio": "../assets/audio/knm/onderwijs/oo20.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo21",
+        "nl": "VMBO (4 jaar): voor kinderen die iets meer praktijkgericht leren. Na het VMBO kunnen ze naar het MBO.",
+        "en": "VMBO (4 years): for children who learn in a more practical way. After VMBO they can go to vocational college (MBO).",
+        "audio": "../assets/audio/knm/onderwijs/oo21.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo22",
+        "nl": "Na het VWO → Universiteit (bijv. dokter of advocaat worden). Na de HAVO → HBO (bijv. leraar worden). Na het VMBO → MBO (bijv. in een winkel of kinderdagverblijf werken).",
+        "en": "After VWO → University (e.g. doctor or lawyer). After HAVO → HBO (e.g. teacher). After VMBO → MBO (e.g. work in a shop or day nursery).",
+        "audio": "../assets/audio/knm/onderwijs/oo22.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo23",
+        "nl": "Vrijheid van onderwijs: ouders kiezen zelf de school voor hun kinderen. Iedereen mag zijn eigen school beginnen — openbaar, islamitisch, Dalton, Jenaplan, enz.",
+        "en": "Freedom of education: parents choose their child's school themselves. Everyone may start their own school — public, Islamic, Dalton, Jenaplan, etc.",
+        "audio": "../assets/audio/knm/onderwijs/oo23.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo24",
+        "nl": "Leerplicht: kinderen zijn vanaf 5 jaar verplicht naar school te gaan, tot 16 jaar. Hebben ze op 16 of 17 jaar nog geen diploma, dan moeten ze tot 18 jaar naar school.",
+        "en": "Compulsory education (leerplicht): children must go to school from age 5 to 16. If they have no diploma at 16 or 17, they must continue until 18.",
+        "audio": "../assets/audio/knm/onderwijs/oo24.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo25",
+        "nl": "Kinderen mogen alleen vrij krijgen in de schoolvakanties. Op andere dagen kunnen ouders een boete krijgen. Voor speciale situaties (begrafenis) kun je toestemming vragen.",
+        "en": "Children may only be absent during school holidays. On other days parents can receive a fine. For special situations (e.g. a funeral) you can request permission.",
+        "audio": "../assets/audio/knm/onderwijs/oo25.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo26",
+        "nl": "Op de meeste scholen zijn faciliteiten voor leerlingen met een handicap. Er is ook speciaal onderwijs — scholen specifiek voor kinderen met een fysieke, mentale of leerbeperking.",
+        "en": "Most schools have facilities for pupils with a disability. There is also special education — schools specifically for children with a physical, mental or learning disability.",
+        "audio": "../assets/audio/knm/onderwijs/oo26.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo27",
+        "nl": "Seksuele voorlichting is een verplicht onderdeel van het lesprogramma in het basis- en voortgezet onderwijs.",
+        "en": "Sex education is a compulsory part of the curriculum in primary and secondary education.",
+        "audio": "../assets/audio/knm/onderwijs/oo27.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo28",
+        "nl": "Deze les gaat over kosten voor kinderen en studiefinanciering.",
+        "en": "This lesson is about the costs of raising children and student finance.",
+        "audio": "../assets/audio/knm/onderwijs/oo28.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo29",
+        "nl": "Kinderopvangtoeslag: kinderopvang is duur, maar je kunt geld terugkrijgen van de Belastingdienst. Dit heet kinderopvangtoeslag. Aanvragen via www.toeslagen.nl.",
+        "en": "Childcare allowance (kinderopvangtoeslag): childcare is expensive, but you can get money back from the Tax Authority. This is called kinderopvangtoeslag. Apply via www.toeslagen.nl.",
+        "audio": "../assets/audio/knm/onderwijs/oo29.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo30",
+        "nl": "Kinderbijslag: de overheid geeft geld voor kleding, eten en school tot het kind 18 jaar is. Kinderbijslag krijg je via de SVB (Sociale Verzekeringsbank). Het bedrag hangt af van de leeftijd van het kind.",
+        "en": "Child benefit (kinderbijslag): the government gives money for clothing, food and school until the child turns 18. You receive kinderbijslag via the SVB (Social Insurance Bank). The amount depends on the child's age.",
+        "audio": "../assets/audio/knm/onderwijs/oo30.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo31",
+        "nl": "Schoolkosten: er is een vrijwillige ouderbijdrage (bijv. voor schoolreisjes), kosten voor internet, en lesgeld. Lesgeld is gratis voor kinderen onder 18 jaar.",
+        "en": "School costs: there is a voluntary parental contribution (e.g. for school trips), costs for internet, and tuition fees. Tuition is free for children under 18.",
+        "audio": "../assets/audio/knm/onderwijs/oo31.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo32",
+        "nl": "Is je kind ouder dan 18 en gaat het nog naar school? Dan moeten de ouders lesgeld betalen. Heb je een laag inkomen? Dan kun je schoolkosten terugvragen via DUO.",
+        "en": "Is your child over 18 and still in school? Then parents must pay tuition fees. Do you have a low income? Then you can reclaim school costs via DUO.",
+        "audio": "../assets/audio/knm/onderwijs/oo32.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo33",
+        "nl": "Studiefinanciering: als je kind naar het MBO, HBO of de universiteit gaat, kun je geld lenen en soms krijgen via DUO. Dit heet studiefinanciering.",
+        "en": "Student finance (studiefinanciering): if your child goes to MBO, HBO or university, you can borrow and sometimes receive money via DUO. This is called studiefinanciering.",
+        "audio": "../assets/audio/knm/onderwijs/oo33.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo34",
+        "nl": "Deze les gaat over de verantwoordelijkheid van ouders voor het gedrag van hun kinderen.",
+        "en": "This lesson is about parents' responsibility for their children's behaviour.",
+        "audio": "../assets/audio/knm/onderwijs/oo34.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo35",
+        "nl": "Ouders zijn juridisch verantwoordelijk voor hun kinderen tot 16 jaar. Als een kind iets kapot maakt, moeten de ouders betalen.",
+        "en": "Parents are legally responsible for their children until age 16. If a child damages something, the parents must pay.",
+        "audio": "../assets/audio/knm/onderwijs/oo35.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo36",
+        "nl": "Kinderen van 18 jaar zijn volwassen en mogen zelf contracten tekenen.",
+        "en": "Children aged 18 are adults and may sign contracts themselves.",
+        "audio": "../assets/audio/knm/onderwijs/oo36.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo37",
+        "nl": "Bij grote problemen in de opvoeding kun je hulp vragen bij de huisarts, Bureau Jeugdzorg of de geestelijke gezondheidszorg (GGZ).",
+        "en": "For serious problems in parenting you can seek help from the GP, Youth Care Office (Bureau Jeugdzorg) or mental health services (GGZ).",
+        "audio": "../assets/audio/knm/onderwijs/oo37.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo38",
+        "nl": "Contact met de school: ouders helpen de school als dat gevraagd wordt. Er zijn ouderavonden met informatie van de school.",
+        "en": "Contact with school: parents help the school when asked. There are parents' evenings (ouderavonden) with information from the school.",
+        "audio": "../assets/audio/knm/onderwijs/oo38.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo39",
+        "nl": "Er zijn avonden waarop je met de leraar over je kind kunt praten, zoals 10-minutengesprekken of rapportavonden.",
+        "en": "There are evenings when you can talk to the teacher about your child, such as 10-minute conversations or report evenings (rapportavonden).",
+        "audio": "../assets/audio/knm/onderwijs/oo39.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "oo40",
+        "nl": "Soms vraagt de school of ouders als vrijwilliger kunnen helpen, bijv. bij een schoolreisje of schoolfeest.",
+        "en": "Sometimes the school asks whether parents can help as volunteers, e.g. on a school trip or at a school party.",
+        "audio": "../assets/audio/knm/onderwijs/oo40.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    }
+]

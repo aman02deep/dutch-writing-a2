@@ -139,7 +139,7 @@ To generate a new chapter (e.g. Chapter 2: Werk en Inkomen) for the KNM section,
 3. Each slide needs an array format: `id`, `nl`, `en`.
 
 **Step 3: Generate Audio (ElevenLabs or Edge TTS)**
-1. Create a Python script (like `scripts/generate_knm_audio.py`) populated with the JSON slide data.
+1. Create a Python script populated with the JSON slide data (or use Edge TTS CLI).
 2. Prioritize ElevenLabs (Voice: **Alice** `Xb7hH8MSUJpSbSDYk0k2`) for high-quality audio.
 3. If ElevenLabs Free Tier quota is exhausted or IP blocked, **immediately fallback to Edge TTS** (`edge-tts` python package).
 4. Use the Edge TTS voice: `nl-NL-FennaNeural` (high-quality, free, neural Dutch female voice).

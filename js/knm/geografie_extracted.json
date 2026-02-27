@@ -1,0 +1,310 @@
+[
+    {
+        "id": "gg1",
+        "nl": "In deze les vertel ik over de geschiedenis van Nederland.",
+        "en": "In this lesson I will talk about the history of the Netherlands.",
+        "audio": "../assets/audio/knm/geografie/gg1.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg2",
+        "nl": "Rond het jaar 0 bezetten de Romeinen Nederland. De steden Utrecht en Maastricht komen uit deze tijd.",
+        "en": "Around the year 0, the Romans occupied the Netherlands. The cities of Utrecht and Maastricht date from this period.",
+        "audio": "../assets/audio/knm/geografie/gg2.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg3",
+        "nl": "De Middeleeuwen (ca. 500–1500): er waren verschillende landen met eigen leiders — de Nederlanden. De meeste mensen waren arme boeren.",
+        "en": "The Middle Ages (approx. 500–1500): there were various territories with their own rulers — the Nederlanden. Most people were poor farmers.",
+        "audio": "../assets/audio/knm/geografie/gg3.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg4",
+        "nl": "De Tachtigjarige Oorlog (1568–1648): Koning Filips II van Spanje was de baas in de Nederlanden. Hij was katholiek en wilde dat iedereen katholiek was.",
+        "en": "The Eighty Years' War (1568–1648): King Philip II of Spain was the ruler of the Netherlands. He was Catholic and wanted everyone to be Catholic.",
+        "audio": "../assets/audio/knm/geografie/gg4.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg5",
+        "nl": "Mensen in de Nederlanden protesteerden tegen de Katholieke Kerk — we noemen hen protestanten. Filips II wilde de protestanten doden.",
+        "en": "People in the Netherlands protested against the Catholic Church — we call them Protestants. Philip II wanted the Protestants killed.",
+        "audio": "../assets/audio/knm/geografie/gg5.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg6",
+        "nl": "De leider van het verzet was Willem van Oranje. In 1584 werd hij vermoord. Hij is een voorvader van koning Willem-Alexander.",
+        "en": "The leader of the resistance was Willem van Oranje (William of Orange). He was murdered in 1584. He is an ancestor of King Willem-Alexander.",
+        "audio": "../assets/audio/knm/geografie/gg6.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg7",
+        "nl": "Het volkslied, het Wilhelmus, komt uit deze tijd. De 'Wilhelmus' in het lied verwijst naar Willem van Oranje.",
+        "en": "The national anthem, the Wilhelmus, dates from this period. The 'Wilhelmus' in the song refers to Willem van Oranje.",
+        "audio": "../assets/audio/knm/geografie/gg7.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg8",
+        "nl": "In 1588 werden de Nederlanden een republiek: de Republiek der Zeven Verenigde Nederlanden. In 1648 werd dit een officieel zelfstandige staat.",
+        "en": "In 1588 the Netherlands became a republic: the Republic of the Seven United Netherlands. In 1648 this became an officially independent state.",
+        "audio": "../assets/audio/knm/geografie/gg8.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg9",
+        "nl": "De Gouden Eeuw (1600–1700 / 17e eeuw): Nederlanders werden rijk door handel in goud en specerijen. Er was helaas ook handel in slaven.",
+        "en": "The Golden Age (1600–1700 / 17th century): the Dutch became wealthy through trade in gold and spices. Sadly there was also a trade in enslaved people.",
+        "audio": "../assets/audio/knm/geografie/gg9.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg10",
+        "nl": "In 1602 begon de VOC (Verenigde Oost-Indische Compagnie) — een zeer succesvolle handelsmaatschappij die handelde in Azië.",
+        "en": "In 1602 the VOC (Dutch East India Company) was established — a very successful trading company that traded in Asia.",
+        "audio": "../assets/audio/knm/geografie/gg10.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg11",
+        "nl": "De Gouden Eeuw was ook een belangrijke tijd voor de kunst. Bekende schilder: Rembrandt. Zijn bekendste schilderij: de Nachtwacht.",
+        "en": "The Golden Age was also an important time for art. Famous painter: Rembrandt. His most famous painting: the Night Watch (de Nachtwacht).",
+        "audio": "../assets/audio/knm/geografie/gg11.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg12",
+        "nl": "Nederland kreeg in deze tijd koloniën, waaronder Indonesië en Suriname. Indonesië werd in 1949 vrij, Suriname in 1975. Na de dekolonisatie kwamen veel mensen uit deze landen naar Nederland.",
+        "en": "The Netherlands gained colonies during this period, including Indonesia and Suriname. Indonesia became independent in 1949, Suriname in 1975. After decolonisation, many people from these countries came to the Netherlands.",
+        "audio": "../assets/audio/knm/geografie/gg12.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg13",
+        "nl": "De Industriële Revolutie (1800–1900): er kwamen veel machines, fabrieken en nieuwe uitvindingen. Mensen gingen naar de stad om te werken — we noemen hen arbeiders.",
+        "en": "The Industrial Revolution (1800–1900): many machines, factories and new inventions emerged. People moved to cities to work — we call them workers (arbeiders).",
+        "audio": "../assets/audio/knm/geografie/gg13.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg14",
+        "nl": "Het werk was zwaar en slecht betaald. Ook vrouwen en kinderen werkten in de fabrieken.",
+        "en": "The work was hard and poorly paid. Women and children also worked in the factories.",
+        "audio": "../assets/audio/knm/geografie/gg14.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg15",
+        "nl": "De eerste politieke partijen ontstonden — vooral socialistische partijen (de socialisten). Ze wilden betere leefomstandigheden en gelijke rechten voor iedereen.",
+        "en": "The first political parties emerged — mainly socialist parties. They wanted better living conditions and equal rights for everyone.",
+        "audio": "../assets/audio/knm/geografie/gg15.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg16",
+        "nl": "De eerste Grondwet van Nederland werd aangenomen in 1814.",
+        "en": "The first Dutch Constitution was adopted in 1814.",
+        "audio": "../assets/audio/knm/geografie/gg16.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg17",
+        "nl": "De Tweede Wereldoorlog (1940–1945): in de jaren '30 waren er veel arme fabrieksarbeiders in Duitsland. Hitler werd leider en gaf de Joden de schuld van alle problemen.",
+        "en": "The Second World War (1940–1945): in the 1930s there were many poor factory workers in Germany. Hitler became leader and blamed the Jewish people for all problems.",
+        "audio": "../assets/audio/knm/geografie/gg17.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg18",
+        "nl": "In 1940 bezette Duitsland Nederland. Koningin Wilhelmina vluchtte naar Engeland.",
+        "en": "In 1940 Germany occupied the Netherlands. Queen Wilhelmina fled to England.",
+        "audio": "../assets/audio/knm/geografie/gg18.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg19",
+        "nl": "Vanaf 1942 werden Joden opgepakt en naar concentratiekampen gestuurd. Meer dan 75% van de Nederlandse Joden zijn in de kampen gedood.",
+        "en": "From 1942, Jewish people were arrested and sent to concentration camps. More than 75% of Dutch Jews were killed in the camps.",
+        "audio": "../assets/audio/knm/geografie/gg19.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg20",
+        "nl": "Er waren ook mensen die in verzet kwamen — ze hielpen Joden onderduiken en verspreidden nieuws over de oorlog. Dit was gevaarlijk.",
+        "en": "There were also people who resisted — they helped Jewish people hide and spread news about the war. This was dangerous.",
+        "audio": "../assets/audio/knm/geografie/gg20.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg21",
+        "nl": "Op 5 mei 1945 werd Nederland bevrijd door Engeland, de VS en Canada. Op 5 mei vieren we de bevrijding; op 4 mei herdenken we de doden (2 minuten stilte om 20:00 uur).",
+        "en": "On 5 May 1945 the Netherlands was liberated by England, the US and Canada. On 5 May we celebrate liberation; on 4 May we commemorate the dead (2 minutes of silence at 8:00 PM).",
+        "audio": "../assets/audio/knm/geografie/gg21.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg22",
+        "nl": "Na de Tweede Wereldoorlog (1945–1955) werden huizen en fabrieken herbouwd. De economie herstelde snel.",
+        "en": "After the Second World War (1945–1955) houses and factories were rebuilt. The economy recovered quickly.",
+        "audio": "../assets/audio/knm/geografie/gg22.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg23",
+        "nl": "In 1949 richtten landen uit Europa, de VS en Canada de NAVO op — een militaire samenwerking.",
+        "en": "In 1949, countries from Europe, the US and Canada established NATO — a military alliance.",
+        "audio": "../assets/audio/knm/geografie/gg23.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg24",
+        "nl": "In 1953 was er een grote overstroming in Zeeland en Zuid-Holland — 1.800 doden. De regering maakte het Deltaplan: betere dijken en dammen (de Deltawerken).",
+        "en": "In 1953 there was a major flood in Zeeland and South Holland — 1,800 deaths. The government created the Delta Plan: better dykes and dams (the Deltawerken).",
+        "audio": "../assets/audio/knm/geografie/gg24.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg25",
+        "nl": "In 1957 begonnen Europese landen, waaronder Nederland, officieel samen te werken in de Europese Unie. Sinds 2002 hebben EU-landen de euro als munt.",
+        "en": "In 1957 European countries, including the Netherlands, officially began cooperating in the European Union. Since 2002 EU countries use the euro as currency.",
+        "audio": "../assets/audio/knm/geografie/gg25.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg26",
+        "nl": "In de jaren '60–'70 wilden mensen meer vrijheid. Meer vrouwen gingen werken en studeren. De kerk verloor invloed (ontkerkelijking). Rond 1970 begon de acceptatie van homoseksualiteit.",
+        "en": "In the 1960s–70s people wanted more freedom. More women went to work and study. The church lost influence (ontkerkelijking). Around 1970 the acceptance of homosexuality began.",
+        "audio": "../assets/audio/knm/geografie/gg26.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg27",
+        "nl": "Rond 1970 kwamen veel gastarbeiders uit Turkije en Marokko naar Nederland vanwege het economisch succes. Veel van hen zijn in Nederland gebleven.",
+        "en": "Around 1970 many guest workers (gastarbeiders) from Turkey and Morocco came to the Netherlands due to economic prosperity. Many of them stayed in the Netherlands.",
+        "audio": "../assets/audio/knm/geografie/gg27.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg28",
+        "nl": "Deze les gaat over de geografie en de mensen van Nederland.",
+        "en": "This lesson is about the geography and people of the Netherlands.",
+        "audio": "../assets/audio/knm/geografie/gg28.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg29",
+        "nl": "Nederland ligt in West-Europa. De buren zijn België (ten zuiden) en Duitsland (ten oosten). Nederland is 300 km lang en 150 km breed.",
+        "en": "The Netherlands is located in Western Europe. Its neighbours are Belgium (to the south) and Germany (to the east). The Netherlands is 300 km long and 150 km wide.",
+        "audio": "../assets/audio/knm/geografie/gg29.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg30",
+        "nl": "Nederland heeft 12 provincies. De hoofdstad van Noord-Holland is Haarlem, van Zuid-Holland is Den Haag, en de hoofdstad van Nederland is Amsterdam.",
+        "en": "The Netherlands has 12 provinces. The capital of Noord-Holland is Haarlem, of Zuid-Holland is Den Haag, and the capital of the Netherlands is Amsterdam.",
+        "audio": "../assets/audio/knm/geografie/gg30.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg31",
+        "nl": "Amsterdam heeft het grootste vliegveld van Nederland: Schiphol. Rotterdam heeft de grootste haven van Europa.",
+        "en": "Amsterdam has the largest airport in the Netherlands: Schiphol. Rotterdam has the largest port in Europe.",
+        "audio": "../assets/audio/knm/geografie/gg31.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg32",
+        "nl": "Den Haag is de derde stad — de regering en het parlement zijn in Den Haag. Utrecht is de vierde stad.",
+        "en": "Den Haag is the third city — the government and parliament are located there. Utrecht is the fourth city.",
+        "audio": "../assets/audio/knm/geografie/gg32.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg33",
+        "nl": "Amsterdam, Rotterdam, Den Haag en Utrecht vormen samen de Randstad — in het westen van Nederland, met veel bedrijven en werk.",
+        "en": "Amsterdam, Rotterdam, Den Haag and Utrecht together form the Randstad — in the west of the Netherlands, with many businesses and jobs.",
+        "audio": "../assets/audio/knm/geografie/gg33.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg34",
+        "nl": "De Veluwe is een rustig natuurgebied in de provincie Gelderland (oost-Nederland). In het noorden van Nederland liggen de Waddeneilanden.",
+        "en": "The Veluwe is a quiet nature area in the province of Gelderland (eastern Netherlands). In the north of the Netherlands lie the Wadden Islands (Waddeneilanden).",
+        "audio": "../assets/audio/knm/geografie/gg34.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg35",
+        "nl": "Nederland betekent 'laagland'. 27% van Nederland ligt onder zeeniveau. Er zijn veel duinen en dijken om het land te beschermen.",
+        "en": "The Netherlands means 'low land'. 27% of the Netherlands lies below sea level. There are many dunes and dykes to protect the country.",
+        "audio": "../assets/audio/knm/geografie/gg35.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg36",
+        "nl": "Het IJsselmeer is het grootste meer van Nederland. Het was vroeger een zee maar werd afgesloten met de Afsluitdijk. Je kunt over de Afsluitdijk rijden van Noord-Holland naar Friesland.",
+        "en": "The IJsselmeer is the largest lake in the Netherlands. It was formerly a sea but was closed off with the Afsluitdijk (Enclosure Dam). You can drive across the Afsluitdijk from Noord-Holland to Friesland.",
+        "audio": "../assets/audio/knm/geografie/gg36.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg37",
+        "nl": "Polders: stukken land die vroeger water waren. De provincie Flevoland is bijna helemaal een polder — eerst was het water, nu is het land.",
+        "en": "Polders: areas of land that were formerly water. The province of Flevoland is almost entirely a polder — it was once water, now it is land.",
+        "audio": "../assets/audio/knm/geografie/gg37.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg38",
+        "nl": "Nederland heeft een zeeklimaat: winters niet te koud, zomers niet te warm. Gemiddelde temperaturen: zomer ~18°C, herfst ~10°C, winter ~5°C, lente ~12°C.",
+        "en": "The Netherlands has a maritime climate: winters not too cold, summers not too warm. Average temperatures: summer ~18°C, autumn ~10°C, winter ~5°C, spring ~12°C.",
+        "audio": "../assets/audio/knm/geografie/gg38.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg39",
+        "nl": "Aruba, Curaçao en Sint Maarten zijn zelfstandige eilanden in de Caribische Zee en onderdeel van het Koninkrijk der Nederlanden.",
+        "en": "Aruba, Curaçao and Sint Maarten are autonomous islands in the Caribbean Sea and part of the Kingdom of the Netherlands.",
+        "audio": "../assets/audio/knm/geografie/gg39.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg40",
+        "nl": "Bonaire, Saba en Sint Eustatius zijn ook onderdeel van het Koninkrijk, maar zijn bijzondere gemeenten (geen zelfstandige landen).",
+        "en": "Bonaire, Saba and Sint Eustatius are also part of the Kingdom, but are special municipalities (not autonomous countries).",
+        "audio": "../assets/audio/knm/geografie/gg40.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg41",
+        "nl": "In Nederland wonen ongeveer 17 miljoen mensen. Ongeveer 2 miljoen mensen zijn niet in Nederland geboren.",
+        "en": "About 17 million people live in the Netherlands. About 2 million people were not born in the Netherlands.",
+        "audio": "../assets/audio/knm/geografie/gg41.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg42",
+        "nl": "De grootste groepen buitenlanders: mensen uit andere Europese landen, Suriname (voormalige kolonie), Turkije, Marokko, en vluchtelingen.",
+        "en": "The largest groups of non-native residents: people from other European countries, Suriname (former colony), Turkey, Morocco, and refugees.",
+        "audio": "../assets/audio/knm/geografie/gg42.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg43",
+        "nl": "De belangrijkste taal is Nederlands. In de provincie Friesland spreken mensen ook Fries.",
+        "en": "The most important language is Dutch. In the province of Friesland people also speak Frisian.",
+        "audio": "../assets/audio/knm/geografie/gg43.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "gg44",
+        "nl": "In Nederland is er vrijheid van godsdienst. Ongeveer 50% van de Nederlanders heeft een geloof — de meesten zijn christelijk. Veel Nederlanders hebben geen geloof.",
+        "en": "In the Netherlands there is freedom of religion. About 50% of Dutch people have a religion — most are Christian. Many Dutch people have no religion.",
+        "audio": "../assets/audio/knm/geografie/gg44.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    }
+]

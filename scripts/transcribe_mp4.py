@@ -1,7 +1,7 @@
 import os
 from moviepy import VideoFileClip
 
-folder = r"C:\Learning\Dutch\Dutch A2 Material-001,002\Dutch A2 Material 1&2\KNM inburgering subscription\1. Wonen"
+folder = r"TBD"
 
 for f in os.listdir(folder):
     if f.endswith(".mp4"):

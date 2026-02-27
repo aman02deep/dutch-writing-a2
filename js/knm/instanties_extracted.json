@@ -1,0 +1,359 @@
+[
+    {
+        "id": "in1",
+        "nl": "Deze les gaat over de gemeente.",
+        "en": "This lesson is about the municipality (gemeente).",
+        "audio": "../assets/audio/knm/instanties/in1.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in2",
+        "nl": "Iedereen moet zich inschrijven bij de gemeente waar hij of zij woont — via de Gemeentelijke Basisadministratie (GBA).",
+        "en": "Everyone must register with the municipality where they live — via the Municipal Basic Administration (GBA).",
+        "audio": "../assets/audio/knm/instanties/in2.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in3",
+        "nl": "Veranderingen die je moet melden bij de gemeente: trouwen of samenwonen, scheiden, geboorte van een kind, verhuizen, en overlijden van een gezinslid.",
+        "en": "Changes you must report to the municipality: getting married or moving in together, divorcing, birth of a child, moving house, and the death of a family member.",
+        "audio": "../assets/audio/knm/instanties/in3.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in4",
+        "nl": "Documenten die je alleen bij de gemeente kunt aanvragen: paspoort, identiteitskaart (nieuw of verlenging), rijbewijs, uittreksel GBA, en vergunningen.",
+        "en": "Documents you can only apply for at the municipality: passport, identity card (new or renewal), driving licence, GBA extract, and permits.",
+        "audio": "../assets/audio/knm/instanties/in4.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in5",
+        "nl": "Voor een vergunning heb je soms toestemming nodig van de gemeente — bijv. voor het verbouwen van je huis of het kappen van een boom.",
+        "en": "For a permit you sometimes need permission from the municipality — e.g. for renovating your home or cutting down a tree.",
+        "audio": "../assets/audio/knm/instanties/in5.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in6",
+        "nl": "Meenemen bij het aanvragen van documenten: paspoort of ID-kaart (of het oude document bij verlenging). Je betaalt meestal voor het nieuwe document.",
+        "en": "Bring when applying for documents: passport or ID card (or old document for renewal). You usually pay for the new document.",
+        "audio": "../assets/audio/knm/instanties/in6.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in7",
+        "nl": "Om in Nederland te wonen heb je een verblijfsvergunning nodig. Er zijn tijdelijke vergunningen (1, 3 of 5 jaar) en permanente vergunningen (voor onbepaalde tijd).",
+        "en": "To live in the Netherlands you need a residence permit (verblijfsvergunning). There are temporary permits (1, 3 or 5 years) and permanent permits (indefinite period).",
+        "audio": "../assets/audio/knm/instanties/in7.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in8",
+        "nl": "Voor een permanente verblijfsvergunning moet je minimaal 5 jaar in Nederland wonen. Aanvragen bij de gemeente.",
+        "en": "For a permanent residence permit you must have lived in the Netherlands for at least 5 years. Apply at the municipality.",
+        "audio": "../assets/audio/knm/instanties/in8.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in9",
+        "nl": "Naturalisatie: als je een permanente verblijfsvergunning hebt, kun je naturalisatie aanvragen. Voordelen: Nederlands paspoort, geen verblijfsvergunning meer nodig, alle rechten en plichten als Nederlander.",
+        "en": "Naturalisation: if you have a permanent residence permit, you can apply for naturalisation. Benefits: Dutch passport, no longer need a residence permit, all rights and obligations of a Dutch citizen.",
+        "audio": "../assets/audio/knm/instanties/in9.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in10",
+        "nl": "Gemeentebelasting: je betaalt belasting aan de gemeente, zoals milieubelasting, onroerend-goedbelasting en hondenbelasting. Mensen met een laag inkomen kunnen soms ontheffing aanvragen.",
+        "en": "Municipal tax: you pay tax to the municipality, such as environmental tax, property tax and dog tax. People with a low income can sometimes apply for an exemption.",
+        "audio": "../assets/audio/knm/instanties/in10.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in11",
+        "nl": "Deze les gaat over de politie.",
+        "en": "This lesson is about the police.",
+        "audio": "../assets/audio/knm/instanties/in11.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in12",
+        "nl": "Identificatieplicht: alle mensen in Nederland boven 14 jaar moeten hun identiteitsbewijs kunnen laten zien als de politie dat vraagt.",
+        "en": "Identity obligation (identificatieplicht): all people in the Netherlands over 14 must be able to show their identity document if the police ask for it.",
+        "audio": "../assets/audio/knm/instanties/in12.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in13",
+        "nl": "In het openbaar vervoer moet je je ID al kunnen laten zien vanaf 12 jaar.",
+        "en": "In public transport you must be able to show your ID from age 12.",
+        "audio": "../assets/audio/knm/instanties/in13.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in14",
+        "nl": "Geldige identiteitsbewijzen: paspoort, ID-kaart of rijbewijs. Ze zijn allemaal 10 jaar geldig.",
+        "en": "Valid identity documents: passport, ID card or driving licence. They are all valid for 10 years.",
+        "audio": "../assets/audio/knm/instanties/in14.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in15",
+        "nl": "Heb je geen ID bij je als de politie erom vraagt? Dan kun je een boete krijgen.",
+        "en": "Do you not have your ID with you when the police ask? Then you can receive a fine.",
+        "audio": "../assets/audio/knm/instanties/in15.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in16",
+        "nl": "Met een paspoort kun je wereldwijd reizen. Met een ID-kaart alleen binnen Europa. Met een rijbewijs kun je niet reizen.",
+        "en": "With a passport you can travel worldwide. With an ID card only within Europe. With a driving licence you cannot travel.",
+        "audio": "../assets/audio/knm/instanties/in16.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in17",
+        "nl": "Taken van de politie: hulpverlening, handhaving van de openbare orde, en het voorkomen en beëindigen van strafbare feiten.",
+        "en": "Tasks of the police: providing assistance, maintaining public order, and preventing and ending criminal offences.",
+        "audio": "../assets/audio/knm/instanties/in17.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in18",
+        "nl": "Aangifte doen: wil je iets officieel aan de politie melden? Bijv. een gestolen portemonnee, geweld of vandalisme. Je doet aangifte op het politiebureau.",
+        "en": "Filing a report (aangifte doen): do you want to officially report something to the police? E.g. a stolen wallet, violence or vandalism. You file a report at the police station.",
+        "audio": "../assets/audio/knm/instanties/in18.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in19",
+        "nl": "112 = alarmnummer voor urgent politie, brandweer of ambulance. 0900-8844 = voor minder urgente zaken (bijv. overlast door buren).",
+        "en": "112 = emergency number for urgent police, fire brigade or ambulance. 0900-8844 = for less urgent matters (e.g. noise nuisance from neighbours).",
+        "audio": "../assets/audio/knm/instanties/in19.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in20",
+        "nl": "Je moet altijd meewerken met de politie. Doe je dat niet, dan kun je een boete krijgen of worden meegenomen naar het politiebureau.",
+        "en": "You must always cooperate with the police. If you don't, you can receive a fine or be taken to the police station.",
+        "audio": "../assets/audio/knm/instanties/in20.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in21",
+        "nl": "Deze les gaat over belastingaangifte en toeslagen.",
+        "en": "This lesson is about tax filing and allowances (toeslagen).",
+        "audio": "../assets/audio/knm/instanties/in21.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in22",
+        "nl": "Iedereen in Nederland betaalt belasting — voor scholen, de politie, wegen en ziekenhuizen.",
+        "en": "Everyone in the Netherlands pays tax — for schools, the police, roads and hospitals.",
+        "audio": "../assets/audio/knm/instanties/in22.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in23",
+        "nl": "BSN: elk persoon in Nederland heeft een uniek Burgerservicenummer (BSN). Dit staat in je paspoort en op formulieren van de belastingdienst.",
+        "en": "BSN: every person in the Netherlands has a unique citizen service number (BSN). This is in your passport and on tax authority forms.",
+        "audio": "../assets/audio/knm/instanties/in23.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in24",
+        "nl": "DigiD: met een BSN kun je een DigiD aanvragen. Met DigiD kun je online zaken regelen bij de belastingdienst, gemeente en andere instanties.",
+        "en": "DigiD: with a BSN you can apply for a DigiD. With DigiD you can arrange things online at the tax authority, municipality and other institutions.",
+        "audio": "../assets/audio/knm/instanties/in24.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in25",
+        "nl": "Een deel van je inkomen gaat automatisch naar de belastingdienst. Op je loonstrook zie je hoeveel. Op je jaaropgave staat je salaris van het hele jaar.",
+        "en": "Part of your income goes automatically to the tax authority. Your pay slip shows how much. Your annual statement shows your full-year salary.",
+        "audio": "../assets/audio/knm/instanties/in25.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in26",
+        "nl": "Op de meeste aankopen zit 21% btw — dit gaat ook naar de belastingdienst.",
+        "en": "Most purchases include 21% VAT (btw) — this also goes to the tax authority.",
+        "audio": "../assets/audio/knm/instanties/in26.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in27",
+        "nl": "Gemeentelijke belasting krijg je een aparte rekening voor — dit gaat niet automatisch.",
+        "en": "For municipal tax you receive a separate bill — this does not go automatically.",
+        "audio": "../assets/audio/knm/instanties/in27.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in28",
+        "nl": "Belastingaangifte: de meeste mensen doen elk jaar aangifte. Je geeft op hoeveel je hebt verdiend en hoeveel kosten je hebt gemaakt. De belastingdienst berekent of je geld terugkrijgt of extra moet betalen.",
+        "en": "Tax filing (belastingaangifte): most people file a tax return every year. You declare how much you earned and what costs you had. The tax authority calculates whether you get money back or need to pay extra.",
+        "audio": "../assets/audio/knm/instanties/in28.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in29",
+        "nl": "Kun je het niet eens zijn met de uitkomst? Je kunt bezwaar maken via een online formulier. Kun je niet in één keer betalen? Je kunt in termijnen betalen. Laag inkomen? Je kunt soms kwijtschelding vragen.",
+        "en": "Don't agree with the outcome? You can object via an online form. Can't pay in one go? You can pay in instalments. Low income? You can sometimes request a write-off.",
+        "audio": "../assets/audio/knm/instanties/in29.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in30",
+        "nl": "Toeslagen: je kunt kosten terugkrijgen van de belastingdienst als je een laag inkomen hebt. Er zijn drie toeslagen: huurtoeslag, zorgtoeslag en kinderopvangtoeslag.",
+        "en": "Allowances (toeslagen): you can get costs reimbursed by the tax authority if you have a low income. There are three allowances: rent allowance (huurtoeslag), healthcare allowance (zorgtoeslag) and childcare allowance (kinderopvangtoeslag).",
+        "audio": "../assets/audio/knm/instanties/in30.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in31",
+        "nl": "Deze les gaat over juridische en sociale hulp.",
+        "en": "This lesson is about legal and social assistance.",
+        "audio": "../assets/audio/knm/instanties/in31.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in32",
+        "nl": "Bezwaar: ben je het niet eens met een besluit van de overheid (bijv. over belasting of een vergunning)? Dan kun je bezwaar maken.",
+        "en": "Objection (bezwaar): do you disagree with a government decision (e.g. about tax or a permit)? Then you can lodge an objection.",
+        "audio": "../assets/audio/knm/instanties/in32.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in33",
+        "nl": "Sociale Raadslieden: gratis hulp bij het maken van bezwaar, invullen van formulieren en geven van advies. Ze zijn geen advocaten.",
+        "en": "Social Advisors (Sociale Raadslieden): free help with lodging objections, filling in forms and giving advice. They are not lawyers.",
+        "audio": "../assets/audio/knm/instanties/in33.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in34",
+        "nl": "Als Sociale Raadslieden je niet kunnen helpen, verwijzen ze je door naar Het Juridisch Loket of een advocatenkantoor.",
+        "en": "If Social Advisors cannot help you, they refer you to the Legal Advice Desk (Het Juridisch Loket) or a law firm.",
+        "audio": "../assets/audio/knm/instanties/in34.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in35",
+        "nl": "Het Juridisch Loket: gratis juridische informatie en advies. Is er meer nodig (bijv. een rechtszaak)? Dan brengen ze je in contact met een advocatenkantoor.",
+        "en": "The Legal Advice Desk (Juridisch Loket): free legal information and advice. Is more needed (e.g. a court case)? Then they connect you with a law firm.",
+        "audio": "../assets/audio/knm/instanties/in35.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in36",
+        "nl": "Een advocatenkantoor is niet gratis, maar voor mensen met een laag inkomen zijn de kosten lager.",
+        "en": "A law firm is not free, but for people with a low income the costs are lower.",
+        "audio": "../assets/audio/knm/instanties/in36.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in37",
+        "nl": "Discriminatie is in Nederland wettelijk verboden. Meld discriminatie bij een antidiscriminatiebureau. Helpt dat niet, doe dan aangifte bij de politie.",
+        "en": "Discrimination is legally prohibited in the Netherlands. Report discrimination to an anti-discrimination bureau. If that doesn't help, file a report with the police.",
+        "audio": "../assets/audio/knm/instanties/in37.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in38",
+        "nl": "Verboden en strafbaar in Nederland: seks tussen een volwassene en iemand onder 16 jaar, verkrachting, incest, eerwraak, besnijdenis van meisjes, en geweld en mishandeling.",
+        "en": "Prohibited and punishable in the Netherlands: sex between an adult and someone under 16, rape, incest, honour-related violence, female genital mutilation, and violence and assault.",
+        "audio": "../assets/audio/knm/instanties/in38.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in39",
+        "nl": "Deze les gaat over banken in Nederland.",
+        "en": "This lesson is about banks in the Netherlands.",
+        "audio": "../assets/audio/knm/instanties/in39.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in40",
+        "nl": "Bijna iedereen in Nederland heeft een bankrekening. Je kiest zelf bij welke bank — bijv. ABN AMRO, ING of Rabobank.",
+        "en": "Almost everyone in the Netherlands has a bank account. You choose your own bank — e.g. ABN AMRO, ING or Rabobank.",
+        "audio": "../assets/audio/knm/instanties/in40.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in41",
+        "nl": "Via de bank worden betaald: salaris, huur, elektriciteit en andere rekeningen. Je kunt online een bankrekening openen. Je ontvangt een rekeningnummer, bankpas en pincode.",
+        "en": "Payments made via the bank include: salary, rent, electricity and other bills. You can open a bank account online. You receive an account number, bank card and PIN code.",
+        "audio": "../assets/audio/knm/instanties/in41.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in42",
+        "nl": "Met je bankpas en pincode kun je: internetbankieren, geld opnemen bij geldautomaten (van alle banken), betalen in winkels (pin of contactloos).",
+        "en": "With your bank card and PIN you can: do internet banking, withdraw money from ATMs (of all banks), pay in shops (PIN or contactless).",
+        "audio": "../assets/audio/knm/instanties/in42.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in43",
+        "nl": "Contactloos betalen kan alleen bij kleine bedragen.",
+        "en": "Contactless payment is only possible for small amounts.",
+        "audio": "../assets/audio/knm/instanties/in43.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in44",
+        "nl": "Bankpas verloren of gestolen? Blokkeer je rekening direct (via de bank of telefonisch), doe aangifte bij de politie, en vraag een nieuwe pas aan.",
+        "en": "Bank card lost or stolen? Block your account immediately (via the bank or by phone), file a report with the police, and request a new card.",
+        "audio": "../assets/audio/knm/instanties/in44.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in45",
+        "nl": "Geld overmaken kan via: een machtiging (automatische incasso), internetbankieren, of een acceptgiro (ouderwets, een papieren betaalformulier).",
+        "en": "You can transfer money via: a direct debit (machtiging), internet banking, or an acceptgiro (old-fashioned, a paper payment form).",
+        "audio": "../assets/audio/knm/instanties/in45.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in46",
+        "nl": "Deze les gaat over verzekeringen in Nederland.",
+        "en": "This lesson is about insurance in the Netherlands.",
+        "audio": "../assets/audio/knm/instanties/in46.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in47",
+        "nl": "Twee verzekeringen zijn in Nederland verplicht: de zorgverzekering (minimaal basisverzekering) en de autoverzekering (als je een auto hebt).",
+        "en": "Two insurances are compulsory in the Netherlands: health insurance (at minimum a basic policy) and car insurance (if you have a car).",
+        "audio": "../assets/audio/knm/instanties/in47.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in48",
+        "nl": "Voor alle verzekeringen betaal je een maandelijkse premie aan het verzekeringsbedrijf.",
+        "en": "For all insurances you pay a monthly premium to the insurance company.",
+        "audio": "../assets/audio/knm/instanties/in48.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in49",
+        "nl": "Andere gangbare verzekeringen: aansprakelijkheidsverzekering (als jij of je gezin iets kapot maakt), brandverzekering (schade door brand), reisverzekering (schade op reis).",
+        "en": "Other common insurances: liability insurance — if you or your family damages something; fire insurance — damage caused by fire; travel insurance — damage during travel.",
+        "audio": "../assets/audio/knm/instanties/in49.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in50",
+        "nl": "Geld terugkrijgen van de verzekering (schadeclaim): je meldt de schade via een schadeformulier op de website van het verzekeringsbedrijf. Geef een correcte beschrijving van de schade.",
+        "en": "Getting money back from insurance (making a claim): you report the damage via a damage form on the insurance company's website. Give an accurate description of the damage.",
+        "audio": "../assets/audio/knm/instanties/in50.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    },
+    {
+        "id": "in51",
+        "nl": "Schade verzinnen is strafbaar — dit is fraude.",
+        "en": "Inventing damage is a criminal offence — this is fraud.",
+        "audio": "../assets/audio/knm/instanties/in51.mp3",
+        "image": "../assets/images/knm/wn_waarden.png"
+    }
+]
