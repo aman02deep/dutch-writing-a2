@@ -9,7 +9,7 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --bg: #0a0a0a; --surface: #111; --border: #222;
+    --bg: #0a0a0a; --surface: #111; --border: #1e1e1e;
     --accent: #ff3c3c; --accent2: #ff8c42;
     --text: #f0f0f0; --muted: #555; --success: #3cffa0;
   }
@@ -24,419 +24,493 @@
   .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); animation: blink 2s infinite; }
   @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.4} }
 
-  main { max-width: 920px; margin: 0 auto; padding: 20px 16px; }
+  main { max-width: 900px; margin: 0 auto; padding: 20px 16px; }
 
-  /* ── PLAYER ── */
-  .player-wrap {
-    position: relative; width: 100%; aspect-ratio: 16/9;
-    background: #000; border-radius: 10px; overflow: hidden;
-    border: 1px solid var(--border); margin-bottom: 12px;
-  }
-  .player-wrap iframe { width: 100%; height: 100%; border: none; display: block; opacity: 0; transition: opacity 0.4s; }
-  .player-wrap iframe.loaded { opacity: 1; }
-
-  .empty {
-    position: absolute; inset: 0; display: flex; flex-direction: column;
-    align-items: center; justify-content: center; gap: 10px;
-    background: #000; color: var(--muted); font-size: 0.7rem;
-    letter-spacing: 0.1em; text-transform: uppercase; transition: opacity 0.3s;
-  }
-  .empty svg { opacity: 0.18; }
-  .empty.gone { opacity: 0; pointer-events: none; }
-
-  /* ── CAST BAR ── */
-  .cast-bar {
-    display: flex; align-items: center; gap: 10px;
-    padding: 10px 14px; background: var(--surface);
-    border: 1px solid var(--border); border-radius: 8px; margin-bottom: 14px;
-    flex-wrap: wrap;
-  }
-  .cast-bar-label { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; flex-shrink: 0; }
-
-  .cast-btn {
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 8px 16px; border-radius: 6px; border: 1px solid var(--border);
-    background: transparent; color: var(--muted);
-    font-family: 'DM Mono', monospace; font-size: 0.74rem; cursor: pointer;
-    transition: all 0.15s; white-space: nowrap;
-  }
-  .cast-btn:hover:not(:disabled) { border-color: var(--success); color: var(--success); }
-  .cast-btn.active { border-color: var(--success); color: var(--success); background: rgba(60,255,160,0.06); }
-  .cast-btn:disabled { opacity: 0.3; cursor: not-allowed; }
-
-  .cast-status { font-size: 0.65rem; color: var(--muted); margin-left: auto; }
-  .cast-status.ok { color: var(--success); }
-  .cast-status.err { color: var(--accent); }
-
-  /* ── INPUT CARD ── */
-  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 12px; }
+  /* ── INPUT ── */
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 14px; }
   .label { font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; display: block; }
-
-  .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: flex-end; }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; }
   .inp {
+    flex: 1; min-width: 200px;
     background: var(--bg); border: 1px solid var(--border); border-radius: 6px;
     padding: 10px 13px; color: var(--text);
     font-family: 'DM Mono', monospace; font-size: 0.78rem; outline: none;
-    transition: border-color 0.2s; min-width: 0;
+    transition: border-color 0.2s;
   }
   .inp:focus { border-color: var(--accent); }
   .inp::placeholder { color: var(--muted); }
-  .inp.grow { flex: 1; min-width: 180px; }
-  .inp.sm { width: 72px; }
-
-  .toggle { display: flex; gap: 6px; }
-  .tog { padding: 8px 16px; background: var(--bg); border: 1px solid var(--border); border-radius: 5px; color: var(--muted); font-family: 'DM Mono', monospace; font-size: 0.7rem; cursor: pointer; transition: all 0.15s; white-space: nowrap; }
-  .tog.on { border-color: var(--accent); color: var(--accent); background: rgba(255,60,60,0.07); }
-
   .btn { padding: 10px 18px; border: none; border-radius: 6px; cursor: pointer; font-family: 'DM Mono', monospace; font-size: 0.76rem; font-weight: 500; white-space: nowrap; transition: all 0.15s; }
   .btn-red { background: var(--accent); color: #fff; }
   .btn-red:hover { background: #ff5252; }
+  .btn-ghost { background: var(--surface); color: var(--muted); border: 1px solid var(--border); }
+  .btn-ghost:hover { border-color: var(--text); color: var(--text); }
 
-  /* chips */
-  .chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
-  .chip { padding: 3px 10px; border-radius: 4px; font-size: 0.65rem; background: var(--bg); border: 1px solid var(--border); color: var(--muted); }
-  .chip b { color: var(--accent2); font-weight: 400; }
-  .chip span { color: var(--text); }
+  /* ── STATUS ── */
+  .status-bar {
+    display: flex; align-items: center; gap: 8px;
+    padding: 10px 14px; background: var(--surface);
+    border: 1px solid var(--border); border-radius: 8px;
+    margin-bottom: 14px; font-size: 0.68rem; color: var(--muted);
+  }
+  .sdot { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); flex-shrink: 0; animation: none; }
+  .sdot.spin { background: var(--accent2); box-shadow: 0 0 6px var(--accent2); animation: pulse 1s infinite; }
+  .sdot.ok   { background: var(--success); box-shadow: 0 0 8px var(--success); animation: none; }
+  .sdot.err  { background: var(--accent);  box-shadow: 0 0 8px var(--accent);  animation: none; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  /* ── STREAM URL RESULT ── */
+  .result-box {
+    display: none;
+    background: var(--surface); border: 1px solid var(--success);
+    border-radius: 10px; padding: 16px; margin-bottom: 14px;
+  }
+  .result-box.show { display: block; }
+
+  .stream-url {
+    background: var(--bg); border: 1px solid var(--border); border-radius: 6px;
+    padding: 10px 13px; font-size: 0.65rem; color: var(--accent2);
+    word-break: break-all; line-height: 1.6; margin-bottom: 12px;
+    user-select: all; cursor: text;
+  }
+
+  .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  .copy-btn {
+    padding: 9px 18px; border: 1px solid var(--success); border-radius: 6px;
+    background: rgba(60,255,160,0.08); color: var(--success);
+    font-family: 'DM Mono', monospace; font-size: 0.74rem; cursor: pointer;
+    transition: all 0.15s;
+  }
+  .copy-btn:hover { background: rgba(60,255,160,0.15); }
+  .copy-btn.copied { background: rgba(60,255,160,0.2); }
+
+  .open-btn {
+    padding: 9px 18px; border: 1px solid var(--border); border-radius: 6px;
+    background: var(--surface); color: var(--muted);
+    font-family: 'DM Mono', monospace; font-size: 0.74rem; cursor: pointer;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 5px;
+    transition: all 0.15s;
+  }
+  .open-btn:hover { border-color: var(--accent2); color: var(--accent2); }
+
+  .cast-btn {
+    padding: 9px 18px; border: 1px solid var(--border); border-radius: 6px;
+    background: var(--surface); color: var(--muted);
+    font-family: 'DM Mono', monospace; font-size: 0.74rem; cursor: pointer;
+    transition: all 0.15s; display: inline-flex; align-items: center; gap: 6px;
+  }
+  .cast-btn:hover:not(:disabled) { border-color: var(--success); color: var(--success); }
+  .cast-btn.ready { border-color: var(--success); color: var(--success); }
+  .cast-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+  /* ── HOW TO USE ON MOBILE ── */
+  .hint {
+    background: #120e00; border: 1px solid #2a1f00; border-radius: 8px;
+    padding: 14px 18px; font-size: 0.7rem; color: #c8a060; line-height: 1.8;
+    margin-bottom: 14px;
+  }
+  .hint strong { color: #ffb347; display: block; margin-bottom: 6px; }
+  .hint .step { display: flex; gap: 8px; margin-bottom: 4px; }
+  .hint .num { min-width: 18px; color: var(--accent2); font-weight: 500; }
+
+  /* ── HIDDEN PLAYER ── */
+  #playerFrame {
+    position: fixed; left: -9999px; top: -9999px;
+    width: 1280px; height: 720px;
+    border: none; pointer-events: none;
+  }
 
   /* presets */
   .presets { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
   .pre { padding: 6px 13px; background: var(--surface); border: 1px solid var(--border); border-radius: 5px; color: var(--muted); font-family: 'DM Mono', monospace; font-size: 0.68rem; cursor: pointer; transition: all 0.15s; }
   .pre:hover { border-color: var(--accent); color: var(--text); }
 
-  /* options row */
-  .options { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
-  .opt-chip {
-    display: inline-flex; align-items: center; gap: 5px;
-    padding: 5px 11px; border-radius: 5px; font-size: 0.66rem;
-    background: var(--bg); border: 1px solid var(--border);
-    color: var(--muted); cursor: pointer; transition: all 0.15s; user-select: none;
-  }
-  .opt-chip.on { border-color: var(--accent2); color: var(--accent2); background: rgba(255,140,66,0.07); }
-  .opt-chip .dot2 { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
-
   footer { text-align: center; padding: 20px; font-size: 0.6rem; color: var(--muted); border-top: 1px solid var(--border); margin-top: 8px; }
-
-  @media (max-width: 580px) {
-    main { padding: 12px; }
-    header { padding: 12px 14px; }
-    .inp.sm { width: 60px; }
-  }
 </style>
 </head>
 <body>
 
 <header>
   <div class="logo"><div class="dot"></div>FlexPlay</div>
-  <span style="font-size:0.6rem;color:var(--muted);letter-spacing:0.1em;">PERSONAL PLAYER</span>
+  <span style="font-size:0.6rem;color:var(--muted);letter-spacing:0.1em;">STREAM EXTRACTOR</span>
 </header>
 
 <main>
 
-  <!-- Player -->
-  <div class="player-wrap" id="playerWrap">
-    <div class="empty" id="empty">
-      <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-        <polygon points="5 3 19 12 5 21 5 3"/>
-      </svg>
-      fill in the fields below and press play
-    </div>
-    <iframe id="frame" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+  <!-- How it works on mobile -->
+  <div class="hint">
+    <strong>📱 How to cast to your TV from mobile</strong>
+    <div class="step"><div class="num">1</div><div>Paste a 1flex URL below and press <b>Extract Stream</b></div></div>
+    <div class="step"><div class="num">2</div><div>Wait ~10 seconds while the stream URL is extracted</div></div>
+    <div class="step"><div class="num">3</div><div>Tap <b>Open in browser</b> — Chrome opens the direct MP4</div></div>
+    <div class="step"><div class="num">4</div><div>Tap the <b>Cast icon</b> in Chrome's native video player → select your TV ✓</div></div>
   </div>
 
-  <!-- Cast bar -->
-  <div class="cast-bar">
-    <span class="cast-bar-label">📺 Cast</span>
-    <button class="cast-btn" id="castBtn" onclick="castVideo()" disabled>Cast to TV</button>
-    <span class="cast-status" id="castStatus">initializing...</span>
-  </div>
-
-  <!-- URL paste -->
+  <!-- URL Input -->
   <div class="card">
-    <span class="label">Paste 1Flex URL &nbsp;<span style="color:#333;font-size:.85em;">(optional)</span></span>
+    <span class="label">Paste 1Flex URL</span>
     <div class="row">
-      <input class="inp grow" id="urlInput"
-        placeholder="https://www.1flex.nl/play?tmdbid=124411&type=tv&season=3&episode=1&token=..."
-        oninput="previewUrl()" />
-      <button class="btn btn-red" onclick="playFromUrl()">▶ Play</button>
-    </div>
-    <div class="chips" id="chips"></div>
-  </div>
-
-  <!-- Manual entry -->
-  <div class="card">
-    <span class="label">Or enter manually</span>
-    <div class="row">
-      <div>
-        <span class="label" style="margin-bottom:5px;">Type</span>
-        <div class="toggle">
-          <div class="tog on" id="togTV"    onclick="setType('tv')">TV</div>
-          <div class="tog"    id="togMovie" onclick="setType('movie')">Movie</div>
-        </div>
-      </div>
-      <div>
-        <span class="label" style="margin-bottom:5px;">TMDB ID</span>
-        <input class="inp" id="mId" placeholder="124411" style="width:130px;" />
-      </div>
-      <div id="fS">
-        <span class="label" style="margin-bottom:5px;">Season</span>
-        <input class="inp sm" id="mS" placeholder="3" />
-      </div>
-      <div id="fE">
-        <span class="label" style="margin-bottom:5px;">Episode</span>
-        <input class="inp sm" id="mE" placeholder="1" />
-      </div>
-      <div style="padding-bottom:1px;">
-        <span class="label" style="margin-bottom:5px;">&nbsp;</span>
-        <button class="btn btn-red" onclick="playManual()">▶ Play</button>
-      </div>
-    </div>
-
-    <!-- Videasy player options from their docs -->
-    <div style="margin-top:14px;">
-      <span class="label">Player options</span>
-      <div class="options">
-        <div class="opt-chip on"  id="opt-episodeSelector"    onclick="toggleOpt(this,'episodeSelector')">   <div class="dot2"></div> Episode Selector</div>
-        <div class="opt-chip on"  id="opt-nextEpisode"        onclick="toggleOpt(this,'nextEpisode')">        <div class="dot2"></div> Next Episode Button</div>
-        <div class="opt-chip on"  id="opt-autoplayNextEpisode"onclick="toggleOpt(this,'autoplayNextEpisode')"><div class="dot2"></div> Autoplay Next</div>
-        <div class="opt-chip"     id="opt-overlay"            onclick="toggleOpt(this,'overlay')">            <div class="dot2"></div> Netflix Overlay</div>
-      </div>
-    </div>
-
-    <!-- Color picker -->
-    <div style="margin-top:12px; display:flex; align-items:center; gap:10px;">
-      <span class="label" style="margin:0;">Accent color</span>
-      <input type="color" id="colorPick" value="#ff3c3c"
-        style="width:32px;height:28px;border:1px solid var(--border);border-radius:5px;background:none;cursor:pointer;padding:2px;" />
-      <span style="font-size:0.65rem;color:var(--muted);" id="colorHex">#ff3c3c</span>
+      <input class="inp" id="urlInput"
+        placeholder="https://www.1flex.nl/play?tmdbid=124411&type=tv&season=3&episode=1&token=..." />
+      <button class="btn btn-red" onclick="extract()">Extract Stream</button>
     </div>
   </div>
 
-  <!-- Quick presets -->
+  <!-- Presets -->
   <div class="presets">
-    <button class="pre" onclick="go('tv','124411',3,1)">The Bear · S3E1</button>
-    <button class="pre" onclick="go('movie','299534')">Avengers: Endgame</button>
-    <button class="pre" onclick="go('movie','875828')">Movie · 875828</button>
+    <button class="pre" onclick="setUrl('https://www.1flex.nl/play?tmdbid=124411&type=tv&season=3&episode=1&token=RQDxLwIlT0gXb1ht')">Aspirants S3E1</button>
+    <button class="pre" onclick="setUrl('https://www.1flex.nl/play?tmdbid=875828&type=movie&token=F36BatvL1N0myVDP')">Movie · 875828</button>
+  </div>
+
+  <!-- Status -->
+  <div class="status-bar">
+    <div class="sdot" id="sdot"></div>
+    <span id="stext">Paste a 1flex URL above and press Extract Stream</span>
+  </div>
+
+  <!-- Result box -->
+  <div class="result-box" id="resultBox">
+    <span class="label" style="color:var(--success);margin-bottom:10px;">✓ Stream URL extracted</span>
+    <div class="stream-url" id="streamUrl"></div>
+    <div class="actions">
+      <button class="copy-btn" id="copyBtn" onclick="copyUrl()">📋 Copy URL</button>
+      <a class="open-btn" id="openBtn" href="#" target="_blank">↗ Open in browser tab</a>
+      <button class="cast-btn" id="castBtn" onclick="castNow()" disabled>📺 Cast to TV</button>
+    </div>
   </div>
 
 </main>
 
 <footer>FlexPlay · Personal use only</footer>
 
+<!-- Hidden iframe used to load the player -->
+<iframe id="playerFrame" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
+
 <script>
-// ── State ─────────────────────────────────────────────────────────
-let mediaType = 'tv';
-let currentUrl = '';           // the full videasy URL currently loaded
-const opts = {
-  episodeSelector: true,
-  nextEpisode: true,
-  autoplayNextEpisode: true,
-  overlay: false,
-};
-
-// ── Color picker ──────────────────────────────────────────────────
-document.getElementById('colorPick').addEventListener('input', function() {
-  document.getElementById('colorHex').textContent = this.value;
-});
-
-function getColor() {
-  return document.getElementById('colorPick').value.replace('#', '');
-}
-
-// ── Options toggle ────────────────────────────────────────────────
-function toggleOpt(el, key) {
-  opts[key] = !opts[key];
-  el.classList.toggle('on', opts[key]);
-}
-
-// ── Type toggle ───────────────────────────────────────────────────
-function setType(t) {
-  mediaType = t;
-  document.getElementById('togTV').classList.toggle('on', t === 'tv');
-  document.getElementById('togMovie').classList.toggle('on', t === 'movie');
-  document.getElementById('fS').style.display = t === 'tv' ? '' : 'none';
-  document.getElementById('fE').style.display = t === 'tv' ? '' : 'none';
-}
-
-// ── Build videasy URL with all params ─────────────────────────────
-function buildUrl(type, id, season, episode) {
-  const base = type === 'tv'
-    ? `https://player.videasy.net/tv/${id}/${season}/${episode}`
-    : `https://player.videasy.net/movie/${id}`;
-
-  const p = new URLSearchParams();
-  p.set('color', getColor());
-  if (type === 'tv') {
-    if (opts.episodeSelector)     p.set('episodeSelector', 'true');
-    if (opts.nextEpisode)         p.set('nextEpisode', 'true');
-    if (opts.autoplayNextEpisode) p.set('autoplayNextEpisode', 'true');
-  }
-  if (opts.overlay) p.set('overlay', 'true');
-
-  return `${base}?${p.toString()}`;
-}
-
-// ── Parse 1flex URL ───────────────────────────────────────────────
-function parse1Flex(url) {
-  try {
-    const u = new URL(url.trim());
-    return {
-      tmdbid:  u.searchParams.get('tmdbid'),
-      type:    u.searchParams.get('type'),
-      season:  u.searchParams.get('season'),
-      episode: u.searchParams.get('episode'),
-    };
-  } catch { return null; }
-}
-
-function previewUrl() {
-  const p = parse1Flex(document.getElementById('urlInput').value);
-  const box = document.getElementById('chips'); box.innerHTML = '';
-  if (!p || !p.tmdbid) return;
-  [['type',p.type],['id',p.tmdbid],['season',p.season],['episode',p.episode]]
-    .filter(([,v]) => v)
-    .forEach(([k,v]) => {
-      const c = document.createElement('div'); c.className = 'chip';
-      c.innerHTML = `<b>${k}</b> <span>${v}</span>`; box.appendChild(c);
-    });
-}
-
-function playFromUrl() {
-  const p = parse1Flex(document.getElementById('urlInput').value);
-  if (!p || !p.tmdbid || !p.type) return alert('Paste a valid 1flex.nl URL first');
-  load(buildUrl(p.type, p.tmdbid, p.season, p.episode));
-}
-
-function playManual() {
-  const id = document.getElementById('mId').value.trim();
-  const s  = document.getElementById('mS').value.trim();
-  const e  = document.getElementById('mE').value.trim();
-  if (!id) return alert('TMDB ID is required');
-  if (mediaType === 'tv' && (!s || !e)) return alert('Season and Episode required');
-  load(buildUrl(mediaType, id, s, e));
-}
-
-function go(type, id, s, e) { load(buildUrl(type, id, s, e)); }
-
-// ── Load into iframe ──────────────────────────────────────────────
-function load(url) {
-  currentUrl = url;
-  const frame = document.getElementById('frame');
-  frame.classList.remove('loaded');
-  frame.src = url;
-  frame.onload = () => frame.classList.add('loaded');
-  setTimeout(() => frame.classList.add('loaded'), 3000); // fallback
-  document.getElementById('empty').classList.add('gone');
-  updateCastBtn();
-}
-
-// ── CAST ──────────────────────────────────────────────────────────
-// Strategy: cast the videasy URL as a web page to the Chromecast.
-// We use the Default Media Receiver with CONTENT_TYPE = 'text/html'
-// which tells the receiver to open it as a web page (not try to play it as video).
-// This works because Chromecast's receiver has a full Chromium browser.
-
+// ── Cast SDK ──────────────────────────────────────────────────────
 let castReady = false;
 let castHasDevice = false;
+let currentStreamUrl = '';
 
 window['__onGCastApiAvailable'] = function(isAvailable) {
-  if (!isAvailable) {
-    setCastStatus('Cast requires Chrome browser', 'err');
-    return;
-  }
+  if (!isAvailable) return;
   castReady = true;
-
   cast.framework.CastContext.getInstance().setOptions({
     receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
     autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED,
   });
-
   cast.framework.CastContext.getInstance().addEventListener(
     cast.framework.CastContextEventType.CAST_STATE_CHANGED, e => {
-      const s = e.castState;
-      if (s === cast.framework.CastState.NO_DEVICES_AVAILABLE) {
-        castHasDevice = false;
-        setCastStatus('No Chromecast found — same WiFi?', '');
-      } else if (s === cast.framework.CastState.NOT_CONNECTED) {
-        castHasDevice = true;
-        setCastStatus('Chromecast ready ✓', 'ok');
-      } else if (s === cast.framework.CastState.CONNECTING) {
-        setCastStatus('Connecting...', '');
-      } else if (s === cast.framework.CastState.CONNECTED) {
-        castHasDevice = true;
-        setCastStatus('Connected ✓', 'ok');
-      }
+      castHasDevice = e.castState !== cast.framework.CastState.NO_DEVICES_AVAILABLE;
       updateCastBtn();
     }
   );
-  updateCastBtn();
 };
 
 function updateCastBtn() {
   const btn = document.getElementById('castBtn');
-  const ready = castReady && castHasDevice && !!currentUrl;
+  const ready = castReady && castHasDevice && !!currentStreamUrl;
   btn.disabled = !ready;
-  btn.className = 'cast-btn' + (ready ? ' active' : '');
-
-  if (!castReady)      setCastStatus('Use Chrome for Cast support', '');
-  else if (!castHasDevice) setCastStatus('No Chromecast found — same WiFi?', '');
-  else if (!currentUrl)    setCastStatus('Chromecast ready — press Play first', 'ok');
-  else                     setCastStatus('Ready to cast ✓', 'ok');
+  btn.className = 'cast-btn' + (ready ? ' ready' : '');
 }
 
-function setCastStatus(msg, type) {
-  const el = document.getElementById('castStatus');
-  el.textContent = msg;
-  el.className = 'cast-status' + (type ? ' ' + type : '');
-}
-
-function castVideo() {
-  if (!currentUrl) return;
-
-  const ctx = cast.framework.CastContext.getInstance();
-  ctx.requestSession().then(() => {
-    const session = ctx.getCurrentSession();
-
-    // Send the videasy player URL — the Chromecast opens it in its browser
-    // We build the URL WITHOUT episodeSelector/nextEpisode to keep it clean on TV
-    // and with a neutral color
-    const tvUrl = currentUrl;
-    const mediaInfo = new chrome.cast.media.MediaInfo(tvUrl, 'video/mp4');
-
-    // Use DISPLAY_CAST application instead of default receiver
-    // to load the URL as a web page on the TV
+function castNow() {
+  if (!currentStreamUrl) return;
+  cast.framework.CastContext.getInstance().requestSession().then(() => {
+    const session = cast.framework.CastContext.getInstance().getCurrentSession();
+    const mediaInfo = new chrome.cast.media.MediaInfo(currentStreamUrl, 'video/mp4');
     const request = new chrome.cast.media.LoadRequest(mediaInfo);
-    request.customData = { url: tvUrl };
-
     session.loadMedia(request).then(
-      () => setCastStatus('🎬 Casting to TV', 'ok'),
-      () => {
-        // Default receiver rejects HTML — try sending as a cast message instead
-        // which opens the URL in the Chromecast browser
-        sendUrlToTv(session, tvUrl);
-      }
+      () => setStatus('ok', '📺 Casting to TV ✓'),
+      err => setStatus('err', 'Cast failed — try Open in browser instead')
     );
-  }).catch(err => setCastStatus('Cast cancelled', ''));
+  }).catch(() => setStatus('err', 'Cast cancelled'));
 }
 
-function sendUrlToTv(session, url) {
-  // Send a custom message that opens a URL on Chromecast
-  // This works with the Default Media Receiver's built-in browser
-  session.sendMessage('urn:x-cast:com.google.cast.media', {
-    type: 'LOAD',
-    media: {
-      contentId: url,
-      contentType: 'text/html',
-      streamType: 'NONE',
+// ── Main extract logic ────────────────────────────────────────────
+function setUrl(url) {
+  document.getElementById('urlInput').value = url;
+}
+
+function parse1Flex(url) {
+  try {
+    const u = new URL(url.trim());
+    const tmdbid  = u.searchParams.get('tmdbid');
+    const type    = u.searchParams.get('type');
+    const season  = u.searchParams.get('season');
+    const episode = u.searchParams.get('episode');
+    if (!tmdbid || !type) return null;
+    return { tmdbid, type, season, episode };
+  } catch { return null; }
+}
+
+function buildVideasyUrl(p) {
+  return p.type === 'tv'
+    ? `https://player.videasy.net/tv/${p.tmdbid}/${p.season}/${p.episode}`
+    : `https://player.videasy.net/movie/${p.tmdbid}`;
+}
+
+function setStatus(type, msg) {
+  document.getElementById('sdot').className = 'sdot' + (type ? ' ' + type : '');
+  document.getElementById('stext').textContent = msg;
+}
+
+function showResult(url) {
+  currentStreamUrl = url;
+  document.getElementById('streamUrl').textContent = url;
+  document.getElementById('openBtn').href = url;
+  document.getElementById('resultBox').classList.add('show');
+  updateCastBtn();
+  setStatus('ok', 'Stream URL found ✓ — copy it or open directly in Chrome');
+}
+
+// ── STRATEGY 1: PerformanceObserver ──────────────────────────────
+// Watch for network requests to workers.dev from within the iframe
+// This works because PerformanceObserver can see cross-origin
+// resource timings IF the server sends Timing-Allow-Origin header
+
+let perfObserver = null;
+let extractTimeout = null;
+let found = false;
+
+function startPerfObserver() {
+  if (!window.PerformanceObserver) return false;
+  try {
+    perfObserver = new PerformanceObserver(list => {
+      for (const entry of list.getEntries()) {
+        if (entry.name && entry.name.includes('workers.dev') && entry.name.includes('/mp4/')) {
+          gotStream(entry.name);
+          return;
+        }
+      }
+    });
+    perfObserver.observe({ entryTypes: ['resource'] });
+    return true;
+  } catch(e) { return false; }
+}
+
+function stopPerfObserver() {
+  if (perfObserver) { try { perfObserver.disconnect(); } catch(e) {} perfObserver = null; }
+}
+
+// ── STRATEGY 2: postMessage listener ─────────────────────────────
+// Some players send postMessage events with video data
+
+window.addEventListener('message', function(e) {
+  if (found) return;
+  try {
+    const data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
+    const str = JSON.stringify(data);
+    const match = str.match(/https?:\/\/[^\s"']+workers\.dev\/mp4\/[^\s"']+/);
+    if (match) { gotStream(match[0]); return; }
+  } catch(e) {}
+  // Also check raw string
+  if (typeof e.data === 'string') {
+    const match = e.data.match(/https?:\/\/[^\s"']+workers\.dev\/mp4\/[^\s"']+/);
+    if (match) gotStream(match[0]);
+  }
+});
+
+// ── STRATEGY 3: Poll document.referrer / opener ───────────────────
+// Open player in a popup window and poll for video src
+// (Works because we opened the window — same origin restriction still applies
+//  but we can watch performance entries from it)
+
+let watchWindow = null;
+let pollInterval = null;
+
+function openAndWatch(videasyUrl) {
+  // Open the videasy player in a small window
+  watchWindow = window.open(videasyUrl, 'flexplay_watcher',
+    'width=640,height=360,left=100,top=100');
+
+  if (!watchWindow) {
+    // Popup blocked — fall back to iframe method
+    setStatus('spin', 'Popup blocked — loading in background (may take longer)...');
+    loadInIframe(videasyUrl);
+    return;
+  }
+
+  setStatus('spin', 'Player opened — waiting for stream to load (keep that window open)...');
+
+  // Poll the opened window's performance entries
+  pollInterval = setInterval(() => {
+    if (found) { clearInterval(pollInterval); return; }
+    try {
+      // Try to read video src from the opened window
+      if (watchWindow.closed) {
+        clearInterval(pollInterval);
+        setStatus('err', 'Window was closed before stream loaded — try again');
+        return;
+      }
+
+      // Check performance entries of the child window
+      try {
+        const entries = watchWindow.performance.getEntriesByType('resource');
+        for (const e of entries) {
+          if (e.name && e.name.includes('workers.dev') && e.name.includes('/mp4/')) {
+            gotStream(e.name);
+            return;
+          }
+        }
+      } catch(e) {}
+
+      // Try to directly access the video element (only works if same origin — won't work here)
+      // but attempt anyway for future-proofing
+      try {
+        const videos = watchWindow.document.querySelectorAll('video');
+        for (const v of videos) {
+          if (v.src && v.src.includes('workers.dev')) {
+            gotStream(v.src);
+            return;
+          }
+          // Check source elements
+          const sources = v.querySelectorAll('source');
+          for (const s of sources) {
+            if (s.src && s.src.includes('workers.dev')) {
+              gotStream(s.src);
+              return;
+            }
+          }
+        }
+      } catch(e) {}
+
+    } catch(e) {}
+  }, 500);
+
+  // Timeout after 30 seconds
+  extractTimeout = setTimeout(() => {
+    if (!found) {
+      clearInterval(pollInterval);
+      setStatus('err', 'Could not extract automatically — see manual steps below');
+      showManualFallback(videasyUrl);
     }
-  }).then(
-    () => setCastStatus('🎬 Casting to TV', 'ok'),
-    () => setCastStatus('Cast not supported for this content', 'err')
-  );
+  }, 30000);
 }
 
-// ── Boot ──────────────────────────────────────────────────────────
-setType('tv');
-setCastStatus('initializing...', '');
+// ── STRATEGY 4: Hidden iframe ─────────────────────────────────────
+function loadInIframe(videasyUrl) {
+  const frame = document.getElementById('playerFrame');
+  frame.src = videasyUrl;
+
+  // Watch performance entries from parent — cross-origin iframe resources
+  // sometimes appear here with Timing-Allow-Origin: *
+  const checkEntries = setInterval(() => {
+    if (found) { clearInterval(checkEntries); return; }
+    const entries = performance.getEntriesByType('resource');
+    for (const e of entries) {
+      if (e.name && e.name.includes('workers.dev') && e.name.includes('/mp4/')) {
+        gotStream(e.name);
+        clearInterval(checkEntries);
+        return;
+      }
+    }
+  }, 500);
+
+  setTimeout(() => {
+    clearInterval(checkEntries);
+    if (!found) {
+      setStatus('err', 'Could not extract automatically — see manual steps below');
+      showManualFallback(videasyUrl);
+    }
+  }, 30000);
+}
+
+// ── GOT STREAM ────────────────────────────────────────────────────
+function gotStream(url) {
+  if (found) return;
+  found = true;
+  stopPerfObserver();
+  clearInterval(pollInterval);
+  clearTimeout(extractTimeout);
+  if (watchWindow && !watchWindow.closed) {
+    try { watchWindow.close(); } catch(e) {}
+  }
+  // Clean the URL (remove any trailing quotes or garbage)
+  url = url.split('"')[0].split("'")[0].trim();
+  showResult(url);
+}
+
+// ── MANUAL FALLBACK ───────────────────────────────────────────────
+function showManualFallback(videasyUrl) {
+  document.getElementById('resultBox').classList.remove('show');
+  document.getElementById('stext').innerHTML =
+    `Auto-extract failed. <br><br>
+    <b>Manual steps:</b><br>
+    1. Open <a href="${videasyUrl}" target="_blank" style="color:var(--accent2)">${videasyUrl}</a><br>
+    2. Press F12 → Network → Media tab<br>
+    3. Press Play → copy the <b>workers.dev</b> URL<br>
+    4. Paste it in the box below`;
+
+  // Show a manual paste box
+  const manual = document.createElement('div');
+  manual.style.cssText = 'margin-top:12px;';
+  manual.innerHTML = `
+    <div class="card" style="margin-top:12px;">
+      <span class="label">Paste workers.dev URL manually</span>
+      <div class="row">
+        <input class="inp" id="manualUrl" placeholder="https://main-mp4.jamesuncren.workers.dev/mp4/..." />
+        <button class="btn btn-red" onclick="useManualUrl()">Use this URL</button>
+      </div>
+    </div>`;
+  document.querySelector('main').insertBefore(manual,
+    document.getElementById('resultBox').nextSibling);
+}
+
+function useManualUrl() {
+  const url = document.getElementById('manualUrl').value.trim();
+  if (!url.includes('workers.dev')) {
+    alert('That does not look like a valid workers.dev stream URL');
+    return;
+  }
+  gotStream(url);
+}
+
+// ── COPY ──────────────────────────────────────────────────────────
+async function copyUrl() {
+  try {
+    await navigator.clipboard.writeText(currentStreamUrl);
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = '✓ Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = '📋 Copy URL';
+      btn.classList.remove('copied');
+    }, 2000);
+  } catch(e) {
+    // Fallback: select the text
+    const el = document.getElementById('streamUrl');
+    const range = document.createRange();
+    range.selectNodeContents(el);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+  }
+}
+
+// ── MAIN ENTRY ────────────────────────────────────────────────────
+function extract() {
+  const raw = document.getElementById('urlInput').value.trim();
+  const p = parse1Flex(raw);
+
+  if (!p) {
+    setStatus('err', 'Invalid URL — paste a full 1flex.nl URL');
+    return;
+  }
+
+  // Reset state
+  found = false;
+  currentStreamUrl = '';
+  document.getElementById('resultBox').classList.remove('show');
+  const old = document.querySelector('.card[style*="margin-top:12px"]');
+  if (old) old.remove();
+
+  const videasyUrl = buildVideasyUrl(p);
+  setStatus('spin', 'Opening player — waiting for stream to load...');
+
+  // Start all detection strategies simultaneously
+  startPerfObserver();
+  openAndWatch(videasyUrl);
+}
 </script>
 </body>
 </html>
