@@ -24,11 +24,11 @@
   .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); animation: blink 2s infinite; }
   @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.4} }
 
-  main { max-width: 900px; margin: 0 auto; padding: 20px 16px; }
+  main { max-width: 860px; margin: 0 auto; padding: 20px 16px; }
 
-  /* ── INPUT ── */
-  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 14px; }
-  .label { font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; display: block; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px; margin-bottom: 14px; }
+  .label { font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; display: block; }
+
   .row { display: flex; gap: 8px; flex-wrap: wrap; }
   .inp {
     flex: 1; min-width: 200px;
@@ -39,143 +39,201 @@
   }
   .inp:focus { border-color: var(--accent); }
   .inp::placeholder { color: var(--muted); }
+
   .btn { padding: 10px 18px; border: none; border-radius: 6px; cursor: pointer; font-family: 'DM Mono', monospace; font-size: 0.76rem; font-weight: 500; white-space: nowrap; transition: all 0.15s; }
   .btn-red { background: var(--accent); color: #fff; }
   .btn-red:hover { background: #ff5252; }
-  .btn-ghost { background: var(--surface); color: var(--muted); border: 1px solid var(--border); }
+  .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
   .btn-ghost:hover { border-color: var(--text); color: var(--text); }
 
-  /* ── STATUS ── */
-  .status-bar {
-    display: flex; align-items: center; gap: 8px;
-    padding: 10px 14px; background: var(--surface);
-    border: 1px solid var(--border); border-radius: 8px;
-    margin-bottom: 14px; font-size: 0.68rem; color: var(--muted);
+  /* ── STEP CARDS ── */
+  .steps { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
+  .step {
+    display: flex; gap: 14px; align-items: flex-start;
+    padding: 14px 16px; background: var(--surface);
+    border: 1px solid var(--border); border-radius: 10px;
   }
-  .sdot { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); flex-shrink: 0; animation: none; }
-  .sdot.spin { background: var(--accent2); box-shadow: 0 0 6px var(--accent2); animation: pulse 1s infinite; }
-  .sdot.ok   { background: var(--success); box-shadow: 0 0 8px var(--success); animation: none; }
-  .sdot.err  { background: var(--accent);  box-shadow: 0 0 8px var(--accent);  animation: none; }
-  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  .step.active { border-color: var(--accent2); }
+  .step.done   { border-color: var(--success); opacity: 0.7; }
+  .step-num {
+    min-width: 26px; height: 26px; border-radius: 50%;
+    background: var(--border); color: var(--muted);
+    font-size: 0.7rem; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .step.active .step-num { background: var(--accent2); color: #000; }
+  .step.done   .step-num { background: var(--success); color: #000; }
+  .step-body { flex: 1; }
+  .step-title { font-size: 0.78rem; color: var(--text); margin-bottom: 4px; }
+  .step.done .step-title { color: var(--muted); }
+  .step-desc { font-size: 0.65rem; color: var(--muted); line-height: 1.6; }
 
-  /* ── STREAM URL RESULT ── */
+  /* ── PLAYER LINK ── */
+  .player-link-box {
+    display: none; background: #0a0f0a; border: 1px solid var(--success);
+    border-radius: 8px; padding: 14px 16px; margin-top: 10px;
+  }
+  .player-link-box.show { display: block; }
+  .player-url {
+    font-size: 0.68rem; color: var(--accent2); word-break: break-all;
+    margin-bottom: 10px; line-height: 1.6;
+  }
+  .link-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  /* ── BOOKMARKLET ── */
+  .bookmarklet-box {
+    background: #0d0d1a; border: 1px solid #2a2060;
+    border-radius: 8px; padding: 14px 16px; margin-top: 10px;
+  }
+  .bm-label { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: #6060a0; margin-bottom: 8px; display: block; }
+  .bm-link {
+    display: inline-block; padding: 8px 16px; border-radius: 6px;
+    background: #1a1a40; border: 1px solid #3030a0; color: #8080ff;
+    font-family: 'DM Mono', monospace; font-size: 0.74rem; cursor: grab;
+    text-decoration: none; margin-bottom: 8px;
+    transition: all 0.15s;
+  }
+  .bm-link:hover { background: #20204a; border-color: #5050c0; }
+  .bm-desc { font-size: 0.63rem; color: #5050a0; line-height: 1.6; }
+
+  /* ── STREAM RESULT ── */
   .result-box {
-    display: none;
-    background: var(--surface); border: 1px solid var(--success);
+    display: none; background: #0a120a; border: 1px solid var(--success);
     border-radius: 10px; padding: 16px; margin-bottom: 14px;
   }
   .result-box.show { display: block; }
-
-  .stream-url {
+  .result-label { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--success); margin-bottom: 10px; display: block; }
+  .stream-url-display {
     background: var(--bg); border: 1px solid var(--border); border-radius: 6px;
-    padding: 10px 13px; font-size: 0.65rem; color: var(--accent2);
+    padding: 10px 13px; font-size: 0.64rem; color: var(--accent2);
     word-break: break-all; line-height: 1.6; margin-bottom: 12px;
     user-select: all; cursor: text;
   }
-
-  .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .result-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 
   .copy-btn {
     padding: 9px 18px; border: 1px solid var(--success); border-radius: 6px;
-    background: rgba(60,255,160,0.08); color: var(--success);
-    font-family: 'DM Mono', monospace; font-size: 0.74rem; cursor: pointer;
-    transition: all 0.15s;
+    background: rgba(60,255,160,0.07); color: var(--success);
+    font-family: 'DM Mono', monospace; font-size: 0.72rem; cursor: pointer; transition: all 0.15s;
   }
   .copy-btn:hover { background: rgba(60,255,160,0.15); }
-  .copy-btn.copied { background: rgba(60,255,160,0.2); }
 
   .open-btn {
     padding: 9px 18px; border: 1px solid var(--border); border-radius: 6px;
-    background: var(--surface); color: var(--muted);
-    font-family: 'DM Mono', monospace; font-size: 0.74rem; cursor: pointer;
-    text-decoration: none; display: inline-flex; align-items: center; gap: 5px;
-    transition: all 0.15s;
+    background: var(--surface); color: var(--muted); text-decoration: none;
+    font-family: 'DM Mono', monospace; font-size: 0.72rem;
+    display: inline-flex; align-items: center; gap: 5px; transition: all 0.15s;
   }
   .open-btn:hover { border-color: var(--accent2); color: var(--accent2); }
 
   .cast-btn {
     padding: 9px 18px; border: 1px solid var(--border); border-radius: 6px;
     background: var(--surface); color: var(--muted);
-    font-family: 'DM Mono', monospace; font-size: 0.74rem; cursor: pointer;
-    transition: all 0.15s; display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'DM Mono', monospace; font-size: 0.72rem;
+    cursor: pointer; transition: all 0.15s;
+    display: inline-flex; align-items: center; gap: 5px;
   }
-  .cast-btn:hover:not(:disabled) { border-color: var(--success); color: var(--success); }
   .cast-btn.ready { border-color: var(--success); color: var(--success); }
   .cast-btn:disabled { opacity: 0.3; cursor: not-allowed; }
-
-  /* ── HOW TO USE ON MOBILE ── */
-  .hint {
-    background: #120e00; border: 1px solid #2a1f00; border-radius: 8px;
-    padding: 14px 18px; font-size: 0.7rem; color: #c8a060; line-height: 1.8;
-    margin-bottom: 14px;
-  }
-  .hint strong { color: #ffb347; display: block; margin-bottom: 6px; }
-  .hint .step { display: flex; gap: 8px; margin-bottom: 4px; }
-  .hint .num { min-width: 18px; color: var(--accent2); font-weight: 500; }
-
-  /* ── HIDDEN PLAYER ── */
-  #playerFrame {
-    position: fixed; left: -9999px; top: -9999px;
-    width: 1280px; height: 720px;
-    border: none; pointer-events: none;
-  }
 
   /* presets */
   .presets { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
   .pre { padding: 6px 13px; background: var(--surface); border: 1px solid var(--border); border-radius: 5px; color: var(--muted); font-family: 'DM Mono', monospace; font-size: 0.68rem; cursor: pointer; transition: all 0.15s; }
   .pre:hover { border-color: var(--accent); color: var(--text); }
 
+  /* mobile hint */
+  .mobile-hint {
+    background: #0f0a00; border: 1px solid #2a1f00;
+    border-radius: 8px; padding: 12px 16px;
+    font-size: 0.65rem; color: #a07030; line-height: 1.7; margin-top: 10px;
+  }
+  .mobile-hint strong { color: #ffb347; }
+
   footer { text-align: center; padding: 20px; font-size: 0.6rem; color: var(--muted); border-top: 1px solid var(--border); margin-top: 8px; }
+
+  @media (max-width: 580px) { main { padding: 12px; } header { padding: 12px 14px; } }
 </style>
 </head>
 <body>
 
 <header>
   <div class="logo"><div class="dot"></div>FlexPlay</div>
-  <span style="font-size:0.6rem;color:var(--muted);letter-spacing:0.1em;">STREAM EXTRACTOR</span>
+  <span style="font-size:0.6rem;color:var(--muted);letter-spacing:0.1em;">STREAM LAUNCHER</span>
 </header>
 
 <main>
 
-  <!-- How it works on mobile -->
-  <div class="hint">
-    <strong>📱 How to cast to your TV from mobile</strong>
-    <div class="step"><div class="num">1</div><div>Paste a 1flex URL below and press <b>Extract Stream</b></div></div>
-    <div class="step"><div class="num">2</div><div>Wait ~10 seconds while the stream URL is extracted</div></div>
-    <div class="step"><div class="num">3</div><div>Tap <b>Open in browser</b> — Chrome opens the direct MP4</div></div>
-    <div class="step"><div class="num">4</div><div>Tap the <b>Cast icon</b> in Chrome's native video player → select your TV ✓</div></div>
-  </div>
-
-  <!-- URL Input -->
+  <!-- STEP 1: Paste URL -->
   <div class="card">
-    <span class="label">Paste 1Flex URL</span>
-    <div class="row">
+    <span class="label">Step 1 — Paste 1Flex URL or enter TMDB ID</span>
+    <div class="row" style="margin-bottom:10px;">
       <input class="inp" id="urlInput"
         placeholder="https://www.1flex.nl/play?tmdbid=124411&type=tv&season=3&episode=1&token=..." />
-      <button class="btn btn-red" onclick="extract()">Extract Stream</button>
+      <button class="btn btn-red" onclick="buildPlayer()">Open Player ▶</button>
+    </div>
+    <div class="row">
+      <div class="toggle" style="display:flex;gap:6px;">
+        <div class="tog on" id="togTV"    onclick="setType('tv')"   style="padding:8px 14px;background:var(--bg);border:1px solid var(--border);border-radius:5px;color:var(--muted);font-family:'DM Mono',monospace;font-size:0.7rem;cursor:pointer;">TV</div>
+        <div class="tog"    id="togMovie" onclick="setType('movie')" style="padding:8px 14px;background:var(--bg);border:1px solid var(--border);border-radius:5px;color:var(--muted);font-family:'DM Mono',monospace;font-size:0.7rem;cursor:pointer;">Movie</div>
+      </div>
+      <input class="inp" id="mId" placeholder="TMDB ID e.g. 124411" style="max-width:180px;" />
+      <input class="inp" id="mS"  placeholder="Season"  style="max-width:90px;" />
+      <input class="inp" id="mE"  placeholder="Episode" style="max-width:90px;" id="mEpisode" />
+      <button class="btn btn-ghost" onclick="buildFromManual()">Open ▶</button>
+    </div>
+
+    <!-- Player link result -->
+    <div class="player-link-box" id="playerLinkBox">
+      <div class="player-url" id="playerUrl"></div>
+      <div class="link-actions">
+        <a class="btn btn-red" id="openPlayerBtn" href="#" target="_blank" onclick="onPlayerOpened()">▶ Open Player in new tab</a>
+      </div>
+      <!-- Bookmarklet install -->
+      <div class="bookmarklet-box" style="margin-top:12px;">
+        <span class="bm-label">📌 Install this bookmarklet once — drag it to your bookmarks bar</span>
+        <br>
+        <a class="bm-link" id="bookmarkletLink" href="#">🎬 Get Stream URL</a>
+        <br>
+        <div class="bm-desc">
+          After pressing Play in the player tab, click this bookmarklet.<br>
+          It reads the video URL directly from the page and shows it to you.
+        </div>
+        <div class="mobile-hint" style="margin-top:10px;">
+          <strong>📱 On mobile Chrome:</strong> You can't drag bookmarklets. Instead — bookmark any page, then edit it and replace the URL with the bookmarklet code. To get the code, tap "Copy bookmarklet code" below and paste it as the bookmark URL.
+          <br><br>
+          <button class="btn-ghost" onclick="copyBookmarkletCode()" style="padding:6px 12px;border:1px solid var(--border);border-radius:5px;background:transparent;color:var(--muted);font-family:'DM Mono',monospace;font-size:0.65rem;cursor:pointer;margin-top:4px;">Copy bookmarklet code</button>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- Presets -->
+  <!-- STEP 2: Paste stream URL -->
+  <div class="card">
+    <span class="label">Step 2 — Paste the stream URL you got from the bookmarklet</span>
+    <div class="row">
+      <input class="inp" id="streamInput"
+        placeholder="https://main-mp4.jamesuncren.workers.dev/mp4/..." />
+      <button class="btn btn-red" onclick="useStream()">Use Stream</button>
+    </div>
+  </div>
+
+  <!-- Quick presets -->
   <div class="presets">
     <button class="pre" onclick="setUrl('https://www.1flex.nl/play?tmdbid=124411&type=tv&season=3&episode=1&token=RQDxLwIlT0gXb1ht')">Aspirants S3E1</button>
     <button class="pre" onclick="setUrl('https://www.1flex.nl/play?tmdbid=875828&type=movie&token=F36BatvL1N0myVDP')">Movie · 875828</button>
   </div>
 
-  <!-- Status -->
-  <div class="status-bar">
-    <div class="sdot" id="sdot"></div>
-    <span id="stext">Paste a 1flex URL above and press Extract Stream</span>
-  </div>
-
-  <!-- Result box -->
+  <!-- STREAM RESULT -->
   <div class="result-box" id="resultBox">
-    <span class="label" style="color:var(--success);margin-bottom:10px;">✓ Stream URL extracted</span>
-    <div class="stream-url" id="streamUrl"></div>
-    <div class="actions">
-      <button class="copy-btn" id="copyBtn" onclick="copyUrl()">📋 Copy URL</button>
-      <a class="open-btn" id="openBtn" href="#" target="_blank">↗ Open in browser tab</a>
+    <span class="result-label">✓ Stream ready</span>
+    <div class="stream-url-display" id="streamDisplay"></div>
+    <div class="result-actions">
+      <button class="copy-btn" id="copyBtn" onclick="copyStream()">📋 Copy URL</button>
+      <a class="open-btn" id="openStreamBtn" href="#" target="_blank">↗ Open in browser tab</a>
       <button class="cast-btn" id="castBtn" onclick="castNow()" disabled>📺 Cast to TV</button>
+    </div>
+    <div class="mobile-hint" style="margin-top:12px;">
+      <strong>📱 To cast from mobile:</strong> tap "Open in browser tab" → Chrome opens the video → tap the Cast icon in the player controls → select your TV ✓
     </div>
   </div>
 
@@ -183,15 +241,149 @@
 
 <footer>FlexPlay · Personal use only</footer>
 
-<!-- Hidden iframe used to load the player -->
-<iframe id="playerFrame" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
-
 <script>
-// ── Cast SDK ──────────────────────────────────────────────────────
+// ── The bookmarklet code ──────────────────────────────────────────
+const BOOKMARKLET_CODE = `javascript:(function(){
+  var v = document.querySelector('video');
+  if(!v){ alert('No video found yet — press Play first then click this bookmarklet'); return; }
+  var src = v.src || v.currentSrc;
+  if(!src || src.startsWith('blob:')){ 
+    // Try source children
+    var s = v.querySelector('source');
+    src = s ? s.src : '';
+  }
+  if(!src || src.startsWith('blob:')){ 
+    alert('Stream not ready — wait for video to start playing, then try again'); 
+    return; 
+  }
+  var box = document.createElement('div');
+  box.style.cssText='position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:99999;background:#111;border:2px solid #3cffa0;border-radius:10px;padding:16px 20px;font-family:monospace;font-size:13px;color:#3cffa0;max-width:90vw;word-break:break-all;box-shadow:0 4px 30px rgba(0,0,0,0.8)';
+  box.innerHTML = '<div style="margin-bottom:8px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#555;">✓ Stream URL — tap to select all, then copy</div><div id="flexplay-url" style="cursor:text;user-select:all;color:#ff8c42;">'+src+'</div><div style="margin-top:10px;display:flex;gap:8px"><button onclick="navigator.clipboard.writeText(\\'' + src.replace(/'/g,"\\\\'") + '\\').then(()=>{this.textContent=\\'✓ Copied!\\'})" style="padding:6px 14px;background:#1a3a1a;border:1px solid #3cffa0;border-radius:5px;color:#3cffa0;cursor:pointer;font-family:monospace;font-size:12px">Copy</button><button onclick="window.open(\\'' + src.replace(/'/g,"\\\\'") + '\\',\\'_blank\\')" style="padding:6px 14px;background:#1a1a3a;border:1px solid #8080ff;border-radius:5px;color:#8080ff;cursor:pointer;font-family:monospace;font-size:12px">Open in tab</button><button onclick="this.closest(\\'div\\').remove()" style="padding:6px 14px;background:#2a1a1a;border:1px solid #555;border-radius:5px;color:#555;cursor:pointer;font-family:monospace;font-size:12px">✕</button></div>';
+  document.body.appendChild(box);
+  // Auto-select the URL text
+  var el = document.getElementById('flexplay-url');
+  var range = document.createRange(); range.selectNodeContents(el);
+  window.getSelection().removeAllRanges(); window.getSelection().addRange(range);
+})();`;
+
+// Set bookmarklet href
+document.getElementById('bookmarkletLink').href = BOOKMARKLET_CODE;
+
+// ── State ─────────────────────────────────────────────────────────
+let mediaType = 'tv';
+let currentStreamUrl = '';
 let castReady = false;
 let castHasDevice = false;
-let currentStreamUrl = '';
 
+// ── Type toggle ───────────────────────────────────────────────────
+function setType(t) {
+  mediaType = t;
+  document.getElementById('togTV').style.borderColor    = t==='tv'    ? 'var(--accent)' : 'var(--border)';
+  document.getElementById('togTV').style.color          = t==='tv'    ? 'var(--accent)' : 'var(--muted)';
+  document.getElementById('togMovie').style.borderColor = t==='movie' ? 'var(--accent)' : 'var(--border)';
+  document.getElementById('togMovie').style.color       = t==='movie' ? 'var(--accent)' : 'var(--muted)';
+}
+setType('tv');
+
+// ── Parse 1flex URL ───────────────────────────────────────────────
+function parse1Flex(url) {
+  try {
+    const u = new URL(url.trim());
+    return {
+      tmdbid:  u.searchParams.get('tmdbid'),
+      type:    u.searchParams.get('type'),
+      season:  u.searchParams.get('season'),
+      episode: u.searchParams.get('episode'),
+    };
+  } catch { return null; }
+}
+
+function buildVideasyUrl(type, id, season, episode) {
+  const base = type === 'tv'
+    ? `https://player.videasy.net/tv/${id}/${season}/${episode}`
+    : `https://player.videasy.net/movie/${id}`;
+  return base + '?color=FF3C3C&episodeSelector=false&nextEpisode=false&autoplayNextEpisode=false&overlay=false';
+}
+
+function showPlayerLink(videasyUrl) {
+  document.getElementById('playerUrl').textContent = videasyUrl;
+  document.getElementById('openPlayerBtn').href = videasyUrl;
+  document.getElementById('playerLinkBox').classList.add('show');
+}
+
+function setUrl(url) {
+  document.getElementById('urlInput').value = url;
+  buildPlayer();
+}
+
+function buildPlayer() {
+  const raw = document.getElementById('urlInput').value.trim();
+  const p = parse1Flex(raw);
+  if (!p || !p.tmdbid || !p.type) {
+    alert('Paste a valid 1flex.nl URL first');
+    return;
+  }
+  showPlayerLink(buildVideasyUrl(p.type, p.tmdbid, p.season, p.episode));
+}
+
+function buildFromManual() {
+  const id = document.getElementById('mId').value.trim();
+  const s  = document.getElementById('mS').value.trim();
+  const e  = document.getElementById('mE').value.trim();
+  if (!id) { alert('TMDB ID required'); return; }
+  if (mediaType === 'tv' && (!s || !e)) { alert('Season and Episode required'); return; }
+  showPlayerLink(buildVideasyUrl(mediaType, id, s, e));
+}
+
+function onPlayerOpened() {
+  // After a short delay, scroll to step 2
+  setTimeout(() => {
+    document.querySelector('.card:nth-child(2)').scrollIntoView({ behavior: 'smooth' });
+  }, 500);
+}
+
+// ── Use stream URL ────────────────────────────────────────────────
+function useStream() {
+  const url = document.getElementById('streamInput').value.trim();
+  if (!url) { alert('Paste the stream URL first'); return; }
+  if (!url.startsWith('http')) { alert('That does not look like a valid URL'); return; }
+  showResult(url);
+}
+
+function showResult(url) {
+  currentStreamUrl = url;
+  document.getElementById('streamDisplay').textContent = url;
+  document.getElementById('openStreamBtn').href = url;
+  document.getElementById('resultBox').classList.add('show');
+  updateCastBtn();
+  document.getElementById('resultBox').scrollIntoView({ behavior: 'smooth' });
+}
+
+// ── Copy ──────────────────────────────────────────────────────────
+async function copyStream() {
+  try {
+    await navigator.clipboard.writeText(currentStreamUrl);
+    const btn = document.getElementById('copyBtn');
+    const orig = btn.textContent;
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = orig, 2000);
+  } catch {
+    const el = document.getElementById('streamDisplay');
+    const r = document.createRange(); r.selectNodeContents(el);
+    window.getSelection().removeAllRanges(); window.getSelection().addRange(r);
+  }
+}
+
+async function copyBookmarkletCode() {
+  try {
+    await navigator.clipboard.writeText(BOOKMARKLET_CODE);
+    alert('Bookmarklet code copied! Now edit any bookmark and paste this as the URL.');
+  } catch {
+    prompt('Copy this bookmarklet code:', BOOKMARKLET_CODE);
+  }
+}
+
+// ── Cast SDK ──────────────────────────────────────────────────────
 window['__onGCastApiAvailable'] = function(isAvailable) {
   if (!isAvailable) return;
   castReady = true;
@@ -219,297 +411,11 @@ function castNow() {
   cast.framework.CastContext.getInstance().requestSession().then(() => {
     const session = cast.framework.CastContext.getInstance().getCurrentSession();
     const mediaInfo = new chrome.cast.media.MediaInfo(currentStreamUrl, 'video/mp4');
-    const request = new chrome.cast.media.LoadRequest(mediaInfo);
-    session.loadMedia(request).then(
-      () => setStatus('ok', '📺 Casting to TV ✓'),
-      err => setStatus('err', 'Cast failed — try Open in browser instead')
+    session.loadMedia(new chrome.cast.media.LoadRequest(mediaInfo)).then(
+      () => { document.getElementById('castBtn').textContent = '📺 Casting ✓'; },
+      () => alert('Cast failed — use "Open in browser tab" instead')
     );
-  }).catch(() => setStatus('err', 'Cast cancelled'));
-}
-
-// ── Main extract logic ────────────────────────────────────────────
-function setUrl(url) {
-  document.getElementById('urlInput').value = url;
-}
-
-function parse1Flex(url) {
-  try {
-    const u = new URL(url.trim());
-    const tmdbid  = u.searchParams.get('tmdbid');
-    const type    = u.searchParams.get('type');
-    const season  = u.searchParams.get('season');
-    const episode = u.searchParams.get('episode');
-    if (!tmdbid || !type) return null;
-    return { tmdbid, type, season, episode };
-  } catch { return null; }
-}
-
-function buildVideasyUrl(p) {
-  return p.type === 'tv'
-    ? `https://player.videasy.net/tv/${p.tmdbid}/${p.season}/${p.episode}`
-    : `https://player.videasy.net/movie/${p.tmdbid}`;
-}
-
-function setStatus(type, msg) {
-  document.getElementById('sdot').className = 'sdot' + (type ? ' ' + type : '');
-  document.getElementById('stext').textContent = msg;
-}
-
-function showResult(url) {
-  currentStreamUrl = url;
-  document.getElementById('streamUrl').textContent = url;
-  document.getElementById('openBtn').href = url;
-  document.getElementById('resultBox').classList.add('show');
-  updateCastBtn();
-  setStatus('ok', 'Stream URL found ✓ — copy it or open directly in Chrome');
-}
-
-// ── STRATEGY 1: PerformanceObserver ──────────────────────────────
-// Watch for network requests to workers.dev from within the iframe
-// This works because PerformanceObserver can see cross-origin
-// resource timings IF the server sends Timing-Allow-Origin header
-
-let perfObserver = null;
-let extractTimeout = null;
-let found = false;
-
-function startPerfObserver() {
-  if (!window.PerformanceObserver) return false;
-  try {
-    perfObserver = new PerformanceObserver(list => {
-      for (const entry of list.getEntries()) {
-        if (entry.name && entry.name.includes('workers.dev') && entry.name.includes('/mp4/')) {
-          gotStream(entry.name);
-          return;
-        }
-      }
-    });
-    perfObserver.observe({ entryTypes: ['resource'] });
-    return true;
-  } catch(e) { return false; }
-}
-
-function stopPerfObserver() {
-  if (perfObserver) { try { perfObserver.disconnect(); } catch(e) {} perfObserver = null; }
-}
-
-// ── STRATEGY 2: postMessage listener ─────────────────────────────
-// Some players send postMessage events with video data
-
-window.addEventListener('message', function(e) {
-  if (found) return;
-  try {
-    const data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
-    const str = JSON.stringify(data);
-    const match = str.match(/https?:\/\/[^\s"']+workers\.dev\/mp4\/[^\s"']+/);
-    if (match) { gotStream(match[0]); return; }
-  } catch(e) {}
-  // Also check raw string
-  if (typeof e.data === 'string') {
-    const match = e.data.match(/https?:\/\/[^\s"']+workers\.dev\/mp4\/[^\s"']+/);
-    if (match) gotStream(match[0]);
-  }
-});
-
-// ── STRATEGY 3: Poll document.referrer / opener ───────────────────
-// Open player in a popup window and poll for video src
-// (Works because we opened the window — same origin restriction still applies
-//  but we can watch performance entries from it)
-
-let watchWindow = null;
-let pollInterval = null;
-
-function openAndWatch(videasyUrl) {
-  // Open the videasy player in a small window
-  watchWindow = window.open(videasyUrl, 'flexplay_watcher',
-    'width=640,height=360,left=100,top=100');
-
-  if (!watchWindow) {
-    // Popup blocked — fall back to iframe method
-    setStatus('spin', 'Popup blocked — loading in background (may take longer)...');
-    loadInIframe(videasyUrl);
-    return;
-  }
-
-  setStatus('spin', 'Player opened — waiting for stream to load (keep that window open)...');
-
-  // Poll the opened window's performance entries
-  pollInterval = setInterval(() => {
-    if (found) { clearInterval(pollInterval); return; }
-    try {
-      // Try to read video src from the opened window
-      if (watchWindow.closed) {
-        clearInterval(pollInterval);
-        setStatus('err', 'Window was closed before stream loaded — try again');
-        return;
-      }
-
-      // Check performance entries of the child window
-      try {
-        const entries = watchWindow.performance.getEntriesByType('resource');
-        for (const e of entries) {
-          if (e.name && e.name.includes('workers.dev') && e.name.includes('/mp4/')) {
-            gotStream(e.name);
-            return;
-          }
-        }
-      } catch(e) {}
-
-      // Try to directly access the video element (only works if same origin — won't work here)
-      // but attempt anyway for future-proofing
-      try {
-        const videos = watchWindow.document.querySelectorAll('video');
-        for (const v of videos) {
-          if (v.src && v.src.includes('workers.dev')) {
-            gotStream(v.src);
-            return;
-          }
-          // Check source elements
-          const sources = v.querySelectorAll('source');
-          for (const s of sources) {
-            if (s.src && s.src.includes('workers.dev')) {
-              gotStream(s.src);
-              return;
-            }
-          }
-        }
-      } catch(e) {}
-
-    } catch(e) {}
-  }, 500);
-
-  // Timeout after 30 seconds
-  extractTimeout = setTimeout(() => {
-    if (!found) {
-      clearInterval(pollInterval);
-      setStatus('err', 'Could not extract automatically — see manual steps below');
-      showManualFallback(videasyUrl);
-    }
-  }, 30000);
-}
-
-// ── STRATEGY 4: Hidden iframe ─────────────────────────────────────
-function loadInIframe(videasyUrl) {
-  const frame = document.getElementById('playerFrame');
-  frame.src = videasyUrl;
-
-  // Watch performance entries from parent — cross-origin iframe resources
-  // sometimes appear here with Timing-Allow-Origin: *
-  const checkEntries = setInterval(() => {
-    if (found) { clearInterval(checkEntries); return; }
-    const entries = performance.getEntriesByType('resource');
-    for (const e of entries) {
-      if (e.name && e.name.includes('workers.dev') && e.name.includes('/mp4/')) {
-        gotStream(e.name);
-        clearInterval(checkEntries);
-        return;
-      }
-    }
-  }, 500);
-
-  setTimeout(() => {
-    clearInterval(checkEntries);
-    if (!found) {
-      setStatus('err', 'Could not extract automatically — see manual steps below');
-      showManualFallback(videasyUrl);
-    }
-  }, 30000);
-}
-
-// ── GOT STREAM ────────────────────────────────────────────────────
-function gotStream(url) {
-  if (found) return;
-  found = true;
-  stopPerfObserver();
-  clearInterval(pollInterval);
-  clearTimeout(extractTimeout);
-  if (watchWindow && !watchWindow.closed) {
-    try { watchWindow.close(); } catch(e) {}
-  }
-  // Clean the URL (remove any trailing quotes or garbage)
-  url = url.split('"')[0].split("'")[0].trim();
-  showResult(url);
-}
-
-// ── MANUAL FALLBACK ───────────────────────────────────────────────
-function showManualFallback(videasyUrl) {
-  document.getElementById('resultBox').classList.remove('show');
-  document.getElementById('stext').innerHTML =
-    `Auto-extract failed. <br><br>
-    <b>Manual steps:</b><br>
-    1. Open <a href="${videasyUrl}" target="_blank" style="color:var(--accent2)">${videasyUrl}</a><br>
-    2. Press F12 → Network → Media tab<br>
-    3. Press Play → copy the <b>workers.dev</b> URL<br>
-    4. Paste it in the box below`;
-
-  // Show a manual paste box
-  const manual = document.createElement('div');
-  manual.style.cssText = 'margin-top:12px;';
-  manual.innerHTML = `
-    <div class="card" style="margin-top:12px;">
-      <span class="label">Paste workers.dev URL manually</span>
-      <div class="row">
-        <input class="inp" id="manualUrl" placeholder="https://main-mp4.jamesuncren.workers.dev/mp4/..." />
-        <button class="btn btn-red" onclick="useManualUrl()">Use this URL</button>
-      </div>
-    </div>`;
-  document.querySelector('main').insertBefore(manual,
-    document.getElementById('resultBox').nextSibling);
-}
-
-function useManualUrl() {
-  const url = document.getElementById('manualUrl').value.trim();
-  if (!url.includes('workers.dev')) {
-    alert('That does not look like a valid workers.dev stream URL');
-    return;
-  }
-  gotStream(url);
-}
-
-// ── COPY ──────────────────────────────────────────────────────────
-async function copyUrl() {
-  try {
-    await navigator.clipboard.writeText(currentStreamUrl);
-    const btn = document.getElementById('copyBtn');
-    btn.textContent = '✓ Copied!';
-    btn.classList.add('copied');
-    setTimeout(() => {
-      btn.textContent = '📋 Copy URL';
-      btn.classList.remove('copied');
-    }, 2000);
-  } catch(e) {
-    // Fallback: select the text
-    const el = document.getElementById('streamUrl');
-    const range = document.createRange();
-    range.selectNodeContents(el);
-    window.getSelection().removeAllRanges();
-    window.getSelection().addRange(range);
-  }
-}
-
-// ── MAIN ENTRY ────────────────────────────────────────────────────
-function extract() {
-  const raw = document.getElementById('urlInput').value.trim();
-  const p = parse1Flex(raw);
-
-  if (!p) {
-    setStatus('err', 'Invalid URL — paste a full 1flex.nl URL');
-    return;
-  }
-
-  // Reset state
-  found = false;
-  currentStreamUrl = '';
-  document.getElementById('resultBox').classList.remove('show');
-  const old = document.querySelector('.card[style*="margin-top:12px"]');
-  if (old) old.remove();
-
-  const videasyUrl = buildVideasyUrl(p);
-  setStatus('spin', 'Opening player — waiting for stream to load...');
-
-  // Start all detection strategies simultaneously
-  startPerfObserver();
-  openAndWatch(videasyUrl);
+  }).catch(() => {});
 }
 </script>
 </body>
