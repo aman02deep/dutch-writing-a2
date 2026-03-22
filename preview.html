@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>1Flex Auto Player - Single File</title>
+<style>
+body {margin:0; background:#000; color:#fff; font-family:sans-serif; text-align:center;}
+.container {padding:20px;}
+input {width:60%; padding:10px; border-radius:6px; border:none; margin:5px;}
+button {padding:10px 20px; border:none; border-radius:6px; background:#e50914; color:white; cursor:pointer;}
+video {width:100%; height:75vh; margin-top:20px; border-radius:8px; background:#000;}
+</style>
+
+<!-- HLS.js -->
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<!-- Google Cast SDK -->
+<script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
+</head>
+<body>
+
+<div class="container">
+<h2>🎬 1Flex Auto Player</h2>
+<input id="urlInput" placeholder="Paste 1Flex URL here..." />
+<br>
+<button onclick="loadStream()">Play</button>
+<button onclick="castVideo()">📺 Cast</button>
+<video id="video" controls></video>
+</div>
+
+<script>
+let currentStream = "";
+
+// Parse 1Flex URL
+function parse1Flex(url) {
+  try {
+    const parsed = new URL(url);
+    return {
+      tmdbid: parsed.searchParams.get("tmdbid"),
+      type: parsed.searchParams.get("type"),
+      season: parsed.searchParams.get("season"),
+      episode: parsed.searchParams.get("episode"),
+      token: parsed.searchParams.get("token")
+    };
+  } catch { return null; }
+}
+
+// Load and extract stream using public CORS proxy
+async function loadStream() {
+  const url = document.getElementById("urlInput").value;
+  const params = parse1Flex(url);
+
+  if (!params || !params.tmdbid || !params.type) {
+    alert("Invalid 1Flex URL");
+    return;
+  }
+
+  let videasyUrl = '';
+  if (params.type === 'tv') {
+    videasyUrl = `https://player.videasy.net/tv/${params.tmdbid}/${params.season}/${params.episode}?token=${params.token}`;
+  } else if (params.type === 'movie') {
+    videasyUrl = `https://player.videasy.net/movie/${params.tmdbid}?token=${params.token}`;
+  } else {
+    alert("Invalid type");
+    return;
+  }
+
+  try {
+    // Use public CORS proxy (can run locally too)
+    const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(videasyUrl)}`;
+    const html = await fetch(proxyUrl).then(r => r.text());
+
+    // Extract .m3u8 URL from response
+    const match = html.match(/https?:\/\/.*\.m3u8.*?"/);
+    if (!match) { alert("Stream not found"); return; }
+
+    currentStream = match[0].replace(/"/g,''); // clean ending quote
+    playHLS(currentStream);
+
+  } catch(e) {
+    alert("Failed to fetch stream: " + e.message);
+  }
+}
+
+// Play stream in HLS.js
+function playHLS(url) {
+  const video = document.getElementById("video");
+  if (Hls.isSupported()) {
+    const hls = new Hls();
+    hls.loadSource(url);
+    hls.attachMedia(video);
+  } else {
+    video.src = url;
+  }
+}
+
+// Chromecast
+function castVideo() {
+  if (!currentStream) { alert("Play a video first"); return; }
+  const context = cast.framework.CastContext.getInstance();
+  context.requestSession().then(() => {
+    const session = context.getCurrentSession();
+    const mediaInfo = new chrome.cast.media.MediaInfo(currentStream, 'application/x-mpegURL');
+    const request = new chrome.cast.media.LoadRequest(mediaInfo);
+    session.loadMedia(request);
+  });
+}
+</script>
+
+</body>
+</html>
