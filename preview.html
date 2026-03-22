@@ -2,110 +2,719 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>1Flex Auto Player - GitHub Pages</title>
-<style>
-body {margin:0; background:#000; color:#fff; font-family:sans-serif; text-align:center;}
-.container {padding:20px;}
-input {width:60%; padding:10px; border-radius:6px; border:none; margin:5px;}
-button {padding:10px 20px; border:none; border-radius:6px; background:#e50914; color:white; cursor:pointer;}
-video {width:100%; height:75vh; margin-top:20px; border-radius:8px; background:#000;}
-</style>
-
-<!-- HLS.js -->
-<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FlexPlay</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
 <!-- Google Cast SDK -->
 <script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --border: #1e1e1e;
+    --accent: #ff3c3c;
+    --accent2: #ff8c42;
+    --text: #f0f0f0;
+    --muted: #555;
+    --success: #3cffa0;
+  }
+
+  html, body {
+    height: 100%;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    overflow-x: hidden;
+  }
+
+  /* Subtle scanline texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255,255,255,0.012) 2px,
+      rgba(255,255,255,0.012) 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  .layout {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+
+  /* ── HEADER ── */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 32px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .logo-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+  }
+
+  .header-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  /* ── MAIN ── */
+  main {
+    padding: 32px;
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  /* ── INPUT SECTION ── */
+  .input-section {
+    margin-bottom: 28px;
+  }
+
+  .input-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .input-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .url-input {
+    flex: 1;
+    min-width: 280px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 13px 16px;
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.82rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .url-input::placeholder { color: var(--muted); }
+  .url-input:focus { border-color: var(--accent); }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 13px 22px;
+    border: none;
+    border-radius: 6px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+  }
+  .btn-primary:hover { background: #ff5252; transform: translateY(-1px); }
+  .btn-primary:active { transform: translateY(0); }
+
+  .btn-secondary {
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .btn-secondary:hover { border-color: var(--accent2); color: var(--accent2); }
+
+  .btn-cast {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .btn-cast:hover { border-color: var(--success); color: var(--success); }
+  .btn-cast.active { border-color: var(--success); color: var(--success); background: rgba(60,255,160,0.06); }
+
+  /* ── PARSED PARAMS ── */
+  .params-bar {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+    min-height: 28px;
+  }
+
+  .param-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    font-size: 0.7rem;
+    color: var(--muted);
+    animation: chipIn 0.2s ease;
+  }
+
+  @keyframes chipIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .param-chip .key { color: var(--accent2); }
+  .param-chip .val { color: var(--text); }
+
+  /* ── PLAYER WRAPPER ── */
+  .player-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 0 60px rgba(0,0,0,0.8);
+  }
+
+  .player-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  /* placeholder state */
+  .player-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: #000;
+    color: var(--muted);
+    transition: opacity 0.3s;
+  }
+
+  .player-placeholder.hidden { opacity: 0; pointer-events: none; }
+
+  .placeholder-icon {
+    font-size: 3rem;
+    opacity: 0.3;
+  }
+
+  .placeholder-text {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* loading overlay */
+  .loading-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+  }
+
+  .loading-overlay.visible { opacity: 1; }
+
+  .spinner {
+    width: 18px; height: 18px;
+    border: 2px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── QUICK PRESETS ── */
+  .section-title {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 28px 0 12px;
+  }
+
+  .presets {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .preset-btn {
+    padding: 7px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .preset-btn:hover {
+    border-color: var(--accent);
+    color: var(--text);
+  }
+
+  /* ── MANUAL MODE ── */
+  .manual-section {
+    margin-top: 28px;
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+  }
+
+  .manual-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  .field-group { display: flex; flex-direction: column; gap: 5px; }
+
+  .field-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .field-input {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 9px 12px;
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+
+  .field-input:focus { border-color: var(--accent); }
+
+  .type-toggle {
+    display: flex;
+    gap: 6px;
+    margin-top: 5px;
+  }
+
+  .type-btn {
+    flex: 1;
+    padding: 9px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    cursor: pointer;
+    transition: all 0.15s;
+    letter-spacing: 0.06em;
+    text-align: center;
+  }
+
+  .type-btn.active {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(255,60,60,0.07);
+  }
+
+  .season-ep-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  /* ── STATUS BAR ── */
+  .status-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+    font-size: 0.68rem;
+    color: var(--muted);
+    min-height: 20px;
+  }
+
+  .status-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--muted);
+    flex-shrink: 0;
+  }
+
+  .status-dot.ready { background: var(--success); box-shadow: 0 0 8px var(--success); }
+  .status-dot.error { background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 16px 32px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    header, main, footer { padding: 16px; }
+    .input-row { flex-direction: column; }
+    .url-input { min-width: unset; }
+    .manual-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Cast button hide if not available */
+  #castBtn { display: none; }
+</style>
 </head>
 <body>
+<div class="layout">
 
-<div class="container">
-<h2>🎬 1Flex Auto Player</h2>
-<input id="urlInput" placeholder="Paste 1Flex URL here..." />
-<br>
-<button onclick="loadStream()">Play</button>
-<button onclick="castVideo()">📺 Cast</button>
-<video id="video" controls></video>
+  <header>
+    <div class="logo">
+      <div class="logo-dot"></div>
+      FlexPlay
+    </div>
+    <span class="header-tag">v1.0 · personal player</span>
+  </header>
+
+  <main>
+
+    <!-- URL Input -->
+    <div class="input-section">
+      <span class="input-label">Paste 1Flex URL</span>
+      <div class="input-row">
+        <input
+          class="url-input"
+          id="urlInput"
+          placeholder="https://www.1flex.nl/play?tmdbid=...&type=tv&season=3&episode=1&token=..."
+          oninput="onUrlInput()"
+        />
+        <button class="btn btn-primary" onclick="playFromUrl()">▶ Play</button>
+        <button class="btn btn-secondary" id="castBtn" onclick="castVideo()">📺 Cast</button>
+      </div>
+
+      <!-- Parsed params display -->
+      <div class="params-bar" id="paramsBar"></div>
+
+      <!-- Status -->
+      <div class="status-bar">
+        <div class="status-dot" id="statusDot"></div>
+        <span id="statusText">Waiting for URL...</span>
+      </div>
+    </div>
+
+    <!-- Player -->
+    <div class="player-wrapper" id="playerWrapper">
+      <div class="player-placeholder" id="placeholder">
+        <div class="placeholder-icon">◼</div>
+        <div class="placeholder-text">Enter a URL or fill in the fields below</div>
+      </div>
+      <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        Loading stream...
+      </div>
+      <iframe
+        id="playerFrame"
+        allowfullscreen
+        allow="autoplay; fullscreen; picture-in-picture"
+        style="opacity:0; transition: opacity 0.4s;"
+      ></iframe>
+    </div>
+
+    <!-- Quick presets (examples) -->
+    <div class="section-title">Quick examples</div>
+    <div class="presets">
+      <button class="preset-btn" onclick="loadPreset('tv', '124411', 3, 1)">The Bear · S3E1</button>
+      <button class="preset-btn" onclick="loadPreset('movie', '875828', null, null)">Movie · 875828</button>
+    </div>
+
+    <!-- Manual fields -->
+    <div class="manual-section">
+      <span class="input-label">— or fill in manually —</span>
+
+      <div style="margin-top:10px;">
+        <span class="field-label">Type</span>
+        <div class="type-toggle">
+          <div class="type-btn active" id="typeTV" onclick="setType('tv')">TV Show</div>
+          <div class="type-btn" id="typeMovie" onclick="setType('movie')">Movie</div>
+        </div>
+      </div>
+
+      <div class="manual-grid" style="margin-top:14px;">
+        <div class="field-group">
+          <label class="field-label">TMDB ID</label>
+          <input class="field-input" id="mTmdb" placeholder="e.g. 124411" />
+        </div>
+        <div class="field-group" id="seasonEpGroup">
+          <label class="field-label">Season / Episode</label>
+          <div class="season-ep-row">
+            <input class="field-input" id="mSeason" placeholder="S" />
+            <input class="field-input" id="mEpisode" placeholder="E" />
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px;">
+        <button class="btn btn-primary" onclick="playManual()">▶ Play</button>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <span>FlexPlay · Personal use</span>
+    <span id="nowPlaying"></span>
+  </footer>
+
 </div>
 
 <script>
-let currentStream = "";
+// ─── STATE ───────────────────────────────────────────────
+let currentType = 'tv';
+let currentSrc  = '';
 
-// Parse 1Flex URL
+// ─── TYPE TOGGLE ─────────────────────────────────────────
+function setType(t) {
+  currentType = t;
+  document.getElementById('typeTV').classList.toggle('active', t === 'tv');
+  document.getElementById('typeMovie').classList.toggle('active', t === 'movie');
+  document.getElementById('seasonEpGroup').style.display = t === 'tv' ? '' : 'none';
+}
+
+// ─── PARSE 1FLEX URL ─────────────────────────────────────
 function parse1Flex(url) {
   try {
-    const parsed = new URL(url);
+    const u = new URL(url.trim());
     return {
-      tmdbid: parsed.searchParams.get("tmdbid"),
-      type: parsed.searchParams.get("type"),
-      season: parsed.searchParams.get("season"),
-      episode: parsed.searchParams.get("episode"),
-      token: parsed.searchParams.get("token")
+      tmdbid:  u.searchParams.get('tmdbid'),
+      type:    u.searchParams.get('type'),
+      season:  u.searchParams.get('season'),
+      episode: u.searchParams.get('episode'),
+      token:   u.searchParams.get('token'),
     };
   } catch { return null; }
 }
 
-// Load stream via public CORS proxy
-async function loadStream() {
-  const url = document.getElementById("urlInput").value;
-  const params = parse1Flex(url);
+// ─── LIVE URL PREVIEW ────────────────────────────────────
+function onUrlInput() {
+  const raw = document.getElementById('urlInput').value;
+  const p   = parse1Flex(raw);
+  const bar = document.getElementById('paramsBar');
+  bar.innerHTML = '';
 
-  if (!params || !params.tmdbid || !params.type) {
-    alert("Invalid 1Flex URL");
+  if (!p || !p.tmdbid) {
+    setStatus('', 'Paste a valid 1flex.nl URL above');
     return;
   }
 
-  let videasyUrl = '';
-  if (params.type === 'tv') {
-    videasyUrl = `https://player.videasy.net/tv/${params.tmdbid}/${params.season}/${params.episode}?token=${params.token}`;
-  } else if (params.type === 'movie') {
-    videasyUrl = `https://player.videasy.net/movie/${params.tmdbid}?token=${params.token}`;
+  const show = [
+    ['type',    p.type],
+    ['tmdbid',  p.tmdbid],
+    ['season',  p.season],
+    ['episode', p.episode],
+    ['token',   p.token ? p.token.slice(0,8)+'…' : null],
+  ];
+
+  show.forEach(([k, v]) => {
+    if (!v) return;
+    const chip = document.createElement('div');
+    chip.className = 'param-chip';
+    chip.innerHTML = `<span class="key">${k}</span><span class="val">${v}</span>`;
+    bar.appendChild(chip);
+  });
+
+  setStatus('ready', 'URL parsed · press Play');
+}
+
+// ─── BUILD VIDEASY URL ───────────────────────────────────
+function buildVideasyUrl(type, tmdbid, season, episode) {
+  if (type === 'tv') {
+    return `https://player.videasy.net/tv/${tmdbid}/${season}/${episode}`;
   } else {
-    alert("Invalid type");
+    return `https://player.videasy.net/movie/${tmdbid}`;
+  }
+}
+
+// ─── PLAY FROM PASTED URL ────────────────────────────────
+function playFromUrl() {
+  const raw = document.getElementById('urlInput').value;
+  const p   = parse1Flex(raw);
+
+  if (!p || !p.tmdbid || !p.type) {
+    setStatus('error', 'Invalid URL — check it and try again');
     return;
   }
 
-  try {
-    // Use public CORS proxy to bypass cross-origin restrictions
-    const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(videasyUrl)}`;
-    const html = await fetch(proxyUrl).then(r => r.text());
-
-    // Extract .m3u8 URL
-    const match = html.match(/https?:\/\/.*\.m3u8.*?"/);
-    if (!match) { alert("Stream not found"); return; }
-
-    currentStream = match[0].replace(/"/g,''); // clean quotes
-    playHLS(currentStream);
-
-  } catch(e) {
-    alert("Failed to fetch stream: " + e.message);
-  }
+  const src = buildVideasyUrl(p.type, p.tmdbid, p.season, p.episode);
+  loadPlayer(src, p);
 }
 
-// Play stream in HLS.js
-function playHLS(url) {
-  const video = document.getElementById("video");
-  if (Hls.isSupported()) {
-    const hls = new Hls();
-    hls.loadSource(url);
-    hls.attachMedia(video);
-  } else {
-    video.src = url;
+// ─── PLAY MANUALLY ───────────────────────────────────────
+function playManual() {
+  const tmdbid  = document.getElementById('mTmdb').value.trim();
+  const season  = document.getElementById('mSeason').value.trim();
+  const episode = document.getElementById('mEpisode').value.trim();
+
+  if (!tmdbid) { setStatus('error', 'TMDB ID is required'); return; }
+  if (currentType === 'tv' && (!season || !episode)) {
+    setStatus('error', 'Season and Episode are required for TV'); return;
   }
+
+  const src = buildVideasyUrl(currentType, tmdbid, season, episode);
+  loadPlayer(src, { type: currentType, tmdbid, season, episode });
 }
 
-// Chromecast
+// ─── PRESET ──────────────────────────────────────────────
+function loadPreset(type, tmdbid, season, episode) {
+  const src = buildVideasyUrl(type, tmdbid, season, episode);
+  loadPlayer(src, { type, tmdbid, season, episode });
+}
+
+// ─── CORE: LOAD PLAYER ───────────────────────────────────
+function loadPlayer(src, meta) {
+  currentSrc = src;
+
+  const frame   = document.getElementById('playerFrame');
+  const overlay = document.getElementById('loadingOverlay');
+  const ph      = document.getElementById('placeholder');
+
+  ph.classList.add('hidden');
+  overlay.classList.add('visible');
+  frame.style.opacity = '0';
+  frame.src = '';
+
+  // Small delay so loading overlay shows
+  setTimeout(() => {
+    frame.src = src;
+  }, 80);
+
+  frame.onload = () => {
+    overlay.classList.remove('visible');
+    frame.style.opacity = '1';
+    setStatus('ready', `Playing · ${meta.type === 'tv'
+      ? `S${meta.season}E${meta.episode} · ID ${meta.tmdbid}`
+      : `Movie · ID ${meta.tmdbid}`}`);
+
+    document.getElementById('nowPlaying').textContent =
+      meta.type === 'tv'
+        ? `S${meta.season}E${meta.episode} — ${meta.tmdbid}`
+        : `Movie — ${meta.tmdbid}`;
+
+    // Show cast button if Cast API is available
+    if (window.cast && cast.framework) {
+      document.getElementById('castBtn').style.display = '';
+    }
+  };
+}
+
+// ─── STATUS ──────────────────────────────────────────────
+function setStatus(state, msg) {
+  const dot  = document.getElementById('statusDot');
+  const text = document.getElementById('statusText');
+  dot.className  = 'status-dot' + (state ? ' ' + state : '');
+  text.textContent = msg;
+}
+
+// ─── CHROMECAST ──────────────────────────────────────────
+window.__onGCastApiAvailable = function(isAvailable) {
+  if (!isAvailable) return;
+  cast.framework.CastContext.getInstance().setOptions({
+    receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
+    autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
+  });
+  document.getElementById('castBtn').style.display = '';
+};
+
 function castVideo() {
-  if (!currentStream) { alert("Play a video first"); return; }
+  if (!currentSrc) { setStatus('error', 'Nothing playing yet'); return; }
+
   const context = cast.framework.CastContext.getInstance();
   context.requestSession().then(() => {
-    const session = context.getCurrentSession();
-    const mediaInfo = new chrome.cast.media.MediaInfo(currentStream, 'application/x-mpegURL');
-    const request = new chrome.cast.media.LoadRequest(mediaInfo);
-    session.loadMedia(request);
-  });
+    const session   = context.getCurrentSession();
+    const mediaInfo = new chrome.cast.media.MediaInfo(currentSrc, 'text/html');
+    const request   = new chrome.cast.media.LoadRequest(mediaInfo);
+    session.loadMedia(request).then(
+      () => {
+        document.getElementById('castBtn').classList.add('active');
+        setStatus('ready', 'Casting to TV...');
+      },
+      err => setStatus('error', 'Cast failed: ' + err)
+    );
+  }).catch(err => setStatus('error', 'Cast session failed: ' + err));
 }
-</script>
 
+// ─── INIT ────────────────────────────────────────────────
+setType('tv');
+</script>
 </body>
 </html>
