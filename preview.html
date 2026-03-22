@@ -4,542 +4,248 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FlexPlay</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #0a0a0a;
-    --surface: #111111;
-    --border: #1e1e1e;
-    --accent: #ff3c3c;
-    --accent2: #ff8c42;
-    --text: #f0f0f0;
-    --muted: #555;
-    --success: #3cffa0;
+    --bg: #0a0a0a; --surface: #111; --border: #1e1e1e;
+    --accent: #ff3c3c; --accent2: #ff8c42;
+    --text: #f0f0f0; --muted: #555; --success: #3cffa0;
   }
 
-  html, body {
-    height: 100%;
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Mono', monospace;
-    overflow-x: hidden;
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: 'DM Mono', monospace; min-height: 100vh;
   }
-
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.012) 2px, rgba(255,255,255,0.012) 4px);
-    pointer-events: none;
-    z-index: 9999;
-  }
-
-  .layout { min-height: 100vh; display: grid; grid-template-rows: auto 1fr auto; }
 
   header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 18px 32px;
-    border-bottom: 1px solid var(--border);
-    background: var(--bg);
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 28px; border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; background: var(--bg); z-index: 10;
   }
 
   .logo {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.4rem;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    font-family: 'Syne', sans-serif; font-size: 1.3rem;
+    font-weight: 800; display: flex; align-items: center; gap: 8px;
+  }
+  .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent); box-shadow: 0 0 8px var(--accent);
+    animation: blink 2s infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+  main { max-width: 960px; margin: 0 auto; padding: 28px; }
+
+  /* ── INPUT CARD ── */
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 20px; margin-bottom: 20px;
   }
 
-  .logo-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 10px var(--accent);
-    animation: pulse 2s infinite;
+  .label {
+    font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 10px; display: block;
   }
 
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50%       { opacity: 0.5; transform: scale(0.85); }
-  }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; }
 
-  .header-tag { font-size: 0.65rem; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; }
-
-  main { padding: 32px; max-width: 1100px; margin: 0 auto; width: 100%; }
-
-  .input-section { margin-bottom: 28px; }
-  .input-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; display: block; }
-
-  .input-row { display: flex; gap: 10px; flex-wrap: wrap; }
-
-  .url-input {
-    flex: 1;
-    min-width: 280px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 13px 16px;
-    color: var(--text);
-    font-family: 'DM Mono', monospace;
-    font-size: 0.82rem;
-    outline: none;
+  input.big {
+    flex: 1; min-width: 240px;
+    background: var(--bg); border: 1px solid var(--border); border-radius: 6px;
+    padding: 11px 14px; color: var(--text);
+    font-family: 'DM Mono', monospace; font-size: 0.8rem; outline: none;
     transition: border-color 0.2s;
   }
-  .url-input::placeholder { color: var(--muted); }
-  .url-input:focus { border-color: var(--accent); }
+  input.big:focus { border-color: var(--accent); }
+  input.big::placeholder { color: var(--muted); }
 
   .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    padding: 13px 22px;
-    border: none;
-    border-radius: 6px;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.8rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.18s;
-    white-space: nowrap;
-    letter-spacing: 0.04em;
+    padding: 11px 20px; border: none; border-radius: 6px; cursor: pointer;
+    font-family: 'DM Mono', monospace; font-size: 0.78rem; font-weight: 500;
+    white-space: nowrap; transition: all 0.15s;
   }
+  .btn-red   { background: var(--accent); color: #fff; }
+  .btn-red:hover { background: #ff5555; }
+  .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+  .btn-ghost:hover { border-color: var(--text); color: var(--text); }
 
-  .btn-primary { background: var(--accent); color: #fff; }
-  .btn-primary:hover { background: #ff5252; transform: translateY(-1px); }
-
-  .btn-cast {
-    background: var(--surface);
-    color: var(--muted);
-    border: 1px solid var(--border);
-    position: relative;
+  /* chips */
+  .chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+  .chip {
+    padding: 3px 10px; border-radius: 4px; font-size: 0.68rem;
+    background: var(--bg); border: 1px solid var(--border); color: var(--muted);
   }
-  .btn-cast:hover { border-color: var(--success); color: var(--success); }
-  .btn-cast.ready { border-color: var(--success); color: var(--success); }
-  .btn-cast.casting { border-color: var(--success); color: var(--success); background: rgba(60,255,160,0.08); }
-  .btn-cast.unavailable { opacity: 0.4; cursor: not-allowed; }
+  .chip b { color: var(--accent2); font-weight: 400; }
+  .chip span { color: var(--text); }
 
-  /* Cast status tooltip */
-  .cast-status-tip {
-    position: absolute;
-    bottom: calc(100% + 8px);
-    right: 0;
-    background: #1a1a1a;
-    border: 1px solid var(--border);
-    border-radius: 5px;
-    padding: 7px 12px;
-    font-size: 0.65rem;
-    color: var(--muted);
-    white-space: nowrap;
-    pointer-events: none;
-    opacity: 0;
-    transform: translateY(4px);
-    transition: all 0.15s;
-    z-index: 10;
+  /* ── MANUAL FIELDS ── */
+  .fields { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+  .field { display: flex; flex-direction: column; gap: 5px; }
+  .field input { width: 120px; }
+  .field input.wide { width: 180px; }
+
+  .toggle { display: flex; gap: 6px; margin-top: 4px; }
+  .tog {
+    flex: 1; padding: 8px 14px; background: var(--bg);
+    border: 1px solid var(--border); border-radius: 5px;
+    color: var(--muted); font-family: 'DM Mono', monospace;
+    font-size: 0.72rem; cursor: pointer; text-align: center; transition: all 0.15s;
   }
-  .btn-cast:hover .cast-status-tip { opacity: 1; transform: translateY(0); }
+  .tog.on { border-color: var(--accent); color: var(--accent); background: rgba(255,60,60,0.07); }
 
-  .params-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; min-height: 28px; }
-
-  .param-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 4px 10px;
-    border-radius: 4px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    font-size: 0.7rem;
-    color: var(--muted);
-    animation: chipIn 0.2s ease;
+  /* ── PLAYER ── */
+  .player-wrap {
+    position: relative; width: 100%; aspect-ratio: 16/9;
+    background: #000; border-radius: 10px; overflow: hidden;
+    border: 1px solid var(--border); margin-bottom: 20px;
   }
-  @keyframes chipIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
-  .param-chip .key { color: var(--accent2); }
-  .param-chip .val { color: var(--text); }
+  .player-wrap iframe { width:100%; height:100%; border:none; display:block; }
 
-  .player-wrapper {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16/9;
-    background: #000;
-    border-radius: 10px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    box-shadow: 0 0 60px rgba(0,0,0,0.8);
-  }
-
-  .player-wrapper iframe {
-    width: 100%; height: 100%;
-    border: none;
-    display: block;
-    opacity: 0;
-    transition: opacity 0.5s;
-  }
-
-  .player-placeholder {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    background: #000;
-    color: var(--muted);
+  .empty-state {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 12px; background: #000; color: var(--muted);
+    font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
     transition: opacity 0.3s;
   }
-  .player-placeholder.hidden { opacity: 0; pointer-events: none; }
-  .placeholder-icon { font-size: 3rem; opacity: 0.3; }
-  .placeholder-text { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .empty-state svg { opacity: 0.2; }
+  .empty-state.gone { opacity: 0; pointer-events: none; }
 
-  .loading-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.85);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s;
+  /* ── CAST HINT ── */
+  .cast-hint {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 18px 22px;
+    font-size: 0.72rem; color: var(--muted); line-height: 1.8;
   }
-  .loading-overlay.visible { opacity: 1; }
-
-  .spinner {
-    width: 18px; height: 18px;
-    border: 2px solid var(--border);
-    border-top-color: var(--accent);
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
+  .cast-hint strong { color: var(--text); display: block; margin-bottom: 6px; font-size: 0.75rem; }
+  .cast-hint .step { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 5px; }
+  .cast-hint .num {
+    min-width: 20px; height: 20px; border-radius: 50%;
+    background: var(--border); color: var(--muted);
+    font-size: 0.6rem; display: flex; align-items: center; justify-content: center;
+    margin-top: 1px;
   }
-  @keyframes spin { to { transform: rotate(360deg); } }
-
-  .section-title { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin: 28px 0 12px; }
-
-  .presets { display: flex; gap: 8px; flex-wrap: wrap; }
-
-  .preset-btn {
-    padding: 7px 14px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 5px;
-    color: var(--muted);
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    cursor: pointer;
-    transition: all 0.15s;
+  .cast-hint kbd {
+    background: #1a1a1a; border: 1px solid #333; border-radius: 4px;
+    padding: 1px 7px; font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--text);
   }
-  .preset-btn:hover { border-color: var(--accent); color: var(--text); }
 
-  .manual-section { margin-top: 28px; padding: 20px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); }
-
-  .manual-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; margin-top: 14px; }
-
-  .field-group { display: flex; flex-direction: column; gap: 5px; }
-  .field-label { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
-
-  .field-input {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 5px;
-    padding: 9px 12px;
-    color: var(--text);
-    font-family: 'DM Mono', monospace;
-    font-size: 0.78rem;
-    outline: none;
-    transition: border-color 0.2s;
-    width: 100%;
+  /* presets */
+  .presets { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .preset {
+    padding: 6px 13px; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 5px; color: var(--muted); font-family: 'DM Mono', monospace;
+    font-size: 0.68rem; cursor: pointer; transition: all 0.15s;
   }
-  .field-input:focus { border-color: var(--accent); }
+  .preset:hover { border-color: var(--accent); color: var(--text); }
 
-  .type-toggle { display: flex; gap: 6px; margin-top: 5px; }
-
-  .type-btn {
-    flex: 1;
-    padding: 9px;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 5px;
-    color: var(--muted);
-    font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    cursor: pointer;
-    transition: all 0.15s;
-    letter-spacing: 0.06em;
-    text-align: center;
+  footer {
+    text-align: center; padding: 20px; font-size: 0.62rem;
+    color: var(--muted); border-top: 1px solid var(--border); margin-top: 8px;
   }
-  .type-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(255,60,60,0.07); }
-
-  .season-ep-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-
-  .status-bar { display: flex; align-items: center; gap: 8px; margin-top: 14px; font-size: 0.68rem; color: var(--muted); min-height: 20px; }
-  .status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--muted); flex-shrink: 0; }
-  .status-dot.ready { background: var(--success); box-shadow: 0 0 8px var(--success); }
-  .status-dot.error { background: var(--accent); box-shadow: 0 0 8px var(--accent); }
-
-  footer { padding: 16px 32px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; font-size: 0.65rem; color: var(--muted); letter-spacing: 0.08em; }
-
-  /* Cast debug panel */
-  .cast-debug {
-    margin-top: 14px;
-    padding: 12px 16px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    font-size: 0.68rem;
-    color: var(--muted);
-    display: none;
-  }
-  .cast-debug.visible { display: block; }
-  .cast-debug-title { color: var(--accent2); margin-bottom: 6px; letter-spacing: 0.1em; font-size: 0.62rem; text-transform: uppercase; }
-  .cast-debug ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
-  .cast-debug li { display: flex; gap: 8px; align-items: center; }
-  .cast-debug .ok  { color: var(--success); }
-  .cast-debug .fail { color: var(--accent); }
-  .cast-debug .wait { color: var(--accent2); }
 
   @media (max-width: 600px) {
-    header, main, footer { padding: 16px; }
-    .input-row { flex-direction: column; }
-    .url-input { min-width: unset; }
-    .manual-grid { grid-template-columns: 1fr; }
+    main { padding: 16px; }
+    header { padding: 14px 16px; }
+    input.big { min-width: unset; }
   }
 </style>
 </head>
 <body>
-<div class="layout">
 
-  <header>
-    <div class="logo"><div class="logo-dot"></div>FlexPlay</div>
-    <span class="header-tag">v1.1 · personal player</span>
-  </header>
+<header>
+  <div class="logo"><div class="dot"></div>FlexPlay</div>
+  <span style="font-size:0.62rem;color:var(--muted);letter-spacing:0.1em;">PERSONAL PLAYER</span>
+</header>
 
-  <main>
+<main>
 
-    <div class="input-section">
-      <span class="input-label">Paste 1Flex URL</span>
-      <div class="input-row">
-        <input class="url-input" id="urlInput"
-          placeholder="https://www.1flex.nl/play?tmdbid=...&type=tv&season=3&episode=1&token=..."
-          oninput="onUrlInput()" />
-        <button class="btn btn-primary" onclick="playFromUrl()">▶ Play</button>
-
-        <!-- Cast button — always visible, state reflects availability -->
-        <button class="btn btn-cast unavailable" id="castBtn" onclick="castVideo()">
-          📺 Cast
-          <span class="cast-status-tip" id="castTip">Initializing Cast SDK...</span>
-        </button>
-      </div>
-
-      <div class="params-bar" id="paramsBar"></div>
-
-      <div class="status-bar">
-        <div class="status-dot" id="statusDot"></div>
-        <span id="statusText">Waiting for URL...</span>
-      </div>
-
-      <!-- Cast diagnostics panel -->
-      <div class="cast-debug" id="castDebug">
-        <div class="cast-debug-title">📡 Cast Diagnostics</div>
-        <ul id="castChecks">
-          <li><span id="chkHttps" class="wait">◌</span> HTTPS origin</li>
-          <li><span id="chkChrome" class="wait">◌</span> Chrome / Chromium browser</li>
-          <li><span id="chkSdk" class="wait">◌</span> Cast SDK loaded</li>
-          <li><span id="chkDevice" class="wait">◌</span> Cast device discovered</li>
-        </ul>
-      </div>
+  <!-- Player -->
+  <div class="player-wrap">
+    <div class="empty-state" id="empty">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+      </svg>
+      Paste a URL or fill in the fields below
     </div>
+    <iframe id="frame" allowfullscreen allow="autoplay; fullscreen; picture-in-picture; web-share"></iframe>
+  </div>
 
-    <div class="player-wrapper" id="playerWrapper">
-      <div class="player-placeholder" id="placeholder">
-        <div class="placeholder-icon">◼</div>
-        <div class="placeholder-text">Enter a URL or fill in the fields below</div>
-      </div>
-      <div class="loading-overlay" id="loadingOverlay">
-        <div class="spinner"></div>
-        Loading stream...
-      </div>
-      <iframe id="playerFrame" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+  <!-- URL paste -->
+  <div class="card">
+    <span class="label">Paste 1Flex URL</span>
+    <div class="row">
+      <input class="big" id="urlInput"
+        placeholder="https://www.1flex.nl/play?tmdbid=124411&type=tv&season=3&episode=1&token=..."
+        oninput="previewUrl()" />
+      <button class="btn btn-red" onclick="playFromUrl()">▶ Play</button>
     </div>
+    <div class="chips" id="chips"></div>
+  </div>
 
-    <div class="section-title">Quick examples</div>
-    <div class="presets">
-      <button class="preset-btn" onclick="loadPreset('tv','124411',3,1)">The Bear · S3E1</button>
-      <button class="preset-btn" onclick="loadPreset('movie','875828',null,null)">Movie · 875828</button>
-    </div>
-
-    <div class="manual-section">
-      <span class="input-label">— or fill in manually —</span>
-      <div style="margin-top:10px;">
-        <span class="field-label">Type</span>
-        <div class="type-toggle">
-          <div class="type-btn active" id="typeTV"    onclick="setType('tv')">TV Show</div>
-          <div class="type-btn"        id="typeMovie" onclick="setType('movie')">Movie</div>
+  <!-- Manual -->
+  <div class="card">
+    <span class="label">Or enter manually</span>
+    <div style="display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap;">
+      <div class="field">
+        <span class="label" style="margin:0 0 4px;">Type</span>
+        <div class="toggle">
+          <div class="tog on" id="togTV"    onclick="setType('tv')">TV</div>
+          <div class="tog"    id="togMovie" onclick="setType('movie')">Movie</div>
         </div>
       </div>
-      <div class="manual-grid" style="margin-top:14px;">
-        <div class="field-group">
-          <label class="field-label">TMDB ID</label>
-          <input class="field-input" id="mTmdb" placeholder="e.g. 124411" />
-        </div>
-        <div class="field-group" id="seasonEpGroup">
-          <label class="field-label">Season / Episode</label>
-          <div class="season-ep-row">
-            <input class="field-input" id="mSeason"  placeholder="S" />
-            <input class="field-input" id="mEpisode" placeholder="E" />
-          </div>
-        </div>
+      <div class="field">
+        <span class="label" style="margin:0 0 4px;">TMDB ID</span>
+        <input class="big" id="mId" placeholder="124411" style="width:130px;" />
       </div>
-      <div style="margin-top:14px;">
-        <button class="btn btn-primary" onclick="playManual()">▶ Play</button>
+      <div class="field" id="fSeason">
+        <span class="label" style="margin:0 0 4px;">Season</span>
+        <input class="big" id="mS" placeholder="3" style="width:80px;" />
       </div>
+      <div class="field" id="fEpisode">
+        <span class="label" style="margin:0 0 4px;">Episode</span>
+        <input class="big" id="mE" placeholder="1" style="width:80px;" />
+      </div>
+      <button class="btn btn-red" onclick="playManual()">▶ Play</button>
     </div>
+  </div>
 
-  </main>
+  <!-- Quick presets -->
+  <div class="presets">
+    <button class="preset" onclick="go('tv','124411',3,1)">The Bear · S3E1</button>
+    <button class="preset" onclick="go('movie','875828')">Movie · 875828</button>
+  </div>
 
-  <footer>
-    <span>FlexPlay · Personal use</span>
-    <span id="nowPlaying"></span>
-  </footer>
-</div>
+  <!-- Cast instructions -->
+  <div class="cast-hint">
+    <strong>📺 How to cast to your TV</strong>
+    <div class="step"><div class="num">1</div><div>Make sure your laptop and Chromecast are on the <b>same WiFi</b></div></div>
+    <div class="step"><div class="num">2</div><div>Press <b>▶ Play</b> to load the video in the player above</div></div>
+    <div class="step"><div class="num">3</div><div>In Chrome, click the <b>⋮ menu → Cast... → Cast tab</b> and select your TV</div></div>
+    <div class="step"><div class="num">4</div><div>Or press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>U</kbd> on Windows / <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>U</kbd> on Mac to open the Cast dialog directly in some Chrome versions</div></div>
+    <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border);color:#444;font-size:0.65rem;">
+      Chrome's built-in tab casting mirrors exactly what you see — the videasy player, quality selector, subtitles and all — no extra setup needed.
+    </div>
+  </div>
 
-<!-- Cast SDK — must load AFTER page is ready -->
+</main>
+
+<footer>FlexPlay · Personal use only</footer>
+
 <script>
-// ─── CAST DIAGNOSTICS ────────────────────────────────────────────
-const castState = {
-  sdkLoaded:  false,
-  apiReady:   false,
-  hasDevice:  false,
-  playing:    false,
-};
-
-function mark(id, state, label) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.className = state; // 'ok', 'fail', 'wait'
-  if (label) el.parentElement.lastChild.textContent = ' ' + label;
-}
-
-function runDiagnostics() {
-  document.getElementById('castDebug').classList.add('visible');
-
-  // HTTPS check
-  if (location.protocol === 'https:') {
-    mark('chkHttps', 'ok', 'HTTPS ✓');
-  } else {
-    mark('chkHttps', 'fail', 'Not HTTPS — Cast will not work on http:// or file://');
-  }
-
-  // Chrome check (Cast only works in Chrome/Chromium)
-  const isChrome = /Chrome/.test(navigator.userAgent) && !/Edg|OPR/.test(navigator.userAgent);
-  if (isChrome) {
-    mark('chkChrome', 'ok', 'Chrome detected ✓');
-  } else {
-    mark('chkChrome', 'fail', 'Not Chrome — Cast requires Chrome or Chromium');
-  }
-
-  // SDK + device checks are async, updated by Cast callbacks below
-}
-
-// ─── CAST SDK INIT ────────────────────────────────────────────────
-// This global callback is called by the Cast SDK script after load
-window['__onGCastApiAvailable'] = function(isAvailable) {
-  castState.sdkLoaded = true;
-  mark('chkSdk', 'ok', 'Cast SDK loaded ✓');
-
-  if (!isAvailable) {
-    mark('chkSdk', 'fail', 'Cast SDK loaded but API unavailable (not Chrome?)');
-    updateCastBtn();
-    return;
-  }
-
-  castState.apiReady = true;
-
-  cast.framework.CastContext.getInstance().setOptions({
-    receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
-    autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED,
-  });
-
-  // Listen for cast state changes (device discovered etc.)
-  const ctx = cast.framework.CastContext.getInstance();
-  ctx.addEventListener(
-    cast.framework.CastContextEventType.CAST_STATE_CHANGED,
-    (e) => {
-      const s = e.castState;
-      if (s === cast.framework.CastState.NO_DEVICES_AVAILABLE) {
-        castState.hasDevice = false;
-        mark('chkDevice', 'fail', 'No Chromecast found on this network');
-      } else if (s === cast.framework.CastState.NOT_CONNECTED) {
-        castState.hasDevice = true;
-        mark('chkDevice', 'ok', 'Chromecast found — ready to cast ✓');
-      } else if (s === cast.framework.CastState.CONNECTING) {
-        mark('chkDevice', 'wait', 'Connecting...');
-      } else if (s === cast.framework.CastState.CONNECTED) {
-        castState.hasDevice = true;
-        mark('chkDevice', 'ok', 'Connected to Chromecast ✓');
-      }
-      updateCastBtn();
-    }
-  );
-
-  updateCastBtn();
-};
-
-function updateCastBtn() {
-  const btn = document.getElementById('castBtn');
-  const tip = document.getElementById('castTip');
-
-  if (!castState.apiReady) {
-    btn.className = 'btn btn-cast unavailable';
-    tip.textContent = location.protocol !== 'https:'
-      ? '❌ Needs HTTPS — use GitHub Pages'
-      : '❌ Cast SDK not ready — use Chrome browser';
-    return;
-  }
-
-  if (!castState.hasDevice) {
-    btn.className = 'btn btn-cast unavailable';
-    tip.textContent = '❌ No Chromecast found — check same WiFi network';
-    return;
-  }
-
-  if (!castState.playing) {
-    btn.className = 'btn btn-cast ready';
-    tip.textContent = '✓ Ready — press Play first, then Cast';
-    return;
-  }
-
-  btn.className = 'btn btn-cast ready';
-  tip.textContent = '✓ Click to cast to your TV';
-}
-
-// ─── STATE ───────────────────────────────────────────────
-let currentType = 'tv';
-let currentSrc  = '';
+let mediaType = 'tv';
 
 function setType(t) {
-  currentType = t;
-  document.getElementById('typeTV').classList.toggle('active', t === 'tv');
-  document.getElementById('typeMovie').classList.toggle('active', t === 'movie');
-  document.getElementById('seasonEpGroup').style.display = t === 'tv' ? '' : 'none';
+  mediaType = t;
+  document.getElementById('togTV').classList.toggle('on', t === 'tv');
+  document.getElementById('togMovie').classList.toggle('on', t === 'movie');
+  document.getElementById('fSeason').style.display  = t === 'tv' ? '' : 'none';
+  document.getElementById('fEpisode').style.display = t === 'tv' ? '' : 'none';
 }
 
-function parse1Flex(url) {
+function parse(url) {
   try {
     const u = new URL(url.trim());
     return {
@@ -547,132 +253,57 @@ function parse1Flex(url) {
       type:    u.searchParams.get('type'),
       season:  u.searchParams.get('season'),
       episode: u.searchParams.get('episode'),
-      token:   u.searchParams.get('token'),
     };
   } catch { return null; }
 }
 
-function onUrlInput() {
-  const raw = document.getElementById('urlInput').value;
-  const p   = parse1Flex(raw);
-  const bar = document.getElementById('paramsBar');
-  bar.innerHTML = '';
-  if (!p || !p.tmdbid) { setStatus('', 'Paste a valid 1flex.nl URL above'); return; }
-  [['type', p.type], ['tmdbid', p.tmdbid], ['season', p.season], ['episode', p.episode],
-   ['token', p.token ? p.token.slice(0,8)+'…' : null]].forEach(([k, v]) => {
-    if (!v) return;
-    const c = document.createElement('div');
-    c.className = 'param-chip';
-    c.innerHTML = `<span class="key">${k}</span><span class="val">${v}</span>`;
-    bar.appendChild(c);
-  });
-  setStatus('ready', 'URL parsed · press Play');
+function buildUrl(type, id, s, e) {
+  return type === 'tv'
+    ? `https://player.videasy.net/tv/${id}/${s}/${e}`
+    : `https://player.videasy.net/movie/${id}`;
 }
 
-function buildVideasyUrl(type, tmdbid, season, episode) {
-  return type === 'tv'
-    ? `https://player.videasy.net/tv/${tmdbid}/${season}/${episode}`
-    : `https://player.videasy.net/movie/${tmdbid}`;
+function previewUrl() {
+  const p = parse(document.getElementById('urlInput').value);
+  const box = document.getElementById('chips');
+  box.innerHTML = '';
+  if (!p || !p.tmdbid) return;
+  [['type', p.type], ['id', p.tmdbid], ['season', p.season], ['episode', p.episode]]
+    .filter(([, v]) => v)
+    .forEach(([k, v]) => {
+      const c = document.createElement('div');
+      c.className = 'chip';
+      c.innerHTML = `<b>${k}</b> <span>${v}</span>`;
+      box.appendChild(c);
+    });
 }
 
 function playFromUrl() {
-  const p = parse1Flex(document.getElementById('urlInput').value);
-  if (!p || !p.tmdbid || !p.type) { setStatus('error', 'Invalid URL'); return; }
-  loadPlayer(buildVideasyUrl(p.type, p.tmdbid, p.season, p.episode), p);
+  const p = parse(document.getElementById('urlInput').value);
+  if (!p || !p.tmdbid || !p.type) return alert('Paste a valid 1flex.nl URL first');
+  load(buildUrl(p.type, p.tmdbid, p.season, p.episode));
 }
 
 function playManual() {
-  const tmdbid  = document.getElementById('mTmdb').value.trim();
-  const season  = document.getElementById('mSeason').value.trim();
-  const episode = document.getElementById('mEpisode').value.trim();
-  if (!tmdbid) { setStatus('error', 'TMDB ID is required'); return; }
-  if (currentType === 'tv' && (!season || !episode)) { setStatus('error', 'Season and Episode required'); return; }
-  loadPlayer(buildVideasyUrl(currentType, tmdbid, season, episode), { type: currentType, tmdbid, season, episode });
+  const id = document.getElementById('mId').value.trim();
+  const s  = document.getElementById('mS').value.trim();
+  const e  = document.getElementById('mE').value.trim();
+  if (!id) return alert('TMDB ID is required');
+  if (mediaType === 'tv' && (!s || !e)) return alert('Season and Episode are required');
+  load(buildUrl(mediaType, id, s, e));
 }
 
-function loadPreset(type, tmdbid, season, episode) {
-  loadPlayer(buildVideasyUrl(type, tmdbid, season, episode), { type, tmdbid, season, episode });
+function go(type, id, s, e) {
+  load(buildUrl(type, id, s, e));
 }
 
-function loadPlayer(src, meta) {
-  currentSrc = src;
-  const frame   = document.getElementById('playerFrame');
-  const overlay = document.getElementById('loadingOverlay');
-  const ph      = document.getElementById('placeholder');
-
-  ph.classList.add('hidden');
-  overlay.classList.add('visible');
-  frame.style.opacity = '0';
-  frame.src = '';
-
-  setTimeout(() => { frame.src = src; }, 80);
-
-  // iframes from other origins often don't fire onload reliably —
-  // so we use a timeout fallback to reveal the player anyway
-  let revealed = false;
-  function reveal() {
-    if (revealed) return;
-    revealed = true;
-    overlay.classList.remove('visible');
-    frame.style.opacity = '1';
-    castState.playing = true;
-    updateCastBtn();
-    setStatus('ready', meta.type === 'tv'
-      ? `Playing · S${meta.season}E${meta.episode} · ID ${meta.tmdbid}`
-      : `Playing · Movie · ID ${meta.tmdbid}`);
-    document.getElementById('nowPlaying').textContent =
-      meta.type === 'tv' ? `S${meta.season}E${meta.episode} — ${meta.tmdbid}` : `Movie — ${meta.tmdbid}`;
-  }
-
-  frame.onload = reveal;
-  setTimeout(reveal, 3000); // fallback if onload never fires
+function load(src) {
+  document.getElementById('empty').classList.add('gone');
+  document.getElementById('frame').src = src;
 }
 
-function setStatus(state, msg) {
-  document.getElementById('statusDot').className = 'status-dot' + (state ? ' ' + state : '');
-  document.getElementById('statusText').textContent = msg;
-}
-
-function castVideo() {
-  if (!castState.apiReady) {
-    setStatus('error', 'Cast not available — check diagnostics above');
-    return;
-  }
-  if (!castState.playing) {
-    setStatus('error', 'Press Play first before casting');
-    return;
-  }
-
-  const ctx = cast.framework.CastContext.getInstance();
-  ctx.requestSession().then(() => {
-    const session   = ctx.getCurrentSession();
-    // Send the videasy player page URL as the cast target
-    // The Chromecast will open it in its browser receiver
-    const mediaInfo = new chrome.cast.media.MediaInfo(currentSrc, 'text/html');
-    const request   = new chrome.cast.media.LoadRequest(mediaInfo);
-    session.loadMedia(request).then(
-      () => {
-        document.getElementById('castBtn').classList.add('casting');
-        setStatus('ready', 'Casting to TV ✓');
-      },
-      err => {
-        // Fallback: just open the URL — user can navigate on TV
-        setStatus('error', 'Cast load failed — try opening URL directly on TV browser');
-        console.error('Cast loadMedia error:', err);
-      }
-    );
-  }).catch(err => {
-    setStatus('error', 'Could not start cast session: ' + err);
-  });
-}
-
-// ─── BOOT ────────────────────────────────────────────────
 setType('tv');
-runDiagnostics();
 </script>
-
-<!-- Load Cast SDK last so __onGCastApiAvailable is defined first -->
-<script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
 
 </body>
 </html>
