@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>1Flex Auto Player - Single File</title>
+<title>1Flex Auto Player - GitHub Pages</title>
 <style>
 body {margin:0; background:#000; color:#fff; font-family:sans-serif; text-align:center;}
 .container {padding:20px;}
@@ -13,6 +13,7 @@ video {width:100%; height:75vh; margin-top:20px; border-radius:8px; background:#
 
 <!-- HLS.js -->
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
 <!-- Google Cast SDK -->
 <script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
 </head>
@@ -44,7 +45,7 @@ function parse1Flex(url) {
   } catch { return null; }
 }
 
-// Load and extract stream using public CORS proxy
+// Load stream via public CORS proxy
 async function loadStream() {
   const url = document.getElementById("urlInput").value;
   const params = parse1Flex(url);
@@ -65,15 +66,15 @@ async function loadStream() {
   }
 
   try {
-    // Use public CORS proxy (can run locally too)
+    // Use public CORS proxy to bypass cross-origin restrictions
     const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(videasyUrl)}`;
     const html = await fetch(proxyUrl).then(r => r.text());
 
-    // Extract .m3u8 URL from response
+    // Extract .m3u8 URL
     const match = html.match(/https?:\/\/.*\.m3u8.*?"/);
     if (!match) { alert("Stream not found"); return; }
 
-    currentStream = match[0].replace(/"/g,''); // clean ending quote
+    currentStream = match[0].replace(/"/g,''); // clean quotes
     playHLS(currentStream);
 
   } catch(e) {
