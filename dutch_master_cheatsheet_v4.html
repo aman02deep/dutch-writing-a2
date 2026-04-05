@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dutch A2 — Master Cheat Sheet</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:system-ui,-apple-system,sans-serif;background:#f5f4f0;color:#1a1a1a;padding:1rem;font-size:14px;}
+h1{font-size:18px;font-weight:600;margin-bottom:0.2rem;}
+.subtitle{font-size:12px;color:#888;margin-bottom:0.75rem;}
+.header-row{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:0.75rem;}
+.hbtns{display:flex;gap:6px;flex-wrap:wrap;}
+.hbtn{background:#fff;border:0.5px solid #ccc;border-radius:8px;padding:5px 10px;font-size:12px;cursor:pointer;color:#555;white-space:nowrap;}
+.hbtn:hover{background:#f5f4f0;}
+.hbtn.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a;}
+
+/* Settings panel */
+.panel{display:none;background:#fff;border:0.5px solid #e0e0e0;border-radius:10px;padding:1rem;margin-bottom:1rem;}
+.panel.open{display:block;}
+.panel h3{font-size:13px;font-weight:600;margin-bottom:0.75rem;}
+.srow{margin-bottom:0.6rem;}
+.srow label{display:block;font-size:12px;color:#555;margin-bottom:3px;}
+.srow select,.srow input{width:100%;border:0.5px solid #ccc;border-radius:7px;padding:6px 9px;font-size:12px;font-family:inherit;background:#fafaf9;}
+.srow input[type=password]{font-family:monospace;letter-spacing:0.05em;}
+.sbtn{background:#1a1a1a;color:#fff;border:none;border-radius:7px;padding:6px 16px;font-size:12px;cursor:pointer;margin-right:8px;}
+.sinfo{font-size:11px;color:#888;line-height:1.5;margin-top:0.4rem;}
+.badge-provider{display:inline-block;font-size:10px;padding:2px 7px;border-radius:10px;margin-left:6px;font-weight:600;}
+.bp-anth{background:#dbeafe;color:#1e40af;}
+.bp-groq{background:#d1fae5;color:#065f46;}
+.bp-or{background:#fef3c7;color:#92400e;}
+
+/* Tabs */
+.tabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:1.25rem;}
+.tab{padding:5px 11px;border-radius:8px;border:0.5px solid #ccc;background:#fff;color:#555;font-size:12px;cursor:pointer;transition:all 0.15s;}
+.tab.active,.tab:hover{background:#1a1a1a;color:#fff;border-color:#1a1a1a;}
+.tab-special{background:#1e40af !important;color:#fff !important;border-color:#1e40af !important;}
+.tab-exam{background:#991b1b !important;color:#fff !important;border-color:#991b1b !important;}
+
+.template{display:none;}.template.active{display:block;}
+.card{background:#fff;border:0.5px solid #e0e0e0;border-radius:10px;padding:0.85rem 1rem;margin-bottom:0.75rem;}
+.card-title{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.6rem;padding-bottom:0.4rem;border-bottom:0.5px solid #eee;}
+.ct-i{color:#1e40af;}.ct-f{color:#92400e;}.ct-c{color:#991b1b;}.ct-a{color:#065f46;}.ct-inv{color:#4c1d95;}.ct-w{color:#134e4a;}.ct-r{color:#374151;}.ct-m{color:#1a1a1a;}
+.line{padding:4px 0;border-bottom:0.5px solid #f3f3f3;font-size:13px;display:flex;gap:10px;align-items:baseline;}
+.line:last-child{border-bottom:none;}
+.dutch{color:#1a1a1a;font-weight:500;flex:1;line-height:1.5;}
+.note{color:#999;font-size:11px;min-width:90px;text-align:right;font-style:italic;}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:0.5rem;}
+.pill{background:#f5f4f0;border-radius:7px;padding:6px 9px;font-size:12px;}
+.pill-nl{font-weight:600;color:#1a1a1a;}
+.pill-en{color:#999;font-size:11px;}
+.rbox{background:#fff8e7;border-left:3px solid #f59e0b;border-radius:0 8px 8px 0;padding:0.6rem 0.85rem;margin-top:0.5rem;font-size:12px;color:#555;line-height:1.7;}
+.rbox strong{color:#1a1a1a;}
+.wbox{background:#fff1f1;border-left:3px solid #ef4444;border-radius:0 8px 8px 0;padding:0.6rem 0.85rem;margin-top:0.5rem;font-size:12px;color:#555;line-height:1.7;}
+.wbox strong{color:#991b1b;}
+.slabel{font-size:11px;font-weight:600;color:#aaa;text-transform:uppercase;letter-spacing:0.05em;margin:0.75rem 0 0.3rem;}
+table{width:100%;border-collapse:collapse;font-size:12px;}
+th{background:#f5f4f0;text-align:left;padding:5px 8px;font-weight:600;color:#555;border-bottom:0.5px solid #e0e0e0;}
+td{padding:5px 8px;border-bottom:0.5px solid #f3f3f3;vertical-align:top;}
+td:first-child{font-weight:500;}
+tr:last-child td{border-bottom:none;}
+.step{display:flex;gap:10px;align-items:flex-start;padding:6px 0;border-bottom:0.5px solid #f3f3f3;}
+.step:last-child{border-bottom:none;}
+.stepn{background:#1a1a1a;color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0;margin-top:1px;}
+.stept{font-size:13px;line-height:1.5;}
+.stept .ex{color:#888;font-size:12px;}
+
+/* Mock Test & Exam */
+.qbtn{background:#fff;border:0.5px solid #ddd;border-radius:8px;padding:10px 12px;font-size:12px;cursor:pointer;text-align:left;transition:all 0.15s;font-family:inherit;color:#1a1a1a;width:100%;}
+.qbtn:hover{background:#f5f4f0;border-color:#bbb;}
+.answer-area{width:100%;min-height:150px;border:0.5px solid #ccc;border-radius:8px;padding:0.75rem;font-size:13px;font-family:inherit;line-height:1.6;resize:vertical;background:#fafaf9;}
+.action-btn{border:none;border-radius:8px;padding:8px 18px;font-size:13px;cursor:pointer;font-weight:500;}
+.btn-dark{background:#1a1a1a;color:#fff;}
+.btn-light{background:#fff;color:#555;border:0.5px solid #ccc !important;border-radius:8px;padding:8px 14px;font-size:13px;cursor:pointer;}
+.btn-red{background:#991b1b;color:#fff;}
+
+/* Feedback */
+.fb-score{font-size:28px;font-weight:700;color:#1a1a1a;}
+.fb-score span{font-size:14px;color:#888;font-weight:400;}
+.fb-sec{margin-bottom:1rem;}
+.fb-sec-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#888;margin-bottom:0.4rem;}
+.fb-row{padding:6px 0;border-bottom:0.5px solid #f3f3f3;font-size:13px;line-height:1.6;}
+.fb-row:last-child{border-bottom:none;}
+.fb-en{color:#888;font-size:12px;display:block;margin-top:2px;}
+.fb-tref{background:#fff8e7;border-radius:5px;padding:3px 7px;font-size:11px;color:#92400e;display:inline-block;margin-top:3px;}
+.fb-ok{color:#065f46;}
+.fb-err{color:#991b1b;}
+.fb-tip{background:#f0f7ff;border-left:3px solid #3b82f6;border-radius:0 7px 7px 0;padding:0.6rem 0.85rem;font-size:13px;color:#1e3a5f;line-height:1.6;margin-top:0.5rem;}
+
+/* Exam simulation */
+.exam-task{background:#fff;border:0.5px solid #e0e0e0;border-radius:10px;padding:1rem;margin-bottom:0.75rem;}
+.exam-task-num{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#991b1b;margin-bottom:0.4rem;}
+.exam-task-body{font-size:13px;line-height:1.8;white-space:pre-wrap;background:#f9f9f7;border-radius:7px;padding:0.75rem;margin-bottom:0.5rem;}
+.exam-timer{font-size:12px;color:#888;text-align:right;margin-bottom:0.5rem;}
+.timer-running{color:#991b1b;font-weight:600;}
+.progress-bar-wrap{background:#f0f0ec;border-radius:10px;height:6px;margin-bottom:1rem;}
+.progress-bar{background:#1a1a1a;height:6px;border-radius:10px;transition:width 0.3s;}
+
+/* Progress/History */
+.mistake-tag{display:inline-block;background:#fee2e2;color:#991b1b;border-radius:5px;padding:2px 7px;font-size:11px;margin:2px;}
+.streak-tag{display:inline-block;background:#d1fae5;color:#065f46;border-radius:5px;padding:2px 7px;font-size:11px;margin:2px;}
+.hist-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:0.5px solid #f3f3f3;font-size:12px;}
+.hist-row:last-child{border-bottom:none;}
+.score-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+</style>
+</head>
+<body>
+
+<div class="header-row">
+  <div>
+    <h1>🇳🇱 Dutch A2 — Master Cheat Sheet</h1>
+    <p class="subtitle">Inburgering exam prep · <span id="provider-badge" class="badge-provider bp-anth">Anthropic</span></p>
+  </div>
+  <div class="hbtns">
+    <button class="hbtn" onclick="togglePanel('settings-panel', this)">⚙️ AI Settings</button>
+    <button class="hbtn" onclick="togglePanel('progress-panel', this)">📊 My Progress</button>
+  </div>
+</div>
+
+<!-- SETTINGS PANEL -->
+<div class="panel" id="settings-panel">
+  <h3>AI Provider Settings</h3>
+  <div class="srow">
+    <label>Provider</label>
+    <select id="ai-provider" onchange="updateProviderUI()">
+      <option value="anthropic">Anthropic Claude (built-in, no key needed)</option>
+      <option value="groq">Groq (free, fast — Llama 3.3 70B)</option>
+      <option value="openrouter">OpenRouter (pay-as-you-go — Llama 3.3 70B)</option>
+    </select>
+  </div>
+  <div class="srow" id="key-row" style="display:none;">
+    <label id="key-label">API Key</label>
+    <input type="password" id="api-key-input" placeholder="Paste your API key here..." autocomplete="off"/>
+    <div class="sinfo" id="key-hint"></div>
+  </div>
+  <div style="margin-top:0.75rem;">
+    <button class="sbtn" onclick="saveSettings()">Save</button>
+    <button class="sbtn" style="background:#e5e5e3;color:#555;" onclick="testConnection()">Test connection</button>
+    <span id="save-confirm" style="font-size:11px;color:#065f46;"></span>
+  </div>
+  <div id="test-result" style="font-size:12px;margin-top:0.5rem;"></div>
+</div>
+
+<!-- PROGRESS PANEL -->
+<div class="panel" id="progress-panel">
+  <h3>📊 My Progress</h3>
+  <div id="progress-content">
+    <p style="font-size:13px;color:#888;">No practice sessions yet. Complete a mock test to see your progress!</p>
+  </div>
+  <div style="margin-top:0.75rem;">
+    <button class="btn-light" onclick="clearProgress()" style="font-size:12px;">🗑 Clear all history</button>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="show('master',this)">Master Template</button>
+  <button class="tab" onclick="show('templates',this)">All Templates</button>
+  <button class="tab" onclick="show('sentences',this)">Sentence Bank</button>
+  <button class="tab" onclick="show('rules',this)">Grammar Rules</button>
+  <button class="tab" onclick="show('topics',this)">Topics</button>
+  <button class="tab" onclick="show('wijk',this)">Wijkkrant</button>
+  <button class="tab tab-special" onclick="show('mocktest',this)">🎯 Mock Test</button>
+  <button class="tab tab-exam" onclick="show('examsim',this)">📋 Full Exam</button>
+</div>
+
+<!-- MASTER TEMPLATE -->
+<div class="template active" id="master">
+  <div class="card">
+    <div class="card-title ct-m">How to write any email — 5 steps</div>
+    <div class="step"><div class="stepn">1</div><div class="stept"><strong>Greeting</strong><br><span class="ex">Hoi [naam], / Geachte heer/mevrouw, / Hallo allemaal (wijk only)</span></div></div>
+    <div class="step"><div class="stepn">2</div><div class="stept"><strong>Opening reason</strong><br><span class="ex">Ik schrijf u omdat ik een vraag heb. / Mijn naam is [naam] en ik schrijf u omdat...</span></div></div>
+    <div class="step"><div class="stepn">3</div><div class="stept"><strong>Main content</strong> — pick what fits<br><span class="ex">Decline / Accept / Complaint / Questions / Request</span></div></div>
+    <div class="step"><div class="stepn">4</div><div class="stept"><strong>Contact + fillers</strong> if needed for word count<br><span class="ex">Mijn telefoonnummer is... / Ik hoop dat het kan. / Alvast bedankt!</span></div></div>
+    <div class="step"><div class="stepn">5</div><div class="stept"><strong>Closing</strong><br><span class="ex">Groetjes, / Met vriendelijke groet, / Fijne dag allemaal! (wijk only)</span></div></div>
+  </div>
+  <div class="card">
+    <div class="card-title ct-m">Greeting</div>
+    <div class="line"><span class="dutch">Hoi [naam],</span><span class="note">informal</span></div>
+    <div class="line"><span class="dutch">Geachte heer/mevrouw,</span><span class="note">formal</span></div>
+    <div class="line"><span class="dutch">Hallo allemaal,</span><span class="note">wijkkrant ONLY</span></div>
+  </div>
+  <div class="card">
+    <div class="card-title ct-m">Opening</div>
+    <div class="line"><span class="dutch">Ik schrijf u omdat ik een vraag heb.</span><span class="note">formal</span></div>
+    <div class="line"><span class="dutch">Ik schrijf u omdat ik een klacht heb.</span><span class="note">complaint</span></div>
+    <div class="line"><span class="dutch">Mijn naam is [naam] en ik schrijf u omdat ik [reden].</span><span class="note">formal</span></div>
+    <div class="line"><span class="dutch">Ik heb een advertentie gezien.</span><span class="note">saw ad</span></div>
+    <div class="line"><span class="dutch">Bedankt voor de uitnodiging.</span><span class="note">invitation</span></div>
+  </div>
+  <div class="card">
+    <div class="card-title ct-m">Declining</div>
+    <div class="line"><span class="dutch">Helaas kan ik niet komen.</span><span class="note">no comma after helaas!</span></div>
+    <div class="line"><span class="dutch">Ik kan niet komen omdat ik ziek ben.</span><span class="note">verb END after omdat</span></div>
+    <div class="line"><span class="dutch">Ik kan niet komen want ik heb koorts.</span><span class="note">normal order after want</span></div>
+    <div class="line"><span class="dutch">Het spijt me dat ik niet kan komen.</span><span class="note">apologise</span></div>
+  </div>
+  <div class="card">
+    <div class="card-title ct-m">Reason bank (omdat ik...)</div>
+    <div class="grid2">
+      <div class="pill"><div class="pill-nl">ziek ben</div><div class="pill-en">I am sick</div></div>
+      <div class="pill"><div class="pill-nl">koorts heb</div><div class="pill-en">have fever</div></div>
+      <div class="pill"><div class="pill-nl">moet werken</div><div class="pill-en">must work</div></div>
+      <div class="pill"><div class="pill-nl">geen tijd heb</div><div class="pill-en">no time</div></div>
+      <div class="pill"><div class="pill-nl">thuis moet blijven</div><div class="pill-en">stay home</div></div>
+      <div class="pill"><div class="pill-nl">mijn kind ziek is</div><div class="pill-en">child sick</div></div>
+      <div class="pill"><div class="pill-nl">mijn auto kapot is</div><div class="pill-en">car broken</div></div>
+      <div class="pill"><div class="pill-nl">een afspraak heb</div><div class="pill-en">have appointment</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title ct-m">Request / Appointment / Call</div>
+    <div class="line"><span class="dutch">Kunnen we op [dag] om [tijd] afspreken?</span><span class="note">reschedule</span></div>
+    <div class="line"><span class="dutch">Ik wil graag een afspraak maken.</span><span class="note">make appointment</span></div>
+    <div class="line"><span class="dutch">Wanneer kan ik een afspraak maken?</span><span class="note">ask when</span></div>
+    <div class="line"><span class="dutch">Kunt u mij bellen?</span><span class="note">formal</span></div>
+    <div class="line"><span class="dutch">Kun je me bellen?</span><span class="note">informal</span></div>
+    <div class="line"><span class="dutch">Mijn telefoonnummer is 06-87654321.</span><span class="note">always add!</span></div>
+  </div>
+  <div class="card">
+    <div class="card-title ct-m">Fillers (add to reach word count)</div>
+    <div class="line"><span class="dutch">Ik hoop dat je/u het begrijpt.</span></div>
+    <div class="line"><span class="dutch">Ik hoop dat het kan.</span></div>
+    <div class="line"><span class="dutch">Alvast bedankt!</span></div>
+    <div class="line"><span class="dutch">Bedankt voor uw hulp.</span></div>
+    <div class="line"><span class="dutch">Ik kijk uit naar uw reactie.</span></div>
+    <div class="line"><span class="dutch">Mijn naam is [naam] en ik woon in [stad].</span></div>
+    <div class="line"><span class="dutch">Fijne dag!</span></div>
+  </div>
+  <div class="card">
+    <div class="card-title ct-m">Closing</div>
+    <div class="line"><span class="dutch">Groetjes,</span><span class="note">informal</span></div>
+    <div class="line"><span class="dutch">Met vriendelijke groet,</span><span class="note">formal</span></div>
+    <div class="line"><span class="dutch">Fijne dag allemaal!</span><span class="note">wijkkrant ONLY</span></div>
+  </div>
+</div>
+
+<!-- ALL TEMPLATES -->
+<div class="template" id="templates">
+  <div class="card"><div class="card-title ct-i">Informal — declining</div>
+    <div class="line"><span class="dutch">Hoi [naam],</span></div>
+    <div class="line"><span class="dutch">Bedankt voor de uitnodiging.</span></div>
+    <div class="line"><span class="dutch">Helaas kan ik niet komen omdat ik ziek ben.</span><span class="note">swap reason</span></div>
+    <div class="line"><span class="dutch">Ik heb ook koorts.</span><span class="note">optional</span></div>
+    <div class="line"><span class="dutch">Kunnen we op [dag] om [tijd] afspreken?</span></div>
+    <div class="line"><span class="dutch">Kun je me bellen?</span></div>
+    <div class="line"><span class="dutch">Ik hoop dat je het begrijpt.</span></div>
+    <div class="line"><span class="dutch">Groetjes, [naam]</span></div>
+  </div>
+  <div class="card"><div class="card-title ct-f">Formal — info / declining</div>
+    <div class="line"><span class="dutch">Geachte heer/mevrouw,</span></div>
+    <div class="line"><span class="dutch">Mijn naam is [naam] en ik schrijf u omdat ik een vraag heb.</span></div>
+    <div class="line"><span class="dutch">Helaas kan ik niet komen omdat ik ziek ben.</span><span class="note">swap reason</span></div>
+    <div class="line"><span class="dutch">Kunnen we op [dag] om [tijd] afspreken?</span></div>
+    <div class="line"><span class="dutch">Kunt u mij bellen?</span></div>
+    <div class="line"><span class="dutch">Mijn telefoonnummer is 06-87654321.</span></div>
+    <div class="line"><span class="dutch">Ik hoop dat u het begrijpt.</span></div>
+    <div class="line"><span class="dutch">Met vriendelijke groet, [naam]</span></div>
+  </div>
+  <div class="card"><div class="card-title ct-c">Complaint letter</div>
+    <div class="line"><span class="dutch">Geachte heer/mevrouw,</span></div>
+    <div class="line"><span class="dutch">Mijn naam is [naam] en ik schrijf u omdat ik een klacht heb.</span></div>
+    <div class="line"><span class="dutch">Ik heb een [product] gekocht.</span><span class="note">swap product</span></div>
+    <div class="line"><span class="dutch">Hij werkt niet.</span></div>
+    <div class="line"><span class="dutch">Ik heb de bon nog.</span><span class="note">optional</span></div>
+    <div class="line"><span class="dutch">Kunt u een afspraak maken?</span></div>
+    <div class="line"><span class="dutch">Kunt u mij bellen?</span></div>
+    <div class="line"><span class="dutch">Mijn telefoonnummer is 06-87654321.</span></div>
+    <div class="line"><span class="dutch">Met vriendelijke groet, [naam]</span></div>
+  </div>
+  <div class="card"><div class="card-title ct-a">Accepting invitation</div>
+    <div class="line"><span class="dutch">Hoi [naam], / Geachte heer/mevrouw,</span></div>
+    <div class="line"><span class="dutch">Bedankt voor de uitnodiging.</span></div>
+    <div class="line"><span class="dutch">Ik kom graag!</span></div>
+    <div class="line"><span class="dutch">Tot [dag] om [tijd].</span></div>
+    <div class="line"><span class="dutch">Fijne dag!</span><span class="note">optional</span></div>
+    <div class="line"><span class="dutch">Groetjes, / Met vriendelijke groet, [naam]</span></div>
+  </div>
+  <div class="card"><div class="card-title ct-inv">Inviting someone</div>
+    <div class="line"><span class="dutch">Hoi [naam],</span></div>
+    <div class="line"><span class="dutch">Ik wil je graag uitnodigen voor een feestje.</span></div>
+    <div class="line"><span class="dutch">Het feest is op [datum] om [tijd].</span></div>
+    <div class="line"><span class="dutch">Het is op [adres].</span></div>
+    <div class="line"><span class="dutch">Kom je ook?</span></div>
+    <div class="line"><span class="dutch">Laat het me weten.</span></div>
+    <div class="line"><span class="dutch">Groetjes, [naam]</span></div>
+  </div>
+</div>
+
+<!-- SENTENCE BANK -->
+<div class="template" id="sentences">
+  <div class="card"><div class="card-title ct-r">Questions to ask</div>
+    <div class="line"><span class="dutch">Wat kost het per maand?</span><span class="note">monthly cost</span></div>
+    <div class="line"><span class="dutch">Wat zijn de openingstijden?</span><span class="note">opening hours</span></div>
+    <div class="line"><span class="dutch">Wanneer begint de cursus?</span><span class="note">course start</span></div>
+    <div class="line"><span class="dutch">Hoe groot is de [ruimte]?</span><span class="note">how big</span></div>
+    <div class="line"><span class="dutch">Wanneer kan ik een afspraak maken?</span><span class="note">when to book</span></div>
+    <div class="line"><span class="dutch">Kunt u mij meer informatie geven?</span><span class="note">more info</span></div>
+    <div class="line"><span class="dutch">Kunt u mij helpen?</span><span class="note">can you help</span></div>
+  </div>
+  <div class="card"><div class="card-title ct-r">About yourself</div>
+    <div class="line"><span class="dutch">Mijn naam is [naam].</span></div>
+    <div class="line"><span class="dutch">Ik woon op [straat] [nr] in [stad].</span></div>
+    <div class="line"><span class="dutch">Ik ben [leeftijd] jaar oud.</span></div>
+    <div class="line"><span class="dutch">Ik kan op [dag] en [dag].</span></div>
+    <div class="line"><span class="dutch">Ik wil me graag inschrijven voor de cursus.</span></div>
+  </div>
+  <div class="card"><div class="card-title ct-r">Apologies</div>
+    <div class="line"><span class="dutch">Het spijt me dat ik niet kan komen.</span></div>
+    <div class="line"><span class="dutch">Het spijt me zeer.</span></div>
+    <div class="line"><span class="dutch">Sorry voor het ongemak.</span></div>
+    <div class="line"><span class="dutch">Ik voel me niet goed.</span></div>
+  </div>
+  <div class="card"><div class="card-title ct-r">Connectors</div>
+    <div class="line"><span class="dutch">Helaas kan ik niet komen.</span><span class="note">no comma!</span></div>
+    <div class="line"><span class="dutch">Daarom kan ik niet komen.</span><span class="note">verb flips!</span></div>
+    <div class="line"><span class="dutch">Ik kan niet komen want ik heb koorts.</span><span class="note">normal order</span></div>
+    <div class="line"><span class="dutch">Ik kan niet komen omdat ik ziek ben.</span><span class="note">verb to END</span></div>
+  </div>
+  <div class="card"><div class="card-title ct-c">Products</div>
+    <div class="grid2">
+      <div class="pill"><div class="pill-nl">wasmachine</div><div class="pill-en">washing machine</div></div>
+      <div class="pill"><div class="pill-nl">koelkast</div><div class="pill-en">fridge</div></div>
+      <div class="pill"><div class="pill-nl">telefoon</div><div class="pill-en">telephone</div></div>
+      <div class="pill"><div class="pill-nl">computer</div><div class="pill-en">computer</div></div>
+      <div class="pill"><div class="pill-nl">televisie</div><div class="pill-en">television</div></div>
+      <div class="pill"><div class="pill-nl">auto</div><div class="pill-en">car</div></div>
+    </div>
+  </div>
+  <div class="card"><div class="card-title ct-r">Days</div>
+    <div class="grid2">
+      <div class="pill"><div class="pill-nl">maandag</div><div class="pill-en">Monday</div></div>
+      <div class="pill"><div class="pill-nl">dinsdag</div><div class="pill-en">Tuesday</div></div>
+      <div class="pill"><div class="pill-nl">woensdag</div><div class="pill-en">Wednesday</div></div>
+      <div class="pill"><div class="pill-nl">donderdag</div><div class="pill-en">Thursday</div></div>
+      <div class="pill"><div class="pill-nl">vrijdag</div><div class="pill-en">Friday</div></div>
+      <div class="pill"><div class="pill-nl">zaterdag</div><div class="pill-en">Saturday</div></div>
+      <div class="pill"><div class="pill-nl">zondag</div><div class="pill-en">Sunday</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- GRAMMAR RULES -->
+<div class="template" id="rules">
+  <div class="card"><div class="card-title ct-r">3 rules — memorise only these</div>
+    <div class="rbox"><strong>Rule 1 — omdat → verb to END</strong><br>❌ omdat ik kan niet komen<br>✅ omdat ik niet kan komen<br>✅ omdat ik ziek ben / thuis moet blijven</div>
+    <div class="rbox" style="margin-top:0.5rem;"><strong>Rule 2 — mijn = my / mij = me</strong><br>✅ Mijn naam / Mijn telefoonnummer (possession)<br>✅ Kunt u mij bellen? (object)</div>
+    <div class="rbox" style="margin-top:0.5rem;"><strong>Rule 3 — formal vs informal</strong><br>✅ Kunt u mij bellen? — formal<br>✅ Kun je me bellen? — informal<br>❌ Never mix in same email!</div>
+  </div>
+  <div class="card"><div class="card-title ct-r">Word order</div>
+    <table>
+      <tr><th>Connector</th><th>Rule</th><th>Example</th></tr>
+      <tr><td>omdat</td><td>verb to END</td><td>omdat ik ziek ben</td></tr>
+      <tr><td>want</td><td>normal order</td><td>want ik heb koorts</td></tr>
+      <tr><td>dat</td><td>verb to END</td><td>dat je het begrijpt</td></tr>
+      <tr><td>Helaas (start)</td><td>verb flips</td><td>Helaas kan ik niet komen</td></tr>
+      <tr><td>Daarom (start)</td><td>verb flips</td><td>Daarom kan ik niet komen</td></tr>
+    </table>
+  </div>
+  <div class="card"><div class="card-title ct-r">Questions — t-drop</div>
+    <table>
+      <tr><th>Subject</th><th>Rule</th><th>Example</th></tr>
+      <tr><td>je / jij</td><td>t drops!</td><td>Werk je? (not werkt jij!)</td></tr>
+      <tr><td>u</td><td>t stays</td><td>Werkt u?</td></tr>
+      <tr><td>hij / zij</td><td>t stays</td><td>Werkt hij?</td></tr>
+    </table>
+  </div>
+  <div class="card"><div class="card-title ct-r">Perfect tense — GKBV</div>
+    <div class="rbox"><strong>GKBV → zijn:</strong> Gaan Komen Blijven Vertrekken<br>✅ Ik ben gegaan / gekomen / gebleven / vertrokken<br><br><strong>Everything else → hebben:</strong><br>✅ Ik heb een wasmachine gekocht. Ik heb veel gewerkt.<br><br><strong>Past form always at END!</strong></div>
+    <div class="grid2" style="margin-top:0.5rem;">
+      <div class="pill"><div class="pill-nl">gaan → gegaan</div></div>
+      <div class="pill"><div class="pill-nl">komen → gekomen</div></div>
+      <div class="pill"><div class="pill-nl">blijven → gebleven</div></div>
+      <div class="pill"><div class="pill-nl">vertrekken → vertrokken</div></div>
+      <div class="pill"><div class="pill-nl">kopen → gekocht</div></div>
+      <div class="pill"><div class="pill-nl">werken → gewerkt</div></div>
+    </div>
+  </div>
+  <div class="card"><div class="card-title ct-r">Spelling traps</div>
+    <table>
+      <tr><th>Wrong</th><th>Correct</th></tr>
+      <tr><td>zeterdag</td><td>zaterdag</td></tr>
+      <tr><td>koolkast</td><td>koelkast (koel = cool)</td></tr>
+      <tr><td>telefoonnumer</td><td>telefoonnummer (double n+m)</td></tr>
+      <tr><td>afspraken maken</td><td>afspraak maken (singular)</td></tr>
+      <tr><td>giesteren</td><td>gisteren</td></tr>
+      <tr><td>Ik (mid-sentence)</td><td>ik (never capital!)</td></tr>
+      <tr><td>Mij naam</td><td>Mijn naam</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- TOPICS -->
+<div class="template" id="topics">
+  <div class="card"><div class="card-title ct-m">Exam question types</div>
+    <table>
+      <tr><th>Type</th><th>Words</th><th>What to do</th></tr>
+      <tr><td>Formulier (form)</td><td>—</td><td>Fill in personal details</td></tr>
+      <tr><td>Kort e-mail</td><td>40–50</td><td>Short focused message</td></tr>
+      <tr><td>Lang e-mail</td><td>80–100</td><td>Full message with detail</td></tr>
+      <tr><td>Wijkkrant</td><td>60–80</td><td>Neighbourhood piece — different rules!</td></tr>
+    </table>
+  </div>
+  <div class="card"><div class="card-title ct-m">Email topics</div>
+    <table>
+      <tr><th>Topic</th><th>Key sentences</th></tr>
+      <tr><td>Declining invitation</td><td>Helaas kan ik niet komen omdat...</td></tr>
+      <tr><td>Accepting invitation</td><td>Ik kom graag! / Bedankt voor de uitnodiging.</td></tr>
+      <tr><td>New time proposal</td><td>Kunnen we op [dag] om [tijd] afspreken?</td></tr>
+      <tr><td>Doctor appointment</td><td>Ik wil een afspraak maken.</td></tr>
+      <tr><td>Complaint</td><td>Ik heb [product] gekocht. Hij werkt niet.</td></tr>
+      <tr><td>Renting</td><td>Ik wil een garage huren. + 3 questions</td></tr>
+      <tr><td>Course enrolment</td><td>Ik wil me inschrijven. Wanneer begint de cursus?</td></tr>
+      <tr><td>Inviting</td><td>Ik wil je uitnodigen voor een feestje.</td></tr>
+      <tr><td>Childcare</td><td>Kun je de kinderen ophalen om [tijd]?</td></tr>
+      <tr><td>Work / overtime</td><td>Ik moet overwerken. Ik ben om [tijd] thuis.</td></tr>
+    </table>
+  </div>
+  <div class="card"><div class="card-title ct-m">Checklist before submitting</div>
+    <div class="line"><span class="dutch">✅ Correct greeting (Hoi / Geachte / Hallo allemaal)</span></div>
+    <div class="line"><span class="dutch">✅ All requirements answered</span></div>
+    <div class="line"><span class="dutch">✅ omdat → verb at END</span></div>
+    <div class="line"><span class="dutch">✅ mijn naam / mijn telefoonnummer (not mij!)</span></div>
+    <div class="line"><span class="dutch">✅ Formal or informal — not mixed!</span></div>
+    <div class="line"><span class="dutch">✅ Correct closing</span></div>
+    <div class="line"><span class="dutch">✅ Word count in range</span></div>
+    <div class="line"><span class="dutch">✅ ik is never capital mid-sentence</span></div>
+  </div>
+</div>
+
+<!-- WIJKKRANT -->
+<div class="template" id="wijk">
+  <div class="card"><div class="card-title ct-w">Special rules!</div>
+    <div class="wbox"><strong>NEVER:</strong> Hoi / Beste / Geachte / Groetjes<br><strong>ALWAYS:</strong> Hallo allemaal, → Fijne dag allemaal!<br><strong>Topics:</strong> food, holiday, family, household appliance</div>
+  </div>
+  <div class="card"><div class="card-title ct-w">Template</div>
+    <div class="line"><span class="dutch">Hallo allemaal,</span><span class="note">ALWAYS!</span></div>
+    <div class="line"><span class="dutch">Mijn naam is [naam] en ik woon in [stad/wijk].</span></div>
+    <div class="line"><span class="dutch">Ik schrijf omdat ik iets wil vertellen over [onderwerp].</span></div>
+    <div class="line"><span class="dutch">[2-3 sentences about topic]</span></div>
+    <div class="line"><span class="dutch">Ik hoop dat u het interessant vindt.</span><span class="note">optional</span></div>
+    <div class="line"><span class="dutch">Fijne dag allemaal!</span><span class="note">ALWAYS!</span></div>
+    <div class="line"><span class="dutch">[naam]</span></div>
+  </div>
+  <div class="card"><div class="card-title ct-w">Sentences by topic</div>
+    <div class="slabel">Food</div>
+    <div class="line"><span class="dutch">Ik hou van [eten].</span><span class="note">I love...</span></div>
+    <div class="line"><span class="dutch">In mijn land eten we veel [voedsel].</span></div>
+    <div class="line"><span class="dutch">Het is heel lekker!</span></div>
+    <div class="slabel">Holiday</div>
+    <div class="line"><span class="dutch">Vorig jaar ben ik naar [land] gegaan.</span></div>
+    <div class="line"><span class="dutch">Het was heel mooi!</span></div>
+    <div class="slabel">Family</div>
+    <div class="line"><span class="dutch">Mijn familie woont in [stad/land].</span></div>
+    <div class="line"><span class="dutch">Ik heb [aantal] kinderen.</span></div>
+    <div class="slabel">Appliance</div>
+    <div class="line"><span class="dutch">Ik heb een nieuwe [apparaat] gekocht.</span></div>
+    <div class="line"><span class="dutch">Hij is heel handig!</span></div>
+  </div>
+</div>
+
+<!-- MOCK TEST -->
+<div class="template" id="mocktest">
+  <div class="card">
+    <div class="card-title ct-m">🎯 Mock Test</div>
+    <p style="font-size:13px;color:#555;line-height:1.6;margin-bottom:0.85rem;">Choose a type. Write your answer. AI checks grammar, requirements, and refers back to your template bank.</p>
+    <div class="grid2" style="gap:8px;">
+      <button class="qbtn" onclick="genQ('short_informal')">📩 Short informal</button>
+      <button class="qbtn" onclick="genQ('short_formal')">📨 Short formal</button>
+      <button class="qbtn" onclick="genQ('complaint')">😤 Complaint</button>
+      <button class="qbtn" onclick="genQ('invite')">🎉 Invitation</button>
+      <button class="qbtn" onclick="genQ('wijkkrant')">📰 Wijkkrant</button>
+      <button class="qbtn" onclick="genQ('random')" style="background:#1a1a1a;color:#fff;border-color:#1a1a1a;">🎲 Random</button>
+    </div>
+  </div>
+  <div class="card" id="mock-qcard" style="display:none;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;padding-bottom:0.4rem;border-bottom:0.5px solid #eee;">
+      <div class="card-title ct-m" id="mock-qlabel" style="margin:0;padding:0;border:none;"></div>
+      <span id="mock-wtarget" style="font-size:11px;color:#888;"></span>
+    </div>
+    <div id="mock-qtext" style="font-size:13px;line-height:1.8;white-space:pre-wrap;background:#f9f9f7;border-radius:7px;padding:0.75rem;margin-bottom:0.75rem;"></div>
+    <textarea class="answer-area" id="mock-answer" placeholder="Write your Dutch answer here..."></textarea>
+    <div style="display:flex;gap:8px;margin-top:0.75rem;align-items:center;flex-wrap:wrap;">
+      <button class="action-btn btn-dark" onclick="checkMock()">✅ Check answer</button>
+      <button class="btn-light" onclick="genQ(currentMockType)">🔄 New question</button>
+      <span id="mock-wc" style="font-size:12px;color:#aaa;margin-left:auto;">0 words</span>
+    </div>
+  </div>
+  <div class="card" id="mock-fbcard" style="display:none;">
+    <div class="card-title ct-m">📝 Feedback</div>
+    <div id="mock-fb"></div>
+    <div style="margin-top:1rem;display:flex;gap:8px;flex-wrap:wrap;">
+      <button class="action-btn btn-dark" onclick="genQ(currentMockType)">🎯 Try another</button>
+      <button class="btn-light" onclick="toggleIdeal('mock')">👁 Ideal answer</button>
+    </div>
+  </div>
+  <div class="card" id="mock-ideal" style="display:none;">
+    <div class="card-title ct-a">✅ Ideal answer</div>
+    <div id="mock-ideal-text" style="font-size:13px;line-height:1.8;white-space:pre-wrap;"></div>
+  </div>
+</div>
+
+<!-- FULL EXAM SIMULATION -->
+<div class="template" id="examsim">
+  <div class="card" id="exam-intro">
+    <div class="card-title ct-m" style="color:#991b1b;">📋 Full Exam Simulation</div>
+    <p style="font-size:13px;color:#555;line-height:1.6;margin-bottom:0.75rem;">A realistic A2 writing exam with 3 tasks. Complete all tasks, then submit for full AI feedback and a total score.</p>
+    <div class="rbox" style="margin-bottom:0.75rem;">
+      <strong>Exam format:</strong><br>
+      Task 1 — Formulier (form) · fill in personal details<br>
+      Task 2 — Kort e-mail (short email) · 40–50 words<br>
+      Task 3 — Lang e-mail or Wijkkrant · 60–80 words
+    </div>
+    <button class="action-btn btn-red" onclick="startExam()">▶ Start New Exam</button>
+  </div>
+
+  <div id="exam-area" style="display:none;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
+      <div style="font-size:13px;font-weight:600;color:#991b1b;">📋 Full Exam</div>
+      <div id="exam-timer-display" style="font-size:13px;color:#888;"></div>
+    </div>
+    <div class="progress-bar-wrap"><div class="progress-bar" id="exam-pbar" style="width:0%"></div></div>
+    <div id="exam-tasks"></div>
+    <div style="display:flex;gap:8px;margin-top:1rem;flex-wrap:wrap;">
+      <button class="action-btn btn-red" onclick="submitExam()">📤 Submit Full Exam</button>
+      <button class="btn-light" onclick="resetExam()">✖ Cancel</button>
+    </div>
+  </div>
+
+  <div class="card" id="exam-fbcard" style="display:none;">
+    <div class="card-title" style="color:#991b1b;">📊 Full Exam Results</div>
+    <div id="exam-fb"></div>
+    <div style="margin-top:1rem;display:flex;gap:8px;flex-wrap:wrap;">
+      <button class="action-btn btn-red" onclick="startExam()">🔄 New Exam</button>
+      <button class="btn-light" onclick="toggleIdeal('exam')">👁 Ideal answers</button>
+    </div>
+  </div>
+  <div class="card" id="exam-ideal" style="display:none;">
+    <div class="card-title ct-a">✅ Ideal answers</div>
+    <div id="exam-ideal-text" style="font-size:13px;line-height:1.8;white-space:pre-wrap;"></div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════
+// SETTINGS
+// ═══════════════════════════════════════════════
+let cfg = { provider:'anthropic', apiKey:'' };
+try { const s = localStorage.getItem('dutch_cfg'); if(s) cfg = {...cfg,...JSON.parse(s)}; } catch(e){}
+const FIX_GROQ_MODEL = 'llama-3.3-70b-versatile';
+const FIX_OR_MODEL = 'meta-llama/llama-3.3-70b-instruct';
+
+function loadSettings(){
+  document.getElementById('ai-provider').value = cfg.provider;
+  if(document.getElementById('api-key-input') && cfg.apiKey) document.getElementById('api-key-input').value = cfg.apiKey;
+  updateProviderUI(); updateBadge();
+}
+
+function updateProviderUI(){
+  const p = document.getElementById('ai-provider').value;
+  document.getElementById('key-row').style.display = p==='anthropic'?'none':'block';
+  if(p==='groq'){ document.getElementById('key-label').textContent='Groq API Key (console.groq.com → API Keys)'; document.getElementById('key-hint').textContent='Free tier available. Create account at console.groq.com'; }
+  if(p==='openrouter'){ document.getElementById('key-label').textContent='OpenRouter API Key (openrouter.ai/keys)'; document.getElementById('key-hint').textContent='Pay-as-you-go. Create account at openrouter.ai'; }
+}
+
+function updateBadge(){
+  const b = document.getElementById('provider-badge');
+  b.className = 'badge-provider';
+  if(cfg.provider==='anthropic'){ b.textContent='Anthropic'; b.classList.add('bp-anth'); }
+  else if(cfg.provider==='groq'){ b.textContent='Groq · Llama 3.3'; b.classList.add('bp-groq'); }
+  else { b.textContent='OpenRouter · Llama 3.3'; b.classList.add('bp-or'); }
+}
+
+function saveSettings(){
+  cfg.provider = document.getElementById('ai-provider').value;
+  cfg.apiKey = document.getElementById('api-key-input').value.trim();
+  localStorage.setItem('dutch_cfg', JSON.stringify(cfg));
+  updateBadge();
+  const c = document.getElementById('save-confirm');
+  c.textContent = '✅ Saved!'; setTimeout(()=>c.textContent='',2000);
+}
+
+async function testConnection(){
+  cfg.provider = document.getElementById('ai-provider').value;
+  if(cfg.provider !== 'anthropic') cfg.apiKey = document.getElementById('api-key-input').value.trim();
+
+  const r = document.getElementById('test-result');
+  r.textContent = '⏳ Testing...'; r.style.color='#888';
+  try {
+    const res = await callAI('You are a helpful assistant.','Say only: "Connection OK"');
+    r.textContent = '✅ ' + res.substring(0,50); r.style.color='#065f46';
+  } catch(e) {
+    r.textContent = '❌ Failed: ' + e.message; r.style.color='#991b1b';
+  }
+}
+
+function togglePanel(id, btn){
+  const p = document.getElementById(id);
+  const isOpen = p.classList.contains('open');
+  document.querySelectorAll('.panel').forEach(x=>x.classList.remove('open'));
+  document.querySelectorAll('.hbtn').forEach(x=>x.classList.remove('active'));
+  if(!isOpen){ p.classList.add('open'); btn.classList.add('active'); }
+  if(id==='progress-panel') renderProgress();
+}
+
+// ═══════════════════════════════════════════════
+// TABS
+// ═══════════════════════════════════════════════
+function show(id,btn){
+  document.querySelectorAll('.template').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>{ t.classList.remove('active'); });
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ═══════════════════════════════════════════════
+// API CALL — Fixed for all 3 providers
+// ═══════════════════════════════════════════════
+async function callAI(system, user, maxTokens=1400){
+  const p = cfg.provider;
+
+  if(p==='groq'){
+    if(!cfg.apiKey) throw new Error('No Groq API key. Add it in ⚙️ AI Settings.');
+    try {
+      const r = await fetch('https://api.groq.com/openai/v1/chat/completions',{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Authorization':'Bearer '+cfg.apiKey},
+        body:JSON.stringify({
+          model: FIX_GROQ_MODEL,
+          max_tokens: maxTokens,
+          messages:[{role:'system',content:system},{role:'user',content:user}]
+        })
+      });
+      if(!r.ok){ const e=await r.json().catch(()=>({})); throw new Error(e.error?.message||'Groq error '+r.status); }
+      const d = await r.json();
+      return d.choices[0].message.content;
+    } catch(err) {
+      if (err && err.message && String(err.message).toLowerCase().includes('fetch')) {
+        throw new Error('Rate-limit/CORS error. Groq blocked the request. You may have hit the free-tier limit. Wait 60 seconds and try again. Alternatively, check your adblocker.');
+      }
+      throw err;
+    }
+
+  } else if(p==='openrouter'){
+    if(!cfg.apiKey) throw new Error('No OpenRouter API key. Add it in ⚙️ AI Settings.');
+    try {
+      const r = await fetch('https://openrouter.ai/api/v1/chat/completions',{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Authorization':'Bearer '+cfg.apiKey,'HTTP-Referer':window.location.href,'X-Title':'Dutch A2 Cheatsheet'},
+        body:JSON.stringify({
+          model: FIX_OR_MODEL,
+          max_tokens: maxTokens,
+          messages:[{role:'system',content:system},{role:'user',content:user}]
+        })
+      });
+      if(!r.ok){ const e=await r.json().catch(()=>({})); throw new Error(e.error?.message||'OpenRouter error '+r.status); }
+      const d = await r.json();
+      return d.choices[0].message.content;
+    } catch(err) {
+      if (err && err.message && String(err.message).toLowerCase().includes('fetch')) {
+        throw new Error('Rate-limit/CORS error. OpenRouter may be blocked by your network or adblocker.');
+      }
+      throw err;
+    }
+
+  } else {
+    // Anthropic built-in
+    const r = await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens: maxTokens,
+        system: system,
+        messages:[{role:'user',content:user}]
+      })
+    });
+    if(!r.ok){ const e=await r.json(); throw new Error(e.error?.message||'API error '+r.status); }
+    const d = await r.json();
+    return d.content[0].text;
+  }
+}
+
+// ═══════════════════════════════════════════════
+// TEMPLATE KNOWLEDGE BASE
+// ═══════════════════════════════════════════════
+const TK = `STUDENT'S CHEAT SHEET TEMPLATES:
+
+GREETINGS: Informal="Hoi [naam]," | Formal="Geachte heer/mevrouw," | Wijkkrant="Hallo allemaal,"
+OPENINGS: "Ik schrijf u omdat ik een vraag heb." | "Ik schrijf u omdat ik een klacht heb." | "Mijn naam is [naam] en ik schrijf u omdat ik [reden]." | "Ik heb een advertentie gezien." | "Bedankt voor de uitnodiging."
+DECLINING: "Helaas kan ik niet komen." (NO comma!) | "Ik kan niet komen omdat ik ziek ben." (verb END!) | "Ik kan niet komen want ik heb koorts." (normal order) | "Het spijt me dat ik niet kan komen."
+REASONS (omdat ik...): ziek ben | koorts heb | moet werken | geen tijd heb | thuis moet blijven | mijn kind ziek is | mijn auto kapot is | een afspraak heb
+APPOINTMENT: "Kunnen we op [dag] om [tijd] afspreken?" | "Ik wil graag een afspraak maken." | "Wanneer kan ik een afspraak maken?"
+CALL: "Kunt u mij bellen?" (formal) | "Kun je me bellen?" (informal) | "Mijn telefoonnummer is 06-87654321."
+COMPLAINT: "Ik heb een [product] gekocht." | "Hij werkt niet." | "Ik heb de bon nog." | "Kunt u een afspraak maken?"
+QUESTIONS: "Wat kost het per maand?" | "Wat zijn de openingstijden?" | "Wanneer begint de cursus?" | "Hoe groot is de [ruimte]?" | "Kunt u mij meer informatie geven?"
+FILLERS: "Ik hoop dat je/u het begrijpt." | "Ik hoop dat het kan." | "Alvast bedankt!" | "Ik kijk uit naar uw reactie." | "Bedankt voor uw hulp."
+PERSONAL: "Mijn naam is [naam]." | "Ik woon op [straat] [nr] in [stad]." | "Ik ben [leeftijd] jaar oud." | "Ik kan op [dag] en [dag]."
+ACCEPTING: "Ik kom graag!" | "Tot [dag] om [tijd]."
+INVITING: "Ik wil je graag uitnodigen voor een feestje." | "Het feest is op [datum] om [tijd]." | "Kom je ook?" | "Laat het me weten."
+CLOSINGS: Informal="Groetjes," | Formal="Met vriendelijke groet," | Wijkkrant="Fijne dag allemaal!"
+
+KEY GRAMMAR RULES:
+1. omdat/dat → verb to END: "omdat ik ziek BEN" NOT "omdat ik ben ziek"
+2. mijn=my (mijn naam, mijn telefoonnummer), mij=me (bel mij, help mij)
+3. Formal: Kunt u/mij — Informal: Kun je/me — NEVER mix in same email
+4. Helaas/Daarom at start → verb flips: "Helaas KAN ik" not "Helaas ik kan"
+5. jij/je in questions → t drops: "Werk je?" not "Werkt jij?"
+6. GKBV (gaan/komen/blijven/vertrekken) → zijn. Others → hebben. Past form at END.
+7. ik is NEVER capital mid-sentence`;
+
+const FEEDBACK_SYSTEM = `You are a Dutch A2 inburgering exam teacher. Student has poor memory, exam is soon. You have their cheat sheet templates.
+
+${TK}
+
+Return ONLY valid JSON, no markdown:
+{
+  "score": 7,
+  "score_label": "Good effort!",
+  "requirements": [{"item":"requirement","ok":true,"note":"English note"}],
+  "grammar_mistakes": [{"wrong":"wrong text","correct":"corrected","rule":"rule name","explanation_en":"simple English explanation","template_ref":"exact sentence from cheat sheet they should use"}],
+  "spelling": [{"wrong":"word","correct":"word"}],
+  "well_done": ["point 1","point 2"],
+  "tip": "one exam tip in English",
+  "template_suggestions": ["template sentence that would help","another one"]
+}
+Max 4 grammar mistakes. Always add template_ref pointing to exact cheat sheet sentence. All notes in English.`;
+
+// ═══════════════════════════════════════════════
+// MOCK TEST — AI-generated questions
+// ═══════════════════════════════════════════════
+let currentMockType='random', currentMockQ='', currentMockTarget='', currentMockLabel='', mockIdeal='';
+
+const QUESTION_SYSTEM = `You are a Dutch A2 inburgering writing exam creator.
+Generate a unique, realistic exam task of the requested type.
+Return ONLY valid JSON, no markdown fences:
+{
+  "q": "The task description in Dutch (use bullet points with •)",
+  "t": "word count target string, e.g. 40–50 woorden",
+  "l": "Short English label, e.g. Short informal email"
+}
+
+Task types and their Dutch A2 conventions:
+- short_informal: friendly/personal message to a friend or family. 40–50 words. Use Hoi [naam], and Groetjes. Real-life scenarios: declining invitation, asking a favour, giving news, childcare, work overtime, birthdays, illness, rescheduling.
+- short_formal: formal email to organisation or company. 40–50 words. Use Geachte heer/mevrouw, and Met vriendelijke groet. Scenarios: requesting info/course/rental, making/cancelling appointment, responding to ad.
+- complaint: formal complaint email. 50–60 words. Use Geachte heer/mevrouw. Scenarios: broken household appliance, bad service, wrong order, repair request.
+- invite: invitation email to friend or neighbourhood. 40–50 words. Scenarios: birthday party, bbq, sport event, neighbourhood dinner.
+- wijkkrant: short community newsletter piece. 60–80 words. ALWAYS start greeting «Hallo allemaal,» and ALWAYS close with «Fijne dag allemaal!». Scenarios: favourite food from home country, recent holiday, new household appliance, family life, local tip.
+
+Make every question UNIQUE and DIFFERENT from the usual examples. Use specific Dutch names, days, times, and realistic situations. Write the task description (q) only in Dutch.`;
+
+async function genQ(type) {
+  const types = ['short_informal','short_formal','complaint','invite','wijkkrant'];
+  currentMockType = type === 'random' ? types[Math.floor(Math.random()*types.length)] : type;
+  mockIdeal = '';
+
+  // Show loading state
+  document.getElementById('mock-qlabel').textContent = currentMockType.replace('_',' ');
+  document.getElementById('mock-qtext').textContent = '⏳ Generating unique exam task…';
+  document.getElementById('mock-wtarget').textContent = '';
+  document.getElementById('mock-answer').value = '';
+  document.getElementById('mock-wc').textContent = '0 words';
+  document.getElementById('mock-qcard').style.display = 'block';
+  document.getElementById('mock-fbcard').style.display = 'none';
+  document.getElementById('mock-ideal').style.display = 'none';
+  document.getElementById('mock-answer').disabled = true;
+  document.querySelector('#mock-qcard .btn-dark').disabled = true;
+
+  // Disable all question-type buttons while generating
+  document.querySelectorAll('#mocktest .qbtn').forEach(b => b.disabled = true);
+
+  try {
+    const raw = await callAI(QUESTION_SYSTEM, `Generate a task of type: ${currentMockType}`);
+    const q = parseJSON(raw);
+    if (!q || !q.q) throw new Error('AI returned an unexpected response. Please try again.');
+    currentMockQ = q.q;
+    currentMockTarget = q.t;
+    currentMockLabel = q.l;
+    document.getElementById('mock-qlabel').textContent = q.l;
+    document.getElementById('mock-qtext').textContent = q.q;
+    document.getElementById('mock-wtarget').textContent = '📝 Target: ' + q.t;
+    document.getElementById('mock-answer').disabled = false;
+    document.getElementById('mock-answer').focus();
+  } catch(e) {
+    document.getElementById('mock-qtext').textContent = '❌ Error: ' + e.message;
+  }
+
+  document.querySelector('#mock-qcard .btn-dark').disabled = false;
+  document.querySelectorAll('#mocktest .qbtn').forEach(b => b.disabled = false);
+}
+
+document.getElementById('mock-answer').addEventListener('input',function(){
+  const w=this.value.trim().split(/\s+/).filter(x=>x.length>0).length;
+  document.getElementById('mock-wc').textContent=w+' words';
+});
+
+async function checkMock(){
+  const answer=document.getElementById('mock-answer').value.trim();
+  if(!answer){alert('Please write your answer first!');return;}
+  const btn=document.querySelector('#mock-qcard .btn-dark');
+  btn.textContent='⏳ Checking...'; btn.disabled=true;
+  document.getElementById('mock-fbcard').style.display='none';
+  document.getElementById('mock-ideal').style.display='none';
+  try {
+    const raw = await callAI(FEEDBACK_SYSTEM, `TASK:\n${currentMockQ}\n\nTARGET: ${currentMockTarget}\n\nSTUDENT ANSWER:\n${answer}`);
+    const fb = parseJSON(raw);
+    if(!fb){ throw new Error('Could not parse feedback JSON'); }
+    saveProgress(currentMockType, fb.score, fb.grammar_mistakes, fb.spelling);
+    renderFeedback('mock-fb', fb);
+    document.getElementById('mock-fbcard').style.display='block';
+    document.getElementById('mock-fbcard').scrollIntoView({behavior:'smooth',block:'start'});
+    // Get ideal answer in background (delayed to prevent rate limit on free tiers)
+    setTimeout(() => {
+      callAI(`Write a perfect A2 Dutch answer using ONLY these templates:\n${TK}\nWrite ONLY the Dutch text, nothing else.`,
+        `TASK:\n${currentMockQ}\nTARGET: ${currentMockTarget}`, 500)
+        .then(r=>{ mockIdeal=r; }).catch(()=>{});
+    }, 1500);
+  } catch(e){
+    document.getElementById('mock-fb').innerHTML=`<p style="color:#991b1b;">Error: ${e.message}</p>`;
+    document.getElementById('mock-fbcard').style.display='block';
+  }
+  btn.textContent='✅ Check answer'; btn.disabled=false;
+}
+
+// ═══════════════════════════════════════════════
+// FULL EXAM SIMULATION — AI-generated tasks
+// ═══════════════════════════════════════════════
+let examData = null, examTimer = null, examSeconds = 0, examIdeal = '';
+
+const EXAM_QUESTION_SYSTEM = `You are a Dutch A2 inburgering exam creator. Generate a complete, unique, realistic exam with 3 tasks.
+Return ONLY valid JSON, no markdown fences:
+{
+  "tasks": [
+    {
+      "num": 1,
+      "type": "form",
+      "label": "Opdracht 1 — Formulier",
+      "target": "Fill in all fields",
+      "q": "An varied form in Dutch (e.g. sports club, library, doctor's office, language course, housing, childcare — not always the same). Show ALL blank fields with underscores like: Naam: _____________",
+      "hint": "Short English hint about filling it in"
+    },
+    {
+      "num": 2,
+      "type": "short",
+      "label": "Opdracht 2 — Kort e-mail",
+      "target": "40–50 woorden",
+      "q": "A unique short email task in Dutch (informal OR formal — pick randomly). Include 3–4 bullet points of what to write.",
+      "hint": "Short English hint about tone (formal/informal) and structure"
+    },
+    {
+      "num": 3,
+      "type": "long",
+      "label": "Opdracht 3 — Lang e-mail of Wijkkrant",
+      "target": "60–80 woorden",
+      "q": "A unique longer task in Dutch — either a formal complaint letter OR a wijkkrant piece (randomly choose). Include 4–6 bullet points. If wijkkrant, remind to use Hallo allemaal and Fijne dag allemaal.",
+      "hint": "Short English hint about the task type"
+    }
+  ]
+}
+Make every exam UNIQUE. Use specific Dutch names, dates, places. Write all task prompts (q) in Dutch.`;
+
+async function startExam() {
+  const startBtn = document.querySelector('#exam-intro .btn-red');
+  startBtn.textContent = '⏳ Generating Exam…';
+  startBtn.disabled = true;
+
+  examIdeal = '';
+  document.getElementById('exam-fbcard').style.display = 'none';
+  document.getElementById('exam-ideal').style.display = 'none';
+
+  try {
+    const raw = await callAI(EXAM_QUESTION_SYSTEM, 'Generate a complete unique Dutch A2 exam now.', 1200);
+    const parsed = parseJSON(raw);
+    if (!parsed || !parsed.tasks || parsed.tasks.length < 3) throw new Error('AI returned an invalid exam. Please try again.');
+
+    const set = parsed;
+    examData = { set, answers: ['', '', ''], startTime: Date.now() };
+    document.getElementById('exam-intro').style.display = 'none';
+    document.getElementById('exam-area').style.display = 'block';
+
+    // Build task UI
+    let html = '';
+    set.tasks.forEach((t, i) => {
+      html += `<div class="exam-task">
+        <div class="exam-task-num">${t.label}</div>
+        <div class="exam-task-body">${t.q}</div>
+        <div style="font-size:11px;color:#888;margin-bottom:0.5rem;">💡 ${t.hint}</div>
+        ${t.type === 'form'
+          ? `<textarea class="answer-area" id="exam-ans-${i}" placeholder="Fill in the form fields here, e.g.:\nNaam: Smith\nVoornaam: Alex\n..." style="min-height:120px;" oninput="updateExamProgress()"></textarea>`
+          : `<textarea class="answer-area" id="exam-ans-${i}" placeholder="Write your Dutch answer here..." oninput="updateExamWC(${i},this.value); updateExamProgress()"></textarea>
+             <div style="text-align:right;font-size:11px;color:#aaa;margin-top:4px;" id="exam-wc-${i}">0 words · target: ${t.target}</div>`
+        }
+      </div>`;
+    });
+    document.getElementById('exam-tasks').innerHTML = html;
+
+    // Timer
+    examSeconds = 0;
+    clearInterval(examTimer);
+    examTimer = setInterval(() => {
+      examSeconds++;
+      const m = Math.floor(examSeconds / 60), s = examSeconds % 60;
+      document.getElementById('exam-timer-display').textContent = `⏱ ${m}:${s.toString().padStart(2, '0')}`;
+    }, 1000);
+
+  } catch(e) {
+    alert('Could not generate exam: ' + e.message);
+  }
+
+  startBtn.textContent = '▶ Start New Exam';
+  startBtn.disabled = false;
+}
+
+function updateExamWC(i,val){
+  const w=val.trim().split(/\s+/).filter(x=>x.length>0).length;
+  const el=document.getElementById('exam-wc-'+i);
+  if(el) el.textContent=w+' words · target: '+examData.set.tasks[i].target;
+}
+
+function updateExamProgress(){
+  const filled=examData.set.tasks.filter((_,i)=>{
+    const el=document.getElementById('exam-ans-'+i);
+    return el&&el.value.trim().length>10;
+  }).length;
+  document.getElementById('exam-pbar').style.width=(filled/examData.set.tasks.length*100)+'%';
+}
+
+function resetExam(){
+  clearInterval(examTimer);
+  document.getElementById('exam-area').style.display='none';
+  document.getElementById('exam-intro').style.display='block';
+}
+
+async function submitExam(){
+  clearInterval(examTimer);
+  const answers = examData.set.tasks.map((_,i)=>{
+    const el=document.getElementById('exam-ans-'+i);
+    return el?el.value.trim():'';
+  });
+  if(answers.every(a=>a.length<5)){alert('Please write at least one answer!');return;}
+
+  const submitBtn=document.querySelector('#exam-area .btn-red');
+  submitBtn.textContent='⏳ Checking all tasks...'; submitBtn.disabled=true;
+
+  const tasksText = examData.set.tasks.map((t,i)=>
+    `TASK ${t.num} (${t.label}, target: ${t.target}):\n${t.q}\n\nSTUDENT ANSWER ${t.num}:\n${answers[i]||'(no answer)'}`
+  ).join('\n\n---\n\n');
+
+  const examSystem = `You are a Dutch A2 inburgering exam teacher grading a full exam. Student has poor memory. Grade all 3 tasks together.
+
+${TK}
+
+Return ONLY valid JSON:
+{
+  "total_score": 21,
+  "total_max": 30,
+  "grade": "Pass",
+  "tasks": [
+    {
+      "task_num": 1,
+      "score": 8,
+      "max": 10,
+      "requirements": [{"item":"req","ok":true,"note":"English note"}],
+      "grammar_mistakes": [{"wrong":"x","correct":"y","rule":"rule","explanation_en":"English","template_ref":"cheat sheet sentence"}],
+      "spelling": [{"wrong":"x","correct":"y"}],
+      "well_done": ["point"],
+      "tip": "tip in English"
+    }
+  ],
+  "overall_feedback": "2-3 sentences overall feedback in English",
+  "top_mistakes_to_fix": ["mistake 1 pattern","mistake 2 pattern"],
+  "template_suggestions": ["useful template sentence","another one"]
+}`;
+
+  try {
+    const raw = await callAI(examSystem, tasksText, 2000);
+    const fb = parseJSON(raw);
+    if(!fb) throw new Error('Could not parse exam feedback');
+
+    // Save to progress
+    const totalPct = Math.round(fb.total_score/fb.total_max*10);
+    const allMistakes = fb.tasks.flatMap(t=>t.grammar_mistakes||[]);
+    const allSpelling = fb.tasks.flatMap(t=>t.spelling||[]);
+    saveProgress('full_exam', totalPct, allMistakes, allSpelling);
+
+    renderExamFeedback(fb, examData.set.tasks);
+    document.getElementById('exam-area').style.display='none';
+    document.getElementById('exam-fbcard').style.display='block';
+    document.getElementById('exam-fbcard').scrollIntoView({behavior:'smooth',block:'start'});
+
+    // Ideal answers in background (delayed to avoid rate limit)
+    const idealPrompt = examData.set.tasks.map((t,i)=>
+      `TASK ${t.num}: ${t.q}\nTARGET: ${t.target}`).join('\n\n---\n\n');
+    setTimeout(() => {
+      callAI(`Write perfect A2 model answers for all 3 tasks using ONLY these templates:\n${TK}\nLabel each: TASK 1:, TASK 2:, TASK 3:. Write only Dutch text.`, idealPrompt, 800)
+        .then(r=>{examIdeal=r;}).catch(()=>{});
+    }, 1500);
+
+  } catch(e){
+    document.getElementById('exam-fb').innerHTML=`<p style="color:#991b1b;">Error: ${e.message}</p>`;
+    document.getElementById('exam-area').style.display='none';
+    document.getElementById('exam-fbcard').style.display='block';
+  }
+  submitBtn.textContent='📤 Submit Full Exam'; submitBtn.disabled=false;
+}
+
+function renderExamFeedback(fb, tasks){
+  const pct = Math.round(fb.total_score/fb.total_max*100);
+  const color = pct>=70?'#065f46':pct>=55?'#92400e':'#991b1b';
+  let html=`<div style="display:flex;align-items:baseline;gap:12px;margin-bottom:1rem;">
+    <div style="font-size:32px;font-weight:700;color:${color};">${fb.total_score}<span style="font-size:16px;color:#888;font-weight:400;">/${fb.total_max}</span></div>
+    <div style="font-size:14px;color:${color};font-weight:600;">${fb.grade||''}</div>
+    <div style="font-size:12px;color:#888;">${pct}%</div>
+  </div>
+  <div style="font-size:13px;color:#555;line-height:1.7;margin-bottom:1rem;">${fb.overall_feedback||''}</div>`;
+
+  (fb.tasks||[]).forEach((t,i)=>{
+    const task=tasks[i]||{};
+    html+=`<div style="margin-bottom:1rem;border-top:0.5px solid #eee;padding-top:0.75rem;">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#991b1b;margin-bottom:0.5rem;">${task.label||'Task '+(i+1)} — ${t.score}/${t.max}</div>`;
+    html+=renderFeedbackHTML(t);
+    html+='</div>';
+  });
+
+  if(fb.top_mistakes_to_fix&&fb.top_mistakes_to_fix.length){
+    html+=`<div style="margin-top:0.75rem;"><div class="fb-sec-title">🔴 Top mistakes to fix before exam</div>`;
+    fb.top_mistakes_to_fix.forEach(m=>{ html+=`<div style="display:inline-block;" class="mistake-tag">${m}</div>`; });
+    html+='</div>';
+  }
+  document.getElementById('exam-fb').innerHTML=html;
+}
+
+// ═══════════════════════════════════════════════
+// RENDER FEEDBACK (shared)
+// ═══════════════════════════════════════════════
+function renderFeedback(targetId, fb){
+  document.getElementById(targetId).innerHTML = renderFeedbackHTML(fb, true);
+}
+
+function renderFeedbackHTML(fb, showScore=true){
+  let html='';
+  if(showScore){
+    html+=`<div style="display:flex;align-items:baseline;gap:12px;margin-bottom:0.75rem;">
+      <div class="fb-score">${fb.score}<span>/10</span></div>
+      <div style="font-size:14px;color:#555;">${fb.score_label||''}</div>
+    </div>`;
+  }
+  // Requirements
+  html+=`<div class="fb-sec"><div class="fb-sec-title">Requirements</div>`;
+  (fb.requirements||[]).forEach(r=>{
+    html+=`<div class="fb-row">${r.ok?'✅':'❌'} <strong>${r.item}</strong>`;
+    if(r.note) html+=`<span class="fb-en">${r.note}</span>`;
+    html+='</div>';
+  });
+  html+='</div>';
+  // Grammar
+  if(fb.grammar_mistakes&&fb.grammar_mistakes.length){
+    html+=`<div class="fb-sec"><div class="fb-sec-title">Grammar mistakes</div>`;
+    fb.grammar_mistakes.forEach(g=>{
+      html+=`<div class="fb-row fb-err">❌ <strong>${g.wrong}</strong> → <span style="color:#065f46;font-weight:600;">${g.correct}</span>
+        <span class="fb-en">${g.explanation_en}</span>`;
+      if(g.template_ref) html+=`<span class="fb-tref">💡 From your cheat sheet: "${g.template_ref}"</span>`;
+      html+='</div>';
+    });
+    html+='</div>';
+  } else {
+    html+=`<div class="fb-sec"><div class="fb-sec-title">Grammar</div><div class="fb-row fb-ok">✅ No major grammar mistakes!</div></div>`;
+  }
+  // Spelling
+  if(fb.spelling&&fb.spelling.length){
+    html+=`<div class="fb-sec"><div class="fb-sec-title">Spelling</div>`;
+    fb.spelling.forEach(s=>{ html+=`<div class="fb-row fb-err">❌ <strong>${s.wrong}</strong> → <span style="color:#065f46;font-weight:600;">${s.correct}</span></div>`; });
+    html+='</div>';
+  } else {
+    html+=`<div class="fb-sec"><div class="fb-sec-title">Spelling</div><div class="fb-row fb-ok">✅ No spelling errors!</div></div>`;
+  }
+  // Well done
+  if(fb.well_done&&fb.well_done.length){
+    html+=`<div class="fb-sec"><div class="fb-sec-title">What you did well</div>`;
+    fb.well_done.forEach(w=>{ html+=`<div class="fb-row fb-ok">✅ ${w}</div>`; });
+    html+='</div>';
+  }
+  // Template suggestions
+  if(fb.template_suggestions&&fb.template_suggestions.length){
+    html+=`<div class="fb-sec"><div class="fb-sec-title">💡 Templates you could have used</div>`;
+    fb.template_suggestions.forEach(t=>{ html+=`<div class="fb-row"><span class="fb-tref" style="display:inline-block;margin:0;">${t}</span></div>`; });
+    html+='</div>';
+  }
+  // Tip
+  if(fb.tip) html+=`<div class="fb-tip">💡 <strong>Exam tip:</strong> ${fb.tip}</div>`;
+  return html;
+}
+
+function toggleIdeal(mode){
+  const card=document.getElementById(mode+'-ideal');
+  const txt=document.getElementById(mode+'-ideal-text');
+  const ideal=mode==='mock'?mockIdeal:examIdeal;
+  if(card.style.display==='none'){
+    if(!ideal){txt.textContent='Loading ideal answer...'; card.style.display='block';}
+    else{txt.textContent=ideal; card.style.display='block';}
+    card.scrollIntoView({behavior:'smooth',block:'start'});
+  } else { card.style.display='none'; }
+}
+
+// ═══════════════════════════════════════════════
+// PROGRESS / HISTORY
+// ═══════════════════════════════════════════════
+function saveProgress(type, score, grammarMistakes, spelling){
+  let history=[];
+  try{ history=JSON.parse(localStorage.getItem('dutch_history')||'[]'); }catch(e){}
+  const entry={
+    date:new Date().toLocaleDateString('nl-NL'),
+    type, score,
+    mistakes:(grammarMistakes||[]).map(m=>m.rule).filter(Boolean),
+    spelling:(spelling||[]).map(s=>s.wrong).filter(Boolean)
+  };
+  history.unshift(entry);
+  if(history.length>50) history=history.slice(0,50);
+  localStorage.setItem('dutch_history',JSON.stringify(history));
+}
+
+function renderProgress(){
+  let history=[];
+  try{ history=JSON.parse(localStorage.getItem('dutch_history')||'[]'); }catch(e){}
+  const el=document.getElementById('progress-content');
+  if(!history.length){el.innerHTML='<p style="font-size:13px;color:#888;">No sessions yet. Complete a mock test or full exam!</p>';return;}
+
+  // Count mistake frequency
+  const mistakeCount={};
+  history.forEach(h=>(h.mistakes||[]).forEach(m=>{mistakeCount[m]=(mistakeCount[m]||0)+1;}));
+  const topMistakes=Object.entries(mistakeCount).sort((a,b)=>b[1]-a[1]).slice(0,5);
+
+  // Count spelling errors
+  const spellCount={};
+  history.forEach(h=>(h.spelling||[]).forEach(s=>{spellCount[s]=(spellCount[s]||0)+1;}));
+  const topSpelling=Object.entries(spellCount).sort((a,b)=>b[1]-a[1]).slice(0,5);
+
+  const avg=history.length?Math.round(history.reduce((a,h)=>a+h.score,0)/history.length):0;
+  const recent5=history.slice(0,5);
+
+  let html=`<div class="grid2" style="gap:8px;margin-bottom:1rem;">
+    <div style="background:#f5f4f0;border-radius:8px;padding:10px;text-align:center;">
+      <div style="font-size:22px;font-weight:700;">${avg}<span style="font-size:13px;color:#888;">/10</span></div>
+      <div style="font-size:11px;color:#888;">avg score</div>
+    </div>
+    <div style="background:#f5f4f0;border-radius:8px;padding:10px;text-align:center;">
+      <div style="font-size:22px;font-weight:700;">${history.length}</div>
+      <div style="font-size:11px;color:#888;">sessions</div>
+    </div>
+  </div>`;
+
+  if(topMistakes.length){
+    html+=`<div class="slabel">🔴 Repeated grammar mistakes</div><div style="margin-bottom:0.75rem;">`;
+    topMistakes.forEach(([m,c])=>{ html+=`<span class="mistake-tag">${m} ×${c}</span>`; });
+    html+='</div>';
+  }
+
+  if(topSpelling.length){
+    html+=`<div class="slabel">🔤 Repeated spelling errors</div><div style="margin-bottom:0.75rem;">`;
+    topSpelling.forEach(([s,c])=>{ html+=`<span class="mistake-tag">${s} ×${c}</span>`; });
+    html+='</div>';
+  }
+
+  html+=`<div class="slabel">Recent sessions</div>`;
+  recent5.forEach(h=>{
+    const pct=Math.round(h.score/10*100);
+    const col=pct>=70?'#d1fae5':pct>=50?'#fef3c7':'#fee2e2';
+    const tcol=pct>=70?'#065f46':pct>=50?'#92400e':'#991b1b';
+    html+=`<div class="hist-row">
+      <div><div style="font-size:12px;font-weight:500;">${h.type.replace('_',' ')}</div><div style="font-size:11px;color:#888;">${h.date}</div></div>
+      <div class="score-dot" style="background:${col};color:${tcol};">${h.score}</div>
+    </div>`;
+  });
+
+  el.innerHTML=html;
+}
+
+function clearProgress(){
+  if(confirm('Clear all progress history?')){
+    localStorage.removeItem('dutch_history');
+    renderProgress();
+  }
+}
+
+// ═══════════════════════════════════════════════
+// UTILS
+// ═══════════════════════════════════════════════
+function parseJSON(raw){
+  try{
+    const clean=raw.replace(/^```json\s*/,'').replace(/^```\s*/,'').replace(/```\s*$/,'').trim();
+    return JSON.parse(clean);
+  }catch(e){
+    // Try to extract JSON object
+    const match=raw.match(/\{[\s\S]*\}/);
+    if(match){ try{return JSON.parse(match[0]);}catch(e2){} }
+    return null;
+  }
+}
+
+// ═══════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════
+loadSettings();
+</script>
+</body>
+</html>

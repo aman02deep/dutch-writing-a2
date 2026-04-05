@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI-powered Dutch A2 writing practice — unique exam tasks generated fresh every time.">
+    <title>AI Writing Practice — Dutch A2</title>
+    <link rel="stylesheet" href="../css/common/style.css">
+    <link rel="stylesheet" href="../css/common/navigation.css">
+    <link rel="stylesheet" href="../css/common/settings.css">
+    <style>
+        /* ── Page layout ── */
+        .page-wrap { max-width: 820px; margin: 0 auto; padding: 28px 20px 60px; }
+
+        /* ── Mode selector ── */
+        .mode-bar {
+            display: flex; gap: 10px; margin-bottom: 24px;
+        }
+        .mode-btn {
+            flex: 1; padding: 13px 10px; border-radius: 10px; box-sizing: border-box;
+            border: 2px solid #e0e0e0; background: #fff; color: #555; text-align: center;
+            font-size: 0.92rem; font-weight: 600; cursor: pointer; transition: 0.18s;
+        }
+        .mode-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .mode-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+        .mode-btn.exam-btn { border-color: #d92626; color: #d92626; }
+        .mode-btn.exam-btn.active { background: #d92626; color: #fff; border-color: #d92626; }
+
+        /* ── Type picker (mock test types) ── */
+        #type-picker { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+        .type-btn {
+            padding: 8px 15px; border-radius: 20px; border: 1.5px solid #ddd;
+            background: #fff; color: #555; font-size: 0.83rem; font-weight: 600;
+            cursor: pointer; transition: 0.15s;
+        }
+        .type-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .type-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+        /* ── Generate button ── */
+        #generate-btn, #exam-btn {
+            width: 100%; padding: 14px; border-radius: 10px; font-size: 1rem; font-weight: 700;
+            cursor: pointer; border: none; transition: 0.18s; margin-bottom: 20px;
+        }
+        #generate-btn { background: var(--primary); color: #fff; }
+        #generate-btn:hover:not(:disabled) { background: #003d99; }
+        #exam-btn { background: #d92626; color: #fff; }
+        #exam-btn:hover:not(:disabled) { background: #b71c1c; }
+        #generate-btn:disabled, #exam-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        /* ── Task card ── */
+        .task-card {
+            background: #fff; border-radius: 12px; padding: 24px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.07); margin-bottom: 18px;
+            border-left: 4px solid var(--primary);
+        }
+        .task-card.exam-border { border-left-color: #d92626; }
+        .task-label {
+            font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.06em; color: #d92626; margin-bottom: 6px;
+        }
+        .task-title { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+        .badge-target {
+            display: inline-block; background: #fff3e0; color: #e65100;
+            font-size: 0.75rem; font-weight: 600; border-radius: 10px;
+            padding: 3px 10px; margin-bottom: 12px;
+        }
+        .task-body {
+            background: #f8f9fa; border-radius: 8px; padding: 14px 16px;
+            font-size: 0.93rem; line-height: 1.75; white-space: pre-wrap;
+            margin-bottom: 12px; color: #333;
+        }
+        .task-hint {
+            font-size: 0.8rem; color: #888; margin-bottom: 14px;
+        }
+        .loading-pulse {
+            animation: pulse 1.4s ease-in-out infinite;
+            color: var(--primary); font-weight: 600;
+        }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.45} }
+
+        /* ── HTML Form (Task 1) ── */
+        .form-grid { display: grid; gap: 12px; margin-bottom: 16px; }
+        .form-field label { display: block; font-size: 0.85rem; font-weight: 600; color: #555; margin-bottom: 4px; }
+        .form-field input {
+            width: 100%; padding: 10px 13px; border: 1.5px solid #ddd;
+            border-radius: 8px; font-size: 0.95rem; font-family: inherit;
+            box-sizing: border-box; transition: 0.15s;
+        }
+        .form-field input:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 0 3px rgba(0,82,204,0.12); }
+
+        /* ── Textarea answer ── */
+        .answer-box {
+            width: 100%; min-height: 170px; padding: 13px 15px;
+            border: 1.5px solid #ddd; border-radius: 8px; font-size: 0.95rem;
+            font-family: inherit; resize: vertical; box-sizing: border-box;
+            line-height: 1.6; transition: 0.15s;
+        }
+        .answer-box:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 0 3px rgba(0,82,204,0.12); }
+        .word-count-bar {
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.78rem; color: #aaa; margin-top: 5px; margin-bottom: 12px;
+        }
+        .wc-ok { color: #2e7d32; font-weight: 600; }
+        .wc-low { color: #e65100; font-weight: 600; }
+
+        /* ── Action buttons ── */
+        .action-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+        .btn-check {
+            background: var(--primary); color: #fff; padding: 11px 22px;
+            border-radius: 9px; border: none; font-weight: 700; font-size: 0.92rem; cursor: pointer;
+        }
+        .btn-check.red { background: #d92626; }
+        .btn-check:disabled { opacity: 0.55; cursor: not-allowed; }
+        .btn-ideal {
+            background: #fff; border: 1.5px solid #ccc; color: #555;
+            padding: 11px 18px; border-radius: 9px; font-size: 0.88rem; font-weight: 600; cursor: pointer;
+        }
+        .btn-retry {
+            background: #fff; border: 1.5px solid var(--primary); color: var(--primary);
+            padding: 11px 18px; border-radius: 9px; font-size: 0.88rem; font-weight: 600; cursor: pointer;
+        }
+
+        /* ── Exam progress bar ── */
+        .exam-progress-wrap { background: #eee; border-radius: 10px; height: 6px; margin-bottom: 20px; }
+        .exam-progress-bar { background: #d92626; height: 6px; border-radius: 10px; transition: width 0.4s; }
+        .exam-timer { text-align: right; font-size: 0.8rem; color: #888; margin-bottom: 10px; font-weight: 600; }
+
+        /* ── Feedback panel ── */
+        .fb-panel {
+            background: #fff; border-radius: 12px; padding: 22px 24px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.07); margin-top: 4px;
+        }
+        .fb-score-row { display: flex; align-items: baseline; gap: 12px; margin-bottom: 14px; }
+        .fb-score { font-size: 2.2rem; font-weight: 800; }
+        .fb-score-label { font-size: 0.95rem; color: #666; }
+        .fb-section { margin-bottom: 14px; }
+        .fb-section-title { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #aaa; margin-bottom: 6px; }
+        .fb-row { padding: 6px 0; border-bottom: 1px solid #f3f3f3; font-size: 0.9rem; line-height: 1.55; }
+        .fb-row:last-child { border-bottom: none; }
+        .fb-ok { color: #2e7d32; }
+        .fb-err { color: #d92626; }
+        .fb-en { color: #999; font-size: 0.8rem; display: block; margin-top: 2px; }
+        .fb-tref { background: #fff8e7; border-radius: 4px; padding: 2px 7px; font-size: 0.78rem; color: #e65100; display: inline-block; margin-top: 3px; }
+        .fb-tip { background: #e3f2fd; border-left: 3px solid #1976d2; border-radius: 0 8px 8px 0; padding: 10px 14px; font-size: 0.88rem; color: #1565c0; margin-top: 10px; line-height: 1.6; }
+        .ideal-box { background: #f1f8e9; border-radius: 10px; padding: 16px 18px; font-size: 0.9rem; line-height: 1.75; white-space: pre-wrap; color: #2e7d32; margin-top: 12px; }
+
+        /* ── Exam total score ── */
+        .exam-total { text-align: center; padding: 28px 0 10px; }
+        .exam-total-score { font-size: 3rem; font-weight: 900; }
+        .exam-grade { font-size: 1.15rem; font-weight: 700; margin-top: 4px; }
+        .exam-overall { font-size: 0.92rem; color: #666; line-height: 1.65; margin: 12px 0; }
+        .mistake-tag { display: inline-block; background: #ffebee; color: #c62828; border-radius: 5px; padding: 3px 8px; font-size: 0.78rem; margin: 2px; }
+
+        /* ── Cheat Sheet FAB ── */
+        .cs-fab {
+            position: fixed; bottom: 28px; right: 28px; z-index: 1100;
+            width: 52px; height: 52px; border-radius: 50%;
+            background: var(--primary); color: #fff; border: none; cursor: pointer;
+            font-size: 1.25rem; box-shadow: 0 4px 18px rgba(0,82,204,0.35);
+            display: flex; align-items: center; justify-content: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .cs-fab:hover { transform: scale(1.1); box-shadow: 0 6px 24px rgba(0,82,204,0.45); }
+        .cs-fab-label {
+            position: fixed; bottom: 34px; right: 88px; z-index: 1100;
+            background: #333; color: #fff; font-size: 0.75rem; font-weight: 600;
+            padding: 5px 10px; border-radius: 6px; white-space: nowrap;
+            opacity: 0; pointer-events: none; transition: opacity 0.2s;
+        }
+        .cs-fab:hover + .cs-fab-label { opacity: 1; }
+
+        /* ── AI Tools FAB ── */
+        .ai-fab-container { position: fixed; bottom: 92px; right: 28px; z-index: 1100; display: flex; flex-direction: column-reverse; align-items: center; gap: 12px; }
+        .ai-fab-menu { display: flex; flex-direction: column; gap: 10px; opacity: 0; pointer-events: none; transform: translateY(20px); transition: 0.2s; }
+        .ai-fab-container:hover .ai-fab-menu, .ai-fab-container.open .ai-fab-menu { opacity: 1; pointer-events: auto; transform: translateY(0); }
+        .ai-fab {
+            width: 52px; height: 52px; border-radius: 50%; background: #444; color: #fff; border: none; cursor: pointer;
+            font-size: 1.25rem; box-shadow: 0 4px 18px rgba(0,0,0,0.25); display: flex; align-items: center; justify-content: center; transition: 0.2s;
+        }
+        .ai-fab:hover { background: #333; transform: scale(1.1); }
+        .ai-mini-fab {
+            width: 42px; height: 42px; border-radius: 50%; background: #fff; color: #333;
+            border: 1px solid #ddd; cursor: pointer; display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); position: relative; transition: 0.2s;
+        }
+        .ai-mini-fab:hover { background: #f0f0f0; transform: scale(1.1); }
+        .ai-mini-label {
+            position: absolute; right: 54px; background: #333; color: #fff; padding: 4px 8px;
+            border-radius: 4px; font-size: 0.75rem; white-space: nowrap; opacity: 0; pointer-events: none; transition: 0.2s;
+        }
+        .ai-mini-fab:hover .ai-mini-label { opacity: 1; }
+
+        /* ── Cheat Sheet Overlay Modal ── */
+        .cs-overlay {
+            position: fixed; inset: 0; z-index: 2000;
+            background: rgba(0,0,0,0.55); backdrop-filter: blur(3px);
+            display: none; align-items: center; justify-content: center;
+        }
+        .cs-overlay.open { display: flex; }
+        .cs-modal {
+            width: 90%; max-width: 780px; height: 85vh; border-radius: 12px;
+            background: #fff; display: flex; flex-direction: column; overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+            animation: popIn 0.2s ease-out;
+        }
+        @keyframes popIn { from { transform: scale(0.95); opacity: 0; } to { transform: none; opacity: 1; } }
+        .cs-modal-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 16px 20px; border-bottom: 1px solid #eee;
+            background: var(--primary); color: #fff;
+        }
+        .cs-modal-header h2 { margin: 0; font-size: 1.05rem; font-weight: 700; }
+        .cs-modal-close {
+            background: rgba(255,255,255,0.18); border: none; color: #fff;
+            width: 32px; height: 32px; border-radius: 50%; font-size: 1.1rem;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: background 0.15s;
+        }
+        .cs-modal-close:hover { background: rgba(255,255,255,0.35); }
+        .cs-tabs {
+            display: flex; overflow-x: auto; border-bottom: 1px solid #eee;
+            background: #fafafa; padding: 0 6px; gap: 2px; flex-shrink: 0;
+            scrollbar-width: none;
+        }
+        .cs-tabs::-webkit-scrollbar { display: none; }
+        .cs-tab {
+            padding: 10px 14px; font-size: 0.8rem; font-weight: 600; color: #777;
+            border: none; background: transparent; cursor: pointer; white-space: nowrap;
+            border-bottom: 2.5px solid transparent; transition: 0.15s; flex-shrink: 0;
+        }
+        .cs-tab:hover { color: var(--primary); }
+        .cs-tab.active { color: var(--primary); border-bottom-color: var(--primary); }
+        .cs-body { flex: 1; overflow-y: auto; padding: 18px 20px; }
+        .cs-page { display: none; }
+        .cs-page.active { display: block; }
+        .cs-section { margin-bottom: 18px; }
+        .cs-section-title {
+            font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+            color: #aaa; margin-bottom: 8px; padding-bottom: 4px; border-bottom: 1px solid #f0f0f0;
+        }
+        .cs-step {
+            display: flex; align-items: flex-start; gap: 10px; padding: 7px 0;
+            border-bottom: 1px solid #f7f7f7; font-size: 0.88rem; line-height: 1.6;
+        }
+        .cs-step:last-child { border-bottom: none; }
+        .cs-step-num {
+            min-width: 22px; height: 22px; border-radius: 50%; background: var(--primary);
+            color: #fff; font-size: 0.72rem; font-weight: 700; display: flex;
+            align-items: center; justify-content: center; margin-top: 1px; flex-shrink: 0;
+        }
+        .cs-phrase {
+            background: #f8f9fa; border-left: 3px solid var(--primary); border-radius: 0 6px 6px 0;
+            padding: 6px 10px; font-size: 0.85rem; margin-bottom: 5px; line-height: 1.6; color: #333;
+        }
+        .cs-phrase.green { border-left-color: #2e7d32; }
+        .cs-phrase.orange { border-left-color: #e65100; }
+        .cs-phrase.red { border-left-color: #d92626; }
+        .cs-phrase .cs-en { font-size: 0.75rem; color: #888; display: block; margin-top: 2px; }
+        .cs-rule {
+            background: #fff9e6; border-left: 3px solid #f59e0b; border-radius: 0 6px 6px 0;
+            padding: 8px 12px; margin-bottom: 6px; font-size: 0.85rem; line-height: 1.65;
+        }
+        .cs-rule .cs-rule-title { font-weight: 700; font-size: 0.8rem; color: #b45309; margin-bottom: 3px; display: block; }
+        .cs-rule code { background: #fef3c7; border-radius: 3px; padding: 1px 5px; font-family: monospace; color: #b45309; }
+        .cs-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+        .cs-table th { background: #f8f9fa; text-align: left; padding: 7px 10px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: #888; }
+        .cs-table td { padding: 7px 10px; border-bottom: 1px solid #f3f3f3; vertical-align: top; }
+        .cs-table tr:last-child td { border-bottom: none; }
+        .cs-tag { display: inline-block; font-size: 0.72rem; font-weight: 600; padding: 2px 7px; border-radius: 10px; margin-right: 3px; }
+        .cs-tag.inf { background: #e3f2fd; color: #1565c0; }
+        .cs-tag.frm { background: #fff3e0; color: #e65100; }
+        .cs-tag.wk { background: #e8f5e9; color: #2e7d32; }
+        .cs-wij-box { background: #e8f5e9; border: 1.5px solid #a5d6a7; border-radius: 10px; padding: 14px 16px; font-size: 0.88rem; line-height: 1.8; margin-bottom: 10px; }
+        
+        /* ── Dashboard Stats ── */
+        .dash-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px; }
+        .stat-card { background: #fff; border-radius: 12px; padding: 16px; text-align: center; border: 1px solid #eee; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
+        .stat-val { font-size: 2rem; font-weight: 800; color: var(--primary); margin-bottom: 4px; }
+        .stat-label { font-size: 0.8rem; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.05em; }
+        .history-list { display: flex; flex-direction: column; gap: 12px; }
+        .history-item { background: #fff; border: 1px solid #eee; border-radius: 10px; padding: 14px 16px; cursor: pointer; transition: 0.15s; }
+        .history-item:hover { border-color: #ddd; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .hi-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+        .hi-date { font-size: 0.8rem; color: #888; }
+        .hi-type { font-size: 0.85rem; font-weight: 600; color: #333; background: #f0f0f0; padding: 2px 8px; border-radius: 6px; }
+        .hi-score { font-weight: 700; font-size: 1rem; }
+        .hi-details { display: none; margin-top: 12px; padding-top: 12px; border-top: 1px solid #f0f0f0; font-size: 0.9rem; line-height: 1.5; color: #444; }
+        .hi-details.open { display: block; }
+        .mistake-box { background: #fff9e6; border-left: 4px solid #f59e0b; padding: 12px 16px; border-radius: 0 8px 8px 0; margin-bottom: 12px; }
+        .mistake-count { display: inline-block; background: #f59e0b; color: #fff; font-size: 0.75rem; font-weight: 700; padding: 2px 6px; border-radius: 10px; margin-right: 6px; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-header">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-home">
+                <span class="nav-home-icon">🏠</span>
+                <span>Home</span>
+            </a>
+            <div class="nav-page-title">
+                <a href="writing.html" class="nav-parent-link">Writing Practice</a>
+                <span class="nav-separator">|</span>
+                🤖 AI Practice
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-wrap">
+        <h1 style="font-size:1.5rem;font-weight:800;margin-bottom:6px;">🤖 AI Writing Practice</h1>
+        <p style="color:#666;font-size:0.9rem;margin-bottom:22px;">Every task is freshly generated by AI — infinite unique practice, graded with detailed feedback.</p>
+
+        <!-- Mode bar -->
+        <div class="mode-bar">
+            <button class="mode-btn active" id="mode-mock" onclick="setMode('mock')">🎯 Mock Test</button>
+            <button class="mode-btn exam-btn" id="mode-exam" onclick="setMode('exam')">📋 Full Exam</button>
+            <button class="mode-btn" id="mode-dash" onclick="setMode('dash')">📊 Dashboard</button>
+        </div>
+
+        <!-- ── Floating Cheat Sheet Button ── -->
+        <button class="cs-fab" id="cs-fab" onclick="toggleCS()" title="Cheat Sheet">📋</button>
+        <span class="cs-fab-label">Cheat Sheet</span>
+
+        <!-- ── Floating AI Tools Button ── -->
+        <div class="ai-fab-container" id="ai-fab-container">
+            <button class="ai-fab" onclick="document.getElementById('ai-fab-container').classList.toggle('open')" title="AI Tools">🤖</button>
+            <div class="ai-fab-menu">
+                <button class="ai-mini-fab" onclick="copySystemPrompt('question')">📝<span class="ai-mini-label">Copy Question Prompt</span></button>
+                <button class="ai-mini-fab" onclick="copySystemPrompt('exam')">📋<span class="ai-mini-label">Copy Exam Prompt</span></button>
+                <button class="ai-mini-fab" onclick="copySystemPrompt('feedback')">✅<span class="ai-mini-label">Copy Grading Prompt</span></button>
+                <button class="ai-mini-fab" onclick="openImportModal()">📥<span class="ai-mini-label">Import JSON Task</span></button>
+            </div>
+        </div>
+
+        <!-- ── Import JSON Modal ── -->
+        <div class="cs-overlay" id="import-overlay">
+            <div class="cs-modal" style="width: 500px; height: 400px; padding: 20px; flex-direction: column;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                    <h2 style="margin:0;font-size:1.1rem;">📥 Paste AI JSON</h2>
+                    <button class="cs-modal-close" style="color:#888;background:#eee;" onclick="closeImportModal()">×</button>
+                </div>
+                <textarea id="import-json-val" style="width:100%;flex:1;border:1px solid #ccc;border-radius:8px;padding:12px;font-family:monospace;font-size:0.85rem;" placeholder='{"q": "Task description...", "t": "40–50 woorden", "l": "Short informal email", "hint": "..."}'></textarea>
+                <button class="btn-check red" style="width:100%;margin-top:12px;padding:12px;" onclick="importExternalTask()">Load Task</button>
+            </div>
+        </div>
+
+        <!-- ── Cheat Sheet Overlay Modal ── -->
+        <div class="cs-overlay" id="cs-overlay" onclick="handleCSBackdrop(event)">
+            <div class="cs-modal">
+                <div class="cs-modal-header">
+                    <h2>📋 Cheat Sheet Reference</h2>
+                    <button class="cs-modal-close" onclick="toggleCS()">×</button>
+                </div>
+                <div class="cs-tabs">
+                    <button class="cs-tab active" onclick="showCS('master')">📝 Master</button>
+                    <button class="cs-tab" onclick="showCS('templates')">✉️ Templates</button>
+                    <button class="cs-tab" onclick="showCS('sentences')">💬 Sentences</button>
+                    <button class="cs-tab" onclick="showCS('grammar')">📐 Grammar</button>
+                    <button class="cs-tab" onclick="showCS('topics')">🗂 Topics</button>
+                    <button class="cs-tab" onclick="showCS('wijkkrant')">📰 Wijkkrant</button>
+                </div>
+                <div class="cs-body">
+
+                <!-- MASTER TEMPLATE -->
+                <div class="cs-page active" id="cs-master">
+                    <div class="cs-section">
+                        <div class="cs-section-title">5-Step Formula — works for ALL exam emails</div>
+                        <div class="cs-step"><span class="cs-step-num">1</span><div><strong>Greeting</strong><br><span style="color:#1565c0">Informal:</span> Hoi [naam], &nbsp;|&nbsp; <span style="color:#e65100">Formal:</span> Geachte heer/mevrouw, &nbsp;|&nbsp; <span style="color:#2e7d32">Wijkkrant:</span> Hallo allemaal,</div></div>
+                        <div class="cs-step"><span class="cs-step-num">2</span><div><strong>Opening line</strong><br>Bedankt voor de uitnodiging. &nbsp;|&nbsp; Ik schrijf u omdat ik een vraag heb. &nbsp;|&nbsp; Ik heb een advertentie gezien.</div></div>
+                        <div class="cs-step"><span class="cs-step-num">3</span><div><strong>Main content</strong><br>Helaas kan ik niet komen omdat ik [reden]. &nbsp;|&nbsp; Kunnen we op [dag] om [tijd] afspreken? &nbsp;|&nbsp; Ik wil graag meer informatie over…</div></div>
+                        <div class="cs-step"><span class="cs-step-num">4</span><div><strong>Closing line</strong><br>Ik hoop dat je/u het begrijpt. &nbsp;|&nbsp; Alvast bedankt! &nbsp;|&nbsp; Ik kijk uit naar uw reactie.</div></div>
+                        <div class="cs-step"><span class="cs-step-num">5</span><div><strong>Sign-off</strong><br><span style="color:#1565c0">Informal:</span> Groetjes, [naam] &nbsp;|&nbsp; <span style="color:#e65100">Formal:</span> Met vriendelijke groet, [naam] &nbsp;|&nbsp; <span style="color:#2e7d32">Wijkkrant:</span> Fijne dag allemaal!</div></div>
+                    </div>
+                    <div class="cs-section">
+                        <div class="cs-section-title">⚠️ Exam Day Reminders</div>
+                        <div class="cs-phrase red">NEVER write "Helaas, ik kan niet komen" — no comma after Helaas!</div>
+                        <div class="cs-phrase red">NEVER mix formal/informal: if Geachte → use "u", not "je"</div>
+                        <div class="cs-phrase red">"omdat" → verb goes to END: "omdat ik ziek BEN" ✓</div>
+                        <div class="cs-phrase green">Always give a reason with "omdat": "Helaas kan ik niet komen omdat ik moet werken."</div>
+                        <div class="cs-phrase green">Wijkkrant: ALWAYS start "Hallo allemaal," and end "Fijne dag allemaal!"</div>
+                    </div>
+                </div>
+
+                <!-- ALL TEMPLATES -->
+                <div class="cs-page" id="cs-templates">
+                    <div class="cs-section">
+                        <div class="cs-section-title"><span class="cs-tag inf">INFORMAL</span> Short message 40–50 words</div>
+                        <div class="cs-phrase">Hoi [naam],<br>Bedankt voor de uitnodiging. Helaas kan ik niet komen omdat ik moet werken / ziek ben / geen tijd heb.<br>Kunnen we op [dag] om [tijd] afspreken? Ik hoop dat je het begrijpt.<br>Groetjes, [naam]<span class="cs-en">Greeting → Thank → Decline + reason (omdat) → Propose new time → Closing</span></div>
+                    </div>
+                    <div class="cs-section">
+                        <div class="cs-section-title"><span class="cs-tag frm">FORMAL</span> Info request 40–50 words</div>
+                        <div class="cs-phrase orange">Geachte heer/mevrouw,<br>Ik schrijf u omdat ik een vraag heb over [onderwerp]. Ik heb een advertentie gezien.<br>Wat kost het per maand? Wat zijn de openingstijden? Wanneer begint de cursus?<br>Mijn naam is [naam] en mijn telefoonnummer is [nr].<br>Met vriendelijke groet, [naam]<span class="cs-en">Greeting → Opening → 3 questions → Personal info → Closing</span></div>
+                    </div>
+                    <div class="cs-section">
+                        <div class="cs-section-title"><span class="cs-tag frm">FORMAL</span> Complaint 50–60 words</div>
+                        <div class="cs-phrase orange">Geachte heer/mevrouw,<br>Ik schrijf u omdat ik een klacht heb. Ik heb [product] gekocht op [datum]. Hij werkt niet — [probleem].<br>Ik heb de bon nog. Kunt u mij bellen? Ik wil graag een oplossing.<br>Mijn telefoonnummer is [nr].<br>Met vriendelijke groet, [naam]<span class="cs-en">Greeting → Problem → Evidence → Request → Contact → Closing</span></div>
+                    </div>
+                    <div class="cs-section">
+                        <div class="cs-section-title"><span class="cs-tag inf">INFORMAL</span> Invitation 40–50 words</div>
+                        <div class="cs-phrase">Hoi [naam],<br>Ik wil je graag uitnodigen voor een feestje. Het feest is op [datum] om [tijd] bij [adres].<br>Kom je ook? Laat het me weten!<br>Groetjes, [naam]<span class="cs-en">Greeting → Invite → Details → RSVP request → Closing</span></div>
+                    </div>
+                    <div class="cs-section">
+                        <div class="cs-section-title"><span class="cs-tag inf">INFORMAL</span> Accepting invitation</div>
+                        <div class="cs-phrase">Hoi [naam],<br>Bedankt voor de uitnodiging. Ik kom graag! Tot [dag] om [tijd].<br>Groetjes, [naam]</div>
+                    </div>
+                </div>
+
+                <!-- SENTENCE BANK -->
+                <div class="cs-page" id="cs-sentences">
+                    <div class="cs-section">
+                        <div class="cs-section-title">Opening lines</div>
+                        <div class="cs-phrase">Ik schrijf u omdat ik een vraag heb. <span class="cs-en">I'm writing because I have a question. (formal)</span></div>
+                        <div class="cs-phrase">Ik schrijf u omdat ik een klacht heb. <span class="cs-en">I'm writing because I have a complaint. (formal)</span></div>
+                        <div class="cs-phrase">Ik heb een advertentie gezien. <span class="cs-en">I saw an advertisement.</span></div>
+                        <div class="cs-phrase">Bedankt voor de uitnodiging. <span class="cs-en">Thanks for the invitation.</span></div>
+                        <div class="cs-phrase">Mijn naam is [naam] en ik schrijf u omdat… <span class="cs-en">My name is… and I'm writing because…</span></div>
+                    </div>
+                    <div class="cs-section">
+                        <div class="cs-section-title">Declining / reasons (omdat = verb to END)</div>
+                        <div class="cs-phrase green">Helaas kan ik niet komen. <span class="cs-en">Unfortunately I cannot come. (NO comma after Helaas!)</span></div>
+                        <div class="cs-phrase green">Ik kan niet komen omdat ik ziek ben. <span class="cs-en">omdat → "ben" at END</span></div>
+                        <div class="cs-phrase green">Ik kan niet komen omdat ik moet werken. <span class="cs-en">omdat → "werken" at END</span></div>
+                        <div class="cs-phrase green">Ik kan niet komen omdat mijn kind ziek is. <span class="cs-en">omdat → "is" at END</span></div>
+                        <div class="cs-phrase green">Ik kan niet komen want ik heb koorts. <span class="cs-en">want → normal word order</span></div>
+                        <div class="cs-phrase green">Het spijt me dat ik niet kan komen. <span class="cs-en">I'm sorry I can't come.</span></div>
+                    </div>
+                    <div class="cs-section">
+                        <div class="cs-section-title">Questions to ask</div>
+                        <div class="cs-phrase">Wat kost het per maand? <span class="cs-en">How much does it cost per month?</span></div>
+                        <div class="cs-phrase">Wat zijn de openingstijden? <span class="cs-en">What are the opening hours?</span></div>
+                        <div class="cs-phrase">Wanneer begint de cursus? <span class="cs-en">When does the course start?</span></div>
+                        <div class="cs-phrase">Hoe groot is de [kamer/garage]? <span class="cs-en">How big is the room/garage?</span></div>
+                        <div class="cs-phrase">Kunt u mij meer informatie geven? <span class="cs-en">Can you give me more information? (formal)</span></div>
+                        <div class="cs-phrase">Is er parkeergelegenheid? <span class="cs-en">Is there parking?</span></div>
+                    </div>
+                    <div class="cs-section">
+                        <div class="cs-section-title">Appointments &amp; contact</div>
+                        <div class="cs-phrase">Kunnen we op [dag] om [tijd] afspreken? <span class="cs-en">Can we meet on [day] at [time]?</span></div>
+                        <div class="cs-phrase">Ik wil graag een afspraak maken. <span class="cs-en">I'd like to make an appointment.</span></div>
+                        <div class="cs-phrase">Kunt u mij bellen? <span class="cs-en">Can you call me? (formal)</span></div>
+                        <div class="cs-phrase">Kun je me bellen? <span class="cs-en">Can you call me? (informal)</span></div>
+                        <div class="cs-phrase">Mijn telefoonnummer is 06-12345678. <span class="cs-en">My phone number is…</span></div>
+                    </div>
+                    <div class="cs-section">
+                        <div class="cs-section-title">Fillers &amp; closings</div>
+                        <div class="cs-phrase">Ik hoop dat je/u het begrijpt. <span class="cs-en">I hope you understand.</span></div>
+                        <div class="cs-phrase">Alvast bedankt! <span class="cs-en">Thanks in advance!</span></div>
+                        <div class="cs-phrase">Ik kijk uit naar uw reactie. <span class="cs-en">I look forward to your reply. (formal)</span></div>
+                        <div class="cs-phrase">Bedankt voor uw hulp. <span class="cs-en">Thank you for your help.</span></div>
+                        <div class="cs-phrase">Ik hoop dat het kan. <span class="cs-en">I hope that's possible.</span></div>
+                    </div>
+                </div>
+
+                <!-- GRAMMAR RULES -->
+                <div class="cs-page" id="cs-grammar">
+                    <div class="cs-section">
+                        <div class="cs-section-title">Rule 1 — omdat / dat / als → verb to END</div>
+                        <div class="cs-rule"><span class="cs-rule-title">⚠️ Most common exam mistake!</span>
+                            ✅ Ik kan niet komen <strong>omdat ik ziek ben</strong>.<br>
+                            ❌ Ik kan niet komen omdat ik <code>ben ziek</code>. ← WRONG<br><br>
+                            ✅ Ik weet <strong>dat hij morgen komt</strong>.<br>
+                            ✅ <strong>Als je wilt</strong>, kun je komen.
+                        </div>
+                    </div>
+                    <div class="cs-section">
+                        <div class="cs-section-title">Rule 2 — Inversion (verb flip)</div>
+                        <div class="cs-rule"><span class="cs-rule-title">Adverb first → verb before subject</span>
+                            ✅ <strong>Helaas kan ik</strong> niet komen. (NOT: Helaas ik kan)<br>
+                            ✅ <strong>Daarom wil ik</strong> een oplossing.<br>
+                            ✅ <strong>Morgen ga ik</strong> naar de dokter.
+                        </div>
+                    </div>
+                    <div class="cs-section">
+                        <div class="cs-section-title">Rule 3 — Formal vs Informal</div>
+                        <div class="cs-rule"><span class="cs-rule-title">NEVER mix in the same email</span>
+                            Formal → <code>u, uw, Kunt u, mij, uw reactie</code><br>
+                            Informal → <code>je, jij, jouw, kun je, me, je antwoord</code>
+                        </div>
+                    </div>
+                    <div class="cs-section">
+                        <div class="cs-section-title">Rule 4 — mijn vs mij</div>
+                        <div class="cs-rule">
+                            <code>mijn</code> = my (possessive): mijn naam, mijn telefoonnummer, mijn auto<br>
+                            <code>mij</code> = me (object): bel mij, help mij, stuur mij
+                        </div>
+                    </div>
+                    <div class="cs-section">
+                        <div class="cs-section-title">Rule 5 — t-drop with jij/je questions</div>
+                        <div class="cs-rule">
+                            ✅ <strong>Werk je?</strong> / <strong>Kom je?</strong> ← je after verb → drop the -t<br>
+                            ❌ Werkt jij? / Komt jij? ← WRONG
+                        </div>
+                    </div>
+                    <div class="cs-section">
+                        <div class="cs-section-title">Rule 6 — Perfect tense helpers (GKBV)</div>
+                        <div class="cs-rule"><span class="cs-rule-title">Gaan / Komen / Blijven / Vertrekken → zijn. Everything else → hebben.</span>
+                            ✅ Ik <strong>ben gegaan</strong>. / Ik <strong>ben gekomen</strong>.<br>
+                            ✅ Ik <strong>heb gekocht</strong>. / Ik <strong>heb gewerkt</strong>.<br>
+                            Past participle always goes to END of the sentence.
+                        </div>
+                    </div>
+                    <div class="cs-section">
+                        <div class="cs-section-title">Rule 7 — Small but marked</div>
+                        <div class="cs-rule">
+                            <code>ik</code> is NEVER capital mid-sentence: "en ik kom morgen" ✅<br>
+                            Verb-second rule: Subject + <strong>Verb</strong> + Rest (in main clauses)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TOPICS -->
+                <div class="cs-page" id="cs-topics">
+                    <div class="cs-section">
+                        <div class="cs-section-title">Exam question types</div>
+                        <table class="cs-table">
+                            <tr><th>Type</th><th>Words</th><th>What to do</th></tr>
+                            <tr><td><strong>Formulier (form)</strong></td><td>—</td><td>Fill in personal details accurately</td></tr>
+                            <tr><td><strong>Kort e-mail</strong></td><td>40–50</td><td>Short focused message, all bullet points</td></tr>
+                            <tr><td><strong>Lang e-mail</strong></td><td>80–100</td><td>Full message with greeting, body, closing</td></tr>
+                            <tr><td><strong>Wijkkrant</strong></td><td>60–80</td><td>Neighbourhood newspaper piece</td></tr>
+                        </table>
+                    </div>
+                    <div class="cs-section">
+                        <div class="cs-section-title">Common exam email scenarios</div>
+                        <table class="cs-table">
+                            <tr><th>Scenario</th><th>Type</th><th>Key sentence</th></tr>
+                            <tr><td>Can't come to event</td><td><span class="cs-tag inf">INF</span></td><td>Helaas kan ik niet komen omdat…</td></tr>
+                            <tr><td>Request information</td><td><span class="cs-tag frm">FRM</span></td><td>Ik schrijf u omdat ik een vraag heb…</td></tr>
+                            <tr><td>Invite a friend</td><td><span class="cs-tag inf">INF</span></td><td>Ik wil je uitnodigen voor…</td></tr>
+                            <tr><td>Make appointment</td><td><span class="cs-tag frm">FRM</span></td><td>Ik wil graag een afspraak maken.</td></tr>
+                            <tr><td>File a complaint</td><td><span class="cs-tag frm">FRM</span></td><td>Ik schrijf u omdat ik een klacht heb.</td></tr>
+                            <tr><td>Ask a favour</td><td><span class="cs-tag inf">INF</span></td><td>Kun je me helpen met…?</td></tr>
+                            <tr><td>Reschedule</td><td><span class="cs-tag inf">INF</span></td><td>Kunnen we op [dag] afspreken?</td></tr>
+                            <tr><td>Reply to ad</td><td><span class="cs-tag frm">FRM</span></td><td>Ik heb een advertentie gezien.</td></tr>
+                        </table>
+                    </div>
+                    <div class="cs-section">
+                        <div class="cs-section-title">Pre-submit checklist ✅</div>
+                        <div class="cs-phrase">☑ Correct greeting (Hoi vs Geachte)?</div>
+                        <div class="cs-phrase">☑ Formal/informal consistent throughout?</div>
+                        <div class="cs-phrase">☑ All bullet-point items answered?</div>
+                        <div class="cs-phrase">☑ Verb at END after omdat/dat?</div>
+                        <div class="cs-phrase">☑ Word count in target range?</div>
+                        <div class="cs-phrase">☑ Correct sign-off (Groetjes vs Met vriendelijke groet)?</div>
+                        <div class="cs-phrase">☑ Phone number / name included if asked?</div>
+                    </div>
+                </div>
+
+                <!-- WIJKKRANT -->
+                <div class="cs-page" id="cs-wijkkrant">
+                    <div class="cs-section">
+                        <div class="cs-section-title">The rules — always the same!</div>
+                        <div class="cs-rule"><span class="cs-rule-title">🔑 Two lines you MUST memorise exactly</span>
+                            Opening: <code>Hallo allemaal,</code><br>
+                            Closing: <code>Fijne dag allemaal!</code>
+                        </div>
+                        <div class="cs-rule">Word count: <strong>60–80 words</strong>. Say who you are and where you live.</div>
+                    </div>
+                    <div class="cs-section">
+                        <div class="cs-section-title">Full template (60–80 words)</div>
+                        <div class="cs-wij-box">Hallo allemaal,<br><br>Ik wil iets vertellen over [onderwerp]. Mijn naam is [naam] en ik woon in [straat] in [stad].<br><br>[2–3 sentences about the topic. Use: want, omdat, maar, ook, heel].<br><br>Ik hoop dat jullie het ook leuk vinden / interessant vinden.<br><br>Fijne dag allemaal!<br>[naam]</div>
+                    </div>
+                    <div class="cs-section">
+                        <div class="cs-section-title">Useful phrases by topic</div>
+                        <div class="cs-phrase green">🍲 Food: Mijn favoriete gerecht is [naam]. Het smaakt heerlijk omdat… Ik maak het elke week.</div>
+                        <div class="cs-phrase green">✈️ Holiday: Ik ben naar [land] gegaan. Ik heb [activiteit] gedaan. Het was geweldig!</div>
+                        <div class="cs-phrase green">🏠 Appliance: Ik heb een nieuwe [apparaat] gekocht. Hij is handig omdat… Ik gebruik hem elke dag.</div>
+                        <div class="cs-phrase green">👨‍👩‍👧 Family: Ik heb [aantal] kinderen. Ze heten [naam] en [naam]. Ze gaan naar school in [stad].</div>
+                        <div class="cs-phrase green">🌳 Local tip: In onze buurt is er een mooie [plek]. Ik ga er graag heen omdat…</div>
+                    </div>
+                    <div class="cs-section">
+                        <div class="cs-section-title">Connectors to hit the word count</div>
+                        <div class="cs-phrase">want (because/since) &nbsp;·&nbsp; ook (also) &nbsp;·&nbsp; maar (but) &nbsp;·&nbsp; heel (very) &nbsp;·&nbsp; erg (very/quite) &nbsp;·&nbsp; altijd (always) &nbsp;·&nbsp; graag (gladly/like to) &nbsp;·&nbsp; elke dag (every day)</div>
+                    </div>
+                </div>
+
+            </div><!-- cs-body -->
+            </div><!-- cs-modal -->
+        </div><!-- cs-overlay -->
+
+        <!-- ── MOCK TEST section ── -->
+        <div id="mock-section">
+            <div id="type-picker">
+                <button class="type-btn" onclick="genMock('short_informal')">📩 Short informal</button>
+                <button class="type-btn" onclick="genMock('short_formal')">📨 Short formal</button>
+                <button class="type-btn" onclick="genMock('complaint')">😤 Complaint</button>
+                <button class="type-btn" onclick="genMock('invite')">🎉 Invitation</button>
+                <button class="type-btn" onclick="genMock('wijkkrant')">📰 Wijkkrant</button>
+                <button class="type-btn" style="background:var(--primary);color:#fff;border-color:var(--primary);" onclick="genMock('random')">🎲 Random</button>
+                <button class="type-btn" style="background:#555;color:#fff;border-color:#555;margin-left:8px;" onclick="openImportModal()">📥 Paste JSON</button>
+            </div>
+
+            <div id="mock-task-wrap" style="display:none;">
+                <!-- Question -->
+        <div class="task-card" id="mock-qcard">
+            <div class="task-label">
+                <span id="mock-type-label"></span>
+                <button class="btn-copy" onclick="copyPrompt('mock-raw-q')" title="Copy Prompt text">📋</button>
+            </div>
+            <div class="badge-target" id="mock-target-badge"></div>
+            <div class="task-body" id="mock-qbody"></div>
+            <div id="mock-raw-q" style="display:none;"></div>
+            <div class="task-hint" id="mock-hint"></div>
+                    <textarea class="answer-box" id="mock-answer" placeholder="Write your Dutch answer here…" oninput="updateWC('mock-answer','mock-wc','mock-target-val')"></textarea>
+                    <div class="word-count-bar">
+                        <span id="mock-wc">0 words</span>
+                        <span id="mock-target-val"></span>
+                    </div>
+                    <div class="action-row">
+                        <button class="btn-check" id="mock-check-btn" onclick="checkMock()" disabled>✅ Check Answer</button>
+                        <button class="btn-retry" onclick="genMock(currentMockType)">🔄 New question</button>
+                    </div>
+                </div>
+                <!-- Feedback -->
+                <div class="fb-panel" id="mock-fb-panel" style="display:none;">
+                    <div id="mock-fb-content"></div>
+                    <div class="action-row" style="margin-top:14px;">
+                        <button class="btn-check" onclick="genMock(currentMockType)">🎯 Try another</button>
+                        <button class="btn-ideal" id="mock-ideal-btn" onclick="toggleIdeal()">👁 Ideal answer</button>
+                    </div>
+                    <div class="ideal-box" id="mock-ideal-box" style="display:none;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── FULL EXAM section ── -->
+        <div id="exam-section" style="display:none;">
+            <div id="exam-intro-card" class="task-card exam-border" style="text-align:center; padding:32px;">
+                <div style="font-size:2.5rem;margin-bottom:10px;">📋</div>
+                <h2 style="margin:0 0 8px;font-size:1.2rem;">Full Exam Simulation</h2>
+                <p style="color:#666;font-size:0.9rem;margin-bottom:20px;">3 unique AI-generated tasks: Formulier, Short email, and Long email or Wijkkrant. Complete all tasks, then submit for full feedback.</p>
+                <button class="btn-check red" id="exam-start-btn" onclick="startExam()" style="padding:14px 30px;font-size:1rem;">▶ Start New Exam</button>
+            </div>
+
+            <div id="exam-area" style="display:none;">
+                <div class="exam-timer" id="exam-timer">⏱ 0:00</div>
+                <div class="exam-progress-wrap"><div class="exam-progress-bar" id="exam-pbar" style="width:0%"></div></div>
+                <div id="exam-tasks-wrap"></div>
+                <div class="action-row" style="margin-top:16px;">
+                    <button class="btn-check red" id="exam-submit-btn" onclick="submitExam()">📤 Submit Full Exam</button>
+                    <button class="btn-ideal" onclick="cancelExam()">✖ Cancel</button>
+                </div>
+            </div>
+
+            <div class="fb-panel" id="exam-fb-panel" style="display:none;">
+                <div id="exam-fb-content"></div>
+                <div class="action-row" style="margin-top:14px;">
+                    <button class="btn-check red" onclick="startExam()">🔄 New Exam</button>
+                    <button class="btn-ideal" id="exam-ideal-btn" onclick="toggleExamIdeal()">👁 Ideal answers</button>
+                </div>
+                <div class="ideal-box" id="exam-ideal-box" style="display:none;"></div>
+            </div>
+        </div>
+
+        <!-- ── DASHBOARD section ── -->
+        <div id="dash-section" style="display:none;">
+            <div class="dash-grid">
+                <div class="stat-card">
+                    <div class="stat-val" id="dash-total-runs">0</div>
+                    <div class="stat-label">Total Tests Done</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-val" id="dash-avg-score">0%</div>
+                    <div class="stat-label">Avg Written Score</div>
+                </div>
+            </div>
+
+            <h3 style="font-size:1.1rem;margin:20px 0 10px;">🔴 Top Repeated Grammar Mistakes</h3>
+            <div id="dash-mistakes-wrap" style="color:#666;font-size:0.9rem;margin-bottom:24px;">
+                Complete some mock tests to see your recurring grammar mistakes analyzed here!
+            </div>
+
+            <h3 style="font-size:1.1rem;margin:20px 0 10px;">🕒 Recent Practice History</h3>
+            <div class="history-list" id="dash-history-list">
+                <!-- runs injected here -->
+            </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts — reuse the app's shared AI service and settings -->
+    <script src="../js/common/common.js"></script>
+    <script src="../js/common/ai-service.js"></script>
+    <script src="../js/common/settings.js"></script>
+
+    <script>
+    // ══════════════════════════════════════════════════════════════════
+    // KNOWLEDGE BASE  (same cheat-sheet used in cheatsheet v4)
+    // ══════════════════════════════════════════════════════════════════
+    const TK = `STUDENT'S CHEAT SHEET TEMPLATES:
+
+GREETINGS: Informal="Hoi [naam]," | Formal="Geachte heer/mevrouw," | Wijkkrant="Hallo allemaal,"
+OPENINGS: "Ik schrijf u omdat ik een vraag heb." | "Ik schrijf u omdat ik een klacht heb." | "Mijn naam is [naam] en ik schrijf u omdat ik [reden]." | "Ik heb een advertentie gezien." | "Bedankt voor de uitnodiging."
+DECLINING: "Helaas kan ik niet komen." (NO comma!) | "Ik kan niet komen omdat ik ziek ben." (verb END!) | "Ik kan niet komen want ik heb koorts." (normal order) | "Het spijt me dat ik niet kan komen."
+REASONS (omdat ik...): ziek ben | koorts heb | moet werken | geen tijd heb | thuis moet blijven | mijn kind ziek is | mijn auto kapot is | een afspraak heb
+APPOINTMENT: "Kunnen we op [dag] om [tijd] afspreken?" | "Ik wil graag een afspraak maken." | "Wanneer kan ik een afspraak maken?"
+CALL: "Kunt u mij bellen?" (formal) | "Kun je me bellen?" (informal) | "Mijn telefoonnummer is 06-87654321."
+COMPLAINT: "Ik heb een [product] gekocht." | "Hij werkt niet." | "Ik heb de bon nog." | "Kunt u een afspraak maken?"
+QUESTIONS: "Wat kost het per maand?" | "Wat zijn de openingstijden?" | "Wanneer begint de cursus?" | "Hoe groot is de [ruimte]?" | "Kunt u mij meer informatie geven?"
+FILLERS: "Ik hoop dat je/u het begrijpt." | "Ik hoop dat het kan." | "Alvast bedankt!" | "Ik kijk uit naar uw reactie." | "Bedankt voor uw hulp."
+PERSONAL: "Mijn naam is [naam]." | "Ik woon op [straat] [nr] in [stad]." | "Ik ben [leeftijd] jaar oud." | "Ik kan op [dag] en [dag]."
+ACCEPTING: "Ik kom graag!" | "Tot [dag] om [tijd]."
+INVITING: "Ik wil je graag uitnodigen voor een feestje." | "Het feest is op [datum] om [tijd]." | "Kom je ook?" | "Laat het me weten."
+CLOSINGS: Informal="Groetjes," | Formal="Met vriendelijke groet," | Wijkkrant="Fijne dag allemaal!"
+
+KEY GRAMMAR RULES:
+1. omdat/dat → verb to END: "omdat ik ziek BEN" NOT "omdat ik ben ziek"
+2. mijn=my (mijn naam, mijn telefoonnummer), mij=me (bel mij, help mij)
+3. Formal: Kunt u/mij — Informal: Kun je/me — NEVER mix in same email
+4. Helaas/Daarom at start → verb flips: "Helaas KAN ik" not "Helaas ik kan"
+5. jij/je in questions → t drops: "Werk je?" not "Werkt jij?"
+6. GKBV (gaan/komen/blijven/vertrekken) → zijn. Others → hebben. Past form at END.
+7. ik is NEVER capital mid-sentence`;
+
+    const FEEDBACK_SYSTEM = `You are a Dutch A2 inburgering exam teacher. Student has poor memory, exam is soon.
+
+${TK}
+
+Return ONLY valid JSON, no markdown:
+{
+  "score": 7,
+  "score_label": "Good effort!",
+  "requirements": [{"item":"requirement","ok":true,"note":"English note"}],
+  "grammar_mistakes": [{"wrong":"wrong text","correct":"corrected","rule":"rule name","explanation_en":"simple English explanation","template_ref":"exact sentence from cheat sheet"}],
+  "spelling": [{"wrong":"word","correct":"word"}],
+  "well_done": ["point 1","point 2"],
+  "tip": "one exam tip in English",
+  "template_suggestions": ["template sentence that would help"]
+}
+Max 4 grammar mistakes. Always add template_ref pointing to exact cheat sheet sentence. All notes in English.`;
+
+    const QUESTION_SYSTEM = `You are a Dutch A2 inburgering writing exam creator.
+Generate a unique, realistic exam task of the requested type.
+Return ONLY valid JSON, no markdown fences:
+{
+  "q": "The task description in Dutch (use bullet points with •)",
+  "t": "word count target string, e.g. 40–50 woorden",
+  "l": "Short English label, e.g. Short informal email",
+  "hint": "Short English tip about tone or format"
+}
+
+Task types:
+- short_informal: 40–50 words. Hoi [naam], → Groetjes. Scenarios: declining invitation, favour, news, childcare, overtime, illness, rescheduling.
+- short_formal: 40–50 words. Geachte heer/mevrouw, → Met vriendelijke groet. Scenarios: info request, course, rental, appointment, ad response.
+- complaint: 50–60 words. Geachte heer/mevrouw. Scenarios: broken appliance, bad service, wrong order, repair.
+- invite: 40–50 words. Scenarios: birthday, bbq, sport event, neighbourhood dinner.
+- wijkkrant: 60–80 words. ALWAYS "Hallo allemaal," → "Fijne dag allemaal!". Scenarios: favourite food, holiday, new appliance, family, local tip.
+
+Make every question UNIQUE. Use specific Dutch names, days, times. Write task (q) in Dutch only.`;
+
+    const EXAM_QUESTION_SYSTEM = `You are a Dutch A2 inburgering exam creator. Generate a complete, unique, realistic exam with 3 tasks.
+Return ONLY valid JSON, no markdown fences:
+{
+  "tasks": [
+    {
+      "num": 1,
+      "type": "form",
+      "label": "Opdracht 1 — Formulier",
+      "target": "Vul alle velden in",
+      "hint": "Fill in realistic personal details",
+      "formTitle": "Short Dutch title of the form, e.g. Aanmeldformulier Sportclub",
+      "fields": [
+        {"id": "naam", "label": "Naam"},
+        {"id": "voornaam", "label": "Voornaam"},
+        {"id": "geboortedatum", "label": "Geboortedatum"},
+        {"id": "adres", "label": "Adres"},
+        {"id": "postcode", "label": "Postcode + Woonplaats"},
+        {"id": "telefoon", "label": "Telefoonnummer"},
+        {"id": "email", "label": "E-mailadres"},
+        {"id": "extra1", "label": "A context-specific field like Nationaliteit or Lidmaatschapstype"}
+      ]
+    },
+    {
+      "num": 2,
+      "type": "email",
+      "label": "Opdracht 2 — Kort e-mail",
+      "target": "40–50 woorden",
+      "q": "Unique short email task in Dutch with 3–4 bullet points",
+      "hint": "Short English hint about tone (formal/informal)"
+    },
+    {
+      "num": 3,
+      "type": "long",
+      "label": "Opdracht 3 — Lang e-mail of Wijkkrant",
+      "target": "60–80 woorden",
+      "q": "Unique longer task in Dutch — complaint OR wijkkrant — with 4–5 bullet points",
+      "hint": "Short English hint about the task type"
+    }
+  ]
+}
+Make every exam UNIQUE. Use specific Dutch names, dates, places. Write task prompts (q) in Dutch.`;
+
+    // ══════════════════════════════════════════════════════════════════
+    // SHARED HELPERS
+    // ══════════════════════════════════════════════════════════════════
+    function parseJSON(raw) {
+        try {
+            const clean = raw.replace(/^```json\s*/,'').replace(/^```\s*/,'').replace(/```\s*$/,'').trim();
+            return JSON.parse(clean);
+        } catch(e) {
+            const m = raw.match(/\{[\s\S]*\}/);
+            if (m) { try { return JSON.parse(m[0]); } catch(e2){} }
+            return null;
+        }
+    }
+
+    async function callAI(systemPrompt, userPrompt, maxTokens = 1200) {
+        const msgs = [
+            { role: 'system', content: systemPrompt },
+            { role: 'user', content: userPrompt }
+        ];
+        return aiService.fetchAIChat(msgs);
+    }
+
+    function updateWC(taId, wcId, targetId) {
+        const val = document.getElementById(taId).value.trim();
+        const w = val ? val.split(/\s+/).filter(x => x.length > 0).length : 0;
+        const targetText = document.getElementById(targetId)?.textContent || '';
+        const m = targetText.match(/(\d+)[–-](\d+)/);
+        let cls = '';
+        if (m) {
+            const lo = parseInt(m[1]), hi = parseInt(m[2]);
+            cls = (w >= lo && w <= hi) ? 'wc-ok' : 'wc-low';
+        }
+        document.getElementById(wcId).className = cls;
+        document.getElementById(wcId).textContent = w + ' words';
+    }
+
+    function renderFeedbackHTML(fb, showScore = true) {
+        let h = '';
+        if (showScore) {
+            const c = fb.score >= 7 ? '#2e7d32' : fb.score >= 5 ? '#e65100' : '#d92626';
+            h += `<div class="fb-score-row"><div class="fb-score" style="color:${c}">${fb.score}<span style="font-size:1rem;color:#aaa;font-weight:400">/10</span></div><div class="fb-score-label">${fb.score_label||''}</div></div>`;
+        }
+        h += `<div class="fb-section"><div class="fb-section-title">Requirements</div>`;
+        (fb.requirements||[]).forEach(r => {
+            h += `<div class="fb-row">${r.ok?'✅':'❌'} <strong>${r.item}</strong>${r.note?`<span class="fb-en">${r.note}</span>`:''}</div>`;
+        });
+        h += '</div>';
+        if (fb.grammar_mistakes?.length) {
+            h += `<div class="fb-section"><div class="fb-section-title">Grammar mistakes</div>`;
+            fb.grammar_mistakes.forEach(g => {
+                h += `<div class="fb-row fb-err">❌ <strong>${g.wrong}</strong> → <span class="fb-ok">${g.correct}</span><span class="fb-en">${g.explanation_en}</span>${g.template_ref?`<span class="fb-tref">💡 "${g.template_ref}"</span>`:''}</div>`;
+            });
+            h += '</div>';
+        } else {
+            h += `<div class="fb-section"><div class="fb-section-title">Grammar</div><div class="fb-row fb-ok">✅ No major grammar mistakes!</div></div>`;
+        }
+        if (fb.spelling?.length) {
+            h += `<div class="fb-section"><div class="fb-section-title">Spelling</div>`;
+            fb.spelling.forEach(s => { h += `<div class="fb-row fb-err">❌ <strong>${s.wrong}</strong> → <span class="fb-ok">${s.correct}</span></div>`; });
+            h += '</div>';
+        } else {
+            h += `<div class="fb-section"><div class="fb-section-title">Spelling</div><div class="fb-row fb-ok">✅ No spelling errors!</div></div>`;
+        }
+        if (fb.well_done?.length) {
+            h += `<div class="fb-section"><div class="fb-section-title">What you did well</div>`;
+            fb.well_done.forEach(w => { h += `<div class="fb-row fb-ok">✅ ${w}</div>`; });
+            h += '</div>';
+        }
+        if (fb.template_suggestions?.length) {
+            h += `<div class="fb-section"><div class="fb-section-title">💡 Useful templates</div>`;
+            fb.template_suggestions.forEach(t => { h += `<div class="fb-row"><span class="fb-tref">${t}</span></div>`; });
+            h += '</div>';
+        }
+        if (fb.tip) h += `<div class="fb-tip">💡 <strong>Exam tip:</strong> ${fb.tip}</div>`;
+        return h;
+    }
+
+    // ══════════════════════════════════════════════════════════════════
+    // CHEAT SHEET PANEL
+    // ══════════════════════════════════════════════════════════════════
+    function toggleCS() {
+        const overlay = document.getElementById('cs-overlay');
+        overlay.classList.toggle('open');
+    }
+
+    function handleCSBackdrop(e) {
+        if (e.target.id === 'cs-overlay') {
+            toggleCS();
+        }
+    }
+
+    function showCS(tab) {
+        // Switch tabs
+        document.querySelectorAll('.cs-tab').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.cs-page').forEach(p => p.classList.remove('active'));
+        // Find the clicked tab button and page
+        const pages = { master:'cs-master', templates:'cs-templates', sentences:'cs-sentences', grammar:'cs-grammar', topics:'cs-topics', wijkkrant:'cs-wijkkrant' };
+        document.getElementById(pages[tab])?.classList.add('active');
+        // Highlight button by matching onclick attribute
+        document.querySelectorAll('.cs-tab').forEach(b => {
+            if (b.getAttribute('onclick') === `showCS('${tab}')`) b.classList.add('active');
+        });
+    }
+
+    // ══════════════════════════════════════════════════════════════════
+    // MODE SWITCH & DASHBOARD
+    // ══════════════════════════════════════════════════════════════════
+    function setMode(mode) {
+        document.getElementById('mock-section').style.display = mode === 'mock' ? '' : 'none';
+        document.getElementById('exam-section').style.display = mode === 'exam' ? '' : 'none';
+        document.getElementById('dash-section').style.display = mode === 'dash' ? '' : 'none';
+        document.getElementById('mode-mock').classList.toggle('active', mode === 'mock');
+        document.getElementById('mode-exam').classList.toggle('active', mode === 'exam');
+        document.getElementById('mode-dash').classList.toggle('active', mode === 'dash');
+        if (mode === 'dash') renderDashboard();
+    }
+
+    function copyPrompt(elementId) {
+        copyTextToClipboard(document.getElementById(elementId).textContent);
+    }
+
+    function copySystemPrompt(type) {
+        let txt = '';
+        if (type === 'question') txt = QUESTION_SYSTEM + '\n\nGenerate a task of type: random';
+        if (type === 'exam') txt = EXAM_QUESTION_SYSTEM + '\n\nGenerate a complete unique Dutch A2 exam.';
+        if (type === 'feedback') txt = FEEDBACK_SYSTEM + '\n\nPaste your task, target, and answer below:';
+        copyTextToClipboard(txt);
+    }
+
+    function copyTextToClipboard(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            alert('Copied to clipboard!');
+        }).catch(err => {
+            console.error('Failed to copy text: ', err);
+        });
+    }
+
+    // ── History Logic ──
+    function getHistory() {
+        const stored = localStorage.getItem('dutch_test_history');
+        return stored ? JSON.parse(stored) : [];
+    }
+    
+    function saveHistory(runData) {
+        const history = getHistory();
+        history.unshift({
+            id: Date.now(),
+            date: new Date().toLocaleString(),
+            ...runData
+        });
+        localStorage.setItem('dutch_test_history', JSON.stringify(history));
+    }
+
+    function getMistakeKey(wrong, rule) {
+        return (rule || 'other').toLowerCase() + '|' + wrong.toLowerCase();
+    }
+
+    function renderDashboard() {
+        const history = getHistory();
+        const totalRuns = history.length;
+        document.getElementById('dash-total-runs').textContent = totalRuns;
+
+        if (totalRuns === 0) {
+            document.getElementById('dash-avg-score').textContent = '0%';
+            document.getElementById('dash-mistakes-wrap').innerHTML = 'Complete some practice tests to see your recurring grammar mistakes analyzed here!';
+            document.getElementById('dash-history-list').innerHTML = '<div style="color:#888;">No practice history found yet.</div>';
+            return;
+        }
+
+        let totalScoreSum = 0, totalMaxSum = 0;
+        const mistakeTracker = {}; // key -> { count, wrong, correct, rule, en }
+
+        // Process history
+        let htmlRuns = '';
+        history.forEach(run => {
+            // Aggregate score
+            if (run.total_score !== undefined && run.total_max) {
+                totalScoreSum += run.total_score;
+                totalMaxSum += run.total_max;
+            }
+
+            // Aggregate mistakes
+            (run.grammar_mistakes || []).forEach(m => {
+                const mk = getMistakeKey(m.wrong, m.rule);
+                if (!mistakeTracker[mk]) mistakeTracker[mk] = { count: 0, wrong: m.wrong, correct: m.correct, rule: m.rule, en: m.explanation_en };
+                mistakeTracker[mk].count++;
+            });
+
+            // Render run in list
+            const title = run.type === 'mock' ? `Mock Test: ${run.questionType}` : `Full Exam`;
+            const s = (run.total_score !== undefined) ? `${run.total_score}/${run.total_max}` : '-';
+            htmlRuns += `<div class="history-item" onclick="toggleHiDetails(${run.id})">
+                <div class="hi-header">
+                    <span class="hi-type">${title}</span>
+                    <span class="hi-date">${run.date}</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                    <span class="hi-score" style="color:var(--primary)">Score: ${s}</span>
+                    <span style="font-size:0.8rem;color:#888;">Click to expand</span>
+                </div>
+                <div class="hi-details" id="hi-${run.id}">
+                    <div style="font-weight:600;margin-bottom:4px;">Original Answer:</div>
+                    <div style="background:#f9f9f9;padding:8px;border-radius:6px;margin-bottom:12px;font-family:monospace;">${run.answer ? run.answer.replace(/\n/g,'<br>') : ''}</div>
+                    <div style="font-weight:600;margin-bottom:4px;">Mistakes identified:</div>
+                    <div>${(run.grammar_mistakes||[]).map(m=>`❌ ${m.wrong} → <strong>${m.correct}</strong>`).join('<br>') || 'No major grammar mistakes! ✅'}</div>
+                </div>
+            </div>`;
+        });
+
+        // Set Avg score
+        const avgPct = totalMaxSum > 0 ? Math.round((totalScoreSum / totalMaxSum) * 100) : 0;
+        document.getElementById('dash-avg-score').textContent = avgPct + '%';
+        document.getElementById('dash-history-list').innerHTML = htmlRuns;
+
+        // Render top mistakes
+        const mistakeList = Object.values(mistakeTracker).sort((a, b) => b.count - a.count).slice(0, 5);
+        if (mistakeList.length === 0) {
+            document.getElementById('dash-mistakes-wrap').innerHTML = '<div style="color:#2e7d32;font-weight:600;">Good job! You have no recurring grammar mistakes logged.</div>';
+        } else {
+            let mkHtml = '';
+            mistakeList.forEach(m => {
+                mkHtml += `<div class="mistake-box">
+                    <div style="margin-bottom:6px;"><span class="mistake-count">${m.count}x</span> <span style="font-weight:600;color:#d92626">${m.wrong}</span> → <span style="color:#2e7d32;font-weight:700">${m.correct}</span></div>
+                    ${m.rule ? `<div style="font-size:0.8rem;background:#fef3c7;display:inline-block;padding:2px 6px;border-radius:4px;margin-bottom:4px;color:#b45309;">Rule: ${m.rule}</div><br>` : ''}
+                    <div style="font-size:0.8rem;color:#555">${m.en || ''}</div>
+                </div>`;
+            });
+            document.getElementById('dash-mistakes-wrap').innerHTML = mkHtml;
+        }
+    }
+
+    function toggleHiDetails(id) {
+        document.getElementById('hi-'+id).classList.toggle('open');
+    }
+
+    // ══════════════════════════════════════════════════════════════════
+    // MOCK TEST
+    // ══════════════════════════════════════════════════════════════════
+    let currentMockType = 'random';
+    let mockIdealText = '';
+
+    async function genMock(type) {
+        const types = ['short_informal','short_formal','complaint','invite','wijkkrant'];
+        currentMockType = type === 'random' ? types[Math.floor(Math.random() * types.length)] : type;
+        mockIdealText = '';
+
+        document.getElementById('mock-task-wrap').style.display = '';
+        document.getElementById('mock-fb-panel').style.display = 'none';
+        document.getElementById('mock-ideal-box').style.display = 'none';
+        document.getElementById('mock-answer').value = '';
+        document.getElementById('mock-answer').disabled = true;
+        document.getElementById('mock-check-btn').disabled = true;
+        document.getElementById('mock-qbody').textContent = '⏳ Generating unique exam task…';
+        document.getElementById('mock-qbody').className = 'task-body loading-pulse';
+        document.getElementById('mock-type-label').textContent = '';
+        document.getElementById('mock-target-badge').textContent = '';
+        document.getElementById('mock-hint').textContent = '';
+        document.getElementById('mock-wc').textContent = '0 words';
+        document.getElementById('mock-target-val').textContent = '';
+        document.querySelectorAll('.type-btn').forEach(b => b.disabled = true);
+
+        try {
+            const raw = await callAI(QUESTION_SYSTEM, `Generate a task of type: ${currentMockType}`, 600);
+            const q = parseJSON(raw);
+            if (!q?.q) throw new Error('Could not parse question. Please try again.');
+
+            document.getElementById('mock-type-label').textContent = q.l;
+            document.getElementById('mock-raw-q').textContent = q.q;
+            document.getElementById('mock-target-badge').textContent = '📝 Target: ' + q.t;
+            document.getElementById('mock-qbody').textContent = q.q;
+            document.getElementById('mock-qbody').className = 'task-body';
+            document.getElementById('mock-hint').textContent = q.hint ? '💡 ' + q.hint : '';
+            document.getElementById('mock-target-val').textContent = q.t;
+            document.getElementById('mock-answer').disabled = false;
+            document.getElementById('mock-check-btn').disabled = false;
+            document.getElementById('mock-answer').focus();
+            // Store for feedback
+            window._mockQ = q;
+        } catch(e) {
+            document.getElementById('mock-qbody').textContent = '❌ ' + e.message;
+            document.getElementById('mock-qbody').className = 'task-body';
+        }
+        document.querySelectorAll('.type-btn').forEach(b => b.disabled = false);
+    }
+
+    // ── JSON Import ──
+    function openImportModal() { document.getElementById('import-overlay').style.display = 'flex'; }
+    function closeImportModal() { document.getElementById('import-overlay').style.display = 'none'; }
+    function importExternalTask() {
+        const val = document.getElementById('import-json-val').value.trim();
+        if (!val) return;
+        try {
+            const parsed = JSON.parse(val);
+            if (parsed.tasks && Array.isArray(parsed.tasks)) {
+                // It's a full exam
+                closeImportModal();
+                setMode('exam');
+                document.getElementById('exam-start-btn').disabled = false;
+                document.getElementById('exam-intro-card').style.display = 'none';
+                document.getElementById('exam-area').style.display = '';
+                document.getElementById('exam-fb-panel').style.display = 'none';
+                examData = parsed;
+                document.getElementById('exam-pbar').style.width = '0%';
+                buildExamUI(parsed.tasks);
+                startExamTimer();
+            } else if (parsed.q && parsed.t && parsed.l) {
+                // It's a mock test
+                closeImportModal();
+                setMode('mock');
+                currentMockType = 'Pasted JSON';
+                document.getElementById('mock-task-wrap').style.display = '';
+                document.getElementById('mock-fb-panel').style.display = 'none';
+                document.getElementById('mock-ideal-box').style.display = 'none';
+                document.getElementById('mock-answer').value = '';
+                document.getElementById('mock-type-label').textContent = parsed.l;
+                document.getElementById('mock-raw-q').textContent = parsed.q;
+                document.getElementById('mock-target-badge').textContent = '📝 Target: ' + parsed.t;
+                document.getElementById('mock-qbody').textContent = parsed.q;
+                document.getElementById('mock-qbody').className = 'task-body';
+                document.getElementById('mock-hint').textContent = parsed.hint ? '💡 ' + parsed.hint : '';
+                document.getElementById('mock-target-val').textContent = parsed.t;
+                document.getElementById('mock-answer').disabled = false;
+                document.getElementById('mock-check-btn').disabled = false;
+                window._mockQ = parsed;
+            } else {
+                throw new Error("JSON missing required fields (either q,t,l or tasks array)");
+            }
+        } catch(e) {
+            alert('Invalid JSON format: ' + e.message);
+        }
+    }
+
+    async function checkMock() {
+        const answer = document.getElementById('mock-answer').value.trim();
+        if (!answer) { alert('Please write your answer first!'); return; }
+        const q = window._mockQ;
+        if (!q) return;
+
+        const btn = document.getElementById('mock-check-btn');
+        btn.textContent = '⏳ Checking…'; btn.disabled = true;
+
+        try {
+            const raw = await callAI(FEEDBACK_SYSTEM, `TASK:\n${q.q}\n\nTARGET: ${q.t}\n\nSTUDENT ANSWER:\n${answer}`, 1200);
+            const fb = parseJSON(raw);
+            if (!fb) throw new Error('Could not parse feedback.');
+            document.getElementById('mock-fb-content').innerHTML = renderFeedbackHTML(fb);
+            document.getElementById('mock-fb-panel').style.display = '';
+            document.getElementById('mock-fb-panel').scrollIntoView({ behavior:'smooth', block:'start' });
+            
+            // Save to history
+            saveHistory({
+                type: 'mock',
+                questionType: q.l,
+                question: q.q,
+                answer: answer,
+                total_score: fb.score,
+                total_max: (q.t.includes('Form') || fb.max == null) ? 10 : fb.max,
+                grammar_mistakes: fb.grammar_mistakes || []
+            });
+
+            // Ideal answer in bg, delayed
+            setTimeout(async () => {
+                try {
+                    mockIdealText = await callAI(`Write a perfect A2 Dutch answer using ONLY these templates:\n${TK}\nWrite ONLY the Dutch text, nothing else.`, `TASK:\n${q.q}\nTARGET: ${q.t}`, 400);
+                } catch(e) {}
+            }, 1500);
+        } catch(e) {
+            document.getElementById('mock-fb-content').innerHTML = `<p style="color:#d92626">❌ ${e.message}</p>`;
+            document.getElementById('mock-fb-panel').style.display = '';
+        }
+        btn.textContent = '✅ Check Answer'; btn.disabled = false;
+    }
+
+    function toggleIdeal() {
+        const box = document.getElementById('mock-ideal-box');
+        if (box.style.display === 'none') {
+            box.textContent = mockIdealText || '⏳ Still generating ideal answer, please wait a moment…';
+            box.style.display = '';
+        } else {
+            box.style.display = 'none';
+        }
+    }
+
+    // ══════════════════════════════════════════════════════════════════
+    // FULL EXAM
+    // ══════════════════════════════════════════════════════════════════
+    let examData = null, examTimer = null, examSecs = 0, examIdealText = '';
+
+    async function startExam() {
+        const startBtn = document.getElementById('exam-start-btn');
+        startBtn.textContent = '⏳ Generating Exam…'; startBtn.disabled = true;
+        examIdealText = '';
+        document.getElementById('exam-fb-panel').style.display = 'none';
+        document.getElementById('exam-ideal-box').style.display = 'none';
+
+        try {
+            const raw = await callAI(EXAM_QUESTION_SYSTEM, 'Generate a complete unique Dutch A2 exam.', 1400);
+            const parsed = parseJSON(raw);
+            if (!parsed?.tasks || parsed.tasks.length < 3) throw new Error('Invalid exam data received. Please try again.');
+            examData = parsed;
+
+            document.getElementById('exam-intro-card').style.display = 'none';
+            document.getElementById('exam-area').style.display = '';
+            document.getElementById('exam-pbar').style.width = '0%';
+            buildExamUI(parsed.tasks);
+            startExamTimer();
+        } catch(e) {
+            alert('Could not generate exam: ' + e.message);
+        }
+        startBtn.textContent = '▶ Start New Exam'; startBtn.disabled = false;
+    }
+
+    function buildExamUI(tasks) {
+        let html = '';
+        tasks.forEach((t, i) => {
+            html += `<div class="task-card exam-border" style="margin-bottom:18px;">
+                <div class="task-label">
+                    <span>${t.label}</span>
+                    <button class="btn-copy" onclick="copyPrompt('exam-raw-q-${i}')" title="Copy Prompt text">📋</button>
+                </div>
+                <span class="badge-target">${t.target}</span>
+                <div id="exam-raw-q-${i}" style="display:none;">${t.type === 'form' ? 'Form: ' + t.formTitle : t.q}</div>`;
+
+            if (t.type === 'form') {
+                // Render a proper HTML form
+                html += `<div style="font-size:0.88rem;color:#888;margin-bottom:14px;">💡 ${t.hint}</div>`;
+                if (t.formTitle) html += `<div style="font-size:1rem;font-weight:700;margin-bottom:14px;color:#333;">📄 ${t.formTitle}</div>`;
+                html += `<div class="form-grid" id="exam-form-${i}">`;
+                (t.fields || []).forEach(f => {
+                    html += `<div class="form-field">
+                        <label for="ef-${i}-${f.id}">${f.label}</label>
+                        <input type="text" id="ef-${i}-${f.id}" data-field="${f.label}" placeholder="${f.label}…" oninput="updateExamProgress()">
+                    </div>`;
+                });
+                html += `</div>`;
+            } else {
+                html += `<div class="task-body">${t.q}</div>
+                <div class="task-hint">💡 ${t.hint}</div>
+                <textarea class="answer-box" id="exam-ans-${i}" placeholder="Write your Dutch answer here…"
+                    oninput="updateWC('exam-ans-${i}','exam-wc-${i}','exam-tv-${i}'); updateExamProgress()"></textarea>
+                <div class="word-count-bar">
+                    <span id="exam-wc-${i}">0 words</span>
+                    <span id="exam-tv-${i}">${t.target}</span>
+                </div>`;
+            }
+            html += `</div>`;
+        });
+        document.getElementById('exam-tasks-wrap').innerHTML = html;
+    }
+
+    function updateExamProgress() {
+        if (!examData) return;
+        let filled = 0;
+        examData.tasks.forEach((t, i) => {
+            if (t.type === 'form') {
+                const inputs = document.querySelectorAll(`#exam-form-${i} input`);
+                const any = Array.from(inputs).some(inp => inp.value.trim().length > 1);
+                if (any) filled++;
+            } else {
+                const ta = document.getElementById(`exam-ans-${i}`);
+                if (ta && ta.value.trim().length > 5) filled++;
+            }
+        });
+        document.getElementById('exam-pbar').style.width = (filled / examData.tasks.length * 100) + '%';
+    }
+
+    function startExamTimer() {
+        examSecs = 0; clearInterval(examTimer);
+        examTimer = setInterval(() => {
+            examSecs++;
+            const m = Math.floor(examSecs / 60), s = examSecs % 60;
+            document.getElementById('exam-timer').textContent = `⏱ ${m}:${s.toString().padStart(2,'0')}`;
+        }, 1000);
+    }
+
+    function cancelExam() {
+        clearInterval(examTimer);
+        document.getElementById('exam-area').style.display = 'none';
+        document.getElementById('exam-intro-card').style.display = '';
+    }
+
+    async function submitExam() {
+        clearInterval(examTimer);
+        if (!examData) return;
+
+        // Collect answers
+        const answers = examData.tasks.map((t, i) => {
+            if (t.type === 'form') {
+                const inputs = document.querySelectorAll(`#exam-form-${i} input`);
+                return Array.from(inputs).map(inp => `${inp.dataset.field}: ${inp.value.trim() || '(leeg)'}`).join('\n');
+            } else {
+                const ta = document.getElementById(`exam-ans-${i}`);
+                return ta ? ta.value.trim() : '(no answer)';
+            }
+        });
+        if (answers.every(a => a.length < 5)) { alert('Please fill in at least one task!'); return; }
+
+        const submitBtn = document.getElementById('exam-submit-btn');
+        submitBtn.textContent = '⏳ Checking all tasks…'; submitBtn.disabled = true;
+
+        const tasksText = examData.tasks.map((t, i) =>
+            `TASK ${t.num} (${t.label}, target: ${t.target}):\n${t.type === 'form' ? 'Form filling task' : t.q}\n\nSTUDENT ANSWER ${t.num}:\n${answers[i] || '(no answer)'}`
+        ).join('\n\n---\n\n');
+
+        const examSys = `You are a Dutch A2 inburgering exam teacher grading a full exam. Grade all 3 tasks.
+
+${TK}
+
+Return ONLY valid JSON:
+{
+  "total_score": 21,
+  "total_max": 30,
+  "grade": "Pass",
+  "overall_feedback": "2-3 sentences in English",
+  "top_mistakes_to_fix": ["mistake 1","mistake 2"],
+  "tasks": [
+    {
+      "task_num": 1,
+      "score": 8, "max": 10,
+      "requirements": [{"item":"req","ok":true,"note":"English note"}],
+      "grammar_mistakes": [{"wrong":"x","correct":"y","rule":"rule","explanation_en":"English","template_ref":"cheat sheet sentence"}],
+      "spelling": [{"wrong":"x","correct":"y"}],
+      "well_done": ["point"],
+      "tip": "tip in English"
+    }
+  ]
+}`;
+
+        try {
+            const raw = await callAI(examSys, tasksText, 2000);
+            const fb = parseJSON(raw);
+            if (!fb) throw new Error('Could not parse exam feedback.');
+
+            document.getElementById('exam-area').style.display = 'none';
+            renderExamFeedback(fb);
+            document.getElementById('exam-fb-panel').style.display = '';
+            document.getElementById('exam-fb-panel').scrollIntoView({ behavior:'smooth', block:'start' });
+
+            // Extract all mistakes from all 3 tasks
+            let allMistakes = [];
+            if (fb.tasks) {
+                fb.tasks.forEach(t => {
+                    if (t.grammar_mistakes) allMistakes = allMistakes.concat(t.grammar_mistakes);
+                });
+            }
+
+            // Save to history
+            saveHistory({
+                type: 'exam',
+                questionType: 'Full Exam Simulation',
+                question: '3 tasks',
+                answer: answers.join('\n\n---\n\n'),
+                total_score: fb.total_score,
+                total_max: fb.total_max,
+                grammar_mistakes: allMistakes
+            });
+
+            // Ideal answers bg
+            setTimeout(async () => {
+                try {
+                    const idealPrompt = examData.tasks.filter(t => t.type !== 'form').map((t, i) =>
+                        `TASK ${t.num}: ${t.q}\nTARGET: ${t.target}`).join('\n\n---\n\n');
+                    examIdealText = await callAI(
+                        `Write perfect A2 Dutch model answers using ONLY these templates:\n${TK}\nLabel each: TASK 2:, TASK 3:. Write only Dutch text.`,
+                        idealPrompt, 700);
+                } catch(e) {}
+            }, 1500);
+        } catch(e) {
+            document.getElementById('exam-fb-content').innerHTML = `<p style="color:#d92626">❌ ${e.message}</p>`;
+            document.getElementById('exam-area').style.display = 'none';
+            document.getElementById('exam-fb-panel').style.display = '';
+        }
+        submitBtn.textContent = '📤 Submit Full Exam'; submitBtn.disabled = false;
+    }
+
+    function renderExamFeedback(fb) {
+        const pct = Math.round(fb.total_score / fb.total_max * 100);
+        const c = pct >= 70 ? '#2e7d32' : pct >= 55 ? '#e65100' : '#d92626';
+        let h = `<div class="exam-total">
+            <div class="exam-total-score" style="color:${c}">${fb.total_score}<span style="font-size:1.4rem;color:#aaa;font-weight:400">/${fb.total_max}</span></div>
+            <div class="exam-grade" style="color:${c}">${fb.grade||''} — ${pct}%</div>
+            <div class="exam-overall">${fb.overall_feedback||''}</div>
+        </div>`;
+
+        if (fb.top_mistakes_to_fix?.length) {
+            h += `<div class="fb-section"><div class="fb-section-title">🔴 Top mistakes to fix before exam</div>`;
+            fb.top_mistakes_to_fix.forEach(m => { h += `<span class="mistake-tag">${m}</span>`; });
+            h += '</div>';
+        }
+
+        (fb.tasks||[]).forEach((t, i) => {
+            const task = examData.tasks[i] || {};
+            h += `<div style="border-top:1px solid #eee;padding-top:16px;margin-top:16px;">
+                <div class="task-label">${task.label||'Task '+(i+1)} — ${t.score}/${t.max}</div>`;
+            h += renderFeedbackHTML(t, false);
+            h += '</div>';
+        });
+        document.getElementById('exam-fb-content').innerHTML = h;
+    }
+
+    function toggleExamIdeal() {
+        const box = document.getElementById('exam-ideal-box');
+        if (box.style.display === 'none') {
+            box.textContent = examIdealText || '⏳ Still generating, please wait a moment…';
+            box.style.display = '';
+        } else {
+            box.style.display = 'none';
+        }
+    }
+    </script>
+</body>
+</html>
