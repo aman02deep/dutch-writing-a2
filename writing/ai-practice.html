@@ -201,8 +201,9 @@
             width: 90%; max-width: 780px; height: 85vh; border-radius: 12px;
             background: #fff; display: flex; flex-direction: column; overflow: hidden;
             box-shadow: 0 10px 40px rgba(0,0,0,0.25);
-            animation: popIn 0.2s ease-out;
+            animation: popIn 0.2s ease-out; transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
+        .cs-modal.fullscreen { width: 100vw !important; max-width: 100vw !important; height: 100vh !important; border-radius: 0 !important; }
         @keyframes popIn { from { transform: scale(0.95); opacity: 0; } to { transform: none; opacity: 1; } }
         .cs-modal-header {
             display: flex; align-items: center; justify-content: space-between;
@@ -349,7 +350,10 @@
             <div class="cs-modal">
                 <div class="cs-modal-header">
                     <h2>📋 Cheat Sheet Reference</h2>
-                    <button class="cs-modal-close" onclick="toggleCS()">×</button>
+                    <div style="display:flex;gap:8px;">
+                        <button class="cs-modal-close" onclick="toggleCSFullscreen()" title="Toggle Fullscreen" style="font-size:1.3rem;">⛶</button>
+                        <button class="cs-modal-close" onclick="toggleCS()">×</button>
+                    </div>
                 </div>
                 <div class="cs-tabs">
                     <button class="cs-tab active" onclick="showCS('master')">📝 Master</button>
@@ -874,6 +878,10 @@ Make every exam UNIQUE. Use specific Dutch names, dates, places. Write task prom
     function toggleCS() {
         const overlay = document.getElementById('cs-overlay');
         overlay.classList.toggle('open');
+    }
+    
+    function toggleCSFullscreen() {
+        document.querySelector('#cs-overlay .cs-modal').classList.toggle('fullscreen');
     }
 
     function handleCSBackdrop(e) {
