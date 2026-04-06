@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI-powered KNM practice for the Inburgeringsexamen. Mock Tests, Scenarios, and Full Exams.">
+    <title>AI KNM Practice — Dutch A2</title>
+    <link rel="stylesheet" href="../css/common/style.css">
+    <link rel="stylesheet" href="../css/common/navigation.css">
+    <link rel="stylesheet" href="../css/common/settings.css">
+    <style>
+        /* ── Page layout ── */
+        .page-wrap { max-width: 820px; margin: 0 auto; padding: 28px 20px 60px; }
+
+        /* ── Mode selector ── */
+        .mode-bar { display: flex; gap: 10px; margin-bottom: 24px; }
+        .mode-btn {
+            flex: 1; padding: 13px 10px; border-radius: 10px; box-sizing: border-box;
+            border: 2px solid #e0e0e0; background: #fff; color: #555; text-align: center;
+            font-size: 0.92rem; font-weight: 600; cursor: pointer; transition: 0.18s;
+        }
+        .mode-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .mode-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+        .mode-btn.exam-btn { border-color: #d92626; color: #d92626; }
+        .mode-btn.exam-btn.active { background: #d92626; color: #fff; border-color: #d92626; }
+
+        /* ── Type picker (chapters) ── */
+        #type-picker { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+        .type-btn {
+            padding: 8px 15px; border-radius: 20px; border: 1.5px solid #ddd;
+            background: #fff; color: #555; font-size: 0.83rem; font-weight: 600;
+            cursor: pointer; transition: 0.15s;
+        }
+        .type-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .type-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+        /* ── Task card ── */
+        .task-card {
+            background: #fff; border-radius: 12px; padding: 24px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.07); margin-bottom: 18px;
+            border-left: 4px solid var(--primary);
+        }
+        .task-card.exam-border { border-left-color: #d92626; }
+        .task-label {
+            font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.06em; color: var(--primary); margin-bottom: 6px;
+        }
+        
+        .task-body {
+            background: #f8f9fa; border-radius: 8px; padding: 14px 16px;
+            font-size: 0.93rem; line-height: 1.75; white-space: pre-wrap;
+            margin-bottom: 12px; color: #333;
+        }
+        .task-hint { font-size: 0.8rem; color: #888; margin-bottom: 14px; }
+        
+        /* ── MCQ Options ── */
+        .mcq-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+        .mcq-option {
+            padding: 12px 16px; border: 2px solid #ddd; border-radius: 8px; cursor: pointer;
+            font-size: 0.95rem; display: flex; align-items: center; gap: 12px; transition: 0.15s;
+        }
+        .mcq-option:hover { border-color: var(--primary); background: rgba(0,82,204,0.02); }
+        .mcq-option.selected { border-color: var(--primary); background: rgba(0,82,204,0.05); }
+        .mcq-option.correct { border-color: #2e7d32; background: #e8f5e9; }
+        .mcq-option.incorrect { border-color: #d92626; background: #ffebee; }
+        .opt-letter { font-weight: 700; background: #eee; border-radius: 4px; padding: 2px 8px; font-size: 0.85rem; }
+        .mcq-option.selected .opt-letter { background: var(--primary); color: #fff; }
+
+        /* ── Textarea answer ── */
+        .answer-box {
+            width: 100%; min-height: 120px; padding: 13px 15px;
+            border: 1.5px solid #ddd; border-radius: 8px; font-size: 0.95rem;
+            font-family: inherit; resize: vertical; box-sizing: border-box;
+            line-height: 1.6; transition: 0.15s;
+        }
+        .answer-box:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 0 3px rgba(0,82,204,0.12); }
+
+        /* ── Action buttons ── */
+        .action-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+        .btn-check {
+            background: var(--primary); color: #fff; padding: 11px 22px;
+            border-radius: 9px; border: none; font-weight: 700; font-size: 0.92rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
+        }
+        .btn-check.red { background: #d92626; }
+        .btn-check:disabled { opacity: 0.55; cursor: not-allowed; }
+        .btn-retry {
+            background: #fff; border: 1.5px solid var(--primary); color: var(--primary);
+            padding: 11px 18px; border-radius: 9px; font-size: 0.88rem; font-weight: 600; cursor: pointer;
+        }
+
+        /* ── Feedback panel ── */
+        .fb-panel {
+            background: #fff; border-radius: 12px; padding: 22px 24px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.07); margin-top: 4px; border-left: 4px solid #2e7d32;
+        }
+        .fb-panel.incorrect { border-left-color: #d92626; }
+        .fb-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+        .fb-correct { color: #2e7d32; }
+        .fb-incorrect { color: #d92626; }
+        
+        .loading-pulse { animation: pulse 1.4s ease-in-out infinite; color: var(--primary); font-weight: 600; }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.45} }
+
+        .exam-total-score { font-size: 3rem; font-weight: 900; text-align: center; margin: 20px 0; }
+        
+        /* ── Dashboard Stats ── */
+        .dash-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px; }
+        .stat-card { background: #fff; border-radius: 12px; padding: 16px; text-align: center; border: 1px solid #eee; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
+        .stat-val { font-size: 2rem; font-weight: 800; color: var(--primary); margin-bottom: 4px; }
+        .stat-label { font-size: 0.8rem; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.05em; }
+        .history-list { display: flex; flex-direction: column; gap: 12px; }
+        .history-item { background: #fff; border: 1px solid #eee; border-radius: 10px; padding: 14px 16px; cursor: pointer; transition: 0.15s; }
+        .history-item:hover { border-color: #ddd; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .hi-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+        .hi-date { font-size: 0.8rem; color: #888; }
+        .hi-type { font-size: 0.85rem; font-weight: 600; color: #333; background: #f0f0f0; padding: 2px 8px; border-radius: 6px; }
+        .hi-score { font-weight: 700; font-size: 1rem; }
+    </style>
+</head>
+<body>
+    <nav class="nav-header">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-home"><span class="nav-home-icon">🏠</span><span>Home</span></a>
+            <div class="nav-page-title">
+                <a href="knm.html" class="nav-parent-link">KNM Practice</a>
+                <span class="nav-separator">|</span> 🤖 AI Practice
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-wrap">
+        <h1 style="font-size:1.5rem;font-weight:800;margin-bottom:6px;">🤖 AI KNM Practice</h1>
+        <p style="color:#666;font-size:0.9rem;margin-bottom:22px;">Prepare for the <i>Kennis van de Nederlandse Maatschappij</i> exam with dynamic scenarios, endless multiple choice questions, and a full exam simulator.</p>
+
+        <!-- Mode bar -->
+        <div class="mode-bar">
+            <button class="mode-btn active" id="mode-mcq" onclick="setMode('mcq')">🎯 Mock MCQ</button>
+            <button class="mode-btn exam-btn" id="mode-exam" onclick="setMode('exam')">📋 Full Exam</button>
+            <button class="mode-btn" id="mode-dash" onclick="setMode('dash')">📊 Dashboard</button>
+        </div>
+
+        <!-- ── MOCK MCQ section ── -->
+        <div id="mcq-section">
+            <div id="type-picker">
+                <button class="type-btn" onclick="genMCQ('Wonen')">🏠 Wonen</button>
+                <button class="type-btn" onclick="genMCQ('Werk en Inkomen')">💼 Werk</button>
+                <button class="type-btn" onclick="genMCQ('Gezondheid')">🏥 Gezondheid</button>
+                <button class="type-btn" onclick="genMCQ('Onderwijs')">🎓 Onderwijs</button>
+                <button class="type-btn" onclick="genMCQ('Instanties')">🏢 Instanties</button>
+                <button class="type-btn" onclick="genMCQ('Waarden')">🤝 Waarden</button>
+                <button class="type-btn" style="background:var(--primary);color:#fff;border-color:var(--primary);" onclick="genMCQ('random')">🎲 Random Topic</button>
+            </div>
+
+            <div id="mcq-task-wrap" style="display:none;">
+                <div class="task-card">
+                    <div class="task-label" id="mcq-topic-label">Topic</div>
+                    <div class="task-body" id="mcq-qbody" style="font-size:1.05rem; font-weight:600;"></div>
+                    
+                    <div class="mcq-options" id="mcq-options-container"></div>
+                    
+                    <div class="action-row">
+                        <button class="btn-check" id="mcq-check-btn" onclick="checkMCQ()" disabled>✅ Check Answer</button>
+                        <button class="btn-retry" onclick="genMCQ(currentMCQTopic)">🔄 Next Question</button>
+                    </div>
+                </div>
+
+                <div class="fb-panel" id="mcq-fb-panel" style="display:none;">
+                    <div class="fb-title" id="mcq-fb-title"></div>
+                    <div style="font-size:0.95rem; line-height:1.6; margin-bottom:12px;" id="mcq-fb-explanation"></div>
+                    <div style="font-size:0.85rem; color:#666;" id="mcq-fb-en"></div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- ── FULL EXAM section ── -->
+        <div id="exam-section" style="display:none;">
+            <div id="exam-intro-card" class="task-card exam-border" style="text-align:center; padding:32px;">
+                <div style="font-size:2.5rem;margin-bottom:10px;">📋</div>
+                <h2 style="margin:0 0 8px;font-size:1.2rem;">KNM Final Exam Simulator</h2>
+                <p style="color:#666;font-size:0.9rem;margin-bottom:20px;">A full authentic 40-question exam testing all KNM chapters. You must score 65% to pass.</p>
+                <div style="display:flex; justify-content:center; gap: 10px;">
+                    <button class="btn-check red" onclick="startExam()">▶ Start 40 Questions</button>
+                </div>
+            </div>
+
+            <div id="exam-area" style="display:none;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+                     <div style="font-size:0.95rem;font-weight:700;color:var(--primary);" id="exam-page-indicator">Page 1 of 5</div>
+                </div>
+                <div class="exam-progress-wrap"><div class="exam-progress-bar" id="exam-pbar" style="width:0%"></div></div>
+                <div id="exam-tasks-wrap"></div>
+                <div class="action-row" style="margin-top:24px; justify-content: space-between;">
+                    <button class="btn-retry" onclick="cancelExam()">✖ Cancel</button>
+                    <button class="btn-check red" id="exam-next-btn" onclick="nextExamPage()" style="display:none;">▶ Next Page</button>
+                </div>
+            </div>
+
+            <div class="fb-panel" id="exam-fb-panel" style="display:none; border-left-color:var(--primary);">
+                <div class="exam-total-score" id="exam-final-score"></div>
+                <div style="text-align:center; font-weight:bold; font-size:1.2rem; margin-bottom: 20px;" id="exam-final-label"></div>
+                
+                <h3 style="border-bottom:2px solid #eee; padding-bottom:10px;">Exam Review</h3>
+                <div id="exam-feedback-list"></div>
+                
+                <div class="action-row" style="margin-top:20px;">
+                    <button class="btn-check red" onclick="document.getElementById('exam-area').style.display='none'; document.getElementById('exam-fb-panel').style.display='none'; document.getElementById('exam-intro-card').style.display='block';">🔄 Return to start</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── DASHBOARD section ── -->
+        <div id="dash-section" style="display:none;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
+                <h2 style="margin:0;font-size:1.4rem;">📊 Progress Dashboard</h2>
+                <div style="display:flex; gap:10px;">
+                    <button class="btn-retry" style="padding:6px 14px; font-size:0.85rem;" onclick="exportHistory()">📤 Export Data</button>
+                    <button class="btn-retry" style="padding:6px 14px; font-size:0.85rem;" onclick="document.getElementById('import-file').click()">📥 Import Data</button>
+                    <input type="file" id="import-file" style="display:none" accept=".json" onchange="importHistory(event)">
+                </div>
+            </div>
+            
+            <div class="dash-grid">
+                <div class="stat-card">
+                    <div class="stat-val" id="dash-total-runs">0</div>
+                    <div class="stat-label">Full Exams</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-val" id="dash-avg-score">0%</div>
+                    <div class="stat-label">Avg Exam Score</div>
+                </div>
+            </div>
+
+            <h3 style="font-size:1.1rem;margin:20px 0 10px;">🕒 Exam History</h3>
+            <div class="history-list" id="dash-history-list"></div>
+        </div>
+    </div>
+
+    <script src="../js/common/common.js"></script>
+    <script src="../js/common/ai-service.js?v=knm1"></script>
+    <script src="../js/common/settings.js?v=knm1"></script>
+    <script>
+        // ══════════════════════════════════════════════════════════════════
+        // UI & NAVIGATION
+        // ══════════════════════════════════════════════════════════════════
+        function setMode(mode) {
+            document.getElementById('mcq-section').style.display = mode === 'mcq' ? '' : 'none';
+            document.getElementById('exam-section').style.display = mode === 'exam' ? '' : 'none';
+            document.getElementById('dash-section').style.display = mode === 'dash' ? '' : 'none';
+            
+            document.getElementById('mode-mcq').classList.toggle('active', mode === 'mcq');
+            document.getElementById('mode-exam').classList.toggle('active', mode === 'exam');
+            document.getElementById('mode-dash').classList.toggle('active', mode === 'dash');
+            
+            if (mode === 'dash') renderDashboard();
+        }
+
+        // ══════════════════════════════════════════════════════════════════
+        // AI PROMPTS
+        // ══════════════════════════════════════════════════════════════════
+        const THEMES = ['Wonen', 'Werk en Inkomen', 'Waarden en Normen', 'Onderwijs', 'Gezondheidszorg', 'Instanties', 'Politiek', 'De Rechtsstaat'];
+
+        function getMCQPrompt(topic) {
+            return `You are a Dutch KNM (Kennis van de Nederlandse Maatschappij) examiner.
+Create 1 multiple-choice question about the topic: ${topic}.
+The question must relate strictly to Dutch laws, culture, facts, or procedures (Inburgering A2 level).
+Return ONLY valid JSON (no markdown fences):
+{
+  "question": "The question in A2 Dutch",
+  "options": [
+    {"id": "A", "text": "Option A in Dutch"},
+    {"id": "B", "text": "Option B in Dutch"},
+    {"id": "C", "text": "Option C in Dutch"}
+  ],
+  "correct": "A, B, or C",
+  "explanation_nl": "Why this is correct in A2 Dutch (max 2 sentences)",
+  "explanation_en": "Why this is correct in English (max 2 sentences)"
+}`;
+        }
+
+
+
+        function getExamPrompt(pageIndex, pageSize, coveredStr) {
+            return `You are a Dutch KNM examiner. Generate Part ${pageIndex} of a KNM multiple choice exam.
+Generate exactly ${pageSize} unique multiple choice questions.
+Randomly distribute the questions across the core KNM themes (Wonen, Gezondheid, Politiek, Werk, Onderwijs, Instanties, Waarden, Rechtsstaat).
+Avoid repeating these general topics just covered: ${coveredStr}
+Return ONLY valid JSON (no markdown fences):
+{
+  "questions": [
+    {
+      "id": 1,
+      "topic": "Short Topic Name",
+      "question": "The question in A2 Dutch",
+      "options": [
+        {"id": "A", "text": "Option in Dutch"},
+        {"id": "B", "text": "Option in Dutch"},
+        {"id": "C", "text": "Option in Dutch"}
+      ],
+      "correct": "A, B, or C",
+      "explanation": "1 short sentence explaining why in simple Dutch"
+    }
+  ]
+}`;
+        }
+
+        function parseJSON(raw) {
+            try {
+                const clean = raw.replace(/^```json\s*/,'').replace(/^```\s*/,'').replace(/```\s*$/,'').trim();
+                return JSON.parse(clean);
+            } catch(e) {
+                const m = raw.match(/\{[\s\S]*\}|\[[\s\S]*\]/);
+                if (m) { try { return JSON.parse(m[0]); } catch(e2){} }
+                console.error("AI JSON Parsing Failed. Raw text was:", raw);
+                return null;
+            }
+        }
+
+        async function callAI(systemPrompt, userPrompt = '') {
+            const msgs = [ { role: 'system', content: systemPrompt } ];
+            if (userPrompt) msgs.push({ role: 'user', content: userPrompt });
+            return await aiService.fetchAIChat(msgs);
+        }
+
+        // ══════════════════════════════════════════════════════════════════
+        // MCQ MODE
+        // ══════════════════════════════════════════════════════════════════
+        let currentMCQTopic = 'random';
+        let currentMCQData = null;
+        let selectedOption = null;
+
+        async function genMCQ(topic) {
+            const btn = document.querySelector('#type-picker .type-btn:last-child');
+            if(topic === 'random') {
+               currentMCQTopic = THEMES[Math.floor(Math.random() * THEMES.length)];
+            } else {
+               currentMCQTopic = topic;
+            }
+
+            document.getElementById('mcq-task-wrap').style.display = '';
+            document.getElementById('mcq-fb-panel').style.display = 'none';
+            document.getElementById('mcq-qbody').innerHTML = '<span class="loading-pulse">Generating KNM question...</span>';
+            document.getElementById('mcq-topic-label').textContent = currentMCQTopic.toUpperCase();
+            document.getElementById('mcq-options-container').innerHTML = '';
+            document.getElementById('mcq-check-btn').disabled = true;
+            selectedOption = null;
+
+            const res = await callAI(getMCQPrompt(currentMCQTopic));
+            currentMCQData = parseJSON(res);
+
+            if(!currentMCQData || !currentMCQData.question) {
+                document.getElementById('mcq-qbody').innerHTML = 'Failed to generate question. Please try again.';
+                return;
+            }
+
+            document.getElementById('mcq-qbody').textContent = currentMCQData.question;
+            
+            let optsHtml = '';
+            currentMCQData.options.forEach(opt => {
+                optsHtml += `<div class="mcq-option" onclick="selectOption('${opt.id}')" id="opt-${opt.id}">
+                    <span class="opt-letter">${opt.id}</span>
+                    <span class="opt-text">${opt.text}</span>
+                </div>`;
+            });
+            document.getElementById('mcq-options-container').innerHTML = optsHtml;
+        }
+
+        function selectOption(id) {
+            if(document.getElementById('mcq-check-btn').style.display === 'none') return; // already answered
+            selectedOption = id;
+            document.querySelectorAll('.mcq-option').forEach(el => el.classList.remove('selected'));
+            document.getElementById('opt-'+id).classList.add('selected');
+            document.getElementById('mcq-check-btn').disabled = false;
+        }
+
+        function checkMCQ() {
+            if(!selectedOption || !currentMCQData) return;
+            
+            const isCorrect = (selectedOption === currentMCQData.correct);
+            const panel = document.getElementById('mcq-fb-panel');
+            
+            document.getElementById('opt-'+currentMCQData.correct).classList.add('correct');
+            if(!isCorrect) {
+                 document.getElementById('opt-'+selectedOption).classList.add('incorrect');
+            }
+
+            panel.style.display = 'block';
+            panel.className = 'fb-panel ' + (isCorrect ? '' : 'incorrect');
+            
+            document.getElementById('mcq-fb-title').textContent = isCorrect ? '✅ Correct!' : '❌ Incorrect';
+            document.getElementById('mcq-fb-title').className = 'fb-title ' + (isCorrect ? 'fb-correct' : 'fb-incorrect');
+            document.getElementById('mcq-fb-explanation').textContent = currentMCQData.explanation_nl;
+            document.getElementById('mcq-fb-en').textContent = currentMCQData.explanation_en;
+            
+            document.getElementById('mcq-check-btn').disabled = true;
+        }
+
+
+
+        // ══════════════════════════════════════════════════════════════════
+        // EXAM MODE
+        // ══════════════════════════════════════════════════════════════════
+        let allExamQuestions = [];
+        let examAnswers = {};
+        let examCurrentPage = 1;
+        const EXAM_TOTAL_PAGES = 5;
+        const EXAM_QS_PER_PAGE = 8;
+
+        async function startExam() {
+            document.getElementById('exam-intro-card').style.display = 'none';
+            document.getElementById('exam-area').style.display = 'block';
+            document.getElementById('exam-fb-panel').style.display = 'none';
+            allExamQuestions = [];
+            examAnswers = {};
+            examCurrentPage = 1;
+            await loadExamPage();
+        }
+
+        async function loadExamPage() {
+            document.getElementById('exam-tasks-wrap').innerHTML = `<div style="text-align:center;padding:40px;"><span class="loading-pulse" style="font-size:1.2rem;">Generating Page ${examCurrentPage} of ${EXAM_TOTAL_PAGES}...</span></div>`;
+            document.getElementById('exam-next-btn').style.display = 'none';
+            document.getElementById('exam-page-indicator').textContent = `Page ${examCurrentPage} of ${EXAM_TOTAL_PAGES}`;
+            updateExamProgressBar();
+
+            const recentlyCovered = allExamQuestions.slice(-10).map(q => q.topic).join(', ');
+            const res = await callAI(getExamPrompt(examCurrentPage, EXAM_QS_PER_PAGE, recentlyCovered));
+            const examData = parseJSON(res);
+
+            if(!examData || !examData.questions || examData.questions.length === 0) {
+                 if(allExamQuestions.length === 0) {
+                     cancelExam();
+                     alert('Failed to load exam. The AI format was invalid.');
+                 } else {
+                     alert('Failed to load the next page. Please click "Next Page" again to retry.');
+                     document.getElementById('exam-next-btn').style.display = 'block';
+                     document.getElementById('exam-tasks-wrap').innerHTML = '<div style="color:#d92626; text-align:center;">Network error. Ready to retry.</div>';
+                 }
+                 return;
+            }
+
+            allExamQuestions.push(...examData.questions);
+            renderExamForm(examData.questions);
+        }
+
+        function renderExamForm(pageQuestions) {
+            let html = '';
+            const offset = allExamQuestions.length - pageQuestions.length; 
+            
+            pageQuestions.forEach((q, idx) => {
+                const globalIndex = offset + idx;
+                html += `<div class="task-card" style="border-left-color:#d92626; margin-bottom: 24px;" id="eq-card-${globalIndex}">
+                    <div class="task-label">VRAAG ${globalIndex + 1} — ${q.topic}</div>
+                    <div class="task-body" style="font-size:1.05rem; font-weight:600;">${q.question}</div>
+                    <div class="mcq-options">`;
+                
+                q.options.forEach(opt => {
+                    html += `<label class="mcq-option" id="eq-lbl-${globalIndex}-${opt.id}" style="cursor:pointer;">
+                        <input type="radio" name="eq-${globalIndex}" value="${opt.id}" style="margin-right:8px;" onchange="updateExamProgress(${globalIndex}, '${opt.id}')">
+                        <span class="opt-letter">${opt.id}</span>
+                        <span>${opt.text}</span>
+                    </label>`;
+                });
+                
+                html += `</div></div>`;
+            });
+            document.getElementById('exam-tasks-wrap').innerHTML = html;
+            
+            const btn = document.getElementById('exam-next-btn');
+            btn.style.display = 'block';
+            if (examCurrentPage >= EXAM_TOTAL_PAGES) {
+                btn.innerHTML = '📤 Finish Exam';
+                btn.onclick = submitExam;
+            } else {
+                btn.innerHTML = '▶ Next Page';
+                btn.onclick = nextExamPage;
+            }
+            updateExamProgressBar();
+        }
+
+        async function nextExamPage() {
+            examCurrentPage++;
+            await loadExamPage();
+        }
+
+        function updateExamProgress(qIndex, val) {
+            examAnswers[qIndex] = val;
+            document.querySelectorAll(`input[name="eq-${qIndex}"]`).forEach(r => {
+                r.parentElement.classList.remove('selected');
+            });
+            document.getElementById(`eq-lbl-${qIndex}-${val}`).classList.add('selected');
+            updateExamProgressBar();
+        }
+
+        function updateExamProgressBar() {
+            const answered = Object.keys(examAnswers).length;
+            const totalTarget = EXAM_TOTAL_PAGES * EXAM_QS_PER_PAGE;
+            const pct = (answered / totalTarget) * 100;
+            document.getElementById('exam-pbar').style.width = pct + '%';
+        }
+
+        function cancelExam() {
+            document.getElementById('exam-area').style.display = 'none';
+            document.getElementById('exam-intro-card').style.display = 'block';
+        }
+
+        function submitExam() {
+            const total = allExamQuestions.length;
+            const answered = Object.keys(examAnswers).length;
+            if(answered < total) {
+                if(!confirm(`You have only answered ${answered} out of ${total} questions. Are you sure you want to submit?`)) return;
+            }
+
+            let correctCount = 0;
+            let fbHtml = '';
+
+            allExamQuestions.forEach((q, i) => {
+                const userAns = examAnswers[i];
+                const isCorrect = userAns === q.correct;
+                if(isCorrect) correctCount++;
+
+                fbHtml += `<div style="margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #eee;">
+                    <div style="font-weight:700; margin-bottom:6px;">${i+1}. ${q.question}</div>
+                    <div style="font-size:0.9rem; color:#666; margin-bottom:6px;">Your answer: ${userAns || 'None'} ${isCorrect ? '✅' : '❌'} (Correct: ${q.correct})</div>`;
+                
+                if(!isCorrect) {
+                     fbHtml += `<div style="background:#fff3e0; border-left:3px solid #e65100; padding:10px; font-size:0.9rem;"><strong>Uitleg:</strong> ${q.explanation}</div>`;
+                }
+                fbHtml += `</div>`;
+            });
+
+            const pct = Math.round((correctCount / total) * 100);
+            const passed = pct >= 65; // KNM pass threshold typically ~65%
+
+            document.getElementById('exam-final-score').textContent = `${correctCount} / ${total}`;
+            document.getElementById('exam-final-score').style.color = passed ? '#2e7d32' : '#d92626';
+            document.getElementById('exam-final-label').textContent = passed ? 'Geslaagd! (Passed)' : 'Gezakt (Failed)';
+            document.getElementById('exam-feedback-list').innerHTML = fbHtml;
+
+            document.getElementById('exam-area').style.display = 'none';
+            document.getElementById('exam-fb-panel').style.display = 'block';
+
+            saveHistory({ score: correctCount, max: total, pct: pct });
+        }
+
+        // ══════════════════════════════════════════════════════════════════
+        // DASHBOARD
+        // ══════════════════════════════════════════════════════════════════
+        function getHistory() {
+            const stored = localStorage.getItem('dutch_knm_history');
+            return stored ? JSON.parse(stored) : [];
+        }
+        
+        function saveHistory(runData) {
+            const history = getHistory();
+            history.unshift({
+                id: Date.now(),
+                date: new Date().toLocaleString(),
+                ...runData
+            });
+            localStorage.setItem('dutch_knm_history', JSON.stringify(history));
+            renderDashboard();
+        }
+
+        function deleteHistoryRecord(id) {
+            if (!confirm('Are you sure you want to delete this test record?')) return;
+            const history = getHistory().filter(h => h.id !== id);
+            localStorage.setItem('dutch_knm_history', JSON.stringify(history));
+            renderDashboard();
+        }
+
+        function exportHistory() {
+            const history = getHistory();
+            if (history.length === 0) return alert('No history to export!');
+            const blob = new Blob([JSON.stringify(history, null, 2)], { type: 'application/json' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'dutch-a2-knm-history.json';
+            a.click();
+        }
+
+        function importHistory(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const imported = JSON.parse(e.target.result);
+                    if (!Array.isArray(imported)) throw new Error('Invalid format (not an array)');
+                    const existing = getHistory();
+                    const existingIds = new Set(existing.map(h => h.id));
+                    let newCount = 0;
+                    imported.forEach(item => {
+                        if (item.id && !existingIds.has(item.id)) { existing.push(item); newCount++; }
+                    });
+                    if (newCount > 0) {
+                        existing.sort((a,b) => b.id - a.id);
+                        localStorage.setItem('dutch_knm_history', JSON.stringify(existing));
+                        renderDashboard();
+                        alert(`Successfully imported ${newCount} new record(s)!`);
+                    } else { alert('No new records found in the uploaded file.'); }
+                } catch(err) { alert('Bad JSON file: ' + err.message); }
+            };
+            reader.readAsText(file);
+            event.target.value = '';
+        }
+
+        function renderDashboard() {
+            const history = getHistory();
+            const totalRuns = history.length;
+            document.getElementById('dash-total-runs').textContent = totalRuns;
+
+            if (totalRuns === 0) {
+                document.getElementById('dash-avg-score').textContent = '0%';
+                document.getElementById('dash-history-list').innerHTML = '<div style="color:#888;">No full exams recorded yet.</div>';
+                return;
+            }
+
+            let totalPcts = 0;
+            let htmlRuns = '';
+            
+            history.forEach(run => {
+                totalPcts += run.pct || 0;
+                const passed = (run.pct >= 65);
+                htmlRuns += `<div class="history-item" style="border-left: 4px solid ${passed ? '#2e7d32' : '#d92626'};">
+                    <div class="hi-header">
+                        <span class="hi-type">Full Exam Setup</span>
+                        <div style="display:flex;gap:12px;align-items:center;">
+                            <span class="hi-date">${run.date}</span>
+                            <button style="border:none;background:transparent;cursor:pointer;color:#d92626;font-size:1.1rem;padding:0;" onclick="deleteHistoryRecord(${run.id}); event.stopPropagation();">🗑️</button>
+                        </div>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;">
+                        <span class="hi-score" style="color: ${passed ? '#2e7d32' : '#d92626'}">Score: ${run.score}/${run.max} (${run.pct}%) ${passed ? '✅' : '❌'}</span>
+                    </div>
+                </div>`;
+            });
+
+            document.getElementById('dash-avg-score').textContent = Math.round(totalPcts / totalRuns) + '%';
+            document.getElementById('dash-history-list').innerHTML = htmlRuns;
+        }
+
+        // Initialize dashboard state correctly
+        renderDashboard();
+    </script>
+</body>
+</html>

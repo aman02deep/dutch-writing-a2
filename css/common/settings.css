@@ -186,6 +186,66 @@
     font-weight: 500;
 }
 
+/* ── Language Level Grid ──────────────────────────────────────────── */
+.lang-level-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.lang-level-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 11px 14px;
+    border: 2px solid #e8e8e8;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: #fff;
+}
+
+.lang-level-option:hover {
+    border-color: var(--primary, #0052cc);
+    background: #f5f8ff;
+}
+
+.lang-level-option.selected {
+    border-color: var(--primary, #0052cc);
+    background: #f0f4ff;
+}
+
+/* Colour-coded selected states per level */
+.lang-level-option[data-level="a1"].selected   { border-color: #2e7d32; background: #f0fdf4; }
+.lang-level-option[data-level="a1plus"].selected { border-color: #0052cc; background: #f0f4ff; }
+.lang-level-option[data-level="mix"].selected  { border-color: #b45309; background: #fffbeb; }
+.lang-level-option[data-level="a2"].selected   { border-color: #c62828; background: #fff5f5; }
+
+.lang-level-option input[type="radio"] {
+    margin-top: 3px;
+    accent-color: var(--primary, #0052cc);
+    flex-shrink: 0;
+}
+
+.lang-level-info { flex: 1; }
+
+.lang-level-name {
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: #222;
+    margin-bottom: 3px;
+}
+
+.lang-level-desc {
+    font-size: 0.76rem;
+    color: #777;
+    line-height: 1.4;
+}
+
+@media (max-width: 480px) {
+    .lang-level-grid { grid-template-columns: 1fr; }
+}
+
 /* ── Key Input ────────────────────────────────────────────────────── */
 .key-input-row {
     display: flex;
