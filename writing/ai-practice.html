@@ -658,6 +658,15 @@
 
         <!-- ── DASHBOARD section ── -->
         <div id="dash-section" style="display:none;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
+                <h2 style="margin:0;font-size:1.4rem;">📊 Progress Dashboard</h2>
+                <div style="display:flex; gap:10px;">
+                    <button class="btn-check" style="padding:6px 14px; font-size:0.85rem;" onclick="exportHistory()">📤 Export Data</button>
+                    <button class="btn-retry" style="padding:6px 14px; font-size:0.85rem;" onclick="document.getElementById('import-file').click()">📥 Import Data</button>
+                    <input type="file" id="import-file" style="display:none" accept=".json" onchange="importHistory(event)">
+                </div>
+            </div>
+            
             <div class="dash-grid">
                 <div class="stat-card">
                     <div class="stat-val" id="dash-total-runs">0</div>
@@ -717,31 +726,49 @@ KEY GRAMMAR RULES:
 6. GKBV (gaan/komen/blijven/vertrekken) → zijn. Others → hebben. Past form at END.
 7. ik is NEVER capital mid-sentence`;
 
-    const FEEDBACK_SYSTEM = `You are a Dutch A2 inburgering exam teacher. Student has poor memory, exam is soon.
+    // FEEDBACK_SYSTEM is a function so it reads the live language level setting each time
+    function getFeedbackSystem() {
+        const langInstruction = (typeof getLangLevelInstruction === 'function') ? getLangLevelInstruction() : '';
+        return `You are a Dutch A2 inburgering exam teacher. The student has a weak memory and the exam is soon.
+
+${langInstruction}
+
+IMPORTANT LANGUAGE RULES FOR YOUR RESPONSE:
+- requirements[].note → Write in the language style above. Example: "Goed gedaan! Je hebt een reden gegeven (= reason)." or "Je bent de afsluiting vergeten (= closing)."  
+- grammar_mistakes[].explanation_nl → Write mostly in the language style above. Example: "Na 'omdat' komt het werkwoord aan het einde van de zin (= verb goes to end). Schrijf: 'omdat ik ziek BEN', niet 'omdat ik ben ziek'."
+- grammar_mistakes[].explanation_en → Keep this as a very short English fallback (max 8 words).
+- well_done[] → Write in Dutch matching the level above. Example: "Je hebt 'Geachte' goed gebruikt!"
+- tip → Write as: one Dutch sentence matching the level, then (= English meaning in brackets) if level is A1 or A1+.
+- template_suggestions[] → Keep as Dutch sentences from the cheat sheet (they already are).
+- score_label → Write in simple Dutch. Example: "Goed gedaan!", "Bijna goed!", "Blijf oefenen!"
 
 ${TK}
 
 Return ONLY valid JSON, no markdown:
 {
   "score": 7,
-  "score_label": "Good effort!",
-  "requirements": [{"item":"requirement","ok":true,"note":"English note"}],
-  "grammar_mistakes": [{"wrong":"wrong text","correct":"corrected","rule":"rule name","explanation_en":"simple English explanation","template_ref":"exact sentence from cheat sheet"}],
+  "score_label": "Goed gedaan!",
+  "requirements": [{"item":"requirement in Dutch","ok":true,"note":"Dutch note with (= English) following the language level above"}],
+  "grammar_mistakes": [{"wrong":"wrong text","correct":"corrected","rule":"rule name in English","explanation_nl":"Dutch explanation of the mistake following the language level above","explanation_en":"max 8-word English fallback","template_ref":"exact sentence from cheat sheet"}],
   "spelling": [{"wrong":"word","correct":"word"}],
-  "well_done": ["point 1","point 2"],
-  "tip": "one exam tip in English",
-  "template_suggestions": ["template sentence that would help"]
+  "well_done": ["Dutch praise point at the language level above"],
+  "tip": "Dutch exam tip following the language level above",
+  "template_suggestions": ["template sentence from cheat sheet"]
 }
-Max 4 grammar mistakes. Always add template_ref pointing to exact cheat sheet sentence. All notes in English.`;
+Max 4 grammar mistakes. Always add template_ref. Follow the FEEDBACK LANGUAGE instruction above precisely.`;
+    }
 
-    const QUESTION_SYSTEM = `You are a Dutch A2 inburgering writing exam creator.
+    // QUESTION_SYSTEM is a function so hint language level is applied dynamically
+    function getQuestionSystem() {
+        const langInstruction = (typeof getLangLevelInstruction === 'function') ? getLangLevelInstruction() : '';
+        return `You are a Dutch A2 inburgering writing exam creator.
 Generate a unique, realistic exam task of the requested type.
 Return ONLY valid JSON, no markdown fences:
 {
   "q": "The task description in Dutch (use bullet points with •)",
   "t": "word count target string, e.g. 40–50 woorden",
   "l": "Short English label, e.g. Short informal email",
-  "hint": "Short English tip about tone or format"
+  "hint": "A short 2–3 sentence tip for the student. ${langInstruction ? 'Follow this language rule: ' + langInstruction : 'Write in A1/A2 Dutch with English in brackets (= ...) for harder words.'} Example hint: 'Dit is een informele (= informal) e-mail. Begin met \'Hoi [naam],\' en eindig met \'Groetjes,\'. Schrijf een reden met \'omdat\'.'  Adjust formality to match the task type."
 }
 
 Task types:
@@ -752,8 +779,12 @@ Task types:
 - wijkkrant: 60–80 words. ALWAYS "Hallo allemaal," → "Fijne dag allemaal!". Scenarios: favourite food, holiday, new appliance, family, local tip.
 
 Make every question UNIQUE. Use specific Dutch names, days, times. Write task (q) in Dutch only.`;
+    }
 
-    const EXAM_QUESTION_SYSTEM = `You are a Dutch A2 inburgering exam creator. Generate a complete, unique, realistic exam with 3 tasks.
+    // EXAM_QUESTION_SYSTEM is a function so hint language level is applied dynamically
+    function getExamQuestionSystem() {
+        const langInstruction = (typeof getLangLevelInstruction === 'function') ? getLangLevelInstruction() : '';
+        return `You are a Dutch A2 inburgering exam creator. Generate a complete, unique, realistic exam with 3 tasks.
 Return ONLY valid JSON, no markdown fences:
 {
   "tasks": [
@@ -762,7 +793,7 @@ Return ONLY valid JSON, no markdown fences:
       "type": "form",
       "label": "Opdracht 1 — Formulier",
       "target": "Vul alle velden in",
-      "hint": "Fill in realistic personal details",
+      "hint": "Vul het formulier in met jouw gegevens (= your personal details). Schrijf duidelijk.",
       "formTitle": "Short Dutch title of the form, e.g. Aanmeldformulier Sportclub",
       "fields": [
         {"id": "naam", "label": "Naam"},
@@ -781,7 +812,7 @@ Return ONLY valid JSON, no markdown fences:
       "label": "Opdracht 2 — Kort e-mail",
       "target": "40–50 woorden",
       "q": "Unique short email task in Dutch with 3–4 bullet points",
-      "hint": "Short English hint about tone (formal/informal)"
+      "hint": "A short A1/A2 Dutch tip for this task — e.g. 'Dit is een formele (= formal) e-mail. Begin met \'Geachte heer/mevrouw,\'. Gebruik \'u\' en niet \'je\'.' OR 'Dit is informeel (= informal). Begin met \'Hoi [naam],\'. Geef een reden met \'omdat\'.' ${langInstruction ? 'Follow this rule: ' + langInstruction : ''} Keep it 2 short sentences."
     },
     {
       "num": 3,
@@ -789,11 +820,12 @@ Return ONLY valid JSON, no markdown fences:
       "label": "Opdracht 3 — Lang e-mail of Wijkkrant",
       "target": "60–80 woorden",
       "q": "Unique longer task in Dutch — complaint OR wijkkrant — with 4–5 bullet points",
-      "hint": "Short English hint about the task type"
+      "hint": "A short A1/A2 Dutch tip — e.g. for wijkkrant: 'Begin altijd met \'Hallo allemaal,\' en eindig met \'Fijne dag allemaal!\'. Vertel wie je bent (= who you are) en waar je woont.' OR for complaint: 'Dit is een formele klacht (= complaint). Schrijf wat er mis is gegaan en wat je wilt.' ${langInstruction ? 'Follow this rule: ' + langInstruction : ''} Keep it 2 short sentences."
     }
   ]
 }
-Make every exam UNIQUE. Use specific Dutch names, dates, places. Write task prompts (q) in Dutch.`;
+Make every exam UNIQUE. Use specific Dutch names, dates, places. Write task prompts (q) in Dutch. Write all hints in A1/A2 Dutch as instructed.`;
+    }
 
     // ══════════════════════════════════════════════════════════════════
     // SHARED HELPERS
@@ -837,38 +869,43 @@ Make every exam UNIQUE. Use specific Dutch names, dates, places. Write task prom
             const c = fb.score >= 7 ? '#2e7d32' : fb.score >= 5 ? '#e65100' : '#d92626';
             h += `<div class="fb-score-row"><div class="fb-score" style="color:${c}">${fb.score}<span style="font-size:1rem;color:#aaa;font-weight:400">/10</span></div><div class="fb-score-label">${fb.score_label||''}</div></div>`;
         }
-        h += `<div class="fb-section"><div class="fb-section-title">Requirements</div>`;
+        // Requirements — note is now Dutch A1/A2
+        h += `<div class="fb-section"><div class="fb-section-title">✔️ Opdrachten (Requirements)</div>`;
         (fb.requirements||[]).forEach(r => {
-            h += `<div class="fb-row">${r.ok?'✅':'❌'} <strong>${r.item}</strong>${r.note?`<span class="fb-en">${r.note}</span>`:''}</div>`;
+            h += `<div class="fb-row">${r.ok?'✅':'❌'} <strong>${r.item}</strong>${r.note?`<span class="fb-en" style="color:#555;font-style:normal;">${r.note}</span>`:''}</div>`;
         });
         h += '</div>';
+        // Grammar — explanation_nl is now the primary (Dutch), explanation_en is a small grey fallback
         if (fb.grammar_mistakes?.length) {
-            h += `<div class="fb-section"><div class="fb-section-title">Grammar mistakes</div>`;
+            h += `<div class="fb-section"><div class="fb-section-title">📝 Grammaticafouten (Grammar mistakes)</div>`;
             fb.grammar_mistakes.forEach(g => {
-                h += `<div class="fb-row fb-err">❌ <strong>${g.wrong}</strong> → <span class="fb-ok">${g.correct}</span><span class="fb-en">${g.explanation_en}</span>${g.template_ref?`<span class="fb-tref">💡 "${g.template_ref}"</span>`:''}</div>`;
+                const nlExpl = g.explanation_nl || g.explanation_en || '';
+                const enFallback = g.explanation_nl && g.explanation_en ? `<span style="display:block;font-size:0.76rem;color:#aaa;margin-top:2px;font-style:italic;">${g.explanation_en}</span>` : '';
+                h += `<div class="fb-row fb-err">❌ <strong>${g.wrong}</strong> → <span class="fb-ok">${g.correct}</span><span class="fb-en" style="color:#444;font-style:normal;display:block;margin-top:3px;">${nlExpl}</span>${enFallback}${g.template_ref?`<span class="fb-tref">💡 "${g.template_ref}"</span>`:''}</div>`;
             });
             h += '</div>';
         } else {
-            h += `<div class="fb-section"><div class="fb-section-title">Grammar</div><div class="fb-row fb-ok">✅ No major grammar mistakes!</div></div>`;
+            h += `<div class="fb-section"><div class="fb-section-title">📝 Grammatica</div><div class="fb-row fb-ok">✅ Geen grote grammaticafouten! (No major grammar mistakes!)</div></div>`;
         }
         if (fb.spelling?.length) {
-            h += `<div class="fb-section"><div class="fb-section-title">Spelling</div>`;
+            h += `<div class="fb-section"><div class="fb-section-title">🔤 Spelling</div>`;
             fb.spelling.forEach(s => { h += `<div class="fb-row fb-err">❌ <strong>${s.wrong}</strong> → <span class="fb-ok">${s.correct}</span></div>`; });
             h += '</div>';
         } else {
-            h += `<div class="fb-section"><div class="fb-section-title">Spelling</div><div class="fb-row fb-ok">✅ No spelling errors!</div></div>`;
+            h += `<div class="fb-section"><div class="fb-section-title">🔤 Spelling</div><div class="fb-row fb-ok">✅ Geen spelfouten! (No spelling errors!)</div></div>`;
         }
         if (fb.well_done?.length) {
-            h += `<div class="fb-section"><div class="fb-section-title">What you did well</div>`;
+            h += `<div class="fb-section"><div class="fb-section-title">🌟 Goed gedaan! (Well done)</div>`;
             fb.well_done.forEach(w => { h += `<div class="fb-row fb-ok">✅ ${w}</div>`; });
             h += '</div>';
         }
         if (fb.template_suggestions?.length) {
-            h += `<div class="fb-section"><div class="fb-section-title">💡 Useful templates</div>`;
+            h += `<div class="fb-section"><div class="fb-section-title">💡 Handige zinnen (Useful templates)</div>`;
             fb.template_suggestions.forEach(t => { h += `<div class="fb-row"><span class="fb-tref">${t}</span></div>`; });
             h += '</div>';
         }
-        if (fb.tip) h += `<div class="fb-tip">💡 <strong>Exam tip:</strong> ${fb.tip}</div>`;
+        // Tip is now Dutch A1/A2 first, English in brackets
+        if (fb.tip) h += `<div class="fb-tip">💡 <strong>Examtip:</strong> ${fb.tip}</div>`;
         return h;
     }
 
@@ -956,6 +993,63 @@ Make every exam UNIQUE. Use specific Dutch names, dates, places. Write task prom
         return (rule || 'other').toLowerCase() + '|' + wrong.toLowerCase();
     }
 
+    function deleteHistoryRecord(id) {
+        if (!confirm('Are you sure you want to delete this test record?')) return;
+        const history = getHistory().filter(h => h.id !== id);
+        localStorage.setItem('dutch_test_history', JSON.stringify(history));
+        renderDashboard();
+    }
+
+    function exportHistory() {
+        const history = getHistory();
+        if (history.length === 0) return alert('No history to export!');
+        const blob = new Blob([JSON.stringify(history, null, 2)], { type: 'application/json' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'dutch-a2-writing-history.json';
+        a.click();
+    }
+
+    function importHistory(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            try {
+                const imported = JSON.parse(e.target.result);
+                if (!Array.isArray(imported)) throw new Error('Invalid format (not an array)');
+                
+                const existing = getHistory();
+                const existingIds = new Set(existing.map(h => h.id));
+                let newCount = 0;
+                
+                imported.forEach(item => {
+                    // Extremely simple validation + merge
+                    if (item.id && !existingIds.has(item.id)) {
+                        existing.push(item);
+                        newCount++;
+                    }
+                });
+                
+                if (newCount > 0) {
+                    // Sort descending by ID/Date
+                    existing.sort((a,b) => b.id - a.id);
+                    localStorage.setItem('dutch_test_history', JSON.stringify(existing));
+                    renderDashboard();
+                    alert(`Successfully imported ${newCount} new record(s)!`);
+                } else {
+                    alert('No new records found in the uploaded file (they might already exist).');
+                }
+            } catch(err) {
+                alert('Bad JSON file: ' + err.message);
+            }
+        };
+        reader.readAsText(file);
+        
+        // Reset file input so same file can be chosen again
+        event.target.value = '';
+    }
+
     function renderDashboard() {
         const history = getHistory();
         const totalRuns = history.length;
@@ -993,7 +1087,10 @@ Make every exam UNIQUE. Use specific Dutch names, dates, places. Write task prom
             htmlRuns += `<div class="history-item" onclick="toggleHiDetails(${run.id})">
                 <div class="hi-header">
                     <span class="hi-type">${title}</span>
-                    <span class="hi-date">${run.date}</span>
+                    <div style="display:flex;gap:12px;align-items:center;">
+                        <span class="hi-date">${run.date}</span>
+                        <button style="border:none;background:transparent;cursor:pointer;color:#d92626;font-size:1.1rem;padding:0;" onclick="deleteHistoryRecord(${run.id}); event.stopPropagation();" title="Delete record">🗑️</button>
+                    </div>
                 </div>
                 <div style="display:flex;justify-content:space-between;align-items:center;">
                     <span class="hi-score" style="color:var(--primary)">Score: ${s}</span>
@@ -1061,7 +1158,7 @@ Make every exam UNIQUE. Use specific Dutch names, dates, places. Write task prom
         document.querySelectorAll('.type-btn').forEach(b => b.disabled = true);
 
         try {
-            const raw = await callAI(QUESTION_SYSTEM, `Generate a task of type: ${currentMockType}`, 600);
+            const raw = await callAI(getQuestionSystem(), `Generate a task of type: ${currentMockType}`, 600);
             const q = parseJSON(raw);
             if (!q?.q) throw new Error('Could not parse question. Please try again.');
 
@@ -1141,7 +1238,7 @@ Make every exam UNIQUE. Use specific Dutch names, dates, places. Write task prom
         btn.textContent = '⏳ Checking…'; btn.disabled = true;
 
         try {
-            const raw = await callAI(FEEDBACK_SYSTEM, `TASK:\n${q.q}\n\nTARGET: ${q.t}\n\nSTUDENT ANSWER:\n${answer}`, 1200);
+            const raw = await callAI(getFeedbackSystem(), `TASK:\n${q.q}\n\nTARGET: ${q.t}\n\nSTUDENT ANSWER:\n${answer}`, 1200);
             const fb = parseJSON(raw);
             if (!fb) throw new Error('Could not parse feedback.');
             document.getElementById('mock-fb-content').innerHTML = renderFeedbackHTML(fb);
@@ -1195,7 +1292,7 @@ Make every exam UNIQUE. Use specific Dutch names, dates, places. Write task prom
         document.getElementById('exam-ideal-box').style.display = 'none';
 
         try {
-            const raw = await callAI(EXAM_QUESTION_SYSTEM, 'Generate a complete unique Dutch A2 exam.', 1400);
+            const raw = await callAI(getExamQuestionSystem(), 'Generate a complete unique Dutch A2 exam.', 1400);
             const parsed = parseJSON(raw);
             if (!parsed?.tasks || parsed.tasks.length < 3) throw new Error('Invalid exam data received. Please try again.');
             examData = parsed;
@@ -1303,7 +1400,10 @@ Make every exam UNIQUE. Use specific Dutch names, dates, places. Write task prom
             `TASK ${t.num} (${t.label}, target: ${t.target}):\n${t.type === 'form' ? 'Form filling task' : t.q}\n\nSTUDENT ANSWER ${t.num}:\n${answers[i] || '(no answer)'}`
         ).join('\n\n---\n\n');
 
+        const langInstruction = (typeof getLangLevelInstruction === 'function') ? getLangLevelInstruction() : '';
         const examSys = `You are a Dutch A2 inburgering exam teacher grading a full exam. Grade all 3 tasks.
+
+${langInstruction}
 
 ${TK}
 
@@ -1312,17 +1412,17 @@ Return ONLY valid JSON:
   "total_score": 21,
   "total_max": 30,
   "grade": "Pass",
-  "overall_feedback": "2-3 sentences in English",
-  "top_mistakes_to_fix": ["mistake 1","mistake 2"],
+  "overall_feedback": "2-3 sentences following the language level above",
+  "top_mistakes_to_fix": ["mistake 1 in Dutch following language level","mistake 2"],
   "tasks": [
     {
       "task_num": 1,
       "score": 8, "max": 10,
-      "requirements": [{"item":"req","ok":true,"note":"English note"}],
-      "grammar_mistakes": [{"wrong":"x","correct":"y","rule":"rule","explanation_en":"English","template_ref":"cheat sheet sentence"}],
+      "requirements": [{"item":"req in Dutch","ok":true,"note":"Dutch note following language level above"}],
+      "grammar_mistakes": [{"wrong":"x","correct":"y","rule":"rule","explanation_nl":"Dutch explanation following language level","explanation_en":"short English fallback","template_ref":"cheat sheet sentence"}],
       "spelling": [{"wrong":"x","correct":"y"}],
-      "well_done": ["point"],
-      "tip": "tip in English"
+      "well_done": ["Dutch praise point"],
+      "tip": "Dutch exam tip following language level above"
     }
   ]
 }`;

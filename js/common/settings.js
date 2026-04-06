@@ -1,7 +1,44 @@
 /**
- * AI Settings - Provider Selection & API Key Management
+ * AI Settings - Provider Selection, API Key Management & Language Level
  * Keys are stored in localStorage - private to the user's browser only.
  */
+
+// ── Language Level Presets ────────────────────────────────────────────────────
+const LANGUAGE_LEVELS = {
+    a1: {
+        label: 'A1 — Beginnen',
+        emoji: '🟢',
+        desc: 'Alles in eenvoudig Dutch + veel English hints (= ...)',
+        promptInstruction: `FEEDBACK LANGUAGE: Use ~90% very simple A1 Dutch (short sentences, basic words). Add English translation in brackets (= ...) after almost every Dutch phrase that might be unfamiliar. A small amount of A2 Dutch is fine as a model, but keep it rare. The student is a beginner — clarity is the top priority.`
+    },
+    a1plus: {
+        label: 'A1+ — Groeiend',
+        emoji: '🔵',
+        desc: 'Mainly A1 Dutch + some A2, English brackets when needed',
+        promptInstruction: `FEEDBACK LANGUAGE: Use mostly A1 Dutch (~70%) with natural A2 Dutch (~30%) mixed in. Add English in brackets (= ...) only when a word might be unclear. The student is growing — balance clarity with Dutch immersion.`
+    },
+    mix: {
+        label: 'Mix — Gemengd',
+        emoji: '🟡',
+        desc: 'Equal A1 & A2 Dutch, minimal English brackets',
+        promptInstruction: `FEEDBACK LANGUAGE: Use an equal mix of A1 and A2 Dutch. Only add English in brackets (= ...) for genuinely difficult or rare words. The student can handle more Dutch now — push them gently.`
+    },
+    a2: {
+        label: 'A2 — Klaar voor examen!',
+        emoji: '🔴',
+        desc: 'Full exam-level A2 Dutch, no English brackets',
+        promptInstruction: `FEEDBACK LANGUAGE: Write entirely in A2-level Dutch. Do NOT add any English translations or brackets. The student is exam-ready — immerse them fully in Dutch.`
+    }
+};
+
+/**
+ * Returns the language-level prompt instruction string to inject into AI prompts.
+ * Call this from any page that uses AI feedback.
+ */
+function getLangLevelInstruction() {
+    const level = localStorage.getItem('feedback-language-level') || 'a1plus';
+    return (LANGUAGE_LEVELS[level] || LANGUAGE_LEVELS.a1plus).promptInstruction;
+}
 
 const PROVIDERS = {
     pollinations: {
@@ -110,6 +147,22 @@ function injectSettingsModal() {
                     </div>
                 </div>
 
+                <!-- Feedback Language Level -->
+                <div class="settings-section" style="margin-top: 20px;">
+                    <label class="settings-label">📖 Feedback Language Level</label>
+                    <p style="font-size:0.82rem;color:#888;margin:0 0 12px;">How much Dutch vs English in hints &amp; AI feedback?</p>
+                    <div class="lang-level-grid" id="lang-level-grid">
+                        ${Object.entries(LANGUAGE_LEVELS).map(([key, lv]) => `
+                        <label class="lang-level-option" data-level="${key}">
+                            <input type="radio" name="feedback-lang-level" value="${key}" onchange="onLangLevelChange('${key}')">
+                            <div class="lang-level-info">
+                                <div class="lang-level-name">${lv.emoji} ${lv.label}</div>
+                                <div class="lang-level-desc">${lv.desc}</div>
+                            </div>
+                        </label>`).join('')}
+                    </div>
+                </div>
+
                 <!-- Privacy Notice -->
                 <div class="settings-privacy">
                     🔒 <strong>Your privacy is protected.</strong> API keys are stored only in <em>this browser</em> using localStorage. They are never sent to our servers, logged, or shared with anyone.
@@ -148,6 +201,7 @@ function handleBackdropClick(event) {
 function loadSettingsIntoModal() {
     let savedProvider = localStorage.getItem('ai-provider') || 'pollinations';
     const roleplayEnabled = localStorage.getItem('ai-roleplay-enabled') !== 'false'; // Default true
+    const savedLevel = localStorage.getItem('feedback-language-level') || 'a1plus';
 
     // If the saved provider no longer exists (e.g. was removed), reset to default
     if (!PROVIDERS[savedProvider]) {
@@ -155,7 +209,7 @@ function loadSettingsIntoModal() {
         localStorage.setItem('ai-provider', 'pollinations');
     }
 
-    // Select the right radio
+    // Select the right provider radio
     const radio = document.querySelector(`input[name="ai-provider"][value="${savedProvider}"]`);
     if (radio) radio.checked = true;
 
@@ -165,15 +219,22 @@ function loadSettingsIntoModal() {
     // Set Roleplay toggle
     const roleplayToggle = document.getElementById('ai-roleplay-toggle');
     if (roleplayToggle) roleplayToggle.checked = roleplayEnabled;
+
+    // Set language level radio
+    const levelRadio = document.querySelector(`input[name="feedback-lang-level"][value="${savedLevel}"]`);
+    if (levelRadio) levelRadio.checked = true;
+    onLangLevelChange(savedLevel);
 }
 
 function saveSettings() {
     const selectedProvider = document.querySelector('input[name="ai-provider"]:checked')?.value || 'pollinations';
+    const selectedLevel = document.querySelector('input[name="feedback-lang-level"]:checked')?.value || 'a1plus';
     const apiKey = document.getElementById('api-key-input').value.trim();
     const roleplayToggle = document.getElementById('ai-roleplay-toggle');
 
     localStorage.setItem('ai-provider', selectedProvider);
     localStorage.setItem('ai-roleplay-enabled', roleplayToggle && roleplayToggle.checked ? 'true' : 'false');
+    localStorage.setItem('feedback-language-level', selectedLevel);
 
     if (apiKey) {
         localStorage.setItem(`ai-api-key-${selectedProvider}`, apiKey);
@@ -182,9 +243,10 @@ function saveSettings() {
         localStorage.removeItem(`ai-api-key-${selectedProvider}`);
     }
 
+    const levelName = (LANGUAGE_LEVELS[selectedLevel] || LANGUAGE_LEVELS.a1plus).label;
     updateSettingsIndicator();
     closeSettings();
-    showToast(selectedProvider === 'pollinations' ? '✅ Using Pollinations.ai (default)' : `✅ ${PROVIDERS[selectedProvider].name} key saved!`);
+    showToast(`✅ Saved! Language level: ${levelName}`);
 
     // Broadcast event so UI can update dynamically without refresh
     window.dispatchEvent(new CustomEvent('ai-settings-changed'));
@@ -207,6 +269,12 @@ function clearSettings() {
 }
 
 // ── UI Helpers ───────────────────────────────────────────────────────────────
+function onLangLevelChange(levelKey) {
+    document.querySelectorAll('.lang-level-option').forEach(el => {
+        el.classList.toggle('selected', el.dataset.level === levelKey);
+    });
+}
+
 function onProviderChange(providerKey) {
     const provider = PROVIDERS[providerKey];
     const keySection = document.getElementById('key-section');

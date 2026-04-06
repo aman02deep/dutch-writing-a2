@@ -110,3 +110,16 @@ Simply open `index.html` in your browser. No server needed for most features.
 | Shortcuts | `Ctrl+V` / `Ctrl+S` guards added — don't fire inside text inputs |
 | `vocabulary-lesson.html` | Removed broken `buttons.css` / `toast.css` link tags (files don't exist) |
 | `exam-sim.html` | Added missing `vocabulary.js` dependency for the vocabulary FAB |
+
+---
+
+## 🔮 Future Requirements
+
+- **Persistent History Dashboard**: Track performance and recurring grammar mistakes across sessions.
+- **Floating AI Tool Menus**: For rapid prompt management.
+- **JSON Import Feature**: Allow easy import of external test tasks.
+- **Cloud Backend (Supabase/Firebase)**: Cloud database integration to sync user progress, history, and test data across devices.
+- **Interactive Text Highlight Popup (Translation & Audio)**:
+  - Detect text selection (highlighting) and display a precise floating Action Box with two icons: Audio and Translate.
+  - **Audio Icon**: Triggers native Text-to-Speech (`window.speechSynthesis`) for the selected Dutch text.
+  - **Translate Icon**: Opens a larger translation modal showing the selected text and querying an AI provider (e.g., DeepL, Groq, or Gemini free tiers) for the English translation.
