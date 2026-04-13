@@ -37,7 +37,7 @@ const wijkkrantTasks = [
             "✅ Eindig met: 'Fijne dag allemaal!'",
             "📝 Doel: 80-90 woorden"
         ],
-        modelAnswer: "Hallo allemaal,\n\nMijn naam is [Naam] en ik schrijf deze week over mijn favoriete eten.\n\nMijn favoriete eten is [gerecht]. Dit eten komt uit [land]. In mijn familie eten we dit bijna elke week. Het recept is van mijn moeder.\n\nHet smaakt heel lekker. Het is een beetje pittig, maar ook zoet. Als je het eet, voel je je gelijk gelukkig. Ik maak het graag voor vrienden.\n\nFijne dag allemaal!\n\n[Naam]"
+        modelAnswer: "Hallo allemaal,\n\nIk schrijf over [topic].\nMijn naam is [naam] en ik woon in [straat] in [stad].\nMijn favoriete gerecht is [food].\nHet is heel lekker.\nHet is heel makkelijk om te maken.\nIk maak het elke week.\nJe kan het thuis maken.\nIk vind het heel leuk!\n\nFijne dag allemaal!\n[naam]"
     },
     {
         id: 2,
