@@ -44,7 +44,7 @@ const PROVIDERS = {
     pollinations: {
         name: 'Pollinations.ai',
         description: 'Default — No API key needed',
-        freeTier: '✅ Completely free, no account',
+        freeTier: 'Not available',
         keyLink: null,
         keySteps: null
     },

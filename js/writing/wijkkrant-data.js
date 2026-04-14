@@ -37,7 +37,7 @@ const wijkkrantTasks = [
             "✅ Eindig met: 'Fijne dag allemaal!'",
             "📝 Doel: 80-90 woorden"
         ],
-        modelAnswer: "Hallo allemaal,\n\nIk schrijf over [topic].\nMijn naam is [naam] en ik woon in [straat] in [stad].\nMijn favoriete gerecht is [food].\nHet is heel lekker.\nHet is heel makkelijk om te maken.\nIk maak het elke week.\nJe kan het thuis maken.\nIk vind het heel leuk!\n\nFijne dag allemaal!\n[naam]"
+        modelAnswer: "Hallo allemaal,\n\nIk schrijf over [topic].\nMijn naam is [naam] en ik woon in [straat] in [stad].\nMijn favoriete gerecht is [food].\nHet is heel lekker.\nHet is heel makkelijk om te maken.\nIk maak het elke week.\nJe kan het thuis maken.\nProbeer het ook!\nIk vind het heel leuk!\n\nFijne dag allemaal!\n[naam]"
     },
     {
         id: 2,
@@ -67,7 +67,7 @@ const wijkkrantTasks = [
             "✅ Eindig met: 'Fijne dag allemaal!'",
             "📝 Doel: 80-90 woorden"
         ],
-        modelAnswer: "Hallo allemaal,\n\nMijn naam is [Naam] en ik schrijf deze week over mijn vakantie.\n\nVorig jaar ben ik naar [land/stad] gegaan. Ik was daar twee weken. Met mijn familie hebben we veel mooie plaatsen bezocht. We hebben ook lekker gegeten en veel foto's gemaakt.\n\nHet mooiste was [activiteit/plek]. Ik heb veel nieuwe dingen gezien en nieuwe mensen ontmoet. Deze vakantie vergeet ik nooit.\n\nFijne dag allemaal!\n\n[Naam]"
+        modelAnswer: "Hallo allemaal,\n\nIk schrijf over mijn vakantie.\nMijn naam is [naam] en ik woon in [straat] in [stad].\nIk ben naar [land] gegaan.\nHet was heel leuk.\nIk heb [activiteit] gedaan.\nHet weer was heel mooi.\nIk wil weer gaan!\nProbeer het ook!\n\nFijne dag allemaal!\n[naam]"
     },
     {
         id: 3,
