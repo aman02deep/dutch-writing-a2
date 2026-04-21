@@ -147,7 +147,9 @@
                 <button class="type-btn" onclick="genMCQ('Gezondheid')">🏥 Gezondheid</button>
                 <button class="type-btn" onclick="genMCQ('Onderwijs')">🎓 Onderwijs</button>
                 <button class="type-btn" onclick="genMCQ('Instanties')">🏢 Instanties</button>
-                <button class="type-btn" onclick="genMCQ('Waarden')">🤝 Waarden</button>
+                <button class="type-btn" onclick="genMCQ('Waarden en Normen')">🤝 Waarden</button>
+                <button class="type-btn" onclick="genMCQ('Politiek')">🏛️ Politiek</button>
+                <button class="type-btn" onclick="genMCQ('De Rechtsstaat')">⚖️ Rechtsstaat</button>
                 <button class="type-btn" style="background:var(--primary);color:#fff;border-color:var(--primary);" onclick="genMCQ('random')">🎲 Random Topic</button>
             </div>
 
@@ -261,10 +263,14 @@
         // ══════════════════════════════════════════════════════════════════
         const THEMES = ['Wonen', 'Werk en Inkomen', 'Waarden en Normen', 'Onderwijs', 'Gezondheidszorg', 'Instanties', 'Politiek', 'De Rechtsstaat'];
 
-        function getMCQPrompt(topic) {
+        function getMCQPrompt(topic, recentQuestions) {
+            const avoidStr = recentQuestions.length > 0
+                ? `Do NOT repeat or closely rephrase any of these recent questions: ${recentQuestions.join(' | ')}`
+                : '';
             return `You are a Dutch KNM (Kennis van de Nederlandse Maatschappij) examiner.
-Create 1 multiple-choice question about the topic: ${topic}.
+Create 1 NEW multiple-choice question for the A2 Inburgering exam about the topic: ${topic}.
 The question must relate strictly to Dutch laws, culture, facts, or procedures (Inburgering A2 level).
+${avoidStr}
 Return ONLY valid JSON (no markdown fences):
 {
   "question": "The question in A2 Dutch",
@@ -329,6 +335,7 @@ Return ONLY valid JSON (no markdown fences):
         let currentMCQTopic = 'random';
         let currentMCQData = null;
         let selectedOption = null;
+        let recentMCQQuestions = [];
 
         async function genMCQ(topic) {
             const btn = document.querySelector('#type-picker .type-btn:last-child');
@@ -346,13 +353,17 @@ Return ONLY valid JSON (no markdown fences):
             document.getElementById('mcq-check-btn').disabled = true;
             selectedOption = null;
 
-            const res = await callAI(getMCQPrompt(currentMCQTopic));
+            const res = await callAI(getMCQPrompt(currentMCQTopic, recentMCQQuestions));
             currentMCQData = parseJSON(res);
 
             if(!currentMCQData || !currentMCQData.question) {
                 document.getElementById('mcq-qbody').innerHTML = 'Failed to generate question. Please try again.';
                 return;
             }
+
+            // Track last 5 questions to avoid repeats
+            recentMCQQuestions.push(currentMCQData.question);
+            if (recentMCQQuestions.length > 5) recentMCQQuestions.shift();
 
             document.getElementById('mcq-qbody').textContent = currentMCQData.question;
             
