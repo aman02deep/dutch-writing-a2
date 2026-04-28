@@ -798,6 +798,26 @@ Make every question UNIQUE. Use specific Dutch names, days, times. Write task (q
     // EXAM_QUESTION_SYSTEM is a function so hint language level is applied dynamically
     function getExamQuestionSystem() {
         const langInstruction = (typeof getLangLevelInstruction === 'function') ? getLangLevelInstruction() : '';
+        // Randomly pick Task 3 type to match the real A2 exam (either wijkkrant or long complaint)
+        const task3IsWijkkrant = Math.random() < 0.5;
+        const task3Type = task3IsWijkkrant ? 'wijkkrant' : 'long_complaint';
+        const task3Spec = task3IsWijkkrant
+            ? `TASK 3 MUST be a Wijkkrant (neighbourhood newspaper) article. Rules:
+  - "q" must start with the scenario context, then list 3–4 bullet points of what to include.
+  - Target: 60–80 woorden.
+  - The student MUST use "Hallo allemaal," as opening and "Fijne dag allemaal!" as closing.
+  - Topics: favourite food, holiday, new appliance, family event, local tip.
+  - "label": "Opdracht 3 — Wijkkrant"
+  - "target": "60–80 woorden"
+  - "hint": "Begin altijd met 'Hallo allemaal,' en eindig met 'Fijne dag allemaal!'. Vertel wie je bent (= who you are) en waar je woont. ${langInstruction ? 'Follow this rule: ' + langInstruction : ''}"`
+            : `TASK 3 MUST be a formal long email or complaint. Rules:
+  - "q" must include the scenario, then 4–5 bullet points of what to write.
+  - Target: 80–100 woorden.
+  - Scenarios: broken appliance, bad service from a company, noisy neighbours (to municipality), faulty product.
+  - "label": "Opdracht 3 — Formele e-mail"
+  - "target": "80–100 woorden"
+  - "hint": "Dit is een formele (= formal) e-mail. Begin met 'Geachte heer/mevrouw,'. Schrijf wat er mis is gegaan en wat je wilt. ${langInstruction ? 'Follow this rule: ' + langInstruction : ''}"`;
+
         return `You are a Dutch A2 inburgering exam creator. Generate a complete, unique, realistic exam with 3 tasks.
 Return ONLY valid JSON, no markdown fences:
 {
@@ -825,20 +845,27 @@ Return ONLY valid JSON, no markdown fences:
       "type": "email",
       "label": "Opdracht 2 — Kort e-mail",
       "target": "40–50 woorden",
-      "q": "Unique short email task in Dutch with 3–4 bullet points",
-      "hint": "A short A1/A2 Dutch tip for this task — e.g. 'Dit is een formele (= formal) e-mail. Begin met \'Geachte heer/mevrouw,\'. Gebruik \'u\' en niet \'je\'.' OR 'Dit is informeel (= informal). Begin met \'Hoi [naam],\'. Geef een reden met \'omdat\'.' ${langInstruction ? 'Follow this rule: ' + langInstruction : ''} Keep it 2 short sentences."
+      "q": "Unique short informal or formal email task in Dutch with 3–4 bullet points. INCLUDE ALL BULLETS.",
+      "hint": "A short A1/A2 Dutch tip — e.g. 'Dit is een formele (= formal) e-mail. Begin met \\'Geachte heer/mevrouw,\\'. Gebruik \\'u\\' en niet \\'je\\'.' OR 'Dit is informeel (= informal). Begin met \\'Hoi [naam],\\'. Geef een reden met \\'omdat\\'.' ${langInstruction ? 'Follow this rule: ' + langInstruction : ''} Keep it 2 short sentences."
     },
     {
       "num": 3,
       "type": "long",
-      "label": "Opdracht 3 — Lang e-mail of Wijkkrant",
-      "target": "60–80 woorden",
-      "q": "Unique longer task in Dutch — complaint OR wijkkrant — with 4–5 bullet points",
-      "hint": "A short A1/A2 Dutch tip — e.g. for wijkkrant: 'Begin altijd met \'Hallo allemaal,\' en eindig met \'Fijne dag allemaal!\'. Vertel wie je bent (= who you are) en waar je woont.' OR for complaint: 'Dit is een formele klacht (= complaint). Schrijf wat er mis is gegaan en wat je wilt.' ${langInstruction ? 'Follow this rule: ' + langInstruction : ''} Keep it 2 short sentences."
+      "q": "FILL THIS — see Task 3 instructions below",
+      "label": "FILL THIS — see Task 3 instructions below",
+      "target": "FILL THIS — see Task 3 instructions below",
+      "hint": "FILL THIS — see Task 3 instructions below"
     }
   ]
 }
-Make every exam UNIQUE. Use specific Dutch names, dates, places. Write task prompts (q) in Dutch. Write all hints in A1/A2 Dutch as instructed.`;
+
+${task3Spec}
+
+CRITICAL RULES (apply to ALL tasks):
+- Every "q" field MUST be a complete task in Dutch with ALL bullet points written out — NEVER leave bullets incomplete.
+- Use specific Dutch names, dates, places to make the exam unique.
+- Write task prompts (q) in Dutch only. Write hints in A1/A2 Dutch.
+- Task 3 type for this exam: ${task3Type}.`;
     }
 
     // ══════════════════════════════════════════════════════════════════
@@ -1172,7 +1199,7 @@ Make every exam UNIQUE. Use specific Dutch names, dates, places. Write task prom
         document.querySelectorAll('.type-btn').forEach(b => b.disabled = true);
 
         try {
-            const raw = await callAI(getQuestionSystem(), `Generate a task of type: ${currentMockType}. IMPORTANT: Include ALL bullet points completely — never leave the list unfinished.`, 900);
+            const raw = await callAI(getQuestionSystem(), `Generate a task of type: ${currentMockType}. IMPORTANT: Include ALL bullet points completely — never leave the list unfinished.`, 4096);
             const q = parseJSON(raw);
             if (!q?.q) throw new Error('Could not parse question. Please try again.');
 
@@ -1252,7 +1279,7 @@ Make every exam UNIQUE. Use specific Dutch names, dates, places. Write task prom
         btn.textContent = '⏳ Checking…'; btn.disabled = true;
 
         try {
-            const raw = await callAI(getFeedbackSystem(), `TASK:\n${q.q}\n\nTARGET: ${q.t}\n\nSTUDENT ANSWER:\n${answer}`, 1200);
+            const raw = await callAI(getFeedbackSystem(), `TASK:\n${q.q}\n\nTARGET: ${q.t}\n\nSTUDENT ANSWER:\n${answer}`, 4096);
             const fb = parseJSON(raw);
             if (!fb) throw new Error('Could not parse feedback.');
             document.getElementById('mock-fb-content').innerHTML = renderFeedbackHTML(fb);
@@ -1306,9 +1333,10 @@ Make every exam UNIQUE. Use specific Dutch names, dates, places. Write task prom
         document.getElementById('exam-ideal-box').style.display = 'none';
 
         try {
-            const raw = await callAI(getExamQuestionSystem(), 'Generate a complete unique Dutch A2 exam.', 1400);
+            const raw = await callAI(getExamQuestionSystem(), 'Generate a complete unique Dutch A2 exam.', 4096);
             const parsed = parseJSON(raw);
-            if (!parsed?.tasks || parsed.tasks.length < 3) throw new Error('Invalid exam data received. Please try again.');
+            if (!parsed?.tasks) throw new Error('Could not parse exam JSON. Raw response: ' + (raw||'').slice(0, 200));
+            if (parsed.tasks.length < 3) throw new Error(`Exam only has ${parsed.tasks.length} task(s) instead of 3. Try again.`);
             examData = parsed;
 
             document.getElementById('exam-intro-card').style.display = 'none';
@@ -1442,9 +1470,9 @@ Return ONLY valid JSON:
 }`;
 
         try {
-            const raw = await callAI(examSys, tasksText, 2000);
+            const raw = await callAI(examSys, tasksText, 4096);
             const fb = parseJSON(raw);
-            if (!fb) throw new Error('Could not parse exam feedback.');
+            if (!fb) throw new Error('Could not parse exam feedback. Raw: ' + (raw||'').slice(0, 200));
 
             document.getElementById('exam-area').style.display = 'none';
             renderExamFeedback(fb);
