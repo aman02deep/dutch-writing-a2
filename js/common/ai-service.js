@@ -16,22 +16,22 @@ var aiService = {
         return map[localStorage.getItem('ai-provider')] || 'Pollinations.ai';
     },
     // ── Chat Array Support (Memory) ──────────────────────────────────────────
-    async fetchAIChat(messages) {
+    async fetchAIChat(messages, maxTokens = 1200) {
         const provider = localStorage.getItem('ai-provider') || 'pollinations';
         const apiKey = localStorage.getItem(`ai-api-key-${provider}`) || localStorage.getItem('ai-api-key');
 
         try {
             if (provider === 'groq' && apiKey) {
-                return await this.fetchOpenAICompatChat(messages, apiKey, 'groq');
+                return await this.fetchOpenAICompatChat(messages, apiKey, 'groq', maxTokens);
             } else if (provider === 'openrouter' && apiKey) {
-                return await this.fetchOpenAICompatChat(messages, apiKey, 'openrouter');
+                return await this.fetchOpenAICompatChat(messages, apiKey, 'openrouter', maxTokens);
             } else {
                 // Pollinations fallback
-                return await this.fetchPollinations(messages);
+                return await this.fetchPollinations(messages, maxTokens);
             }
         } catch (e) {
             console.warn(`[aiService] Provider "${provider}" chat failed, falling back to Pollinations.ai`, e);
-            return await this.fetchPollinations(messages);
+            return await this.fetchPollinations(messages, maxTokens);
         }
     },
 
@@ -55,7 +55,7 @@ var aiService = {
     },
 
     // ── Pollinations.ai (default, no key) ───────────────────────────────────
-    async fetchPollinations(promptOrMessages) {
+    async fetchPollinations(promptOrMessages, maxTokens = 1200) {
         const url = `https://text.pollinations.ai/`;
 
         const messages = Array.isArray(promptOrMessages)
@@ -66,7 +66,7 @@ var aiService = {
             const response = await fetch(url, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ messages })
+                body: JSON.stringify({ messages, max_tokens: maxTokens })
             });
 
             if (response.status === 429) throw new Error('429');
@@ -78,7 +78,7 @@ var aiService = {
     },
 
     // ── Groq / OpenRouter (OpenAI-compatible) ────────────────────────────────
-    async fetchOpenAICompatChat(messages, apiKey, provider) {
+    async fetchOpenAICompatChat(messages, apiKey, provider, maxTokens = 1200) {
         const config = {
             groq: {
                 url: 'https://api.groq.com/openai/v1/chat/completions',
@@ -107,7 +107,7 @@ var aiService = {
                     model,
                     messages: messages, // Send full memory array
                     temperature: 0.7,
-                    max_tokens: 4096
+                    max_tokens: maxTokens
                 })
             });
 
