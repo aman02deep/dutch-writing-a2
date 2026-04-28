@@ -773,11 +773,17 @@ Max 4 grammar mistakes. Always add template_ref. Follow the FEEDBACK LANGUAGE in
 Generate a unique, realistic exam task of the requested type.
 Return ONLY valid JSON, no markdown fences:
 {
-  "q": "The task description in Dutch (use bullet points with •)",
+  "q": "The full task description in Dutch. ALWAYS end with a complete bullet list (use • for each bullet). Example: 'Schrijf een e-mail. Zeg dat je:\\n• je niet blij bent\\n• een oplossing wilt\\n• je telefoonnummer geeft'. NEVER leave the bullet list incomplete or cut it off.",
   "t": "word count target string, e.g. 40–50 woorden",
   "l": "Short English label, e.g. Short informal email",
   "hint": "A short 2–3 sentence tip for the student. ${langInstruction ? 'Follow this language rule: ' + langInstruction : 'Write in A1/A2 Dutch with English in brackets (= ...) for harder words.'} Example hint: 'Dit is een informele (= informal) e-mail. Begin met \'Hoi [naam],\' en eindig met \'Groetjes,\'. Schrijf een reden met \'omdat\'.'  Adjust formality to match the task type."
 }
+
+CRITICAL RULES:
+- The "q" field MUST contain a complete, self-contained task including ALL bullet points.
+- If the task uses "Zeg dat je:" or "Schrijf over:" or similar, the bullet list MUST follow immediately and be FULLY completed (3–4 bullets minimum).
+- NEVER truncate or leave bullet points unfinished.
+- Use \\n between bullet points inside the JSON string.
 
 Task types:
 - short_informal: 40–50 words. Hoi [naam], → Groetjes. Scenarios: declining invitation, favour, news, childcare, overtime, illness, rescheduling.
@@ -854,7 +860,7 @@ Make every exam UNIQUE. Use specific Dutch names, dates, places. Write task prom
             { role: 'system', content: systemPrompt },
             { role: 'user', content: userPrompt }
         ];
-        return aiService.fetchAIChat(msgs);
+        return aiService.fetchAIChat(msgs, maxTokens);
     }
 
     function updateWC(taId, wcId, targetId) {
@@ -1166,7 +1172,7 @@ Make every exam UNIQUE. Use specific Dutch names, dates, places. Write task prom
         document.querySelectorAll('.type-btn').forEach(b => b.disabled = true);
 
         try {
-            const raw = await callAI(getQuestionSystem(), `Generate a task of type: ${currentMockType}`, 600);
+            const raw = await callAI(getQuestionSystem(), `Generate a task of type: ${currentMockType}. IMPORTANT: Include ALL bullet points completely — never leave the list unfinished.`, 900);
             const q = parseJSON(raw);
             if (!q?.q) throw new Error('Could not parse question. Please try again.');
 
