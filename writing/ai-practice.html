@@ -1423,7 +1423,7 @@ Rules: generate unique Dutch content for all q and formTitle fields. Use specifi
         ).join('\n\n---\n\n');
 
         const langInstruction = (typeof getLangLevelInstruction === 'function') ? getLangLevelInstruction() : '';
-        const examSys = `You are a Dutch A2 inburgering exam teacher grading a full exam. Grade all 3 tasks.
+        const examSys = `You are a Dutch A2 inburgering exam teacher grading a full exam. Grade all 4 tasks.
 
 ${langInstruction}
 
@@ -1431,8 +1431,8 @@ ${TK}
 
 Return ONLY valid JSON:
 {
-  "total_score": 21,
-  "total_max": 30,
+  "total_score": 28,
+  "total_max": 40,
   "grade": "Pass",
   "overall_feedback": "2-3 sentences following the language level above",
   "top_mistakes_to_fix": ["mistake 1 in Dutch following language level","mistake 2"],
@@ -1459,7 +1459,7 @@ Return ONLY valid JSON:
             document.getElementById('exam-fb-panel').style.display = '';
             document.getElementById('exam-fb-panel').scrollIntoView({ behavior:'smooth', block:'start' });
 
-            // Extract all mistakes from all 3 tasks
+            // Extract all mistakes from all 4 tasks
             let allMistakes = [];
             if (fb.tasks) {
                 fb.tasks.forEach(t => {
@@ -1471,7 +1471,7 @@ Return ONLY valid JSON:
             saveHistory({
                 type: 'exam',
                 questionType: 'Full Exam Simulation',
-                question: '3 tasks',
+                question: '4 tasks',
                 answer: answers.join('\n\n---\n\n'),
                 total_score: fb.total_score,
                 total_max: fb.total_max,
@@ -1484,8 +1484,8 @@ Return ONLY valid JSON:
                     const idealPrompt = examData.tasks.filter(t => t.type !== 'form').map((t, i) =>
                         `TASK ${t.num}: ${t.q}\nTARGET: ${t.target}`).join('\n\n---\n\n');
                     examIdealText = await callAI(
-                        `Write perfect A2 Dutch model answers using ONLY these templates:\n${TK}\nLabel each: TASK 2:, TASK 3:. Write only Dutch text.`,
-                        idealPrompt, 700);
+                        `Write perfect A2 Dutch model answers using ONLY these templates:\n${TK}\nLabel each answer clearly: TASK 2:, TASK 3:, TASK 4:. Write only Dutch text.`,
+                        idealPrompt, 4096);
                 } catch(e) {}
             }, 1500);
         } catch(e) {
