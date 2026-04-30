@@ -648,9 +648,15 @@
                 <div class="exam-timer" id="exam-timer">⏱ 0:00</div>
                 <div class="exam-progress-wrap"><div class="exam-progress-bar" id="exam-pbar" style="width:0%"></div></div>
                 <div id="exam-tasks-wrap"></div>
-                <div class="action-row" style="margin-top:16px;">
-                    <button class="btn-check red" id="exam-submit-btn" onclick="submitExam()">📤 Submit Full Exam</button>
-                    <button class="btn-ideal" onclick="cancelExam()">✖ Cancel</button>
+                <div class="action-row" style="margin-top:16px; justify-content: space-between;">
+                    <div style="display:flex; gap:10px;">
+                        <button class="btn-ideal" id="exam-prev-btn" onclick="prevExamTask()" style="display:none;">⬅ Previous</button>
+                        <button class="btn-check" id="exam-next-btn" onclick="nextExamTask()" style="background:#555;">Next ➡</button>
+                    </div>
+                    <div style="display:flex; gap:10px;">
+                        <button class="btn-check red" id="exam-submit-btn" onclick="submitExam()">📤 Submit Exam</button>
+                        <button class="btn-ideal" onclick="cancelExam()">✖ Cancel</button>
+                    </div>
                 </div>
             </div>
 
@@ -770,44 +776,71 @@ Max 4 grammar mistakes. Always add template_ref. Follow the FEEDBACK LANGUAGE in
     function getQuestionSystem() {
         const langInstruction = (typeof getLangLevelInstruction === 'function') ? getLangLevelInstruction() : '';
         return `You are a Dutch A2 inburgering writing exam creator.
-Generate a unique, realistic exam task of the requested type.
+Generate a unique realistic exam task of the requested type.
 Return ONLY valid JSON, no markdown fences:
 {
-  "q": "The full task description in Dutch. ALWAYS end with a complete bullet list (use • for each bullet). Example: 'Schrijf een e-mail. Zeg dat je:\\n• je niet blij bent\\n• een oplossing wilt\\n• je telefoonnummer geeft'. NEVER leave the bullet list incomplete or cut it off.",
-  "t": "word count target string, e.g. 40–50 woorden",
-  "l": "Short English label, e.g. Short informal email",
-  "hint": "A short 2–3 sentence tip for the student. ${langInstruction ? 'Follow this language rule: ' + langInstruction : 'Write in A1/A2 Dutch with English in brackets (= ...) for harder words.'} Example hint: 'Dit is een informele (= informal) e-mail. Begin met \'Hoi [naam],\' en eindig met \'Groetjes,\'. Schrijf een reden met \'omdat\'.'  Adjust formality to match the task type."
+  "q": "the actual Dutch question text — see EXACT FORMAT below",
+  "t": "word count target e.g. 30-50 woorden",
+  "l": "Short English label e.g. Short informal message",
+  "hint": "2-sentence tip in A1/A2 Dutch. ${langInstruction ? langInstruction : 'Use Dutch with (= English) for hard words.'}"
 }
 
-CRITICAL RULES:
-- The "q" field MUST contain a complete, self-contained task including ALL bullet points.
-- If the task uses "Zeg dat je:" or "Schrijf over:" or similar, the bullet list MUST follow immediately and be FULLY completed (3–4 bullets minimum).
-- NEVER truncate or leave bullet points unfinished.
-- Use \\n between bullet points inside the JSON string.
+EXACT FORMAT for the q field (email/message tasks):
+[1-2 Dutch sentences describing the situation.]
+Schrijf een [briefje/e-mail] aan [recipient].
+Schrijf in je [briefje/e-mail]:
+\u2022 [specific instruction 1]
+\u2022 [specific instruction 2]
+\u2022 [specific instruction 3]
+
+EXACT FORMAT for wijkkrant q:
+[1-2 Dutch sentences about a neighbourhood topic.]
+Schrijf een artikel voor de wijkkrant.
+
+REAL EXAM EXAMPLES (copy this style exactly):
+short_informal q: "Je buurvrouw heeft gisteren een feestje gegeven.\nEr was veel lawaai.\nSchrijf een briefje aan je buurvrouw.\nSchrijf in je briefje:\n\u2022 dat je niet kon slapen door het lawaai\n\u2022 dat je het niet leuk vond\n\u2022 vraag haar dit niet meer te doen"
+short_formal q: "Je wilt een cursus koken volgen bij het buurthuis.\nSchrijf een e-mail naar het buurthuis.\nSchrijf in je e-mail:\n\u2022 wanneer de cursus begint\n\u2022 hoeveel de cursus kost\n\u2022 hoe je je kunt aanmelden"
+wijkkrant q: "Er komt een nieuw zwembad in uw buurt.\nSchrijf een artikel voor de wijkkrant."
 
 Task types:
-- short_informal: 40–50 words. Hoi [naam], → Groetjes. Scenarios: declining invitation, favour, news, childcare, overtime, illness, rescheduling.
-- short_formal: 40–50 words. Geachte heer/mevrouw, → Met vriendelijke groet. Scenarios: info request, course, rental, appointment, ad response.
-- complaint: 50–60 words. Geachte heer/mevrouw. Scenarios: broken appliance, bad service, wrong order, repair.
-- invite: 40–50 words. Scenarios: birthday, bbq, sport event, neighbourhood dinner.
-- wijkkrant: 60–80 words. ALWAYS "Hallo allemaal," → "Fijne dag allemaal!". Scenarios: favourite food, holiday, new appliance, family, local tip.
+- short_informal: 30-50 words. Scenarios: noise complaint, rescheduling, thank-you, asking a favour, canceling plans, invitation.
+- short_formal: 30-50 words. Scenarios: asking about a course, info request, appointment, ad response.
+- complaint: 60-80 words. Formal complaint to company/municipality. 4 bullet points.
+- invite: 30-50 words. Informal invitation.
+- wijkkrant: 60-80 words. Neighbourhood newspaper. Use wijkkrant format above.
 
-Make every question UNIQUE. Use specific Dutch names, days, times. Write task (q) in Dutch only.`;
+STANDARD EXAM TOPICS TO USE:
+- Messages: Rescheduling appointments (doctor, dentist), Marktplaats ad response, missing a class, inviting friends to dinner/BBQ, apologizing for breaking something.
+- Complaints: Broken appliance (washing machine, laptop, phone, jacket), bad restaurant/hotel service, noisy neighbours, delayed train.
+- Wijkkrant: Neighbourhood party/BBQ, new restaurant/pool opening, rules about trash/parking, your favourite holiday/hobby, introducing yourself.
+
+Generate UNIQUE content. Use specific Dutch names, places, dates. The q field must be actual Dutch question text, not a description.`;
     }
 
     // EXAM_QUESTION_SYSTEM generates all 4 real A2 exam tasks every time
     function getExamQuestionSystem() {
-        return `You are a Dutch A2 inburgering exam creator. Generate a complete unique realistic exam with exactly 4 tasks.
-Return ONLY valid JSON with no markdown fences and no extra text before or after the JSON:
+        return `You are a Dutch A2 inburgering writing exam creator. Generate a complete unique realistic exam with exactly 4 tasks.
+Return ONLY valid JSON, no markdown fences.
+
+EXACT FORMAT for q fields (tasks 2 and 3 — email/message):
+[1-2 Dutch situation sentences.]\nSchrijf een [briefje/e-mail] aan [recipient].\nSchrijf in je [briefje/e-mail]:\n\u2022 [specific instruction]\n\u2022 [specific instruction]\n\u2022 [specific instruction]
+
+EXACT FORMAT for q field (task 4 — wijkkrant):
+[1-2 Dutch neighbourhood sentences.]\nSchrijf een artikel voor de wijkkrant.
+
+EXAMPLES (generate in this exact style):
+Task 2 q: "Je buurvrouw heeft gisteren een feestje gegeven.\nEr was veel lawaai.\nSchrijf een briefje aan je buurvrouw.\nSchrijf in je briefje:\n\u2022 dat je niet kon slapen door het lawaai\n\u2022 dat je het niet leuk vond\n\u2022 vraag haar dit niet meer te doen"
+Task 3 q: "Je hebt een jas gekocht bij de Zara in Amsterdam.\nDe jas is kapot.\nSchrijf een e-mail aan de klantenservice.\nSchrijf in je e-mail:\n\u2022 wat er mis is met de jas\n\u2022 wanneer je de jas hebt gekocht\n\u2022 wat je wilt — geld terug of nieuw product\n\u2022 jouw contactgegevens"
+Task 4 q: "Er komt een nieuw zwembad in uw buurt.\nSchrijf een artikel voor de wijkkrant."
+
 {
   "tasks": [
     {
-      "num": 1,
-      "type": "form",
-      "label": "Opdracht 1 - Formulier",
+      "num": 1, "type": "form",
+      "label": "Opdracht 1 — Formulier",
       "target": "Vul alle velden in",
       "hint": "Vul het formulier in met jouw gegevens. Schrijf duidelijk.",
-      "formTitle": "Unique Dutch form title, e.g. Aanmeldformulier Bibliotheek",
+      "formTitle": "[unique Dutch form title]",
       "fields": [
         {"id": "naam", "label": "Naam"},
         {"id": "voornaam", "label": "Voornaam"},
@@ -816,36 +849,39 @@ Return ONLY valid JSON with no markdown fences and no extra text before or after
         {"id": "postcode", "label": "Postcode + Woonplaats"},
         {"id": "telefoon", "label": "Telefoonnummer"},
         {"id": "email", "label": "E-mailadres"},
-        {"id": "extra1", "label": "One relevant field, e.g. Nationaliteit"}
+        {"id": "extra1", "label": "[one context-specific field label]"}
       ]
     },
     {
-      "num": 2,
-      "type": "email",
-      "label": "Opdracht 2 - Kort bericht",
+      "num": 2, "type": "email",
+      "label": "Opdracht 2 — Kort bericht",
       "target": "30-50 woorden",
-      "q": "Unique short informal or semi-formal message in Dutch. Give a realistic context (arranging a meeting, apologizing, asking for information, canceling plans). Then list exactly 3 bullet points of what to write. ALL 3 bullets must be fully written out.",
-      "hint": "2-sentence A1/A2 Dutch tip for this task, matching the formality."
+      "q": "[generate actual Dutch question in EXACT FORMAT above — 3 bullets]",
+      "hint": "[2-sentence A1/A2 Dutch tip]"
     },
     {
-      "num": 3,
-      "type": "long",
-      "label": "Opdracht 3 - Lang bericht",
+      "num": 3, "type": "long",
+      "label": "Opdracht 3 — Lang bericht",
       "target": "60-80 woorden",
-      "q": "Unique formal long email or letter in Dutch. Give a realistic scenario (complaining about a product, canceling a contract, asking for job info, problem with a service). Then list exactly 4 bullet points of what to write. ALL 4 bullets must be fully written out.",
-      "hint": "Dit is een formele e-mail. Begin met Geachte heer/mevrouw, en eindig met Met vriendelijke groet. Gebruik u en niet je."
+      "q": "[generate actual Dutch question in EXACT FORMAT above — 4 bullets]",
+      "hint": "Dit is een formele e-mail. Begin met Geachte heer/mevrouw, en eindig met Met vriendelijke groet."
     },
     {
-      "num": 4,
-      "type": "wijkkrant",
-      "label": "Opdracht 4 - Wijkkrant",
+      "num": 4, "type": "wijkkrant",
+      "label": "Opdracht 4 — Wijkkrant",
       "target": "60-80 woorden",
-      "q": "Unique Wijkkrant (neighbourhood newspaper) task in Dutch. Give a topic context (neighbourhood event, personal experience, local tip, opinion). Then list exactly 3 bullet points of what to write. Student MUST open with Hallo allemaal, and close with Fijne dag allemaal! ALL 3 bullets must be fully written out.",
-      "hint": "Begin altijd met Hallo allemaal, en eindig met Fijne dag allemaal! Vertel wie je bent en waar je woont."
+      "q": "[generate actual Dutch wijkkrant question in EXACT FORMAT above]",
+      "hint": "Begin met Hallo allemaal, en eindig met Fijne dag allemaal! Vertel wie je bent en waar je woont."
     }
   ]
 }
-Rules: generate unique Dutch content for all q and formTitle fields. Use specific Dutch names, places, dates. Write q fields in Dutch. Write hints in simple A1/A2 Dutch.`;
+
+STANDARD EXAM TOPICS TO USE:
+- Task 2 (Short): Rescheduling appointments (doctor, dentist), Marktplaats ad response, asking school/municipality for info, inviting friends, apologizing.
+- Task 3 (Long complaint): Broken appliance (washing machine, laptop, phone), bad service (restaurant, hotel, internet provider), noisy neighbours.
+- Task 4 (Wijkkrant): Neighbourhood party/BBQ, new restaurant/pool/park opening, rules about trash/parking, your favourite holiday/hobby.
+
+Generate UNIQUE Dutch content. Use specific Dutch names, places, dates. The q values must be the actual question text in Dutch following the exact format and examples above.`;
     }
 
     // ══════════════════════════════════════════════════════════════════
@@ -1304,11 +1340,13 @@ Rules: generate unique Dutch content for all q and formTitle fields. Use specifi
     // FULL EXAM
     // ══════════════════════════════════════════════════════════════════
     let examData = null, examTimer = null, examSecs = 0, examIdealText = '';
+    let currentExamTaskIndex = 0;
 
     async function startExam() {
         const startBtn = document.getElementById('exam-start-btn');
         startBtn.textContent = '⏳ Generating Exam…'; startBtn.disabled = true;
         examIdealText = '';
+        currentExamTaskIndex = 0;
         document.getElementById('exam-fb-panel').style.display = 'none';
         document.getElementById('exam-ideal-box').style.display = 'none';
 
@@ -1333,9 +1371,10 @@ Rules: generate unique Dutch content for all q and formTitle fields. Use specifi
     function buildExamUI(tasks) {
         let html = '';
         tasks.forEach((t, i) => {
+            html += `<div id="exam-task-container-${i}" style="display: ${i === 0 ? 'block' : 'none'};">`;
             html += `<div class="task-card exam-border" style="margin-bottom:18px;">
                 <div class="task-label">
-                    <span>${t.label}</span>
+                    <span>${t.label} (Task ${i + 1} of ${tasks.length})</span>
                     <button class="btn-copy" onclick="copyPrompt('exam-raw-q-${i}')" title="Copy Prompt text">📋</button>
                 </div>
                 <span class="badge-target">${t.target}</span>
@@ -1363,9 +1402,35 @@ Rules: generate unique Dutch content for all q and formTitle fields. Use specifi
                     <span id="exam-tv-${i}">${t.target}</span>
                 </div>`;
             }
-            html += `</div>`;
+            html += `</div></div>`;
         });
         document.getElementById('exam-tasks-wrap').innerHTML = html;
+        updateExamNavButtons();
+    }
+
+    function updateExamNavButtons() {
+        if (!examData) return;
+        const total = examData.tasks.length;
+        document.getElementById('exam-prev-btn').style.display = currentExamTaskIndex > 0 ? '' : 'none';
+        document.getElementById('exam-next-btn').style.display = currentExamTaskIndex < total - 1 ? '' : 'none';
+    }
+
+    function prevExamTask() {
+        if (currentExamTaskIndex > 0) {
+            document.getElementById(`exam-task-container-${currentExamTaskIndex}`).style.display = 'none';
+            currentExamTaskIndex--;
+            document.getElementById(`exam-task-container-${currentExamTaskIndex}`).style.display = 'block';
+            updateExamNavButtons();
+        }
+    }
+
+    function nextExamTask() {
+        if (examData && currentExamTaskIndex < examData.tasks.length - 1) {
+            document.getElementById(`exam-task-container-${currentExamTaskIndex}`).style.display = 'none';
+            currentExamTaskIndex++;
+            document.getElementById(`exam-task-container-${currentExamTaskIndex}`).style.display = 'block';
+            updateExamNavButtons();
+        }
     }
 
     function updateExamProgress() {
