@@ -786,21 +786,15 @@ Return ONLY valid JSON, no markdown fences:
 }
 
 EXACT FORMAT for the q field (email/message tasks):
-[1-2 Dutch sentences describing the situation.]
-Schrijf een [briefje/e-mail] aan [recipient].
-Schrijf in je [briefje/e-mail]:
-\u2022 [specific instruction 1]
-\u2022 [specific instruction 2]
-\u2022 [specific instruction 3]
+[1-2 Dutch sentences describing the situation.]\\nSchrijf een [briefje/e-mail] aan [recipient].\\nSchrijf in je [briefje/e-mail]:\\n\u2022 [specific instruction 1]\\n\u2022 [specific instruction 2]\\n\u2022 [specific instruction 3]
 
 EXACT FORMAT for wijkkrant q:
-[1-2 Dutch sentences about a neighbourhood topic.]
-Schrijf een artikel voor de wijkkrant.
+[1-2 Dutch sentences about a neighbourhood topic.]\\nSchrijf een artikel voor de wijkkrant.
 
-REAL EXAM EXAMPLES (copy this style exactly):
-short_informal q: "Je buurvrouw heeft gisteren een feestje gegeven.\nEr was veel lawaai.\nSchrijf een briefje aan je buurvrouw.\nSchrijf in je briefje:\n\u2022 dat je niet kon slapen door het lawaai\n\u2022 dat je het niet leuk vond\n\u2022 vraag haar dit niet meer te doen"
-short_formal q: "Je wilt een cursus koken volgen bij het buurthuis.\nSchrijf een e-mail naar het buurthuis.\nSchrijf in je e-mail:\n\u2022 wanneer de cursus begint\n\u2022 hoeveel de cursus kost\n\u2022 hoe je je kunt aanmelden"
-wijkkrant q: "Er komt een nieuw zwembad in uw buurt.\nSchrijf een artikel voor de wijkkrant."
+REAL EXAM EXAMPLES (copy this style exactly, MUST use \\n for newlines):
+short_informal q: "Je buurvrouw heeft gisteren een feestje gegeven.\\nEr was veel lawaai.\\nSchrijf een briefje aan je buurvrouw.\\nSchrijf in je briefje:\\n\u2022 dat je niet kon slapen door het lawaai\\n\u2022 dat je het niet leuk vond\\n\u2022 vraag haar dit niet meer te doen"
+short_formal q: "Je wilt een cursus koken volgen bij het buurthuis.\\nSchrijf een e-mail naar het buurthuis.\\nSchrijf in je e-mail:\\n\u2022 wanneer de cursus begint\\n\u2022 hoeveel de cursus kost\\n\u2022 hoe je je kunt aanmelden"
+wijkkrant q: "Er komt een nieuw zwembad in uw buurt.\\nSchrijf een artikel voor de wijkkrant."
 
 Task types:
 - short_informal: 30-50 words. Scenarios: noise complaint, rescheduling, thank-you, asking a favour, canceling plans, invitation.
@@ -814,6 +808,8 @@ STANDARD EXAM TOPICS TO USE:
 - Complaints: Broken appliance (washing machine, laptop, phone, jacket), bad restaurant/hotel service, noisy neighbours, delayed train.
 - Wijkkrant: Neighbourhood party/BBQ, new restaurant/pool opening, rules about trash/parking, your favourite holiday/hobby, introducing yourself.
 
+CRITICAL RULE: You MUST use escaped newlines (\\n) inside JSON strings. NEVER use literal newlines inside quotes.
+
 Generate UNIQUE content. Use specific Dutch names, places, dates. The q field must be actual Dutch question text, not a description.`;
     }
 
@@ -823,15 +819,15 @@ Generate UNIQUE content. Use specific Dutch names, places, dates. The q field mu
 Return ONLY valid JSON, no markdown fences.
 
 EXACT FORMAT for q fields (tasks 2 and 3 — email/message):
-[1-2 Dutch situation sentences.]\nSchrijf een [briefje/e-mail] aan [recipient].\nSchrijf in je [briefje/e-mail]:\n\u2022 [specific instruction]\n\u2022 [specific instruction]\n\u2022 [specific instruction]
+[1-2 Dutch situation sentences.]\\nSchrijf een [briefje/e-mail] aan [recipient].\\nSchrijf in je [briefje/e-mail]:\\n\u2022 [specific instruction]\\n\u2022 [specific instruction]\\n\u2022 [specific instruction]
 
 EXACT FORMAT for q field (task 4 — wijkkrant):
-[1-2 Dutch neighbourhood sentences.]\nSchrijf een artikel voor de wijkkrant.
+[1-2 Dutch neighbourhood sentences.]\\nSchrijf een artikel voor de wijkkrant.
 
-EXAMPLES (generate in this exact style):
-Task 2 q: "Je buurvrouw heeft gisteren een feestje gegeven.\nEr was veel lawaai.\nSchrijf een briefje aan je buurvrouw.\nSchrijf in je briefje:\n\u2022 dat je niet kon slapen door het lawaai\n\u2022 dat je het niet leuk vond\n\u2022 vraag haar dit niet meer te doen"
-Task 3 q: "Je hebt een jas gekocht bij de Zara in Amsterdam.\nDe jas is kapot.\nSchrijf een e-mail aan de klantenservice.\nSchrijf in je e-mail:\n\u2022 wat er mis is met de jas\n\u2022 wanneer je de jas hebt gekocht\n\u2022 wat je wilt — geld terug of nieuw product\n\u2022 jouw contactgegevens"
-Task 4 q: "Er komt een nieuw zwembad in uw buurt.\nSchrijf een artikel voor de wijkkrant."
+EXAMPLES (generate in this exact style, using \\n for newlines):
+Task 2 q: "Je buurvrouw heeft gisteren een feestje gegeven.\\nEr was veel lawaai.\\nSchrijf een briefje aan je buurvrouw.\\nSchrijf in je briefje:\\n\u2022 dat je niet kon slapen door het lawaai\\n\u2022 dat je het niet leuk vond\\n\u2022 vraag haar dit niet meer te doen"
+Task 3 q: "Je hebt een jas gekocht bij de Zara in Amsterdam.\\nDe jas is kapot.\\nSchrijf een e-mail aan de klantenservice.\\nSchrijf in je e-mail:\\n\u2022 wat er mis is met de jas\\n\u2022 wanneer je de jas hebt gekocht\\n\u2022 wat je wilt — geld terug of nieuw product\\n\u2022 jouw contactgegevens"
+Task 4 q: "Er komt een nieuw zwembad in uw buurt.\\nSchrijf een artikel voor de wijkkrant."
 
 {
   "tasks": [
@@ -880,6 +876,8 @@ STANDARD EXAM TOPICS TO USE:
 - Task 2 (Short): Rescheduling appointments (doctor, dentist), Marktplaats ad response, asking school/municipality for info, inviting friends, apologizing.
 - Task 3 (Long complaint): Broken appliance (washing machine, laptop, phone), bad service (restaurant, hotel, internet provider), noisy neighbours.
 - Task 4 (Wijkkrant): Neighbourhood party/BBQ, new restaurant/pool/park opening, rules about trash/parking, your favourite holiday/hobby.
+
+CRITICAL RULE: You MUST use escaped newlines (\\n) inside JSON strings. NEVER use literal newlines inside quotes.
 
 Generate UNIQUE Dutch content. Use specific Dutch names, places, dates. The q values must be the actual question text in Dutch following the exact format and examples above.`;
     }
