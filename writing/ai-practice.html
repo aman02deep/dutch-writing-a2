@@ -875,6 +875,13 @@ SITUATION IDEAS (pick a UNIQUE specific scenario each time, AVOID repeating comm
 ${TK}`;
     }
 
+    function parseJSON(raw) {
+        if (!raw) return null;
+        // Strip markdown code fences if present
+        let clean = raw.trim().replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, '').trim();
+        try { return JSON.parse(clean); } catch(e) { return null; }
+    }
+
     async function callAI(systemPrompt, userPrompt, maxTokens = 1200) {
         const msgs = [
             { role: 'system', content: systemPrompt },
