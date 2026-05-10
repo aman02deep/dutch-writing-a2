@@ -758,10 +758,13 @@ IMPORTANT LANGUAGE RULES FOR YOUR RESPONSE:
 
 ${TK}
 
+CRITICAL FIRST STEP: Read the task bullet points one by one. Check each bullet — did the student explicitly address it in their answer? Missing a bullet = marks lost on the real exam. List ALL bullets in bullets_check.
+
 Return ONLY valid JSON, no markdown:
 {
   "score": 7,
   "score_label": "Goed gedaan!",
+  "bullets_check": [{"bullet":"exact bullet instruction copied from task","addressed":true,"note":"Short Dutch note ONLY if NOT addressed — e.g. 'Je hebt dit punt niet geschreven.'"}],
   "requirements": [{"item":"requirement in Dutch","ok":true,"note":"Dutch note with (= English) following the language level above"}],
   "grammar_mistakes": [{"wrong":"wrong text","correct":"corrected","rule":"rule name in English","explanation_nl":"Dutch explanation of the mistake following the language level above","explanation_en":"max 8-word English fallback","template_ref":"exact sentence from cheat sheet"}],
   "spelling": [{"wrong":"word","correct":"word"}],
@@ -773,49 +776,9 @@ Max 4 grammar mistakes. Always add template_ref. Follow the FEEDBACK LANGUAGE in
     }
 
     // QUESTION_SYSTEM is a function so hint language level is applied dynamically
-    function getQuestionSystem() {
-        const langInstruction = (typeof getLangLevelInstruction === 'function') ? getLangLevelInstruction() : '';
-        return `You are a Dutch A2 inburgering writing exam creator.
-Generate a unique realistic exam task of the requested type.
-Return ONLY valid JSON, no markdown fences:
-{
-  "q": "the actual Dutch question text — see EXACT FORMAT below",
-  "t": "word count target e.g. 30-50 woorden",
-  "l": "Short English label e.g. Short informal message",
-  "hint": "2-sentence tip in A1/A2 Dutch. ${langInstruction ? langInstruction : 'Use Dutch with (= English) for hard words.'}"
-}
-
-EXACT FORMAT for the q field (email/message tasks):
-[1-2 Dutch sentences describing the situation.]\\nSchrijf een [briefje/e-mail] aan [recipient].\\nSchrijf in je [briefje/e-mail]:\\n\u2022 [specific instruction 1]\\n\u2022 [specific instruction 2]\\n\u2022 [specific instruction 3]
-
-EXACT FORMAT for wijkkrant q:
-[1-2 Dutch sentences about a neighbourhood topic.]\\nSchrijf een artikel voor de wijkkrant.
-
-REAL EXAM EXAMPLES (copy this style exactly, MUST use \\n for newlines):
-short_informal q: "Je buurvrouw heeft gisteren een feestje gegeven.\\nEr was veel lawaai.\\nSchrijf een briefje aan je buurvrouw.\\nSchrijf in je briefje:\\n\u2022 dat je niet kon slapen door het lawaai\\n\u2022 dat je het niet leuk vond\\n\u2022 vraag haar dit niet meer te doen"
-short_formal q: "Je wilt een cursus koken volgen bij het buurthuis.\\nSchrijf een e-mail naar het buurthuis.\\nSchrijf in je e-mail:\\n\u2022 wanneer de cursus begint\\n\u2022 hoeveel de cursus kost\\n\u2022 hoe je je kunt aanmelden"
-wijkkrant q: "Er komt een nieuw zwembad in uw buurt.\\nSchrijf een artikel voor de wijkkrant."
-
-Task types:
-- short_informal: 30-50 words. Scenarios: noise complaint, rescheduling, thank-you, asking a favour, canceling plans, invitation.
-- short_formal: 30-50 words. Scenarios: asking about a course, info request, appointment, ad response.
-- complaint: 60-80 words. Formal complaint to company/municipality. 4 bullet points.
-- invite: 30-50 words. Informal invitation.
-- wijkkrant: 60-80 words. Neighbourhood newspaper. Use wijkkrant format above.
-
-STANDARD EXAM TOPICS TO USE:
-- Messages: Rescheduling appointments (doctor, dentist), Marktplaats ad response, missing a class, inviting friends to dinner/BBQ, apologizing for breaking something.
-- Complaints: Broken appliance (washing machine, laptop, phone, jacket), bad restaurant/hotel service, noisy neighbours, delayed train.
-- Wijkkrant: Neighbourhood party/BBQ, new restaurant/pool opening, rules about trash/parking, your favourite holiday/hobby, introducing yourself.
-
-CRITICAL RULE: You MUST use escaped newlines (\\n) inside JSON strings. NEVER use literal newlines inside quotes.
-
-Generate UNIQUE content. Use specific Dutch names, places, dates. The q field must be actual Dutch question text, not a description.`;
-    }
-
-    // EXAM_QUESTION_SYSTEM generates all 4 real A2 exam tasks every time
-    function getExamQuestionSystem() {
-        return `You are a Dutch A2 inburgering writing exam creator. Generate a complete unique realistic exam with exactly 4 tasks.
+function getExamQuestionSystem() {
+    // Returns system prompt for generating a full exam (4 tasks)
+    return `You are a Dutch A2 inburgering writing exam creator. Generate a complete unique realistic exam with exactly 4 tasks.
 Return ONLY valid JSON, no markdown fences.
 
 EXACT FORMAT for q fields (tasks 2 and 3 — email/message):
@@ -824,7 +787,7 @@ EXACT FORMAT for q fields (tasks 2 and 3 — email/message):
 EXACT FORMAT for q field (task 4 — wijkkrant):
 [1-2 Dutch neighbourhood sentences.]\\nSchrijf een artikel voor de wijkkrant.
 
-EXAMPLES (generate in this exact style, using \\n for newlines):
+FORMAT REFERENCES (Follow the structure exactly, but invent your own scenario):
 Task 2 q: "Je buurvrouw heeft gisteren een feestje gegeven.\\nEr was veel lawaai.\\nSchrijf een briefje aan je buurvrouw.\\nSchrijf in je briefje:\\n\u2022 dat je niet kon slapen door het lawaai\\n\u2022 dat je het niet leuk vond\\n\u2022 vraag haar dit niet meer te doen"
 Task 3 q: "Je hebt een jas gekocht bij de Zara in Amsterdam.\\nDe jas is kapot.\\nSchrijf een e-mail aan de klantenservice.\\nSchrijf in je e-mail:\\n\u2022 wat er mis is met de jas\\n\u2022 wanneer je de jas hebt gekocht\\n\u2022 wat je wilt — geld terug of nieuw product\\n\u2022 jouw contactgegevens"
 Task 4 q: "Er komt een nieuw zwembad in uw buurt.\\nSchrijf een artikel voor de wijkkrant."
@@ -852,15 +815,15 @@ Task 4 q: "Er komt een nieuw zwembad in uw buurt.\\nSchrijf een artikel voor de 
       "num": 2, "type": "email",
       "label": "Opdracht 2 — Kort bericht",
       "target": "30-50 woorden",
-      "q": "[generate actual Dutch question in EXACT FORMAT above — 3 bullets]",
-      "hint": "[2-sentence A1/A2 Dutch tip]"
+      "q": "[generate actual Dutch INFORMAL briefje/berichtje — MUST use 'je/jij', greeting MUST be 'Hoi [naam],' — 3 bullets using SPECIFIC Dutch first names, real city/street, concrete date or time]",
+      "hint": "[2-sentence A1/A2 Dutch tip emphasising informal tone (je/jij) and the main grammar challenge in this task]"
     },
     {
       "num": 3, "type": "long",
       "label": "Opdracht 3 — Lang bericht",
       "target": "60-80 woorden",
-      "q": "[generate actual Dutch question in EXACT FORMAT above — 4 bullets]",
-      "hint": "Dit is een formele e-mail. Begin met Geachte heer/mevrouw, en eindig met Met vriendelijke groet."
+      "q": "[generate actual Dutch FORMAL complaint or information request e-mail — MUST use 'u/uw', greeting MUST be 'Geachte heer/mevrouw,' — 3 or 4 bullets using SPECIFIC product/company/service names and dates]",
+      "hint": "Dit is een formele e-mail. Begin met Geachte heer/mevrouw, en eindig met Met vriendelijke groet. Gebruik altijd 'u' en niet 'je'."
     },
     {
       "num": 4, "type": "wijkkrant",
@@ -872,28 +835,44 @@ Task 4 q: "Er komt een nieuw zwembad in uw buurt.\\nSchrijf een artikel voor de 
   ]
 }
 
-STANDARD EXAM TOPICS TO USE:
-- Task 2 (Short): Rescheduling appointments (doctor, dentist), Marktplaats ad response, asking school/municipality for info, inviting friends, apologizing.
-- Task 3 (Long complaint): Broken appliance (washing machine, laptop, phone), bad service (restaurant, hotel, internet provider), noisy neighbours.
-- Task 4 (Wijkkrant): Neighbourhood party/BBQ, new restaurant/pool/park opening, rules about trash/parking, your favourite holiday/hobby.
+SITUATION CATEGORIES (Use these to brainstorm unique, specific scenarios):
+- Task 2 (Short): Rescheduling appointments, official requests, social invites, apologies.
+- Task 3 (Long complaint): Product failures, poor service, administrative errors.
+- Task 4 (Wijkkrant): Community news, personal introductions, local updates.`;
+}
 
-CRITICAL RULE: You MUST use escaped newlines (\\n) inside JSON strings. NEVER use literal newlines inside quotes.
+    function getQuestionSystem() {
+        return `You are a Dutch A2 inburgering writing exam creator. Generate ONE unique realistic writing task.
+Return ONLY valid JSON, no markdown fences:
+{
+  "q": "[Dutch task description — EXACT FORMAT below — use SPECIFIC Dutch names, real city names, concrete dates/products]",
+  "t": "[word target e.g. 40-50 woorden]",
+  "l": "[task type label]",
+  "hint": "[2-sentence A1/A2 Dutch tip targeting the grammar_focus rule below]",
+  "grammar_focus": "[ONE rule this task naturally tests: 'omdat rule', 'formal u/uw vs je', 'inversion: Helaas kan ik', 'perfect tense zijn/hebben', 'verb-second rule', 'Kunt u (formal request)']"
+}
 
-Generate UNIQUE Dutch content. Use specific Dutch names, places, dates. The q values must be the actual question text in Dutch following the exact format and examples above.`;
-    }
+EXACT FORMAT for q field (email/message tasks):
+[1-2 Dutch situation sentences.]\\nSchrijf een [briefje/e-mail] aan [recipient].\\nSchrijf in je [briefje/e-mail]:\\n\u2022 [specific instruction]\\n\u2022 [specific instruction]\\n\u2022 [specific instruction]
 
-    // ══════════════════════════════════════════════════════════════════
-    // SHARED HELPERS
-    // ══════════════════════════════════════════════════════════════════
-    function parseJSON(raw) {
-        try {
-            const clean = raw.replace(/^```json\s*/,'').replace(/^```\s*/,'').replace(/```\s*$/,'').trim();
-            return JSON.parse(clean);
-        } catch(e) {
-            const m = raw.match(/\{[\s\S]*\}/);
-            if (m) { try { return JSON.parse(m[0]); } catch(e2){} }
-            return null;
-        }
+EXACT FORMAT for q field (wijkkrant):
+[1-2 Dutch neighbourhood sentences.]\\nSchrijf een artikel voor de wijkkrant.
+
+TASK TYPES:
+- short_informal: Informal note/message 40-50 woorden to a friend/neighbour/family
+- short_formal: Formal email 40-50 woorden to a company/organisation
+- complaint: Formal complaint email 60-80 woorden about a product or service
+- invite: Informal invitation 40-50 woorden to a friend
+- wijkkrant: Neighbourhood newspaper article 60-80 woorden
+
+SITUATION IDEAS (pick a UNIQUE specific scenario each time, AVOID repeating common ones like "birthday party" or "broken laptop"):
+- short_informal: Rescheduling dentist/sports/dinner, apologising for being late, asking a favour, thanking for help
+- short_formal: Info about language courses/gym memberships/room rentals, replying to job ads, appointment requests
+- complaint: Late delivery, wrong item sent, noisy neighbours, billing error, broken household appliance
+- invite: Sports match, neighbourhood barbecue, picnic, museum visit, dinner party
+- wijkkrant: New playground/library/shop in area, personal hobby/recipe/holiday tip, local event announcement
+
+${TK}`;
     }
 
     async function callAI(systemPrompt, userPrompt, maxTokens = 1200) {
@@ -923,6 +902,15 @@ Generate UNIQUE Dutch content. Use specific Dutch names, places, dates. The q va
         if (showScore) {
             const c = fb.score >= 7 ? '#2e7d32' : fb.score >= 5 ? '#e65100' : '#d92626';
             h += `<div class="fb-score-row"><div class="fb-score" style="color:${c}">${fb.score}<span style="font-size:1rem;color:#aaa;font-weight:400">/10</span></div><div class="fb-score-label">${fb.score_label||''}</div></div>`;
+        }
+        // Bullets check — most critical on real exam: did student address ALL bullets?
+        if (fb.bullets_check?.length) {
+            const allOk = fb.bullets_check.every(b => b.addressed);
+            h += `<div class="fb-section"><div class="fb-section-title">📋 Bullet Points — ${allOk ? '✅ All addressed!' : '⚠️ Check carefully!'}</div>`;
+            fb.bullets_check.forEach(b => {
+                h += `<div class="fb-row">${b.addressed ? '✅' : '❌'} <em>${b.bullet}</em>${!b.addressed && b.note ? `<span class="fb-en" style="color:#d92626;font-style:normal;font-weight:600;">${b.note}</span>` : ''}</div>`;
+            });
+            h += '</div>';
         }
         // Requirements — note is now Dutch A1/A2
         h += `<div class="fb-section"><div class="fb-section-title">✔️ Opdrachten (Requirements)</div>`;
@@ -1014,9 +1002,9 @@ Generate UNIQUE Dutch content. Use specific Dutch names, places, dates. The q va
 
     function copySystemPrompt(type) {
         let txt = '';
-        if (type === 'question') txt = QUESTION_SYSTEM + '\n\nGenerate a task of type: random';
-        if (type === 'exam') txt = EXAM_QUESTION_SYSTEM + '\n\nGenerate a complete unique Dutch A2 exam.';
-        if (type === 'feedback') txt = FEEDBACK_SYSTEM + '\n\nPaste your task, target, and answer below:';
+        if (type === 'question') txt = getQuestionSystem() + '\n\nGenerate a task of type: random';
+        if (type === 'exam') txt = getExamQuestionSystem() + '\n\nGenerate a complete unique Dutch A2 exam.';
+        if (type === 'feedback') txt = getFeedbackSystem() + '\n\nPaste your task, target, and answer below:';
         copyTextToClipboard(txt);
     }
 
@@ -1222,7 +1210,10 @@ Generate UNIQUE Dutch content. Use specific Dutch names, places, dates. The q va
             document.getElementById('mock-target-badge').textContent = '📝 Target: ' + q.t;
             document.getElementById('mock-qbody').textContent = q.q;
             document.getElementById('mock-qbody').className = 'task-body';
-            document.getElementById('mock-hint').textContent = q.hint ? '💡 ' + q.hint : '';
+            const hintEl = document.getElementById('mock-hint');
+            let hintHtml = q.hint ? '💡 ' + q.hint : '';
+            if (q.grammar_focus) hintHtml += `<br><span style="display:inline-block;margin-top:6px;background:#fff3e0;color:#e65100;font-size:0.78rem;font-weight:700;padding:3px 10px;border-radius:10px;">🎯 Grammar focus: ${q.grammar_focus}</span>`;
+            hintEl.innerHTML = hintHtml;
             document.getElementById('mock-target-val').textContent = q.t;
             document.getElementById('mock-answer').disabled = false;
             document.getElementById('mock-check-btn').disabled = false;
