@@ -289,6 +289,90 @@
         .hi-details.open { display: block; }
         .mistake-box { background: #fff9e6; border-left: 4px solid #f59e0b; padding: 12px 16px; border-radius: 0 8px 8px 0; margin-bottom: 12px; }
         .mistake-count { display: inline-block; background: #f59e0b; color: #fff; font-size: 0.75rem; font-weight: 700; padding: 2px 6px; border-radius: 10px; margin-right: 6px; }
+
+        /* ── AI Deep Analysis Panel ── */
+        .ai-analysis-panel {
+            background: linear-gradient(135deg, #0a1628 0%, #0d2044 100%);
+            border-radius: 16px; padding: 24px; margin-bottom: 28px;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 8px 32px rgba(0,82,204,0.18);
+        }
+        .ai-analysis-header {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 18px; gap: 12px;
+        }
+        .ai-analysis-title {
+            font-size: 1.05rem; font-weight: 800; color: #fff;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .ai-analysis-title .badge {
+            font-size: 0.68rem; font-weight: 700; background: rgba(0,180,120,0.2);
+            color: #00d68f; border: 1px solid rgba(0,214,143,0.3);
+            padding: 2px 8px; border-radius: 20px; letter-spacing: 0.05em;
+        }
+        .btn-gen-analysis {
+            background: linear-gradient(135deg, #0052cc, #0073e6);
+            color: #fff; border: none; border-radius: 10px;
+            padding: 10px 20px; font-size: 0.88rem; font-weight: 700;
+            cursor: pointer; transition: 0.2s; white-space: nowrap;
+            box-shadow: 0 4px 12px rgba(0,82,204,0.3);
+        }
+        .btn-gen-analysis:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(0,82,204,0.4); }
+        .btn-gen-analysis:disabled { opacity: 0.55; cursor: not-allowed; }
+        .ai-analysis-placeholder {
+            color: rgba(255,255,255,0.45); font-size: 0.88rem;
+            text-align: center; padding: 20px 0;
+        }
+        /* Score trend bar */
+        .trend-row {
+            display: flex; align-items: center; gap: 8px;
+            margin-bottom: 6px;
+        }
+        .trend-date { font-size: 0.72rem; color: rgba(255,255,255,0.45); width: 90px; flex-shrink: 0; }
+        .trend-bar-wrap { flex: 1; background: rgba(255,255,255,0.08); border-radius: 6px; height: 20px; position: relative; overflow: hidden; }
+        .trend-bar-fill { height: 100%; border-radius: 6px; transition: width 0.5s ease; }
+        .trend-pct { font-size: 0.75rem; font-weight: 700; color: #fff; width: 38px; text-align: right; flex-shrink: 0; }
+        /* Analysis sections */
+        .analysis-section { margin-bottom: 18px; }
+        .analysis-section-title {
+            font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.1em; color: rgba(255,255,255,0.4);
+            margin-bottom: 10px; padding-bottom: 6px;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+        .analysis-verdict {
+            font-size: 1rem; font-weight: 700; color: #fff;
+            line-height: 1.55; margin-bottom: 12px;
+        }
+        .priority-item {
+            display: flex; gap: 10px; align-items: flex-start;
+            background: rgba(255,255,255,0.05); border-radius: 10px;
+            padding: 10px 12px; margin-bottom: 8px;
+        }
+        .priority-badge {
+            font-size: 0.65rem; font-weight: 800; padding: 3px 8px;
+            border-radius: 10px; white-space: nowrap; margin-top: 1px; flex-shrink: 0;
+        }
+        .priority-badge.high { background: rgba(217,38,38,0.25); color: #ff6b6b; border: 1px solid rgba(255,107,107,0.3); }
+        .priority-badge.medium { background: rgba(230,81,0,0.2); color: #ffab40; border: 1px solid rgba(255,171,64,0.3); }
+        .priority-badge.low { background: rgba(46,125,50,0.2); color: #69d675; border: 1px solid rgba(105,214,117,0.3); }
+        .priority-content { flex: 1; }
+        .priority-rule { font-size: 0.88rem; font-weight: 700; color: #fff; margin-bottom: 3px; }
+        .priority-example { font-size: 0.78rem; color: rgba(255,255,255,0.55); line-height: 1.5; }
+        .priority-example .wrong { color: #ff6b6b; text-decoration: line-through; }
+        .priority-example .right { color: #69d675; }
+        .drill-chip {
+            display: inline-block; background: rgba(0,115,230,0.18);
+            border: 1px solid rgba(0,115,230,0.35); color: #78b9ff;
+            border-radius: 8px; padding: 6px 12px; font-size: 0.8rem;
+            font-weight: 600; margin: 4px;
+        }
+        .analysis-tip {
+            background: rgba(0,214,143,0.08); border-left: 3px solid #00d68f;
+            border-radius: 0 8px 8px 0; padding: 10px 14px;
+            font-size: 0.85rem; color: rgba(255,255,255,0.8); line-height: 1.6;
+            margin-top: 4px;
+        }
     </style>
 </head>
 <body>
@@ -689,6 +773,20 @@
                 <div class="stat-card">
                     <div class="stat-val" id="dash-avg-score">0%</div>
                     <div class="stat-label">Avg Written Score</div>
+                </div>
+            </div>
+
+            <!-- ── AI Deep Analysis Panel ── -->
+            <div class="ai-analysis-panel">
+                <div class="ai-analysis-header">
+                    <div class="ai-analysis-title">
+                        🤖 AI Progress Analysis
+                        <span class="badge">EVOLVING</span>
+                    </div>
+                    <button class="btn-gen-analysis" id="btn-gen-analysis" onclick="generateAIAnalysis()">✨ Generate Analysis</button>
+                </div>
+                <div id="ai-analysis-content">
+                    <div class="ai-analysis-placeholder">Click "Generate Analysis" to get a deep AI-powered breakdown of your score trends, recurring mistakes, and a prioritised fix plan based on all your exam history.</div>
                 </div>
             </div>
 
@@ -1179,6 +1277,143 @@ ${TK}`;
 
     function toggleHiDetails(id) {
         document.getElementById('hi-'+id).classList.toggle('open');
+    }
+
+    // ══════════════════════════════════════════════════════════════════
+    // AI DEEP ANALYSIS
+    // ══════════════════════════════════════════════════════════════════
+    async function generateAIAnalysis() {
+        const history = getHistory();
+        if (history.length < 2) {
+            document.getElementById('ai-analysis-content').innerHTML =
+                '<div class="ai-analysis-placeholder">⚠️ Need at least 2 completed exams to generate a meaningful analysis. Keep practicing!</div>';
+            return;
+        }
+
+        const btn = document.getElementById('btn-gen-analysis');
+        btn.disabled = true;
+        btn.textContent = '⏳ Analysing…';
+        document.getElementById('ai-analysis-content').innerHTML =
+            '<div class="ai-analysis-placeholder" style="animation:pulse 1.4s ease-in-out infinite">🤖 AI is reading your full exam history and building your personal progress report…</div>';
+
+        // Build a compact summary of all exams for the AI
+        const examSummary = history.map((run, i) => {
+            const pct = run.total_max ? Math.round(run.total_score / run.total_max * 100) : null;
+            const mistakes = (run.grammar_mistakes || []).map(m => `"${m.wrong}" → "${m.correct}" (${m.rule || 'unknown rule'})`).join('; ');
+            return `Exam ${i + 1} | Date: ${run.date} | Score: ${run.total_score}/${run.total_max} (${pct !== null ? pct + '%' : '?'}) | Mistakes: ${mistakes || 'none logged'}`;
+        }).join('\n');
+
+        const analysisSys = `You are a Dutch A2 language coach doing a deep performance review of a student's exam history.
+Your job is to identify patterns, diagnose the plateau, and give a prioritised action plan.
+
+Return ONLY valid JSON — no markdown, no preamble:
+{
+  "verdict": "2-3 sentence honest assessment of overall progress trend in plain English — mention if they are plateauing, improving, or declining",
+  "score_trend": "improving|stable|declining|mixed",
+  "ceiling_reason": "1-2 sentences explaining WHY they are stuck (or what is limiting further improvement)",
+  "priorities": [
+    {
+      "priority": "high|medium|low",
+      "rule": "Short rule name e.g. 'Perfect tense with hebben'",
+      "seen_count": 3,
+      "wrong_example": "exact wrong text from their history",
+      "right_example": "corrected version",
+      "explanation": "1-sentence plain English explanation of the rule"
+    }
+  ],
+  "drills": ["Short drill suggestion e.g. 'Write 10 sentences in perfect tense using hebben'", "..."],
+  "next_step": "1-2 sentence plain English advice on what to do NEXT to break through the plateau or accelerate progress"
+}`;
+
+        const userMsg = `Here is the student's full exam history (most recent first):
+
+${examSummary}
+
+Total exams: ${history.length}
+Date range: ${history[history.length-1]?.date} → ${history[0]?.date}
+
+Analyse the patterns and return your JSON assessment.`;
+
+        try {
+            const raw = await aiService.fetchAIChat([
+                { role: 'system', content: analysisSys },
+                { role: 'user', content: userMsg }
+            ], 2000);
+
+            const analysis = parseJSON(raw);
+            if (!analysis) throw new Error('Could not parse AI analysis response.');
+
+            renderAIAnalysis(analysis, history);
+        } catch (e) {
+            document.getElementById('ai-analysis-content').innerHTML =
+                `<div class="ai-analysis-placeholder" style="color:#ff6b6b;">❌ Analysis failed: ${e.message}. Please check your AI settings or try again.</div>`;
+        } finally {
+            btn.disabled = false;
+            btn.textContent = '🔄 Refresh Analysis';
+        }
+    }
+
+    function renderAIAnalysis(a, history) {
+        // Build score trend bars
+        const scoredRuns = history.filter(r => r.total_score !== undefined && r.total_max);
+        const trendBars = scoredRuns.slice(0, 8).reverse().map(run => {
+            const pct = Math.round(run.total_score / run.total_max * 100);
+            const color = pct >= 70 ? '#00d68f' : pct >= 55 ? '#ffab40' : '#ff6b6b';
+            const shortDate = run.date ? run.date.split(',')[0] : '?';
+            return `<div class="trend-row">
+                <div class="trend-date">${shortDate}</div>
+                <div class="trend-bar-wrap"><div class="trend-bar-fill" style="width:${pct}%;background:${color};"></div></div>
+                <div class="trend-pct" style="color:${color}">${pct}%</div>
+            </div>`;
+        }).join('');
+
+        // Trend icon
+        const trendIcon = { improving: '📈', stable: '➡️', declining: '📉', mixed: '〰️' }[a.score_trend] || '➡️';
+
+        // Priority items
+        const priorityHtml = (a.priorities || []).slice(0, 5).map(p => `<div class="priority-item">
+            <span class="priority-badge ${p.priority}">${p.priority.toUpperCase()}</span>
+            <div class="priority-content">
+                <div class="priority-rule">${p.rule}${p.seen_count ? ` <span style="font-size:0.72rem;opacity:0.6;font-weight:400">(seen ${p.seen_count}x)</span>` : ''}</div>
+                <div class="priority-example">
+                    <span class="wrong">${p.wrong_example || ''}</span>
+                    ${p.right_example ? ` → <span class="right">${p.right_example}</span>` : ''}
+                </div>
+                <div style="font-size:0.77rem;color:rgba(255,255,255,0.45);margin-top:3px;">${p.explanation || ''}</div>
+            </div>
+        </div>`).join('');
+
+        // Drills
+        const drillsHtml = (a.drills || []).map(d => `<span class="drill-chip">🎯 ${d}</span>`).join('');
+
+        document.getElementById('ai-analysis-content').innerHTML = `
+            <div class="analysis-section">
+                <div class="analysis-section-title">${trendIcon} Score Trend</div>
+                ${trendBars || '<div style="color:rgba(255,255,255,0.4);font-size:0.85rem;">No scored exams yet.</div>'}
+            </div>
+
+            <div class="analysis-section">
+                <div class="analysis-section-title">🎯 Overall Verdict</div>
+                <div class="analysis-verdict">${a.verdict || ''}</div>
+                ${a.ceiling_reason ? `<div style="font-size:0.83rem;color:rgba(255,255,255,0.5);line-height:1.55;">${a.ceiling_reason}</div>` : ''}
+            </div>
+
+            ${priorityHtml ? `<div class="analysis-section">
+                <div class="analysis-section-title">🔴 Prioritised Grammar Fixes</div>
+                ${priorityHtml}
+            </div>` : ''}
+
+            ${drillsHtml ? `<div class="analysis-section">
+                <div class="analysis-section-title">🏋️ Targeted Drills</div>
+                <div style="margin-top:4px;">${drillsHtml}</div>
+            </div>` : ''}
+
+            ${a.next_step ? `<div class="analysis-tip">💡 <strong>Next step:</strong> ${a.next_step}</div>` : ''}
+
+            <div style="text-align:right;margin-top:14px;">
+                <span style="font-size:0.7rem;color:rgba(255,255,255,0.25);">Based on ${history.length} exam(s) · ${new Date().toLocaleDateString()}</span>
+            </div>
+        `;
     }
 
     // ══════════════════════════════════════════════════════════════════
