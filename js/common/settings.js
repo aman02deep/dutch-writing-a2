@@ -69,12 +69,33 @@ const PROVIDERS = {
         keyLink: 'https://github.com/settings/tokens',
         keySteps: 'Go to GitHub → Settings → Developer Settings → Personal access tokens (fine-grained) → Generate token with <strong>models:read</strong> permission → copy it here.',
         models: [
-            { id: 'gpt-4o',                  label: 'GPT-4o (OpenAI)' },
-            { id: 'gpt-4o-mini',             label: 'GPT-4o Mini (OpenAI) — Recommended' },
-            { id: 'Llama-3.3-70B-Instruct',  label: 'Llama 3.3 70B (Meta)' },
-            { id: 'Phi-4',                   label: 'Phi-4 (Microsoft)' },
-            { id: 'Mistral-Large-2411',       label: 'Mistral Large (Mistral)' },
-            { id: 'DeepSeek-V3',             label: 'DeepSeek V3' }
+            { id: 'gpt-4o-mini',                        label: '⭐ GPT-4o Mini — Recommended (OpenAI)' },
+            { id: 'gpt-4o',                             label: 'GPT-4o (OpenAI)' },
+            { id: 'o1',                                 label: 'o1 — Reasoning (OpenAI)' },
+            { id: 'o1-mini',                            label: 'o1 Mini — Reasoning (OpenAI)' },
+            { id: 'o3-mini',                            label: 'o3 Mini — Reasoning (OpenAI)' },
+            { id: 'o4-mini',                            label: 'o4 Mini — Reasoning (OpenAI)' },
+            { id: 'Llama-4-Scout-17B-16E-Instruct',     label: 'Llama 4 Scout 17B (Meta)' },
+            { id: 'Llama-4-Maverick-17B-128E-Instruct', label: 'Llama 4 Maverick 17B (Meta)' },
+            { id: 'Llama-3.3-70B-Instruct',             label: 'Llama 3.3 70B (Meta)' },
+            { id: 'Llama-3.2-90B-Vision-Instruct',      label: 'Llama 3.2 90B Vision (Meta)' },
+            { id: 'Llama-3.2-11B-Vision-Instruct',      label: 'Llama 3.2 11B Vision (Meta)' },
+            { id: 'Llama-3.1-8B-Instruct',              label: 'Llama 3.1 8B (Meta)' },
+            { id: 'Phi-4',                              label: 'Phi-4 (Microsoft)' },
+            { id: 'Phi-4-mini-instruct',                label: 'Phi-4 Mini (Microsoft)' },
+            { id: 'Phi-4-multimodal-instruct',          label: 'Phi-4 Multimodal (Microsoft)' },
+            { id: 'Phi-3.5-MoE-instruct',               label: 'Phi-3.5 MoE (Microsoft)' },
+            { id: 'Phi-3.5-mini-instruct',              label: 'Phi-3.5 Mini (Microsoft)' },
+            { id: 'Mistral-Large-2411',                 label: 'Mistral Large 2411 (Mistral)' },
+            { id: 'Mistral-Small-2503',                 label: 'Mistral Small 2503 (Mistral)' },
+            { id: 'Codestral-2501',                     label: 'Codestral 2501 (Mistral)' },
+            { id: 'Ministral-3B',                       label: 'Ministral 3B (Mistral)' },
+            { id: 'cohere-command-r-plus-08-2024',      label: 'Command R+ (Cohere)' },
+            { id: 'cohere-command-r-08-2024',           label: 'Command R (Cohere)' },
+            { id: 'DeepSeek-V3',                        label: 'DeepSeek V3 (DeepSeek)' },
+            { id: 'DeepSeek-R1',                        label: 'DeepSeek R1 — Reasoning (DeepSeek)' },
+            { id: 'jamba-1.5-large',                    label: 'Jamba 1.5 Large (AI21)' },
+            { id: 'jamba-1.5-mini',                     label: 'Jamba 1.5 Mini (AI21)' }
         ]
     }
 };
@@ -151,7 +172,19 @@ function injectSettingsModal() {
                         <label class="settings-label" style="margin-bottom:6px;">🤖 Model</label>
                         <select id="github-model-select" style="width:100%;padding:10px 12px;border:1.5px solid #ddd;border-radius:8px;font-size:0.9rem;font-family:inherit;background:#fff;cursor:pointer;" onchange="onGithubModelChange(this.value)">
                         </select>
-                        <div style="font-size:0.78rem;color:#888;margin-top:6px;">Browse all models at <a href="https://github.com/marketplace/models" target="_blank" style="color:var(--primary);">github.com/marketplace/models →</a></div>
+
+                        <!-- Custom Model ID override -->
+                        <div style="margin-top:10px;">
+                            <label class="settings-label" style="margin-bottom:4px;font-size:0.8rem;">✏️ Or paste a custom model ID</label>
+                            <input type="text" id="github-model-custom" placeholder="e.g. gpt-4o-mini" autocomplete="off" spellcheck="false"
+                                style="width:100%;padding:9px 12px;border:1.5px solid #ddd;border-radius:8px;font-size:0.88rem;font-family:monospace;box-sizing:border-box;"
+                                oninput="onGithubCustomModelInput(this.value)">
+                        </div>
+                        <div style="font-size:0.76rem;color:#888;margin-top:8px;line-height:1.6;">
+                            💡 <strong>How to get a model ID:</strong> Go to
+                            <a href="https://github.com/marketplace/models" target="_blank" style="color:var(--primary);">github.com/marketplace/models</a>,
+                            open any model → click the <strong>Code</strong> tab → copy the value shown after <code style="background:#f3f3f3;padding:1px 5px;border-radius:3px;">model:</code>.
+                        </div>
                     </div>
 
                     <!-- Balance check (OpenRouter only) -->
@@ -346,6 +379,10 @@ function onProviderChange(providerKey) {
                 select.innerHTML = (provider.models || []).map(m =>
                     `<option value="${m.id}" ${m.id === savedModel ? 'selected' : ''}>${m.label}</option>`
                 ).join('');
+                // Populate custom field if the saved model isn't in the preset list
+                const isPreset = (provider.models || []).some(m => m.id === savedModel);
+                const customInput = document.getElementById('github-model-custom');
+                if (customInput) customInput.value = isPreset ? '' : savedModel;
             } else {
                 githubModelSection.style.display = 'none';
             }
@@ -355,6 +392,23 @@ function onProviderChange(providerKey) {
 
 function onGithubModelChange(modelId) {
     localStorage.setItem('github-model', modelId);
+    // Clear custom field when a preset is chosen
+    const customInput = document.getElementById('github-model-custom');
+    if (customInput) customInput.value = '';
+}
+
+function onGithubCustomModelInput(value) {
+    const trimmed = value.trim();
+    if (trimmed) {
+        // Custom ID overrides the dropdown — save it and deselect the dropdown
+        localStorage.setItem('github-model', trimmed);
+        const select = document.getElementById('github-model-select');
+        if (select) select.value = '';
+    } else {
+        // If cleared, fall back to whatever dropdown is selected
+        const select = document.getElementById('github-model-select');
+        if (select && select.value) localStorage.setItem('github-model', select.value);
+    }
 }
 
 async function checkOpenRouterBalance() {
