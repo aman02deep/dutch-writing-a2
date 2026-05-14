@@ -1,6 +1,6 @@
 /**
  * AI Service - powered by Pollinations.ai (default) with optional API key override.
- * Supports: Pollinations.ai (free, no key), Groq, OpenRouter.
+ * Supports: Pollinations.ai (free, no key), Groq, OpenRouter, GitHub Models.
  * API keys are stored in localStorage - private to the user's browser only.
  */
 var aiService = {
@@ -11,7 +11,8 @@ var aiService = {
         const map = {
             pollinations: 'Pollinations.ai',
             groq: 'Groq',
-            openrouter: 'OpenRouter'
+            openrouter: 'OpenRouter',
+            github: 'GitHub Models'
         };
         return map[localStorage.getItem('ai-provider')] || 'Pollinations.ai';
     },
@@ -25,6 +26,8 @@ var aiService = {
                 return await this.fetchOpenAICompatChat(messages, apiKey, 'groq', maxTokens);
             } else if (provider === 'openrouter' && apiKey) {
                 return await this.fetchOpenAICompatChat(messages, apiKey, 'openrouter', maxTokens);
+            } else if (provider === 'github' && apiKey) {
+                return await this.fetchGitHubModels(messages, apiKey, maxTokens);
             } else {
                 // Pollinations fallback
                 return await this.fetchPollinations(messages, maxTokens);
@@ -45,6 +48,8 @@ var aiService = {
                 return await this.fetchOpenAICompat(prompt, apiKey, 'groq');
             } else if (provider === 'openrouter' && apiKey) {
                 return await this.fetchOpenAICompat(prompt, apiKey, 'openrouter');
+            } else if (provider === 'github' && apiKey) {
+                return await this.fetchGitHubModels([{ role: 'user', content: prompt }], apiKey);
             } else {
                 return await this.fetchPollinations(prompt);
             }
@@ -75,6 +80,32 @@ var aiService = {
         };
 
         return this.retry(makeRequest, 3, 1000);
+    },
+
+    // ── GitHub Models (OpenAI-compatible, models.inference.ai.azure.com) ──────
+    async fetchGitHubModels(messages, apiKey, maxTokens = 1200) {
+        const model = localStorage.getItem('github-model') || 'gpt-4o-mini';
+        const response = await fetch('https://models.inference.ai.azure.com/chat/completions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${apiKey}`
+            },
+            body: JSON.stringify({
+                model,
+                messages,
+                temperature: 0.7,
+                max_tokens: maxTokens
+            })
+        });
+
+        if (!response.ok) {
+            const err = await response.json().catch(() => ({}));
+            throw new Error(`GitHub Models error: ${response.status} — ${err?.error?.message || ''}`);
+        }
+
+        const data = await response.json();
+        return data.choices?.[0]?.message?.content || '';
     },
 
     // ── Groq / OpenRouter (OpenAI-compatible) ────────────────────────────────
