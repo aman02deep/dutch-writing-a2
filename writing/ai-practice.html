@@ -957,10 +957,10 @@ EXACT FORMAT for q field (wijkkrant):
 [1-2 Dutch neighbourhood sentences.]\\nSchrijf een artikel voor de wijkkrant.
 
 TASK TYPES:
-- short_informal: Informal note/message 40-50 woorden to a friend/neighbour/family
-- short_formal: Formal email 40-50 woorden to a company/organisation
+- short_informal: Informal note/message 30-50 woorden to a friend/neighbour/family
+- short_formal: Formal email 30-50 woorden to a company/organisation
 - complaint: Formal complaint email 60-80 woorden about a product or service
-- invite: Informal invitation 40-50 woorden to a friend
+- invite: Informal invitation 30-50 woorden to a friend
 - wijkkrant: Neighbourhood newspaper article 60-80 woorden
 
 SITUATION IDEAS (pick a UNIQUE specific scenario each time, AVOID repeating common ones like "birthday party" or "broken laptop"):
@@ -1540,14 +1540,14 @@ Analyse the patterns and return your JSON assessment.`;
                 question: q.q,
                 answer: answer,
                 total_score: fb.score,
-                total_max: (q.t.includes('Form') || fb.max == null) ? 10 : fb.max,
+                total_max: 10,
                 grammar_mistakes: fb.grammar_mistakes || []
             });
 
             // Ideal answer in bg, delayed
             setTimeout(async () => {
                 try {
-                    mockIdealText = await callAI(`Write a perfect A2 Dutch answer using ONLY these templates:\n${TK}\nWrite ONLY the Dutch text, nothing else.`, `TASK:\n${q.q}\nTARGET: ${q.t}`, 400);
+                    mockIdealText = await callAI(`Write a perfect A2 Dutch answer using ONLY these templates:\n${TK}\nWrite ONLY the Dutch text, nothing else.`, `TASK:\n${q.q}\nTARGET: ${q.t}`, 600);
                 } catch(e) {}
             }, 1500);
         } catch(e) {
@@ -1725,6 +1725,8 @@ ${langInstruction}
 
 ${TK}
 
+CRITICAL FIRST STEP: For each task that has bullet points, read each bullet one by one and check whether the student explicitly addressed it. List ALL bullets in bullets_check for each task. Missing a bullet = marks lost on the real exam.
+
 Return ONLY valid JSON:
 {
   "total_score": 28,
@@ -1736,6 +1738,7 @@ Return ONLY valid JSON:
     {
       "task_num": 1,
       "score": 8, "max": 10,
+      "bullets_check": [{"bullet":"exact bullet instruction copied from task","addressed":true,"note":"Short Dutch note ONLY if NOT addressed"}],
       "requirements": [{"item":"req in Dutch","ok":true,"note":"Dutch note following language level above"}],
       "grammar_mistakes": [{"wrong":"x","correct":"y","rule":"rule","explanation_nl":"Dutch explanation following language level","explanation_en":"short English fallback","template_ref":"cheat sheet sentence"}],
       "spelling": [{"wrong":"x","correct":"y"}],

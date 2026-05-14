@@ -61,6 +61,21 @@ const PROVIDERS = {
         freeTier: '✅ Free models available (Llama 3.3, Gemma, Mistral)',
         keyLink: 'https://openrouter.ai/settings/keys',
         keySteps: 'Sign in → click <strong>Create Key</strong> → copy it here.'
+    },
+    github: {
+        name: 'GitHub Models',
+        description: 'GPT-4o, Llama 3.3, Phi-4 and more — free tier included',
+        freeTier: '✅ Free: Rate-limited access to top models (PAT required)',
+        keyLink: 'https://github.com/settings/tokens',
+        keySteps: 'Go to GitHub → Settings → Developer Settings → Personal access tokens (fine-grained) → Generate token with <strong>models:read</strong> permission → copy it here.',
+        models: [
+            { id: 'gpt-4o',                  label: 'GPT-4o (OpenAI)' },
+            { id: 'gpt-4o-mini',             label: 'GPT-4o Mini (OpenAI) — Recommended' },
+            { id: 'Llama-3.3-70B-Instruct',  label: 'Llama 3.3 70B (Meta)' },
+            { id: 'Phi-4',                   label: 'Phi-4 (Microsoft)' },
+            { id: 'Mistral-Large-2411',       label: 'Mistral Large (Mistral)' },
+            { id: 'DeepSeek-V3',             label: 'DeepSeek V3' }
+        ]
     }
 };
 
@@ -130,6 +145,14 @@ function injectSettingsModal() {
 
                     <!-- How to get key -->
                     <div class="key-instructions" id="key-instructions"></div>
+
+                    <!-- GitHub Models model selector -->
+                    <div id="github-model-section" style="display:none; margin-top:14px;">
+                        <label class="settings-label" style="margin-bottom:6px;">🤖 Model</label>
+                        <select id="github-model-select" style="width:100%;padding:10px 12px;border:1.5px solid #ddd;border-radius:8px;font-size:0.9rem;font-family:inherit;background:#fff;cursor:pointer;" onchange="onGithubModelChange(this.value)">
+                        </select>
+                        <div style="font-size:0.78rem;color:#888;margin-top:6px;">Browse all models at <a href="https://github.com/marketplace/models" target="_blank" style="color:var(--primary);">github.com/marketplace/models →</a></div>
+                    </div>
 
                     <!-- Balance check (OpenRouter only) -->
                     <div id="balance-section" style="display:none; margin-top:10px;">
@@ -290,10 +313,12 @@ function onProviderChange(providerKey) {
     document.getElementById('api-key-input').value = specificKey;
 
     const balanceSection = document.getElementById('balance-section');
+    const githubModelSection = document.getElementById('github-model-section');
 
     if (providerKey === 'pollinations') {
         keySection.style.display = 'none';
         if (balanceSection) balanceSection.style.display = 'none';
+        if (githubModelSection) githubModelSection.style.display = 'none';
     } else {
         keySection.style.display = 'block';
         keyInstructions.innerHTML = `
@@ -312,7 +337,24 @@ function onProviderChange(providerKey) {
             balanceSection.style.display = providerKey === 'openrouter' ? 'block' : 'none';
             document.getElementById('balance-result').innerHTML = '';
         }
+        // Show model selector only for GitHub Models
+        if (githubModelSection) {
+            if (providerKey === 'github') {
+                githubModelSection.style.display = 'block';
+                const select = document.getElementById('github-model-select');
+                const savedModel = localStorage.getItem('github-model') || 'gpt-4o-mini';
+                select.innerHTML = (provider.models || []).map(m =>
+                    `<option value="${m.id}" ${m.id === savedModel ? 'selected' : ''}>${m.label}</option>`
+                ).join('');
+            } else {
+                githubModelSection.style.display = 'none';
+            }
+        }
     }
+}
+
+function onGithubModelChange(modelId) {
+    localStorage.setItem('github-model', modelId);
 }
 
 async function checkOpenRouterBalance() {
