@@ -934,9 +934,9 @@ Task 4 q: "Er komt een nieuw zwembad in uw buurt.\\nSchrijf een artikel voor de 
 }
 
 SITUATION CATEGORIES (Use these to brainstorm unique, specific scenarios):
-- Task 2 (Short): Rescheduling appointments, official requests, social invites, apologies.
-- Task 3 (Long complaint): Product failures, poor service, administrative errors.
-- Task 4 (Wijkkrant): Community news, personal introductions, local updates.`;
+- Task 2 (Short): Accepting an invitation, declining an invitation, rescheduling appointments, official requests, social invites, apologies, asking a favour.
+- Task 3 (Long complaint/info): Product failures, poor service, administrative errors, asking info about courses/housing.
+- Task 4 (Wijkkrant): Community news, personal introductions, local updates, vakantie (vacation), familie (family), buurt (local tip), food/recipes.`;
 }
 
     function getQuestionSystem() {
@@ -964,11 +964,11 @@ TASK TYPES:
 - wijkkrant: Neighbourhood newspaper article 60-80 woorden
 
 SITUATION IDEAS (pick a UNIQUE specific scenario each time, AVOID repeating common ones like "birthday party" or "broken laptop"):
-- short_informal: Rescheduling dentist/sports/dinner, apologising for being late, asking a favour, thanking for help
+- short_informal: Accepting an invitation, declining an invitation, rescheduling dentist/sports/dinner, apologising for being late, asking a favour, thanking for help
 - short_formal: Info about language courses/gym memberships/room rentals, replying to job ads, appointment requests
 - complaint: Late delivery, wrong item sent, noisy neighbours, billing error, broken household appliance
-- invite: Sports match, neighbourhood barbecue, picnic, museum visit, dinner party
-- wijkkrant: New playground/library/shop in area, personal hobby/recipe/holiday tip, local event announcement
+- invite: Inviting someone to a sports match, neighbourhood barbecue, picnic, museum visit, dinner party
+- wijkkrant: Vakantie (vacation story), familie (family intro), buurt (local tip), new playground/library/shop in area, personal hobby/recipe, local event announcement
 
 ${TK}`;
     }
@@ -1443,7 +1443,10 @@ Analyse the patterns and return your JSON assessment.`;
         document.querySelectorAll('.type-btn').forEach(b => b.disabled = true);
 
         try {
-            const raw = await callAI(getQuestionSystem(), `Generate a task of type: ${currentMockType}. IMPORTANT: Include ALL bullet points completely — never leave the list unfinished.`, 4096);
+            const themes = ["accepting/declining an invitation", "inviting someone", "vakantie (vacation)", "familie (family)", "buurt (local neighbourhood tip)", "sports and fitness", "food and cooking", "shopping and clothing", "health and doctor appointments", "work and colleagues", "school and courses", "housing and repairs", "transportation and bikes", "pets and animals", "hobbies and free time", "weather and seasons", "lost and found items", "complaining about a product", "asking for information", "apologizing for being late", "thanking someone for help", "arranging a meeting", "moving to a new house"];
+            const randomTheme = themes[Math.floor(Math.random() * themes.length)];
+            const seed = Math.floor(Math.random() * 1000000);
+            const raw = await callAI(getQuestionSystem(), `Generate a task of type: ${currentMockType}. IMPORTANT: Include ALL bullet points completely — never leave the list unfinished. Ensure this task is highly unique and completely different from previous ones by using this random seed: ${seed}. Where applicable, base the scenario around this randomly selected theme: "${randomTheme}".`, 4096);
             const q = parseJSON(raw);
             if (!q?.q) throw new Error('Could not parse question. Please try again.');
 
@@ -1582,7 +1585,10 @@ Analyse the patterns and return your JSON assessment.`;
         document.getElementById('exam-ideal-box').style.display = 'none';
 
         try {
-            const raw = await callAI(getExamQuestionSystem(), 'Generate a complete unique Dutch A2 exam.', 4096);
+            const themes = ["accepting/declining an invitation", "inviting someone", "vakantie (vacation)", "familie (family)", "buurt (local neighbourhood tip)", "sports and fitness", "food and cooking", "shopping and clothing", "health and doctor appointments", "work and colleagues", "school and courses", "housing and repairs", "transportation and bikes", "pets and animals", "hobbies and free time", "weather and seasons", "lost and found items", "complaining about a product", "asking for information", "apologizing for being late", "thanking someone for help", "arranging a meeting", "moving to a new house"];
+            const randomThemes = Array.from({length: 4}, () => themes[Math.floor(Math.random() * themes.length)]);
+            const seed = Math.floor(Math.random() * 1000000);
+            const raw = await callAI(getExamQuestionSystem(), `Generate a complete unique Dutch A2 exam. Ensure all 4 tasks use highly unique scenarios and vocabulary by using this random seed: ${seed}. Incorporate these random themes across the tasks to ensure variety: ${randomThemes.join(', ')}.`, 4096);
             const parsed = parseJSON(raw);
             if (!parsed?.tasks) throw new Error('Could not parse exam JSON. Raw response: ' + (raw||'').slice(0, 200));
             if (parsed.tasks.length < 4) throw new Error(`Exam only has ${parsed.tasks.length} task(s) instead of 4. Try again.`);
