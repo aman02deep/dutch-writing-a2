@@ -935,7 +935,7 @@ Task 4 q: "Er komt een nieuw zwembad in uw buurt.\\nSchrijf een artikel voor de 
 
 SITUATION CATEGORIES (Use these to brainstorm unique, specific scenarios):
 - Task 2 (Short): Accepting an invitation, declining an invitation, rescheduling appointments, official requests, social invites, apologies, asking a favour.
-- Task 3 (Long complaint/info): Product failures, poor service, administrative errors, asking info about courses/housing.
+- Task 3 (Long complaint/info): Product failures, poor service, administrative errors, asking info about courses/housing, crime/incident reports (theft, burglary, vandalism, harassment).
 - Task 4 (Wijkkrant): Community news, personal introductions, local updates, vakantie (vacation), familie (family), buurt (local tip), food/recipes.`;
 }
 
@@ -962,14 +962,14 @@ EXACT FORMAT for q field (wijkkrant):
 TASK TYPES:
 - short_informal: Informal note/message 30-50 woorden to a friend/neighbour/family
 - short_formal: Formal email 30-50 woorden to a company/organisation
-- complaint: Formal complaint email 60-80 woorden about a product or service
+- complaint: Formal complaint email 60-80 woorden about a product, service, or incident (may include police report)
 - invite: Informal invitation 30-50 woorden to a friend
 - wijkkrant: Neighbourhood newspaper article 60-80 woorden
 
 SITUATION IDEAS (pick a UNIQUE specific scenario each time, AVOID repeating common ones like "birthday party" or "broken laptop"):
 - short_informal: Accepting an invitation, declining an invitation, rescheduling dentist/sports/dinner, apologising for being late, asking a favour, thanking for help
 - short_formal: Responding to an advertisement (e.g., housing, items for sale, jobs), info about language courses/gym memberships/room rentals, appointment requests
-- complaint: Late delivery, wrong item sent, noisy neighbours, billing error, broken household appliance
+- complaint: Late delivery, wrong item sent, noisy neighbours, billing error, broken household appliance, theft (bike/phone/wallet), home burglary, vandalism, hit-and-run accident, package theft, harassment/threatening behaviour
 - invite: Inviting someone to a sports match, neighbourhood barbecue, picnic, museum visit, dinner party
 - wijkkrant: Vakantie (vacation story), familie (family intro), buurt (local tip), new playground/library/shop in area, personal hobby/recipe, local event announcement
 
@@ -1425,9 +1425,9 @@ Analyse the patterns and return your JSON assessment.`;
     let currentMockType = 'random';
     let mockIdealText = '';
 
-    async function genMock(type) {
-        const types = ['short_informal','short_formal','complaint','invite','wijkkrant'];
-        currentMockType = type === 'random' ? types[Math.floor(Math.random() * types.length)] : type;
+     async function genMock(type) {
+         const types = ['short_informal','short_formal','complaint','invite','wijkkrant'];
+         currentMockType = type === 'random' ? types[Math.floor(Math.random() * types.length)] : type;
         mockIdealText = '';
 
         document.getElementById('mock-task-wrap').style.display = '';
