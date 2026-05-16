@@ -839,142 +839,163 @@ KEY GRAMMAR RULES:
 7. ik is NEVER capital mid-sentence`;
 
     // FEEDBACK_SYSTEM is a function so it reads the live language level setting each time
-    function getFeedbackSystem() {
-        const langInstruction = (typeof getLangLevelInstruction === 'function') ? getLangLevelInstruction() : '';
-        return `You are a Dutch A2 inburgering exam teacher. The student has a weak memory and the exam is soon.
+     function getFeedbackSystem() {
+         const langInstruction = (typeof getLangLevelInstruction === 'function') ? getLangLevelInstruction() : '';
+         return `You are a Dutch A2 inburgering exam teacher. The student has a weak memory and the exam is soon. Evaluate ONLY for A2 level expectations.
 
-${langInstruction}
-
-IMPORTANT LANGUAGE RULES FOR YOUR RESPONSE:
-- requirements[].note → Write in the language style above. Example: "Goed gedaan! Je hebt een reden gegeven (= reason)." or "Je bent de afsluiting vergeten (= closing)."  
-- grammar_mistakes[].explanation_nl → Write mostly in the language style above. Example: "Na 'omdat' komt het werkwoord aan het einde van de zin (= verb goes to end). Schrijf: 'omdat ik ziek BEN', niet 'omdat ik ben ziek'."
-- grammar_mistakes[].explanation_en → Keep this as a very short English fallback (max 8 words).
-- well_done[] → Write in Dutch matching the level above. Example: "Je hebt 'Geachte' goed gebruikt!"
-- tip → Write as: one Dutch sentence matching the level, then (= English meaning in brackets) if level is A1 or A1+.
-- template_suggestions[] → Keep as Dutch sentences from the cheat sheet (they already are).
-- score_label → Write in simple Dutch. Example: "Goed gedaan!", "Bijna goed!", "Blijf oefenen!"
-
-${TK}
-
-CRITICAL FIRST STEP: Read the task bullet points one by one. Check each bullet — did the student explicitly address it in their answer? Missing a bullet = marks lost on the real exam. List ALL bullets in bullets_check.
-
-Return ONLY valid JSON, no markdown:
-{
-  "score": 7,
-  "score_label": "Goed gedaan!",
-  "bullets_check": [{"bullet":"exact bullet instruction copied from task","addressed":true,"note":"Short Dutch note ONLY if NOT addressed — e.g. 'Je hebt dit punt niet geschreven.'"}],
-  "requirements": [{"item":"requirement in Dutch","ok":true,"note":"Dutch note with (= English) following the language level above"}],
-  "grammar_mistakes": [{"wrong":"wrong text","correct":"corrected","rule":"rule name in English","explanation_nl":"Dutch explanation of the mistake following the language level above","explanation_en":"max 8-word English fallback","template_ref":"exact sentence from cheat sheet"}],
-  "spelling": [{"wrong":"word","correct":"word"}],
-  "well_done": ["Dutch praise point at the language level above"],
-  "tip": "Dutch exam tip following the language level above",
-  "template_suggestions": ["template sentence from cheat sheet"]
-}
-Max 4 grammar mistakes. Always add template_ref. Follow the FEEDBACK LANGUAGE instruction above precisely.`;
-    }
+ ${langInstruction}
+ 
+ IMPORTANT: Focus on checking whether the student addressed ALL bullet points from the task. Missing bullets = critical error on real exam.
+ 
+ GRAMMAR RULES TO CHECK (A2 ONLY):
+ - omdat/dat/als → verb goes to END of clause
+ - Formal u/uw vs informal je/jij consistency
+ - Inversion rule (Helaas kan ik, Daarom wil ik)
+ - Perfect tense: zijn/hebben helpers (GKBV rule)
+ - Verb-second rule in main clauses
+ - Small errors: ik never capital mid-sentence, mijn vs mij, t-drop with je
+ - DO NOT mark errors above A2 level (complex structures, rare words)
+ 
+ IMPORTANT LANGUAGE RULES FOR YOUR RESPONSE:
+ - requirements[].note → Write in the language style above. Example: "Goed gedaan! Je hebt een reden gegeven (= reason)." or "Je bent de afsluiting vergeten (= closing)."  
+ - grammar_mistakes[].explanation_nl → Write mostly in the language style above. Example: "Na 'omdat' komt het werkwoord aan het einde van de zin (= verb goes to end). Schrijf: 'omdat ik ziek BEN', niet 'omdat ik ben ziek'."
+ - grammar_mistakes[].explanation_en → Keep this as a very short English fallback (max 8 words).
+ - well_done[] → Write in Dutch matching the level above. Example: "Je hebt 'Geachte' goed gebruikt!"
+ - tip → Write as: one Dutch sentence matching the level, then (= English meaning in brackets) if level is A1 or A1+.
+ - template_suggestions[] → Keep as Dutch sentences from the cheat sheet (they already are).
+ - score_label → Write in simple Dutch. Example: "Goed gedaan!", "Bijna goed!", "Blijf oefenen!"
+ 
+ ${TK}
+ 
+ CRITICAL FIRST STEP: Read the task bullet points one by one. Check each bullet — did the student explicitly address it in their answer? Missing a bullet = marks lost on the real exam. List ALL bullets in bullets_check.
+ 
+ Return ONLY valid JSON, no markdown:
+ {
+   "score": 7,
+   "score_label": "Goed gedaan!",
+   "bullets_check": [{"bullet":"exact bullet instruction copied from task","addressed":true,"note":"Short Dutch note ONLY if NOT addressed — e.g. 'Je hebt dit punt niet geschreven.'"}],
+   "requirements": [{"item":"requirement in Dutch","ok":true,"note":"Dutch note with (= English) following the language level above"}],
+   "grammar_mistakes": [{"wrong":"wrong text","correct":"corrected","rule":"rule name in English","explanation_nl":"Dutch explanation of the mistake following the language level above","explanation_en":"max 8-word English fallback","template_ref":"exact sentence from cheat sheet"}],
+   "spelling": [{"wrong":"word","correct":"word"}],
+   "well_done": ["Dutch praise point at the language level above"],
+   "tip": "Dutch exam tip following the language level above",
+   "template_suggestions": ["template sentence from cheat sheet"]
+ }
+ Max 4 grammar mistakes. Always add template_ref. Follow the FEEDBACK LANGUAGE instruction above precisely.`;
+     }
 
     // QUESTION_SYSTEM is a function so hint language level is applied dynamically
 function getExamQuestionSystem() {
-    // Returns system prompt for generating a full exam (4 tasks)
-    return `You are a Dutch A2 inburgering writing exam creator. Generate a complete unique realistic exam with exactly 4 tasks.
-Return ONLY valid JSON, no markdown fences.
-
-EXACT FORMAT for q fields (tasks 2 and 3 — email/message):
-[1-2 Dutch situation sentences.]\\nSchrijf een [briefje/e-mail] aan [recipient].\\nSchrijf in je [briefje/e-mail]:\\n\u2022 [specific instruction]\\n\u2022 [specific instruction]\\n\u2022 [specific instruction]
-
-EXACT FORMAT for q field (task 4 — wijkkrant):
-[1-2 Dutch neighbourhood sentences.]\\nSchrijf een artikel voor de wijkkrant.
-
-FORMAT REFERENCES (Follow the structure exactly, but invent your own scenario):
-Task 2 q: "Je buurvrouw heeft gisteren een feestje gegeven.\\nEr was veel lawaai.\\nSchrijf een briefje aan je buurvrouw.\\nSchrijf in je briefje:\\n\u2022 dat je niet kon slapen door het lawaai\\n\u2022 dat je het niet leuk vond\\n\u2022 vraag haar dit niet meer te doen"
-Task 3 q: "Je hebt een jas gekocht bij de Zara in Amsterdam.\\nDe jas is kapot.\\nSchrijf een e-mail aan de klantenservice.\\nSchrijf in je e-mail:\\n\u2022 wat er mis is met de jas\\n\u2022 wanneer je de jas hebt gekocht\\n\u2022 wat je wilt — geld terug of nieuw product\\n\u2022 jouw contactgegevens"
-Task 4 q: "Er komt een nieuw zwembad in uw buurt.\\nSchrijf een artikel voor de wijkkrant."
-
-{
-  "tasks": [
-    {
-      "num": 1, "type": "form",
-      "label": "Opdracht 1 — Formulier",
-      "target": "Vul alle velden in",
-      "hint": "Vul het formulier in met jouw gegevens. Schrijf duidelijk.",
-      "formTitle": "[unique Dutch form title]",
-      "fields": [
-        {"id": "naam", "label": "Naam"},
-        {"id": "voornaam", "label": "Voornaam"},
-        {"id": "geboortedatum", "label": "Geboortedatum"},
-        {"id": "adres", "label": "Adres"},
-        {"id": "postcode", "label": "Postcode + Woonplaats"},
-        {"id": "telefoon", "label": "Telefoonnummer"},
-        {"id": "email", "label": "E-mailadres"},
-        {"id": "extra1", "label": "[one context-specific field label]"}
-      ]
-    },
-    {
-      "num": 2, "type": "email",
-      "label": "Opdracht 2 — Kort bericht",
-      "target": "30-50 woorden",
-      "q": "[generate actual Dutch INFORMAL briefje/berichtje — MUST use 'je/jij', greeting MUST be 'Hoi [naam],' — 3 bullets using SPECIFIC Dutch first names, real city/street, concrete date or time]",
-      "hint": "[2-sentence A1/A2 Dutch tip emphasising informal tone (je/jij) and the main grammar challenge in this task]"
-    },
-    {
-      "num": 3, "type": "long",
-      "label": "Opdracht 3 — Lang bericht",
-      "target": "60-80 woorden",
-      "q": "[generate actual Dutch FORMAL complaint or information request e-mail — MUST use 'u/uw', greeting MUST be 'Geachte heer/mevrouw,' — 3 or 4 bullets using SPECIFIC product/company/service names and dates]",
-      "hint": "Dit is een formele e-mail. Begin met Geachte heer/mevrouw, en eindig met Met vriendelijke groet. Gebruik altijd 'u' en niet 'je'."
-    },
-    {
-      "num": 4, "type": "wijkkrant",
-      "label": "Opdracht 4 — Wijkkrant",
-      "target": "60-80 woorden",
-      "q": "[generate actual Dutch wijkkrant question in EXACT FORMAT above]",
-      "hint": "Begin met Hallo allemaal, en eindig met Fijne dag allemaal! Vertel wie je bent en waar je woont."
-    }
-  ]
-}
-
-SITUATION CATEGORIES (Use these to brainstorm unique, specific scenarios):
-- Task 2 (Short): Accepting an invitation, declining an invitation, rescheduling appointments, official requests, social invites, apologies, asking a favour.
-- Task 3 (Long complaint/info): Product failures, poor service, administrative errors, asking info about courses/housing, crime/incident reports (theft, burglary, vandalism, harassment).
-- Task 4 (Wijkkrant): Community news, personal introductions, local updates, vakantie (vacation), familie (family), buurt (local tip), food/recipes.`;
-}
+     // Returns system prompt for generating a full exam (4 tasks)
+     return `You are a Dutch A2 inburgering writing exam creator. Generate a complete unique realistic exam with exactly 4 tasks.
+ 
+ CRITICAL: ALWAYS use SIMPLE A2 vocabulary. Avoid complex words or abstract concepts. Use everyday words that people use in daily Dutch life. Focus on practical scenarios relevant to living and integrating in the Netherlands.
+ 
+ Return ONLY valid JSON, no markdown fences.
+ 
+ EXACT FORMAT for q fields (tasks 2 and 3 — email/message):
+ [1-2 Dutch situation sentences using SIMPLE A2 words.]\\nSchrijf een [briefje/e-mail] aan [recipient].\\nSchrijf in je [briefje/e-mail]:\\n\u2022 [specific instruction]\\n\u2022 [specific instruction]\\n\u2022 [specific instruction]
+ 
+ EXACT FORMAT for q field (task 4 — wijkkrant):
+ [1-2 Dutch neighbourhood sentences using SIMPLE A2 words.]\\nSchrijf een artikel voor de wijkkrant.
+ 
+ FORMAT REFERENCES (Follow the structure exactly, but invent your own scenario):
+ Task 2 q: "Je buurvrouw heeft gisteren een feestje gegeven.\\nEr was veel lawaai.\\nSchrijf een briefje aan je buurvrouw.\\nSchrijf in je briefje:\\n\u2022 dat je niet kon slapen door het lawaai\\n\u2022 dat je het niet leuk vond\\n\u2022 vraag haar dit niet meer te doen"
+ Task 3 q: "Je hebt een jas gekocht bij de Zara in Amsterdam.\\nDe jas is kapot.\\nSchrijf een e-mail aan de klantenservice.\\nSchrijf in je e-mail:\\n\u2022 wat er mis is met de jas\\n\u2022 wanneer je de jas hebt gekocht\\n\u2022 wat je wilt — geld terug of nieuw product\\n\u2022 jouw contactgegevens"
+ Task 4 q: "Er komt een nieuw zwembad in uw buurt.\\nSchrijf een artikel voor de wijkkrant."
+ 
+ {
+   "tasks": [
+     {
+       "num": 1, "type": "form",
+       "label": "Opdracht 1 — Formulier",
+       "target": "Vul alle velden in",
+       "hint": "Vul het formulier in met jouw gegevens. Schrijf duidelijk.",
+       "formTitle": "[unique Dutch form title — e.g. registratieformulier, inschrijfformulier]",
+       "fields": [
+         {"id": "naam", "label": "Naam"},
+         {"id": "voornaam", "label": "Voornaam"},
+         {"id": "geboortedatum", "label": "Geboortedatum"},
+         {"id": "adres", "label": "Adres"},
+         {"id": "postcode", "label": "Postcode + Woonplaats"},
+         {"id": "telefoon", "label": "Telefoonnummer"},
+         {"id": "email", "label": "E-mailadres"},
+         {"id": "extra1", "label": "[one simple context-specific field label — e.g. huisdieren ja/nee, kinderen ja/nee]"}
+       ]
+     },
+     {
+       "num": 2, "type": "email",
+       "label": "Opdracht 2 — Kort bericht",
+       "target": "30-50 woorden",
+       "q": "[generate actual Dutch INFORMAL briefje/berichtje using SIMPLE A2 words — MUST use 'je/jij', greeting MUST be 'Hoi [naam],' — 3 bullets using SPECIFIC Dutch first names, real city/street, concrete date or time — focus on practical daily life in Netherlands]",
+       "hint": "[2-sentence A1/A2 Dutch tip emphasising informal tone (je/jij) and the main grammar challenge in this task]"
+     },
+     {
+       "num": 3, "type": "long",
+       "label": "Opdracht 3 — Lang bericht",
+       "target": "60-80 woorden",
+       "q": "[generate actual Dutch FORMAL complaint or information request e-mail using SIMPLE A2 words — MUST use 'u/uw', greeting MUST be 'Geachte heer/mevrouw,' — realistic scenario (broken item, late delivery, noisy neighbours, service complaint, lost package) — 3 or 4 bullets using SPECIFIC product/company/service names and dates — focus on practical Dutch life situations]",
+       "hint": "Dit is een formele e-mail. Begin met Geachte heer/mevrouw, en eindig met Met vriendelijke groet. Gebruik altijd 'u' en niet 'je'."
+     },
+     {
+       "num": 4, "type": "wijkkrant",
+       "label": "Opdracht 4 — Wijkkrant",
+       "target": "60-80 woorden",
+       "q": "[generate actual Dutch wijkkrant article using SIMPLE A2 words in EXACT FORMAT above — realistic scenario about neighbourhood life, personal interest, or community news — use everyday vocabulary about Dutch daily life]",
+       "hint": "Begin met Hallo allemaal, en eindig met Fijne dag allemaal! Vertel wie je bent en waar je woont."
+     }
+   ]
+ }
+ 
+ SITUATION CATEGORIES (Use these to brainstorm unique, specific scenarios):
+ - Task 2 (Short): Accepting/declining invitation, rescheduling appointment, apologising for being late, thanking for help, asking a favour, informal request
+ - Task 3 (Long complaint/info): Product quality issues, late delivery, wrong item, noisy neighbours, utility problem, lost bike/package, service complaint, billing error — focus on REALISTIC Dutch daily life situations
+ - Task 4 (Wijkkrant): Holiday story, family introduction, local neighbourhood tip, new shop/activity, personal hobby, cycling route, favourite sport, neighbourhood event, food recipe
+ 
+ IMPORTANT: All tasks must be realistic to Dutch daily life and integration (inburgering). Scenarios should involve: schools, shops, bikes, apartments, utilities, doctor visits, public transport, neighbours, city life. Use SIMPLE A2 words only.`;
+ }
 
     function getQuestionSystem() {
-        return `You are a Dutch A2 inburgering writing exam creator. Generate ONE unique realistic writing task.
-Return ONLY valid JSON, no markdown fences:
-{
-  "q": "[Dutch task description — EXACT FORMAT below — use SPECIFIC Dutch names, real city names, concrete dates/products]",
-  "t": "[word target e.g. 40-50 woorden]",
-  "l": "[task type label]",
-  "hint": "[2-sentence A1/A2 Dutch tip targeting the grammar_focus rule below]",
-  "grammar_focus": "[ONE rule this task naturally tests: 'omdat rule', 'formal u/uw vs je', 'inversion: Helaas kan ik', 'perfect tense zijn/hebben', 'verb-second rule', 'Kunt u (formal request)']"
-}
+         return `You are a Dutch A2 inburgering writing exam creator. Generate ONE unique realistic writing task for daily life in the Netherlands.
 
-EXACT FORMAT for q field (email/message tasks):
-[1-2 Dutch situation sentences.]\\nSchrijf een [briefje/e-mail] aan [recipient].\\nSchrijf in je [briefje/e-mail]:\\n\u2022 [specific instruction]\\n\u2022 [specific instruction]\\n\u2022 [specific instruction]
+CRITICAL: ALWAYS use SIMPLE A2 vocabulary. Avoid complex words or abstract concepts. Use everyday words that people use in daily Dutch life.
 
-(OPTIONAL: If the exam task relies on an image, start the 'q' field with an image description):
-[Afbeelding: een foto van een kapotte fiets]\\nJe fiets is kapot. Schrijf een e-mail...
-
-EXACT FORMAT for q field (wijkkrant):
-[1-2 Dutch neighbourhood sentences.]\\nSchrijf een artikel voor de wijkkrant.
-
-TASK TYPES:
-- short_informal: Informal note/message 30-50 woorden to a friend/neighbour/family
-- short_formal: Formal email 30-50 woorden to a company/organisation
-- complaint: Formal complaint email 60-80 woorden about a product, service, or incident (may include police report)
-- invite: Informal invitation 30-50 woorden to a friend
-- wijkkrant: Neighbourhood newspaper article 60-80 woorden
-
-SITUATION IDEAS (pick a UNIQUE specific scenario each time, AVOID repeating common ones like "birthday party" or "broken laptop"):
-- short_informal: Accepting an invitation, declining an invitation, rescheduling dentist/sports/dinner, apologising for being late, asking a favour, thanking for help
-- short_formal: Responding to an advertisement (e.g., housing, items for sale, jobs), info about language courses/gym memberships/room rentals, appointment requests
-- complaint: Late delivery, wrong item sent, noisy neighbours, billing error, broken household appliance, theft (bike/phone/wallet), home burglary, vandalism, hit-and-run accident, package theft, harassment/threatening behaviour
-- invite: Inviting someone to a sports match, neighbourhood barbecue, picnic, museum visit, dinner party
-- wijkkrant: Vakantie (vacation story), familie (family intro), buurt (local tip), new playground/library/shop in area, personal hobby/recipe, local event announcement
-
-${TK}`;
-    }
+ Return ONLY valid JSON, no markdown fences:
+ {
+   "q": "[Dutch task description — EXACT FORMAT below — use SPECIFIC Dutch names, real city names, concrete dates/products]",
+   "t": "[word target e.g. 40-50 woorden]",
+   "l": "[task type label]",
+   "hint": "[2-sentence A1/A2 Dutch tip targeting the grammar_focus rule below]",
+   "grammar_focus": "[ONE rule this task naturally tests: 'omdat rule', 'formal u/uw vs je', 'inversion: Helaas kan ik', 'perfect tense zijn/hebben', 'verb-second rule', 'Kunt u (formal request)']"
+ }
+ 
+ EXACT FORMAT for q field (email/message tasks):
+ [1-2 Dutch situation sentences using SIMPLE A2 words.]\\nSchrijf een [briefje/e-mail] aan [recipient].\\nSchrijf in je [briefje/e-mail]:\\n\u2022 [specific instruction]\\n\u2022 [specific instruction]\\n\u2022 [specific instruction]
+ 
+ (OPTIONAL: If the exam task relies on an image, start the 'q' field with an image description):
+ [Afbeelding: een foto van een kapotte fiets]\\nJe fiets is kapot. Schrijf een e-mail...
+ 
+ EXACT FORMAT for q field (wijkkrant):
+ [1-2 Dutch neighbourhood sentences using SIMPLE A2 words.]\\nSchrijf een artikel voor de wijkkrant.
+ 
+ TASK TYPES:
+ - short_informal: Informal note/message 30-50 woorden to a friend/neighbour/family — casual Dutch life situations
+ - short_formal: Formal email 30-50 woorden to a company/organisation — practical inquiries relevant to daily life
+ - complaint: Formal complaint email 60-80 woorden about a product, service, or practical issue (e.g., broken item, late delivery, noisy neighbours, lost bike) — realistic Dutch life scenarios
+ - invite: Informal invitation 30-50 woorden to a friend — social gatherings
+ - wijkkrant: Neighbourhood newspaper article 60-80 woorden — community news, personal interests, local life
+ 
+ SITUATION IDEAS (pick a UNIQUE specific scenario each time, AVOID repeating):
+ - short_informal: Accepting/declining invitation, rescheduling (dentist/dinner/sports), apologising for being late, thanking for help, asking a favour
+ - short_formal: Responding to ad (housing/job), asking about course/gym/rental details, requesting appointment, asking for opening hours
+ - complaint: Late delivery, wrong item, noisy neighbours, broken appliance, lost bike/package, billing error, poor service at shop/restaurant
+ - invite: Coffee meetup, dinner, sports activity, park visit, movie night, neighbourhood barbecue
+ - wijkkrant: Holiday story, family introduction, local tip, new shop/park, hobby/recipe, sports club, cycling route, neighbourhood event
+ 
+ IMPORTANT: All scenarios must be realistic to Dutch daily life and integration (inburgering). Use familiar situations: schools, shops, bikes, apartments, utilities, doctor visits, public transport, neighbours.
+ 
+ ${TK}`;
+     }
 
     function parseJSON(raw) {
         if (!raw) return null;
@@ -1445,11 +1466,11 @@ Analyse the patterns and return your JSON assessment.`;
         document.getElementById('mock-target-val').textContent = '';
         document.querySelectorAll('.type-btn').forEach(b => b.disabled = true);
 
-        try {
-            const themes = ["responding to an advertisement", "accepting/declining an invitation", "inviting someone", "vakantie (vacation)", "familie (family)", "buurt (local neighbourhood tip)", "sports and fitness", "food and cooking", "shopping and clothing", "health and doctor appointments", "work and colleagues", "school and courses", "housing and repairs", "transportation and bikes", "pets and animals", "hobbies and free time", "weather and seasons", "lost and found items", "complaining about a product", "asking for information", "apologizing for being late", "thanking someone for help", "arranging a meeting", "moving to a new house"];
-            const randomTheme = themes[Math.floor(Math.random() * themes.length)];
-            const seed = Math.floor(Math.random() * 1000000);
-            const raw = await callAI(getQuestionSystem(), `Generate a task of type: ${currentMockType}. IMPORTANT: Include ALL bullet points completely — never leave the list unfinished. Ensure this task is highly unique and completely different from previous ones by using this random seed: ${seed}. Where applicable, base the scenario around this randomly selected theme: "${randomTheme}".`, 4096);
+         try {
+             const themes = ["responding to a job advertisement", "accepting/declining a social invitation", "inviting a neighbour to coffee", "vacation story about travelling", "family introduction and life", "local neighbourhood recommendation", "broken bike or appliance complaint", "late package delivery complaint", "noisy neighbours complaint", "missing/lost items (bike/package)", "noisy neighbour situation", "asking about language course details", "requesting appointment at doctor/dentist", "asking about gym or activity membership", "household utility problem", "wrong item received from shop", "apologizing for missing meeting", "thanking someone for help", "arranging meeting time", "moving to new neighbourhood", "lost wallet or phone", "service quality complaint at restaurant or shop", "cycling route recommendation", "favourite hobby or sport", "local shop or café recommendation"];
+             const randomTheme = themes[Math.floor(Math.random() * themes.length)];
+             const seed = Math.floor(Math.random() * 1000000);
+             const raw = await callAI(getQuestionSystem(), `Generate a task of type: ${currentMockType}. Use SIMPLE A2 vocabulary only. Focus on REALISTIC Dutch daily life scenarios. IMPORTANT: Include ALL bullet points completely — never leave the list unfinished. Ensure this task is highly unique and completely different from previous ones by using this random seed: ${seed}. Where applicable, base the scenario around this randomly selected theme: "${randomTheme}".`, 4096);
             const q = parseJSON(raw);
             if (!q?.q) throw new Error('Could not parse question. Please try again.');
 
@@ -1593,11 +1614,11 @@ Analyse the patterns and return your JSON assessment.`;
         document.getElementById('exam-fb-panel').style.display = 'none';
         document.getElementById('exam-ideal-box').style.display = 'none';
 
-        try {
-            const themes = ["responding to an advertisement", "accepting/declining an invitation", "inviting someone", "vakantie (vacation)", "familie (family)", "buurt (local neighbourhood tip)", "sports and fitness", "food and cooking", "shopping and clothing", "health and doctor appointments", "work and colleagues", "school and courses", "housing and repairs", "transportation and bikes", "pets and animals", "hobbies and free time", "weather and seasons", "lost and found items", "complaining about a product", "asking for information", "apologizing for being late", "thanking someone for help", "arranging a meeting", "moving to a new house"];
-            const randomThemes = Array.from({length: 4}, () => themes[Math.floor(Math.random() * themes.length)]);
-            const seed = Math.floor(Math.random() * 1000000);
-            const raw = await callAI(getExamQuestionSystem(), `Generate a complete unique Dutch A2 exam. Ensure all 4 tasks use highly unique scenarios and vocabulary by using this random seed: ${seed}. Incorporate these random themes across the tasks to ensure variety: ${randomThemes.join(', ')}.`, 4096);
+         try {
+             const themes = ["responding to a job advertisement", "accepting/declining a social invitation", "inviting a neighbour to coffee", "vacation story about travelling", "family introduction and life", "local neighbourhood recommendation", "broken bike or appliance complaint", "late package delivery complaint", "noisy neighbours complaint", "missing/lost items (bike/package)", "asking about language course details", "requesting appointment at doctor/dentist", "asking about gym or activity membership", "household utility problem", "wrong item received from shop", "apologizing for missing meeting", "thanking someone for help", "arranging meeting time", "moving to new neighbourhood", "lost wallet or phone", "service quality complaint at restaurant or shop", "cycling route recommendation", "favourite hobby or sport", "local shop or café recommendation"];
+             const randomThemes = Array.from({length: 4}, () => themes[Math.floor(Math.random() * themes.length)]);
+             const seed = Math.floor(Math.random() * 1000000);
+             const raw = await callAI(getExamQuestionSystem(), `Generate a complete unique Dutch A2 exam. Use SIMPLE A2 vocabulary only. Focus on REALISTIC Dutch daily life scenarios relevant to integration (inburgering). Ensure all 4 tasks use highly unique scenarios and vocabulary by using this random seed: ${seed}. Incorporate these random themes across the tasks to ensure variety: ${randomThemes.join(', ')}.`, 4096);
             const parsed = parseJSON(raw);
             if (!parsed?.tasks) throw new Error('Could not parse exam JSON. Raw response: ' + (raw||'').slice(0, 200));
             if (parsed.tasks.length < 4) throw new Error(`Exam only has ${parsed.tasks.length} task(s) instead of 4. Try again.`);
