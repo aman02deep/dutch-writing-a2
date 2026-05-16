@@ -2158,9 +2158,7 @@ CRITICAL: ALWAYS use SIMPLE A2 vocabulary. Avoid complex words or abstract conce
  - invite: Coffee meetup, dinner, sports activity, park visit, movie night, neighbourhood barbecue
  - wijkkrant: Holiday story, family introduction, local tip, new shop/park, hobby/recipe, sports club, cycling route, neighbourhood event
  
- IMPORTANT: All scenarios must be realistic to Dutch daily life and integration (inburgering). Use familiar situations: schools, shops, bikes, apartments, utilities, doctor visits, public transport, neighbours.
- 
- ${TK}`;
+ IMPORTANT: All scenarios must be realistic to Dutch daily life and integration (inburgering). Use familiar situations: schools, shops, bikes, apartments, utilities, doctor visits, public transport, neighbours.`;
         }
 
         function parseJSON(raw) {
@@ -2683,7 +2681,7 @@ Analyse the patterns and return your JSON assessment.`;
                     const randomTheme = themes[Math.floor(Math.random() * themes.length)];
                     scenarioInstruction = `Where applicable, base the scenario around this randomly selected theme: "${randomTheme}".`;
                 }
-                const raw = await callAI(getQuestionSystem(), `Generate a task of type: ${currentMockType}. Use SIMPLE A2 vocabulary only. Focus on REALISTIC Dutch daily life scenarios. IMPORTANT: Include ALL bullet points completely — never leave the list unfinished. Ensure this task is highly unique and completely different from previous ones by using this random seed: ${seed}. ${scenarioInstruction}`, 4096);
+                const raw = await callAI(getQuestionSystem(), `Generate a task of type: ${currentMockType}. Use SIMPLE A2 vocabulary only. Focus on REALISTIC Dutch daily life scenarios. IMPORTANT: Include ALL bullet points completely — never leave the list unfinished. Ensure this task is highly unique and completely different from previous ones by using this random seed: ${seed}. ${scenarioInstruction} \n\nCRITICAL: DO NOT WRITE THE EMAIL YOURSELF. YOU ARE THE EXAMINER. OUTPUT ONLY VALID JSON. START YOUR OUTPUT WITH { AND END WITH }.`, 4096);
                 const q = parseJSON(raw);
                 if (!q?.q) throw new Error('Could not parse question. Please try again.');
 
