@@ -953,6 +953,9 @@ Return ONLY valid JSON, no markdown fences:
 EXACT FORMAT for q field (email/message tasks):
 [1-2 Dutch situation sentences.]\\nSchrijf een [briefje/e-mail] aan [recipient].\\nSchrijf in je [briefje/e-mail]:\\n\u2022 [specific instruction]\\n\u2022 [specific instruction]\\n\u2022 [specific instruction]
 
+(OPTIONAL: If the exam task relies on an image, start the 'q' field with an image description):
+[Afbeelding: een foto van een kapotte fiets]\\nJe fiets is kapot. Schrijf een e-mail...
+
 EXACT FORMAT for q field (wijkkrant):
 [1-2 Dutch neighbourhood sentences.]\\nSchrijf een artikel voor de wijkkrant.
 
@@ -965,7 +968,7 @@ TASK TYPES:
 
 SITUATION IDEAS (pick a UNIQUE specific scenario each time, AVOID repeating common ones like "birthday party" or "broken laptop"):
 - short_informal: Accepting an invitation, declining an invitation, rescheduling dentist/sports/dinner, apologising for being late, asking a favour, thanking for help
-- short_formal: Info about language courses/gym memberships/room rentals, replying to job ads, appointment requests
+- short_formal: Responding to an advertisement (e.g., housing, items for sale, jobs), info about language courses/gym memberships/room rentals, appointment requests
 - complaint: Late delivery, wrong item sent, noisy neighbours, billing error, broken household appliance
 - invite: Inviting someone to a sports match, neighbourhood barbecue, picnic, museum visit, dinner party
 - wijkkrant: Vakantie (vacation story), familie (family intro), buurt (local tip), new playground/library/shop in area, personal hobby/recipe, local event announcement
@@ -1443,7 +1446,7 @@ Analyse the patterns and return your JSON assessment.`;
         document.querySelectorAll('.type-btn').forEach(b => b.disabled = true);
 
         try {
-            const themes = ["accepting/declining an invitation", "inviting someone", "vakantie (vacation)", "familie (family)", "buurt (local neighbourhood tip)", "sports and fitness", "food and cooking", "shopping and clothing", "health and doctor appointments", "work and colleagues", "school and courses", "housing and repairs", "transportation and bikes", "pets and animals", "hobbies and free time", "weather and seasons", "lost and found items", "complaining about a product", "asking for information", "apologizing for being late", "thanking someone for help", "arranging a meeting", "moving to a new house"];
+            const themes = ["responding to an advertisement", "accepting/declining an invitation", "inviting someone", "vakantie (vacation)", "familie (family)", "buurt (local neighbourhood tip)", "sports and fitness", "food and cooking", "shopping and clothing", "health and doctor appointments", "work and colleagues", "school and courses", "housing and repairs", "transportation and bikes", "pets and animals", "hobbies and free time", "weather and seasons", "lost and found items", "complaining about a product", "asking for information", "apologizing for being late", "thanking someone for help", "arranging a meeting", "moving to a new house"];
             const randomTheme = themes[Math.floor(Math.random() * themes.length)];
             const seed = Math.floor(Math.random() * 1000000);
             const raw = await callAI(getQuestionSystem(), `Generate a task of type: ${currentMockType}. IMPORTANT: Include ALL bullet points completely — never leave the list unfinished. Ensure this task is highly unique and completely different from previous ones by using this random seed: ${seed}. Where applicable, base the scenario around this randomly selected theme: "${randomTheme}".`, 4096);
@@ -1453,7 +1456,13 @@ Analyse the patterns and return your JSON assessment.`;
             document.getElementById('mock-type-label').textContent = q.l;
             document.getElementById('mock-raw-q').textContent = q.q;
             document.getElementById('mock-target-badge').textContent = '📝 Target: ' + q.t;
-            document.getElementById('mock-qbody').textContent = q.q;
+            
+            // Format [Afbeelding: ...] into a nice visual placeholder box
+            let formattedQ = q.q.replace(/\[Afbeelding:\s*(.*?)\]/ig, '<div style="background:#e3f2fd; border:2px dashed #90caf9; padding:24px; text-align:center; border-radius:12px; margin-bottom:14px; color:#1565c0; font-weight:600;"><div style="font-size:2rem; margin-bottom:8px;">📷</div>Afbeelding: $1</div>');
+            // Ensure line breaks are preserved if the AI didn't use HTML
+            formattedQ = formattedQ.replace(/\n/g, '<br>');
+            
+            document.getElementById('mock-qbody').innerHTML = formattedQ;
             document.getElementById('mock-qbody').className = 'task-body';
             const hintEl = document.getElementById('mock-hint');
             let hintHtml = q.hint ? '💡 ' + q.hint : '';
@@ -1585,7 +1594,7 @@ Analyse the patterns and return your JSON assessment.`;
         document.getElementById('exam-ideal-box').style.display = 'none';
 
         try {
-            const themes = ["accepting/declining an invitation", "inviting someone", "vakantie (vacation)", "familie (family)", "buurt (local neighbourhood tip)", "sports and fitness", "food and cooking", "shopping and clothing", "health and doctor appointments", "work and colleagues", "school and courses", "housing and repairs", "transportation and bikes", "pets and animals", "hobbies and free time", "weather and seasons", "lost and found items", "complaining about a product", "asking for information", "apologizing for being late", "thanking someone for help", "arranging a meeting", "moving to a new house"];
+            const themes = ["responding to an advertisement", "accepting/declining an invitation", "inviting someone", "vakantie (vacation)", "familie (family)", "buurt (local neighbourhood tip)", "sports and fitness", "food and cooking", "shopping and clothing", "health and doctor appointments", "work and colleagues", "school and courses", "housing and repairs", "transportation and bikes", "pets and animals", "hobbies and free time", "weather and seasons", "lost and found items", "complaining about a product", "asking for information", "apologizing for being late", "thanking someone for help", "arranging a meeting", "moving to a new house"];
             const randomThemes = Array.from({length: 4}, () => themes[Math.floor(Math.random() * themes.length)]);
             const seed = Math.floor(Math.random() * 1000000);
             const raw = await callAI(getExamQuestionSystem(), `Generate a complete unique Dutch A2 exam. Ensure all 4 tasks use highly unique scenarios and vocabulary by using this random seed: ${seed}. Incorporate these random themes across the tasks to ensure variety: ${randomThemes.join(', ')}.`, 4096);
@@ -1630,7 +1639,9 @@ Analyse the patterns and return your JSON assessment.`;
                 });
                 html += `</div>`;
             } else {
-                html += `<div class="task-body">${t.q}</div>
+                let formattedQ = t.q.replace(/\[Afbeelding:\s*(.*?)\]/ig, '<div style="background:#e3f2fd; border:2px dashed #90caf9; padding:24px; text-align:center; border-radius:12px; margin-bottom:14px; color:#1565c0; font-weight:600;"><div style="font-size:2rem; margin-bottom:8px;">📷</div>Afbeelding: $1</div>');
+                formattedQ = formattedQ.replace(/\n/g, '<br>');
+                html += `<div class="task-body">${formattedQ}</div>
                 <div class="task-hint">💡 ${t.hint}</div>
                 <textarea class="answer-box" id="exam-ans-${i}" placeholder="Write your Dutch answer here…"
                     oninput="updateWC('exam-ans-${i}','exam-wc-${i}','exam-tv-${i}'); updateExamProgress()"></textarea>
