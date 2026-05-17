@@ -6,13 +6,13 @@
 var aiService = {
     isAvailable: true,
 
-    // Returns the display name of the currently active AI provider
     getProviderName() {
         const map = {
             pollinations: 'Pollinations.ai',
             groq: 'Groq',
             openrouter: 'OpenRouter',
-            github: 'GitHub Models'
+            github: 'GitHub Models',
+            alibaba: 'Alibaba Cloud'
         };
         return map[localStorage.getItem('ai-provider')] || 'Pollinations.ai';
     },
@@ -26,6 +26,8 @@ var aiService = {
                 return await this.fetchOpenAICompatChat(messages, apiKey, 'groq', maxTokens);
             } else if (provider === 'openrouter' && apiKey) {
                 return await this.fetchOpenAICompatChat(messages, apiKey, 'openrouter', maxTokens);
+            } else if (provider === 'alibaba' && apiKey) {
+                return await this.fetchOpenAICompatChat(messages, apiKey, 'alibaba', maxTokens);
             } else if (provider === 'github' && apiKey) {
                 return await this.fetchGitHubModels(messages, apiKey, maxTokens);
             } else {
@@ -48,6 +50,8 @@ var aiService = {
                 return await this.fetchOpenAICompat(prompt, apiKey, 'groq');
             } else if (provider === 'openrouter' && apiKey) {
                 return await this.fetchOpenAICompat(prompt, apiKey, 'openrouter');
+            } else if (provider === 'alibaba' && apiKey) {
+                return await this.fetchOpenAICompat(prompt, apiKey, 'alibaba');
             } else if (provider === 'github' && apiKey) {
                 return await this.fetchGitHubModels([{ role: 'user', content: prompt }], apiKey);
             } else {
@@ -120,17 +124,25 @@ var aiService = {
                 models: [
                     'openrouter/auto'
                 ]
+            },
+            alibaba: {
+                url: 'https://dashscope-intl.aliyuncs.com/compatible-mode/v1/chat/completions',
+                models: () => {
+                    const saved = localStorage.getItem('alibaba-model') || 'qwen-plus';
+                    return [saved, 'qwen-plus', 'qwen-max', 'qwen-turbo'];
+                }
             }
         };
 
         const { url, models } = config[provider];
+        const modelList = typeof models === 'function' ? models() : models;
         const headers = {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${apiKey}`,
             ...(provider === 'openrouter' ? { 'HTTP-Referer': window.location.origin } : {})
         };
 
-        for (const model of models) {
+        for (const model of modelList) {
             const response = await fetch(url, {
                 method: 'POST',
                 headers,

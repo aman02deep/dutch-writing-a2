@@ -294,6 +294,24 @@
             box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.12);
         }
 
+        .form-field input.valid {
+            border-color: #2e7d32;
+        }
+
+        .form-field input.invalid {
+            border-color: #d92626;
+        }
+
+        .form-validation-hint {
+            font-size: 0.72rem;
+            color: #888;
+            margin-top: 2px;
+        }
+
+        .form-validation-hint.error {
+            color: #d92626;
+        }
+
         /* ── Textarea answer ── */
         .answer-box {
             width: 100%;
@@ -406,6 +424,166 @@
             color: #888;
             margin-bottom: 10px;
             font-weight: 600;
+        }
+
+        .exam-timer.warning {
+            color: #e65100;
+        }
+
+        .exam-timer.critical {
+            color: #d92626;
+            animation: pulse 1s ease-in-out infinite;
+        }
+
+        /* ── Exam Start Modal ── */
+        .exam-start-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 3000;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .exam-start-overlay.open {
+            display: flex;
+        }
+
+        .exam-start-modal {
+            width: 90%;
+            max-width: 520px;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            animation: popIn 0.25s ease-out;
+        }
+
+        .exam-start-header {
+            background: #d92626;
+            color: #fff;
+            padding: 18px 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .exam-start-header h2 {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .exam-start-close {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .exam-start-body {
+            padding: 22px;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: #333;
+        }
+
+        .exam-start-body ul {
+            margin: 8px 0 14px;
+            padding-left: 20px;
+        }
+
+        .exam-start-body li {
+            margin-bottom: 6px;
+        }
+
+        .exam-start-body .timer-display {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #d92626;
+            margin: 14px 0;
+            font-family: monospace;
+        }
+
+        .exam-start-footer {
+            padding: 14px 22px;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        .btn-exam-start {
+            background: #d92626;
+            color: #fff;
+            border: none;
+            padding: 11px 24px;
+            border-radius: 9px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .btn-exam-cancel {
+            background: #fff;
+            color: #555;
+            border: 1.5px solid #ccc;
+            padding: 11px 24px;
+            border-radius: 9px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* ── Time-up overlay ── */
+        .time-up-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 4000;
+            background: rgba(217, 38, 38, 0.85);
+            backdrop-filter: blur(6px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .time-up-overlay.open {
+            display: flex;
+        }
+
+        .time-up-overlay h1 {
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .time-up-overlay p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .btn-time-up {
+            background: #fff;
+            color: #d92626;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
         }
 
         /* ── Feedback panel ── */
@@ -1736,6 +1914,34 @@
                                 allemaal!<br>[naam]</div>
                         </div>
                         <div class="cs-section">
+                            <div class="cs-section-title">Full template — Hobby 🎨</div>
+                            <div class="cs-wij-box">Hallo allemaal,<br><br>Ik schrijf over mijn hobby.<br>Mijn naam is
+                                [naam] en ik woon in [straat] in [stad].<br>Mijn hobby is [hobby].<br>Ik doe het elke
+                                week.<br>Ik vind het heel leuk.<br>Ik doe het met [vriend/familie].<br>Je kan het ook
+                                proberen!<br>Ik heb het twee jaar geleden leren.<br><br>Fijne dag allemaal!<br>[naam]</div>
+                        </div>
+                        <div class="cs-section">
+                            <div class="cs-section-title">Full template — Familie (Family) 👨‍👩‍👧</div>
+                            <div class="cs-wij-box">Hallo allemaal,<br><br>Ik schrijf over mijn familie.<br>Mijn naam is
+                                [naam] en ik woon in [straat] in [stad].<br>Ik heb [aantal] kinderen. Ze heten [naam] en
+                                [naam].<br>Mijn kinderen gaan naar school in [stad].<br>Ze vinden het leuk.<br>Ik werk
+                                ook. Ik werk bij [werk].<br>In het weekend ga ik met mijn familie naar [plek].<br><br>Fijne dag allemaal!<br>[naam]</div>
+                        </div>
+                        <div class="cs-section">
+                            <div class="cs-section-title">Full template — Lokale tip (Local tip) 📍</div>
+                            <div class="cs-wij-box">Hallo allemaal,<br><br>Ik heb een lokale tip voor jullie.<br>Mijn naam is
+                                [naam] en ik woon in [straat] in [stad].<br>In onze buurt is er een mooie [plek].<br>Ik ga
+                                er graag heen.<br>Je kan daar [activiteit] doen.<br>Het is heel leuk en gratis.<br>Ik ga er
+                                elke week.<br>Probeer het ook!<br><br>Fijne dag allemaal!<br>[naam]</div>
+                        </div>
+                        <div class="cs-section">
+                            <div class="cs-section-title">Full template — Sport ⚽</div>
+                            <div class="cs-wij-box">Hallo allemaal,<br><br>Ik schrijf over mijn sport.<br>Mijn naam is
+                                [naam] en ik woon in [straat] in [stad].<br>Ik doe aan [sport].<br>Ik train [aantal] keer
+                                per week.<br>Ik train in [sportzaal/club].<br>Ik vind het heel leuk.<br>Sport is gezond
+                                voor je lichaam.<br>Je kan ook beginnen!<br><br>Fijne dag allemaal!<br>[naam]</div>
+                        </div>
+                        <div class="cs-section">
                             <div class="cs-section-title">Useful phrases by topic</div>
                             <div class="cs-phrase green">🍲 Food: Mijn favoriete gerecht is [naam]. Het smaakt heerlijk
                                 omdat… Ik maak het elke week.</div>
@@ -1747,6 +1953,14 @@
                                 [naam]. Ze gaan naar school in [stad].</div>
                             <div class="cs-phrase green">🌳 Local tip: In onze buurt is er een mooie [plek]. Ik ga er
                                 graag heen omdat…</div>
+                            <div class="cs-phrase green">🎨 Hobby: Mijn hobby is [hobby]. Ik doe het elke week. Ik
+                                vind het heel leuk.</div>
+                            <div class="cs-phrase green">⚽ Sport: Ik doe aan [sport]. Ik train [aantal] keer per
+                                week. Sport is gezond!</div>
+                            <div class="cs-phrase green">🛍️ Shopping: Ik heb een nieuwe [spullen] gekocht bij
+                                [winkel]. Het kostte [prijs]. Ik ben blij met het.</div>
+                            <div class="cs-phrase green">🚲 Cycling: Ik fiets elke dag naar [bestemming]. Het duurt
+                                [tijd] minuten. Ik vind fietsen leuk.</div>
                         </div>
                         <div class="cs-section">
                             <div class="cs-section-title">Connectors to hit the word count</div>
@@ -1869,6 +2083,40 @@
 
         <!-- ── FULL EXAM section ── -->
         <div id="exam-section" style="display:none;">
+            <!-- Exam Start Confirmation Modal -->
+            <div class="exam-start-overlay" id="exam-start-overlay">
+                <div class="exam-start-modal">
+                    <div class="exam-start-header">
+                        <h2>📋 Full Exam Simulation</h2>
+                        <button class="exam-start-close" onclick="cancelExamStart()">✕</button>
+                    </div>
+                    <div class="exam-start-body">
+                        <p><strong>The real inburgering A2 writing exam has a strict time limit.</strong></p>
+                        <ul>
+                            <li>You have <strong>60 minutes</strong> to complete all 4 tasks.</li>
+                            <li>Task 1: Formulier (fill in personal details)</li>
+                            <li>Task 2: Kort bericht — informal email (30–50 words)</li>
+                            <li>Task 3: Lang bericht — formal email (60–80 words)</li>
+                            <li>Task 4: Wijkkrant — neighbourhood article (60–80 words)</li>
+                            <li>When time runs out, your answers will be auto-submitted.</li>
+                        </ul>
+                        <div class="timer-display">60:00</div>
+                        <p style="text-align:center;font-size:0.82rem;color:#888;">A countdown timer will appear at the top during the exam.</p>
+                    </div>
+                    <div class="exam-start-footer">
+                        <button class="btn-exam-cancel" onclick="cancelExamStart()">Cancel</button>
+                        <button class="btn-exam-start" onclick="confirmExamStart()">▶ Start Exam (60 min)</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Time-up Overlay -->
+            <div class="time-up-overlay" id="time-up-overlay">
+                <h1>⏰ Tijd is op!</h1>
+                <p>Your 60 minutes are up. Submitting your answers now…</p>
+                <button class="btn-time-up" onclick="dismissTimeUp()">See Results</button>
+            </div>
+
             <div id="exam-intro-card" class="task-card exam-border" style="text-align:center; padding:32px;">
                 <div style="font-size:2.5rem;margin-bottom:10px;">📋</div>
                 <h2 style="margin:0 0 8px;font-size:1.2rem;">Full Exam Simulation</h2>
@@ -2814,8 +3062,22 @@ Analyse the patterns and return your JSON assessment.`;
         // ══════════════════════════════════════════════════════════════════
         let examData = null, examTimer = null, examSecs = 0, examIdealText = '';
         let currentExamTaskIndex = 0;
+        const EXAM_DURATION = 60 * 60; // 60 minutes in seconds
 
         async function startExam() {
+            document.getElementById('exam-start-overlay').classList.add('open');
+        }
+
+        function cancelExamStart() {
+            document.getElementById('exam-start-overlay').classList.remove('open');
+        }
+
+        function confirmExamStart() {
+            document.getElementById('exam-start-overlay').classList.remove('open');
+            generateAndBuildExam();
+        }
+
+        async function generateAndBuildExam() {
             const startBtn = document.getElementById('exam-start-btn');
             startBtn.textContent = '⏳ Generating Exam…'; startBtn.disabled = true;
             examIdealText = '';
@@ -2827,7 +3089,7 @@ Analyse the patterns and return your JSON assessment.`;
                 const themes = ["responding to a job advertisement", "accepting/declining a social invitation", "inviting a neighbour to coffee", "vacation story about travelling", "family introduction and life", "local neighbourhood recommendation", "broken bike or appliance complaint", "late package delivery complaint", "noisy neighbours complaint", "missing/lost items (bike/package)", "asking about language course details", "requesting appointment at doctor/dentist", "asking about gym or activity membership", "household utility problem", "wrong item received from shop", "apologizing for missing meeting", "thanking someone for help", "arranging meeting time", "moving to new neighbourhood", "lost wallet or phone", "service quality complaint at restaurant or shop", "cycling route recommendation", "favourite hobby or sport", "local shop or café recommendation"];
                 const randomThemes = Array.from({ length: 4 }, () => themes[Math.floor(Math.random() * themes.length)]);
                 const seed = Math.floor(Math.random() * 1000000);
-                const raw = await callAI(getExamQuestionSystem(), `Generate a complete unique Dutch A2 exam. Use SIMPLE A2 vocabulary only. Focus on REALISTIC Dutch daily life scenarios relevant to integration (inburgering). Ensure all 4 tasks use highly unique scenarios and vocabulary by using this random seed: ${seed}. Incorporate these random themes across the tasks to ensure variety: ${randomThemes.join(', ')}.`, 4096);
+                const raw = await callAI(getExamQuestionSystem(), `Generate a complete unique Dutch A2 exam. Use SIMPLE A2 vocabulary only. Focus on REALISTIC daily life scenarios relevant to integration (inburgering). Ensure all 4 tasks use highly unique scenarios and vocabulary by using this random seed: ${seed}. Incorporate these random themes across the tasks to ensure variety: ${randomThemes.join(', ')}.`, 4096);
                 const parsed = parseJSON(raw);
                 if (!parsed?.tasks) throw new Error('Could not parse exam JSON. Raw response: ' + (raw || '').slice(0, 200));
                 if (parsed.tasks.length < 4) throw new Error(`Exam only has ${parsed.tasks.length} task(s) instead of 4. Try again.`);
@@ -2837,9 +3099,10 @@ Analyse the patterns and return your JSON assessment.`;
                 document.getElementById('exam-area').style.display = '';
                 document.getElementById('exam-pbar').style.width = '0%';
                 buildExamUI(parsed.tasks);
-                startExamTimer();
+                startExamCountdown();
             } catch (e) {
                 alert('Could not generate exam: ' + e.message);
+                document.getElementById('exam-intro-card').style.display = '';
             }
             startBtn.textContent = '▶ Start New Exam'; startBtn.disabled = false;
         }
@@ -2927,30 +3190,80 @@ Analyse the patterns and return your JSON assessment.`;
             document.getElementById('exam-pbar').style.width = (filled / examData.tasks.length * 100) + '%';
         }
 
-        function startExamTimer() {
-            examSecs = 0; clearInterval(examTimer);
+        function startExamCountdown() {
+            examSecs = EXAM_DURATION; // Start at 60 minutes
+            clearInterval(examTimer);
+            updateTimerDisplay();
             examTimer = setInterval(() => {
-                examSecs++;
-                const m = Math.floor(examSecs / 60), s = examSecs % 60;
-                document.getElementById('exam-timer').textContent = `⏱ ${m}:${s.toString().padStart(2, '0')}`;
+                examSecs--;
+                updateTimerDisplay();
+                if (examSecs <= 0) {
+                    clearInterval(examTimer);
+                    handleTimeUp();
+                }
             }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const m = Math.floor(Math.max(0, examSecs) / 60);
+            const s = examSecs % 60;
+            const timerEl = document.getElementById('exam-timer');
+            timerEl.textContent = `⏱ ${m}:${s.toString().padStart(2, '0')} remaining`;
+            
+            timerEl.className = '';
+            if (examSecs <= 60) {
+                timerEl.classList.add('critical');
+            } else if (examSecs <= 600) {
+                timerEl.classList.add('warning');
+            }
+        }
+
+        function handleTimeUp() {
+            document.getElementById('time-up-overlay').classList.add('open');
+        }
+
+        function dismissTimeUp() {
+            document.getElementById('time-up-overlay').classList.remove('open');
+            submitExam();
         }
 
         function cancelExam() {
             clearInterval(examTimer);
             document.getElementById('exam-area').style.display = 'none';
             document.getElementById('exam-intro-card').style.display = '';
+            document.getElementById('exam-fb-panel').style.display = 'none';
+            document.getElementById('exam-ideal-box').style.display = 'none';
         }
 
         async function submitExam() {
             clearInterval(examTimer);
             if (!examData) return;
 
-            // Collect answers
+            // Collect answers with field-level validation for forms
             const answers = examData.tasks.map((t, i) => {
                 if (t.type === 'form') {
                     const inputs = document.querySelectorAll(`#exam-form-${i} input`);
-                    return Array.from(inputs).map(inp => `${inp.dataset.field}: ${inp.value.trim() || '(leeg)'}`).join('\n');
+                    const fieldResults = Array.from(inputs).map(inp => {
+                        const val = inp.value.trim() || '(leeg)';
+                        const field = inp.dataset.field;
+                        let validation = '';
+                        // Basic validation rules for common Dutch form fields
+                        if (field.includes('Postcode')) {
+                            const pcMatch = val.match(/^(\d{4})\s?([A-Z]{2})$/i);
+                            validation = pcMatch ? ' [validatie: ✅]' : ' [validatie: ⚠️ formaat: 1234 AB]';
+                        } else if (field.includes('Telefoon')) {
+                            const phoneMatch = val.match(/^06[\d-]{8}$/);
+                            validation = phoneMatch ? ' [validatie: ✅]' : ' [validatie: ⚠️ formaat: 06-12345678]';
+                        } else if (field.includes('Geboortedatum')) {
+                            const dateMatch = val.match(/^\d{2}[-/]\d{2}[-/]\d{4}$/);
+                            validation = dateMatch ? ' [validatie: ✅]' : ' [validatie: ⚠️ formaat: DD-MM-JJJJ]';
+                        } else if (field.includes('E-mail') || field.includes('email')) {
+                            const emailMatch = val.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+                            validation = emailMatch ? ' [validatie: ✅]' : ' [validatie: ⚠️ formaat: naam@domein.nl]';
+                        }
+                        return `${field}: ${val}${validation}`;
+                    });
+                    return fieldResults.join('\n');
                 } else {
                     const ta = document.getElementById(`exam-ans-${i}`);
                     return ta ? ta.value.trim() : '(no answer)';
@@ -2961,9 +3274,13 @@ Analyse the patterns and return your JSON assessment.`;
             const submitBtn = document.getElementById('exam-submit-btn');
             submitBtn.textContent = '⏳ Checking all tasks…'; submitBtn.disabled = true;
 
-            const tasksText = examData.tasks.map((t, i) =>
-                `TASK ${t.num} (${t.label}, target: ${t.target}):\n${t.type === 'form' ? 'Form filling task' : t.q}\n\nSTUDENT ANSWER ${t.num}:\n${answers[i] || '(no answer)'}`
-            ).join('\n\n---\n\n');
+            const tasksText = examData.tasks.map((t, i) => {
+                if (t.type === 'form') {
+                    return `TASK ${t.num} (${t.label}, target: ${t.target}):\nFORMULIER: ${t.formTitle}\nFields to fill: ${(t.fields || []).map(f => f.label).join(', ')}\n\nSTUDENT ANSWER ${t.num}:\n${answers[i] || '(no answer)'}\n\nFORM VALIDATION INSTRUCTIONS: Check each field. Postcode must be 4 digits + 2 letters (e.g. 1234 AB). Telefoon must start with 06 and have 10 digits. Geboortedatum must be DD-MM-JJJJ format. E-mail must have @ and domain. Check if fields are filled correctly and in Dutch where applicable.`;
+                } else {
+                    return `TASK ${t.num} (${t.label}, target: ${t.target}):\n${t.q}\n\nSTUDENT ANSWER ${t.num}:\n${answers[i] || '(no answer)'}`;
+                }
+            }).join('\n\n---\n\n');
 
             const langInstruction = (typeof getLangLevelInstruction === 'function') ? getLangLevelInstruction() : '';
             const examSys = `You are a Dutch A2 inburgering exam teacher grading a full exam. Grade all 4 tasks.
@@ -2973,6 +3290,13 @@ ${langInstruction}
 ${TK}
 
 CRITICAL FIRST STEP: For each task that has bullet points, read each bullet one by one and check whether the student explicitly addressed it. List ALL bullets in bullets_check for each task. Missing a bullet = marks lost on the real exam.
+
+SPECIAL FORMULIER (TASK 1) GRADING:
+- Check if ALL fields are filled in (no empty fields)
+- Validate formats: Postcode (1234 AB), Telefoon (06-XXXXXXXX), Geboortedatum (DD-MM-JJJJ), E-mail (name@domain.tld)
+- Check if the values are realistic Dutch data (e.g., Dutch street names, Dutch cities)
+- Mark format errors in requirements[] with ok:false
+- Give feedback about which fields need correction
 
 Return ONLY valid JSON:
 {
