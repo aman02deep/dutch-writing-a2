@@ -82,6 +82,13 @@ const PROVIDERS = {
             { id: 'Phi-4-mini-instruct',                label: 'Phi-4 Mini (Microsoft)' },
             { id: 'Llama-3.1-8B-Instruct',             label: 'Llama 3.1 8B — Fast/light (Meta)' }
         ]
+    },
+    alibaba: {
+        name: 'Alibaba Cloud',
+        description: 'Qwen models via DashScope/Model Studio',
+        freeTier: '✅ Free tier available for new users',
+        keyLink: 'https://bailian.console.alibabacloud.com/',
+        keySteps: 'Sign in to Alibaba Cloud Model Studio (Bailian) → go to API-KEY management → create a new key → copy it here.'
     }
 };
 
@@ -169,6 +176,24 @@ function injectSettingsModal() {
                             💡 <strong>How to get a model ID:</strong> Go to
                             <a href="https://github.com/marketplace/models" target="_blank" style="color:var(--primary);">github.com/marketplace/models</a>,
                             open any model → click the <strong>Code</strong> tab → copy the value shown after <code style="background:#f3f3f3;padding:1px 5px;border-radius:3px;">model:</code>.
+                        </div>
+                    </div>
+
+                    <!-- Alibaba Qwen model selector -->
+                    <div id="alibaba-model-section" style="display:none; margin-top:14px;">
+                        <label class="settings-label" style="margin-bottom:6px;">🤖 Qwen Model</label>
+                        <select id="alibaba-model-select" style="width:100%;padding:10px 12px;border:1.5px solid #ddd;border-radius:8px;font-size:0.9rem;font-family:inherit;background:#fff;cursor:pointer;" onchange="onAlibabaModelChange(this.value)">
+                        </select>
+
+                        <!-- Custom Model ID override -->
+                        <div style="margin-top:10px;">
+                            <label class="settings-label" style="margin-bottom:4px;font-size:0.8rem;">✏️ Or paste a custom model ID</label>
+                            <input type="text" id="alibaba-model-custom" placeholder="e.g. qwen-coder-plus" autocomplete="off" spellcheck="false"
+                                style="width:100%;padding:9px 12px;border:1.5px solid #ddd;border-radius:8px;font-size:0.88rem;font-family:monospace;box-sizing:border-box;"
+                                oninput="onAlibabaCustomModelInput(this.value)">
+                        </div>
+                        <div style="font-size:0.76rem;color:#888;margin-top:8px;line-height:1.6;">
+                            💡 <strong>Recommended:</strong> <code style="background:#f3f3f3;padding:1px 5px;border-radius:3px;">qwen-plus</code> (balanced) or <code style="background:#f3f3f3;padding:1px 5px;border-radius:3px;">qwen-max</code> (best quality).
                         </div>
                     </div>
 
@@ -332,11 +357,13 @@ function onProviderChange(providerKey) {
 
     const balanceSection = document.getElementById('balance-section');
     const githubModelSection = document.getElementById('github-model-section');
+    const alibabaModelSection = document.getElementById('alibaba-model-section');
 
     if (providerKey === 'pollinations') {
         keySection.style.display = 'none';
         if (balanceSection) balanceSection.style.display = 'none';
         if (githubModelSection) githubModelSection.style.display = 'none';
+        if (alibabaModelSection) alibabaModelSection.style.display = 'none';
     } else {
         keySection.style.display = 'block';
         keyInstructions.innerHTML = `
@@ -364,12 +391,33 @@ function onProviderChange(providerKey) {
                 select.innerHTML = (provider.models || []).map(m =>
                     `<option value="${m.id}" ${m.id === savedModel ? 'selected' : ''}>${m.label}</option>`
                 ).join('');
-                // Populate custom field if the saved model isn't in the preset list
                 const isPreset = (provider.models || []).some(m => m.id === savedModel);
                 const customInput = document.getElementById('github-model-custom');
                 if (customInput) customInput.value = isPreset ? '' : savedModel;
             } else {
                 githubModelSection.style.display = 'none';
+            }
+        }
+        // Show model selector only for Alibaba
+        if (alibabaModelSection) {
+            if (providerKey === 'alibaba') {
+                alibabaModelSection.style.display = 'block';
+                const select = document.getElementById('alibaba-model-select');
+                const savedModel = localStorage.getItem('alibaba-model') || 'qwen-plus';
+                const models = [
+                    { id: 'qwen-plus',     label: '⭐ Qwen Plus — Recommended (balanced)' },
+                    { id: 'qwen-max',      label: '🥇 Qwen Max — Best quality' },
+                    { id: 'qwen-turbo',    label: '🚀 Qwen Turbo — Fast / low cost' },
+                    { id: 'qwen-coder-plus', label: '💻 Qwen Coder Plus — Code optimized' }
+                ];
+                select.innerHTML = models.map(m =>
+                    `<option value="${m.id}" ${m.id === savedModel ? 'selected' : ''}>${m.label}</option>`
+                ).join('');
+                const isPreset = models.some(m => m.id === savedModel);
+                const customInput = document.getElementById('alibaba-model-custom');
+                if (customInput) customInput.value = isPreset ? '' : savedModel;
+            } else {
+                alibabaModelSection.style.display = 'none';
             }
         }
     }
@@ -385,14 +433,30 @@ function onGithubModelChange(modelId) {
 function onGithubCustomModelInput(value) {
     const trimmed = value.trim();
     if (trimmed) {
-        // Custom ID overrides the dropdown — save it and deselect the dropdown
         localStorage.setItem('github-model', trimmed);
         const select = document.getElementById('github-model-select');
         if (select) select.value = '';
     } else {
-        // If cleared, fall back to whatever dropdown is selected
         const select = document.getElementById('github-model-select');
         if (select && select.value) localStorage.setItem('github-model', select.value);
+    }
+}
+
+function onAlibabaModelChange(modelId) {
+    localStorage.setItem('alibaba-model', modelId);
+    const customInput = document.getElementById('alibaba-model-custom');
+    if (customInput) customInput.value = '';
+}
+
+function onAlibabaCustomModelInput(value) {
+    const trimmed = value.trim();
+    if (trimmed) {
+        localStorage.setItem('alibaba-model', trimmed);
+        const select = document.getElementById('alibaba-model-select');
+        if (select) select.value = '';
+    } else {
+        const select = document.getElementById('alibaba-model-select');
+        if (select && select.value) localStorage.setItem('alibaba-model', select.value);
     }
 }
 
