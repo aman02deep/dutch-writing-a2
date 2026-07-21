@@ -784,23 +784,19 @@ const werkLessonData = [
         "nl": "Een uitzendbureau heeft veel vacatures, meestal voor tijdelijk werk. Je krijgt dan een contract voor bepaalde tijd.",
         "en": "A recruitment agency has many vacancies, usually for temporary work. You then get a fixed-term contract.",
         "audio": "../assets/audio/knm/werkeninkomen/wi6.mp3",
-        "image": "../assets/images/knm/wi_sollicitatie.png",
-            "words": [
-                      {
-                                "word": "uitzendbureau",
-                                "parts": [
-                                          {
-                                                    "nl": "uitzend",
-                                                    "en": "dispatch"
-                                          },
-                                          {
-                                                    "nl": "bureau",
-                                                    "en": "agency"
-                                          }
-                                ],
-                                "tip": "Temp agency, common for finding initial jobs"
-                      }
-            ]
+        "image": "../assets/images/knm/wi_sollicitatie.png",
+        "words": [
+            {
+                "word": "uitzendbureau",
+                "parts": [{"nl": "uitzend", "en": "dispatch"}, {"nl": "bureau", "en": "agency"}],
+                "tip": "Temp agency, common for finding initial jobs"
+            },
+            {
+                "word": "bepaalde",
+                "parts": [{"nl": "bepaalde", "en": "specific/fixed"}],
+                "tip": "Contract voor bepaalde tijd = fixed-term contract (opposite: onbepaalde tijd)"
+            }
+        ]
     },
     {
         "id": "wi7",
@@ -946,21 +942,52 @@ const werkLessonData = [
         "nl": "Sommige mensen doen bij- of nascholing naast hun baan — bijvoorbeeld 's avonds of deeltijds.",
         "en": "Some people do further or continuing education alongside their job — for example in the evenings or part-time.",
         "audio": "../assets/audio/knm/werkeninkomen/wi16.mp3",
-        "image": "../assets/images/knm/wi_werk.png"
+        "image": "../assets/images/knm/wi_werk.png",
+        "words": [
+            {
+                "word": "naast",
+                "parts": [{"nl": "naast", "en": "alongside/next to"}],
+                "tip": "Naast hun baan = alongside their job; naast can mean 'next to' or 'in addition to'"
+            },
+            {
+                "word": "bijvoorbeeld",
+                "parts": [{"nl": "bij", "en": "for"}, {"nl": "voorbeeld", "en": "example"}],
+                "tip": "For example — literally 'by example'; used to introduce an illustration"
+            }
+        ]
     },
     {
         "id": "wi17",
         "nl": "Werkervaring is een belangrijk aspect bij het vinden van werk. Relevante werkervaring kan een grote plus zijn.",
         "en": "Work experience is an important aspect when finding a job. Relevant work experience can be a big advantage.",
         "audio": "../assets/audio/knm/werkeninkomen/wi17.mp3",
-        "image": "../assets/images/knm/wi_werk.png"
+        "image": "../assets/images/knm/wi_werk.png",
+        "words": [
+            {
+                "word": "Werkervaring",
+                "parts": [{"nl": "werk", "en": "work"}, {"nl": "ervaring", "en": "experience"}],
+                "tip": "Work experience — a key factor employers look at when hiring"
+            }
+        ]
     },
     {
         "id": "wi18",
         "nl": "Het EVC kan een officieel certificaat maken met erkenning van jouw werkervaring en vaardigheden uit het buitenland.",
         "en": "The EVC can create an official certificate recognising your work experience and skills from abroad.",
         "audio": "../assets/audio/knm/werkeninkomen/wi18.mp3",
-        "image": "../assets/images/knm/wi_ziek.png"
+        "image": "../assets/images/knm/wi_ziek.png",
+        "words": [
+            {
+                "word": "werkervaring",
+                "parts": [{"nl": "werk", "en": "work"}, {"nl": "ervaring", "en": "experience"}],
+                "tip": "Work experience — the EVC officially recognises experience gained abroad"
+            },
+            {
+                "word": "vaardigheden",
+                "parts": [{"nl": "vaardig", "en": "skilled"}, {"nl": "-heden", "en": "(plural noun suffix)"}],
+                "tip": "Skills/abilities — plural of vaardigheid; mentioned on CVs and EVC certificates"
+            }
+        ]
     },
     {
         "id": "wi19",
@@ -968,34 +995,65 @@ const werkLessonData = [
         "en": "You can also do volunteer work to build up more experience. Volunteer work means working without pay, but it can be very valuable.",
         "audio": "../assets/audio/knm/werkeninkomen/wi19.mp3",
         "image": "../assets/images/knm/wi_geld.png",
-    "words": [
-        {
-            "word": "vrijwilligerswerk",
-            "parts": [{"nl": "vrijwilliger", "en": "volunteer"}, {"nl": "werk", "en": "work"}],
-            "tip": "Voluntary work — unpaid work for society; expected and valued in NL culture"
-        }
-    ]
+        "words": [
+            {
+                "word": "vrijwilligerswerk",
+                "parts": [{"nl": "vrijwilliger", "en": "volunteer"}, {"nl": "werk", "en": "work"}],
+                "tip": "Voluntary work — unpaid work for society; expected and valued in NL culture"
+            },
+            {
+                "word": "waardevol",
+                "parts": [{"nl": "waarde", "en": "value"}, {"nl": "vol", "en": "full of"}],
+                "tip": "Valuable — literally 'full of value'; vrijwilligerswerk can be waardevol for your CV"
+            }
+        ]
     },
     {
         "id": "wi20",
         "nl": "Beschikbaarheid is ook belangrijk. Kun je fulltime werken of alleen parttime? Bedrijven willen dit weten.",
         "en": "Availability is also important. Can you work full-time or only part-time? Companies need to know this.",
         "audio": "../assets/audio/knm/werkeninkomen/wi20.mp3",
-        "image": "../assets/images/knm/wi_ziek.png"
+        "image": "../assets/images/knm/wi_ziek.png",
+        "words": [
+            {
+                "word": "Beschikbaarheid",
+                "parts": [{"nl": "beschikbaar", "en": "available"}, {"nl": "-heid", "en": "(noun suffix)"}],
+                "tip": "Availability — employers ask this to know when and how much you can work"
+            }
+        ]
     },
     {
         "id": "wi21",
         "nl": "Bij sommige banen is een bepaald niveau Nederlands vereist, zoals minimaal A2, B1 of B2.",
         "en": "Some jobs require a certain level of Dutch, such as a minimum of A2, B1 or B2.",
         "audio": "../assets/audio/knm/werkeninkomen/wi21.mp3",
-        "image": "../assets/images/knm/wi_werk.png"
+        "image": "../assets/images/knm/wi_werk.png",
+        "words": [
+            {
+                "word": "niveau",
+                "parts": [{"nl": "niveau", "en": "level"}],
+                "tip": "Level — used for Dutch language proficiency (A1–C2 on the CEFR scale)"
+            }
+        ]
     },
     {
         "id": "wi22",
         "nl": "Vind je het sollicitatieproces moeilijk? Dan kun je een cursus solliciteren volgen via het UWV (gratis) of bij een particulier bedrijf (betaald).",
         "en": "Do you find the application process difficult? You can follow an application skills course through the UWV (free) or at a private company (paid).",
         "audio": "../assets/audio/knm/werkeninkomen/wi22.mp3",
-        "image": "../assets/images/knm/wi_sollicitatie.png"
+        "image": "../assets/images/knm/wi_sollicitatie.png",
+        "words": [
+            {
+                "word": "sollicitatieproces",
+                "parts": [{"nl": "sollicitatie", "en": "application"}, {"nl": "proces", "en": "process"}],
+                "tip": "The job application process — from CV submission to interview and decision"
+            },
+            {
+                "word": "solliciteren",
+                "parts": [{"nl": "solliciteren", "en": "to apply (for a job)"}],
+                "tip": "To apply for a job — you can take a cursus solliciteren (application skills course) via UWV"
+            }
+        ]
     },
     {
         "id": "wi23",
@@ -1021,7 +1079,14 @@ const werkLessonData = [
         "nl": "Voorwaarden voor WW: je bent werkloos én je hebt meer dan een half jaar gewerkt voordat je werkloos werd.",
         "en": "Conditions for WW: you are unemployed AND you worked for more than half a year before becoming unemployed.",
         "audio": "../assets/audio/knm/werkeninkomen/wi24.mp3",
-        "image": "../assets/images/knm/wi_werk.png"
+        "image": "../assets/images/knm/wi_werk.png",
+        "words": [
+            {
+                "word": "Voorwaarden",
+                "parts": [{"nl": "voor", "en": "for"}, {"nl": "waarden", "en": "conditions/values"}],
+                "tip": "Conditions/requirements — what you must meet to qualify for a benefit or service"
+            }
+        ]
     },
     {
         "id": "wi25",
@@ -1029,25 +1094,42 @@ const werkLessonData = [
         "en": "With a WW benefit you have an obligation to apply for jobs: you must actively apply and prove this to the UWV.",
         "audio": "../assets/audio/knm/werkeninkomen/wi25.mp3",
         "image": "../assets/images/knm/wi_sollicitatie.png",
-    "words": [
-        {
-            "word": "WW-uitkering",
-            "parts": [{"nl": "WW", "en": "unemployment insurance"}, {"nl": "uitkering", "en": "benefit"}],
-            "tip": "Unemployment benefit — paid by UWV; requires 26+ weeks of work before unemployment"
-        },
-        {
-            "word": "sollicitatieplicht",
-            "parts": [{"nl": "sollicitatie", "en": "application"}, {"nl": "plicht", "en": "duty"}],
-            "tip": "Obligation to actively look for work — required when receiving WW benefits"
-        }
-    ]
+        "words": [
+            {
+                "word": "WW-uitkering",
+                "parts": [{"nl": "WW", "en": "unemployment insurance"}, {"nl": "uitkering", "en": "benefit"}],
+                "tip": "Unemployment benefit — paid by UWV; requires 26+ weeks of work before unemployment"
+            },
+            {
+                "word": "sollicitatieplicht",
+                "parts": [{"nl": "sollicitatie", "en": "application"}, {"nl": "plicht", "en": "duty"}],
+                "tip": "Obligation to actively look for work — required when receiving WW benefits"
+            },
+            {
+                "word": "solliciteren",
+                "parts": [{"nl": "solliciteren", "en": "to apply (for a job)"}],
+                "tip": "To apply for a job — with WW benefit you must actively do this and prove it"
+            },
+            {
+                "word": "bewijzen",
+                "parts": [{"nl": "bewijzen", "en": "to prove"}],
+                "tip": "To prove — you must bewijzen (prove) your job applications to the UWV"
+            }
+        ]
     },
     {
         "id": "wi26",
         "nl": "Andere uitkeringen: WIA (als je langdurig ziek bent en niet kunt werken), AOW (voor mensen van 67 jaar en ouder), en bijstand (als je te weinig inkomen hebt om van te leven).",
         "en": "Other benefits: WIA (if you are long-term sick and cannot work), AOW (for people aged 67 and over), and social assistance/bijstand (if you have too little income to live on).",
         "audio": "../assets/audio/knm/werkeninkomen/wi26.mp3",
-        "image": "../assets/images/knm/wi_geld.png"
+        "image": "../assets/images/knm/wi_geld.png",
+        "words": [
+            {
+                "word": "uitkeringen",
+                "parts": [{"nl": "uit", "en": "out"}, {"nl": "kering", "en": "payment"}],
+                "tip": "Benefits/allowances — government payments such as WIA, AOW, WW, bijstand"
+            }
+        ]
     },
     {
         "id": "wi27",
@@ -1061,120 +1143,86 @@ const werkLessonData = [
         "nl": "Kwaliteiten van een goede werknemer: zelfstandig kunnen werken, goed samenwerken met collega's, initiatief tonen, en betrouwbaar zijn.",
         "en": "Qualities of a good employee: being able to work independently, working well with colleagues, showing initiative, and being reliable.",
         "audio": "../assets/audio/knm/werkeninkomen/wi28.mp3",
-        "image": "../assets/images/knm/wi_werk.png",
-            "words": [
-                      {
-                                "word": "werknemer",
-                                "parts": [
-                                          {
-                                                    "nl": "werk",
-                                                    "en": "work"
-                                          },
-                                          {
-                                                    "nl": "nemer",
-                                                    "en": "taker"
-                                          }
-                                ],
-                                "tip": "Employee"
-                      }
-            ]
+        "image": "../assets/images/knm/wi_werk.png",
+        "words": [
+            {
+                "word": "werknemer",
+                "parts": [{"nl": "werk", "en": "work"}, {"nl": "nemer", "en": "taker"}],
+                "tip": "Employee — literally 'work-taker'; opposite of werkgever (employer = 'work-giver')"
+            },
+            {
+                "word": "betrouwbaar",
+                "parts": [{"nl": "be", "en": "(prefix)"}, {"nl": "trouw", "en": "faithful/loyal"}, {"nl": "baar", "en": "(adjective suffix)"}],
+                "tip": "Reliable/trustworthy — a key quality for a good werknemer in the Netherlands"
+            }
+        ]
     },
     {
         "id": "wi29",
         "nl": "In het arbeidscontract staat: jouw salaris, startdatum, aantal werkuren per week, aantal vakantiedagen, en of er een proeftijd is.",
         "en": "The employment contract states: your salary, start date, working hours per week, number of holiday days, and whether there is a probationary period (proeftijd).",
         "audio": "../assets/audio/knm/werkeninkomen/wi29.mp3",
-        "image": "../assets/images/knm/wi_contract.png",
-            "words": [
-                      {
-                                "word": "proeftijd",
-                                "parts": [
-                                          {
-                                                    "nl": "proef",
-                                                    "en": "trial"
-                                          },
-                                          {
-                                                    "nl": "tijd",
-                                                    "en": "time"
-                                          }
-                                ],
-                                "tip": "Probationary period at start of a contract"
-                      }
-            ]
+        "image": "../assets/images/knm/wi_contract.png",
+        "words": [
+            {
+                "word": "arbeidscontract",
+                "parts": [{"nl": "arbeid", "en": "labour"}, {"nl": "contract", "en": "contract"}],
+                "tip": "Employment contract — lists salary, hours, vacation days and probationary period"
+            },
+            {
+                "word": "proeftijd",
+                "parts": [{"nl": "proef", "en": "trial"}, {"nl": "tijd", "en": "time"}],
+                "tip": "Probationary period at start of a contract"
+            }
+        ]
     },
     {
         "id": "wi30",
         "nl": "Proeftijd: een periode om te kijken of het werk en het bedrijf bij jou passen. Zowel de werknemer als de werkgever kan tijdens de proeftijd het contract beëindigen.",
         "en": "Probationary period: a period to see whether the work and the company suit you. Both the employee and the employer can end the contract during the probationary period.",
         "audio": "../assets/audio/knm/werkeninkomen/wi30.mp3",
-        "image": "../assets/images/knm/wi_contract.png",
-            "words": [
-                      {
-                                "word": "werkgever",
-                                "parts": [
-                                          {
-                                                    "nl": "werk",
-                                                    "en": "work"
-                                          },
-                                          {
-                                                    "nl": "gever",
-                                                    "en": "giver"
-                                          }
-                                ],
-                                "tip": "Employer"
-                      },
-                      {
-                                "word": "werknemer",
-                                "parts": [
-                                          {
-                                                    "nl": "werk",
-                                                    "en": "work"
-                                          },
-                                          {
-                                                    "nl": "nemer",
-                                                    "en": "taker"
-                                          }
-                                ],
-                                "tip": "Employee"
-                      },
-                      {
-                                "word": "proeftijd",
-                                "parts": [
-                                          {
-                                                    "nl": "proef",
-                                                    "en": "trial"
-                                          },
-                                          {
-                                                    "nl": "tijd",
-                                                    "en": "time"
-                                          }
-                                ],
-                                "tip": "Probationary period at start of a contract"
-                      }
-            ]
+        "image": "../assets/images/knm/wi_contract.png",
+        "words": [
+            {
+                "word": "werkgever",
+                "parts": [{"nl": "werk", "en": "work"}, {"nl": "gever", "en": "giver"}],
+                "tip": "Employer — literally 'work-giver'"
+            },
+            {
+                "word": "werknemer",
+                "parts": [{"nl": "werk", "en": "work"}, {"nl": "nemer", "en": "taker"}],
+                "tip": "Employee — literally 'work-taker'"
+            },
+            {
+                "word": "proeftijd",
+                "parts": [{"nl": "proef", "en": "trial"}, {"nl": "tijd", "en": "time"}],
+                "tip": "Probationary period at start of a contract"
+            },
+            {
+                "word": "beëindigen",
+                "parts": [{"nl": "be", "en": "(prefix)"}, {"nl": "einde", "en": "end"}, {"nl": "-igen", "en": "(verb suffix)"}],
+                "tip": "To terminate/end — both employee and employer can end the contract during proeftijd"
+            }
+        ]
     },
     {
         "id": "wi31",
         "nl": "Soorten arbeidscontracten: vast contract (voor onbepaalde tijd), tijdelijk contract (voor bepaalde tijd), of een contract via een uitzendbureau.",
         "en": "Types of employment contracts: permanent contract (open-ended), temporary contract (fixed-term), or a contract through a recruitment agency.",
         "audio": "../assets/audio/knm/werkeninkomen/wi31.mp3",
-        "image": "../assets/images/knm/wi_contract.png",
-            "words": [
-                      {
-                                "word": "uitzendbureau",
-                                "parts": [
-                                          {
-                                                    "nl": "uitzend",
-                                                    "en": "dispatch"
-                                          },
-                                          {
-                                                    "nl": "bureau",
-                                                    "en": "agency"
-                                          }
-                                ],
-                                "tip": "Temp agency, common for finding initial jobs"
-                      }
-            ]
+        "image": "../assets/images/knm/wi_contract.png",
+        "words": [
+            {
+                "word": "arbeidscontracten",
+                "parts": [{"nl": "arbeid", "en": "labour"}, {"nl": "contracten", "en": "contracts"}],
+                "tip": "Employment contracts — plural; three types: vast, tijdelijk, or via uitzendbureau"
+            },
+            {
+                "word": "uitzendbureau",
+                "parts": [{"nl": "uitzend", "en": "dispatch"}, {"nl": "bureau", "en": "agency"}],
+                "tip": "Temp agency, common for finding initial jobs"
+            }
+        ]
     },
     {
         "id": "wi32",
@@ -1182,165 +1230,172 @@ const werkLessonData = [
         "en": "Rules and obligations in the employment contract: start on time and not go home too early, follow health and safety rules.",
         "audio": "../assets/audio/knm/werkeninkomen/wi32.mp3",
         "image": "../assets/images/knm/wi_contract.png",
-    "words": [
-        {
-            "word": "arbeidscontract",
-            "parts": [{"nl": "arbeid", "en": "labour"}, {"nl": "contract", "en": "contract"}],
-            "tip": "Employment contract — fixed-term (bepaalde tijd) or permanent (onbepaalde tijd)"
-        }
-    ]
+        "words": [
+            {
+                "word": "arbeidscontract",
+                "parts": [{"nl": "arbeid", "en": "labour"}, {"nl": "contract", "en": "contract"}],
+                "tip": "Employment contract — fixed-term (bepaalde tijd) or permanent (onbepaalde tijd)"
+            },
+            {
+                "word": "vroeg",
+                "parts": [{"nl": "vroeg", "en": "early"}],
+                "tip": "Early — 'niet te vroeg naar huis gaan' means don't leave work too early"
+            },
+            {
+                "word": "veiligheid",
+                "parts": [{"nl": "veilig", "en": "safe"}, {"nl": "-heid", "en": "(noun suffix)"}],
+                "tip": "Safety — you must follow veiligheid (safety) and health rules at work"
+            }
+        ]
     },
     {
         "id": "wi33",
         "nl": "Bij ziekte moet je je afmelden bij je werkgever. Als je langere tijd ziek bent, meld je je bij de bedrijfsarts (ook wel: arbo-arts).",
         "en": "If you are sick, you must report your absence to your employer. If you are sick for a longer period, you report to the company doctor (bedrijfsarts / arbo-arts).",
         "audio": "../assets/audio/knm/werkeninkomen/wi33.mp3",
-        "image": "../assets/images/knm/wi_ziek.png",
-            "words": [
-                      {
-                                "word": "werkgever",
-                                "parts": [
-                                          {
-                                                    "nl": "werk",
-                                                    "en": "work"
-                                          },
-                                          {
-                                                    "nl": "gever",
-                                                    "en": "giver"
-                                          }
-                                ],
-                                "tip": "Employer"
-                      }
-            ]
+        "image": "../assets/images/knm/wi_ziek.png",
+        "words": [
+            {
+                "word": "werkgever",
+                "parts": [{"nl": "werk", "en": "work"}, {"nl": "gever", "en": "giver"}],
+                "tip": "Employer — you must report sick leave to your werkgever first"
+            },
+            {
+                "word": "afmelden",
+                "parts": [{"nl": "af", "en": "off"}, {"nl": "melden", "en": "to report"}],
+                "tip": "To deregister/report absence — call your employer when you are sick: 'ik meld me af'"
+            },
+            {
+                "word": "arbo-arts",
+                "parts": [{"nl": "arbo", "en": "occupational health"}, {"nl": "arts", "en": "doctor"}],
+                "tip": "Occupational health doctor — you see this doctor if you are sick for a longer period"
+            }
+        ]
     },
     {
         "id": "wi34",
         "nl": "De arbo-arts onderzoekt je en maakt samen met jou een re-integratieplan. De Arbowet regelt dat werknemers veilig en gezond kunnen werken.",
         "en": "The company doctor examines you and creates a re-integration plan together with you. The Working Conditions Act (Arbowet) ensures employees can work safely and healthily.",
         "audio": "../assets/audio/knm/werkeninkomen/wi34.mp3",
-        "image": "../assets/images/knm/wi_ziek.png",
-            "words": [
-                      {
-                                "word": "werknemer",
-                                "parts": [
-                                          {
-                                                    "nl": "werk",
-                                                    "en": "work"
-                                          },
-                                          {
-                                                    "nl": "nemer",
-                                                    "en": "taker"
-                                          }
-                                ],
-                                "tip": "Employee"
-                      }
-            ]
+        "image": "../assets/images/knm/wi_ziek.png",
+        "words": [
+            {
+                "word": "arbo-arts",
+                "parts": [{"nl": "arbo", "en": "occupational health"}, {"nl": "arts", "en": "doctor"}],
+                "tip": "Occupational health doctor — makes a re-integration plan with you"
+            },
+            {
+                "word": "Arbowet",
+                "parts": [{"nl": "arbo", "en": "occupational health"}, {"nl": "wet", "en": "law/act"}],
+                "tip": "Working Conditions Act — the law that ensures safe and healthy working conditions"
+            },
+            {
+                "word": "werknemer",
+                "parts": [{"nl": "werk", "en": "work"}, {"nl": "nemer", "en": "taker"}],
+                "tip": "Employee — protected by the Arbowet"
+            }
+        ]
     },
     {
         "id": "wi35",
         "nl": "De ondernemingsraad (OR) is een groep werknemers die invloed heeft op plannen van de werkgever die de werknemers raken, zoals werktijden.",
         "en": "The works council (OR — ondernemingsraad) is a group of employees that has influence over employer plans that affect employees, such as working hours.",
         "audio": "../assets/audio/knm/werkeninkomen/wi35.mp3",
-        "image": "../assets/images/knm/wi_werk.png",
-            "words": [
-                      {
-                                "word": "werkgever",
-                                "parts": [
-                                          {
-                                                    "nl": "werk",
-                                                    "en": "work"
-                                          },
-                                          {
-                                                    "nl": "gever",
-                                                    "en": "giver"
-                                          }
-                                ],
-                                "tip": "Employer"
-                      },
-                      {
-                                "word": "werknemer",
-                                "parts": [
-                                          {
-                                                    "nl": "werk",
-                                                    "en": "work"
-                                          },
-                                          {
-                                                    "nl": "nemer",
-                                                    "en": "taker"
-                                          }
-                                ],
-                                "tip": "Employee"
-                      }
-            ]
+        "image": "../assets/images/knm/wi_werk.png",
+        "words": [
+            {
+                "word": "ondernemingsraad",
+                "parts": [{"nl": "onderneming", "en": "company/enterprise"}, {"nl": "raad", "en": "council"}],
+                "tip": "Works council (OR) — employee group that co-decides on company policy; mandatory 50+ staff"
+            },
+            {
+                "word": "invloed",
+                "parts": [{"nl": "in", "en": "in"}, {"nl": "vloed", "en": "flow/flood"}],
+                "tip": "Influence — the OR has invloed (influence) over employer plans that affect employees"
+            },
+            {
+                "word": "raken",
+                "parts": [{"nl": "raken", "en": "to affect/touch"}],
+                "tip": "To affect — plannen die de werknemers raken = plans that affect the employees"
+            },
+            {
+                "word": "werkgever",
+                "parts": [{"nl": "werk", "en": "work"}, {"nl": "gever", "en": "giver"}],
+                "tip": "Employer — the OR monitors the werkgever's plans"
+            },
+            {
+                "word": "werknemer",
+                "parts": [{"nl": "werk", "en": "work"}, {"nl": "nemer", "en": "taker"}],
+                "tip": "Employee — represented by the ondernemingsraad"
+            }
+        ]
     },
     {
         "id": "wi36",
         "nl": "In bedrijven met meer dan 50 werknemers is een ondernemingsraad verplicht.",
         "en": "In companies with more than 50 employees, a works council is mandatory.",
         "audio": "../assets/audio/knm/werkeninkomen/wi36.mp3",
-        "image": "../assets/images/knm/wi_werk.png",
-            "words": [
-                      {
-                                "word": "werknemer",
-                                "parts": [
-                                          {
-                                                    "nl": "werk",
-                                                    "en": "work"
-                                          },
-                                          {
-                                                    "nl": "nemer",
-                                                    "en": "taker"
-                                          }
-                                ],
-                                "tip": "Employee"
-                      }
-            ]
+        "image": "../assets/images/knm/wi_werk.png",
+        "words": [
+            {
+                "word": "ondernemingsraad",
+                "parts": [{"nl": "onderneming", "en": "company/enterprise"}, {"nl": "raad", "en": "council"}],
+                "tip": "Works council — mandatory (verplicht) in companies with 50+ employees"
+            },
+            {
+                "word": "verplicht",
+                "parts": [{"nl": "verplicht", "en": "mandatory/obligatory"}],
+                "tip": "Mandatory — the OR is verplicht (required by law) in companies with 50+ employees"
+            },
+            {
+                "word": "werknemer",
+                "parts": [{"nl": "werk", "en": "work"}, {"nl": "nemer", "en": "taker"}],
+                "tip": "Employee — OR is mandatory when there are more than 50 werknemers"
+            }
+        ]
     },
     {
         "id": "wi37",
         "nl": "De medezeggenschapsraad (MR) doet vergelijkbare dingen als de OR, maar is meestal bij kleinere bedrijven met minder dan 50 werknemers.",
         "en": "The participation council (MR — medezeggenschapsraad) does similar things to the OR, but is usually found in smaller companies with fewer than 50 employees.",
         "audio": "../assets/audio/knm/werkeninkomen/wi37.mp3",
-        "image": "../assets/images/knm/wi_werk.png",
-            "words": [
-                      {
-                                "word": "werknemer",
-                                "parts": [
-                                          {
-                                                    "nl": "werk",
-                                                    "en": "work"
-                                          },
-                                          {
-                                                    "nl": "nemer",
-                                                    "en": "taker"
-                                          }
-                                ],
-                                "tip": "Employee"
-                      }
-            ]
+        "image": "../assets/images/knm/wi_werk.png",
+        "words": [
+            {
+                "word": "medezeggenschapsraad",
+                "parts": [{"nl": "mede", "en": "co-"}, {"nl": "zeggenschap", "en": "say/authority"}, {"nl": "raad", "en": "council"}],
+                "tip": "Participation council (MR) — like the OR but for smaller companies (<50 employees)"
+            },
+            {
+                "word": "vergelijkbare",
+                "parts": [{"nl": "vergelijk", "en": "compare"}, {"nl": "-bare", "en": "(adjective suffix)"}],
+                "tip": "Similar/comparable — de MR doet vergelijkbare dingen als de OR"
+            },
+            {
+                "word": "werknemer",
+                "parts": [{"nl": "werk", "en": "work"}, {"nl": "nemer", "en": "taker"}],
+                "tip": "Employee — MR is for companies with fewer than 50 werknemers"
+            }
+        ]
     },
     {
         "id": "wi38",
         "nl": "De personeelsvereniging organiseert sociale evenementen voor werknemers en helpt collega's elkaar beter te leren kennen.",
         "en": "The staff association (personeelsvereniging) organises social events for employees and helps colleagues get to know each other better.",
         "audio": "../assets/audio/knm/werkeninkomen/wi38.mp3",
-        "image": "../assets/images/knm/wi_werk.png",
-            "words": [
-                      {
-                                "word": "werknemer",
-                                "parts": [
-                                          {
-                                                    "nl": "werk",
-                                                    "en": "work"
-                                          },
-                                          {
-                                                    "nl": "nemer",
-                                                    "en": "taker"
-                                          }
-                                ],
-                                "tip": "Employee"
-                      }
-            ]
+        "image": "../assets/images/knm/wi_werk.png",
+        "words": [
+            {
+                "word": "personeelsvereniging",
+                "parts": [{"nl": "personeel", "en": "staff/personnel"}, {"nl": "vereniging", "en": "association"}],
+                "tip": "Staff association — organises social events to help colleagues bond"
+            },
+            {
+                "word": "werknemer",
+                "parts": [{"nl": "werk", "en": "work"}, {"nl": "nemer", "en": "taker"}],
+                "tip": "Employee — the personeelsvereniging organises events for werknemers"
+            }
+        ]
     },
     {
         "id": "wi39",
@@ -1354,28 +1409,61 @@ const werkLessonData = [
         "nl": "Een goede collega: werkt zelfstandig, helpt anderen, communiceert open en direct, is sociaal in de pauze, en staat open voor kritiek.",
         "en": "A good colleague: works independently, helps others, communicates openly and directly, is social during breaks, and is open to feedback.",
         "audio": "../assets/audio/knm/werkeninkomen/wi40.mp3",
-        "image": "../assets/images/knm/wi_werk.png"
+        "image": "../assets/images/knm/wi_werk.png",
+        "words": [
+            {
+                "word": "kritiek",
+                "parts": [{"nl": "kritiek", "en": "criticism/feedback"}],
+                "tip": "Criticism/feedback — open voor kritiek means being open to criticism, a valued Dutch work trait"
+            }
+        ]
     },
     {
         "id": "wi41",
         "nl": "Over je salaris betaal je belasting. De overheid gebruikt dit geld voor scholen, wegen, de politie en andere publieke voorzieningen.",
         "en": "You pay tax on your salary. The government uses this money for schools, roads, the police and other public services.",
         "audio": "../assets/audio/knm/werkeninkomen/wi41.mp3",
-        "image": "../assets/images/knm/wi_geld.png"
+        "image": "../assets/images/knm/wi_geld.png",
+        "words": [
+            {
+                "word": "voorzieningen",
+                "parts": [{"nl": "voor", "en": "for"}, {"nl": "ziening", "en": "provision"}],
+                "tip": "Public services/facilities — schools, roads, police are all publieke voorzieningen funded by taxes"
+            }
+        ]
     },
     {
         "id": "wi42",
         "nl": "In Nederland betalen mensen met een hoger salaris meer belasting dan mensen met een lager salaris. Dit noemen we de lastenverdeling.",
         "en": "In the Netherlands, people with a higher salary pay more tax than people with a lower salary. This is called the tax distribution (lastenverdeling).",
         "audio": "../assets/audio/knm/werkeninkomen/wi42.mp3",
-        "image": "../assets/images/knm/wi_geld.png"
+        "image": "../assets/images/knm/wi_geld.png",
+        "words": [
+            {
+                "word": "lastenverdeling",
+                "parts": [{"nl": "lasten", "en": "burdens/costs"}, {"nl": "verdeling", "en": "distribution"}],
+                "tip": "Tax distribution — higher earners pay more; a progressive tax system"
+            }
+        ]
     },
     {
         "id": "wi43",
         "nl": "Je betaalt ook premies over je salaris — voor de AOW-verzekering (pensioen), de WW-verzekering (werkloosheid) en andere verzekeringen.",
         "en": "You also pay premiums on your salary — for the AOW insurance (pension), WW insurance (unemployment) and other insurances.",
         "audio": "../assets/audio/knm/werkeninkomen/wi43.mp3",
-        "image": "../assets/images/knm/wi_geld.png"
+        "image": "../assets/images/knm/wi_geld.png",
+        "words": [
+            {
+                "word": "verzekering",
+                "parts": [{"nl": "verzeker", "en": "assure/secure"}, {"nl": "-ing", "en": "(noun suffix)"}],
+                "tip": "Insurance — AOW-verzekering (pension) and WW-verzekering (unemployment) are deducted from salary"
+            },
+            {
+                "word": "werkloosheid",
+                "parts": [{"nl": "werkloos", "en": "unemployed"}, {"nl": "-heid", "en": "(noun suffix)"}],
+                "tip": "Unemployment — the WW-verzekering protects you against werkloosheid"
+            }
+        ]
     },
     {
         "id": "wi44",
@@ -1420,37 +1508,24 @@ const werkLessonData = [
         "nl": "De cao (collectieve arbeidsovereenkomst) bevat de regels en afspraken voor alle werknemers en werkgevers in dezelfde sector.",
         "en": "The collective labour agreement (cao) contains the rules and agreements for all employees and employers in the same sector.",
         "audio": "../assets/audio/knm/werkeninkomen/wi46.mp3",
-        "image": "../assets/images/knm/wi_contract.png",
-            "words": [
-                      {
-                                "word": "werkgever",
-                                "parts": [
-                                          {
-                                                    "nl": "werk",
-                                                    "en": "work"
-                                          },
-                                          {
-                                                    "nl": "gever",
-                                                    "en": "giver"
-                                          }
-                                ],
-                                "tip": "Employer"
-                      },
-                      {
-                                "word": "werknemer",
-                                "parts": [
-                                          {
-                                                    "nl": "werk",
-                                                    "en": "work"
-                                          },
-                                          {
-                                                    "nl": "nemer",
-                                                    "en": "taker"
-                                          }
-                                ],
-                                "tip": "Employee"
-                      }
-            ]
+        "image": "../assets/images/knm/wi_contract.png",
+        "words": [
+            {
+                "word": "bevat",
+                "parts": [{"nl": "be", "en": "(prefix)"}, {"nl": "vat", "en": "contains"}],
+                "tip": "Contains — de cao bevat (contains) the rules for all employees in a sector"
+            },
+            {
+                "word": "werkgever",
+                "parts": [{"nl": "werk", "en": "work"}, {"nl": "gever", "en": "giver"}],
+                "tip": "Employer — the cao applies to both werkgevers and werknemers"
+            },
+            {
+                "word": "werknemer",
+                "parts": [{"nl": "werk", "en": "work"}, {"nl": "nemer", "en": "taker"}],
+                "tip": "Employee — the cao protects the rights of all werknemers in a sector"
+            }
+        ]
     },
     {
         "id": "wi47",
@@ -1480,67 +1555,77 @@ const werkLessonData = [
         "nl": "Plichten uit de cao: je ziekmelding doen en het aantal uren werken dat in je contract staat.",
         "en": "Obligations from the cao: reporting sick leave and working the number of hours stated in your contract.",
         "audio": "../assets/audio/knm/werkeninkomen/wi48.mp3",
-        "image": "../assets/images/knm/wi_contract.png"
+        "image": "../assets/images/knm/wi_contract.png",
+        "words": [
+            {
+                "word": "ziekmelding",
+                "parts": [{"nl": "ziek", "en": "sick"}, {"nl": "melding", "en": "report/notification"}],
+                "tip": "Sick leave notification — you must do your ziekmelding (call in sick) as a duty under the cao"
+            }
+        ]
     },
     {
         "id": "wi49",
         "nl": "Een vakbond is een groep werknemers die hetzelfde beroep uitoefenen. Elk beroep heeft zijn eigen vakbond.",
         "en": "A trade union (vakbond) is a group of workers who do the same job. Every profession has its own trade union.",
         "audio": "../assets/audio/knm/werkeninkomen/wi49.mp3",
-        "image": "../assets/images/knm/wi_werk.png",
-            "words": [
-                      {
-                                "word": "werknemer",
-                                "parts": [
-                                          {
-                                                    "nl": "werk",
-                                                    "en": "work"
-                                          },
-                                          {
-                                                    "nl": "nemer",
-                                                    "en": "taker"
-                                          }
-                                ],
-                                "tip": "Employee"
-                      }
-            ]
+        "image": "../assets/images/knm/wi_werk.png",
+        "words": [
+            {
+                "word": "vakbond",
+                "parts": [{"nl": "vak", "en": "trade/profession"}, {"nl": "bond", "en": "union/federation"}],
+                "tip": "Trade union — each profession has its own vakbond; protects workers' rights"
+            },
+            {
+                "word": "hetzelfde",
+                "parts": [{"nl": "het", "en": "the"}, {"nl": "zelfde", "en": "same"}],
+                "tip": "The same — vakbond = group of workers doing hetzelfde (the same) profession"
+            },
+            {
+                "word": "uitoefenen",
+                "parts": [{"nl": "uit", "en": "out"}, {"nl": "oefenen", "en": "to practise"}],
+                "tip": "To practise/exercise (a profession) — een beroep uitoefenen = to practise a profession"
+            },
+            {
+                "word": "werknemer",
+                "parts": [{"nl": "werk", "en": "work"}, {"nl": "nemer", "en": "taker"}],
+                "tip": "Employee — a vakbond is a group of werknemers in the same profession"
+            }
+        ]
     },
     {
         "id": "wi50",
         "nl": "De vakbond helpt werknemers bij problemen op het werk en onderhandelt met werkgevers over de cao, salarissen, werktijden en werkomstandigheden.",
         "en": "The trade union helps employees with problems at work and negotiates with employers about the cao, salaries, working hours and working conditions.",
         "audio": "../assets/audio/knm/werkeninkomen/wi50.mp3",
-        "image": "../assets/images/knm/wi_contract.png",
-            "words": [
-                      {
-                                "word": "werkgever",
-                                "parts": [
-                                          {
-                                                    "nl": "werk",
-                                                    "en": "work"
-                                          },
-                                          {
-                                                    "nl": "gever",
-                                                    "en": "giver"
-                                          }
-                                ],
-                                "tip": "Employer"
-                      },
-                      {
-                                "word": "werknemer",
-                                "parts": [
-                                          {
-                                                    "nl": "werk",
-                                                    "en": "work"
-                                          },
-                                          {
-                                                    "nl": "nemer",
-                                                    "en": "taker"
-                                          }
-                                ],
-                                "tip": "Employee"
-                      }
-            ]
+        "image": "../assets/images/knm/wi_contract.png",
+        "words": [
+            {
+                "word": "vakbond",
+                "parts": [{"nl": "vak", "en": "trade/profession"}, {"nl": "bond", "en": "union/federation"}],
+                "tip": "Trade union — negotiates on behalf of employees about salaries and working conditions"
+            },
+            {
+                "word": "onderhandelt",
+                "parts": [{"nl": "onder", "en": "under"}, {"nl": "handelt", "en": "deals/acts"}],
+                "tip": "Negotiates — de vakbond onderhandelt (negotiates) with employers about the cao"
+            },
+            {
+                "word": "werkomstandigheden",
+                "parts": [{"nl": "werk", "en": "work"}, {"nl": "omstandigheden", "en": "circumstances/conditions"}],
+                "tip": "Working conditions — what the vakbond negotiates to improve for all employees"
+            },
+            {
+                "word": "werkgever",
+                "parts": [{"nl": "werk", "en": "work"}, {"nl": "gever", "en": "giver"}],
+                "tip": "Employer — the vakbond negotiates with werkgevers about the cao"
+            },
+            {
+                "word": "werknemer",
+                "parts": [{"nl": "werk", "en": "work"}, {"nl": "nemer", "en": "taker"}],
+                "tip": "Employee — the vakbond helps werknemers with work problems"
+            }
+        ]
     },
     {
         "id": "wi51",
