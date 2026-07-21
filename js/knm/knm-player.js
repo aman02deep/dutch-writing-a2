@@ -69,7 +69,10 @@ class KNMPlayer {
                     </div>
 
                     <div class="word-spotlight" id="word-spotlight" style="display:none;">
-                        <div class="word-spotlight-title">🔑 Key Words</div>
+                        <div class="word-spotlight-title">
+                            🔑 Key Words
+                            <button class="word-spotlight-toggle" id="word-spotlight-toggle" title="Hide key words panel">Hide</button>
+                        </div>
                         <div class="word-spotlight-chips" id="word-spotlight-chips"></div>
                     </div>
                 </div>
@@ -108,6 +111,17 @@ class KNMPlayer {
         this.collapseBtn = document.getElementById('transcript-collapse-btn');
         this.wordSpotlight = document.getElementById('word-spotlight');
         this.wordSpotlightChips = document.getElementById('word-spotlight-chips');
+        this.wordSpotlightToggle = document.getElementById('word-spotlight-toggle');
+
+        // Restore spotlight visibility preference
+        this.spotlightVisible = localStorage.getItem('knm-spotlight-hidden') !== 'true';
+        this._applySpotlightVisibility();
+
+        this.wordSpotlightToggle.addEventListener('click', () => {
+            this.spotlightVisible = !this.spotlightVisible;
+            localStorage.setItem('knm-spotlight-hidden', !this.spotlightVisible);
+            this._applySpotlightVisibility();
+        });
 
         // Inject the floating re-open button on the video player edge
         this.openBtn = document.createElement('button');
@@ -276,6 +290,7 @@ class KNMPlayer {
             this.wordSpotlight.style.display = 'none';
             return;
         }
+        // Show the panel (may be collapsed, handled by _applySpotlightVisibility)
         this.wordSpotlight.style.display = 'block';
         this.wordSpotlightChips.innerHTML = words.map(entry => {
             const partsStr = entry.parts.map(p => `${p.nl} <em>(${p.en})</em>`).join(' + ');
@@ -285,7 +300,23 @@ class KNMPlayer {
                 <span class="spotlight-tip">💡 ${entry.tip}</span>
             </div>`;
         }).join('');
+        this._applySpotlightVisibility();
     }
+
+    // Applies the current spotlightVisible state to the chips and toggle button label
+    _applySpotlightVisibility() {
+        if (!this.wordSpotlightChips || !this.wordSpotlightToggle) return;
+        if (this.spotlightVisible) {
+            this.wordSpotlightChips.style.display = 'flex';
+            this.wordSpotlightToggle.textContent = 'Hide';
+            this.wordSpotlightToggle.title = 'Hide key words panel';
+        } else {
+            this.wordSpotlightChips.style.display = 'none';
+            this.wordSpotlightToggle.textContent = 'Show';
+            this.wordSpotlightToggle.title = 'Show key words panel';
+        }
+    }
+
 
     syncTranscriptHighlight() {
         if (!this.transcriptList) return;

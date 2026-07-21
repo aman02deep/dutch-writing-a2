@@ -12,7 +12,14 @@ const wonenLessonData = [
         "nl": "Ik ga beginnen met de sociale huurwoning — een huis huren in de sociale huursector.",
         "en": "I will start with social housing — renting a home in the social rental sector.",
         "audio": "../assets/audio/knm/wonen/w2.mp3",
-        "image": "../assets/images/knm/wonen_sleutel.png"
+        "image": "../assets/images/knm/wonen_sleutel.png",
+    "words": [
+        {
+            "word": "huurwoning",
+            "parts": [{"nl": "huur", "en": "rent"}, {"nl": "woning", "en": "home"}],
+            "tip": "A rented home — opposite of koopwoning (owned home)"
+        }
+    ]
     },
     {
         "id": "w3",
@@ -78,7 +85,14 @@ const wonenLessonData = [
         "nl": "Er zijn wachttijden. De persoon die het langst op de wachtlijst staat, krijgt de volgende beschikbare woning.",
         "en": "There are waiting times. The person who has been on the waiting list the longest gets the next available home.",
         "audio": "../assets/audio/knm/wonen/w9.mp3",
-        "image": "../assets/images/knm/wonen_huis.png"
+        "image": "../assets/images/knm/wonen_huis.png",
+    "words": [
+        {
+            "word": "wachttijd",
+            "parts": [{"nl": "wacht", "en": "wait"}, {"nl": "tijd", "en": "time"}],
+            "tip": "Waiting time — can be long for specialists in NL; ask for a shorter wait elsewhere"
+        }
+    ]
     },
     {
         "id": "w10",
@@ -246,21 +260,42 @@ const wonenLessonData = [
         "nl": "De meeste mensen lenen geld bij de bank om een huis te kopen. Deze lening heet een hypotheek.",
         "en": "Most people borrow money from a bank to buy a house. This loan is called a mortgage (hypotheek).",
         "audio": "../assets/audio/knm/wonen/w21.mp3",
-        "image": "../assets/images/knm/wonen_hypotheek.png"
+        "image": "../assets/images/knm/wonen_hypotheek.png",
+    "words": [
+        {
+            "word": "hypotheek",
+            "parts": [{"nl": "hypotheek", "en": "mortgage"}],
+            "tip": "A loan from the bank to buy a house — must be repaid with interest"
+        }
+    ]
     },
     {
         "id": "w22",
         "nl": "Met een hoog inkomen kun je meer hypotheek krijgen. Met een laag inkomen minder — of soms helemaal geen hypotheek.",
         "en": "With a high income you can get a larger mortgage. With a low income less — or sometimes no mortgage at all.",
         "audio": "../assets/audio/knm/wonen/w22.mp3",
-        "image": "../assets/images/knm/wonen_hypotheek.png"
+        "image": "../assets/images/knm/wonen_hypotheek.png",
+    "words": [
+        {
+            "word": "hypotheek",
+            "parts": [{"nl": "hypotheek", "en": "mortgage"}],
+            "tip": "A loan from the bank to buy a house — must be repaid with interest"
+        }
+    ]
     },
     {
         "id": "w23",
         "nl": "De bank wil meestal dat je een vast inkomen hebt. Je betaalt elke maand een deel van de hypotheek terug, plus rente.",
         "en": "The bank usually wants you to have a steady income. You pay back part of the mortgage each month, plus interest.",
         "audio": "../assets/audio/knm/wonen/w23.mp3",
-        "image": "../assets/images/knm/wonen_hypotheek.png"
+        "image": "../assets/images/knm/wonen_hypotheek.png",
+    "words": [
+        {
+            "word": "hypotheek",
+            "parts": [{"nl": "hypotheek", "en": "mortgage"}],
+            "tip": "A loan from the bank to buy a house — must be repaid with interest"
+        }
+    ]
     },
     {
         "id": "w24",
@@ -286,7 +321,14 @@ const wonenLessonData = [
         "nl": "Bij de koop van een huis is de notaris een belangrijke persoon. Bij de notaris teken je het contract voor het huis en de hypotheek.",
         "en": "When buying a home, the notary is an important person. At the notary you sign the contract for the house and the mortgage.",
         "audio": "../assets/audio/knm/wonen/w25.mp3",
-        "image": "../assets/images/knm/wonen_hypotheek.png"
+        "image": "../assets/images/knm/wonen_hypotheek.png",
+    "words": [
+        {
+            "word": "hypotheek",
+            "parts": [{"nl": "hypotheek", "en": "mortgage"}],
+            "tip": "A loan from the bank to buy a house — must be repaid with interest"
+        }
+    ]
     },
     {
         "id": "w26",
@@ -359,49 +401,118 @@ const wonenLessonData = [
         "nl": "Energie in je huis regel je meestal zelf, direct via het energiebedrijf. De woningbouwvereniging of huisbaas doet dit normaal niet voor jou.",
         "en": "You usually arrange energy at home yourself, directly through the energy company. The housing association or landlord normally does not do this for you.",
         "audio": "../assets/audio/knm/wonen/w31.mp3",
-        "image": "../assets/images/knm/wonen_energie.png"
+        "image": "../assets/images/knm/wonen_energie.png",
+    "words": [
+        {
+            "word": "woningbouwvereniging",
+            "parts": [{"nl": "woning", "en": "home"}, {"nl": "bouw", "en": "building"}, {"nl": "vereniging", "en": "association"}],
+            "tip": "Social housing association — registers you for a rental home"
+        },
+        {
+            "word": "energiebedrijf",
+            "parts": [{"nl": "energie", "en": "energy"}, {"nl": "bedrijf", "en": "company"}],
+            "tip": "Energy provider — you choose your own provider in NL (e.g. Eneco, Vattenfall)"
+        }
+    ]
     },
     {
         "id": "w32",
         "nl": "Je kunt zelf het energiebedrijf kiezen, bijvoorbeeld Nuon of Eneco. Prijzen kun je vergelijken online.",
         "en": "You can choose the energy company yourself, for example Nuon or Eneco. You can compare prices online.",
         "audio": "../assets/audio/knm/wonen/w32.mp3",
-        "image": "../assets/images/knm/wonen_energie.png"
+        "image": "../assets/images/knm/wonen_energie.png",
+    "words": [
+        {
+            "word": "energiebedrijf",
+            "parts": [{"nl": "energie", "en": "energy"}, {"nl": "bedrijf", "en": "company"}],
+            "tip": "Energy provider — you choose your own provider in NL (e.g. Eneco, Vattenfall)"
+        }
+    ]
     },
     {
         "id": "w33",
         "nl": "Neem direct contact op met het energiebedrijf. Wacht niet tot de huisbaas het voor jou doet.",
         "en": "Contact the energy company directly. Do not wait for the landlord to do it for you.",
         "audio": "../assets/audio/knm/wonen/w33.mp3",
-        "image": "../assets/images/knm/wonen_energie.png"
+        "image": "../assets/images/knm/wonen_energie.png",
+    "words": [
+        {
+            "word": "energiebedrijf",
+            "parts": [{"nl": "energie", "en": "energy"}, {"nl": "bedrijf", "en": "company"}],
+            "tip": "Energy provider — you choose your own provider in NL (e.g. Eneco, Vattenfall)"
+        }
+    ]
     },
     {
         "id": "w34",
         "nl": "Ieder jaar moet je aan het energiebedrijf vertellen hoeveel energie je hebt gebruikt. Dit kun je lezen op de meterstand.",
         "en": "Every year you must tell the energy company how much energy you have used. You can read this on the meter reading.",
         "audio": "../assets/audio/knm/wonen/w34.mp3",
-        "image": "../assets/images/knm/wonen_energie.png"
+        "image": "../assets/images/knm/wonen_energie.png",
+    "words": [
+        {
+            "word": "energiebedrijf",
+            "parts": [{"nl": "energie", "en": "energy"}, {"nl": "bedrijf", "en": "company"}],
+            "tip": "Energy provider — you choose your own provider in NL (e.g. Eneco, Vattenfall)"
+        },
+        {
+            "word": "meterstand",
+            "parts": [{"nl": "meter", "en": "meter"}, {"nl": "stand", "en": "reading"}],
+            "tip": "Meter reading — you must report it annually to your energy provider"
+        }
+    ]
     },
     {
         "id": "w35",
         "nl": "Op je energierekening zie je hoeveel je moet betalen. Elke maand betaal je een vast bedrag: het termijnbedrag.",
         "en": "On your energy bill you can see how much you need to pay. Every month you pay a fixed amount: the monthly instalment.",
         "audio": "../assets/audio/knm/wonen/w35.mp3",
-        "image": "../assets/images/knm/wonen_energie.png"
+        "image": "../assets/images/knm/wonen_energie.png",
+    "words": [
+        {
+            "word": "energierekening",
+            "parts": [{"nl": "energie", "en": "energy"}, {"nl": "rekening", "en": "bill"}],
+            "tip": "Energy bill — monthly instalment, settled annually"
+        },
+        {
+            "word": "termijnbedrag",
+            "parts": [{"nl": "termijn", "en": "instalment"}, {"nl": "bedrag", "en": "amount"}],
+            "tip": "Monthly fixed energy payment — adjusted each year at the jaarrekening"
+        }
+    ]
     },
     {
         "id": "w36",
         "nl": "Op de jaarrekening zie je hoeveel energie je het hele jaar hebt gebruikt. Heb je te veel gebruikt? Dan betaal je extra. Heb je weinig gebruikt? Dan krijg je geld terug.",
         "en": "On the annual bill you can see how much energy you used the whole year. Did you use too much? Then you pay extra. Did you use little? Then you get money back.",
         "audio": "../assets/audio/knm/wonen/w36.mp3",
-        "image": "../assets/images/knm/wonen_energie.png"
+        "image": "../assets/images/knm/wonen_energie.png",
+    "words": [
+        {
+            "word": "jaarrekening",
+            "parts": [{"nl": "jaar", "en": "year"}, {"nl": "rekening", "en": "bill/account"}],
+            "tip": "Annual statement — shows if you owe extra or get a refund"
+        }
+    ]
     },
     {
         "id": "w37",
         "nl": "Betaal je energierekening op tijd! Eerst krijg je een waarschuwing, maar daarna kan het energiebedrijf de energie afsluiten.",
         "en": "Pay your energy bill on time! First you get a warning, but after that the energy company can disconnect your energy.",
         "audio": "../assets/audio/knm/wonen/w37.mp3",
-        "image": "../assets/images/knm/wonen_energie.png"
+        "image": "../assets/images/knm/wonen_energie.png",
+    "words": [
+        {
+            "word": "energiebedrijf",
+            "parts": [{"nl": "energie", "en": "energy"}, {"nl": "bedrijf", "en": "company"}],
+            "tip": "Energy provider — you choose your own provider in NL (e.g. Eneco, Vattenfall)"
+        },
+        {
+            "word": "energierekening",
+            "parts": [{"nl": "energie", "en": "energy"}, {"nl": "rekening", "en": "bill"}],
+            "tip": "Energy bill — monthly instalment, settled annually"
+        }
+    ]
     },
     {
         "id": "w38",
@@ -485,7 +596,14 @@ const wonenLessonData = [
         "nl": "Lukt het niet? Neem contact op met het energiebedrijf, het waterbedrijf of het gasbedrijf. Zeker als het probleem gevaarlijk is!",
         "en": "Not working? Contact the energy company, water company or gas company. Especially if the problem is dangerous!",
         "audio": "../assets/audio/knm/wonen/w49.mp3",
-        "image": "../assets/images/knm/wonen_energie.png"
+        "image": "../assets/images/knm/wonen_energie.png",
+    "words": [
+        {
+            "word": "energiebedrijf",
+            "parts": [{"nl": "energie", "en": "energy"}, {"nl": "bedrijf", "en": "company"}],
+            "tip": "Energy provider — you choose your own provider in NL (e.g. Eneco, Vattenfall)"
+        }
+    ]
     },
     {
         "id": "w50",
@@ -765,21 +883,42 @@ const werkLessonData = [
         "nl": "Het IDW kan jou vertellen wat jouw buitenlandse diploma waard is op de Nederlandse arbeidsmarkt.",
         "en": "The IDW can tell you what your foreign qualification is worth on the Dutch job market.",
         "audio": "../assets/audio/knm/werkeninkomen/wi11.mp3",
-        "image": "../assets/images/knm/wi_werk.png"
+        "image": "../assets/images/knm/wi_werk.png",
+    "words": [
+        {
+            "word": "arbeidsmarkt",
+            "parts": [{"nl": "arbeid", "en": "labour"}, {"nl": "markt", "en": "market"}],
+            "tip": "Labour market — the supply and demand for workers in the economy"
+        }
+    ]
     },
     {
         "id": "wi12",
         "nl": "Soms heb je een nieuw diploma nodig. Je kunt je inschrijven voor een opleiding in Nederland. Voor financiering kun je een lening aanvragen bij DUO.",
         "en": "Sometimes you need a new qualification. You can enrol in a course in the Netherlands. For funding you can apply for a loan at DUO.",
         "audio": "../assets/audio/knm/werkeninkomen/wi12.mp3",
-        "image": "../assets/images/knm/wi_geld.png"
+        "image": "../assets/images/knm/wi_geld.png",
+    "words": [
+        {
+            "word": "inschrijven",
+            "parts": [{"nl": "in", "en": "in"}, {"nl": "schrijven", "en": "write/register"}],
+            "tip": "To register — you must register at the municipality when you move"
+        }
+    ]
     },
     {
         "id": "wi13",
         "nl": "Je kunt een beroepsopleiding volgen, bijvoorbeeld bij het ROC. Zo kun je bijvoorbeeld verpleegster worden als je in de zorg wil werken.",
         "en": "You can follow a vocational training, for example at the ROC. For example, you can become a nurse if you want to work in healthcare.",
         "audio": "../assets/audio/knm/werkeninkomen/wi13.mp3",
-        "image": "../assets/images/knm/wi_werk.png"
+        "image": "../assets/images/knm/wi_werk.png",
+    "words": [
+        {
+            "word": "beroepsopleiding",
+            "parts": [{"nl": "beroep", "en": "profession"}, {"nl": "opleiding", "en": "training"}],
+            "tip": "Vocational training — at the ROC; leads to an MBO diploma"
+        }
+    ]
     },
     {
         "id": "wi14",
@@ -793,7 +932,14 @@ const werkLessonData = [
         "nl": "Bijscholing: nieuwe dingen leren om een bepaalde baan te kunnen krijgen. Nascholing: specialiseren voor een bepaalde baan.",
         "en": "Further training (bijscholing): learning new things to qualify for a certain job. Continuing education (nascholing): specialising for a specific role.",
         "audio": "../assets/audio/knm/werkeninkomen/wi15.mp3",
-        "image": "../assets/images/knm/wi_werk.png"
+        "image": "../assets/images/knm/wi_werk.png",
+    "words": [
+        {
+            "word": "bijscholing",
+            "parts": [{"nl": "bij", "en": "additional"}, {"nl": "scholing", "en": "training"}],
+            "tip": "Upskilling — learning new things to qualify for a different job"
+        }
+    ]
     },
     {
         "id": "wi16",
@@ -821,7 +967,14 @@ const werkLessonData = [
         "nl": "Je kunt ook vrijwilligerswerk doen om meer werkervaring op te bouwen. Vrijwilligerswerk is werken zonder salaris, maar het kan waardevol zijn.",
         "en": "You can also do volunteer work to build up more experience. Volunteer work means working without pay, but it can be very valuable.",
         "audio": "../assets/audio/knm/werkeninkomen/wi19.mp3",
-        "image": "../assets/images/knm/wi_geld.png"
+        "image": "../assets/images/knm/wi_geld.png",
+    "words": [
+        {
+            "word": "vrijwilligerswerk",
+            "parts": [{"nl": "vrijwilliger", "en": "volunteer"}, {"nl": "werk", "en": "work"}],
+            "tip": "Voluntary work — unpaid work for society; expected and valued in NL culture"
+        }
+    ]
     },
     {
         "id": "wi20",
@@ -849,7 +1002,19 @@ const werkLessonData = [
         "nl": "De WW-uitkering is voor mensen die werkloos zijn geworden. Je moet je binnen één week inschrijven bij het UWV WERKbedrijf.",
         "en": "The unemployment benefit (WW-uitkering) is for people who have become unemployed. You must register with the UWV WERKbedrijf within one week.",
         "audio": "../assets/audio/knm/werkeninkomen/wi23.mp3",
-        "image": "../assets/images/knm/wi_geld.png"
+        "image": "../assets/images/knm/wi_geld.png",
+    "words": [
+        {
+            "word": "inschrijven",
+            "parts": [{"nl": "in", "en": "in"}, {"nl": "schrijven", "en": "write/register"}],
+            "tip": "To register — you must register at the municipality when you move"
+        },
+        {
+            "word": "WW-uitkering",
+            "parts": [{"nl": "WW", "en": "unemployment insurance"}, {"nl": "uitkering", "en": "benefit"}],
+            "tip": "Unemployment benefit — paid by UWV; requires 26+ weeks of work before unemployment"
+        }
+    ]
     },
     {
         "id": "wi24",
@@ -863,7 +1028,19 @@ const werkLessonData = [
         "nl": "Met een WW-uitkering heb je een sollicitatieplicht: je moet actief solliciteren en dit bewijzen aan het UWV.",
         "en": "With a WW benefit you have an obligation to apply for jobs: you must actively apply and prove this to the UWV.",
         "audio": "../assets/audio/knm/werkeninkomen/wi25.mp3",
-        "image": "../assets/images/knm/wi_sollicitatie.png"
+        "image": "../assets/images/knm/wi_sollicitatie.png",
+    "words": [
+        {
+            "word": "WW-uitkering",
+            "parts": [{"nl": "WW", "en": "unemployment insurance"}, {"nl": "uitkering", "en": "benefit"}],
+            "tip": "Unemployment benefit — paid by UWV; requires 26+ weeks of work before unemployment"
+        },
+        {
+            "word": "sollicitatieplicht",
+            "parts": [{"nl": "sollicitatie", "en": "application"}, {"nl": "plicht", "en": "duty"}],
+            "tip": "Obligation to actively look for work — required when receiving WW benefits"
+        }
+    ]
     },
     {
         "id": "wi26",
@@ -1004,7 +1181,14 @@ const werkLessonData = [
         "nl": "Regels en plichten in het arbeidscontract: op tijd beginnen en niet te vroeg naar huis gaan, regels voor veiligheid en gezondheid volgen.",
         "en": "Rules and obligations in the employment contract: start on time and not go home too early, follow health and safety rules.",
         "audio": "../assets/audio/knm/werkeninkomen/wi32.mp3",
-        "image": "../assets/images/knm/wi_contract.png"
+        "image": "../assets/images/knm/wi_contract.png",
+    "words": [
+        {
+            "word": "arbeidscontract",
+            "parts": [{"nl": "arbeid", "en": "labour"}, {"nl": "contract", "en": "contract"}],
+            "tip": "Employment contract — fixed-term (bepaalde tijd) or permanent (onbepaalde tijd)"
+        }
+    ]
     },
     {
         "id": "wi33",
@@ -1198,14 +1382,38 @@ const werkLessonData = [
         "nl": "Bruto salaris = salaris + belasting + premies. Netto salaris = het bedrag dat je op je bankrekening ontvangt.",
         "en": "Gross salary (bruto) = salary + tax + premiums. Net salary (netto) = the amount you receive in your bank account.",
         "audio": "../assets/audio/knm/werkeninkomen/wi44.mp3",
-        "image": "../assets/images/knm/wi_geld.png"
+        "image": "../assets/images/knm/wi_geld.png",
+    "words": [
+        {
+            "word": "bruto salaris",
+            "parts": [{"nl": "bruto", "en": "gross"}, {"nl": "salaris", "en": "salary"}],
+            "tip": "Gross salary — your full pay before tax and premiums are deducted"
+        },
+        {
+            "word": "netto salaris",
+            "parts": [{"nl": "netto", "en": "net"}, {"nl": "salaris", "en": "salary"}],
+            "tip": "Net salary — the amount you actually receive in your bank account"
+        }
+    ]
     },
     {
         "id": "wi45",
         "nl": "Op je loonstrookje zie je elke maand hoeveel naar belasting en premies gaat. Op je jaaropgave staat je salaris van het hele jaar.",
         "en": "On your pay slip (loonstrookje) you can see each month how much goes to tax and premiums. Your annual statement (jaaropgave) shows your salary for the whole year.",
         "audio": "../assets/audio/knm/werkeninkomen/wi45.mp3",
-        "image": "../assets/images/knm/wi_geld.png"
+        "image": "../assets/images/knm/wi_geld.png",
+    "words": [
+        {
+            "word": "loonstrookje",
+            "parts": [{"nl": "loon", "en": "wage"}, {"nl": "strookje", "en": "slip"}],
+            "tip": "Pay slip — shows gross pay, deductions (tax, pension), and net pay"
+        },
+        {
+            "word": "jaaropgave",
+            "parts": [{"nl": "jaar", "en": "year"}, {"nl": "opgave", "en": "statement"}],
+            "tip": "Annual income statement — issued in January; needed for your tax return"
+        }
+    ]
     },
     {
         "id": "wi46",
@@ -1495,7 +1703,14 @@ const werkLessonData = [
         "nl": "De Kamer van Koophandel (KVK) is een organisatie voor bedrijven. Alle bedrijven in Nederland moeten zich registreren bij de KVK.",
         "en": "The Chamber of Commerce (Kamer van Koophandel / KVK) is an organisation for businesses. All companies in the Netherlands must register with the KVK.",
         "audio": "../assets/audio/knm/werkeninkomen/wi59.mp3",
-        "image": "../assets/images/knm/wi_werk.png"
+        "image": "../assets/images/knm/wi_werk.png",
+    "words": [
+        {
+            "word": "Kamer van Koophandel",
+            "parts": [{"nl": "Kamer", "en": "chamber"}, {"nl": "van", "en": "of"}, {"nl": "Koophandel", "en": "commerce"}],
+            "tip": "Chamber of Commerce (KVK) — all Dutch businesses must register here"
+        }
+    ]
     },
     {
         "id": "wi60",
@@ -1509,14 +1724,28 @@ const werkLessonData = [
         "nl": "De KVK geeft ook informatie aan ondernemers: over belasting, het opstellen van een ondernemingsplan, en over cursussen.",
         "en": "The KVK also provides information to entrepreneurs: about tax, writing a business plan, and about courses.",
         "audio": "../assets/audio/knm/werkeninkomen/wi61.mp3",
-        "image": "../assets/images/knm/wi_geld.png"
+        "image": "../assets/images/knm/wi_geld.png",
+    "words": [
+        {
+            "word": "ondernemingsplan",
+            "parts": [{"nl": "onderneming", "en": "enterprise"}, {"nl": "plan", "en": "plan"}],
+            "tip": "Business plan — required by the bank before they will give you a startup loan"
+        }
+    ]
     },
     {
         "id": "wi62",
         "nl": "Voor meer informatie over de Kamer van Koophandel: ga naar www.kvk.nl.",
         "en": "For more information about the Chamber of Commerce: go to www.kvk.nl.",
         "audio": "../assets/audio/knm/werkeninkomen/wi62.mp3",
-        "image": "../assets/images/knm/wi_werk.png"
+        "image": "../assets/images/knm/wi_werk.png",
+    "words": [
+        {
+            "word": "Kamer van Koophandel",
+            "parts": [{"nl": "Kamer", "en": "chamber"}, {"nl": "van", "en": "of"}, {"nl": "Koophandel", "en": "commerce"}],
+            "tip": "Chamber of Commerce (KVK) — all Dutch businesses must register here"
+        }
+    ]
     },
     {
         "id": "wi63",
@@ -1537,14 +1766,28 @@ const werkLessonData = [
         "nl": "Meestal heb je geld nodig om een eigen bedrijf te starten. Als je een lening wil bij de bank, wil de bank jouw ondernemingsplan zien.",
         "en": "You usually need money to start your own business. If you want a loan from the bank, the bank will want to see your business plan (ondernemingsplan).",
         "audio": "../assets/audio/knm/werkeninkomen/wi65.mp3",
-        "image": "../assets/images/knm/wi_geld.png"
+        "image": "../assets/images/knm/wi_geld.png",
+    "words": [
+        {
+            "word": "ondernemingsplan",
+            "parts": [{"nl": "onderneming", "en": "enterprise"}, {"nl": "plan", "en": "plan"}],
+            "tip": "Business plan — required by the bank before they will give you a startup loan"
+        }
+    ]
     },
     {
         "id": "wi66",
         "nl": "In het ondernemingsplan staat wat je gaat doen en hoe je het gaat doen. De bank bekijkt dit voordat ze beslissen of ze je een lening geven.",
         "en": "The business plan states what you are going to do and how you are going to do it. The bank reviews this before deciding whether to give you a loan.",
         "audio": "../assets/audio/knm/werkeninkomen/wi66.mp3",
-        "image": "../assets/images/knm/wi_werk.png"
+        "image": "../assets/images/knm/wi_werk.png",
+    "words": [
+        {
+            "word": "ondernemingsplan",
+            "parts": [{"nl": "onderneming", "en": "enterprise"}, {"nl": "plan", "en": "plan"}],
+            "tip": "Business plan — required by the bank before they will give you a startup loan"
+        }
+    ]
     }
 ];
 const waardenLessonData = [
@@ -1646,14 +1889,28 @@ const waardenLessonData = [
         "nl": "In de rij wachten: Nederlanders vinden het vervelend als je voordringt. Wacht gewoon op je beurt — in de supermarkt, bij de kassa, of bij het gemeentehuis.",
         "en": "Queuing: Dutch people dislike queue-jumping. Simply wait your turn — in the supermarket, at the checkout, or at the municipality.",
         "audio": "../assets/audio/knm/waarden/wn12.mp3",
-        "image": "../assets/images/knm/wn_gelijkheid.png"
+        "image": "../assets/images/knm/wn_gelijkheid.png",
+    "words": [
+        {
+            "word": "gemeentehuis",
+            "parts": [{"nl": "gemeente", "en": "municipality"}, {"nl": "huis", "en": "house"}],
+            "tip": "Town hall — where you register your address (inschrijven)"
+        }
+    ]
     },
     {
         "id": "wn13",
         "nl": "Bij het gemeentehuis trek je een nummertje. Je wacht totdat jouw nummer op het scherm verschijnt of je naam wordt omgeroepen.",
         "en": "At the municipality you take a number ticket. You wait until your number appears on the screen or your name is called.",
         "audio": "../assets/audio/knm/waarden/wn13.mp3",
-        "image": "../assets/images/knm/wn_gelijkheid.png"
+        "image": "../assets/images/knm/wn_gelijkheid.png",
+    "words": [
+        {
+            "word": "gemeentehuis",
+            "parts": [{"nl": "gemeente", "en": "municipality"}, {"nl": "huis", "en": "house"}],
+            "tip": "Town hall — where you register your address (inschrijven)"
+        }
+    ]
     },
     {
         "id": "wn14",
@@ -1930,7 +2187,19 @@ const waardenLessonData = [
         "nl": "Alle vormen van geweld zijn in Nederland verboden: huiselijk geweld, eerwraak, vrouwenbesnijdenis en verkrachting.",
         "en": "All forms of violence are prohibited in the Netherlands: domestic violence, honour-related violence, female genital mutilation and rape.",
         "audio": "../assets/audio/knm/waarden/wn36.mp3",
-        "image": "../assets/images/knm/wn_gelijkheid.png"
+        "image": "../assets/images/knm/wn_gelijkheid.png",
+    "words": [
+        {
+            "word": "huiselijk geweld",
+            "parts": [{"nl": "huiselijk", "en": "domestic"}, {"nl": "geweld", "en": "violence"}],
+            "tip": "Domestic violence — forbidden by law; you can report it to the police or Veilig Thuis"
+        },
+        {
+            "word": "eerwraak",
+            "parts": [{"nl": "eer", "en": "honour"}, {"nl": "wraak", "en": "revenge"}],
+            "tip": "Honour-related violence — illegal in NL; the law always takes precedence"
+        }
+    ]
     },
     {
         "id": "wn37",
@@ -2214,7 +2483,14 @@ const waardenLessonData = [
         "nl": "Bruiloft: mensen trouwen formeel in het gemeentehuis. Daarna trouwen sommige mensen ook ceremonieel in de kerk.",
         "en": "Wedding (bruiloft): people marry formally at the municipality. Afterwards, some people also have a ceremonial wedding in church.",
         "audio": "../assets/audio/knm/waarden/wn72.mp3",
-        "image": "../assets/images/knm/wn_feest.png"
+        "image": "../assets/images/knm/wn_feest.png",
+    "words": [
+        {
+            "word": "gemeentehuis",
+            "parts": [{"nl": "gemeente", "en": "municipality"}, {"nl": "huis", "en": "house"}],
+            "tip": "Town hall — where you register your address (inschrijven)"
+        }
+    ]
     },
     {
         "id": "wn73",
@@ -2277,14 +2553,33 @@ const onderwijsLessonData = [
         "nl": "Ben je zwanger? Dan kun je de huisarts bellen, maar je kunt ook direct contact opnemen met de verloskundige.",
         "en": "Are you pregnant? You can call your GP, but you can also contact the midwife (verloskundige) directly.",
         "audio": "../assets/audio/knm/onderwijs/oo2.mp3",
-        "image": "../assets/images/knm/oo_baby_1772180983391.png"
+        "image": "../assets/images/knm/oo_baby_1772180983391.png",
+    "words": [
+        {
+            "word": "huisarts",
+            "parts": [{"nl": "huis", "en": "house"}, {"nl": "arts", "en": "doctor"}],
+            "tip": "General Practitioner (GP) — your first point of contact for ALL health issues in NL"
+        },
+        {
+            "word": "verloskundige",
+            "parts": [{"nl": "verlossen", "en": "deliver/save"}, {"nl": "-kundige", "en": "specialist"}],
+            "tip": "Midwife — primary birth care provider in NL; you can contact her directly without referral"
+        }
+    ]
     },
     {
         "id": "oo3",
         "nl": "De verloskundige helpt met controles tijdens de zwangerschap, geeft adviezen, en helpt bij de bevalling.",
         "en": "The midwife helps with check-ups during pregnancy, gives advice, and assists during childbirth.",
         "audio": "../assets/audio/knm/onderwijs/oo3.mp3",
-        "image": "../assets/images/knm/oo_baby_1772180983391.png"
+        "image": "../assets/images/knm/oo_baby_1772180983391.png",
+    "words": [
+        {
+            "word": "verloskundige",
+            "parts": [{"nl": "verlossen", "en": "deliver/save"}, {"nl": "-kundige", "en": "specialist"}],
+            "tip": "Midwife — primary birth care provider in NL; you can contact her directly without referral"
+        }
+    ]
     },
     {
         "id": "oo4",
@@ -2314,14 +2609,28 @@ const onderwijsLessonData = [
         "nl": "Na de geboorte ga je naar het consultatiebureau. Het consultatiebureau is voor kinderen van 0 tot 4 jaar.",
         "en": "After the birth you go to the child health clinic (consultatiebureau). This is for children aged 0 to 4 years.",
         "audio": "../assets/audio/knm/onderwijs/oo5.mp3",
-        "image": "../assets/images/knm/oo_baby_1772180983391.png"
+        "image": "../assets/images/knm/oo_baby_1772180983391.png",
+    "words": [
+        {
+            "word": "consultatiebureau",
+            "parts": [{"nl": "consultatie", "en": "consultation"}, {"nl": "bureau", "en": "office"}],
+            "tip": "Child health clinic — free check-ups, weighing and vaccinations for babies 0–4"
+        }
+    ]
     },
     {
         "id": "oo6",
         "nl": "Het consultatiebureau controleert de gezondheid van het kind, meet en weegt het, en volgt de ontwikkeling. Het geeft ook adviezen en vaccinaties.",
         "en": "The child health clinic checks the child's health, measures and weighs them, and monitors their development. It also gives advice and vaccinations.",
         "audio": "../assets/audio/knm/onderwijs/oo6.mp3",
-        "image": "../assets/images/knm/oo_baby_1772180983391.png"
+        "image": "../assets/images/knm/oo_baby_1772180983391.png",
+    "words": [
+        {
+            "word": "consultatiebureau",
+            "parts": [{"nl": "consultatie", "en": "consultation"}, {"nl": "bureau", "en": "office"}],
+            "tip": "Child health clinic — free check-ups, weighing and vaccinations for babies 0–4"
+        }
+    ]
     },
     {
         "id": "oo7",
@@ -2351,7 +2660,14 @@ const onderwijsLessonData = [
         "nl": "Het kinderdagverblijf is voor kinderen van 0 tot 4 jaar. Het is open van ochtend tot avond. Kinderen kunnen er eten, spelen en slapen.",
         "en": "The day nursery is for children aged 0 to 4 years. It is open from morning to evening. Children can eat, play and sleep there.",
         "audio": "../assets/audio/knm/onderwijs/oo8.mp3",
-        "image": "../assets/images/knm/oo_kinderopvang_1772180996866.png"
+        "image": "../assets/images/knm/oo_kinderopvang_1772180996866.png",
+    "words": [
+        {
+            "word": "kinderdagverblijf",
+            "parts": [{"nl": "kinder", "en": "children"}, {"nl": "dag", "en": "day"}, {"nl": "verblijf", "en": "stay"}],
+            "tip": "Day nursery — for children 0–4; open all day so parents can work"
+        }
+    ]
     },
     {
         "id": "oo9",
@@ -2365,7 +2681,14 @@ const onderwijsLessonData = [
         "nl": "Gastouderopvang is voor kinderen van 0 tot 12 jaar. De kinderen gaan naar het huis van de gastouder of de gastouder komt thuis. De opvangtijden zijn heel flexibel.",
         "en": "Foster childcare (gastouderopvang) is for children aged 0 to 12 years. Children go to the carer's home or the carer comes to the child's home. The care hours are very flexible.",
         "audio": "../assets/audio/knm/onderwijs/oo10.mp3",
-        "image": "../assets/images/knm/oo_onderwijs.png"
+        "image": "../assets/images/knm/oo_onderwijs.png",
+    "words": [
+        {
+            "word": "gastouderopvang",
+            "parts": [{"nl": "gastouder", "en": "foster carer"}, {"nl": "opvang", "en": "care"}],
+            "tip": "Childminder care — flexible childcare in someone's home for children 0–12"
+        }
+    ]
     },
     {
         "id": "oo11",
@@ -2379,7 +2702,14 @@ const onderwijsLessonData = [
         "nl": "De peuterspeelzaal is voor kinderen van 2 tot 4 jaar. Kinderen gaan 2 tot 3 dagdelen per week. Ze leren spelen en Nederlands spreken.",
         "en": "The toddler playgroup (peuterspeelzaal) is for children aged 2 to 4 years. Children attend 2 to 3 half-days per week. They learn to play and speak Dutch.",
         "audio": "../assets/audio/knm/onderwijs/oo12.mp3",
-        "image": "../assets/images/knm/oo_onderwijs.png"
+        "image": "../assets/images/knm/oo_onderwijs.png",
+    "words": [
+        {
+            "word": "peuterspeelzaal",
+            "parts": [{"nl": "peuter", "en": "toddler"}, {"nl": "speelzaal", "en": "play room"}],
+            "tip": "Toddler playgroup (age 2–4) — children learn to play and speak Dutch"
+        }
+    ]
     },
     {
         "id": "oo13",
@@ -2519,14 +2849,33 @@ const onderwijsLessonData = [
         "nl": "Na het VWO → Universiteit (bijv. dokter of advocaat worden). Na de HAVO → HBO (bijv. leraar worden). Na het VMBO → MBO (bijv. in een winkel of kinderdagverblijf werken).",
         "en": "After VWO → University (e.g. doctor or lawyer). After HAVO → HBO (e.g. teacher). After VMBO → MBO (e.g. work in a shop or day nursery).",
         "audio": "../assets/audio/knm/onderwijs/oo22.mp3",
-        "image": "../assets/images/knm/oo_kinderopvang_1772180996866.png"
+        "image": "../assets/images/knm/oo_kinderopvang_1772180996866.png",
+    "words": [
+        {
+            "word": "kinderdagverblijf",
+            "parts": [{"nl": "kinder", "en": "children"}, {"nl": "dag", "en": "day"}, {"nl": "verblijf", "en": "stay"}],
+            "tip": "Day nursery — for children 0–4; open all day so parents can work"
+        },
+        {
+            "word": "VOC",
+            "parts": [{"nl": "V", "en": "Vereenigde"}, {"nl": "O", "en": "Oost-Indische"}, {"nl": "C", "en": "Compagnie"}],
+            "tip": "Dutch East India Company — the world's first multinational corporation (1602–1799)"
+        }
+    ]
     },
     {
         "id": "oo23",
         "nl": "Vrijheid van onderwijs: ouders kiezen zelf de school voor hun kinderen. Iedereen mag zijn eigen school beginnen — openbaar, islamitisch, Dalton, Jenaplan, enz.",
         "en": "Freedom of education: parents choose their child's school themselves. Everyone may start their own school — public, Islamic, Dalton, Jenaplan, etc.",
         "audio": "../assets/audio/knm/onderwijs/oo23.mp3",
-        "image": "../assets/images/knm/oo_onderwijs.png"
+        "image": "../assets/images/knm/oo_onderwijs.png",
+    "words": [
+        {
+            "word": "vrijheid van onderwijs",
+            "parts": [{"nl": "vrijheid", "en": "freedom"}, {"nl": "van", "en": "of"}, {"nl": "onderwijs", "en": "education"}],
+            "tip": "Freedom of education — parents choose the school; anyone may start a school"
+        }
+    ]
     },
     {
         "id": "oo24",
@@ -2579,21 +2928,42 @@ const onderwijsLessonData = [
         "nl": "Op de meeste scholen zijn faciliteiten voor leerlingen met een handicap. Er is ook speciaal onderwijs — scholen specifiek voor kinderen met een fysieke, mentale of leerbeperking.",
         "en": "Most schools have facilities for pupils with a disability. There is also special education — schools specifically for children with a physical, mental or learning disability.",
         "audio": "../assets/audio/knm/onderwijs/oo26.mp3",
-        "image": "../assets/images/knm/oo_onderwijs.png"
+        "image": "../assets/images/knm/oo_onderwijs.png",
+    "words": [
+        {
+            "word": "speciaal onderwijs",
+            "parts": [{"nl": "speciaal", "en": "special"}, {"nl": "onderwijs", "en": "education"}],
+            "tip": "Special education — for children with physical, mental or learning disabilities"
+        }
+    ]
     },
     {
         "id": "oo27",
         "nl": "Seksuele voorlichting is een verplicht onderdeel van het lesprogramma in het basis- en voortgezet onderwijs.",
         "en": "Sex education is a compulsory part of the curriculum in primary and secondary education.",
         "audio": "../assets/audio/knm/onderwijs/oo27.mp3",
-        "image": "../assets/images/knm/oo_middelbare_1772181028630.png"
+        "image": "../assets/images/knm/oo_middelbare_1772181028630.png",
+    "words": [
+        {
+            "word": "voortgezet onderwijs",
+            "parts": [{"nl": "voortgezet", "en": "continued"}, {"nl": "onderwijs", "en": "education"}],
+            "tip": "Secondary education — the formal term for all secondary schooling (VMBO, HAVO, VWO)"
+        }
+    ]
     },
     {
         "id": "oo28",
         "nl": "Deze les gaat over kosten voor kinderen en studiefinanciering.",
         "en": "This lesson is about the costs of raising children and student finance.",
         "audio": "../assets/audio/knm/onderwijs/oo28.mp3",
-        "image": "../assets/images/knm/oo_diploma_1772181041158.png"
+        "image": "../assets/images/knm/oo_diploma_1772181041158.png",
+    "words": [
+        {
+            "word": "studiefinanciering",
+            "parts": [{"nl": "studie", "en": "study"}, {"nl": "financiering", "en": "financing"}],
+            "tip": "Student finance — from DUO; loan + potential gift for MBO/HBO/university students"
+        }
+    ]
     },
     {
         "id": "oo29",
@@ -2623,14 +2993,28 @@ const onderwijsLessonData = [
         "nl": "Kinderbijslag: de overheid geeft geld voor kleding, eten en school tot het kind 18 jaar is. Kinderbijslag krijg je via de SVB (Sociale Verzekeringsbank). Het bedrag hangt af van de leeftijd van het kind.",
         "en": "Child benefit (kinderbijslag): the government gives money for clothing, food and school until the child turns 18. You receive kinderbijslag via the SVB (Social Insurance Bank). The amount depends on the child's age.",
         "audio": "../assets/audio/knm/onderwijs/oo30.mp3",
-        "image": "../assets/images/knm/oo_onderwijs.png"
+        "image": "../assets/images/knm/oo_onderwijs.png",
+    "words": [
+        {
+            "word": "kinderbijslag",
+            "parts": [{"nl": "kinder", "en": "child"}, {"nl": "bijslag", "en": "supplement"}],
+            "tip": "Child benefit — quarterly payment from SVB for children under 18"
+        }
+    ]
     },
     {
         "id": "oo31",
         "nl": "Schoolkosten: er is een vrijwillige ouderbijdrage (bijv. voor schoolreisjes), kosten voor internet, en lesgeld. Lesgeld is gratis voor kinderen onder 18 jaar.",
         "en": "School costs: there is a voluntary parental contribution (e.g. for school trips), costs for internet, and tuition fees. Tuition is free for children under 18.",
         "audio": "../assets/audio/knm/onderwijs/oo31.mp3",
-        "image": "../assets/images/knm/oo_onderwijs.png"
+        "image": "../assets/images/knm/oo_onderwijs.png",
+    "words": [
+        {
+            "word": "ouderbijdrage",
+            "parts": [{"nl": "ouder", "en": "parent"}, {"nl": "bijdrage", "en": "contribution"}],
+            "tip": "Voluntary parental contribution — collected by school for trips and activities"
+        }
+    ]
     },
     {
         "id": "oo32",
@@ -2644,7 +3028,14 @@ const onderwijsLessonData = [
         "nl": "Studiefinanciering: als je kind naar het MBO, HBO of de universiteit gaat, kun je geld lenen en soms krijgen via DUO. Dit heet studiefinanciering.",
         "en": "Student finance (studiefinanciering): if your child goes to MBO, HBO or university, you can borrow and sometimes receive money via DUO. This is called studiefinanciering.",
         "audio": "../assets/audio/knm/onderwijs/oo33.mp3",
-        "image": "../assets/images/knm/oo_diploma_1772181041158.png"
+        "image": "../assets/images/knm/oo_diploma_1772181041158.png",
+    "words": [
+        {
+            "word": "studiefinanciering",
+            "parts": [{"nl": "studie", "en": "study"}, {"nl": "financiering", "en": "financing"}],
+            "tip": "Student finance — from DUO; loan + potential gift for MBO/HBO/university students"
+        }
+    ]
     },
     {
         "id": "oo34",
@@ -2672,7 +3063,24 @@ const onderwijsLessonData = [
         "nl": "Bij grote problemen in de opvoeding kun je hulp vragen bij de huisarts, Bureau Jeugdzorg of de geestelijke gezondheidszorg (GGZ).",
         "en": "For serious problems in parenting you can seek help from the GP, Youth Care Office (Bureau Jeugdzorg) or mental health services (GGZ).",
         "audio": "../assets/audio/knm/onderwijs/oo37.mp3",
-        "image": "../assets/images/knm/oo_onderwijs.png"
+        "image": "../assets/images/knm/oo_onderwijs.png",
+    "words": [
+        {
+            "word": "huisarts",
+            "parts": [{"nl": "huis", "en": "house"}, {"nl": "arts", "en": "doctor"}],
+            "tip": "General Practitioner (GP) — your first point of contact for ALL health issues in NL"
+        },
+        {
+            "word": "geestelijke gezondheidszorg",
+            "parts": [{"nl": "geestelijke", "en": "mental"}, {"nl": "gezondheid", "en": "health"}, {"nl": "zorg", "en": "care"}],
+            "tip": "Mental health care (GGZ) — for serious psychological problems; referral via GP"
+        },
+        {
+            "word": "Bureau Jeugdzorg",
+            "parts": [{"nl": "Bureau", "en": "office"}, {"nl": "Jeugd", "en": "youth"}, {"nl": "zorg", "en": "care"}],
+            "tip": "Youth Care Office — for parenting problems or child safety concerns"
+        }
+    ]
     },
     {
         "id": "oo38",
@@ -2702,7 +3110,14 @@ const onderwijsLessonData = [
         "nl": "Er zijn avonden waarop je met de leraar over je kind kunt praten, zoals 10-minutengesprekken of rapportavonden.",
         "en": "There are evenings when you can talk to the teacher about your child, such as 10-minute conversations or report evenings (rapportavonden).",
         "audio": "../assets/audio/knm/onderwijs/oo39.mp3",
-        "image": "../assets/images/knm/oo_onderwijs.png"
+        "image": "../assets/images/knm/oo_onderwijs.png",
+    "words": [
+        {
+            "word": "rapportavond",
+            "parts": [{"nl": "rapport", "en": "report"}, {"nl": "avond", "en": "evening"}],
+            "tip": "Report card evening — when parents discuss their child's grades with the teacher"
+        }
+    ]
     },
     {
         "id": "oo40",
@@ -2741,28 +3156,56 @@ const gezondheidLessonData = [
         "nl": "Met een gezonde levensstijl hoef je minder vaak naar de huisarts: gezond eten en drinken, regelmatig bewegen, niet roken, en niet te veel alcohol drinken.",
         "en": "With a healthy lifestyle you need to visit the GP less often: eat and drink healthily, exercise regularly, don't smoke, and don't drink too much alcohol.",
         "audio": "../assets/audio/knm/gezondheid/gz2.mp3",
-        "image": "../assets/images/knm/gz_huisarts_1772181068321.png"
+        "image": "../assets/images/knm/gz_huisarts_1772181068321.png",
+    "words": [
+        {
+            "word": "huisarts",
+            "parts": [{"nl": "huis", "en": "house"}, {"nl": "arts", "en": "doctor"}],
+            "tip": "General Practitioner (GP) — your first point of contact for ALL health issues in NL"
+        }
+    ]
     },
     {
         "id": "gz3",
         "nl": "Ben je ziek of voel je je niet goed en gaat het niet vanzelf weg? Ga dan naar de huisarts.",
         "en": "Are you sick or do you not feel well and it doesn't go away by itself? Then go to the GP.",
         "audio": "../assets/audio/knm/gezondheid/gz3.mp3",
-        "image": "../assets/images/knm/gz_huisarts_1772181068321.png"
+        "image": "../assets/images/knm/gz_huisarts_1772181068321.png",
+    "words": [
+        {
+            "word": "huisarts",
+            "parts": [{"nl": "huis", "en": "house"}, {"nl": "arts", "en": "doctor"}],
+            "tip": "General Practitioner (GP) — your first point of contact for ALL health issues in NL"
+        }
+    ]
     },
     {
         "id": "gz4",
         "nl": "Iedereen in Nederland mag zelf een huisarts kiezen. Het is handig om er één te vinden dicht bij je huis. Niet tevreden? Praat er eerst over, of kies een andere huisarts.",
         "en": "Everyone in the Netherlands may choose their own GP. It is convenient to find one near your home. Not satisfied? Talk about it first, or choose a different GP.",
         "audio": "../assets/audio/knm/gezondheid/gz4.mp3",
-        "image": "../assets/images/knm/gz_huisarts_1772181068321.png"
+        "image": "../assets/images/knm/gz_huisarts_1772181068321.png",
+    "words": [
+        {
+            "word": "huisarts",
+            "parts": [{"nl": "huis", "en": "house"}, {"nl": "arts", "en": "doctor"}],
+            "tip": "General Practitioner (GP) — your first point of contact for ALL health issues in NL"
+        }
+    ]
     },
     {
         "id": "gz5",
         "nl": "Als er plaats is bij de huisarts volgt er een kennismakingsgesprek om elkaar te leren kennen.",
         "en": "If there is a place at the GP practice, there will be an introductory consultation to get to know each other.",
         "audio": "../assets/audio/knm/gezondheid/gz5.mp3",
-        "image": "../assets/images/knm/gz_huisarts_1772181068321.png"
+        "image": "../assets/images/knm/gz_huisarts_1772181068321.png",
+    "words": [
+        {
+            "word": "huisarts",
+            "parts": [{"nl": "huis", "en": "house"}, {"nl": "arts", "en": "doctor"}],
+            "tip": "General Practitioner (GP) — your first point of contact for ALL health issues in NL"
+        }
+    ]
     },
     {
         "id": "gz6",
@@ -2792,42 +3235,84 @@ const gezondheidLessonData = [
         "nl": "De huisarts kan zeggen dat de klacht vanzelf weggaat, advies geven, of een recept uitschrijven. Als de huisarts je niet kan helpen, verwijst hij je door naar een specialist.",
         "en": "The GP can say the complaint will go away by itself, give advice, or write a prescription. If the GP cannot help you, they will refer you to a specialist.",
         "audio": "../assets/audio/knm/gezondheid/gz7.mp3",
-        "image": "../assets/images/knm/gz_ziekenhuis_1772181110625.png"
+        "image": "../assets/images/knm/gz_ziekenhuis_1772181110625.png",
+    "words": [
+        {
+            "word": "huisarts",
+            "parts": [{"nl": "huis", "en": "house"}, {"nl": "arts", "en": "doctor"}],
+            "tip": "General Practitioner (GP) — your first point of contact for ALL health issues in NL"
+        }
+    ]
     },
     {
         "id": "gz8",
         "nl": "Nederlandse huisartsen zijn voorzichtig met medicijnen — ze vinden het belangrijk dat het lichaam zichzelf herstelt.",
         "en": "Dutch GPs are careful with medication — they find it important that the body heals itself.",
         "audio": "../assets/audio/knm/gezondheid/gz8.mp3",
-        "image": "../assets/images/knm/gz_apotheek_1772181084521.png"
+        "image": "../assets/images/knm/gz_apotheek_1772181084521.png",
+    "words": [
+        {
+            "word": "huisarts",
+            "parts": [{"nl": "huis", "en": "house"}, {"nl": "arts", "en": "doctor"}],
+            "tip": "General Practitioner (GP) — your first point of contact for ALL health issues in NL"
+        }
+    ]
     },
     {
         "id": "gz9",
         "nl": "Voor korte vragen kun je bellen tijdens het telefonisch spreekuur. Als je te oud of te ziek bent om te komen, kan de huisarts op huisbezoek komen.",
         "en": "For short questions you can call during telephone consultation hours. If you are too old or too sick to come in, the GP can do a home visit.",
         "audio": "../assets/audio/knm/gezondheid/gz9.mp3",
-        "image": "../assets/images/knm/gz_huisarts_1772181068321.png"
+        "image": "../assets/images/knm/gz_huisarts_1772181068321.png",
+    "words": [
+        {
+            "word": "huisarts",
+            "parts": [{"nl": "huis", "en": "house"}, {"nl": "arts", "en": "doctor"}],
+            "tip": "General Practitioner (GP) — your first point of contact for ALL health issues in NL"
+        }
+    ]
     },
     {
         "id": "gz10",
         "nl": "Het tolkencentrum kan helpen als je niet goed Nederlands spreekt tijdens een gesprek met de huisarts of een andere officiële instantie.",
         "en": "The interpreter centre (tolkencentrum) can help if you do not speak Dutch well during a conversation with the GP or another official organisation.",
         "audio": "../assets/audio/knm/gezondheid/gz10.mp3",
-        "image": "../assets/images/knm/gz_huisarts_1772181068321.png"
+        "image": "../assets/images/knm/gz_huisarts_1772181068321.png",
+    "words": [
+        {
+            "word": "huisarts",
+            "parts": [{"nl": "huis", "en": "house"}, {"nl": "arts", "en": "doctor"}],
+            "tip": "General Practitioner (GP) — your first point of contact for ALL health issues in NL"
+        }
+    ]
     },
     {
         "id": "gz11",
         "nl": "De huisarts heeft beroepsgeheim — hij mag niet over jouw gezondheid praten met buitenstaanders.",
         "en": "The GP has professional confidentiality (beroepsgeheim) — they may not discuss your health with outsiders.",
         "audio": "../assets/audio/knm/gezondheid/gz11.mp3",
-        "image": "../assets/images/knm/gz_huisarts_1772181068321.png"
+        "image": "../assets/images/knm/gz_huisarts_1772181068321.png",
+    "words": [
+        {
+            "word": "huisarts",
+            "parts": [{"nl": "huis", "en": "house"}, {"nl": "arts", "en": "doctor"}],
+            "tip": "General Practitioner (GP) — your first point of contact for ALL health issues in NL"
+        }
+    ]
     },
     {
         "id": "gz12",
         "nl": "Voor medicijnen op recept ga je naar de apotheek. Sommige medicijnen (zoals paracetamol of hoestdrank) kun je zonder recept kopen bij de apotheek, drogist of supermarkt.",
         "en": "For prescription medication you go to the pharmacy (apotheek). Some medications (such as paracetamol or cough syrup) can be bought without a prescription at the pharmacy, drugstore or supermarket.",
         "audio": "../assets/audio/knm/gezondheid/gz12.mp3",
-        "image": "../assets/images/knm/gz_apotheek_1772181084521.png"
+        "image": "../assets/images/knm/gz_apotheek_1772181084521.png",
+    "words": [
+        {
+            "word": "apotheek",
+            "parts": [{"nl": "apotheek", "en": "pharmacy"}],
+            "tip": "Pharmacy — you pick up prescribed medicines here; your GP sends the prescription directly"
+        }
+    ]
     },
     {
         "id": "gz13",
@@ -3000,7 +3485,14 @@ const gezondheidLessonData = [
         "nl": "Bij een medisch probleem ga je eerst naar de huisarts. Als de huisarts je niet kan helpen, verwijst hij je door naar een specialist — bijv. een cardioloog of gynaecoloog.",
         "en": "For a medical problem you first go to the GP. If the GP cannot help you, they refer you to a specialist — e.g. a cardiologist or gynaecologist.",
         "audio": "../assets/audio/knm/gezondheid/gz19.mp3",
-        "image": "../assets/images/knm/gz_ziekenhuis_1772181110625.png"
+        "image": "../assets/images/knm/gz_ziekenhuis_1772181110625.png",
+    "words": [
+        {
+            "word": "huisarts",
+            "parts": [{"nl": "huis", "en": "house"}, {"nl": "arts", "en": "doctor"}],
+            "tip": "General Practitioner (GP) — your first point of contact for ALL health issues in NL"
+        }
+    ]
     },
     {
         "id": "gz20",
@@ -3090,7 +3582,14 @@ const gezondheidLessonData = [
         "nl": "Bij psychische of mentale klachten ga je ook eerst naar de huisarts. Die kan je doorverwijzen naar maatschappelijk werk, een psycholoog of psychiater (GGZ).",
         "en": "For mental or psychological complaints you also first go to the GP. They can refer you to social work, a psychologist or psychiatrist (GGZ — mental health services).",
         "audio": "../assets/audio/knm/gezondheid/gz25.mp3",
-        "image": "../assets/images/knm/gz_huisarts_1772181068321.png"
+        "image": "../assets/images/knm/gz_huisarts_1772181068321.png",
+    "words": [
+        {
+            "word": "huisarts",
+            "parts": [{"nl": "huis", "en": "house"}, {"nl": "arts", "en": "doctor"}],
+            "tip": "General Practitioner (GP) — your first point of contact for ALL health issues in NL"
+        }
+    ]
     },
     {
         "id": "gz26",
@@ -3120,7 +3619,14 @@ const gezondheidLessonData = [
         "nl": "Een soa is een seksueel overdraagbare aandoening (geslachtsziekte). Je kunt hiervoor direct bij de GGD terecht — zonder verwijsbrief van de huisarts.",
         "en": "An STI (soa = seksueel overdraagbare aandoening) is a sexually transmitted infection. You can go to the GGD directly for this — without a GP referral.",
         "audio": "../assets/audio/knm/gezondheid/gz27.mp3",
-        "image": "../assets/images/knm/gz_huisarts_1772181068321.png"
+        "image": "../assets/images/knm/gz_huisarts_1772181068321.png",
+    "words": [
+        {
+            "word": "huisarts",
+            "parts": [{"nl": "huis", "en": "house"}, {"nl": "arts", "en": "doctor"}],
+            "tip": "General Practitioner (GP) — your first point of contact for ALL health issues in NL"
+        }
+    ]
     },
     {
         "id": "gz28",
@@ -3210,7 +3716,14 @@ const gezondheidLessonData = [
         "nl": "Als een vrouw zwanger is, gaat ze naar de verloskundige. De verloskundige doet controles, geeft advies en helpt bij de bevalling.",
         "en": "When a woman is pregnant, she goes to the midwife (verloskundige). The midwife does check-ups, gives advice and helps during childbirth.",
         "audio": "../assets/audio/knm/gezondheid/gz33.mp3",
-        "image": "../assets/images/knm/wi_ziek.png"
+        "image": "../assets/images/knm/wi_ziek.png",
+    "words": [
+        {
+            "word": "verloskundige",
+            "parts": [{"nl": "verlossen", "en": "deliver/save"}, {"nl": "-kundige", "en": "specialist"}],
+            "tip": "Midwife — primary birth care provider in NL; you can contact her directly without referral"
+        }
+    ]
     },
     {
         "id": "gz34",
@@ -3254,7 +3767,14 @@ const gezondheidLessonData = [
         "nl": "Na de geboorte word je uitgenodigd voor het consultatiebureau (voor kinderen van 0 tot 4 jaar). Ze controleren lengte, gewicht, longen, reflexen, ogen, gehoor en ontwikkeling.",
         "en": "After the birth you are invited to the child health clinic (consultatiebureau) — for children aged 0 to 4 years. They check length, weight, lungs, reflexes, eyes, hearing and development.",
         "audio": "../assets/audio/knm/gezondheid/gz37.mp3",
-        "image": "../assets/images/knm/wi_ziek.png"
+        "image": "../assets/images/knm/wi_ziek.png",
+    "words": [
+        {
+            "word": "consultatiebureau",
+            "parts": [{"nl": "consultatie", "en": "consultation"}, {"nl": "bureau", "en": "office"}],
+            "tip": "Child health clinic — free check-ups, weighing and vaccinations for babies 0–4"
+        }
+    ]
     },
     {
         "id": "gz38",
@@ -3268,7 +3788,14 @@ const gezondheidLessonData = [
         "nl": "Het consultatiebureau geeft ook adviezen over slapen, spelen en voeding als het kind ouder wordt — en geeft vaccinaties.",
         "en": "The child health clinic also gives advice on sleeping, playing and nutrition as the child grows — and administers vaccinations.",
         "audio": "../assets/audio/knm/gezondheid/gz39.mp3",
-        "image": "../assets/images/knm/wi_ziek.png"
+        "image": "../assets/images/knm/wi_ziek.png",
+    "words": [
+        {
+            "word": "consultatiebureau",
+            "parts": [{"nl": "consultatie", "en": "consultation"}, {"nl": "bureau", "en": "office"}],
+            "tip": "Child health clinic — free check-ups, weighing and vaccinations for babies 0–4"
+        }
+    ]
     },
     {
         "id": "gz40",
@@ -3282,14 +3809,28 @@ const gezondheidLessonData = [
         "nl": "In Nederland blijven ouderen zo lang mogelijk thuis wonen. Bij moeilijkheden ga je eerst naar de huisarts — die helpt de meest geschikte zorg te vinden.",
         "en": "In the Netherlands, elderly people stay at home for as long as possible. When things get difficult, you first go to the GP — they help find the most suitable care.",
         "audio": "../assets/audio/knm/gezondheid/gz41.mp3",
-        "image": "../assets/images/knm/gz_huisarts_1772181068321.png"
+        "image": "../assets/images/knm/gz_huisarts_1772181068321.png",
+    "words": [
+        {
+            "word": "huisarts",
+            "parts": [{"nl": "huis", "en": "house"}, {"nl": "arts", "en": "doctor"}],
+            "tip": "General Practitioner (GP) — your first point of contact for ALL health issues in NL"
+        }
+    ]
     },
     {
         "id": "gz42",
         "nl": "Thuiszorg: iemand helpt ouderen met boodschappen, reparaties of andere dingen die ze niet meer zelf kunnen. Dit kan mantelzorg zijn (door familie of vrienden) of particuliere thuiszorg.",
         "en": "Home care (thuiszorg): someone helps elderly people with shopping, repairs or other things they can no longer do themselves. This can be informal care (mantelzorg) by family or friends, or private home care.",
         "audio": "../assets/audio/knm/gezondheid/gz42.mp3",
-        "image": "../assets/images/knm/wi_ziek.png"
+        "image": "../assets/images/knm/wi_ziek.png",
+    "words": [
+        {
+            "word": "mantelzorg",
+            "parts": [{"nl": "mantel", "en": "cloak/informal"}, {"nl": "zorg", "en": "care"}],
+            "tip": "Informal care — caring for a sick family member or neighbour without being a professional"
+        }
+    ]
     },
     {
         "id": "gz43",
@@ -3393,7 +3934,14 @@ const gezondheidLessonData = [
         "nl": "Een aanvullende verzekering is niet verplicht, maar dekt specifieke zorg zoals fysiotherapie of een bril. Je betaalt hier extra premie voor.",
         "en": "Supplementary insurance (aanvullende verzekering) is not compulsory, but covers specific care such as physiotherapy or glasses. You pay an extra premium for this.",
         "audio": "../assets/audio/knm/gezondheid/gz50.mp3",
-        "image": "../assets/images/knm/gz_zorgverzekering_1772181136139.png"
+        "image": "../assets/images/knm/gz_zorgverzekering_1772181136139.png",
+    "words": [
+        {
+            "word": "aanvullende verzekering",
+            "parts": [{"nl": "aanvullende", "en": "supplementary"}, {"nl": "verzekering", "en": "insurance"}],
+            "tip": "Supplementary insurance — optional; covers dental, physio, glasses not in basic package"
+        }
+    ]
     },
     {
         "id": "gz51",
@@ -3504,7 +4052,14 @@ const gezondheidLessonData = [
         "nl": "Zorgtoeslag: mensen met een laag inkomen kunnen een deel van de premie terugkrijgen van de Belastingdienst. Hoe minder je verdient, hoe meer zorgtoeslag je kunt krijgen. Aanvragen via www.belastingdienst.nl.",
         "en": "Healthcare allowance (zorgtoeslag): people with a low income can get part of their premium back from the Tax Authority. The less you earn, the more zorgtoeslag you can receive. Apply via www.belastingdienst.nl.",
         "audio": "../assets/audio/knm/gezondheid/gz55.mp3",
-        "image": "../assets/images/knm/gz_zorgverzekering_1772181136139.png"
+        "image": "../assets/images/knm/gz_zorgverzekering_1772181136139.png",
+    "words": [
+        {
+            "word": "Belastingdienst",
+            "parts": [{"nl": "belasting", "en": "tax"}, {"nl": "dienst", "en": "service"}],
+            "tip": "The Dutch tax authority — also handles toeslagen (benefit allowances)"
+        }
+    ]
     }
 ];
 const instantiesLessonData = [
@@ -3520,7 +4075,14 @@ const instantiesLessonData = [
         "nl": "Iedereen moet zich inschrijven bij de gemeente waar hij of zij woont — via de Gemeentelijke Basisadministratie (GBA).",
         "en": "Everyone must register with the municipality where they live — via the Municipal Basic Administration (GBA).",
         "audio": "../assets/audio/knm/instanties/in2.mp3",
-        "image": "../assets/images/knm/in_gemeente_1772181179579.png"
+        "image": "../assets/images/knm/in_gemeente_1772181179579.png",
+    "words": [
+        {
+            "word": "inschrijven",
+            "parts": [{"nl": "in", "en": "in"}, {"nl": "schrijven", "en": "write/register"}],
+            "tip": "To register — you must register at the municipality when you move"
+        }
+    ]
     },
     {
         "id": "in3",
@@ -3555,21 +4117,47 @@ const instantiesLessonData = [
         "nl": "Om in Nederland te wonen heb je een verblijfsvergunning nodig. Er zijn tijdelijke vergunningen (1, 3 of 5 jaar) en permanente vergunningen (voor onbepaalde tijd).",
         "en": "To live in the Netherlands you need a residence permit (verblijfsvergunning). There are temporary permits (1, 3 or 5 years) and permanent permits (indefinite period).",
         "audio": "../assets/audio/knm/instanties/in7.mp3",
-        "image": "../assets/images/knm/in_gemeente_1772181179579.png"
+        "image": "../assets/images/knm/in_gemeente_1772181179579.png",
+    "words": [
+        {
+            "word": "verblijfsvergunning",
+            "parts": [{"nl": "verblijf", "en": "residence"}, {"nl": "vergunning", "en": "permit"}],
+            "tip": "Residence permit — required to legally live and work in NL as a non-EU citizen"
+        }
+    ]
     },
     {
         "id": "in8",
         "nl": "Voor een permanente verblijfsvergunning moet je minimaal 5 jaar in Nederland wonen. Aanvragen bij de gemeente.",
         "en": "For a permanent residence permit you must have lived in the Netherlands for at least 5 years. Apply at the municipality.",
         "audio": "../assets/audio/knm/instanties/in8.mp3",
-        "image": "../assets/images/knm/in_gemeente_1772181179579.png"
+        "image": "../assets/images/knm/in_gemeente_1772181179579.png",
+    "words": [
+        {
+            "word": "verblijfsvergunning",
+            "parts": [{"nl": "verblijf", "en": "residence"}, {"nl": "vergunning", "en": "permit"}],
+            "tip": "Residence permit — required to legally live and work in NL as a non-EU citizen"
+        }
+    ]
     },
     {
         "id": "in9",
         "nl": "Naturalisatie: als je een permanente verblijfsvergunning hebt, kun je naturalisatie aanvragen. Voordelen: Nederlands paspoort, geen verblijfsvergunning meer nodig, alle rechten en plichten als Nederlander.",
         "en": "Naturalisation: if you have a permanent residence permit, you can apply for naturalisation. Benefits: Dutch passport, no longer need a residence permit, all rights and obligations of a Dutch citizen.",
         "audio": "../assets/audio/knm/instanties/in9.mp3",
-        "image": "../assets/images/knm/in_gemeente_1772181179579.png"
+        "image": "../assets/images/knm/in_gemeente_1772181179579.png",
+    "words": [
+        {
+            "word": "naturalisatie",
+            "parts": [{"nl": "naturalisatie", "en": "naturalisation"}],
+            "tip": "Naturalisation — the process of becoming a Dutch citizen"
+        },
+        {
+            "word": "verblijfsvergunning",
+            "parts": [{"nl": "verblijf", "en": "residence"}, {"nl": "vergunning", "en": "permit"}],
+            "tip": "Residence permit — required to legally live and work in NL as a non-EU citizen"
+        }
+    ]
     },
     {
         "id": "in10",
@@ -3669,7 +4257,14 @@ const instantiesLessonData = [
         "nl": "Deze les gaat over belastingaangifte en toeslagen.",
         "en": "This lesson is about tax filing and allowances (toeslagen).",
         "audio": "../assets/audio/knm/instanties/in21.mp3",
-        "image": "../assets/images/knm/in_politie_1772181198011.png"
+        "image": "../assets/images/knm/in_politie_1772181198011.png",
+    "words": [
+        {
+            "word": "belastingaangifte",
+            "parts": [{"nl": "belasting", "en": "tax"}, {"nl": "aangifte", "en": "declaration"}],
+            "tip": "Tax return — filed annually (usually in March–April)"
+        }
+    ]
     },
     {
         "id": "in22",
@@ -3683,28 +4278,61 @@ const instantiesLessonData = [
         "nl": "BSN: elk persoon in Nederland heeft een uniek Burgerservicenummer (BSN). Dit staat in je paspoort en op formulieren van de belastingdienst.",
         "en": "BSN: every person in the Netherlands has a unique citizen service number (BSN). This is in your passport and on tax authority forms.",
         "audio": "../assets/audio/knm/instanties/in23.mp3",
-        "image": "../assets/images/knm/in_belasting_1772181210904.png"
+        "image": "../assets/images/knm/in_belasting_1772181210904.png",
+    "words": [
+        {
+            "word": "Belastingdienst",
+            "parts": [{"nl": "belasting", "en": "tax"}, {"nl": "dienst", "en": "service"}],
+            "tip": "The Dutch tax authority — also handles toeslagen (benefit allowances)"
+        }
+    ]
     },
     {
         "id": "in24",
         "nl": "DigiD: met een BSN kun je een DigiD aanvragen. Met DigiD kun je online zaken regelen bij de belastingdienst, gemeente en andere instanties.",
         "en": "DigiD: with a BSN you can apply for a DigiD. With DigiD you can arrange things online at the tax authority, municipality and other institutions.",
         "audio": "../assets/audio/knm/instanties/in24.mp3",
-        "image": "../assets/images/knm/in_belasting_1772181210904.png"
+        "image": "../assets/images/knm/in_belasting_1772181210904.png",
+    "words": [
+        {
+            "word": "Belastingdienst",
+            "parts": [{"nl": "belasting", "en": "tax"}, {"nl": "dienst", "en": "service"}],
+            "tip": "The Dutch tax authority — also handles toeslagen (benefit allowances)"
+        }
+    ]
     },
     {
         "id": "in25",
         "nl": "Een deel van je inkomen gaat automatisch naar de belastingdienst. Op je loonstrook zie je hoeveel. Op je jaaropgave staat je salaris van het hele jaar.",
         "en": "Part of your income goes automatically to the tax authority. Your pay slip shows how much. Your annual statement shows your full-year salary.",
         "audio": "../assets/audio/knm/instanties/in25.mp3",
-        "image": "../assets/images/knm/in_belasting_1772181210904.png"
+        "image": "../assets/images/knm/in_belasting_1772181210904.png",
+    "words": [
+        {
+            "word": "Belastingdienst",
+            "parts": [{"nl": "belasting", "en": "tax"}, {"nl": "dienst", "en": "service"}],
+            "tip": "The Dutch tax authority — also handles toeslagen (benefit allowances)"
+        },
+        {
+            "word": "jaaropgave",
+            "parts": [{"nl": "jaar", "en": "year"}, {"nl": "opgave", "en": "statement"}],
+            "tip": "Annual income statement — issued in January; needed for your tax return"
+        }
+    ]
     },
     {
         "id": "in26",
         "nl": "Op de meeste aankopen zit 21% btw — dit gaat ook naar de belastingdienst.",
         "en": "Most purchases include 21% VAT (btw) — this also goes to the tax authority.",
         "audio": "../assets/audio/knm/instanties/in26.mp3",
-        "image": "../assets/images/knm/in_belasting_1772181210904.png"
+        "image": "../assets/images/knm/in_belasting_1772181210904.png",
+    "words": [
+        {
+            "word": "Belastingdienst",
+            "parts": [{"nl": "belasting", "en": "tax"}, {"nl": "dienst", "en": "service"}],
+            "tip": "The Dutch tax authority — also handles toeslagen (benefit allowances)"
+        }
+    ]
     },
     {
         "id": "in27",
@@ -3718,7 +4346,19 @@ const instantiesLessonData = [
         "nl": "Belastingaangifte: de meeste mensen doen elk jaar aangifte. Je geeft op hoeveel je hebt verdiend en hoeveel kosten je hebt gemaakt. De belastingdienst berekent of je geld terugkrijgt of extra moet betalen.",
         "en": "Tax filing (belastingaangifte): most people file a tax return every year. You declare how much you earned and what costs you had. The tax authority calculates whether you get money back or need to pay extra.",
         "audio": "../assets/audio/knm/instanties/in28.mp3",
-        "image": "../assets/images/knm/in_politie_1772181198011.png"
+        "image": "../assets/images/knm/in_politie_1772181198011.png",
+    "words": [
+        {
+            "word": "belastingaangifte",
+            "parts": [{"nl": "belasting", "en": "tax"}, {"nl": "aangifte", "en": "declaration"}],
+            "tip": "Tax return — filed annually (usually in March–April)"
+        },
+        {
+            "word": "Belastingdienst",
+            "parts": [{"nl": "belasting", "en": "tax"}, {"nl": "dienst", "en": "service"}],
+            "tip": "The Dutch tax authority — also handles toeslagen (benefit allowances)"
+        }
+    ]
     },
     {
         "id": "in29",
@@ -3769,28 +4409,56 @@ const instantiesLessonData = [
         "nl": "Sociale Raadslieden: gratis hulp bij het maken van bezwaar, invullen van formulieren en geven van advies. Ze zijn geen advocaten.",
         "en": "Social Advisors (Sociale Raadslieden): free help with lodging objections, filling in forms and giving advice. They are not lawyers.",
         "audio": "../assets/audio/knm/instanties/in33.mp3",
-        "image": "../assets/images/knm/wn_gelijkheid.png"
+        "image": "../assets/images/knm/wn_gelijkheid.png",
+    "words": [
+        {
+            "word": "VOC",
+            "parts": [{"nl": "V", "en": "Vereenigde"}, {"nl": "O", "en": "Oost-Indische"}, {"nl": "C", "en": "Compagnie"}],
+            "tip": "Dutch East India Company — the world's first multinational corporation (1602–1799)"
+        }
+    ]
     },
     {
         "id": "in34",
         "nl": "Als Sociale Raadslieden je niet kunnen helpen, verwijzen ze je door naar Het Juridisch Loket of een advocatenkantoor.",
         "en": "If Social Advisors cannot help you, they refer you to the Legal Advice Desk (Het Juridisch Loket) or a law firm.",
         "audio": "../assets/audio/knm/instanties/in34.mp3",
-        "image": "../assets/images/knm/wn_gelijkheid.png"
+        "image": "../assets/images/knm/wn_gelijkheid.png",
+    "words": [
+        {
+            "word": "VOC",
+            "parts": [{"nl": "V", "en": "Vereenigde"}, {"nl": "O", "en": "Oost-Indische"}, {"nl": "C", "en": "Compagnie"}],
+            "tip": "Dutch East India Company — the world's first multinational corporation (1602–1799)"
+        }
+    ]
     },
     {
         "id": "in35",
         "nl": "Het Juridisch Loket: gratis juridische informatie en advies. Is er meer nodig (bijv. een rechtszaak)? Dan brengen ze je in contact met een advocatenkantoor.",
         "en": "The Legal Advice Desk (Juridisch Loket): free legal information and advice. Is more needed (e.g. a court case)? Then they connect you with a law firm.",
         "audio": "../assets/audio/knm/instanties/in35.mp3",
-        "image": "../assets/images/knm/wn_gelijkheid.png"
+        "image": "../assets/images/knm/wn_gelijkheid.png",
+    "words": [
+        {
+            "word": "VOC",
+            "parts": [{"nl": "V", "en": "Vereenigde"}, {"nl": "O", "en": "Oost-Indische"}, {"nl": "C", "en": "Compagnie"}],
+            "tip": "Dutch East India Company — the world's first multinational corporation (1602–1799)"
+        }
+    ]
     },
     {
         "id": "in36",
         "nl": "Een advocatenkantoor is niet gratis, maar voor mensen met een laag inkomen zijn de kosten lager.",
         "en": "A law firm is not free, but for people with a low income the costs are lower.",
         "audio": "../assets/audio/knm/instanties/in36.mp3",
-        "image": "../assets/images/knm/wn_gelijkheid.png"
+        "image": "../assets/images/knm/wn_gelijkheid.png",
+    "words": [
+        {
+            "word": "VOC",
+            "parts": [{"nl": "V", "en": "Vereenigde"}, {"nl": "O", "en": "Oost-Indische"}, {"nl": "C", "en": "Compagnie"}],
+            "tip": "Dutch East India Company — the world's first multinational corporation (1602–1799)"
+        }
+    ]
     },
     {
         "id": "in37",
@@ -3816,7 +4484,14 @@ const instantiesLessonData = [
         "nl": "Verboden en strafbaar in Nederland: seks tussen een volwassene en iemand onder 16 jaar, verkrachting, incest, eerwraak, besnijdenis van meisjes, en geweld en mishandeling.",
         "en": "Prohibited and punishable in the Netherlands: sex between an adult and someone under 16, rape, incest, honour-related violence, female genital mutilation, and violence and assault.",
         "audio": "../assets/audio/knm/instanties/in38.mp3",
-        "image": "../assets/images/knm/wn_gelijkheid.png"
+        "image": "../assets/images/knm/wn_gelijkheid.png",
+    "words": [
+        {
+            "word": "eerwraak",
+            "parts": [{"nl": "eer", "en": "honour"}, {"nl": "wraak", "en": "revenge"}],
+            "tip": "Honour-related violence — illegal in NL; the law always takes precedence"
+        }
+    ]
     },
     {
         "id": "in39",
@@ -3909,7 +4584,14 @@ const instantiesLessonData = [
         "nl": "Andere gangbare verzekeringen: aansprakelijkheidsverzekering (als jij of je gezin iets kapot maakt), brandverzekering (schade door brand), reisverzekering (schade op reis).",
         "en": "Other common insurances: liability insurance — if you or your family damages something; fire insurance — damage caused by fire; travel insurance — damage during travel.",
         "audio": "../assets/audio/knm/instanties/in49.mp3",
-        "image": "../assets/images/knm/in_gemeente_1772181179579.png"
+        "image": "../assets/images/knm/in_gemeente_1772181179579.png",
+    "words": [
+        {
+            "word": "aansprakelijkheidsverzekering",
+            "parts": [{"nl": "aansprakelijkheid", "en": "liability"}, {"nl": "verzekering", "en": "insurance"}],
+            "tip": "Liability insurance — covers damage YOU cause to others' property"
+        }
+    ]
     },
     {
         "id": "in50",
@@ -4027,7 +4709,19 @@ const politiekLessonData = [
         "nl": "Verboden in Nederland: alle vormen van geweld (huiselijk geweld, eerwraak, verkrachting), wapens dragen. Geweld is strafbaar — je kunt een boete of gevangenisstraf krijgen.",
         "en": "Prohibited in the Netherlands: all forms of violence (domestic violence, honour-related violence, rape), carrying weapons. Violence is a criminal offence — you can receive a fine or prison sentence.",
         "audio": "../assets/audio/knm/politiek/po6.mp3",
-        "image": "../assets/images/knm/po_politiek.png"
+        "image": "../assets/images/knm/po_politiek.png",
+    "words": [
+        {
+            "word": "huiselijk geweld",
+            "parts": [{"nl": "huiselijk", "en": "domestic"}, {"nl": "geweld", "en": "violence"}],
+            "tip": "Domestic violence — forbidden by law; you can report it to the police or Veilig Thuis"
+        },
+        {
+            "word": "eerwraak",
+            "parts": [{"nl": "eer", "en": "honour"}, {"nl": "wraak", "en": "revenge"}],
+            "tip": "Honour-related violence — illegal in NL; the law always takes precedence"
+        }
+    ]
     },
     {
         "id": "po7",
@@ -4087,7 +4781,14 @@ const politiekLessonData = [
         "nl": "De rechterlijke macht = de rechters. Als mensen het niet eens zijn, beslissen de rechters.",
         "en": "The judicial power = the judges. When people disagree, judges decide.",
         "audio": "../assets/audio/knm/politiek/po10.mp3",
-        "image": "../assets/images/knm/po_politiek.png"
+        "image": "../assets/images/knm/po_politiek.png",
+    "words": [
+        {
+            "word": "rechterlijke macht",
+            "parts": [{"nl": "rechterlijke", "en": "judicial"}, {"nl": "macht", "en": "power"}],
+            "tip": "Judicial power — the courts; judges disputes independently of government"
+        }
+    ]
     },
     {
         "id": "po11",
@@ -4210,14 +4911,28 @@ const politiekLessonData = [
         "nl": "Er zijn altijd 10 tot 15 ministers. Elke minister heeft zijn eigen verantwoordelijkheid (bijv. Onderwijs, Financiën, Justitie). Elke minister werkt samen met een staatssecretaris.",
         "en": "There are always 10 to 15 ministers. Each minister has their own responsibility (e.g. Education, Finance, Justice). Each minister works together with a state secretary (staatssecretaris).",
         "audio": "../assets/audio/knm/politiek/po17.mp3",
-        "image": "../assets/images/knm/po_tweedekamer.png"
+        "image": "../assets/images/knm/po_tweedekamer.png",
+    "words": [
+        {
+            "word": "staatssecretaris",
+            "parts": [{"nl": "staats", "en": "state"}, {"nl": "secretaris", "en": "secretary"}],
+            "tip": "State secretary — junior minister; helps a minister with part of their responsibilities"
+        }
+    ]
     },
     {
         "id": "po18",
         "nl": "Alle ministers + alle staatssecretarissen samen = het kabinet.",
         "en": "All ministers + all state secretaries together = the cabinet.",
         "audio": "../assets/audio/knm/politiek/po18.mp3",
-        "image": "../assets/images/knm/po_tweedekamer.png"
+        "image": "../assets/images/knm/po_tweedekamer.png",
+    "words": [
+        {
+            "word": "staatssecretaris",
+            "parts": [{"nl": "staats", "en": "state"}, {"nl": "secretaris", "en": "secretary"}],
+            "tip": "State secretary — junior minister; helps a minister with part of their responsibilities"
+        }
+    ]
     },
     {
         "id": "po19",
@@ -4289,7 +5004,14 @@ const politiekLessonData = [
         "nl": "Eens in de 4 jaar zijn er verkiezingen voor de provinciale staten. Om te stemmen: minimaal 18 jaar en Nederlander.",
         "en": "Every 4 years there are elections for the provincial parliament. To vote: at least 18 years old and a Dutch citizen.",
         "audio": "../assets/audio/knm/politiek/po22.mp3",
-        "image": "../assets/images/knm/po_stembiljet.png"
+        "image": "../assets/images/knm/po_stembiljet.png",
+    "words": [
+        {
+            "word": "Provinciale Staten",
+            "parts": [{"nl": "Provinciale", "en": "provincial"}, {"nl": "Staten", "en": "states/council"}],
+            "tip": "Provincial council — elected every 4 years; decides provincial policy and budget"
+        }
+    ]
     },
     {
         "id": "po23",
@@ -4495,7 +5217,14 @@ const politiekLessonData = [
         "nl": "Normaal zijn er eens per 4 jaar nieuwe verkiezingen. Soms eerder, als de coalitie het niet meer eens is.",
         "en": "Normally there are new elections every 4 years. Sometimes earlier, if the coalition can no longer agree.",
         "audio": "../assets/audio/knm/politiek/po40.mp3",
-        "image": "../assets/images/knm/po_stembiljet.png"
+        "image": "../assets/images/knm/po_stembiljet.png",
+    "words": [
+        {
+            "word": "coalitie",
+            "parts": [{"nl": "coalitie", "en": "coalition"}],
+            "tip": "Coalition — NL usually needs 2–4 parties to form a majority government"
+        }
+    ]
     }
 ];
 const geografieLessonData = [
@@ -4583,7 +5312,14 @@ const geografieLessonData = [
         "nl": "In 1602 begon de VOC (Verenigde Oost-Indische Compagnie) — een zeer succesvolle handelsmaatschappij die handelde in Azië.",
         "en": "In 1602 the VOC (Dutch East India Company) was established — a very successful trading company that traded in Asia.",
         "audio": "../assets/audio/knm/geografie/gg10.mp3",
-        "image": "../assets/images/knm/gg_goudeneeuw.png"
+        "image": "../assets/images/knm/gg_goudeneeuw.png",
+    "words": [
+        {
+            "word": "VOC",
+            "parts": [{"nl": "V", "en": "Vereenigde"}, {"nl": "O", "en": "Oost-Indische"}, {"nl": "C", "en": "Compagnie"}],
+            "tip": "Dutch East India Company — the world's first multinational corporation (1602–1799)"
+        }
+    ]
     },
     {
         "id": "gg11",
@@ -4708,7 +5444,14 @@ const geografieLessonData = [
         "nl": "Op 5 mei 1945 werd Nederland bevrijd door Engeland, de VS en Canada. Op 5 mei vieren we de bevrijding; op 4 mei herdenken we de doden (2 minuten stilte om 20:00 uur).",
         "en": "On 5 May 1945 the Netherlands was liberated by England, the US and Canada. On 5 May we celebrate liberation; on 4 May we commemorate the dead (2 minutes of silence at 8:00 PM).",
         "audio": "../assets/audio/knm/geografie/gg21.mp3",
-        "image": "../assets/images/knm/gg_geografie.png"
+        "image": "../assets/images/knm/gg_geografie.png",
+    "words": [
+        {
+            "word": "bevrijding",
+            "parts": [{"nl": "bevrijd", "en": "liberated"}, {"nl": "-ing", "en": "(noun suffix)"}],
+            "tip": "Liberation — May 5, 1945; now a national holiday (Bevrijdingsdag)"
+        }
+    ]
     },
     {
         "id": "gg22",
@@ -4745,7 +5488,14 @@ const geografieLessonData = [
         "nl": "In 1953 was er een grote overstroming in Zeeland en Zuid-Holland — 1.800 doden. De regering maakte het Deltaplan: betere dijken en dammen (de Deltawerken).",
         "en": "In 1953 there was a major flood in Zeeland and South Holland — 1,800 deaths. The government created the Delta Plan: better dykes and dams (the Deltawerken).",
         "audio": "../assets/audio/knm/geografie/gg24.mp3",
-        "image": "../assets/images/knm/gg_deltawerken.png"
+        "image": "../assets/images/knm/gg_deltawerken.png",
+    "words": [
+        {
+            "word": "dijken",
+            "parts": [{"nl": "dijken", "en": "dikes"}],
+            "tip": "Dikes — earthen barriers that protect low-lying NL from flooding; managed by waterschappen"
+        }
+    ]
     },
     {
         "id": "gg25",
@@ -4862,7 +5612,19 @@ const geografieLessonData = [
         "nl": "Nederland betekent 'laagland'. 27% van Nederland ligt onder zeeniveau. Er zijn veel duinen en dijken om het land te beschermen.",
         "en": "The Netherlands means 'low land'. 27% of the Netherlands lies below sea level. There are many dunes and dykes to protect the country.",
         "audio": "../assets/audio/knm/geografie/gg35.mp3",
-        "image": "../assets/images/knm/gg_deltawerken.png"
+        "image": "../assets/images/knm/gg_deltawerken.png",
+    "words": [
+        {
+            "word": "dijken",
+            "parts": [{"nl": "dijken", "en": "dikes"}],
+            "tip": "Dikes — earthen barriers that protect low-lying NL from flooding; managed by waterschappen"
+        },
+        {
+            "word": "zeeniveau",
+            "parts": [{"nl": "zee", "en": "sea"}, {"nl": "niveau", "en": "level"}],
+            "tip": "Sea level — large parts of NL lie below sea level; kept dry by dikes and pumps"
+        }
+    ]
     },
     {
         "id": "gg36",
@@ -4961,7 +5723,14 @@ const geografieLessonData = [
         "nl": "In Nederland is er vrijheid van godsdienst. Ongeveer 50% van de Nederlanders heeft een geloof — de meesten zijn christelijk. Veel Nederlanders hebben geen geloof.",
         "en": "In the Netherlands there is freedom of religion. About 50% of Dutch people have a religion — most are Christian. Many Dutch people have no religion.",
         "audio": "../assets/audio/knm/geografie/gg44.mp3",
-        "image": "../assets/images/knm/gg_geografie.png"
+        "image": "../assets/images/knm/gg_geografie.png",
+    "words": [
+        {
+            "word": "vrijheid van godsdienst",
+            "parts": [{"nl": "vrijheid", "en": "freedom"}, {"nl": "gods", "en": "god's"}, {"nl": "dienst", "en": "service"}],
+            "tip": "Freedom of religion — you may practice any religion or none at all"
+        }
+    ]
     }
 ];
 
