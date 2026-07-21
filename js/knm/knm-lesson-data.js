@@ -26,7 +26,24 @@ const wonenLessonData = [
         "nl": "Als je een sociale huurwoning zoekt, moet je je eerst inschrijven bij een woningbouwvereniging (ook wel: woningcorporatie).",
         "en": "If you are looking for a social rental home, you must first register with a housing association (also called: woningcorporatie).",
         "audio": "../assets/audio/knm/wonen/w4.mp3",
-        "image": "../assets/images/knm/wonen_sleutel.png"
+        "image": "../assets/images/knm/wonen_sleutel.png",
+        "words": [
+            {
+                "word": "woningbouwvereniging",
+                "parts": [{"nl": "woning", "en": "home"}, {"nl": "bouw", "en": "building"}, {"nl": "vereniging", "en": "association"}],
+                "tip": "An association that builds homes — the classic social housing body"
+            },
+            {
+                "word": "woningcorporatie",
+                "parts": [{"nl": "woning", "en": "home"}, {"nl": "corporatie", "en": "corporation"}],
+                "tip": "Modern term for the same body — a non-profit housing corporation"
+            },
+            {
+                "word": "huurwoning",
+                "parts": [{"nl": "huur", "en": "rent"}, {"nl": "woning", "en": "home"}],
+                "tip": "A home you pay rent for (vs koopwoning = home you buy)"
+            }
+        ]
     },
     {
         "id": "w5",
@@ -68,21 +85,47 @@ const wonenLessonData = [
         "nl": "Je kunt een sociale huurwoning sneller krijgen met een urgentieverklaring. Die vraag je aan bij de gemeente.",
         "en": "You can get a social rental home faster with an urgency declaration. You apply for this at the municipality.",
         "audio": "../assets/audio/knm/wonen/w10.mp3",
-        "image": "../assets/images/knm/wonen_sleutel.png"
+        "image": "../assets/images/knm/wonen_sleutel.png",
+        "words": [
+            {
+                "word": "urgentieverklaring",
+                "parts": [{"nl": "urgentie", "en": "urgency"}, {"nl": "verklaring", "en": "declaration"}],
+                "tip": "An official document that says your housing need is urgent — jumps the queue"
+            }
+        ]
     },
     {
         "id": "w11",
         "nl": "Speciale situaties voor een urgentieverklaring zijn bijvoorbeeld: scheiding met kinderen, of ernstige gezondheidsproblemen.",
         "en": "Special situations for an urgency declaration include: divorce with children, or serious health problems.",
         "audio": "../assets/audio/knm/wonen/w11.mp3",
-        "image": "../assets/images/knm/wonen_huis.png"
+        "image": "../assets/images/knm/wonen_huis.png",
+        "words": [
+            {
+                "word": "urgentieverklaring",
+                "parts": [{"nl": "urgentie", "en": "urgency"}, {"nl": "verklaring", "en": "declaration"}],
+                "tip": "Qualifies for emergency situations: divorce with kids, serious illness, etc."
+            },
+            {
+                "word": "gezondheidsproblemen",
+                "parts": [{"nl": "gezondheid", "en": "health"}, {"nl": "problemen", "en": "problems"}],
+                "tip": "Health problems — one of the grounds for an urgentieverklaring"
+            }
+        ]
     },
     {
         "id": "w12",
         "nl": "Als er een woning voor je beschikbaar is, ontvang je een brief van de woningcorporatie. Reageer hier snel op!",
         "en": "When a home is available for you, you receive a letter from the housing association. Respond to it quickly!",
         "audio": "../assets/audio/knm/wonen/w12.mp3",
-        "image": "../assets/images/knm/wonen_huis.png"
+        "image": "../assets/images/knm/wonen_huis.png",
+        "words": [
+            {
+                "word": "woningcorporatie",
+                "parts": [{"nl": "woning", "en": "home"}, {"nl": "corporatie", "en": "corporation"}],
+                "tip": "The non-profit housing body that manages social rental homes"
+            }
+        ]
     },
     {
         "id": "w13",
@@ -96,21 +139,67 @@ const wonenLessonData = [
         "nl": "Je huurt in de vrije sector van een woningbouwvereniging of van een huisbaas. Je kunt woningen zoeken via advertenties of een makelaar.",
         "en": "In the private sector you rent from a housing association or a landlord. You can find homes through advertisements or a real estate agent.",
         "audio": "../assets/audio/knm/wonen/w14.mp3",
-        "image": "../assets/images/knm/wonen_sleutel.png"
+        "image": "../assets/images/knm/wonen_sleutel.png",
+        "words": [
+            {
+                "word": "woningbouwvereniging",
+                "parts": [{"nl": "woning", "en": "home"}, {"nl": "bouw", "en": "building"}, {"nl": "vereniging", "en": "association"}],
+                "tip": "Can also operate in the private (vrije) sector, not just social housing"
+            },
+            {
+                "word": "huisbaas",
+                "parts": [{"nl": "huis", "en": "house"}, {"nl": "baas", "en": "boss/owner"}],
+                "tip": "A private landlord — literally 'house boss'"
+            },
+            {
+                "word": "makelaar",
+                "parts": [{"nl": "makelaar", "en": "broker/agent"}],
+                "tip": "Real estate agent — helps you find or sell a home"
+            }
+        ]
     },
     {
         "id": "w15",
         "nl": "Als je een huurwoning hebt gevonden, krijg je een huurcontract. Hierin staan jouw rechten en plichten als huurder.",
         "en": "When you find a rental home, you get a rental contract. This states your rights and obligations as a tenant.",
         "audio": "../assets/audio/knm/wonen/w15.mp3",
-        "image": "../assets/images/knm/wonen_huurovereenkomst.png"
+        "image": "../assets/images/knm/wonen_huurovereenkomst.png",
+        "words": [
+            {
+                "word": "huurcontract",
+                "parts": [{"nl": "huur", "en": "rent"}, {"nl": "contract", "en": "contract"}],
+                "tip": "The rental agreement — contains your rights AND duties"
+            },
+            {
+                "word": "huurwoning",
+                "parts": [{"nl": "huur", "en": "rent"}, {"nl": "woning", "en": "home"}],
+                "tip": "A rental home — opposite is koopwoning (owned home)"
+            }
+        ]
     },
     {
         "id": "w16",
         "nl": "In het huurcontract staat: de huurprijs per maand, de servicekosten, de opzegtermijn (vaak 1 maand), en wie betaalt voor welke reparaties.",
         "en": "The rental contract includes: the monthly rent, service costs, notice period (usually 1 month), and who pays for which repairs.",
         "audio": "../assets/audio/knm/wonen/w16.mp3",
-        "image": "../assets/images/knm/wonen_huurovereenkomst.png"
+        "image": "../assets/images/knm/wonen_huurovereenkomst.png",
+        "words": [
+            {
+                "word": "huurprijs",
+                "parts": [{"nl": "huur", "en": "rent"}, {"nl": "prijs", "en": "price"}],
+                "tip": "The monthly rent amount agreed in your huurcontract"
+            },
+            {
+                "word": "servicekosten",
+                "parts": [{"nl": "service", "en": "service"}, {"nl": "kosten", "en": "costs"}],
+                "tip": "Extra monthly costs on top of rent — e.g. cleaning communal areas"
+            },
+            {
+                "word": "opzegtermijn",
+                "parts": [{"nl": "opzeg", "en": "cancel/terminate"}, {"nl": "termijn", "en": "period"}],
+                "tip": "Notice period — usually 1 month; you must warn your landlord this far in advance"
+            }
+        ]
     },
     {
         "id": "w17",
@@ -131,7 +220,19 @@ const wonenLessonData = [
         "nl": "Is de huur te hoog voor jou en heb je een laag inkomen? Dan kun je misschien huurtoeslag aanvragen bij de Belastingdienst via www.toeslagen.nl.",
         "en": "Is the rent too high for you and do you have a low income? Then you may be able to apply for rent allowance from the Tax Authority via www.toeslagen.nl.",
         "audio": "../assets/audio/knm/wonen/w19.mp3",
-        "image": "../assets/images/knm/wonen_huurovereenkomst.png"
+        "image": "../assets/images/knm/wonen_huurovereenkomst.png",
+        "words": [
+            {
+                "word": "huurtoeslag",
+                "parts": [{"nl": "huur", "en": "rent"}, {"nl": "toeslag", "en": "allowance/supplement"}],
+                "tip": "Government money to help pay rent — apply at the Belastingdienst"
+            },
+            {
+                "word": "Belastingdienst",
+                "parts": [{"nl": "belasting", "en": "tax"}, {"nl": "dienst", "en": "service"}],
+                "tip": "The Dutch Tax and Customs Administration — handles taxes AND benefits"
+            }
+        ]
     },
     {
         "id": "w20",
@@ -166,7 +267,19 @@ const wonenLessonData = [
         "nl": "De rente verschilt per bank. Let goed op welke bank je kiest. Je mag de rente aftrekken van je inkomen bij de belastingaangifte (renteaftrek).",
         "en": "Interest rates differ per bank. Pay close attention to which bank you choose. You may deduct the interest from your income in your tax return (mortgage interest deduction).",
         "audio": "../assets/audio/knm/wonen/w24.mp3",
-        "image": "../assets/images/knm/wonen_hypotheek.png"
+        "image": "../assets/images/knm/wonen_hypotheek.png",
+        "words": [
+            {
+                "word": "belastingaangifte",
+                "parts": [{"nl": "belasting", "en": "tax"}, {"nl": "aangifte", "en": "declaration/return"}],
+                "tip": "Your annual tax return — filed digitally in the Netherlands"
+            },
+            {
+                "word": "renteaftrek",
+                "parts": [{"nl": "rente", "en": "interest"}, {"nl": "aftrek", "en": "deduction"}],
+                "tip": "Mortgage interest deduction — reduces how much income tax you pay"
+            }
+        ]
     },
     {
         "id": "w25",
@@ -180,21 +293,52 @@ const wonenLessonData = [
         "nl": "Belangrijke verzekeringen: de aansprakelijkheidsverzekering (als jij of je kind iets van iemand anders kapot maakt).",
         "en": "Important insurances: liability insurance (if you or your child damages something belonging to someone else).",
         "audio": "../assets/audio/knm/wonen/w26.mp3",
-        "image": "../assets/images/knm/wonen_verzekering.png"
+        "image": "../assets/images/knm/wonen_verzekering.png",
+        "words": [
+            {
+                "word": "aansprakelijkheidsverzekering",
+                "parts": [{"nl": "aansprakelijkheid", "en": "liability"}, {"nl": "verzekering", "en": "insurance"}],
+                "tip": "Liability insurance — covers damages YOU cause to others or their property"
+            },
+            {
+                "word": "verzekering",
+                "parts": [{"nl": "verzeker", "en": "assure/secure"}, {"nl": "-ing", "en": "(noun suffix)"}],
+                "tip": "Insurance — the suffix -ing turns a verb into a noun in Dutch"
+            }
+        ]
     },
     {
         "id": "w27",
         "nl": "De inboedelverzekering: als er schade is in je huis of iets wordt gestolen.",
         "en": "Contents insurance: if there is damage in your home or something is stolen.",
         "audio": "../assets/audio/knm/wonen/w27.mp3",
-        "image": "../assets/images/knm/wonen_verzekering.png"
+        "image": "../assets/images/knm/wonen_verzekering.png",
+        "words": [
+            {
+                "word": "inboedelverzekering",
+                "parts": [{"nl": "inboedel", "en": "household contents"}, {"nl": "verzekering", "en": "insurance"}],
+                "tip": "Contents insurance — covers theft or damage to your furniture and belongings"
+            }
+        ]
     },
     {
         "id": "w28",
         "nl": "De woonhuisverzekering (alleen voor koophuizen): als er schade is aan de buitenkant van je huis door brand, storm of water.",
         "en": "Building insurance (only for owner-occupied homes): if there is damage to the outside of your home due to fire, storm or water.",
         "audio": "../assets/audio/knm/wonen/w28.mp3",
-        "image": "../assets/images/knm/wonen_verzekering.png"
+        "image": "../assets/images/knm/wonen_verzekering.png",
+        "words": [
+            {
+                "word": "woonhuisverzekering",
+                "parts": [{"nl": "woon", "en": "live/dwell"}, {"nl": "huis", "en": "house"}, {"nl": "verzekering", "en": "insurance"}],
+                "tip": "Building insurance — only for homes you OWN; covers fire, storm, water damage"
+            },
+            {
+                "word": "koophuizen",
+                "parts": [{"nl": "koop", "en": "buy/purchase"}, {"nl": "huizen", "en": "houses"}],
+                "tip": "Owner-occupied homes (literally 'buy-houses') — opposite of huurhuizen"
+            }
+        ]
     },
     {
         "id": "w29",
@@ -476,42 +620,138 @@ const werkLessonData = [
         "nl": "Je kunt ook vacatures vinden via www.nationalevacaturebank.nl of bij een uitzendbureau.",
         "en": "You can also find vacancies via www.nationalevacaturebank.nl or at a recruitment agency (uitzendbureau).",
         "audio": "../assets/audio/knm/werkeninkomen/wi4.mp3",
-        "image": "../assets/images/knm/wi_sollicitatie.png"
+        "image": "../assets/images/knm/wi_sollicitatie.png",
+            "words": [
+                      {
+                                "word": "uitzendbureau",
+                                "parts": [
+                                          {
+                                                    "nl": "uitzend",
+                                                    "en": "dispatch"
+                                          },
+                                          {
+                                                    "nl": "bureau",
+                                                    "en": "agency"
+                                          }
+                                ],
+                                "tip": "Temp agency, common for finding initial jobs"
+                      }
+            ]
     },
     {
         "id": "wi5",
         "nl": "Als je solliciteert op een baan, moet je meestal je cv en een sollicitatiebrief opsturen — of een online sollicitatieformulier invullen.",
         "en": "When you apply for a job, you usually need to send your CV and a cover letter — or fill in an online application form.",
         "audio": "../assets/audio/knm/werkeninkomen/wi5.mp3",
-        "image": "../assets/images/knm/wi_sollicitatie.png"
+        "image": "../assets/images/knm/wi_sollicitatie.png",
+            "words": [
+                      {
+                                "word": "sollicitatiebrief",
+                                "parts": [
+                                          {
+                                                    "nl": "sollicitatie",
+                                                    "en": "application"
+                                          },
+                                          {
+                                                    "nl": "brief",
+                                                    "en": "letter"
+                                          }
+                                ],
+                                "tip": "Cover letter for job applications"
+                      }
+            ]
     },
     {
         "id": "wi6",
         "nl": "Een uitzendbureau heeft veel vacatures, meestal voor tijdelijk werk. Je krijgt dan een contract voor bepaalde tijd.",
         "en": "A recruitment agency has many vacancies, usually for temporary work. You then get a fixed-term contract.",
         "audio": "../assets/audio/knm/werkeninkomen/wi6.mp3",
-        "image": "../assets/images/knm/wi_sollicitatie.png"
+        "image": "../assets/images/knm/wi_sollicitatie.png",
+            "words": [
+                      {
+                                "word": "uitzendbureau",
+                                "parts": [
+                                          {
+                                                    "nl": "uitzend",
+                                                    "en": "dispatch"
+                                          },
+                                          {
+                                                    "nl": "bureau",
+                                                    "en": "agency"
+                                          }
+                                ],
+                                "tip": "Temp agency, common for finding initial jobs"
+                      }
+            ]
     },
     {
         "id": "wi7",
         "nl": "Bij vast werk krijg je een contract voor onbepaalde tijd. Bij een uitzendbureau is het werk meestal voor bepaalde tijd.",
         "en": "With permanent work you get an open-ended contract. Work through a recruitment agency is usually for a limited period.",
         "audio": "../assets/audio/knm/werkeninkomen/wi7.mp3",
-        "image": "../assets/images/knm/wi_contract.png"
+        "image": "../assets/images/knm/wi_contract.png",
+            "words": [
+                      {
+                                "word": "uitzendbureau",
+                                "parts": [
+                                          {
+                                                    "nl": "uitzend",
+                                                    "en": "dispatch"
+                                          },
+                                          {
+                                                    "nl": "bureau",
+                                                    "en": "agency"
+                                          }
+                                ],
+                                "tip": "Temp agency, common for finding initial jobs"
+                      }
+            ]
     },
     {
         "id": "wi8",
         "nl": "Je kunt jezelf inschrijven bij een uitzendbureau. Als zij werk hebben, nemen ze contact met jou op. Je kunt ook zelf direct solliciteren.",
         "en": "You can register with a recruitment agency. When they have work, they will contact you. You can also apply directly yourself.",
         "audio": "../assets/audio/knm/werkeninkomen/wi8.mp3",
-        "image": "../assets/images/knm/wi_ziek.png"
+        "image": "../assets/images/knm/wi_ziek.png",
+            "words": [
+                      {
+                                "word": "uitzendbureau",
+                                "parts": [
+                                          {
+                                                    "nl": "uitzend",
+                                                    "en": "dispatch"
+                                          },
+                                          {
+                                                    "nl": "bureau",
+                                                    "en": "agency"
+                                          }
+                                ],
+                                "tip": "Temp agency, common for finding initial jobs"
+                      }
+            ]
     },
     {
         "id": "wi9",
         "nl": "Uitzendbureaus richten zich vaak op een specifieke branche, zoals de horeca (hotel, restaurant, café), administratie of de gezondheidszorg.",
         "en": "Recruitment agencies often focus on a specific sector, such as hospitality (hotel, restaurant, café), administration or healthcare.",
         "audio": "../assets/audio/knm/werkeninkomen/wi9.mp3",
-        "image": "../assets/images/knm/wi_ziek.png"
+        "image": "../assets/images/knm/wi_ziek.png",
+            "words": [
+                      {
+                                "word": "uitzendbureau",
+                                "parts": [
+                                          {
+                                                    "nl": "uitzend",
+                                                    "en": "dispatch"
+                                          },
+                                          {
+                                                    "nl": "bureau",
+                                                    "en": "agency"
+                                          }
+                                ],
+                                "tip": "Temp agency, common for finding initial jobs"
+                      }
+            ]
     },
     {
         "id": "wi10",
@@ -644,28 +884,120 @@ const werkLessonData = [
         "nl": "Kwaliteiten van een goede werknemer: zelfstandig kunnen werken, goed samenwerken met collega's, initiatief tonen, en betrouwbaar zijn.",
         "en": "Qualities of a good employee: being able to work independently, working well with colleagues, showing initiative, and being reliable.",
         "audio": "../assets/audio/knm/werkeninkomen/wi28.mp3",
-        "image": "../assets/images/knm/wi_werk.png"
+        "image": "../assets/images/knm/wi_werk.png",
+            "words": [
+                      {
+                                "word": "werknemer",
+                                "parts": [
+                                          {
+                                                    "nl": "werk",
+                                                    "en": "work"
+                                          },
+                                          {
+                                                    "nl": "nemer",
+                                                    "en": "taker"
+                                          }
+                                ],
+                                "tip": "Employee"
+                      }
+            ]
     },
     {
         "id": "wi29",
         "nl": "In het arbeidscontract staat: jouw salaris, startdatum, aantal werkuren per week, aantal vakantiedagen, en of er een proeftijd is.",
         "en": "The employment contract states: your salary, start date, working hours per week, number of holiday days, and whether there is a probationary period (proeftijd).",
         "audio": "../assets/audio/knm/werkeninkomen/wi29.mp3",
-        "image": "../assets/images/knm/wi_contract.png"
+        "image": "../assets/images/knm/wi_contract.png",
+            "words": [
+                      {
+                                "word": "proeftijd",
+                                "parts": [
+                                          {
+                                                    "nl": "proef",
+                                                    "en": "trial"
+                                          },
+                                          {
+                                                    "nl": "tijd",
+                                                    "en": "time"
+                                          }
+                                ],
+                                "tip": "Probationary period at start of a contract"
+                      }
+            ]
     },
     {
         "id": "wi30",
         "nl": "Proeftijd: een periode om te kijken of het werk en het bedrijf bij jou passen. Zowel de werknemer als de werkgever kan tijdens de proeftijd het contract beëindigen.",
         "en": "Probationary period: a period to see whether the work and the company suit you. Both the employee and the employer can end the contract during the probationary period.",
         "audio": "../assets/audio/knm/werkeninkomen/wi30.mp3",
-        "image": "../assets/images/knm/wi_contract.png"
+        "image": "../assets/images/knm/wi_contract.png",
+            "words": [
+                      {
+                                "word": "werkgever",
+                                "parts": [
+                                          {
+                                                    "nl": "werk",
+                                                    "en": "work"
+                                          },
+                                          {
+                                                    "nl": "gever",
+                                                    "en": "giver"
+                                          }
+                                ],
+                                "tip": "Employer"
+                      },
+                      {
+                                "word": "werknemer",
+                                "parts": [
+                                          {
+                                                    "nl": "werk",
+                                                    "en": "work"
+                                          },
+                                          {
+                                                    "nl": "nemer",
+                                                    "en": "taker"
+                                          }
+                                ],
+                                "tip": "Employee"
+                      },
+                      {
+                                "word": "proeftijd",
+                                "parts": [
+                                          {
+                                                    "nl": "proef",
+                                                    "en": "trial"
+                                          },
+                                          {
+                                                    "nl": "tijd",
+                                                    "en": "time"
+                                          }
+                                ],
+                                "tip": "Probationary period at start of a contract"
+                      }
+            ]
     },
     {
         "id": "wi31",
         "nl": "Soorten arbeidscontracten: vast contract (voor onbepaalde tijd), tijdelijk contract (voor bepaalde tijd), of een contract via een uitzendbureau.",
         "en": "Types of employment contracts: permanent contract (open-ended), temporary contract (fixed-term), or a contract through a recruitment agency.",
         "audio": "../assets/audio/knm/werkeninkomen/wi31.mp3",
-        "image": "../assets/images/knm/wi_contract.png"
+        "image": "../assets/images/knm/wi_contract.png",
+            "words": [
+                      {
+                                "word": "uitzendbureau",
+                                "parts": [
+                                          {
+                                                    "nl": "uitzend",
+                                                    "en": "dispatch"
+                                          },
+                                          {
+                                                    "nl": "bureau",
+                                                    "en": "agency"
+                                          }
+                                ],
+                                "tip": "Temp agency, common for finding initial jobs"
+                      }
+            ]
     },
     {
         "id": "wi32",
@@ -679,42 +1011,152 @@ const werkLessonData = [
         "nl": "Bij ziekte moet je je afmelden bij je werkgever. Als je langere tijd ziek bent, meld je je bij de bedrijfsarts (ook wel: arbo-arts).",
         "en": "If you are sick, you must report your absence to your employer. If you are sick for a longer period, you report to the company doctor (bedrijfsarts / arbo-arts).",
         "audio": "../assets/audio/knm/werkeninkomen/wi33.mp3",
-        "image": "../assets/images/knm/wi_ziek.png"
+        "image": "../assets/images/knm/wi_ziek.png",
+            "words": [
+                      {
+                                "word": "werkgever",
+                                "parts": [
+                                          {
+                                                    "nl": "werk",
+                                                    "en": "work"
+                                          },
+                                          {
+                                                    "nl": "gever",
+                                                    "en": "giver"
+                                          }
+                                ],
+                                "tip": "Employer"
+                      }
+            ]
     },
     {
         "id": "wi34",
         "nl": "De arbo-arts onderzoekt je en maakt samen met jou een re-integratieplan. De Arbowet regelt dat werknemers veilig en gezond kunnen werken.",
         "en": "The company doctor examines you and creates a re-integration plan together with you. The Working Conditions Act (Arbowet) ensures employees can work safely and healthily.",
         "audio": "../assets/audio/knm/werkeninkomen/wi34.mp3",
-        "image": "../assets/images/knm/wi_ziek.png"
+        "image": "../assets/images/knm/wi_ziek.png",
+            "words": [
+                      {
+                                "word": "werknemer",
+                                "parts": [
+                                          {
+                                                    "nl": "werk",
+                                                    "en": "work"
+                                          },
+                                          {
+                                                    "nl": "nemer",
+                                                    "en": "taker"
+                                          }
+                                ],
+                                "tip": "Employee"
+                      }
+            ]
     },
     {
         "id": "wi35",
         "nl": "De ondernemingsraad (OR) is een groep werknemers die invloed heeft op plannen van de werkgever die de werknemers raken, zoals werktijden.",
         "en": "The works council (OR — ondernemingsraad) is a group of employees that has influence over employer plans that affect employees, such as working hours.",
         "audio": "../assets/audio/knm/werkeninkomen/wi35.mp3",
-        "image": "../assets/images/knm/wi_werk.png"
+        "image": "../assets/images/knm/wi_werk.png",
+            "words": [
+                      {
+                                "word": "werkgever",
+                                "parts": [
+                                          {
+                                                    "nl": "werk",
+                                                    "en": "work"
+                                          },
+                                          {
+                                                    "nl": "gever",
+                                                    "en": "giver"
+                                          }
+                                ],
+                                "tip": "Employer"
+                      },
+                      {
+                                "word": "werknemer",
+                                "parts": [
+                                          {
+                                                    "nl": "werk",
+                                                    "en": "work"
+                                          },
+                                          {
+                                                    "nl": "nemer",
+                                                    "en": "taker"
+                                          }
+                                ],
+                                "tip": "Employee"
+                      }
+            ]
     },
     {
         "id": "wi36",
         "nl": "In bedrijven met meer dan 50 werknemers is een ondernemingsraad verplicht.",
         "en": "In companies with more than 50 employees, a works council is mandatory.",
         "audio": "../assets/audio/knm/werkeninkomen/wi36.mp3",
-        "image": "../assets/images/knm/wi_werk.png"
+        "image": "../assets/images/knm/wi_werk.png",
+            "words": [
+                      {
+                                "word": "werknemer",
+                                "parts": [
+                                          {
+                                                    "nl": "werk",
+                                                    "en": "work"
+                                          },
+                                          {
+                                                    "nl": "nemer",
+                                                    "en": "taker"
+                                          }
+                                ],
+                                "tip": "Employee"
+                      }
+            ]
     },
     {
         "id": "wi37",
         "nl": "De medezeggenschapsraad (MR) doet vergelijkbare dingen als de OR, maar is meestal bij kleinere bedrijven met minder dan 50 werknemers.",
         "en": "The participation council (MR — medezeggenschapsraad) does similar things to the OR, but is usually found in smaller companies with fewer than 50 employees.",
         "audio": "../assets/audio/knm/werkeninkomen/wi37.mp3",
-        "image": "../assets/images/knm/wi_werk.png"
+        "image": "../assets/images/knm/wi_werk.png",
+            "words": [
+                      {
+                                "word": "werknemer",
+                                "parts": [
+                                          {
+                                                    "nl": "werk",
+                                                    "en": "work"
+                                          },
+                                          {
+                                                    "nl": "nemer",
+                                                    "en": "taker"
+                                          }
+                                ],
+                                "tip": "Employee"
+                      }
+            ]
     },
     {
         "id": "wi38",
         "nl": "De personeelsvereniging organiseert sociale evenementen voor werknemers en helpt collega's elkaar beter te leren kennen.",
         "en": "The staff association (personeelsvereniging) organises social events for employees and helps colleagues get to know each other better.",
         "audio": "../assets/audio/knm/werkeninkomen/wi38.mp3",
-        "image": "../assets/images/knm/wi_werk.png"
+        "image": "../assets/images/knm/wi_werk.png",
+            "words": [
+                      {
+                                "word": "werknemer",
+                                "parts": [
+                                          {
+                                                    "nl": "werk",
+                                                    "en": "work"
+                                          },
+                                          {
+                                                    "nl": "nemer",
+                                                    "en": "taker"
+                                          }
+                                ],
+                                "tip": "Employee"
+                      }
+            ]
     },
     {
         "id": "wi39",
@@ -770,14 +1212,60 @@ const werkLessonData = [
         "nl": "De cao (collectieve arbeidsovereenkomst) bevat de regels en afspraken voor alle werknemers en werkgevers in dezelfde sector.",
         "en": "The collective labour agreement (cao) contains the rules and agreements for all employees and employers in the same sector.",
         "audio": "../assets/audio/knm/werkeninkomen/wi46.mp3",
-        "image": "../assets/images/knm/wi_contract.png"
+        "image": "../assets/images/knm/wi_contract.png",
+            "words": [
+                      {
+                                "word": "werkgever",
+                                "parts": [
+                                          {
+                                                    "nl": "werk",
+                                                    "en": "work"
+                                          },
+                                          {
+                                                    "nl": "gever",
+                                                    "en": "giver"
+                                          }
+                                ],
+                                "tip": "Employer"
+                      },
+                      {
+                                "word": "werknemer",
+                                "parts": [
+                                          {
+                                                    "nl": "werk",
+                                                    "en": "work"
+                                          },
+                                          {
+                                                    "nl": "nemer",
+                                                    "en": "taker"
+                                          }
+                                ],
+                                "tip": "Employee"
+                      }
+            ]
     },
     {
         "id": "wi47",
         "nl": "Rechten uit de cao: recht op minimumloon, recht op salaris bij ziekte, recht op vakantie en vakantiegeld.",
         "en": "Rights from the cao: right to minimum wage, right to salary during illness, right to holidays and holiday pay.",
         "audio": "../assets/audio/knm/werkeninkomen/wi47.mp3",
-        "image": "../assets/images/knm/wi_contract.png"
+        "image": "../assets/images/knm/wi_contract.png",
+            "words": [
+                      {
+                                "word": "minimumloon",
+                                "parts": [
+                                          {
+                                                    "nl": "minimum",
+                                                    "en": "minimum"
+                                          },
+                                          {
+                                                    "nl": "loon",
+                                                    "en": "wage"
+                                          }
+                                ],
+                                "tip": "The legal minimum wage"
+                      }
+            ]
     },
     {
         "id": "wi48",
@@ -791,35 +1279,145 @@ const werkLessonData = [
         "nl": "Een vakbond is een groep werknemers die hetzelfde beroep uitoefenen. Elk beroep heeft zijn eigen vakbond.",
         "en": "A trade union (vakbond) is a group of workers who do the same job. Every profession has its own trade union.",
         "audio": "../assets/audio/knm/werkeninkomen/wi49.mp3",
-        "image": "../assets/images/knm/wi_werk.png"
+        "image": "../assets/images/knm/wi_werk.png",
+            "words": [
+                      {
+                                "word": "werknemer",
+                                "parts": [
+                                          {
+                                                    "nl": "werk",
+                                                    "en": "work"
+                                          },
+                                          {
+                                                    "nl": "nemer",
+                                                    "en": "taker"
+                                          }
+                                ],
+                                "tip": "Employee"
+                      }
+            ]
     },
     {
         "id": "wi50",
         "nl": "De vakbond helpt werknemers bij problemen op het werk en onderhandelt met werkgevers over de cao, salarissen, werktijden en werkomstandigheden.",
         "en": "The trade union helps employees with problems at work and negotiates with employers about the cao, salaries, working hours and working conditions.",
         "audio": "../assets/audio/knm/werkeninkomen/wi50.mp3",
-        "image": "../assets/images/knm/wi_contract.png"
+        "image": "../assets/images/knm/wi_contract.png",
+            "words": [
+                      {
+                                "word": "werkgever",
+                                "parts": [
+                                          {
+                                                    "nl": "werk",
+                                                    "en": "work"
+                                          },
+                                          {
+                                                    "nl": "gever",
+                                                    "en": "giver"
+                                          }
+                                ],
+                                "tip": "Employer"
+                      },
+                      {
+                                "word": "werknemer",
+                                "parts": [
+                                          {
+                                                    "nl": "werk",
+                                                    "en": "work"
+                                          },
+                                          {
+                                                    "nl": "nemer",
+                                                    "en": "taker"
+                                          }
+                                ],
+                                "tip": "Employee"
+                      }
+            ]
     },
     {
         "id": "wi51",
         "nl": "Deze les gaat over discriminatie op het werk.",
         "en": "This lesson is about discrimination at work.",
         "audio": "../assets/audio/knm/werkeninkomen/wi51.mp3",
-        "image": "../assets/images/knm/wi_werk.png"
+        "image": "../assets/images/knm/wi_werk.png",
+            "words": [
+                      {
+                                "word": "discriminatie",
+                                "parts": [
+                                          {
+                                                    "nl": "discriminatie",
+                                                    "en": "discrimination"
+                                          }
+                                ],
+                                "tip": "Discrimination (forbidden by Article 1)"
+                      }
+            ]
     },
     {
         "id": "wi52",
         "nl": "Discriminatie door werkgevers en werknemers is in Nederland wettelijk verboden.",
         "en": "Discrimination by employers and employees is legally prohibited in the Netherlands.",
         "audio": "../assets/audio/knm/werkeninkomen/wi52.mp3",
-        "image": "../assets/images/knm/wi_werk.png"
+        "image": "../assets/images/knm/wi_werk.png",
+            "words": [
+                      {
+                                "word": "werkgever",
+                                "parts": [
+                                          {
+                                                    "nl": "werk",
+                                                    "en": "work"
+                                          },
+                                          {
+                                                    "nl": "gever",
+                                                    "en": "giver"
+                                          }
+                                ],
+                                "tip": "Employer"
+                      },
+                      {
+                                "word": "werknemer",
+                                "parts": [
+                                          {
+                                                    "nl": "werk",
+                                                    "en": "work"
+                                          },
+                                          {
+                                                    "nl": "nemer",
+                                                    "en": "taker"
+                                          }
+                                ],
+                                "tip": "Employee"
+                      },
+                      {
+                                "word": "discriminatie",
+                                "parts": [
+                                          {
+                                                    "nl": "discriminatie",
+                                                    "en": "discrimination"
+                                          }
+                                ],
+                                "tip": "Discrimination (forbidden by Article 1)"
+                      }
+            ]
     },
     {
         "id": "wi53",
         "nl": "Je hebt het recht om iets tegen discriminatie te doen. Praat er eerst over met je collega of je baas.",
         "en": "You have the right to act against discrimination. First talk about it with your colleague or your manager.",
         "audio": "../assets/audio/knm/werkeninkomen/wi53.mp3",
-        "image": "../assets/images/knm/wi_werk.png"
+        "image": "../assets/images/knm/wi_werk.png",
+            "words": [
+                      {
+                                "word": "discriminatie",
+                                "parts": [
+                                          {
+                                                    "nl": "discriminatie",
+                                                    "en": "discrimination"
+                                          }
+                                ],
+                                "tip": "Discrimination (forbidden by Article 1)"
+                      }
+            ]
     },
     {
         "id": "wi54",
@@ -833,21 +1431,57 @@ const werkLessonData = [
         "nl": "Als praten niet helpt, kun je de discriminatie melden bij een antidiscriminatiebureau.",
         "en": "If talking does not help, you can report the discrimination to an anti-discrimination bureau (antidiscriminatiebureau).",
         "audio": "../assets/audio/knm/werkeninkomen/wi55.mp3",
-        "image": "../assets/images/knm/wi_werk.png"
+        "image": "../assets/images/knm/wi_werk.png",
+            "words": [
+                      {
+                                "word": "discriminatie",
+                                "parts": [
+                                          {
+                                                    "nl": "discriminatie",
+                                                    "en": "discrimination"
+                                          }
+                                ],
+                                "tip": "Discrimination (forbidden by Article 1)"
+                      }
+            ]
     },
     {
         "id": "wi56",
         "nl": "Als het antidiscriminatiebureau je niet kan helpen, kun je aangifte doen bij de politie.",
         "en": "If the anti-discrimination bureau cannot help you, you can file a report with the police.",
         "audio": "../assets/audio/knm/werkeninkomen/wi56.mp3",
-        "image": "../assets/images/knm/wi_werk.png"
+        "image": "../assets/images/knm/wi_werk.png",
+            "words": [
+                      {
+                                "word": "discriminatie",
+                                "parts": [
+                                          {
+                                                    "nl": "discriminatie",
+                                                    "en": "discrimination"
+                                          }
+                                ],
+                                "tip": "Discrimination (forbidden by Article 1)"
+                      }
+            ]
     },
     {
         "id": "wi57",
         "nl": "Voor meer informatie over discriminatie op het werk: ga naar www.discriminatie.nl.",
         "en": "For more information about discrimination at work: go to www.discriminatie.nl.",
         "audio": "../assets/audio/knm/werkeninkomen/wi57.mp3",
-        "image": "../assets/images/knm/wi_werk.png"
+        "image": "../assets/images/knm/wi_werk.png",
+            "words": [
+                      {
+                                "word": "discriminatie",
+                                "parts": [
+                                          {
+                                                    "nl": "discriminatie",
+                                                    "en": "discrimination"
+                                          }
+                                ],
+                                "tip": "Discrimination (forbidden by Article 1)"
+                      }
+            ]
     },
     {
         "id": "wi58",
@@ -961,7 +1595,23 @@ const waardenLessonData = [
         "nl": "Bij op bezoek gaan: mensen maken meestal een afspraak van tevoren. De meeste Nederlanders komen op tijd — maximaal 10 tot 15 minuten te laat is acceptabel.",
         "en": "When visiting someone: people usually make an appointment in advance. Most Dutch people arrive on time — arriving up to 10 to 15 minutes late is acceptable.",
         "audio": "../assets/audio/knm/waarden/wn7.mp3",
-        "image": "../assets/images/knm/wn_gelijkheid.png"
+        "image": "../assets/images/knm/wn_gelijkheid.png",
+            "words": [
+                      {
+                                "word": "afspraak",
+                                "parts": [
+                                          {
+                                                    "nl": "af",
+                                                    "en": "off/down"
+                                          },
+                                          {
+                                                    "nl": "spraak",
+                                                    "en": "speech"
+                                          }
+                                ],
+                                "tip": "Appointment or agreement (Very important in NL!)"
+                      }
+            ]
     },
     {
         "id": "wn8",
@@ -1010,14 +1660,46 @@ const waardenLessonData = [
         "nl": "In de wachtkamer (bij de dokter of tandarts): bel liever buiten. Zorg dat het rustig en stil is voor de andere mensen.",
         "en": "In the waiting room (at the doctor or dentist): it is better to make phone calls outside. Keep it calm and quiet out of respect for others.",
         "audio": "../assets/audio/knm/waarden/wn14.mp3",
-        "image": "../assets/images/knm/wn_gelijkheid.png"
+        "image": "../assets/images/knm/wn_gelijkheid.png",
+            "words": [
+                      {
+                                "word": "tandarts",
+                                "parts": [
+                                          {
+                                                    "nl": "tand",
+                                                    "en": "tooth"
+                                          },
+                                          {
+                                                    "nl": "arts",
+                                                    "en": "doctor"
+                                          }
+                                ],
+                                "tip": "Dentist"
+                      }
+            ]
     },
     {
         "id": "wn15",
         "nl": "In het openbaar vervoer: je hebt altijd een vervoersbewijs en een ID nodig. Val andere mensen niet lastig. In een stiltecoupé mag je niet praten.",
         "en": "In public transport: you always need a valid ticket and ID. Do not bother other people. In a quiet compartment (stiltecoupé) you are not allowed to talk.",
         "audio": "../assets/audio/knm/waarden/wn15.mp3",
-        "image": "../assets/images/knm/wn_gelijkheid.png"
+        "image": "../assets/images/knm/wn_gelijkheid.png",
+            "words": [
+                      {
+                                "word": "openbaar vervoer",
+                                "parts": [
+                                          {
+                                                    "nl": "openbaar",
+                                                    "en": "public"
+                                          },
+                                          {
+                                                    "nl": "vervoer",
+                                                    "en": "transport"
+                                          }
+                                ],
+                                "tip": "Public transport (OV)"
+                      }
+            ]
     },
     {
         "id": "wn16",
@@ -1052,7 +1734,23 @@ const waardenLessonData = [
         "nl": "Formele afspraken (bij de dokter, gemeente of UWV): maak van tevoren een afspraak, kom op tijd, en zeg af als je niet kunt komen.",
         "en": "Formal appointments (at the doctor, municipality or UWV): make an appointment in advance, arrive on time, and cancel if you cannot come.",
         "audio": "../assets/audio/knm/waarden/wn20.mp3",
-        "image": "../assets/images/knm/wn_gelijkheid.png"
+        "image": "../assets/images/knm/wn_gelijkheid.png",
+            "words": [
+                      {
+                                "word": "afspraak",
+                                "parts": [
+                                          {
+                                                    "nl": "af",
+                                                    "en": "off/down"
+                                          },
+                                          {
+                                                    "nl": "spraak",
+                                                    "en": "speech"
+                                          }
+                                ],
+                                "tip": "Appointment or agreement (Very important in NL!)"
+                      }
+            ]
     },
     {
         "id": "wn21",
@@ -1066,7 +1764,23 @@ const waardenLessonData = [
         "nl": "Samenwonen in Nederland: mensen zijn getrouwd en wonen samen, of ze wonen samen met een samenlevingscontract (niet getrouwd, maar officieel samenwonend).",
         "en": "Living together in the Netherlands: people are married and live together, or they live together with a cohabitation contract (not married, but officially cohabiting).",
         "audio": "../assets/audio/knm/waarden/wn22.mp3",
-        "image": "../assets/images/knm/wn_gelijkheid.png"
+        "image": "../assets/images/knm/wn_gelijkheid.png",
+            "words": [
+                      {
+                                "word": "samenleving",
+                                "parts": [
+                                          {
+                                                    "nl": "samen",
+                                                    "en": "together"
+                                          },
+                                          {
+                                                    "nl": "leving",
+                                                    "en": "living"
+                                          }
+                                ],
+                                "tip": "Society"
+                      }
+            ]
     },
     {
         "id": "wn23",
@@ -1108,7 +1822,27 @@ const waardenLessonData = [
         "nl": "Voorbeelden van waarden: vrijheid van meningsuiting (iedereen mag zeggen wat hij of zij wil) en vrijheid van godsdienst (iedereen mag geloven in welke religie hij of zij wil).",
         "en": "Examples of values: freedom of expression (everyone may say what they want) and freedom of religion (everyone may believe in any religion they choose).",
         "audio": "../assets/audio/knm/waarden/wn28.mp3",
-        "image": "../assets/images/knm/wn_gelijkheid.png"
+        "image": "../assets/images/knm/wn_gelijkheid.png",
+            "words": [
+                      {
+                                "word": "vrijheid van meningsuiting",
+                                "parts": [
+                                          {
+                                                    "nl": "vrijheid",
+                                                    "en": "freedom"
+                                          },
+                                          {
+                                                    "nl": "mening",
+                                                    "en": "opinion"
+                                          },
+                                          {
+                                                    "nl": "uiting",
+                                                    "en": "expression"
+                                          }
+                                ],
+                                "tip": "Freedom of speech"
+                      }
+            ]
     },
     {
         "id": "wn29",
@@ -1122,14 +1856,46 @@ const waardenLessonData = [
         "nl": "In de Grondwet staat: discrimineren is verboden en alle mensen zijn gelijk en hebben dezelfde rechten.",
         "en": "The Dutch Constitution states: discrimination is prohibited and all people are equal and have the same rights.",
         "audio": "../assets/audio/knm/waarden/wn30.mp3",
-        "image": "../assets/images/knm/wn_gelijkheid.png"
+        "image": "../assets/images/knm/wn_gelijkheid.png",
+            "words": [
+                      {
+                                "word": "grondwet",
+                                "parts": [
+                                          {
+                                                    "nl": "grond",
+                                                    "en": "ground/basic"
+                                          },
+                                          {
+                                                    "nl": "wet",
+                                                    "en": "law"
+                                          }
+                                ],
+                                "tip": "Constitution"
+                      }
+            ]
     },
     {
         "id": "wn31",
         "nl": "Gelijkheid tussen mannen en vrouwen: ze kunnen dezelfde beroepen uitoefenen en krijgen dezelfde kansen op school en bij sollicitaties.",
         "en": "Equality between men and women: they can practise the same professions and receive the same opportunities at school and in job applications.",
         "audio": "../assets/audio/knm/waarden/wn31.mp3",
-        "image": "../assets/images/knm/wn_gelijkheid.png"
+        "image": "../assets/images/knm/wn_gelijkheid.png",
+            "words": [
+                      {
+                                "word": "gelijkheid",
+                                "parts": [
+                                          {
+                                                    "nl": "gelijk",
+                                                    "en": "equal"
+                                          },
+                                          {
+                                                    "nl": "heid",
+                                                    "en": "-ness"
+                                          }
+                                ],
+                                "tip": "Equality"
+                      }
+            ]
     },
     {
         "id": "wn32",
@@ -1332,14 +2098,46 @@ const waardenLessonData = [
         "nl": "Bevrijdingsdag is op 5 mei. We vieren de bevrijding in 1945, na de Tweede Wereldoorlog. Eens in de vijf jaar is het een officiële vrije dag.",
         "en": "Liberation Day (Bevrijdingsdag) is on 5 May. We celebrate the liberation in 1945, after the Second World War. Once every five years it is an official public holiday.",
         "audio": "../assets/audio/knm/waarden/wn60.mp3",
-        "image": "../assets/images/knm/wn_gelijkheid.png"
+        "image": "../assets/images/knm/wn_gelijkheid.png",
+            "words": [
+                      {
+                                "word": "wereldoorlog",
+                                "parts": [
+                                          {
+                                                    "nl": "wereld",
+                                                    "en": "world"
+                                          },
+                                          {
+                                                    "nl": "oorlog",
+                                                    "en": "war"
+                                          }
+                                ],
+                                "tip": "World War"
+                      }
+            ]
     },
     {
         "id": "wn61",
         "nl": "4 mei is Dodenherdenking: we herdenken de slachtoffers van de Tweede Wereldoorlog.",
         "en": "4 May is Remembrance Day (Dodenherdenking): we commemorate the victims of the Second World War.",
         "audio": "../assets/audio/knm/waarden/wn61.mp3",
-        "image": "../assets/images/knm/wn_gelijkheid.png"
+        "image": "../assets/images/knm/wn_gelijkheid.png",
+            "words": [
+                      {
+                                "word": "wereldoorlog",
+                                "parts": [
+                                          {
+                                                    "nl": "wereld",
+                                                    "en": "world"
+                                          },
+                                          {
+                                                    "nl": "oorlog",
+                                                    "en": "war"
+                                          }
+                                ],
+                                "tip": "World War"
+                      }
+            ]
     },
     {
         "id": "wn62",
@@ -1430,7 +2228,19 @@ const waardenLessonData = [
         "nl": "Geslaagd: als een kind zijn middelbare school heeft afgerond, is een Nederlandse traditie om de schooltas aan de vlaggenstok te hangen.",
         "en": "Graduation: when a child has completed secondary school, a Dutch tradition is to hang the school bag on the flagpole.",
         "audio": "../assets/audio/knm/waarden/wn74.mp3",
-        "image": "../assets/images/knm/wn_feest.png"
+        "image": "../assets/images/knm/wn_feest.png",
+            "words": [
+                      {
+                                "word": "middelbare",
+                                "parts": [
+                                          {
+                                                    "nl": "middelbaar",
+                                                    "en": "middle"
+                                          }
+                                ],
+                                "tip": "Secondary education"
+                      }
+            ]
     },
     {
         "id": "wn75",
@@ -1481,7 +2291,23 @@ const onderwijsLessonData = [
         "nl": "Zijn er problemen tijdens de zwangerschap? Dan ga je naar de gynaecoloog in het ziekenhuis.",
         "en": "Are there problems during the pregnancy? Then you go to the gynaecologist at the hospital.",
         "audio": "../assets/audio/knm/onderwijs/oo4.mp3",
-        "image": "../assets/images/knm/oo_baby_1772180983391.png"
+        "image": "../assets/images/knm/oo_baby_1772180983391.png",
+            "words": [
+                      {
+                                "word": "ziekenhuis",
+                                "parts": [
+                                          {
+                                                    "nl": "zieken",
+                                                    "en": "sick"
+                                          },
+                                          {
+                                                    "nl": "huis",
+                                                    "en": "house"
+                                          }
+                                ],
+                                "tip": "Hospital"
+                      }
+            ]
     },
     {
         "id": "oo5",
@@ -1502,7 +2328,23 @@ const onderwijsLessonData = [
         "nl": "Kinderopvang: als ouders geen tijd hebben, zijn er verschillende opties — een kinderdagverblijf, een oppas, of gastouderopvang.",
         "en": "Childcare: if parents have no time, there are various options — a day nursery (kinderdagverblijf), a babysitter (oppas), or foster care (gastouderopvang).",
         "audio": "../assets/audio/knm/onderwijs/oo7.mp3",
-        "image": "../assets/images/knm/oo_baby_1772180983391.png"
+        "image": "../assets/images/knm/oo_baby_1772180983391.png",
+            "words": [
+                      {
+                                "word": "kinderopvang",
+                                "parts": [
+                                          {
+                                                    "nl": "kinder",
+                                                    "en": "child"
+                                          },
+                                          {
+                                                    "nl": "opvang",
+                                                    "en": "care/shelter"
+                                          }
+                                ],
+                                "tip": "Childcare / Daycare"
+                      }
+            ]
     },
     {
         "id": "oo8",
@@ -1551,7 +2393,23 @@ const onderwijsLessonData = [
         "nl": "Kinderen van 4 tot 12 jaar gaan naar de basisschool. In groep 1 en 2 leren ze spelen, spreken, zingen en tekenen.",
         "en": "Children aged 4 to 12 go to primary school (basisschool). In groups 1 and 2 they learn to play, speak, sing and draw.",
         "audio": "../assets/audio/knm/onderwijs/oo14.mp3",
-        "image": "../assets/images/knm/oo_basisschool_1772181014674.png"
+        "image": "../assets/images/knm/oo_basisschool_1772181014674.png",
+            "words": [
+                      {
+                                "word": "basisschool",
+                                "parts": [
+                                          {
+                                                    "nl": "basis",
+                                                    "en": "basic"
+                                          },
+                                          {
+                                                    "nl": "school",
+                                                    "en": "school"
+                                          }
+                                ],
+                                "tip": "Primary school (ages 4 to 12)"
+                      }
+            ]
     },
     {
         "id": "oo15",
@@ -1565,21 +2423,75 @@ const onderwijsLessonData = [
         "nl": "Aan het einde van groep 8 maken kinderen de Cito-toets. Daarna krijgen ze advies over welk niveau middelbare school het beste bij hen past.",
         "en": "At the end of group 8, children take the Cito test. Afterwards they receive advice about which level of secondary school suits them best.",
         "audio": "../assets/audio/knm/onderwijs/oo16.mp3",
-        "image": "../assets/images/knm/oo_basisschool_1772181014674.png"
+        "image": "../assets/images/knm/oo_basisschool_1772181014674.png",
+            "words": [
+                      {
+                                "word": "middelbare",
+                                "parts": [
+                                          {
+                                                    "nl": "middelbaar",
+                                                    "en": "middle"
+                                          }
+                                ],
+                                "tip": "Secondary education"
+                      }
+            ]
     },
     {
         "id": "oo17",
         "nl": "Buitenschoolse opvang (BSO): basisschoolkinderen kunnen na school naar de BSO om te spelen of huiswerk te maken. Dit is handig als beide ouders werken.",
         "en": "After-school care (buitenschoolse opvang / BSO): primary school children can go to the BSO after school to play or do homework. This is useful when both parents work.",
         "audio": "../assets/audio/knm/onderwijs/oo17.mp3",
-        "image": "../assets/images/knm/oo_kinderopvang_1772180996866.png"
+        "image": "../assets/images/knm/oo_kinderopvang_1772180996866.png",
+            "words": [
+                      {
+                                "word": "basisschool",
+                                "parts": [
+                                          {
+                                                    "nl": "basis",
+                                                    "en": "basic"
+                                          },
+                                          {
+                                                    "nl": "school",
+                                                    "en": "school"
+                                          }
+                                ],
+                                "tip": "Primary school (ages 4 to 12)"
+                      }
+            ]
     },
     {
         "id": "oo18",
         "nl": "Na de basisschool gaan kinderen naar de middelbare school. Er zijn drie niveaus.",
         "en": "After primary school, children go to secondary school. There are three levels.",
         "audio": "../assets/audio/knm/onderwijs/oo18.mp3",
-        "image": "../assets/images/knm/oo_basisschool_1772181014674.png"
+        "image": "../assets/images/knm/oo_basisschool_1772181014674.png",
+            "words": [
+                      {
+                                "word": "basisschool",
+                                "parts": [
+                                          {
+                                                    "nl": "basis",
+                                                    "en": "basic"
+                                          },
+                                          {
+                                                    "nl": "school",
+                                                    "en": "school"
+                                          }
+                                ],
+                                "tip": "Primary school (ages 4 to 12)"
+                      },
+                      {
+                                "word": "middelbare",
+                                "parts": [
+                                          {
+                                                    "nl": "middelbaar",
+                                                    "en": "middle"
+                                          }
+                                ],
+                                "tip": "Secondary education"
+                      }
+            ]
     },
     {
         "id": "oo19",
@@ -1621,14 +2533,46 @@ const onderwijsLessonData = [
         "nl": "Leerplicht: kinderen zijn vanaf 5 jaar verplicht naar school te gaan, tot 16 jaar. Hebben ze op 16 of 17 jaar nog geen diploma, dan moeten ze tot 18 jaar naar school.",
         "en": "Compulsory education (leerplicht): children must go to school from age 5 to 16. If they have no diploma at 16 or 17, they must continue until 18.",
         "audio": "../assets/audio/knm/onderwijs/oo24.mp3",
-        "image": "../assets/images/knm/oo_onderwijs.png"
+        "image": "../assets/images/knm/oo_onderwijs.png",
+            "words": [
+                      {
+                                "word": "leerplicht",
+                                "parts": [
+                                          {
+                                                    "nl": "leer",
+                                                    "en": "learn"
+                                          },
+                                          {
+                                                    "nl": "plicht",
+                                                    "en": "duty"
+                                          }
+                                ],
+                                "tip": "Compulsory education for children"
+                      }
+            ]
     },
     {
         "id": "oo25",
         "nl": "Kinderen mogen alleen vrij krijgen in de schoolvakanties. Op andere dagen kunnen ouders een boete krijgen. Voor speciale situaties (begrafenis) kun je toestemming vragen.",
         "en": "Children may only be absent during school holidays. On other days parents can receive a fine. For special situations (e.g. a funeral) you can request permission.",
         "audio": "../assets/audio/knm/onderwijs/oo25.mp3",
-        "image": "../assets/images/knm/oo_onderwijs.png"
+        "image": "../assets/images/knm/oo_onderwijs.png",
+            "words": [
+                      {
+                                "word": "schoolvakantie",
+                                "parts": [
+                                          {
+                                                    "nl": "school",
+                                                    "en": "school"
+                                          },
+                                          {
+                                                    "nl": "vakantie",
+                                                    "en": "holiday"
+                                          }
+                                ],
+                                "tip": "School holidays"
+                      }
+            ]
     },
     {
         "id": "oo26",
@@ -1656,7 +2600,23 @@ const onderwijsLessonData = [
         "nl": "Kinderopvangtoeslag: kinderopvang is duur, maar je kunt geld terugkrijgen van de Belastingdienst. Dit heet kinderopvangtoeslag. Aanvragen via www.toeslagen.nl.",
         "en": "Childcare allowance (kinderopvangtoeslag): childcare is expensive, but you can get money back from the Tax Authority. This is called kinderopvangtoeslag. Apply via www.toeslagen.nl.",
         "audio": "../assets/audio/knm/onderwijs/oo29.mp3",
-        "image": "../assets/images/knm/oo_kinderopvang_1772180996866.png"
+        "image": "../assets/images/knm/oo_kinderopvang_1772180996866.png",
+            "words": [
+                      {
+                                "word": "kinderopvang",
+                                "parts": [
+                                          {
+                                                    "nl": "kinder",
+                                                    "en": "child"
+                                          },
+                                          {
+                                                    "nl": "opvang",
+                                                    "en": "care/shelter"
+                                          }
+                                ],
+                                "tip": "Childcare / Daycare"
+                      }
+            ]
     },
     {
         "id": "oo30",
@@ -1719,7 +2679,23 @@ const onderwijsLessonData = [
         "nl": "Contact met de school: ouders helpen de school als dat gevraagd wordt. Er zijn ouderavonden met informatie van de school.",
         "en": "Contact with school: parents help the school when asked. There are parents' evenings (ouderavonden) with information from the school.",
         "audio": "../assets/audio/knm/onderwijs/oo38.mp3",
-        "image": "../assets/images/knm/oo_onderwijs.png"
+        "image": "../assets/images/knm/oo_onderwijs.png",
+            "words": [
+                      {
+                                "word": "ouderavond",
+                                "parts": [
+                                          {
+                                                    "nl": "ouder",
+                                                    "en": "parent"
+                                          },
+                                          {
+                                                    "nl": "avond",
+                                                    "en": "evening"
+                                          }
+                                ],
+                                "tip": "Parent-teacher evening"
+                      }
+            ]
     },
     {
         "id": "oo39",
@@ -1742,7 +2718,23 @@ const gezondheidLessonData = [
         "nl": "Deze les gaat over de huisarts en de tandarts.",
         "en": "This lesson is about the GP and the dentist.",
         "audio": "../assets/audio/knm/gezondheid/gz1.mp3",
-        "image": "../assets/images/knm/gz_tandarts_1772181096831.png"
+        "image": "../assets/images/knm/gz_tandarts_1772181096831.png",
+            "words": [
+                      {
+                                "word": "tandarts",
+                                "parts": [
+                                          {
+                                                    "nl": "tand",
+                                                    "en": "tooth"
+                                          },
+                                          {
+                                                    "nl": "arts",
+                                                    "en": "doctor"
+                                          }
+                                ],
+                                "tip": "Dentist"
+                      }
+            ]
     },
     {
         "id": "gz2",
@@ -1777,7 +2769,23 @@ const gezondheidLessonData = [
         "nl": "Mensen gaan naar de huisarts bij klachten zoals hoofdpijn, keelpijn of koorts. Je moet eerst bellen voor een afspraak en op tijd komen.",
         "en": "People go to the GP for complaints such as headaches, a sore throat or fever. You must call first to make an appointment and arrive on time.",
         "audio": "../assets/audio/knm/gezondheid/gz6.mp3",
-        "image": "../assets/images/knm/gz_huisarts_1772181068321.png"
+        "image": "../assets/images/knm/gz_huisarts_1772181068321.png",
+            "words": [
+                      {
+                                "word": "afspraak",
+                                "parts": [
+                                          {
+                                                    "nl": "af",
+                                                    "en": "off/down"
+                                          },
+                                          {
+                                                    "nl": "spraak",
+                                                    "en": "speech"
+                                          }
+                                ],
+                                "tip": "Appointment or agreement (Very important in NL!)"
+                      }
+            ]
     },
     {
         "id": "gz7",
@@ -1826,42 +2834,166 @@ const gezondheidLessonData = [
         "nl": "De drogist geeft geen medicijnen op recept — dat kan alleen de apotheek. De zorgverzekering betaalt de meeste medicijnen, maar soms betaal je een eigen bijdrage.",
         "en": "The drugstore (drogist) does not dispense prescription medication — only the pharmacy does. Health insurance covers most medications, but sometimes you pay a personal contribution (eigen bijdrage).",
         "audio": "../assets/audio/knm/gezondheid/gz13.mp3",
-        "image": "../assets/images/knm/gz_apotheek_1772181084521.png"
+        "image": "../assets/images/knm/gz_apotheek_1772181084521.png",
+            "words": [
+                      {
+                                "word": "zorgverzekering",
+                                "parts": [
+                                          {
+                                                    "nl": "zorg",
+                                                    "en": "care"
+                                          },
+                                          {
+                                                    "nl": "verzekering",
+                                                    "en": "insurance"
+                                          }
+                                ],
+                                "tip": "Mandatory health insurance in NL"
+                      }
+            ]
     },
     {
         "id": "gz14",
         "nl": "De tandarts: mensen met klachten maken een afspraak, maar ook mensen zonder klachten gaan twee keer per jaar voor controle.",
         "en": "The dentist: people with complaints make an appointment, but people without complaints also go twice a year for a check-up.",
         "audio": "../assets/audio/knm/gezondheid/gz14.mp3",
-        "image": "../assets/images/knm/gz_tandarts_1772181096831.png"
+        "image": "../assets/images/knm/gz_tandarts_1772181096831.png",
+            "words": [
+                      {
+                                "word": "tandarts",
+                                "parts": [
+                                          {
+                                                    "nl": "tand",
+                                                    "en": "tooth"
+                                          },
+                                          {
+                                                    "nl": "arts",
+                                                    "en": "doctor"
+                                          }
+                                ],
+                                "tip": "Dentist"
+                      },
+                      {
+                                "word": "afspraak",
+                                "parts": [
+                                          {
+                                                    "nl": "af",
+                                                    "en": "off/down"
+                                          },
+                                          {
+                                                    "nl": "spraak",
+                                                    "en": "speech"
+                                          }
+                                ],
+                                "tip": "Appointment or agreement (Very important in NL!)"
+                      }
+            ]
     },
     {
         "id": "gz15",
         "nl": "Je kiest zelf je tandarts, net zoals de huisarts. Soms is er een wachtlijst. Voor de tandarts heb je meestal een aparte tandartsverzekering nodig — dit valt niet onder de basisverzekering.",
         "en": "You choose your own dentist, just like the GP. Sometimes there is a waiting list. For the dentist you usually need a separate dental insurance — this is not covered by the basic health insurance.",
         "audio": "../assets/audio/knm/gezondheid/gz15.mp3",
-        "image": "../assets/images/knm/gz_tandarts_1772181096831.png"
+        "image": "../assets/images/knm/gz_tandarts_1772181096831.png",
+            "words": [
+                      {
+                                "word": "tandarts",
+                                "parts": [
+                                          {
+                                                    "nl": "tand",
+                                                    "en": "tooth"
+                                          },
+                                          {
+                                                    "nl": "arts",
+                                                    "en": "doctor"
+                                          }
+                                ],
+                                "tip": "Dentist"
+                      }
+            ]
     },
     {
         "id": "gz16",
         "nl": "Kinderen onder 18 jaar zijn gratis verzekerd voor de tandarts.",
         "en": "Children under 18 are insured for the dentist free of charge.",
         "audio": "../assets/audio/knm/gezondheid/gz16.mp3",
-        "image": "../assets/images/knm/gz_tandarts_1772181096831.png"
+        "image": "../assets/images/knm/gz_tandarts_1772181096831.png",
+            "words": [
+                      {
+                                "word": "tandarts",
+                                "parts": [
+                                          {
+                                                    "nl": "tand",
+                                                    "en": "tooth"
+                                          },
+                                          {
+                                                    "nl": "arts",
+                                                    "en": "doctor"
+                                          }
+                                ],
+                                "tip": "Dentist"
+                      }
+            ]
     },
     {
         "id": "gz17",
         "nl": "Afspraken bij huisarts of tandarts: kom op tijd. Kun je niet komen? Bel dan minstens 24 uur van tevoren af. Vergeet je de afspraak, dan moet je gewoon betalen.",
         "en": "Appointments at the GP or dentist: arrive on time. Can't make it? Call at least 24 hours in advance to cancel. If you forget the appointment, you still have to pay.",
         "audio": "../assets/audio/knm/gezondheid/gz17.mp3",
-        "image": "../assets/images/knm/gz_tandarts_1772181096831.png"
+        "image": "../assets/images/knm/gz_tandarts_1772181096831.png",
+            "words": [
+                      {
+                                "word": "tandarts",
+                                "parts": [
+                                          {
+                                                    "nl": "tand",
+                                                    "en": "tooth"
+                                          },
+                                          {
+                                                    "nl": "arts",
+                                                    "en": "doctor"
+                                          }
+                                ],
+                                "tip": "Dentist"
+                      },
+                      {
+                                "word": "afspraak",
+                                "parts": [
+                                          {
+                                                    "nl": "af",
+                                                    "en": "off/down"
+                                          },
+                                          {
+                                                    "nl": "spraak",
+                                                    "en": "speech"
+                                          }
+                                ],
+                                "tip": "Appointment or agreement (Very important in NL!)"
+                      }
+            ]
     },
     {
         "id": "gz18",
         "nl": "Deze les gaat over het ziekenhuis en de specialist.",
         "en": "This lesson is about the hospital and the specialist.",
         "audio": "../assets/audio/knm/gezondheid/gz18.mp3",
-        "image": "../assets/images/knm/gz_ziekenhuis_1772181110625.png"
+        "image": "../assets/images/knm/gz_ziekenhuis_1772181110625.png",
+            "words": [
+                      {
+                                "word": "ziekenhuis",
+                                "parts": [
+                                          {
+                                                    "nl": "zieken",
+                                                    "en": "sick"
+                                          },
+                                          {
+                                                    "nl": "huis",
+                                                    "en": "house"
+                                          }
+                                ],
+                                "tip": "Hospital"
+                      }
+            ]
     },
     {
         "id": "gz19",
@@ -1875,14 +3007,46 @@ const gezondheidLessonData = [
         "nl": "De huisarts geeft je een verwijsbrief mee. Vergeet die niet mee te nemen naar het ziekenhuis!",
         "en": "The GP gives you a referral letter (verwijsbrief). Don't forget to bring it to the hospital!",
         "audio": "../assets/audio/knm/gezondheid/gz20.mp3",
-        "image": "../assets/images/knm/gz_ziekenhuis_1772181110625.png"
+        "image": "../assets/images/knm/gz_ziekenhuis_1772181110625.png",
+            "words": [
+                      {
+                                "word": "ziekenhuis",
+                                "parts": [
+                                          {
+                                                    "nl": "zieken",
+                                                    "en": "sick"
+                                          },
+                                          {
+                                                    "nl": "huis",
+                                                    "en": "house"
+                                          }
+                                ],
+                                "tip": "Hospital"
+                      }
+            ]
     },
     {
         "id": "gz21",
         "nl": "In het ziekenhuis ga je naar de polikliniek — een gespecialiseerde afdeling, bijv. voor cardiologie, urologie of longziekten.",
         "en": "At the hospital you go to the outpatient clinic (polikliniek) — a specialised department, e.g. for cardiology, urology or lung diseases.",
         "audio": "../assets/audio/knm/gezondheid/gz21.mp3",
-        "image": "../assets/images/knm/gz_ziekenhuis_1772181110625.png"
+        "image": "../assets/images/knm/gz_ziekenhuis_1772181110625.png",
+            "words": [
+                      {
+                                "word": "ziekenhuis",
+                                "parts": [
+                                          {
+                                                    "nl": "zieken",
+                                                    "en": "sick"
+                                          },
+                                          {
+                                                    "nl": "huis",
+                                                    "en": "house"
+                                          }
+                                ],
+                                "tip": "Hospital"
+                      }
+            ]
     },
     {
         "id": "gz22",
@@ -1903,7 +3067,23 @@ const gezondheidLessonData = [
         "nl": "De specialist kan medicijnen geven of een operatie uitvoeren. Bij een operatie blijf je één of meer dagen in het ziekenhuis — dit heet een opname.",
         "en": "The specialist can prescribe medication or perform an operation. For an operation you stay in hospital for one or more days — this is called an admission (opname).",
         "audio": "../assets/audio/knm/gezondheid/gz24.mp3",
-        "image": "../assets/images/knm/gz_ziekenhuis_1772181110625.png"
+        "image": "../assets/images/knm/gz_ziekenhuis_1772181110625.png",
+            "words": [
+                      {
+                                "word": "ziekenhuis",
+                                "parts": [
+                                          {
+                                                    "nl": "zieken",
+                                                    "en": "sick"
+                                          },
+                                          {
+                                                    "nl": "huis",
+                                                    "en": "house"
+                                          }
+                                ],
+                                "tip": "Hospital"
+                      }
+            ]
     },
     {
         "id": "gz25",
@@ -1917,7 +3097,23 @@ const gezondheidLessonData = [
         "nl": "Voor problemen op seksueel gebied kun je naar de huisarts gaan, of direct een afspraak maken bij de GGD (Gemeentelijke Gezondheidsdienst).",
         "en": "For sexual health problems you can go to the GP, or make an appointment directly at the GGD (Municipal Health Service).",
         "audio": "../assets/audio/knm/gezondheid/gz26.mp3",
-        "image": "../assets/images/knm/gz_huisarts_1772181068321.png"
+        "image": "../assets/images/knm/gz_huisarts_1772181068321.png",
+            "words": [
+                      {
+                                "word": "afspraak",
+                                "parts": [
+                                          {
+                                                    "nl": "af",
+                                                    "en": "off/down"
+                                          },
+                                          {
+                                                    "nl": "spraak",
+                                                    "en": "speech"
+                                          }
+                                ],
+                                "tip": "Appointment or agreement (Very important in NL!)"
+                      }
+            ]
     },
     {
         "id": "gz27",
@@ -1931,14 +3127,46 @@ const gezondheidLessonData = [
         "nl": "Avond, nacht of weekend: bel het normale nummer van je huisarts of tandarts. Je hoort een antwoordapparaat met een telefoonnummer voor spoedhulp buiten kantooruren.",
         "en": "Evening, night or weekend: call the normal number of your GP or dentist. You will hear an answering machine with a phone number for emergency help outside office hours.",
         "audio": "../assets/audio/knm/gezondheid/gz28.mp3",
-        "image": "../assets/images/knm/gz_tandarts_1772181096831.png"
+        "image": "../assets/images/knm/gz_tandarts_1772181096831.png",
+            "words": [
+                      {
+                                "word": "tandarts",
+                                "parts": [
+                                          {
+                                                    "nl": "tand",
+                                                    "en": "tooth"
+                                          },
+                                          {
+                                                    "nl": "arts",
+                                                    "en": "doctor"
+                                          }
+                                ],
+                                "tip": "Dentist"
+                      }
+            ]
     },
     {
         "id": "gz29",
         "nl": "Soms geeft het antwoordapparaat het nummer van de huisartsenpost. Zorg dat je je verzekeringsbewijs bij de hand hebt.",
         "en": "Sometimes the answering machine gives the number of the GP out-of-hours service (huisartsenpost). Make sure you have your insurance card to hand.",
         "audio": "../assets/audio/knm/gezondheid/gz29.mp3",
-        "image": "../assets/images/knm/gz_zorgverzekering_1772181136139.png"
+        "image": "../assets/images/knm/gz_zorgverzekering_1772181136139.png",
+            "words": [
+                      {
+                                "word": "huisartsenpost",
+                                "parts": [
+                                          {
+                                                    "nl": "huisarts",
+                                                    "en": "GP/family doctor"
+                                          },
+                                          {
+                                                    "nl": "post",
+                                                    "en": "station/clinic"
+                                          }
+                                ],
+                                "tip": "After-hours clinic for urgent non-emergency care"
+                      }
+            ]
     },
     {
         "id": "gz30",
@@ -1952,7 +3180,23 @@ const gezondheidLessonData = [
         "nl": "Minder urgent maar toch ernstig (bijv. gebroken arm, bloedende wond)? Ga naar de spoedeisende hulp (SEH / Eerste Hulp) — zonder afspraak. Wie het meeste hulp nodig heeft wordt als eerste geholpen.",
         "en": "Less urgent but still serious (e.g. broken arm, bleeding wound)? Go to the emergency department (spoedeisende hulp / SEH) — without an appointment. Those who need the most help are treated first.",
         "audio": "../assets/audio/knm/gezondheid/gz31.mp3",
-        "image": "../assets/images/knm/gz_noodgeval_1772181123910.png"
+        "image": "../assets/images/knm/gz_noodgeval_1772181123910.png",
+            "words": [
+                      {
+                                "word": "afspraak",
+                                "parts": [
+                                          {
+                                                    "nl": "af",
+                                                    "en": "off/down"
+                                          },
+                                          {
+                                                    "nl": "spraak",
+                                                    "en": "speech"
+                                          }
+                                ],
+                                "tip": "Appointment or agreement (Very important in NL!)"
+                      }
+            ]
     },
     {
         "id": "gz32",
@@ -1973,7 +3217,23 @@ const gezondheidLessonData = [
         "nl": "Bij problemen tijdens de zwangerschap ga je naar de gynaecoloog — en bevallen doe je dan in het ziekenhuis.",
         "en": "If there are problems during the pregnancy you go to the gynaecologist — and you then give birth in the hospital.",
         "audio": "../assets/audio/knm/gezondheid/gz34.mp3",
-        "image": "../assets/images/knm/gz_ziekenhuis_1772181110625.png"
+        "image": "../assets/images/knm/gz_ziekenhuis_1772181110625.png",
+            "words": [
+                      {
+                                "word": "ziekenhuis",
+                                "parts": [
+                                          {
+                                                    "nl": "zieken",
+                                                    "en": "sick"
+                                          },
+                                          {
+                                                    "nl": "huis",
+                                                    "en": "house"
+                                          }
+                                ],
+                                "tip": "Hospital"
+                      }
+            ]
     },
     {
         "id": "gz35",
@@ -2057,14 +3317,46 @@ const gezondheidLessonData = [
         "nl": "Deze les gaat over zorgkosten en zorgverzekering.",
         "en": "This lesson is about healthcare costs and health insurance.",
         "audio": "../assets/audio/knm/gezondheid/gz46.mp3",
-        "image": "../assets/images/knm/gz_zorgverzekering_1772181136139.png"
+        "image": "../assets/images/knm/gz_zorgverzekering_1772181136139.png",
+            "words": [
+                      {
+                                "word": "zorgverzekering",
+                                "parts": [
+                                          {
+                                                    "nl": "zorg",
+                                                    "en": "care"
+                                          },
+                                          {
+                                                    "nl": "verzekering",
+                                                    "en": "insurance"
+                                          }
+                                ],
+                                "tip": "Mandatory health insurance in NL"
+                      }
+            ]
     },
     {
         "id": "gz47",
         "nl": "Iedereen die in Nederland woont moet minimaal een basisverzekering hebben. Je kiest zelf je zorgverzekering (bijv. Achmea, Zilveren Kruis of Menzis).",
         "en": "Everyone who lives in the Netherlands must have at least a basic health insurance (basisverzekering). You choose your own insurer (e.g. Achmea, Zilveren Kruis or Menzis).",
         "audio": "../assets/audio/knm/gezondheid/gz47.mp3",
-        "image": "../assets/images/knm/gz_zorgverzekering_1772181136139.png"
+        "image": "../assets/images/knm/gz_zorgverzekering_1772181136139.png",
+            "words": [
+                      {
+                                "word": "zorgverzekering",
+                                "parts": [
+                                          {
+                                                    "nl": "zorg",
+                                                    "en": "care"
+                                          },
+                                          {
+                                                    "nl": "verzekering",
+                                                    "en": "insurance"
+                                          }
+                                ],
+                                "tip": "Mandatory health insurance in NL"
+                      }
+            ]
     },
     {
         "id": "gz48",
@@ -2078,7 +3370,23 @@ const gezondheidLessonData = [
         "nl": "De basisverzekering dekt: de huisarts, ziekenhuiskosten en de meeste medicijnen.",
         "en": "The basic insurance covers: the GP, hospital costs and most medications.",
         "audio": "../assets/audio/knm/gezondheid/gz49.mp3",
-        "image": "../assets/images/knm/gz_ziekenhuis_1772181110625.png"
+        "image": "../assets/images/knm/gz_ziekenhuis_1772181110625.png",
+            "words": [
+                      {
+                                "word": "ziekenhuis",
+                                "parts": [
+                                          {
+                                                    "nl": "zieken",
+                                                    "en": "sick"
+                                          },
+                                          {
+                                                    "nl": "huis",
+                                                    "en": "house"
+                                          }
+                                ],
+                                "tip": "Hospital"
+                      }
+            ]
     },
     {
         "id": "gz50",
@@ -2092,14 +3400,60 @@ const gezondheidLessonData = [
         "nl": "Een tandartsverzekering zit niet in de basisverzekering — je betaalt er extra voor. Het is niet verplicht.",
         "en": "Dental insurance is not included in the basic insurance — you pay extra for it. It is not compulsory.",
         "audio": "../assets/audio/knm/gezondheid/gz51.mp3",
-        "image": "../assets/images/knm/gz_tandarts_1772181096831.png"
+        "image": "../assets/images/knm/gz_tandarts_1772181096831.png",
+            "words": [
+                      {
+                                "word": "tandarts",
+                                "parts": [
+                                          {
+                                                    "nl": "tand",
+                                                    "en": "tooth"
+                                          },
+                                          {
+                                                    "nl": "arts",
+                                                    "en": "doctor"
+                                          }
+                                ],
+                                "tip": "Dentist"
+                      }
+            ]
     },
     {
         "id": "gz52",
         "nl": "Eigen risico: je betaalt de eerste €385 aan zorgkosten zelf. Daarna betaalt de zorgverzekering. Met een hoger eigen risico betaal je een lagere maandpremie.",
         "en": "Excess (eigen risico): you pay the first €385 of healthcare costs yourself. After that the insurer pays. With a higher excess you pay a lower monthly premium.",
         "audio": "../assets/audio/knm/gezondheid/gz52.mp3",
-        "image": "../assets/images/knm/gz_zorgverzekering_1772181136139.png"
+        "image": "../assets/images/knm/gz_zorgverzekering_1772181136139.png",
+            "words": [
+                      {
+                                "word": "zorgverzekering",
+                                "parts": [
+                                          {
+                                                    "nl": "zorg",
+                                                    "en": "care"
+                                          },
+                                          {
+                                                    "nl": "verzekering",
+                                                    "en": "insurance"
+                                          }
+                                ],
+                                "tip": "Mandatory health insurance in NL"
+                      },
+                      {
+                                "word": "eigen risico",
+                                "parts": [
+                                          {
+                                                    "nl": "eigen",
+                                                    "en": "own"
+                                          },
+                                          {
+                                                    "nl": "risico",
+                                                    "en": "risk"
+                                          }
+                                ],
+                                "tip": "Deductible amount you must pay before insurance covers costs"
+                      }
+            ]
     },
     {
         "id": "gz53",
@@ -2113,7 +3467,37 @@ const gezondheidLessonData = [
         "nl": "De meeste kosten betaalt de zorgverzekering direct aan de huisarts, het ziekenhuis of de apotheek. Soms betaal je zelf en vraag je het terug via een formulier teruggave (declareren).",
         "en": "Most costs are paid directly by the insurer to the GP, hospital or pharmacy. Sometimes you pay yourself and reclaim it via a reimbursement form (declareren).",
         "audio": "../assets/audio/knm/gezondheid/gz54.mp3",
-        "image": "../assets/images/knm/gz_ziekenhuis_1772181110625.png"
+        "image": "../assets/images/knm/gz_ziekenhuis_1772181110625.png",
+            "words": [
+                      {
+                                "word": "zorgverzekering",
+                                "parts": [
+                                          {
+                                                    "nl": "zorg",
+                                                    "en": "care"
+                                          },
+                                          {
+                                                    "nl": "verzekering",
+                                                    "en": "insurance"
+                                          }
+                                ],
+                                "tip": "Mandatory health insurance in NL"
+                      },
+                      {
+                                "word": "ziekenhuis",
+                                "parts": [
+                                          {
+                                                    "nl": "zieken",
+                                                    "en": "sick"
+                                          },
+                                          {
+                                                    "nl": "huis",
+                                                    "en": "house"
+                                          }
+                                ],
+                                "tip": "Hospital"
+                      }
+            ]
     },
     {
         "id": "gz55",
@@ -2213,7 +3597,23 @@ const instantiesLessonData = [
         "nl": "In het openbaar vervoer moet je je ID al kunnen laten zien vanaf 12 jaar.",
         "en": "In public transport you must be able to show your ID from age 12.",
         "audio": "../assets/audio/knm/instanties/in13.mp3",
-        "image": "../assets/images/knm/wn_gelijkheid.png"
+        "image": "../assets/images/knm/wn_gelijkheid.png",
+            "words": [
+                      {
+                                "word": "openbaar vervoer",
+                                "parts": [
+                                          {
+                                                    "nl": "openbaar",
+                                                    "en": "public"
+                                          },
+                                          {
+                                                    "nl": "vervoer",
+                                                    "en": "transport"
+                                          }
+                                ],
+                                "tip": "Public transport (OV)"
+                      }
+            ]
     },
     {
         "id": "in14",
@@ -2332,7 +3732,23 @@ const instantiesLessonData = [
         "nl": "Toeslagen: je kunt kosten terugkrijgen van de belastingdienst als je een laag inkomen hebt. Er zijn drie toeslagen: huurtoeslag, zorgtoeslag en kinderopvangtoeslag.",
         "en": "Allowances (toeslagen): you can get costs reimbursed by the tax authority if you have a low income. There are three allowances: rent allowance (huurtoeslag), healthcare allowance (zorgtoeslag) and childcare allowance (kinderopvangtoeslag).",
         "audio": "../assets/audio/knm/instanties/in30.mp3",
-        "image": "../assets/images/knm/in_belasting_1772181210904.png"
+        "image": "../assets/images/knm/in_belasting_1772181210904.png",
+            "words": [
+                      {
+                                "word": "kinderopvang",
+                                "parts": [
+                                          {
+                                                    "nl": "kinder",
+                                                    "en": "child"
+                                          },
+                                          {
+                                                    "nl": "opvang",
+                                                    "en": "care/shelter"
+                                          }
+                                ],
+                                "tip": "Childcare / Daycare"
+                      }
+            ]
     },
     {
         "id": "in31",
@@ -2381,7 +3797,19 @@ const instantiesLessonData = [
         "nl": "Discriminatie is in Nederland wettelijk verboden. Meld discriminatie bij een antidiscriminatiebureau. Helpt dat niet, doe dan aangifte bij de politie.",
         "en": "Discrimination is legally prohibited in the Netherlands. Report discrimination to an anti-discrimination bureau. If that doesn't help, file a report with the police.",
         "audio": "../assets/audio/knm/instanties/in37.mp3",
-        "image": "../assets/images/knm/in_politie_1772181198011.png"
+        "image": "../assets/images/knm/in_politie_1772181198011.png",
+            "words": [
+                      {
+                                "word": "discriminatie",
+                                "parts": [
+                                          {
+                                                    "nl": "discriminatie",
+                                                    "en": "discrimination"
+                                          }
+                                ],
+                                "tip": "Discrimination (forbidden by Article 1)"
+                      }
+            ]
     },
     {
         "id": "in38",
@@ -2451,7 +3879,23 @@ const instantiesLessonData = [
         "nl": "Twee verzekeringen zijn in Nederland verplicht: de zorgverzekering (minimaal basisverzekering) en de autoverzekering (als je een auto hebt).",
         "en": "Two insurances are compulsory in the Netherlands: health insurance (at minimum a basic policy) and car insurance (if you have a car).",
         "audio": "../assets/audio/knm/instanties/in47.mp3",
-        "image": "../assets/images/knm/wn_gelijkheid.png"
+        "image": "../assets/images/knm/wn_gelijkheid.png",
+            "words": [
+                      {
+                                "word": "zorgverzekering",
+                                "parts": [
+                                          {
+                                                    "nl": "zorg",
+                                                    "en": "care"
+                                          },
+                                          {
+                                                    "nl": "verzekering",
+                                                    "en": "insurance"
+                                          }
+                                ],
+                                "tip": "Mandatory health insurance in NL"
+                      }
+            ]
     },
     {
         "id": "in48",
@@ -2495,14 +3939,74 @@ const politiekLessonData = [
         "nl": "Nederland is een rechtsstaat: iedereen moet zich houden aan de wet. De belangrijkste wet is de Grondwet.",
         "en": "The Netherlands is a constitutional state (rechtsstaat): everyone must abide by the law. The most important law is the Constitution (Grondwet).",
         "audio": "../assets/audio/knm/politiek/po2.mp3",
-        "image": "../assets/images/knm/po_grondwet.png"
+        "image": "../assets/images/knm/po_grondwet.png",
+            "words": [
+                      {
+                                "word": "grondwet",
+                                "parts": [
+                                          {
+                                                    "nl": "grond",
+                                                    "en": "ground/basic"
+                                          },
+                                          {
+                                                    "nl": "wet",
+                                                    "en": "law"
+                                          }
+                                ],
+                                "tip": "Constitution"
+                      }
+            ]
     },
     {
         "id": "po3",
         "nl": "Fundamentele rechten uit de Grondwet: vrijheid van meningsuiting (je mag altijd je mening geven, ook in de media), vrijheid van godsdienst, vrijheid van onderwijs, en het verbod op discriminatie.",
         "en": "Fundamental rights in the Constitution: freedom of expression (you may always share your opinion, including in the media), freedom of religion, freedom of education, and the prohibition of discrimination.",
         "audio": "../assets/audio/knm/politiek/po3.mp3",
-        "image": "../assets/images/knm/po_grondwet.png"
+        "image": "../assets/images/knm/po_grondwet.png",
+            "words": [
+                      {
+                                "word": "grondwet",
+                                "parts": [
+                                          {
+                                                    "nl": "grond",
+                                                    "en": "ground/basic"
+                                          },
+                                          {
+                                                    "nl": "wet",
+                                                    "en": "law"
+                                          }
+                                ],
+                                "tip": "Constitution"
+                      },
+                      {
+                                "word": "vrijheid van meningsuiting",
+                                "parts": [
+                                          {
+                                                    "nl": "vrijheid",
+                                                    "en": "freedom"
+                                          },
+                                          {
+                                                    "nl": "mening",
+                                                    "en": "opinion"
+                                          },
+                                          {
+                                                    "nl": "uiting",
+                                                    "en": "expression"
+                                          }
+                                ],
+                                "tip": "Freedom of speech"
+                      },
+                      {
+                                "word": "discriminatie",
+                                "parts": [
+                                          {
+                                                    "nl": "discriminatie",
+                                                    "en": "discrimination"
+                                          }
+                                ],
+                                "tip": "Discrimination (forbidden by Article 1)"
+                      }
+            ]
     },
     {
         "id": "po4",
@@ -2537,14 +4041,46 @@ const politiekLessonData = [
         "nl": "De uitvoerende macht = de regering (de koning, de minister-president en de ministers).",
         "en": "The executive power = the government (the king, the prime minister and the ministers).",
         "audio": "../assets/audio/knm/politiek/po8.mp3",
-        "image": "../assets/images/knm/po_koning.png"
+        "image": "../assets/images/knm/po_koning.png",
+            "words": [
+                      {
+                                "word": "minister-president",
+                                "parts": [
+                                          {
+                                                    "nl": "minister",
+                                                    "en": "minister"
+                                          },
+                                          {
+                                                    "nl": "president",
+                                                    "en": "president"
+                                          }
+                                ],
+                                "tip": "Prime Minister"
+                      }
+            ]
     },
     {
         "id": "po9",
         "nl": "De wetgevende macht = het parlement (de Eerste en Tweede Kamer samen). Het parlement controleert de regering en maakt samen met de regering nieuwe wetten.",
         "en": "The legislative power = parliament (the Senate / Eerste Kamer and House of Representatives / Tweede Kamer together). Parliament controls the government and creates new laws together with it.",
         "audio": "../assets/audio/knm/politiek/po9.mp3",
-        "image": "../assets/images/knm/po_grondwet.png"
+        "image": "../assets/images/knm/po_grondwet.png",
+            "words": [
+                      {
+                                "word": "tweede kamer",
+                                "parts": [
+                                          {
+                                                    "nl": "tweede",
+                                                    "en": "second"
+                                          },
+                                          {
+                                                    "nl": "kamer",
+                                                    "en": "chamber"
+                                          }
+                                ],
+                                "tip": "House of Representatives"
+                      }
+            ]
     },
     {
         "id": "po10",
@@ -2572,28 +4108,102 @@ const politiekLessonData = [
         "nl": "Nederland is een democratie (mensen kiezen zelf het bestuur), een koninkrijk (er is een koning), en een rechtsstaat (iedereen houdt zich aan de Grondwet).",
         "en": "The Netherlands is a democracy (people choose their own governance), a kingdom (there is a king), and a constitutional state (everyone abides by the Constitution).",
         "audio": "../assets/audio/knm/politiek/po13.mp3",
-        "image": "../assets/images/knm/po_koning.png"
+        "image": "../assets/images/knm/po_koning.png",
+            "words": [
+                      {
+                                "word": "grondwet",
+                                "parts": [
+                                          {
+                                                    "nl": "grond",
+                                                    "en": "ground/basic"
+                                          },
+                                          {
+                                                    "nl": "wet",
+                                                    "en": "law"
+                                          }
+                                ],
+                                "tip": "Constitution"
+                      }
+            ]
     },
     {
         "id": "po14",
         "nl": "Kiesrecht: actief kiesrecht = het recht om te stemmen. Passief kiesrecht = het recht om kandidaat te zijn (anderen mogen op jou stemmen).",
         "en": "Electoral rights: active voting right = the right to vote. Passive voting right = the right to stand as a candidate (others may vote for you).",
         "audio": "../assets/audio/knm/politiek/po14.mp3",
-        "image": "../assets/images/knm/po_stembiljet.png"
+        "image": "../assets/images/knm/po_stembiljet.png",
+            "words": [
+                      {
+                                "word": "kiesrecht",
+                                "parts": [
+                                          {
+                                                    "nl": "kies",
+                                                    "en": "choose/vote"
+                                          },
+                                          {
+                                                    "nl": "recht",
+                                                    "en": "right"
+                                          }
+                                ],
+                                "tip": "Right to vote"
+                      }
+            ]
     },
     {
         "id": "po15",
         "nl": "Verkiezingen zijn er voor: de Tweede Kamer (landelijk), provincies, gemeentes, waterschappen, en de Europese Unie. Soms is er een referendum (alleen ja/nee stemmen).",
         "en": "Elections exist for: the House of Representatives (national), provinces, municipalities, water boards, and the European Union. Sometimes there is a referendum (voting only yes/no).",
         "audio": "../assets/audio/knm/politiek/po15.mp3",
-        "image": "../assets/images/knm/po_tweedekamer.png"
+        "image": "../assets/images/knm/po_tweedekamer.png",
+            "words": [
+                      {
+                                "word": "tweede kamer",
+                                "parts": [
+                                          {
+                                                    "nl": "tweede",
+                                                    "en": "second"
+                                          },
+                                          {
+                                                    "nl": "kamer",
+                                                    "en": "chamber"
+                                          }
+                                ],
+                                "tip": "House of Representatives"
+                      },
+                      {
+                                "word": "provincie",
+                                "parts": [
+                                          {
+                                                    "nl": "provincie",
+                                                    "en": "province"
+                                          }
+                                ],
+                                "tip": "Province (NL has 12)"
+                      }
+            ]
     },
     {
         "id": "po16",
         "nl": "De regering: de koning, de minister-president en de ministers. De koning heeft een ceremoniële functie — hij ondertekent wetten maar maakt ze niet zelf.",
         "en": "The government: the king, the prime minister and the ministers. The king has a ceremonial role — he signs laws but does not make them himself.",
         "audio": "../assets/audio/knm/politiek/po16.mp3",
-        "image": "../assets/images/knm/po_koning.png"
+        "image": "../assets/images/knm/po_koning.png",
+            "words": [
+                      {
+                                "word": "minister-president",
+                                "parts": [
+                                          {
+                                                    "nl": "minister",
+                                                    "en": "minister"
+                                          },
+                                          {
+                                                    "nl": "president",
+                                                    "en": "president"
+                                          }
+                                ],
+                                "tip": "Prime Minister"
+                      }
+            ]
     },
     {
         "id": "po17",
@@ -2614,21 +4224,65 @@ const politiekLessonData = [
         "nl": "Het parlement: de Eerste Kamer (75 personen) controleert het werk van de regering. De Tweede Kamer (150 personen) praat over plannen van de regering, geeft adviezen en stemt over nieuwe wetten.",
         "en": "Parliament: the Senate / Eerste Kamer (75 members) controls the government's work. The House of Representatives / Tweede Kamer (150 members) discusses government plans, gives advice and votes on new laws.",
         "audio": "../assets/audio/knm/politiek/po19.mp3",
-        "image": "../assets/images/knm/po_grondwet.png"
+        "image": "../assets/images/knm/po_grondwet.png",
+            "words": [
+                      {
+                                "word": "tweede kamer",
+                                "parts": [
+                                          {
+                                                    "nl": "tweede",
+                                                    "en": "second"
+                                          },
+                                          {
+                                                    "nl": "kamer",
+                                                    "en": "chamber"
+                                          }
+                                ],
+                                "tip": "House of Representatives"
+                      }
+            ]
     },
     {
         "id": "po20",
         "nl": "Eens in de 4 jaar zijn er verkiezingen voor de Tweede Kamer. Om te stemmen moet je minimaal 18 jaar en Nederlander zijn.",
         "en": "Every 4 years there are elections for the Tweede Kamer. To vote you must be at least 18 years old and a Dutch citizen.",
         "audio": "../assets/audio/knm/politiek/po20.mp3",
-        "image": "../assets/images/knm/po_tweedekamer.png"
+        "image": "../assets/images/knm/po_tweedekamer.png",
+            "words": [
+                      {
+                                "word": "tweede kamer",
+                                "parts": [
+                                          {
+                                                    "nl": "tweede",
+                                                    "en": "second"
+                                          },
+                                          {
+                                                    "nl": "kamer",
+                                                    "en": "chamber"
+                                          }
+                                ],
+                                "tip": "House of Representatives"
+                      }
+            ]
     },
     {
         "id": "po21",
         "nl": "Het provinciebestuur bestuurt één van de 12 provincies. De leider heet de commissaris van de koningin. Taken: plannen voor wegen en huizen, en het milieu.",
         "en": "The provincial government governs one of the 12 provinces. The leader is called the King's Commissioner (commissaris van de koningin). Tasks: planning for roads and housing, and the environment.",
         "audio": "../assets/audio/knm/politiek/po21.mp3",
-        "image": "../assets/images/knm/po_koning.png"
+        "image": "../assets/images/knm/po_koning.png",
+            "words": [
+                      {
+                                "word": "provincie",
+                                "parts": [
+                                          {
+                                                    "nl": "provincie",
+                                                    "en": "province"
+                                          }
+                                ],
+                                "tip": "Province (NL has 12)"
+                      }
+            ]
     },
     {
         "id": "po22",
@@ -2642,21 +4296,69 @@ const politiekLessonData = [
         "nl": "Het gemeentebestuur bestuurt een stad, dorp of groep dorpen. De leider heet de burgemeester. Taken: o.a. vergunningen.",
         "en": "The municipal government governs a city, village or group of villages. The leader is called the mayor (burgemeester). Tasks include: permits and local matters.",
         "audio": "../assets/audio/knm/politiek/po23.mp3",
-        "image": "../assets/images/knm/po_burgemeester.png"
+        "image": "../assets/images/knm/po_burgemeester.png",
+            "words": [
+                      {
+                                "word": "burgemeester",
+                                "parts": [
+                                          {
+                                                    "nl": "burger",
+                                                    "en": "citizen"
+                                          },
+                                          {
+                                                    "nl": "meester",
+                                                    "en": "master"
+                                          }
+                                ],
+                                "tip": "Mayor"
+                      }
+            ]
     },
     {
         "id": "po24",
         "nl": "Eens in de 4 jaar zijn er gemeenteraadsverkiezingen. Om te stemmen: minimaal 18 jaar en minimaal 5 jaar legaal in Nederland wonen. Je hoeft geen Nederlander te zijn.",
         "en": "Every 4 years there are municipal elections. To vote: at least 18 years old and at least 5 years legally residing in the Netherlands. You do not need to be a Dutch citizen.",
         "audio": "../assets/audio/knm/politiek/po24.mp3",
-        "image": "../assets/images/knm/po_burgemeester.png"
+        "image": "../assets/images/knm/po_burgemeester.png",
+            "words": [
+                      {
+                                "word": "gemeenteraad",
+                                "parts": [
+                                          {
+                                                    "nl": "gemeente",
+                                                    "en": "municipality"
+                                          },
+                                          {
+                                                    "nl": "raad",
+                                                    "en": "council"
+                                          }
+                                ],
+                                "tip": "Municipal council"
+                      }
+            ]
     },
     {
         "id": "po25",
         "nl": "Sommige grote steden (Amsterdam, Rotterdam, Utrecht, Den Haag) hebben deelgemeenten — kleine stukken van een gemeente met een eigen deelgemeenteraad.",
         "en": "Some large cities (Amsterdam, Rotterdam, Utrecht, Den Haag) have sub-municipalities (deelgemeenten) — small parts of a municipality with their own council.",
         "audio": "../assets/audio/knm/politiek/po25.mp3",
-        "image": "../assets/images/knm/po_burgemeester.png"
+        "image": "../assets/images/knm/po_burgemeester.png",
+            "words": [
+                      {
+                                "word": "gemeenteraad",
+                                "parts": [
+                                          {
+                                                    "nl": "gemeente",
+                                                    "en": "municipality"
+                                          },
+                                          {
+                                                    "nl": "raad",
+                                                    "en": "council"
+                                          }
+                                ],
+                                "tip": "Municipal council"
+                      }
+            ]
     },
     {
         "id": "po26",
@@ -2705,7 +4407,23 @@ const politiekLessonData = [
         "nl": "Politieke partijen: mensen in een partij hebben ongeveer dezelfde ideeën over het besturen van Nederland. Er zitten op dit moment 16 partijen in de Tweede Kamer.",
         "en": "Political parties: people in a party share roughly the same ideas about governing the Netherlands. There are currently 16 parties in the Tweede Kamer.",
         "audio": "../assets/audio/knm/politiek/po32.mp3",
-        "image": "../assets/images/knm/po_tweedekamer.png"
+        "image": "../assets/images/knm/po_tweedekamer.png",
+            "words": [
+                      {
+                                "word": "tweede kamer",
+                                "parts": [
+                                          {
+                                                    "nl": "tweede",
+                                                    "en": "second"
+                                          },
+                                          {
+                                                    "nl": "kamer",
+                                                    "en": "chamber"
+                                          }
+                                ],
+                                "tip": "House of Representatives"
+                      }
+            ]
     },
     {
         "id": "po33",
@@ -2754,7 +4472,23 @@ const politiekLessonData = [
         "nl": "Na de verkiezingen: de grootste partij vormt samen met één of meer partijen een coalitie. De coalitie heeft meestal een meerderheid in de Tweede Kamer. Partijen buiten de coalitie = de oppositie.",
         "en": "After the elections: the largest party forms a coalition with one or more parties. The coalition usually has a majority in the Tweede Kamer. Parties outside the coalition = the opposition.",
         "audio": "../assets/audio/knm/politiek/po39.mp3",
-        "image": "../assets/images/knm/po_tweedekamer.png"
+        "image": "../assets/images/knm/po_tweedekamer.png",
+            "words": [
+                      {
+                                "word": "tweede kamer",
+                                "parts": [
+                                          {
+                                                    "nl": "tweede",
+                                                    "en": "second"
+                                          },
+                                          {
+                                                    "nl": "kamer",
+                                                    "en": "chamber"
+                                          }
+                                ],
+                                "tip": "House of Representatives"
+                      }
+            ]
     },
     {
         "id": "po40",
@@ -2826,7 +4560,23 @@ const geografieLessonData = [
         "nl": "De Gouden Eeuw (1600–1700 / 17e eeuw): Nederlanders werden rijk door handel in goud en specerijen. Er was helaas ook handel in slaven.",
         "en": "The Golden Age (1600–1700 / 17th century): the Dutch became wealthy through trade in gold and spices. Sadly there was also a trade in enslaved people.",
         "audio": "../assets/audio/knm/geografie/gg9.mp3",
-        "image": "../assets/images/knm/gg_goudeneeuw.png"
+        "image": "../assets/images/knm/gg_goudeneeuw.png",
+            "words": [
+                      {
+                                "word": "gouden eeuw",
+                                "parts": [
+                                          {
+                                                    "nl": "gouden",
+                                                    "en": "golden"
+                                          },
+                                          {
+                                                    "nl": "eeuw",
+                                                    "en": "century"
+                                          }
+                                ],
+                                "tip": "The Golden Age (17th century)"
+                      }
+            ]
     },
     {
         "id": "gg10",
@@ -2840,7 +4590,23 @@ const geografieLessonData = [
         "nl": "De Gouden Eeuw was ook een belangrijke tijd voor de kunst. Bekende schilder: Rembrandt. Zijn bekendste schilderij: de Nachtwacht.",
         "en": "The Golden Age was also an important time for art. Famous painter: Rembrandt. His most famous painting: the Night Watch (de Nachtwacht).",
         "audio": "../assets/audio/knm/geografie/gg11.mp3",
-        "image": "../assets/images/knm/gg_goudeneeuw.png"
+        "image": "../assets/images/knm/gg_goudeneeuw.png",
+            "words": [
+                      {
+                                "word": "gouden eeuw",
+                                "parts": [
+                                          {
+                                                    "nl": "gouden",
+                                                    "en": "golden"
+                                          },
+                                          {
+                                                    "nl": "eeuw",
+                                                    "en": "century"
+                                          }
+                                ],
+                                "tip": "The Golden Age (17th century)"
+                      }
+            ]
     },
     {
         "id": "gg12",
@@ -2875,14 +4641,46 @@ const geografieLessonData = [
         "nl": "De eerste Grondwet van Nederland werd aangenomen in 1814.",
         "en": "The first Dutch Constitution was adopted in 1814.",
         "audio": "../assets/audio/knm/geografie/gg16.mp3",
-        "image": "../assets/images/knm/gg_geografie.png"
+        "image": "../assets/images/knm/gg_geografie.png",
+            "words": [
+                      {
+                                "word": "grondwet",
+                                "parts": [
+                                          {
+                                                    "nl": "grond",
+                                                    "en": "ground/basic"
+                                          },
+                                          {
+                                                    "nl": "wet",
+                                                    "en": "law"
+                                          }
+                                ],
+                                "tip": "Constitution"
+                      }
+            ]
     },
     {
         "id": "gg17",
         "nl": "De Tweede Wereldoorlog (1940–1945): in de jaren '30 waren er veel arme fabrieksarbeiders in Duitsland. Hitler werd leider en gaf de Joden de schuld van alle problemen.",
         "en": "The Second World War (1940–1945): in the 1930s there were many poor factory workers in Germany. Hitler became leader and blamed the Jewish people for all problems.",
         "audio": "../assets/audio/knm/geografie/gg17.mp3",
-        "image": "../assets/images/knm/gg_geografie.png"
+        "image": "../assets/images/knm/gg_geografie.png",
+            "words": [
+                      {
+                                "word": "wereldoorlog",
+                                "parts": [
+                                          {
+                                                    "nl": "wereld",
+                                                    "en": "world"
+                                          },
+                                          {
+                                                    "nl": "oorlog",
+                                                    "en": "war"
+                                          }
+                                ],
+                                "tip": "World War"
+                      }
+            ]
     },
     {
         "id": "gg18",
@@ -2917,7 +4715,23 @@ const geografieLessonData = [
         "nl": "Na de Tweede Wereldoorlog (1945–1955) werden huizen en fabrieken herbouwd. De economie herstelde snel.",
         "en": "After the Second World War (1945–1955) houses and factories were rebuilt. The economy recovered quickly.",
         "audio": "../assets/audio/knm/geografie/gg22.mp3",
-        "image": "../assets/images/knm/gg_geografie.png"
+        "image": "../assets/images/knm/gg_geografie.png",
+            "words": [
+                      {
+                                "word": "wereldoorlog",
+                                "parts": [
+                                          {
+                                                    "nl": "wereld",
+                                                    "en": "world"
+                                          },
+                                          {
+                                                    "nl": "oorlog",
+                                                    "en": "war"
+                                          }
+                                ],
+                                "tip": "World War"
+                      }
+            ]
     },
     {
         "id": "gg23",
@@ -2973,7 +4787,19 @@ const geografieLessonData = [
         "nl": "Nederland heeft 12 provincies. De hoofdstad van Noord-Holland is Haarlem, van Zuid-Holland is Den Haag, en de hoofdstad van Nederland is Amsterdam.",
         "en": "The Netherlands has 12 provinces. The capital of Noord-Holland is Haarlem, of Zuid-Holland is Den Haag, and the capital of the Netherlands is Amsterdam.",
         "audio": "../assets/audio/knm/geografie/gg30.mp3",
-        "image": "../assets/images/knm/gg_randstad.png"
+        "image": "../assets/images/knm/gg_randstad.png",
+            "words": [
+                      {
+                                "word": "provincie",
+                                "parts": [
+                                          {
+                                                    "nl": "provincie",
+                                                    "en": "province"
+                                          }
+                                ],
+                                "tip": "Province (NL has 12)"
+                      }
+            ]
     },
     {
         "id": "gg31",
@@ -2994,14 +4820,42 @@ const geografieLessonData = [
         "nl": "Amsterdam, Rotterdam, Den Haag en Utrecht vormen samen de Randstad — in het westen van Nederland, met veel bedrijven en werk.",
         "en": "Amsterdam, Rotterdam, Den Haag and Utrecht together form the Randstad — in the west of the Netherlands, with many businesses and jobs.",
         "audio": "../assets/audio/knm/geografie/gg33.mp3",
-        "image": "../assets/images/knm/gg_randstad.png"
+        "image": "../assets/images/knm/gg_randstad.png",
+            "words": [
+                      {
+                                "word": "Randstad",
+                                "parts": [
+                                          {
+                                                    "nl": "rand",
+                                                    "en": "edge"
+                                          },
+                                          {
+                                                    "nl": "stad",
+                                                    "en": "city"
+                                          }
+                                ],
+                                "tip": "The urban agglomeration in western NL"
+                      }
+            ]
     },
     {
         "id": "gg34",
         "nl": "De Veluwe is een rustig natuurgebied in de provincie Gelderland (oost-Nederland). In het noorden van Nederland liggen de Waddeneilanden.",
         "en": "The Veluwe is a quiet nature area in the province of Gelderland (eastern Netherlands). In the north of the Netherlands lie the Wadden Islands (Waddeneilanden).",
         "audio": "../assets/audio/knm/geografie/gg34.mp3",
-        "image": "../assets/images/knm/gg_molens.png"
+        "image": "../assets/images/knm/gg_molens.png",
+            "words": [
+                      {
+                                "word": "provincie",
+                                "parts": [
+                                          {
+                                                    "nl": "provincie",
+                                                    "en": "province"
+                                          }
+                                ],
+                                "tip": "Province (NL has 12)"
+                      }
+            ]
     },
     {
         "id": "gg35",
@@ -3022,7 +4876,19 @@ const geografieLessonData = [
         "nl": "Polders: stukken land die vroeger water waren. De provincie Flevoland is bijna helemaal een polder — eerst was het water, nu is het land.",
         "en": "Polders: areas of land that were formerly water. The province of Flevoland is almost entirely a polder — it was once water, now it is land.",
         "audio": "../assets/audio/knm/geografie/gg37.mp3",
-        "image": "../assets/images/knm/gg_deltawerken.png"
+        "image": "../assets/images/knm/gg_deltawerken.png",
+            "words": [
+                      {
+                                "word": "provincie",
+                                "parts": [
+                                          {
+                                                    "nl": "provincie",
+                                                    "en": "province"
+                                          }
+                                ],
+                                "tip": "Province (NL has 12)"
+                      }
+            ]
     },
     {
         "id": "gg38",
@@ -3057,14 +4923,38 @@ const geografieLessonData = [
         "nl": "De grootste groepen buitenlanders: mensen uit andere Europese landen, Suriname (voormalige kolonie), Turkije, Marokko, en vluchtelingen.",
         "en": "The largest groups of non-native residents: people from other European countries, Suriname (former colony), Turkey, Morocco, and refugees.",
         "audio": "../assets/audio/knm/geografie/gg42.mp3",
-        "image": "../assets/images/knm/gg_geografie.png"
+        "image": "../assets/images/knm/gg_geografie.png",
+            "words": [
+                      {
+                                "word": "kolonie",
+                                "parts": [
+                                          {
+                                                    "nl": "kolonie",
+                                                    "en": "colony"
+                                          }
+                                ],
+                                "tip": "Colony (e.g. Indonesia/Suriname)"
+                      }
+            ]
     },
     {
         "id": "gg43",
         "nl": "De belangrijkste taal is Nederlands. In de provincie Friesland spreken mensen ook Fries.",
         "en": "The most important language is Dutch. In the province of Friesland people also speak Frisian.",
         "audio": "../assets/audio/knm/geografie/gg43.mp3",
-        "image": "../assets/images/knm/gg_schiphol.png"
+        "image": "../assets/images/knm/gg_schiphol.png",
+            "words": [
+                      {
+                                "word": "provincie",
+                                "parts": [
+                                          {
+                                                    "nl": "provincie",
+                                                    "en": "province"
+                                          }
+                                ],
+                                "tip": "Province (NL has 12)"
+                      }
+            ]
     },
     {
         "id": "gg44",

@@ -67,6 +67,11 @@ class KNMPlayer {
                         <button class="player-btn main-play" id="btn-play">▶️ Play Lesson</button>
                         <button class="player-btn" id="btn-next">Next ⏭️</button>
                     </div>
+
+                    <div class="word-spotlight" id="word-spotlight" style="display:none;">
+                        <div class="word-spotlight-title">🔑 Key Words</div>
+                        <div class="word-spotlight-chips" id="word-spotlight-chips"></div>
+                    </div>
                 </div>
 
                 <div class="knm-transcript-panel" id="knm-transcript-panel">
@@ -101,6 +106,8 @@ class KNMPlayer {
         this.transcriptList = document.getElementById('knm-transcript-list');
         this.transcriptPanel = document.getElementById('knm-transcript-panel');
         this.collapseBtn = document.getElementById('transcript-collapse-btn');
+        this.wordSpotlight = document.getElementById('word-spotlight');
+        this.wordSpotlightChips = document.getElementById('word-spotlight-chips');
 
         // Inject the floating re-open button on the video player edge
         this.openBtn = document.createElement('button');
@@ -165,6 +172,29 @@ class KNMPlayer {
             this.speedBtn.textContent = newSpeed + 'x';
         });
 
+        // Word chip tooltip: click/tap toggles tooltip (mobile-friendly)
+        this.nlEl.addEventListener('click', e => {
+            const chip = e.target.closest('.word-chip');
+            if (chip) {
+                e.stopPropagation();
+                const isOpen = chip.classList.contains('open');
+                // Close all others first
+                this.nlEl.querySelectorAll('.word-chip.open').forEach(c => c.classList.remove('open'));
+                if (!isOpen) chip.classList.add('open');
+            }
+        });
+        // Keyboard support for chips
+        this.nlEl.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                const chip = e.target.closest('.word-chip');
+                if (chip) { e.preventDefault(); chip.click(); }
+            }
+        });
+        // Dismiss tooltips when clicking outside
+        document.addEventListener('click', () => {
+            this.nlEl.querySelectorAll('.word-chip.open').forEach(c => c.classList.remove('open'));
+        });
+
         this.audioElement.addEventListener('ended', () => {
             // Auto-advance if not at the end
             if (this.currentSlide < this.lesson.slides.length - 1) {
@@ -180,6 +210,7 @@ class KNMPlayer {
         });
     }
 
+
     updateUI() {
         const slide = this.lesson.slides[this.currentSlide];
 
@@ -190,7 +221,8 @@ class KNMPlayer {
 
         setTimeout(() => {
             this.imgEl.src = slide.image;
-            this.nlEl.textContent = slide.nl;
+            // Highlight hard words in the subtitle
+            this.nlEl.innerHTML = this.highlightWords(slide.nl, slide.words || []);
             this.enEl.textContent = slide.en;
 
             this.imgEl.style.opacity = 1;
@@ -204,8 +236,55 @@ class KNMPlayer {
         this.prevBtn.disabled = this.currentSlide === 0;
         this.nextBtn.disabled = this.currentSlide === this.lesson.slides.length - 1;
 
+        // Render word spotlight panel
+        this.renderWordSpotlight(slide);
+
         // Sync transcript highlight
         this.syncTranscriptHighlight();
+    }
+
+    // Wraps hard words in the subtitle text with clickable tooltip chips
+    highlightWords(text, words) {
+        if (!words || words.length === 0) return this.escapeHtml(text);
+        let result = this.escapeHtml(text);
+        // Sort by word length descending to avoid partial replacements
+        const sorted = [...words].sort((a, b) => b.word.length - a.word.length);
+        sorted.forEach(entry => {
+            const safe = entry.word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const regex = new RegExp(`(${safe})`, 'gi');
+            const partsHtml = entry.parts.map(p => `<span class="wt-part"><span class="wt-nl">${p.nl}</span><span class="wt-en">${p.en}</span></span>`).join('<span class="wt-plus">+</span>');
+            const tooltipHtml = `<span class="word-chip" tabindex="0" role="button" aria-label="Word breakdown: ${entry.word}">
+                $1<span class="word-tooltip" role="tooltip"><span class="wt-word">${entry.word}</span><span class="wt-parts">${partsHtml}</span><span class="wt-tip">${entry.tip}</span></span></span>`;
+            result = result.replace(regex, tooltipHtml);
+        });
+        return result;
+    }
+
+    escapeHtml(text) {
+        return text
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+    }
+
+    // Renders the word spotlight panel below the player controls
+    renderWordSpotlight(slide) {
+        if (!this.wordSpotlight || !this.wordSpotlightChips) return;
+        const words = slide.words || [];
+        if (words.length === 0) {
+            this.wordSpotlight.style.display = 'none';
+            return;
+        }
+        this.wordSpotlight.style.display = 'block';
+        this.wordSpotlightChips.innerHTML = words.map(entry => {
+            const partsStr = entry.parts.map(p => `${p.nl} <em>(${p.en})</em>`).join(' + ');
+            return `<div class="spotlight-chip">
+                <span class="spotlight-word">${entry.word}</span>
+                <span class="spotlight-breakdown">${partsStr}</span>
+                <span class="spotlight-tip">💡 ${entry.tip}</span>
+            </div>`;
+        }).join('');
     }
 
     syncTranscriptHighlight() {

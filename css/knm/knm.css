@@ -752,3 +752,470 @@
         width: 100vw !important;
     }
 }
+
+/* =====================================================
+   WORD CHIP TOOLTIPS (Feature 1)
+   Hoverable/tappable word breakdown cards in subtitles
+   ===================================================== */
+
+.word-chip {
+    display: inline;
+    position: relative;
+    cursor: pointer;
+    border-bottom: 2px dotted #f59e0b;
+    color: inherit;
+    transition: color 0.15s;
+}
+
+.word-chip:hover,
+.word-chip.open {
+    color: #d97706;
+}
+
+.word-tooltip {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 200;
+    background: #1e1b4b;
+    color: #e0e7ff;
+    border-radius: 12px;
+    padding: 12px 14px;
+    min-width: 220px;
+    max-width: 280px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+    pointer-events: none;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    text-align: center;
+    animation: tooltip-pop 0.15s ease-out;
+}
+
+/* Arrow */
+.word-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #1e1b4b;
+}
+
+.word-chip:hover .word-tooltip,
+.word-chip.open .word-tooltip {
+    display: block;
+}
+
+@keyframes tooltip-pop {
+    from { opacity: 0; transform: translateX(-50%) translateY(4px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.wt-word {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fde68a;
+    margin-bottom: 8px;
+}
+
+.wt-parts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+.wt-part {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255,255,255,0.08);
+    border-radius: 6px;
+    padding: 4px 8px;
+}
+
+.wt-nl {
+    font-weight: 600;
+    color: #a5b4fc;
+    font-size: 0.83rem;
+}
+
+.wt-en {
+    font-size: 0.72rem;
+    color: #c7d2fe;
+    opacity: 0.85;
+}
+
+.wt-plus {
+    display: flex;
+    align-items: center;
+    color: #6366f1;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.wt-tip {
+    display: block;
+    font-size: 0.75rem;
+    color: #a5f3fc;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 6px;
+    font-style: italic;
+}
+
+/* =====================================================
+   WORD SPOTLIGHT PANEL (Feature 2)
+   Always-visible word breakdown below player controls
+   ===================================================== */
+
+.word-spotlight {
+    margin: 0 12px 12px;
+    background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+    border: 1px solid #bae6fd;
+    border-radius: 10px;
+    padding: 12px 14px;
+    animation: spotlight-in 0.3s ease;
+}
+
+@keyframes spotlight-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.word-spotlight-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #0369a1;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 10px;
+}
+
+.word-spotlight-chips {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.spotlight-chip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px;
+    padding: 8px 10px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #e0f2fe;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.spotlight-word {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #1e40af;
+    min-width: 160px;
+}
+
+.spotlight-breakdown {
+    font-size: 0.82rem;
+    color: #374151;
+    flex: 1;
+}
+
+.spotlight-breakdown em {
+    color: #6b7280;
+    font-style: normal;
+}
+
+.spotlight-tip {
+    display: block;
+    width: 100%;
+    font-size: 0.76rem;
+    color: #0369a1;
+    margin-top: 2px;
+    padding-top: 4px;
+    border-top: 1px solid #e0f2fe;
+}
+
+/* =====================================================
+   FLASHCARD MODE (Feature 3)
+   Spaced repetition flip cards in the Practice tab
+   ===================================================== */
+
+.fc-wrapper {
+    font-family: inherit;
+}
+
+.fc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.fc-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #4f46e5;
+}
+
+.fc-progress-info {
+    display: flex;
+    gap: 8px;
+}
+
+.fc-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+.fc-badge-queue {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.fc-badge-done {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.fc-progress-bar-wrap {
+    width: 100%;
+    height: 5px;
+    background: #e5e7eb;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.fc-progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6);
+    border-radius: 3px;
+    transition: width 0.4s ease;
+}
+
+/* 3D flip scene */
+.fc-scene {
+    perspective: 900px;
+    margin: 0 auto 16px;
+    max-width: 420px;
+}
+
+.fc-card {
+    width: 100%;
+    min-height: 180px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+    cursor: pointer;
+    outline: none;
+    border-radius: 16px;
+}
+
+.fc-card:focus-visible {
+    box-shadow: 0 0 0 3px #6366f1;
+}
+
+.fc-card.flipped {
+    transform: rotateY(180deg);
+}
+
+.fc-front,
+.fc-back {
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 20px;
+    text-align: center;
+}
+
+.fc-front {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: #fff;
+    box-shadow: 0 6px 24px rgba(79,70,229,0.35);
+}
+
+.fc-back {
+    background: linear-gradient(135deg, #1e1b4b, #312e81);
+    color: #e0e7ff;
+    transform: rotateY(180deg);
+    box-shadow: 0 6px 24px rgba(30,27,75,0.4);
+}
+
+.fc-front-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.7;
+    margin-bottom: 12px;
+}
+
+.fc-word {
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+}
+
+.fc-hint {
+    margin-top: 14px;
+    font-size: 0.75rem;
+    opacity: 0.65;
+    font-style: italic;
+}
+
+.fc-back-word {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fde68a;
+    margin-bottom: 12px;
+}
+
+.fc-parts-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.fc-part {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 6px 10px;
+    min-width: 54px;
+}
+
+.fc-part-nl {
+    font-weight: 700;
+    color: #a5b4fc;
+    font-size: 0.85rem;
+}
+
+.fc-part-en {
+    font-size: 0.72rem;
+    color: #c7d2fe;
+    opacity: 0.85;
+}
+
+.fc-plus {
+    display: flex;
+    align-items: center;
+    color: #6366f1;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.fc-tip-row {
+    font-size: 0.77rem;
+    color: #a5f3fc;
+    font-style: italic;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 10px;
+    max-width: 280px;
+}
+
+/* Flashcard controls */
+.fc-controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.fc-btn {
+    padding: 10px 22px;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.fc-btn:hover:not(:disabled) {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+}
+
+.fc-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.fc-btn-again {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.fc-btn-flip {
+    background: #e0e7ff;
+    color: #3730a3;
+}
+
+.fc-btn-got {
+    background: linear-gradient(135deg, #059669, #10b981);
+    color: #fff;
+}
+
+/* Completion screen */
+.fc-completed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 20px;
+    text-align: center;
+    animation: spotlight-in 0.4s ease;
+}
+
+.fc-completed-icon {
+    font-size: 3rem;
+    margin-bottom: 12px;
+}
+
+.fc-completed-title {
+    color: #1e1b4b;
+    font-size: 1.4rem;
+    margin: 0 0 8px;
+}
+
+.fc-completed-sub {
+    color: #6b7280;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.fc-completed-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.fc-empty {
+    text-align: center;
+    color: #6b7280;
+    padding: 32px;
+    font-style: italic;
+    border: 2px dashed #e5e7eb;
+    border-radius: 12px;
+}

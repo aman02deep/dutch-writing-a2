@@ -43,6 +43,7 @@
                 <div class="tab-container">
                     <button class="tab-btn active" data-tab="study" onclick="switchTab('study')">📚 Study</button>
                     <button class="tab-btn" data-tab="practice" onclick="switchTab('practice')">✍️ Practice</button>
+                    <button class="tab-btn" data-tab="flashcards" onclick="switchTab('flashcards')">🃏 Flashcards</button>
                 </div>
             </div>
 
@@ -74,8 +75,21 @@
 
                         <div class="knm-actions">
                             <button class="btn-knm btn-check-answers" onclick="checkAnswers()">Check Answers</button>
-                            <button class="btn-knm btn-next-chapter" onclick="nextChapter()">Next Chapter →</button>
+                            <button class="btn-knm btn-next-chapter" onclick="nextChapter()">Next Chapter &rarr;</button>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Flashcards Tab -->
+                <div id="flashcards-tab" class="tab-content">
+                    <div id="flashcards-content">
+                        <div class="fc-launch-wrap" style="text-align: center; margin-top: 20px;">
+                            <h3 style="color: var(--primary); margin-bottom: 16px;">Compound Words Review</h3>
+                            <button class="btn-knm" id="fc-launch-btn" onclick="launchFlashcards()" style="background: linear-gradient(135deg, #7c3aed, #4f46e5); color: #fff; display: inline-flex; align-items: center; gap: 8px; font-size: 1.1rem; padding: 12px 24px;">
+                                &#x1F0CF; Start Flashcards
+                            </button>
+                        </div>
+                        <div id="knm-flashcard-container" style="display:none; margin-top: 20px;"></div>
                     </div>
                 </div>
             </div>
@@ -86,6 +100,7 @@
     <script src="../js/knm/knm-lesson-data.js"></script>
     <script src="../js/knm/knm-player.js"></script>
     <script src="../js/knm/knm-questions.js"></script>
+    <script src="../js/knm/knm-flashcards.js"></script>
     <script src="../js/knm/knm.js"></script>
     <script src="../js/common/settings.js"></script>
     <script src="../js/common/ai-service.js"></script>

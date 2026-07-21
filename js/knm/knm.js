@@ -228,6 +228,21 @@ function switchTab(tabName) {
         content.classList.remove('active');
     });
     document.getElementById(`${tabName}-tab`).classList.add('active');
+
+    // Pause audio if leaving study tab
+    if (tabName !== 'study' && window.player && window.player.audioElement) {
+        window.player.audioElement.pause();
+        window.player.isPlaying = false;
+        if (window.player.playBtn) window.player.playBtn.innerHTML = '▶️ Play Lesson';
+    }
+
+    // Auto-launch flashcards if navigating to that tab and they haven't been launched
+    if (tabName === 'flashcards') {
+        const fcContainer = document.getElementById('knm-flashcard-container');
+        if (fcContainer && fcContainer.innerHTML.trim() === '') {
+            launchFlashcards();
+        }
+    }
 }
 
 function nextChapter() {
@@ -237,6 +252,17 @@ function nextChapter() {
         alert('You have completed all chapters! 🎉');
         window.location.href = 'knm.html';
     }
+}
+
+function launchFlashcards() {
+    // Hide the launch button
+    const btn = document.getElementById('fc-launch-btn');
+    if (btn) btn.style.display = 'none';
+
+    // Get lesson data for the current chapter
+    const lessonData = (typeof interactiveLessons !== 'undefined') ? interactiveLessons[currentChapter] : null;
+    const fc = new KNMFlashcards('knm-flashcard-container', lessonData);
+    fc.launch();
 }
 
 window.onload = init;
