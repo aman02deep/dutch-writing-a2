@@ -20,6 +20,13 @@ var aiService = {
     async fetchAIChat(messages, maxTokens = 1200) {
         const provider = localStorage.getItem('ai-provider') || 'pollinations';
         const apiKey = localStorage.getItem(`ai-api-key-${provider}`) || localStorage.getItem('ai-api-key');
+        const isKeyed = (provider === 'groq' || provider === 'openrouter' || provider === 'alibaba' || provider === 'github');
+
+        // If a keyed provider was chosen but no key is stored, warn loudly —
+        // this is the most common cause of "calls going to Pollinations".
+        if (isKeyed && !apiKey) {
+            console.warn(`[aiService] "${provider}" is selected but NO API KEY is set. Add one in ⚙ AI Settings, or calls will use Pollinations.ai.`);
+        }
 
         try {
             if (provider === 'groq' && apiKey) {
@@ -31,11 +38,11 @@ var aiService = {
             } else if (provider === 'github' && apiKey) {
                 return await this.fetchGitHubModels(messages, apiKey, maxTokens);
             } else {
-                // Pollinations fallback
+                // No key (or Pollinations selected)
                 return await this.fetchPollinations(messages, maxTokens);
             }
         } catch (e) {
-            console.warn(`[aiService] Provider "${provider}" chat failed, falling back to Pollinations.ai`, e);
+            console.warn(`[aiService] Provider "${provider}" chat failed after retries, falling back to Pollinations.ai`, e);
             return await this.fetchPollinations(messages, maxTokens);
         }
     },
@@ -89,27 +96,41 @@ var aiService = {
     // ── GitHub Models (OpenAI-compatible, models.inference.ai.azure.com) ──────
     async fetchGitHubModels(messages, apiKey, maxTokens = 1200) {
         const model = localStorage.getItem('github-model') || 'gpt-4o-mini';
-        const response = await fetch('https://models.inference.ai.azure.com/chat/completions', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${apiKey}`
-            },
-            body: JSON.stringify({
-                model,
-                messages,
-                temperature: 0.7,
-                max_tokens: maxTokens
-            })
-        });
+        const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
-        if (!response.ok) {
-            const err = await response.json().catch(() => ({}));
-            throw new Error(`GitHub Models error: ${response.status} — ${err?.error?.message || ''}`);
+        for (let attempt = 0; attempt < 3; attempt++) {
+            const response = await fetch('https://models.inference.ai.azure.com/chat/completions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${apiKey}`
+                },
+                body: JSON.stringify({
+                    model,
+                    messages,
+                    temperature: 0.7,
+                    max_tokens: maxTokens
+                })
+            });
+
+            if (response.status === 429 || response.status === 503 || response.status >= 500) {
+                if (attempt < 2) {
+                    const backoff = 800 * Math.pow(2, attempt) + Math.floor(Math.random() * 400);
+                    console.warn(`[aiService] github ${model} transient ${response.status}, retry ${attempt + 1}/2 in ${backoff}ms`);
+                    await sleep(backoff);
+                    continue;
+                }
+            }
+
+            if (!response.ok) {
+                const err = await response.json().catch(() => ({}));
+                throw new Error(`GitHub Models error: ${response.status} — ${err?.error?.message || ''}`);
+            }
+
+            const data = await response.json();
+            return data.choices?.[0]?.message?.content || '';
         }
-
-        const data = await response.json();
-        return data.choices?.[0]?.message?.content || '';
+        throw new Error('GitHub Models: rate-limited / unavailable after retries.');
     },
 
     // ── Groq / OpenRouter (OpenAI-compatible) ────────────────────────────────
@@ -142,38 +163,51 @@ var aiService = {
             ...(provider === 'openrouter' ? { 'HTTP-Referer': window.location.origin } : {})
         };
 
+        const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+
         for (const model of modelList) {
-            const response = await fetch(url, {
-                method: 'POST',
-                headers,
-                body: JSON.stringify({
-                    model,
-                    messages: messages, // Send full memory array
-                    temperature: 0.7,
-                    max_tokens: maxTokens
-                })
-            });
+            // Rate limits are account-wide, so retry the SAME model with backoff
+            // before giving up (cycling models does not help a 429).
+            for (let attempt = 0; attempt < 3; attempt++) {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers,
+                    body: JSON.stringify({
+                        model,
+                        messages: messages, // Send full memory array
+                        temperature: 0.7,
+                        max_tokens: maxTokens
+                    })
+                });
 
-            if (response.status === 429 || response.status === 503 ||
-                response.status === 404 || response.status >= 500) {
-                console.warn(`[aiService] ${provider} model ${model} unavailable(${response.status}), trying next...`);
-                continue;
-            }
-
-            if (!response.ok) {
-                const err = await response.json().catch(() => ({}));
-                if (err?.error?.code === 429) {
-                    console.warn(`[aiService] ${provider} upstream rate - limit on ${model}, trying next...`);
-                    continue;
+                if (response.status === 429 || response.status === 503 || response.status >= 500) {
+                    // Transient — backoff and retry this model
+                    if (attempt < 2) {
+                        const backoff = 800 * Math.pow(2, attempt) + Math.floor(Math.random() * 400); // 0.8–1.2s, 1.6–2.0s (jitter)
+                        console.warn(`[aiService] ${provider} ${model} transient ${response.status}, retry ${attempt + 1}/2 in ${backoff}ms`);
+                        await sleep(backoff);
+                        continue;
+                    }
+                    console.warn(`[aiService] ${provider} ${model} still ${response.status} after retries, trying next model...`);
+                    break; // give up on this model, try next
                 }
-                throw new Error(`${provider} error: ${response.status} — ${err?.error?.message || ''} `);
-            }
 
-            const data = await response.json();
-            return data.choices?.[0]?.message?.content || '';
+                if (response.status === 404) {
+                    console.warn(`[aiService] ${provider} model ${model} not found (404), trying next...`);
+                    break; // model doesn't exist — try next model
+                }
+
+                if (!response.ok) {
+                    const err = await response.json().catch(() => ({}));
+                    throw new Error(`${provider} error: ${response.status} — ${err?.error?.message || ''} `);
+                }
+
+                const data = await response.json();
+                return data.choices?.[0]?.message?.content || '';
+            }
         }
 
-        throw new Error(`${provider}: all models rate - limited.Falling back to Pollinations.`);
+        throw new Error(`${provider}: all models rate-limited / unavailable after retries.`);
     },
 
     async fetchOpenAICompat(prompt, apiKey, provider) {
